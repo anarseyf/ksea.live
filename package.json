@@ -1,8 +1,14 @@
 {
   "name": "coffee",
   "version": "0.1.0",
-  "description": "Not sure what this will do",
+  "description": "Not sure yet",
   "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/anarseyf/coffee/issues"
   },
-  "homepage": "https://github.com/anarseyf/coffee#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/anarseyf/coffee#readme"
 }
