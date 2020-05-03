@@ -2,14 +2,18 @@
   "name": "coffee",
   "version": "0.1.0",
   "description": "Not sure yet",
-  "main": "app.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.3"
   },
   "scripts": {
+    "app": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
