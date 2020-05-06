@@ -12,8 +12,10 @@
   },
   "scripts": {
     "app": "concurrently \"npm run server\" \"npm run client\"",
+    "app:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
     "client": "cd client && npm run start",
     "server": "node server.js",
+    "server:dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
