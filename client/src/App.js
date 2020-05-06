@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import styles from "./app.module.css";
+import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
 import { getData } from "./logic";
 
 function App() {
@@ -18,21 +20,25 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>OK then</p>
-        <button className={styles.button} onClick={updateData}>
+        <Button className={styles.button} onClick={updateData}>
           Fetch data
-        </button>
-        <table>
-          <tr>
-            <th>Key</th>
-            <th>Value</th>
-          </tr>
-          {Object.keys(data).map((key) => (
+        </Button>
+        <Table bordered hover variant="dark">
+          <thead>
             <tr>
-              <td>{key}</td>
-              <td>{data[key]}</td>
+              <th>Key</th>
+              <th>Value</th>
             </tr>
-          ))}
-        </table>
+          </thead>
+          <tbody>
+            {Object.keys(data).map((key) => (
+              <tr>
+                <td>{key}</td>
+                <td>{data[key]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </header>
     </div>
   );
