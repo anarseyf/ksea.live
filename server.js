@@ -38,11 +38,15 @@ app.get("/api/seattle911", async (req, res, next) => {
   const options = {
     uri: "https://data.seattle.gov/resource/fire-911.json",
     json: true,
+    qs: { $limit: 50 },
   };
 
   console.log("911...");
+  const start = +new Date();
   rp(options).then((json) => {
-    console.log(`911: ${json.length} results`);
+    const end = +new Date();
+    const latency = (end - start) / 1000;
+    console.log(`911: ${json.length} results in ${latency} seconds`);
     res.json(json.slice(0, 10));
   });
 });
