@@ -11,10 +11,10 @@
     "nodemon": "^2.0.3"
   },
   "scripts": {
-    "app": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "npm run server:prod",
     "app:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "server": "NODE_ENV=production node server.js",
+    "server:prod": "NODE_ENV=production node server.js",
     "server:dev": "NODE_ENV=development nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
