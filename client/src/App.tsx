@@ -4,15 +4,25 @@ import "./App.css";
 import styles from "./app.module.css";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import { getEnv as apiGetEnv } from "./logic";
+import { getEnv, getSeattle911 } from "./logic";
 
 function App() {
-  const [data, setData] = useState({});
+  const initialData: string[] = [];
+  const [data, setData] = useState(initialData);
+
+  function updateEnv() {
+    getEnv()
+      .then((data) => setData([`NODE_ENV: ${data.NODE_ENV}`]))
+      .catch((error) => setData([error]));
+  }
 
   function updateData() {
-    apiGetEnv()
-      .then((data) => setData({ NODE_ENV: data.NODE_ENV }))
-      .catch((error) => setData({ error }));
+    getSeattle911()
+      .then((data) => {
+        console.log("App: ", data);
+        setData(data.map((v) => JSON.stringify(v, null, 4)));
+      })
+      .catch((error) => setData([error]));
   }
 
   return (
@@ -20,21 +30,27 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>OK then</p>
-        <Button variant="danger" className={styles.button} onClick={updateData}>
-          Fetch data
+        <Button
+          variant="danger"
+          className={`${styles.button} m-2`}
+          onClick={updateEnv}
+        >
+          Get env
+        </Button>
+        <Button
+          className={`${styles.button} m-2`}
+          variant="danger"
+          onClick={updateData}
+        >
+          Get data
         </Button>
         <Table size="sm" bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th>Value</th>
-            </tr>
-          </thead>
           <tbody>
-            {Object.keys(data).map((key) => (
+            {data.map((d) => (
               <tr>
-                <td>{key}</td>
-                <td>{data[key]}</td>
+                <td align="left" color="white">
+                  <pre>{d}</pre>
+                </td>
               </tr>
             ))}
           </tbody>
