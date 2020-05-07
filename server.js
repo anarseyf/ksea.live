@@ -1,6 +1,12 @@
 const express = require("express");
 const path = require("path");
+const compression = require("compression");
+const helmet = require("helmet");
+
 const app = express();
+
+app.use(compression());
+app.use(helmet());
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -21,18 +27,12 @@ function getSortedEnv() {
 
 app.use(express.static(path.join(__dirname, staticPath)));
 
-app.get("/", (req, res) => res.send("Hello World?"));
+app.get("/", (req, res) => res.send("Hello World"));
 
 app.get("/api/env", (req, res) => {
   res.json(getSortedEnv());
 });
 
-app.get("/api/data", (req, res) => {
-  const data = { payload: 42 };
-  res.json(data);
-});
-
 app.listen(port, () => {
   console.log(`${path.basename(__filename)} listening at ${port}`);
-  console.log(`env: ${JSON.stringify(getSortedEnv(), null, 4)}`);
 });

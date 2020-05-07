@@ -4,14 +4,14 @@ import "./App.css";
 import styles from "./app.module.css";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import { getData } from "./logic";
+import { getEnv as apiGetEnv } from "./logic";
 
 function App() {
   const [data, setData] = useState({});
 
   function updateData() {
-    getData()
-      .then(setData)
+    apiGetEnv()
+      .then((data) => setData({ NODE_ENV: data.NODE_ENV }))
       .catch((error) => setData({ error }));
   }
 
