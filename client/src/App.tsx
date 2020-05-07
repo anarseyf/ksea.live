@@ -20,10 +20,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>OK then</p>
-        <Button className={styles.button} onClick={updateData}>
+        <Button variant="danger" className={styles.button} onClick={updateData}>
           Fetch data
         </Button>
-        <Table bordered hover variant="dark">
+        <Table size="sm" bordered hover variant="dark">
           <thead>
             <tr>
               <th>Key</th>
