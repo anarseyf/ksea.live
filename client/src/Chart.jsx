@@ -2,13 +2,16 @@ import React from "react";
 import { VegaLite } from "react-vega";
 
 const vegaSpec = {
+  $schema: "https://vega.github.io/schema/vega-lite/v4.json",
   width: 200,
   height: 50,
   mark: "circle",
+
   encoding: {
     x: { field: "a", type: "ordinal" },
     y: { field: "b", type: "quantitative" },
   },
+
   data: { name: "table" },
 };
 
