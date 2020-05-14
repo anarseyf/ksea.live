@@ -21,7 +21,13 @@ function App() {
 
   function updateEnv() {
     getEnv()
-      .then((data) => setData([{ NODE_ENV: data.NODE_ENV }]))
+      .then((data) =>
+        setData([
+          {
+            NODE_ENV: data.NODE_ENV,
+          },
+        ])
+      )
       .catch((error) => setData([{ error }]));
   }
 
