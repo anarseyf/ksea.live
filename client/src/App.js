@@ -4,12 +4,13 @@ import "./App.css";
 import Button from "react-bootstrap/Button";
 import styles from "./app.module.css";
 import { getEnv, getSeattle911 } from "./logic";
-import { Chart } from "./Chart";
-import { DataTable } from "./DataTable";
+import { Chart } from "./components/Chart";
+import { DataTable } from "./components/DataTable";
 import Scatterplot from "./components/Scatterplot";
+import { CoffeeMap } from "./maps/Map";
 
 function App() {
-    const initialData: object[] = [
+    const initialData = [
         {
             address: "15TH AV E / E REPUBLICAN ST",
             type: "Aid Response",
@@ -46,6 +47,8 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
+
+                <CoffeeMap></CoffeeMap>
 
                 <Chart></Chart>
 

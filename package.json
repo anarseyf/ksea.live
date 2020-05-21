@@ -4,9 +4,12 @@
   "description": "Not sure yet",
   "main": "server.js",
   "dependencies": {
+    "@types/react-leaflet": "^2.5.1",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
+    "leaflet": "^1.6.0",
+    "react-leaflet": "^2.7.0",
     "react-vega": "^7.3.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
