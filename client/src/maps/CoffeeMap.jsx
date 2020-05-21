@@ -21,11 +21,7 @@ export class CoffeeMap extends React.Component {
         return (
             <LeafletMap center={coordinates} zoom={zoom}>
                 <TileLayer {...options} />
-                <Marker position={coordinates}>
-                    <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                </Marker>
+                {/* <Marker position={coordinates}>MARKER</Marker> */}
             </LeafletMap>
         );
     }

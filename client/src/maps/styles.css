@@ -1,6 +1,7 @@
 @import "~leaflet/dist/leaflet.css";
 
 .leaflet-container {
+    margin: auto;
     width: 50%;
     height: 70vh;
 }
