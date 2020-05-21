@@ -17,44 +17,46 @@ app.set("port", port);
 const staticPath = isProd ? "client/build" : "client/src";
 
 function getSortedEnv() {
-  const env = {};
-  Object.keys(process.env)
-    .sort()
-    .forEach((k) => {
-      env[k] = process.env[k];
-    });
-  return env;
+    const env = {};
+    Object.keys(process.env)
+        .sort()
+        .forEach((k) => {
+            env[k] = process.env[k];
+        });
+    return env;
 }
 
 app.use(express.static(path.join(__dirname, staticPath)));
 
-app.get("/", (req, res) => res.send("Hello World"));
-
 app.get("/api/env", (req, res) => {
-  res.json(getSortedEnv());
+    res.json(getSortedEnv());
 });
 
 app.get("/api/seattle911", async (req, res, next) => {
-  const options = {
-    uri: "https://data.seattle.gov/resource/fire-911.json",
-    json: true,
-    qs: {
-      $limit: 10,
-      $where: "date_extract_y(datetime) >= 2020",
-      $$app_token: "DvY4gobAudCWKcwYz3yqTd25h", // https://data.seattle.gov/profile/edit/developer_settings
-    },
-  };
+    const options = {
+        uri: "https://data.seattle.gov/resource/fire-911.json",
+        json: true,
+        qs: {
+            $limit: 10,
+            $where: "date_extract_y(datetime) >= 2020",
+            $$app_token: "DvY4gobAudCWKcwYz3yqTd25h", // https://data.seattle.gov/profile/edit/developer_settings
+        },
+    };
 
-  console.log("911...");
-  const start = +new Date();
-  rp(options).then((json) => {
-    const end = +new Date();
-    const latency = (end - start) / 1000;
-    console.log(`911: ${json.length} results in ${latency} seconds`);
-    res.json(json);
-  });
+    console.log("911...");
+    const start = +new Date();
+    rp(options).then((json) => {
+        const end = +new Date();
+        const latency = (end - start) / 1000;
+        console.log(`911: ${json.length} results in ${latency} seconds`);
+        res.json(json);
+    });
+});
+
+app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, staticPath, "index.html"));
 });
 
 app.listen(port, () => {
-  console.log(`${path.basename(__filename)} listening at ${port}`);
+    console.log(`${path.basename(__filename)} listening at ${port}`);
 });

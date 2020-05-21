@@ -12,7 +12,7 @@ import logo from "./logo.svg";
 function App() {
     return (
         <div className="App">
-            <Navbar bg="dark">
+            <Navbar bg="dark" className="text-center">
                 <Nav>
                     <Nav.Link>
                         <Link to="/">Home</Link>
