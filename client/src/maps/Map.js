@@ -9,12 +9,18 @@ const zoom = 11;
 
 export class CoffeeMap extends React.Component {
     render() {
+        const options = {
+            url:
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}",
+            ext: "png",
+            accessToken:
+                "pk.eyJ1IjoiYW5hcnNleWYiLCJhIjoiY2thZXlra3llMGF4MDJ4cXYzY2ZkamVkdyJ9.K8CENC0jz2D0O6ziL_jnNg", // Mapbox: 'coffee' token
+            attribution:
+                'Map tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        };
         return (
             <LeafletMap center={coordinates} zoom={zoom}>
-                <TileLayer
-                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
+                <TileLayer {...options} />
                 <Marker position={coordinates}>
                     <Popup>
                         A pretty CSS3 popup. <br /> Easily customizable.
