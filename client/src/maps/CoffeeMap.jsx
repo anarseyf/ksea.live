@@ -11,6 +11,7 @@ import zipcodes from "./zip-codes.json";
 
 // import styles from "./map.module.css";
 import "./styles.css";
+import { Dot } from "./Dot";
 // import "../../../node_modules/leaflet/dist/leaflet.css";
 
 const zipcodeGeoJSON = zipcodes;
@@ -19,13 +20,17 @@ const svgBounds = [
     coordinates.map((c) => c - 0.05),
     coordinates.map((c) => c + 0.05),
 ];
-const zoom = 11;
+const zoom = 12,
+    minZoom = zoom - 2,
+    maxZoom = zoom + 2;
 
+const fillColor = "red";
+const overlayColor = "dodgerblue";
 const geojsonStyle = {
-    color: "dodgerblue",
-    weight: 1,
+    color: overlayColor,
+    fillColor: overlayColor,
     fillOpacity: 0.3,
-    fillColor: "orangered",
+    weight: 2,
 };
 
 console.log(zipcodes);
@@ -45,29 +50,20 @@ export class CoffeeMap extends React.Component {
             <LeafletMap
                 center={coordinates}
                 zoom={zoom}
-                minZoom={zoom - 1}
-                maxZoom={zoom + 3}
+                minZoom={minZoom}
+                maxZoom={maxZoom}
                 zoomControl={false}
             >
                 <TileLayer {...options} />
                 <GeoJSON data={zipcodeGeoJSON} style={geojsonStyle}></GeoJSON>
-                <Rectangle
-                    bounds={svgBounds}
-                    opacity="0.5"
-                    color="slategray"
-                ></Rectangle>
-                <Circle
-                    center={coordinates}
-                    radius={2000}
-                    color="magenta"
-                ></Circle>
-                <SVGOverlay
+                <Dot coordinates={coordinates} color={fillColor}></Dot>
+                {/* <SVGOverlay
                     bounds={svgBounds}
                     // viewBox="0 0 100 100"
                     opacity="0.7"
                 >
-                    <circle r="10" cx="50%" cy="50%" fill="dodgerblue" />
-                </SVGOverlay>
+                    <circle r="10" cx="50%" cy="50%" fill={fillColor} />
+                </SVGOverlay> */}
             </LeafletMap>
         );
     }
