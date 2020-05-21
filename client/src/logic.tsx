@@ -3,7 +3,7 @@ export async function getEnv() {
 }
 
 export async function getSeattle911() {
-    return getByAPI("seattle911");
+    return getByAPI("seattle911/static");
 }
 
 async function getByAPI(api = "") {

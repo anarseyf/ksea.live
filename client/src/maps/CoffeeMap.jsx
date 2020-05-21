@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
     Map as LeafletMap,
     TileLayer,
@@ -7,6 +7,7 @@ import {
     Rectangle,
     Circle,
 } from "react-leaflet";
+import { getSeattle911 } from "../logic";
 import zipcodes from "./zip-codes.json";
 
 // import styles from "./map.module.css";
@@ -33,38 +34,55 @@ const geojsonStyle = {
     weight: 2,
 };
 
-console.log(zipcodes);
+export function CoffeeMap() {
+    const [data, setData] = useState([]);
 
-export class CoffeeMap extends React.Component {
-    render() {
-        const options = {
-            url:
-                "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}",
-            ext: "png",
-            accessToken:
-                "pk.eyJ1IjoiYW5hcnNleWYiLCJhIjoiY2thZXlra3llMGF4MDJ4cXYzY2ZkamVkdyJ9.K8CENC0jz2D0O6ziL_jnNg", // Mapbox: 'coffee' token
-            attribution:
-                'Map tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        };
-        return (
-            <LeafletMap
-                center={coordinates}
-                zoom={zoom}
-                minZoom={minZoom}
-                maxZoom={maxZoom}
-                zoomControl={false}
-            >
-                <TileLayer {...options} />
-                <GeoJSON data={zipcodeGeoJSON} style={geojsonStyle}></GeoJSON>
-                <Dot coordinates={coordinates} color={fillColor}></Dot>
-                {/* <SVGOverlay
+    useEffect(() => {
+        async function handleEvents() {
+            const events = await getSeattle911();
+            const mapped = events
+                .filter(
+                    (e) =>
+                        typeof e.latitude === "string" &&
+                        typeof e.longitude === "string"
+                )
+                .map((e) => [+e.latitude, +e.longitude]);
+            setData(mapped);
+            console.log("FILTERED: ", mapped.length);
+        }
+        handleEvents();
+    }, []);
+
+    const options = {
+        url:
+            "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}",
+        ext: "png",
+        accessToken:
+            "pk.eyJ1IjoiYW5hcnNleWYiLCJhIjoiY2thZXlra3llMGF4MDJ4cXYzY2ZkamVkdyJ9.K8CENC0jz2D0O6ziL_jnNg", // Mapbox: 'coffee' token
+        attribution:
+            'Map tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    };
+
+    return (
+        <LeafletMap
+            center={coordinates}
+            zoom={zoom}
+            minZoom={minZoom}
+            maxZoom={maxZoom}
+            zoomControl={false}
+        >
+            <TileLayer {...options} />
+            <GeoJSON data={zipcodeGeoJSON} style={geojsonStyle}></GeoJSON>
+            {data.map((d) => (
+                <Dot coordinates={d} color={fillColor}></Dot>
+            ))}
+            {/* <SVGOverlay
                     bounds={svgBounds}
                     // viewBox="0 0 100 100"
                     opacity="0.7"
                 >
                     <circle r="10" cx="50%" cy="50%" fill={fillColor} />
                 </SVGOverlay> */}
-            </LeafletMap>
-        );
-    }
+        </LeafletMap>
+    );
 }

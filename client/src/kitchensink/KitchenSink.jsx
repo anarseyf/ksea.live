@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Chart } from "./Chart";
 import { DataTable } from "./DataTable";
 import Scatterplot from "./Scatterplot";
-import { getEnv, getSeattle911 } from "./logic";
+import { getEnv, getSeattle911 } from "../logic";
 import styles from "./kitchensink.module.css";
 
 export function KitchenSink() {

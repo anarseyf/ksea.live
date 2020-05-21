@@ -17,7 +17,7 @@ export function Dot({ coordinates = [51.477, 0], color = "dodgerblue" }) {
             <Circle
                 center={coordinates}
                 radius={400}
-                weight={3}
+                weight={2}
                 color={color}
                 opacity={opacity}
                 fill={false}

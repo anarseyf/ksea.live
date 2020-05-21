@@ -3,6 +3,8 @@ const path = require("path");
 const compression = require("compression");
 const helmet = require("helmet");
 const rp = require("request-promise");
+const fs = require("fs");
+const util = require("util");
 
 const app = express();
 
@@ -28,8 +30,19 @@ function getSortedEnv() {
 
 app.use(express.static(path.join(__dirname, staticPath)));
 
+app.use((req, res, next) => {
+    console.log(`>>> ${req.method} ${req.url}`);
+    next();
+});
+
 app.get("/api/env", (req, res) => {
     res.json(getSortedEnv());
+});
+
+app.get("/api/seattle911/static", async (req, res, next) => {
+    const readFile = util.promisify(fs.readFile);
+    const file = await readFile("datasets/seattle911.json");
+    res.json(JSON.parse(file));
 });
 
 app.get("/api/seattle911", async (req, res, next) => {
@@ -43,12 +56,10 @@ app.get("/api/seattle911", async (req, res, next) => {
         },
     };
 
-    console.log("911...");
     const start = +new Date();
     rp(options).then((json) => {
         const end = +new Date();
         const latency = (end - start) / 1000;
-        console.log(`911: ${json.length} results in ${latency} seconds`);
         res.json(json);
     });
 });
@@ -58,5 +69,5 @@ app.get("/*", function (req, res) {
 });
 
 app.listen(port, () => {
-    console.log(`${path.basename(__filename)} listening at ${port}`);
+    console.log(`${path.basename(__filename)} listening at :${port}`);
 });
