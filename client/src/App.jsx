@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 import { CoffeeMap } from "./maps/CoffeeMap";
-import { KitchenSink } from "./components/KitchenSink";
+import { KitchenSink } from "./kitchensink/KitchenSink";
 
 import "./App.css";
 import logo from "./logo.svg";

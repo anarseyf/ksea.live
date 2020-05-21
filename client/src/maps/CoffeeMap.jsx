@@ -1,11 +1,23 @@
 import React from "react";
-import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
+import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
+import zipcodes from "./zip-codes.json";
+
 // import styles from "./map.module.css";
 import "./styles.css";
 // import "../../../node_modules/leaflet/dist/leaflet.css";
 
+const zipcodeGeoJSON = zipcodes;
 const coordinates = [47.6, -122.32];
 const zoom = 11;
+
+const geojsonStyle = {
+    color: "darkslategray",
+    weight: 2,
+    fillOpacity: 0.4,
+    fillColor: "orangered",
+};
+
+console.log(zipcodes);
 
 export class CoffeeMap extends React.Component {
     render() {
@@ -21,7 +33,7 @@ export class CoffeeMap extends React.Component {
         return (
             <LeafletMap center={coordinates} zoom={zoom}>
                 <TileLayer {...options} />
-                {/* <Marker position={coordinates}>MARKER</Marker> */}
+                <GeoJSON data={zipcodeGeoJSON} style={geojsonStyle}></GeoJSON>
             </LeafletMap>
         );
     }
