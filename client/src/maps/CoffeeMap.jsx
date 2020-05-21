@@ -30,7 +30,7 @@ const overlayColor = "dodgerblue";
 const geojsonStyle = {
     color: overlayColor,
     fillColor: overlayColor,
-    fillOpacity: 0.3,
+    fillOpacity: 0.2,
     weight: 2,
 };
 
@@ -51,7 +51,9 @@ export function CoffeeMap() {
             console.log("FILTERED: ", mapped.length);
         }
         handleEvents();
-    }, []);
+    }, [setData]);
+
+    console.log("RENDER");
 
     const options = {
         url:
