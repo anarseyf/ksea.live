@@ -16,14 +16,14 @@ import { Dot } from "./Dot";
 // import "../../../node_modules/leaflet/dist/leaflet.css";
 
 const zipcodeGeoJSON = zipcodes;
-const coordinates = [47.66, -122.42];
+const coordinates = [47.606, -122.343];
 const svgBounds = [
     coordinates.map((c) => c - 0.05),
     coordinates.map((c) => c + 0.05),
 ];
-const zoom = 12,
-    minZoom = zoom - 2,
-    maxZoom = zoom + 2;
+const zoom = 11,
+    minZoom = 10,
+    maxZoom = 14;
 
 const fillColor = "red";
 const overlayColor = "dodgerblue";

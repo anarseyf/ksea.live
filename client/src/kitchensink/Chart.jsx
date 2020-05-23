@@ -1,8 +1,10 @@
 import React from "react";
 import { VegaLite } from "react-vega";
+import { dark } from "vega-themes";
 
 const vegaSpec = {
     $schema: "https://vega.github.io/schema/vega-lite/v4.json",
+    theme: "dark",
     width: 200,
     height: 50,
     mark: "circle",
