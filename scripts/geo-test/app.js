@@ -1,18 +1,18 @@
 const fs = require("fs");
 const util = require("util");
-const fetch = require("node-fetch");
-// const NodeGeocoder = require("node-geocoder");
+// const fetch = require("node-fetch");
+const NodeGeocoder = require("node-geocoder");
+const options = {
+  provider: "google",
+  apiKey: "AIzaSyAIaEIC_U0FePOM8GriPCEc3W9SbPjEzJM",
+};
 
-// const options = {
-//   provider: "openstreetmap",
-// };
-
-const resolverUrl = "https://nominatim.openstreetmap.org/search?format=json&q=";
+const limit = 5;
 
 const getTweets = async () => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("tweets.json");
-  const tweets = JSON.parse(file).slice(5, 6);
+  const tweets = JSON.parse(file).slice(0, limit);
 
   const deriveMetadata = (d) => {
     const delimiter = " - ";
@@ -23,7 +23,7 @@ const getTweets = async () => {
       ...d,
       derived: {
         description,
-        tweetAddress: `${pieces[count - 3]}, Seattle, WA`,
+        tweetAddress: `${pieces[count - 3]},Seattle,WA`,
         units: pieces[count - 2].split(" "),
         time: pieces[count - 1],
       },
@@ -40,47 +40,52 @@ const getTweets = async () => {
 };
 
 const resolveAddresses = async (tweets = []) => {
-  // const geocoder = NodeGeocoder(options);
+  const geocoder = NodeGeocoder(options);
   const addresses = tweets.map((t) => t.derived.tweetAddress);
 
-  console.log(addresses);
+  // console.log(addresses);
 
-  const addr = addresses[0];
-  const url = `${resolverUrl}${encodeURI(addr)}`;
-  const result = await fetch(url);
-  const result2 = await geocoder.geocode(addr);
-  const results = [result, result2];
-  /*
+  const timeoutFn = (delay) =>
+    new Promise((resolve) => setTimeout(resolve, delay));
+
   const results = await Promise.all(
     addresses.map(async (addr, i) => {
-      console.log(`>> resolving: ${addr}`);
-      const url = `${resolverUrl}${encodeURI(addr)}`;
-      console.log(`>>> ${i}: ${url}`);
-      // return await geocoder.geocode(addr)
-      return await fetch(url).catch((error) => {
-        console.error(`\taddr ${i} error\n\t`, error);
+      const delay = 200 * i;
+      // console.log(`>>> after ${delay}ms: ${i}: ${addr}`);
+      await timeoutFn(delay);
+      // console.log(`>>> done waiting ${delay}ms: ${i}`);
+      return await geocoder.geocode(addr).catch((error) => {
+        console.error(`>>>\tERROR in ${i}: ${error}`);
         return [];
       });
     })
   ).catch((error) => {
     console.error(`\tALL: ${error}`);
   });
-*/
+
   console.log("RESULTS:", results);
-  return results
+  const geoResults = results
     .map((list) => list[0] || {})
     .map((d) => ({
       lat: d.latitude,
       long: d.longitude,
       resolvedAddress: d.formattedAddress,
     }));
+
+  return tweets.map((tweet, i) => ({
+    ...tweet,
+    derived: {
+      ...tweet.derived,
+      ...geoResults[i],
+    },
+  }));
 };
 
 const main = async () => {
   const tweets = await getTweets();
-  console.log("TWEETS:", tweets);
+  // console.log("TWEETS:", tweets);
   const result = await resolveAddresses(tweets);
-  console.log("RESULT:", result);
+  console.log(result);
 };
 
 main();
