@@ -2,6 +2,10 @@ export async function getEnv() {
     return getByAPI("env");
 }
 
+export async function getTweets() {
+    return getByAPI("seattle911/tweets");
+}
+
 export async function getSeattle911() {
     return getByAPI("seattle911/static");
 }
