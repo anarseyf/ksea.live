@@ -42,7 +42,15 @@ app.get("/api/env", (req, res) => {
 app.get("/api/seattle911/static", async (req, res, next) => {
     const readFile = util.promisify(fs.readFile);
     const file = await readFile("datasets/seattle911.json");
-    res.json(JSON.parse(file).slice(0, 50));
+    const LIMIT = 50;
+    res.json(JSON.parse(file).slice(0, LIMIT));
+});
+
+app.get("/api/seattle911/tweets", async (req, res, next) => {
+    const readFile = util.promisify(fs.readFile);
+    const file = await readFile("datasets/tweetsGeo.json");
+    const LIMIT = 50;
+    res.json(JSON.parse(file).slice(0, LIMIT));
 });
 
 app.get("/api/seattle911", async (req, res, next) => {

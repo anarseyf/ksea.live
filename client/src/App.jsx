@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
-import { CoffeeMap } from "./maps/CoffeeMap";
+import { Coffee } from "./maps/Coffee";
 import { KitchenSink } from "./kitchensink/KitchenSink";
 
 import "./App.css";
@@ -38,7 +38,7 @@ function App() {
                 </Navbar>
             </Container>
             <Router>
-                <CoffeeMap path="/map"></CoffeeMap>
+                <Coffee path="/map"></Coffee>
                 <KitchenSink path="/kitchensink"></KitchenSink>
             </Router>
         </div>

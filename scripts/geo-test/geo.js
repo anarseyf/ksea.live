@@ -7,7 +7,7 @@ const options = {
   apiKey: "AIzaSyAIaEIC_U0FePOM8GriPCEc3W9SbPjEzJM",
 };
 
-const limit = 5;
+const limit = 1;
 
 const getTweets = async () => {
   const readFile = util.promisify(fs.readFile);
@@ -63,12 +63,16 @@ const resolveAddresses = async (tweets = []) => {
     console.error(`\tALL: ${error}`);
   });
 
+  console.log(results);
+
   const geoResults = results
     .map((list) => list[0] || {})
     .map((d) => ({
       lat: d.latitude,
       long: d.longitude,
       resolvedAddress: d.formattedAddress,
+      provider: d.provider,
+      zipcode: d.zipcode,
     }));
 
   return tweets.map((tweet, i) => ({
@@ -83,11 +87,12 @@ const resolveAddresses = async (tweets = []) => {
 const main = async () => {
   const tweets = await getTweets();
   // console.log("TWEETS:", tweets);
-  // const result = await resolveAddresses(tweets);
-  const result = tweets;
-  const fileName = "tweetsGeo.json";
-  fs.writeFileSync(fileName, JSON.stringify(result, null, 2));
-  console.log(`Wrote ${result.length} results to ${fileName}`);
+  const result = await resolveAddresses(tweets);
+  console.log(result);
+  // const result = tweets;
+  // const fileName = "tweetsGeo.json";
+  // fs.writeFileSync(fileName, JSON.stringify(result, null, 2));
+  // console.log(`Wrote ${result.length} results to ${fileName}`);
 };
 
 main();
