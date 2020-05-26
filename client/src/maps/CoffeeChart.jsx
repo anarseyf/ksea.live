@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.css";
@@ -8,8 +8,13 @@ export function CoffeeChart() {
 
     const [svgData, setSvgData] = useState([]);
 
-    const width = 500,
-        height = 80;
+    const svgWidth = 500,
+        svgHeight = 80,
+        margin = { bottom: 20, left: 30 },
+        width = svgWidth - margin.left,
+        height = svgHeight - margin.bottom;
+
+    const xAxisRef = useRef(null);
 
     useEffect(() => {
         const data = tweets.map(({ created_at, derived: { lat } }) => ({
@@ -36,6 +41,12 @@ export function CoffeeChart() {
             .domain([0, d3.max(bins, (b) => b.length)])
             .range([height, 0]);
 
+        const xAxis = d3
+            .axisBottom()
+            .tickFormat(d3.timeFormat("%H:%M"))
+            .scale(xScale);
+        d3.select(xAxisRef.current).call(xAxis);
+
         const binWidth = Math.floor(width / bins.length) - 2;
 
         const newSvgData = bins.map(({ x0, x1, length }) => ({
@@ -52,7 +63,7 @@ export function CoffeeChart() {
     }, [tweets]);
 
     return (
-        <svg className={styles.smallchart} width={width} height={height}>
+        <svg className={styles.smallchart} width={svgWidth} height={svgHeight}>
             {svgData.map((d) => (
                 <rect
                     x={d.x}
@@ -63,6 +74,11 @@ export function CoffeeChart() {
                     fill="green"
                 ></rect>
             ))}
+            <g
+                ref={xAxisRef}
+                transform={`translate(${margin.left}, ${height})`}
+            />
+            {/* <g ref="yAxis" transform={`translate(${margin.left}, 0)`} /> */}
         </svg>
     );
 }
