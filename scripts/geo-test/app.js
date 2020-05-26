@@ -7,7 +7,7 @@ const options = {
   apiKey: "AIzaSyAIaEIC_U0FePOM8GriPCEc3W9SbPjEzJM",
 };
 
-const limit = 5;
+const limit = 200;
 
 const getTweets = async () => {
   const readFile = util.promisify(fs.readFile);
@@ -24,7 +24,7 @@ const getTweets = async () => {
       derived: {
         description,
         tweetAddress: `${pieces[count - 3]},Seattle,WA`,
-        units: pieces[count - 2].split(" "),
+        units: pieces[count - 2],
         time: pieces[count - 1],
       },
     };
@@ -53,7 +53,7 @@ const resolveAddresses = async (tweets = []) => {
       const delay = 200 * i;
       // console.log(`>>> after ${delay}ms: ${i}: ${addr}`);
       await timeoutFn(delay);
-      // console.log(`>>> done waiting ${delay}ms: ${i}`);
+      console.log(`>>> ${i}`);
       return await geocoder.geocode(addr).catch((error) => {
         console.error(`>>>\tERROR in ${i}: ${error}`);
         return [];
@@ -63,7 +63,6 @@ const resolveAddresses = async (tweets = []) => {
     console.error(`\tALL: ${error}`);
   });
 
-  console.log("RESULTS:", results);
   const geoResults = results
     .map((list) => list[0] || {})
     .map((d) => ({
