@@ -7,12 +7,12 @@ import {
     Rectangle,
     Circle,
 } from "react-leaflet";
-import { getSeattle911 } from "../logic";
 import zipcodes from "./zip-codes.json";
 
 // import styles from "./map.module.css";
 import "./styles.css";
 import { Dot } from "./Dot";
+import { useTweets } from "./useTweets";
 // import "../../../node_modules/leaflet/dist/leaflet.css";
 
 const zipcodeGeoJSON = zipcodes;
@@ -35,25 +35,12 @@ const geojsonStyle = {
 };
 
 export function CoffeeMap() {
-    const [data, setData] = useState([]);
+    const [tweets] = useTweets();
 
-    useEffect(() => {
-        async function handleEvents() {
-            const events = await getSeattle911();
-            const mapped = events
-                .filter(
-                    (e) =>
-                        typeof e.latitude === "string" &&
-                        typeof e.longitude === "string"
-                )
-                .map((e) => [+e.latitude, +e.longitude]);
-            setData(mapped);
-            console.log("FILTERED: ", mapped.length);
-        }
-        handleEvents();
-    }, [setData]);
+    console.log("TWEETS to render", tweets);
+    const data = tweets.map(({ derived: { lat, long } }) => [lat, long]);
 
-    console.log("RENDER");
+    console.log("RENDER", data);
 
     const options = {
         url:

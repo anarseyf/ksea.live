@@ -1,20 +1,6 @@
-import React, { useState, useEffect, createContext } from "react";
-import { getTweets } from "../logic";
+import React, { createContext } from "react";
+import { useTweets } from "./useTweets";
 export const TweetsContext = createContext();
-
-export const useTweets = () => {
-    let [tweets, setTweets] = useState([]);
-
-    useEffect(() => {
-        const fetch = async () => {
-            tweets = await getTweets();
-            setTweets(tweets);
-        };
-        fetch();
-    }, []);
-
-    return [tweets];
-};
 
 export const TweetsProvider = ({ children }) => {
     const [tweets] = useTweets();
