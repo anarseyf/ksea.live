@@ -7,7 +7,7 @@ const options = {
   apiKey: "AIzaSyAIaEIC_U0FePOM8GriPCEc3W9SbPjEzJM",
 };
 
-const limit = 200;
+const limit = 5;
 
 const getTweets = async () => {
   const readFile = util.promisify(fs.readFile);
@@ -50,7 +50,7 @@ const resolveAddresses = async (tweets = []) => {
 
   const results = await Promise.all(
     addresses.map(async (addr, i) => {
-      const delay = 200 * i;
+      const delay = 100 * i;
       // console.log(`>>> after ${delay}ms: ${i}: ${addr}`);
       await timeoutFn(delay);
       console.log(`>>> ${i}`);
@@ -83,8 +83,11 @@ const resolveAddresses = async (tweets = []) => {
 const main = async () => {
   const tweets = await getTweets();
   // console.log("TWEETS:", tweets);
-  const result = await resolveAddresses(tweets);
-  console.log(result);
+  // const result = await resolveAddresses(tweets);
+  const result = tweets;
+  const fileName = "tweetsGeo.json";
+  fs.writeFileSync(fileName, JSON.stringify(result, null, 2));
+  console.log(`Wrote ${result.length} results to ${fileName}`);
 };
 
 main();
