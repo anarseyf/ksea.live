@@ -22,25 +22,31 @@ export function CoffeeChart() {
             .domain(d3.extent(data, (d) => d.timestamp))
             .range([0, width]);
 
-        const yScale = d3
-            .scaleLinear()
-            .domain(d3.extent(data, (d) => d.value))
-            .range([height, 0]);
-
         const histogram = d3
             .histogram()
             .domain(xScale.domain())
             .value((d) => d.timestamp)
-            .thresholds(xScale.ticks(10));
+            .thresholds(d3.timeHours(...xScale.domain(), 1));
 
         const bins = histogram(data);
-
         console.log("BINS", bins);
 
-        const newSvgData = data.map((d) => ({
-            x: xScale(d.timestamp),
-            y: yScale(d.value),
+        const yScale = d3
+            .scaleLinear()
+            .domain([0, d3.max(bins, (b) => b.length)])
+            .range([height, 0]);
+
+        const binWidth = Math.floor(width / bins.length) - 2;
+
+        const newSvgData = bins.map(({ x0, x1, length }) => ({
+            x: xScale(x0),
+            width: binWidth,
+            y: yScale(length),
+            height: yScale(0) - yScale(length),
+            rx: binWidth / 4,
         }));
+
+        console.log(newSvgData[0]);
 
         setSvgData(newSvgData);
     }, [tweets]);
@@ -48,7 +54,14 @@ export function CoffeeChart() {
     return (
         <svg className={styles.smallchart} width={width} height={height}>
             {svgData.map((d) => (
-                <rect x={d.x} y={d.y} height={5} width={2} fill="green"></rect>
+                <rect
+                    x={d.x}
+                    y={d.y}
+                    width={d.width}
+                    height={d.height}
+                    rx={d.rx}
+                    fill="green"
+                ></rect>
             ))}
         </svg>
     );
