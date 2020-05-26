@@ -27,6 +27,16 @@ export function CoffeeChart() {
             .domain(d3.extent(data, (d) => d.value))
             .range([height, 0]);
 
+        const histogram = d3
+            .histogram()
+            .domain(xScale.domain())
+            .value((d) => d.timestamp)
+            .thresholds(xScale.ticks(10));
+
+        const bins = histogram(data);
+
+        console.log("BINS", bins);
+
         const newSvgData = data.map((d) => ({
             x: xScale(d.timestamp),
             y: yScale(d.value),
