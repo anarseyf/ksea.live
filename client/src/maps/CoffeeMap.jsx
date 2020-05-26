@@ -37,10 +37,7 @@ const geojsonStyle = {
 export function CoffeeMap() {
     const [tweets] = useTweets();
 
-    console.log("TWEETS to render", tweets);
     const data = tweets.map(({ derived: { lat, long } }) => [lat, long]);
-
-    console.log("RENDER", data);
 
     const options = {
         url:
