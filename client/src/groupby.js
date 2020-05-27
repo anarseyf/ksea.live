@@ -1,4 +1,13 @@
 import { field } from "vega";
+export function byNothing(tweets) {
+    return [
+        {
+            groupby: null,
+            key: null,
+            values: tweets,
+        },
+    ];
+}
 
 export function byType(tweets) {}
 

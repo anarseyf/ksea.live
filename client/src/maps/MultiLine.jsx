@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.css";
-import { histogramify } from "../histogram";
+import { histogram, expandedExtent } from "../histogram";
 import { byZip } from "../groupby";
 
 export function MultiLine() {
@@ -24,27 +24,28 @@ export function MultiLine() {
             return;
         }
 
-        const [bins, expandedTimeExtent] = histogramify(tweets);
-
         const tweetsByZip = byZip(tweets);
-        console.log(">> tweetsByZip:", tweetsByZip[0]);
+        console.log(">> tweetsByZip[0]:", tweetsByZip[0]);
 
-        const xScale = d3
-            .scaleTime()
-            .domain(expandedTimeExtent)
-            .range([0, width]);
+        const extent = expandedExtent(tweets);
+        const xScale = d3.scaleTime().domain(extent).range([0, width]);
 
-        const yScale = d3
-            .scaleLinear()
-            .domain([0, d3.max(bins, (b) => b.length)])
-            .range([height, 0]);
+        const withBins = tweetsByZip.map(({ values, ...rest }) => ({
+            ...rest,
+            bins: histogram(values),
+        }));
+
+        const max = d3.max(
+            withBins
+                .map((d) => d.bins)
+                .map((bins) => d3.max(bins, (b) => b.length))
+        );
+
+        const yScale = d3.scaleLinear().domain([0, max]).range([height, 0]);
 
         const dateFormatter = d3.timeFormat("%H:%M"); // "(%b %d) %H:%M"
 
-        console.log(
-            "BINS",
-            bins.map((b) => b.length)
-        );
+        console.log("WITH BINS", withBins);
 
         const xAxis = d3
             .axisBottom()
@@ -56,30 +57,19 @@ export function MultiLine() {
         const yAxis = d3.axisLeft().scale(yScale).ticks(2);
         d3.select(yAxisRef.current).call(yAxis);
 
-        const firstRealBin = bins[1];
-        const binWidth = Math.max(
-            1,
-            Math.floor(xScale(firstRealBin.x1) - xScale(firstRealBin.x0))
-        );
-
-        const newSvgData = bins.map(({ x0, x1, length }) => ({
-            x: xScale(x0) - binWidth / 2,
-            width: binWidth,
-            y: yScale(length),
-            height: yScale(0) - yScale(length),
-            rx: binWidth / 4,
-        }));
-
         const line = d3
             .line()
             .x((d) => xScale(d.x0))
             .y((d) => yScale(d.length));
 
-        const path = line(bins);
+        const paths = withBins.map((d) => d.bins).map(line);
+        console.log(">>> PATHS", paths);
 
-        console.log(">>> PATH", path);
-
-        setSvgData([{ path }]);
+        setSvgData(
+            paths.map((path) => ({
+                path,
+            }))
+        );
     }, [tweets]);
 
     console.log("RENDER", svgData);

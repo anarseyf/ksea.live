@@ -84,27 +84,19 @@ const resolveAddresses = async (tweets = []) => {
   }));
 };
 
-const main = async () => {
-  const tweets = await getTweets();
-  // console.log("TWEETS:", tweets);
-  const result = await resolveAddresses(tweets);
-  console.log(result);
-  // const result = tweets;
-  // const fileName = "tweetsGeo.json";
-  // fs.writeFileSync(fileName, JSON.stringify(result, null, 2));
-  // console.log(`Wrote ${result.length} results to ${fileName}`);
-};
-
-async function addZip() {
+async function readDataset(fileName = "dataset.json", data) {
   const readFile = util.promisify(fs.readFile);
-  const file = await readFile("../../datasets/tweetsGeo.json");
-  const tweets = JSON.parse(file);
-  console.log(tweets[0]);
+  const file = await readFile(`../../datasets/${fileName}`);
+  return JSON.parse(file);
+}
+
+function addZip(tweets) {
   const result = tweets.map(
     ({ derived: { resolvedAddress, ...restDerived }, ...rest }) => {
       const len = resolvedAddress.length;
       const offset = len - ", USA".length - 5;
-      const zip = resolvedAddress.slice(offset, offset + 5);
+      let zip = resolvedAddress.slice(offset, offset + 5);
+      isNaN(+zip) && (zip = "unknown");
       return {
         derived: {
           resolvedAddress,
@@ -116,12 +108,29 @@ async function addZip() {
     }
   );
 
-  // console.log(result.map((r) => r.derived.zip));
-  fs.writeFileSync(
-    "../../datasets/tweetsGeoZip.json",
-    JSON.stringify(result, null, 2)
-  );
+  return result;
 }
 
-// main();
-addZip();
+const addTimestamp = (tweets) =>
+  tweets.map(({ created_at, derived, ...rest }) => ({
+    created_at,
+    ...rest,
+
+    derived: {
+      timestamp: +new Date(created_at),
+      ...derived,
+    },
+  }));
+
+async function saveDataset(fileName = "dataset.json", data) {
+  const writeFile = util.promisify(fs.writeFile);
+  await writeFile(`../../datasets/${fileName}`, JSON.stringify(data, null, 2));
+}
+
+const main = async () => {
+  const tweets = await readDataset("tweetsGeoZip.json");
+  const modified = addTimestamp(addZip(tweets));
+  await saveDataset("tweetsGeoZipTime.json", modified);
+};
+
+main();

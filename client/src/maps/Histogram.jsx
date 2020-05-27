@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.css";
-import { histogramify } from "../histogram";
-import { byZip } from "../groupby";
+import { histogram, expandedExtent } from "../histogram";
+import { byNothing } from "../groupby";
 
 export function Histogram() {
     const tweets = useContext(TweetsContext);
@@ -24,15 +24,13 @@ export function Histogram() {
             return;
         }
 
-        const [bins, expandedTimeExtent] = histogramify(tweets);
+        const data = byNothing(tweets);
+        console.log("HIST/ BY NOTHING", data);
+        const bins = histogram(data[0].values);
+        console.log("HIST/ BINS", bins);
 
-        const tweetsByZip = byZip(tweets);
-        console.log(">> tweetsByZip:", tweetsByZip[0]);
-
-        const xScale = d3
-            .scaleTime()
-            .domain(expandedTimeExtent)
-            .range([0, width]);
+        const extent = expandedExtent(tweets);
+        const xScale = d3.scaleTime().domain(extent).range([0, width]);
 
         const yScale = d3
             .scaleLinear()
@@ -40,11 +38,6 @@ export function Histogram() {
             .range([height, 0]);
 
         const dateFormatter = d3.timeFormat("%H:%M"); // "(%b %d) %H:%M"
-
-        console.log(
-            "BINS",
-            bins.map((b) => b.length)
-        );
 
         const xAxis = d3
             .axisBottom()
