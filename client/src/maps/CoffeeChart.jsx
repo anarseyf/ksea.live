@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.css";
+import { histogramify } from "../histogram";
 
 export function CoffeeChart() {
     const tweets = useContext(TweetsContext);
@@ -22,29 +23,12 @@ export function CoffeeChart() {
             return;
         }
 
-        const data = tweets.map(({ created_at, derived: { lat } }) => ({
-            timestamp: +new Date(created_at),
-            value: lat,
-        }));
-
-        const actualTimeExtent = d3.extent(data, (d) => d.timestamp);
-        const expandedTimeExtent = [
-            d3.timeHour.offset(actualTimeExtent[0], -1),
-            d3.timeHour.offset(actualTimeExtent[1], 1),
-        ];
+        const [bins, expandedTimeExtent] = histogramify(tweets);
 
         const xScale = d3
             .scaleTime()
             .domain(expandedTimeExtent)
             .range([0, width]);
-
-        const histogram = d3
-            .histogram()
-            .domain(xScale.domain())
-            .value((d) => d.timestamp)
-            .thresholds(d3.timeHours(...xScale.domain(), 1));
-
-        const bins = histogram(data);
 
         const yScale = d3
             .scaleLinear()

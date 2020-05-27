@@ -1,5 +1,5 @@
 {
-    "include": ["src", "src/logic.tsx"],
+    "include": ["src", "src/api.tsx"],
     "compilerOptions": {
         "module": "esnext",
         "target": "es2015",
