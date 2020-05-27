@@ -11,6 +11,7 @@ export function Coffee() {
       <CoffeeMap />
       <Histogram />
       <ChartGroup />
+      <ChartGroup cumulative={true} />
     </TweetsProvider>
   );
 }
