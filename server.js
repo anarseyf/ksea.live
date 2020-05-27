@@ -48,7 +48,7 @@ app.get("/api/seattle911/static", async (req, res, next) => {
 
 app.get("/api/seattle911/tweets", async (req, res, next) => {
     const readFile = util.promisify(fs.readFile);
-    const file = await readFile("datasets/tweetsGeo.json");
+    const file = await readFile("datasets/tweetsGeoZip.json");
     const LIMIT = 200;
     res.json(JSON.parse(file).slice(0, LIMIT));
 });

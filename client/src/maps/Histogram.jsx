@@ -3,8 +3,9 @@ import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.css";
 import { histogramify } from "../histogram";
+import { byZip } from "../groupby";
 
-export function CoffeeChart() {
+export function Histogram() {
     const tweets = useContext(TweetsContext);
 
     const [svgData, setSvgData] = useState([]);
@@ -24,6 +25,9 @@ export function CoffeeChart() {
         }
 
         const [bins, expandedTimeExtent] = histogramify(tweets);
+
+        const tweetsByZip = byZip(tweets);
+        console.log(">> tweetsByZip:", tweetsByZip[0]);
 
         const xScale = d3
             .scaleTime()
