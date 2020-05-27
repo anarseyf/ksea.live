@@ -94,7 +94,7 @@ export function CoffeeChart() {
                         width={d.width}
                         height={d.height}
                         rx={d.rx}
-                        fill="green"
+                        fill="orangered"
                     ></rect>
                 ))}
             </g>
