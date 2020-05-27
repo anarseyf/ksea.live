@@ -1,4 +1,8 @@
-.smallchart {
-    border: 1px solid slategray;
-    color: white;
+.container {
+  display: inline-block;
+  margin: 1em;
+  color: white;
+}
+.chart {
+  border-top: 1px solid slategray;
 }
