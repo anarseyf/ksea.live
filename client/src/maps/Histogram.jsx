@@ -25,8 +25,9 @@ export function Histogram() {
     }
 
     const data = byNothing(tweets);
+    console.log("HIST/DATA", data);
     const bins = histogram(data[0].values);
-
+    console.log("HIST/BINS", bins);
     const extent = expandedExtent(tweets);
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
 

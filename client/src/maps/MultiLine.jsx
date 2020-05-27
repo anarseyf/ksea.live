@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import styles from "./chart.module.css";
 import { xyExtents } from "../histogram";
 
-export function MultiLine({ datasets = [], title, showTotal, extents }) {
+export function MultiLine({ datasets = [], title, total, extents }) {
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = 160,
@@ -52,8 +52,12 @@ export function MultiLine({ datasets = [], title, showTotal, extents }) {
 
   return (
     <div className={styles.container}>
-      {title && <div>{title}</div>}
-      {showTotal && <div>42</div>}
+      <div>
+        {typeof total === "number" && (
+          <div className={styles.total}>{total}</div>
+        )}
+        {title && <div className={styles.title}>{title}</div>}
+      </div>
       <svg className={styles.chart} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           {svgData.map((d, i) => (

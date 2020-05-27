@@ -17,6 +17,7 @@ export function ChartGroup({ cumulative = false }) {
       ...rest,
       values,
       bins: histogram(values, { cumulative }),
+      total: values.length,
     }));
 
     const mainDataset = withBins[0];
@@ -41,7 +42,7 @@ export function ChartGroup({ cumulative = false }) {
           datasets={d}
           extents={extents}
           title={d[1].key}
-          showTotal={false}
+          total={d[1].total}
         ></MultiLine>
       ))}
     </div>

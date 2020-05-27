@@ -7,3 +7,12 @@
 .chart {
   border-top: 1px solid slategray;
 }
+.total {
+  display: inline-block;
+  font-size: 1.5em;
+  color: orangered;
+}
+.title {
+  display: inline-block;
+  float: right;
+}
