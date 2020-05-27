@@ -95,4 +95,33 @@ const main = async () => {
   // console.log(`Wrote ${result.length} results to ${fileName}`);
 };
 
-main();
+async function addZip() {
+  const readFile = util.promisify(fs.readFile);
+  const file = await readFile("../../datasets/tweetsGeo.json");
+  const tweets = JSON.parse(file);
+  console.log(tweets[0]);
+  const result = tweets.map(
+    ({ derived: { resolvedAddress, ...restDerived }, ...rest }) => {
+      const len = resolvedAddress.length;
+      const offset = len - ", USA".length - 5;
+      const zip = resolvedAddress.slice(offset, offset + 5);
+      return {
+        derived: {
+          resolvedAddress,
+          ...restDerived,
+          zip,
+        },
+        ...rest,
+      };
+    }
+  );
+
+  // console.log(result.map((r) => r.derived.zip));
+  fs.writeFileSync(
+    "../../datasets/tweetsGeoZip.json",
+    JSON.stringify(result, null, 2)
+  );
+}
+
+// main();
+addZip();

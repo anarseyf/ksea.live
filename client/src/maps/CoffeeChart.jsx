@@ -53,8 +53,9 @@ export function CoffeeChart() {
         d3.select(yAxisRef.current).call(yAxis);
 
         const firstRealBin = bins[1];
-        const binWidth = Math.floor(
-            xScale(firstRealBin.x1) - xScale(firstRealBin.x0)
+        const binWidth = Math.max(
+            1,
+            Math.floor(xScale(firstRealBin.x1) - xScale(firstRealBin.x0))
         );
 
         const newSvgData = bins.map(({ x0, x1, length }) => ({
