@@ -10,8 +10,8 @@ export function Coffee() {
     <TweetsProvider>
       <CoffeeMap />
       <Histogram />
-      <ChartGroup />
       <ChartGroup cumulative={true} />
+      <ChartGroup />
     </TweetsProvider>
   );
 }

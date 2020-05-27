@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import styles from "./chart.module.css";
-import { expandedExtent } from "../histogram";
+import { xyExtents } from "../histogram";
 
-export function MultiLine({ datasets = [], title, showTotal }) {
+export function MultiLine({ datasets = [], title, showTotal, extents }) {
   const [svgData, setSvgData] = useState([]);
 
-  const svgWidth = 200,
+  const svgWidth = 160,
     svgHeight = 80,
     margin = { top: 10, right: 10, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
@@ -19,15 +19,9 @@ export function MultiLine({ datasets = [], title, showTotal }) {
     if (!datasets.length) {
       return;
     }
-    const xExtent = expandedExtent(datasets.map((d) => d.values).flat());
 
-    const maxY = d3.max(
-      datasets
-        .map((d) => d.bins)
-        .flat()
-        .map((bin) => bin.length)
-    );
-    const yExtent = [0, maxY];
+    const { xExtent, yExtent } = extents || xyExtents(datasets);
+
     const dateFormatter = d3.timeFormat("%H:%M"); // "(%b %d) %H:%M"
 
     const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
@@ -56,8 +50,6 @@ export function MultiLine({ datasets = [], title, showTotal }) {
     );
   }, [datasets]);
 
-  console.log("MULTI render", datasets);
-
   return (
     <div className={styles.container}>
       {title && <div>{title}</div>}
@@ -67,7 +59,7 @@ export function MultiLine({ datasets = [], title, showTotal }) {
           {svgData.map((d, i) => (
             <path
               d={d.path}
-              stroke={i ? "white" : "orangered"}
+              stroke={i ? "deepskyblue" : "orangered"}
               strokeWidth={i ? 1 : 3}
               fill="none"
             ></path>

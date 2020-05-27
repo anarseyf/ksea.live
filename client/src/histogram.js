@@ -35,3 +35,16 @@ export function expandedExtent(values, { accessor = defaultAccessor } = {}) {
   const extent = getExtent(values, accessor);
   return [d3.timeHour.offset(extent[0], -1), d3.timeHour.offset(extent[1], 1)];
 }
+
+export function xyExtents(datasets) {
+  const xExtent = expandedExtent(datasets.map((d) => d.values).flat());
+
+  const maxY = d3.max(
+    datasets
+      .map((d) => d.bins)
+      .flat()
+      .map((bin) => bin.length)
+  );
+  const yExtent = [0, maxY];
+  return { xExtent, yExtent };
+}

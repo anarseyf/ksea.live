@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { TweetsContext } from "./TweetsProvider";
-import { histogram } from "../histogram";
+import { histogram, xyExtents } from "../histogram";
 import { byZip } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.css";
@@ -21,7 +21,7 @@ export function ChartGroup({ cumulative = false }) {
 
     const mainDataset = withBins[0];
     const datasetGroups = withBins
-      .slice(1, 5)
+      .slice(1, 4)
       .map((compareTo) => [mainDataset, compareTo]);
 
     setData(datasetGroups);
@@ -32,11 +32,17 @@ export function ChartGroup({ cumulative = false }) {
   }
 
   const groupTitle = `${data[0][0].key} compared to:`;
+  const extents = xyExtents(data.flat());
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>
       {data.map((d) => (
-        <MultiLine datasets={d} title={d[1].key} showTotal={false}></MultiLine>
+        <MultiLine
+          datasets={d}
+          extents={extents}
+          title={d[1].key}
+          showTotal={false}
+        ></MultiLine>
       ))}
     </div>
   );
