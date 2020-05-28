@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.css";
 import { histogram, expandedExtent } from "../histogram";
-import { byNothing } from "../groupby";
+import { GroupByOptions, groupBy } from "../groupby";
 
 export function Histogram() {
   const tweets = useContext(TweetsContext);
@@ -24,7 +24,7 @@ export function Histogram() {
       return;
     }
 
-    const data = byNothing(tweets);
+    const data = groupBy(GroupByOptions.Nothing, tweets);
     console.log("HIST/DATA", data);
     const bins = histogram(data[0].values);
     console.log("HIST/BINS", bins);

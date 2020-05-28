@@ -1,17 +1,20 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { histogram, xyExtents } from "../histogram";
-import { byZip, byType } from "../groupby";
+import { GroupByOptions, groupBy } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.css";
 
-export function ChartGroup({ cumulative = false }) {
+export function ChartGroup({
+  cumulative = false,
+  groupby = GroupByOptions.ZipCode,
+}) {
   const tweets = useContext(TweetsContext);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const tweetsBy = byType(tweets);
+    const tweetsBy = groupBy(groupby, tweets);
 
     const withBins = tweetsBy.map(({ values, ...rest }) => ({
       ...rest,

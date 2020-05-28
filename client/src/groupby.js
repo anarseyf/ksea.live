@@ -1,7 +1,26 @@
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { scaleOrdinal } from "d3-scale";
 
-export function byNothing(tweets) {
+export const GroupByOptions = {
+  Nothing: "Nothing",
+  IncidentType: "IncidentType",
+  ZipCode: "ZipCode",
+};
+
+export function groupBy(option = GroupByOptions.Nothing, tweets) {
+  if (option === GroupByOptions.Nothing) {
+    return byNothing(tweets);
+  }
+  if (option === GroupByOptions.IncidentType) {
+    return byIncidentType(tweets);
+  }
+  if (option === GroupByOptions.ZipCode) {
+    return byZip(tweets);
+  }
+  throw `Unrecognized groupby option: ${option}`;
+}
+
+const byNothing = (tweets) => {
   return [
     {
       groupby: null,
@@ -9,9 +28,9 @@ export function byNothing(tweets) {
       values: tweets,
     },
   ];
-}
+};
 
-export function byType(tweets) {
+const byIncidentType = (tweets) => {
   const options = ["fire", "medic", "mvi"];
   const defaultOption = "other";
 
@@ -33,11 +52,11 @@ export function byType(tweets) {
   console.log("CHROMATIC:", options.map(color));
 
   return grouped.map((d) => ({ ...d, color: color(d.key) }));
-}
+};
 
-export function byZip(tweets) {
+const byZip = (tweets) => {
   return by("zip", tweets, (t) => t.derived.zip);
-}
+};
 
 const by = (groupby, tweets, mapper) => {
   const mapped = {};

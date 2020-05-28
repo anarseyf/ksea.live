@@ -6,6 +6,7 @@ import { MultiLine } from "./MultiLine";
 import { ChartGroup } from "./ChartGroup";
 import { Header } from "./Header";
 import styles from "./coffee.module.css";
+import { GroupByOptions } from "../groupby";
 
 export function Coffee() {
   return (
@@ -14,8 +15,9 @@ export function Coffee() {
         <CoffeeMap />
         <Header />
         <Histogram />
-        <ChartGroup cumulative={true} />
-        <ChartGroup />
+        <ChartGroup cumulative={true} groupby={GroupByOptions.IncidentType} />
+        <ChartGroup cumulative={true} groupby={GroupByOptions.ZipCode} />
+        <ChartGroup groupby={GroupByOptions.IncidentType} />
       </TweetsProvider>
     </div>
   );

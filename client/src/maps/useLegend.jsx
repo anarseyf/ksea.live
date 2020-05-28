@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { TweetsContext } from "./TweetsProvider";
-import { byType } from "../groupby";
+import { GroupByOptions, groupBy } from "../groupby";
 
 export const useLegend = () => {
   const tweets = useContext(TweetsContext);
@@ -10,7 +10,7 @@ export const useLegend = () => {
     if (!tweets.length) {
       return;
     }
-    const tweetsByType = byType(tweets);
+    const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
     console.log("LEGEND/tweetsByType", tweetsByType);
     const legendByType = tweetsByType.map(({ key, color, values }) => ({
       key,

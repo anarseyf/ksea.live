@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { byType } from "../groupby";
+import { byIncidentType } from "../groupby";
 import { TweetsContext } from "./TweetsProvider";
-import { useLegend } from "./useLegened";
+import { useLegend } from "./useLegend";
 
 const size = 12;
 
