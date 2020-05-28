@@ -1,17 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { Topline } from "./Topline";
 import { Legend } from "./Legend";
+import { TweetsContext } from "./TweetsProvider";
 
 export function Header() {
-  const legend = [
-    { label: "fire", color: "orangered" },
-    { label: "medic", color: "dodgerblue" },
-    { label: "other", color: "white" },
-  ];
+  const tweets = useContext(TweetsContext);
+
   return (
     <div>
-      <Topline number={42} text="Seattle" />
-      <Legend legend={legend} />
+      <Topline number={tweets.length} text="Seattle" />
+      <Legend />
     </div>
   );
 }
