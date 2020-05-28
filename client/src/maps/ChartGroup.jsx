@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { histogram, xyExtents } from "../histogram";
-import { byZip } from "../groupby";
+import { byZip, byType } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.css";
 
@@ -11,9 +11,9 @@ export function ChartGroup({ cumulative = false }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const tweetsByZip = byZip(tweets);
+    const tweetsBy = byType(tweets);
 
-    const withBins = tweetsByZip.map(({ values, ...rest }) => ({
+    const withBins = tweetsBy.map(({ values, ...rest }) => ({
       ...rest,
       values,
       bins: histogram(values, { cumulative }),
@@ -34,6 +34,7 @@ export function ChartGroup({ cumulative = false }) {
 
   const groupTitle = `${data[0][0].key} compared to:`;
   const extents = xyExtents(data.flat());
+
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>

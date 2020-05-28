@@ -1,29 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useTweets } from "./useTweets";
+import React, { useEffect, useState, useContext } from "react";
 import { byType } from "../groupby";
+import { TweetsContext } from "./TweetsProvider";
+import { useLegend } from "./useLegened";
 
 const size = 12;
 
 export function Legend() {
-  const [tweets] = useTweets();
-  const [legend, setLegend] = useState({});
+  const [legend] = useLegend();
   const subLegend = legend.type;
 
   useEffect(() => {
-    if (!tweets.length) {
-      return;
-    }
-    const tweetsByType = byType(tweets);
-    console.log("LEGEND/tweetsByType", tweetsByType);
-    const legendByType = tweetsByType.map(({ key, color, values }) => ({
-      key,
-      color,
-      total: values.length,
-    }));
-    const groupby = tweetsByType[0].groupby;
-    const newSubLegend = { [groupby]: legendByType };
-    setLegend({ ...legend, ...newSubLegend });
-  }, [tweets]);
+    console.log("NEW LEGEND:", legend);
+  }, [legend]);
 
   if (!subLegend) {
     return null;
