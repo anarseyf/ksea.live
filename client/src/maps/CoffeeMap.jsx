@@ -6,6 +6,7 @@ import zipcodes from "./zip-codes.json";
 import "./styles.css";
 import { Dot } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
+import { groupBy, GroupByOptions } from "../groupby";
 // import "../../../node_modules/leaflet/dist/leaflet.css";
 
 const zipcodeGeoJSON = zipcodes;
@@ -18,7 +19,7 @@ const zoom = 11,
   minZoom = 10,
   maxZoom = 14;
 
-const fillColor = "red";
+const defaultColor = "purple";
 const overlayColor = "dodgerblue";
 const geojsonStyle = {
   color: overlayColor,
@@ -30,13 +31,18 @@ const geojsonStyle = {
 export function CoffeeMap() {
   const tweets = useContext(TweetsContext);
 
-  const data = tweets.map(({ derived: { lat, long } }) => [lat, long]);
+  const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
+  const mapper = ({ color, values }) =>
+    values.map(({ derived: { lat, long } }) => ({ lat, long, color }));
+
+  const data = tweetsByType.map(mapper).flat();
+  console.log("MAP DATA", data);
 
   const options = {
     url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}",
     ext: "png",
-    accessToken:
-      "pk.eyJ1IjoiYW5hcnNleWYiLCJhIjoiY2thZXlra3llMGF4MDJ4cXYzY2ZkamVkdyJ9.K8CENC0jz2D0O6ziL_jnNg", // Mapbox: 'coffee' token
+    // accessToken:
+    //   "pk.eyJ1IjoiYW5hcnNleWYiLCJhIjoiY2thZXlra3llMGF4MDJ4cXYzY2ZkamVkdyJ9.K8CENC0jz2D0O6ziL_jnNg", // Mapbox: 'coffee' token
     attribution:
       'Map tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   };
@@ -52,7 +58,10 @@ export function CoffeeMap() {
       <TileLayer {...options} />
       <GeoJSON data={zipcodeGeoJSON} style={geojsonStyle}></GeoJSON>
       {data.map((d) => (
-        <Dot coordinates={d} color={fillColor}></Dot>
+        <Dot
+          coordinates={[d.lat, d.long]}
+          color={d.color || defaultColor}
+        ></Dot>
       ))}
       {/* <SVGOverlay
                     bounds={svgBounds}

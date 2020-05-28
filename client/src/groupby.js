@@ -48,7 +48,7 @@ const byIncidentType = (tweets) => {
   const grouped = by("type", tweets, mapper);
 
   const color = scaleOrdinal(schemeCategory10);
-  color.domain([...options, defaultOption]);
+  color.domain(["medic", defaultOption, "mvi", "fire"]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
   console.log("CHROMATIC:", options.map(color));
 
   return grouped.map((d) => ({ ...d, color: color(d.key) }));
