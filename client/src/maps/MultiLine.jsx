@@ -53,10 +53,10 @@ export function MultiLine({ datasets = [], title, total, extents }) {
   return (
     <div className={styles.container}>
       <div>
+        {title && <div className={styles.title}>{title}</div>}
         {typeof total === "number" && (
           <div className={styles.total}>{total}</div>
         )}
-        {title && <div className={styles.title}>{title}</div>}
       </div>
       <svg className={styles.chart} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>

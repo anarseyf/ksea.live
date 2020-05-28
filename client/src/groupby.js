@@ -8,23 +8,39 @@ export function byNothing(tweets) {
   ];
 }
 
-export function byType(tweets) {}
+export function byType(tweets) {
+  const options = ["fire", "medic", "mvi"];
+  const defaultOption = "other";
 
-export function byZip(tweets) {
-  return by("zip", tweets);
+  const mapper = ({ derived: { description } }) => {
+    const desc = description.toLowerCase();
+    const match = options.reduce((matchedOption, option) => {
+      if (matchedOption) {
+        return matchedOption;
+      }
+      return desc.includes(option) ? option : null;
+    }, null);
+    return match || defaultOption;
+  };
+
+  return by("type", tweets, mapper);
 }
 
-const by = (field, tweets) => {
+export function byZip(tweets) {
+  return by("zip", tweets, (t) => t.derived.zip);
+}
+
+const by = (groupby, tweets, mapper) => {
   const mapped = {};
   tweets.forEach((t) => {
-    const key = t.derived[field];
+    const key = mapper(t);
     const list = mapped[key] || [];
     list.push(t);
     mapped[key] = list;
   });
 
   return Object.keys(mapped).map((key) => ({
-    groupby: field,
+    groupby,
     key,
     values: mapped[key],
   }));

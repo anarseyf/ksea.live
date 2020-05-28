@@ -4,14 +4,19 @@ import { Histogram } from "./Histogram";
 import { TweetsProvider } from "./TweetsProvider";
 import { MultiLine } from "./MultiLine";
 import { ChartGroup } from "./ChartGroup";
+import { Header } from "./Header";
+import styles from "./coffee.module.css";
 
 export function Coffee() {
   return (
-    <TweetsProvider>
-      <CoffeeMap />
-      <Histogram />
-      <ChartGroup cumulative={true} />
-      <ChartGroup />
-    </TweetsProvider>
+    <div className={styles.container}>
+      <TweetsProvider>
+        <CoffeeMap />
+        <Header />
+        <Histogram />
+        <ChartGroup cumulative={true} />
+        <ChartGroup />
+      </TweetsProvider>
+    </div>
   );
 }
