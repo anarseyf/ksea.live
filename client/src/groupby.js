@@ -1,3 +1,6 @@
+import { schemeCategory10 } from "d3-scale-chromatic";
+import { scaleOrdinal } from "d3-scale";
+
 export function byNothing(tweets) {
   return [
     {
@@ -23,7 +26,13 @@ export function byType(tweets) {
     return match || defaultOption;
   };
 
-  return by("type", tweets, mapper);
+  const grouped = by("type", tweets, mapper);
+
+  const color = scaleOrdinal(schemeCategory10);
+  color.domain([...options, defaultOption]);
+  console.log("CHROMATIC:", options.map(color));
+
+  return grouped.map((d) => ({ ...d, color: color(d.key) }));
 }
 
 export function byZip(tweets) {

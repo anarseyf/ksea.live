@@ -15,8 +15,9 @@ export function Legend() {
     }
     const tweetsByType = byType(tweets);
     console.log("LEGEND/tweetsByType", tweetsByType);
-    const legendByType = tweetsByType.map(({ key, values }) => ({
+    const legendByType = tweetsByType.map(({ key, color, values }) => ({
       key,
+      color,
       total: values.length,
     }));
     const groupby = tweetsByType[0].groupby;
@@ -30,7 +31,12 @@ export function Legend() {
   return subLegend.map((d) => (
     <div>
       <svg width={size} height={size}>
-        <circle cx={size / 2} cy={size / 2} r={size / 2} fill="yellow"></circle>
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={size / 2}
+          fill={d.color || "white"}
+        ></circle>
       </svg>
       <span>
         {d.key}: {d.total}
