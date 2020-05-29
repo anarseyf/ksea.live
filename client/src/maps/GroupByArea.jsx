@@ -34,8 +34,8 @@ export function GroupByArea({}) {
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>
-      {data.map((dataset) => (
-        <TypeLegend legend={dataset.legend} title={dataset.key} />
+      {data.map(({ legend, key: title, total }) => (
+        <TypeLegend {...{ legend, title, total }} />
       ))}
     </div>
   );

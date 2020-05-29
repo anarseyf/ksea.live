@@ -1,9 +1,22 @@
 .container {
   display: inline-block;
-  font-size: 0.75rem;
   margin: 1em;
   padding: 0.5em;
+  min-width: 100px;
+  min-height: 120px;
+}
+.header {
+  border-bottom: 1px solid silver;
 }
 .title {
-  border-bottom: 1px solid silver;
+  display: inline-block;
+}
+.total {
+  display: inline-block;
+  color: orangered;
+  font-weight: bold;
+  margin-right: 1em;
+}
+.body {
+  font-size: 0.75rem;
 }
