@@ -12,6 +12,15 @@ const IncidentTypes = {
   Default: "other",
 };
 
+const RequiredKeys = {
+  [GroupByOptions.IncidentType]: [
+    IncidentTypes.Known.Fire,
+    IncidentTypes.Known.Medic,
+    IncidentTypes.Known.MVI,
+    IncidentTypes.Default,
+  ],
+};
+
 export const Mappers = {
   [GroupByOptions.IncidentType]: ({ derived: { description } }) => {
     const options = Object.values(IncidentTypes.Known);
@@ -51,7 +60,8 @@ const byNothing = (tweets) => {
 };
 
 const byIncidentType = (tweets) => {
-  const grouped = by("type", tweets, Mappers[GroupByOptions.IncidentType]);
+  const option = GroupByOptions.IncidentType;
+  const grouped = by("type", tweets, Mappers[option], RequiredKeys[option]);
 
   const color = scaleOrdinal(schemeCategory10);
   const { Fire, Medic, MVI } = IncidentTypes.Known;
@@ -64,8 +74,13 @@ const byZip = (tweets) => {
   return by("zip", tweets, Mappers[GroupByOptions.ZipCode]);
 };
 
-const by = (groupby, tweets, mapper) => {
+const by = (groupby, tweets, mapper, requiredKeys = []) => {
   const mapped = {};
+
+  requiredKeys.forEach((key) => {
+    mapped[key] = [];
+  });
+
   tweets.forEach((t) => {
     const key = mapper(t);
     const list = mapped[key] || [];
