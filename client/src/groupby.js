@@ -2,9 +2,29 @@ import { schemeCategory10 } from "d3-scale-chromatic";
 import { scaleOrdinal } from "d3-scale";
 
 export const GroupByOptions = {
-  Nothing: "Nothing",
-  IncidentType: "IncidentType",
-  ZipCode: "ZipCode",
+  Nothing: null,
+  IncidentType: "type",
+  ZipCode: "zip",
+};
+
+const IncidentTypes = {
+  Known: { Fire: "fire", Medic: "medic", MVI: "mvi" },
+  Default: "other",
+};
+
+export const Mappers = {
+  [GroupByOptions.IncidentType]: ({ derived: { description } }) => {
+    const options = Object.values(IncidentTypes.Known);
+    const desc = description.toLowerCase();
+    const match = options.reduce((matchedOption, option) => {
+      if (matchedOption) {
+        return matchedOption;
+      }
+      return desc.includes(option) ? option : null;
+    }, null);
+    return match || IncidentTypes.Default;
+  },
+  [GroupByOptions.ZipCode]: (t) => t.derived.zip,
 };
 
 export function groupBy(option = GroupByOptions.Nothing, tweets) {
@@ -31,31 +51,17 @@ const byNothing = (tweets) => {
 };
 
 const byIncidentType = (tweets) => {
-  const options = ["fire", "medic", "mvi"];
-  const defaultOption = "other";
-
-  const mapper = ({ derived: { description } }) => {
-    const desc = description.toLowerCase();
-    const match = options.reduce((matchedOption, option) => {
-      if (matchedOption) {
-        return matchedOption;
-      }
-      return desc.includes(option) ? option : null;
-    }, null);
-    return match || defaultOption;
-  };
-
-  const grouped = by("type", tweets, mapper);
+  const grouped = by("type", tweets, Mappers[GroupByOptions.IncidentType]);
 
   const color = scaleOrdinal(schemeCategory10);
-  color.domain(["medic", defaultOption, "mvi", "fire"]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
-  console.log("CHROMATIC:", options.map(color));
+  const { Fire, Medic, MVI } = IncidentTypes.Known;
+  color.domain([Medic, IncidentTypes.Default, MVI, Fire]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
 
   return grouped.map((d) => ({ ...d, color: color(d.key) }));
 };
 
 const byZip = (tweets) => {
-  return by("zip", tweets, (t) => t.derived.zip);
+  return by("zip", tweets, Mappers[GroupByOptions.ZipCode]);
 };
 
 const by = (groupby, tweets, mapper) => {

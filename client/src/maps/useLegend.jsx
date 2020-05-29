@@ -11,7 +11,6 @@ export const useLegend = () => {
       return;
     }
     const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
-    console.log("LEGEND/tweetsByType", tweetsByType);
     const legendByType = tweetsByType.map(({ key, color, values }) => ({
       key,
       color,
@@ -20,6 +19,7 @@ export const useLegend = () => {
     const groupby = tweetsByType[0].groupby;
     const newSubLegend = { [groupby]: legendByType };
     setLegend({ ...legend, ...newSubLegend });
+    console.warn("NEW LEGEND! (switch to useContext(LegendContext)?)");
   }, [tweets]);
 
   return [legend];

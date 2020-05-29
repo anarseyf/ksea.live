@@ -140,10 +140,9 @@ async function saveDataset(fileName = "dataset.json", data) {
 }
 
 const main = async () => {
-  const tweets = await readDataset("tweetsGeoZipTime.json");
-  const modified = addTweetUrl(tweets); //addTimestamp(addZip(tweets));
+  const tweets = await readDataset("tweets.json");
   console.log(modified[0]);
-  await saveDataset("tweets.json", modified);
+  // await saveDataset("tweets.json", modified);
 };
 
 main();

@@ -1,0 +1,27 @@
+/* 
+https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_us/Twitter_Brand_Guidelines_V2_0.pdf
+*/
+
+$twitter-main: #00acee;
+$twitter-darkgray: #657786;
+
+.container {
+  font-size: 0.8em;
+}
+
+.tweet {
+  border-bottom: 1px solid $twitter-main;
+  width: 100%;
+  padding-top: 1em;
+}
+
+.type {
+  display: inline-block;
+  color: orangered;
+  font-weight: bold;
+}
+
+.location {
+  float: right;
+  color: $twitter-darkgray;
+}

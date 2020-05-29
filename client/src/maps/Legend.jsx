@@ -7,10 +7,6 @@ export function Legend() {
   const [legend] = useLegend();
   const subLegend = legend.type;
 
-  useEffect(() => {
-    console.log("NEW LEGEND:", legend);
-  }, [legend]);
-
   if (!subLegend) {
     return null;
   }
