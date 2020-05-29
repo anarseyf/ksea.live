@@ -3,6 +3,7 @@ import { Topline } from "./Topline";
 import { TypeLegend } from "./TypeLegend";
 import { TweetsContext } from "./TweetsProvider";
 import { useLegend } from "./useLegend";
+import { Histogram } from "./Histogram";
 
 export function Header() {
   const tweets = useContext(TweetsContext);
@@ -12,6 +13,7 @@ export function Header() {
     <div>
       <Topline number={tweets.length} text="Seattle" />
       <TypeLegend legend={legend} />
+      <Histogram />
     </div>
   );
 }

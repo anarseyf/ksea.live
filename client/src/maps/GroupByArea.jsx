@@ -5,6 +5,7 @@ import { GroupByOptions, groupBy } from "../groupby";
 import styles from "./chart.module.css";
 import { TypeLegend } from "./TypeLegend";
 import { legendByType } from "./useLegend";
+import * as d3 from "d3";
 
 export function GroupByArea({}) {
   const groupedby = GroupByOptions.ZipCode;
@@ -15,12 +16,14 @@ export function GroupByArea({}) {
   useEffect(() => {
     const tweetsBy = groupBy(groupedby, tweets);
 
-    const newData = tweetsBy.map(({ values, ...rest }) => ({
-      ...rest,
-      values,
-      total: values.length,
-      legend: legendByType(values),
-    }));
+    const newData = tweetsBy
+      .map(({ values, ...rest }) => ({
+        ...rest,
+        values,
+        total: values.length,
+        legend: legendByType(values),
+      }))
+      .sort((a, b) => d3.descending(a.total, b.total));
 
     setData(newData);
   }, [tweets]);

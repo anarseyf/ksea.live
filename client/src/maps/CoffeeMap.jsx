@@ -3,7 +3,7 @@ import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import zipcodes from "./zip-codes.json";
 
 // import styles from "./map.module.css";
-import "./styles.css";
+import "./coffeemap.css";
 import { Dot } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { groupBy, GroupByOptions } from "../groupby";
@@ -44,7 +44,7 @@ export function CoffeeMap() {
     // accessToken:
     //   "pk.eyJ1IjoiYW5hcnNleWYiLCJhIjoiY2thZXlra3llMGF4MDJ4cXYzY2ZkamVkdyJ9.K8CENC0jz2D0O6ziL_jnNg", // Mapbox: 'coffee' token
     attribution:
-      'Map tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      'Tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Data &copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>',
   };
 
   return (

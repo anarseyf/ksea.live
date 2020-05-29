@@ -12,12 +12,14 @@ export function TypeLegend({ legend = {}, title, total }) {
   }
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        {typeof total === "number" && (
-          <div className={styles.total}>{total}</div>
-        )}
-        {title && <div className={styles.title}>{title}</div>}
-      </div>
+      {title && (
+        <div className={styles.header}>
+          {typeof total === "number" && (
+            <div className={styles.total}>{total}</div>
+          )}
+          <div className={styles.title}>{title}</div>
+        </div>
+      )}
       <div className={styles.body}>
         {sublegend.map((d) => (
           <div>
