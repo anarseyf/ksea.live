@@ -122,15 +122,28 @@ const addTimestamp = (tweets) =>
     },
   }));
 
+const addTweetUrl = (tweets) => {
+  const screenName = "SeaFDIncidents";
+  return tweets.map(({ id_str, derived, ...rest }) => ({
+    id_str,
+    ...rest,
+    derived: {
+      ...derived,
+      tweetUrl: `https://twitter.com/${screenName}/status/${id_str}`,
+    },
+  }));
+};
+
 async function saveDataset(fileName = "dataset.json", data) {
   const writeFile = util.promisify(fs.writeFile);
   await writeFile(`../../datasets/${fileName}`, JSON.stringify(data, null, 2));
 }
 
 const main = async () => {
-  const tweets = await readDataset("tweetsGeoZip.json");
-  const modified = addTimestamp(addZip(tweets));
-  await saveDataset("tweetsGeoZipTime.json", modified);
+  const tweets = await readDataset("tweetsGeoZipTime.json");
+  const modified = addTweetUrl(tweets); //addTimestamp(addZip(tweets));
+  console.log(modified[0]);
+  await saveDataset("tweets.json", modified);
 };
 
 main();

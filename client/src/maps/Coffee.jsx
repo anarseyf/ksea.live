@@ -7,12 +7,14 @@ import { ChartGroup } from "./ChartGroup";
 import { Header } from "./Header";
 import styles from "./coffee.module.css";
 import { GroupByOptions } from "../groupby";
+import { Tweets } from "./Tweets";
 
 export function Coffee() {
   return (
     <div className={styles.container}>
       <TweetsProvider>
         <CoffeeMap />
+        <Tweets />
         <Header />
         <Histogram />
         <ChartGroup cumulative={true} groupby={GroupByOptions.IncidentType} />

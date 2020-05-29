@@ -1,7 +1,8 @@
 @import "~leaflet/dist/leaflet.css";
 
 .leaflet-container {
-  margin: auto;
-  width: 90%;
-  height: 40vh;
+  display: inline-block;
+  margin-left: 1em;
+  width: 40%;
+  height: 50vh;
 }
