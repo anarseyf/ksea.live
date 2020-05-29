@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import styles from "./chart.module.css";
 import { xyExtents } from "../histogram";
 
-export function MultiLine({ datasets = [], title, total, extents }) {
+export function MultiLine({ dataset = {}, title, total, extents }) {
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = 160,
@@ -16,13 +16,15 @@ export function MultiLine({ datasets = [], title, total, extents }) {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!datasets.length) {
+    if (!dataset.values) {
       return;
     }
 
-    const { xExtent, yExtent } = extents || xyExtents(datasets);
+    console.log("MULTILINE", dataset);
 
-    const dateFormatter = d3.timeFormat("%H:%M"); // "(%b %d) %H:%M"
+    const { xExtent, yExtent } = extents || xyExtents([dataset]);
+
+    const dateFormatter = d3.timeFormat("%H:%M");
 
     const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
     const xAxis = d3
@@ -41,14 +43,14 @@ export function MultiLine({ datasets = [], title, total, extents }) {
       .x((d) => xScale(d.x0))
       .y((d) => yScale(d.length));
 
-    const paths = datasets.map((d) => d.bins).map(line);
+    const paths = [line(dataset.bins)];
 
     setSvgData(
       paths.map((path) => ({
         path,
       }))
     );
-  }, [datasets]);
+  }, [dataset]);
 
   return (
     <div className={styles.container}>

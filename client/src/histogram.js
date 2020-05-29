@@ -39,6 +39,8 @@ export function expandedExtent(values, { accessor = defaultAccessor } = {}) {
 export function xyExtents(datasets) {
   const xExtent = expandedExtent(datasets.map((d) => d.values).flat());
 
+  console.log("XY EXTENTS", datasets);
+
   const maxY = d3.max(
     datasets
       .map((d) => d.bins)

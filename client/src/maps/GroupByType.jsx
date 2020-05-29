@@ -5,38 +5,45 @@ import { GroupByOptions, groupBy } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.css";
 
-export function GroupByType({ cumulative = false }) {
+export function GroupByType() {
   const groupedby = GroupByOptions.IncidentType;
   const tweets = useContext(TweetsContext);
 
-  const [data, setData] = useState([]);
+  const [datasets, setDatasets] = useState([]);
 
   useEffect(() => {
+    if (!tweets.length) {
+      return;
+    }
+    console.log("BY TYPE/effect/tweets", tweets);
     const tweetsBy = groupBy(groupedby, tweets);
 
-    const withBins = tweetsBy.map(({ values, ...rest }) => ({
+    console.log("BY TYPE/effect/tweets by type", tweetsBy);
+
+    const newDatasets = tweetsBy.map(({ values, ...rest }) => ({
       ...rest,
       values,
-      bins: histogram(values, { cumulative }),
+      bins: histogram(values),
       total: values.length,
     }));
 
-    setData(withBins);
+    setDatasets(newDatasets);
   }, [tweets]);
 
-  if (!data.length) {
+  if (!datasets.length) {
     return null;
   }
 
   const groupTitle = `> Group by ${groupedby}`;
-  const extents = xyExtents(data.flat());
+  console.log("BY TYPE/datasets", datasets);
+  const extents = xyExtents(datasets.flat());
 
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>
-      {data.map((d) => (
+      {datasets.map((d) => (
         <MultiLine
-          datasets={[d]}
+          dataset={d}
           extents={extents}
           title={d.key}
           total={d.total}

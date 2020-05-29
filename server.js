@@ -50,7 +50,6 @@ app.get("/api/seattle911/tweets", async (req, res, next) => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("datasets/tweets.json");
   const tweets = JSON.parse(file);
-
   res.json(tweets);
 });
 
