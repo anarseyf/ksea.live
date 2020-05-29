@@ -5,6 +5,7 @@ export const GroupByOptions = {
   Nothing: null,
   IncidentType: "type",
   ZipCode: "zip",
+  TimeInterval: "time",
 };
 
 const IncidentTypes = {
@@ -34,6 +35,22 @@ export const Mappers = {
     return match || IncidentTypes.Default;
   },
   [GroupByOptions.ZipCode]: (t) => t.derived.zip,
+  [GroupByOptions.TimeInterval]: ({ derived: { timestamp } }) => {
+    const duration = 6 * 3600 * 1000; // hours
+    const end = 1590448143000;
+    const start = end - duration;
+
+    const intervals = [
+      { name: "current", from: start, to: end },
+      { name: "previous", from: start - duration, to: start },
+    ];
+    return intervals.reduce((matchedOption, { name, from, to }) => {
+      if (matchedOption) {
+        return matchedOption;
+      }
+      return timestamp >= from && timestamp < to ? name : null;
+    }, null);
+  },
 };
 
 export function groupBy(option = GroupByOptions.Nothing, tweets) {
@@ -45,6 +62,9 @@ export function groupBy(option = GroupByOptions.Nothing, tweets) {
   }
   if (option === GroupByOptions.ZipCode) {
     return byZip(tweets);
+  }
+  if (option === GroupByOptions.TimeInterval) {
+    return byTimeInterval(tweets);
   }
   throw `Unrecognized groupby option: ${option}`;
 }
@@ -61,7 +81,7 @@ const byNothing = (tweets) => {
 
 const byIncidentType = (tweets) => {
   const option = GroupByOptions.IncidentType;
-  const grouped = by("type", tweets, Mappers[option], RequiredKeys[option]);
+  const grouped = by(GroupByOptions.IncidentType, tweets, RequiredKeys[option]);
 
   const color = scaleOrdinal(schemeCategory10);
   const { Fire, Medic, MVI } = IncidentTypes.Known;
@@ -71,10 +91,15 @@ const byIncidentType = (tweets) => {
 };
 
 const byZip = (tweets) => {
-  return by("zip", tweets, Mappers[GroupByOptions.ZipCode]);
+  return by(GroupByOptions.ZipCode, tweets);
 };
 
-const by = (groupby, tweets, mapper, requiredKeys = []) => {
+const byTimeInterval = (tweets) => {
+  return by(GroupByOptions.TimeInterval, tweets);
+};
+
+const by = (option, tweets, requiredKeys = []) => {
+  const mapper = Mappers[option];
   const mapped = {};
 
   requiredKeys.forEach((key) => {
@@ -89,7 +114,7 @@ const by = (groupby, tweets, mapper, requiredKeys = []) => {
   });
 
   return Object.keys(mapped).map((key) => ({
-    groupby,
+    groupby: option,
     key,
     values: mapped[key],
   }));
