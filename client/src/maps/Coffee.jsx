@@ -2,11 +2,10 @@ import React, { useState, useMemo, useEffect, useContext } from "react";
 import { CoffeeMap } from "./CoffeeMap";
 import { Histogram } from "./Histogram";
 import { TweetsProvider } from "./TweetsProvider";
-import { MultiLine } from "./MultiLine";
-import { ChartGroup } from "./ChartGroup";
+import { GroupByArea } from "./GroupByArea";
+import { GroupByType } from "./GroupByType";
 import { Header } from "./Header";
 import styles from "./coffee.module.css";
-import { GroupByOptions } from "../groupby";
 import { Tweets } from "./Tweets";
 
 export function Coffee() {
@@ -17,9 +16,9 @@ export function Coffee() {
         <Tweets />
         <Header />
         <Histogram />
-        <ChartGroup cumulative={true} groupby={GroupByOptions.IncidentType} />
-        <ChartGroup cumulative={true} groupby={GroupByOptions.ZipCode} />
-        <ChartGroup groupby={GroupByOptions.IncidentType} />
+        <GroupByArea />
+        <GroupByType cumulative={false} />
+        <GroupByType cumulative={true} />
       </TweetsProvider>
     </div>
   );

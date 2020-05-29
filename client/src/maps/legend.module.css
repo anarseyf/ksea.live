@@ -1,4 +1,9 @@
 .container {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  margin: 1em;
+  padding: 0.5em;
+}
+.title {
+  border-bottom: 1px solid silver;
 }

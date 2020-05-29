@@ -2,6 +2,19 @@ import React, { useEffect, useContext, useState } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { GroupByOptions, groupBy } from "../groupby";
 
+export const legendByType = (tweets = []) => {
+  const groupedby = GroupByOptions.IncidentType;
+  const tweetsByType = groupBy(groupedby, tweets);
+  const legendByType = tweetsByType.map(({ key, color, values }) => ({
+    key,
+    color,
+    total: values.length,
+  }));
+  const sublegend = { [groupedby]: legendByType };
+  console.log(`${tweets.length} tweets -> sublegend:`, sublegend);
+  return sublegend;
+};
+
 export const useLegend = () => {
   const tweets = useContext(TweetsContext);
   const [legend, setLegend] = useState({});
@@ -10,17 +23,10 @@ export const useLegend = () => {
     if (!tweets.length) {
       return;
     }
-    const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
-    const legendByType = tweetsByType.map(({ key, color, values }) => ({
-      key,
-      color,
-      total: values.length,
-    }));
-    const groupby = tweetsByType[0].groupby;
-    const newSubLegend = { [groupby]: legendByType };
-    setLegend({ ...legend, ...newSubLegend });
+
+    setLegend({ ...legend, ...legendByType(tweets) });
     console.warn("NEW LEGEND! (switch to useContext(LegendContext)?)");
   }, [tweets]);
 
-  return [legend];
+  return legend;
 };

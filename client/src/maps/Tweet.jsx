@@ -7,13 +7,13 @@ const iconSize = 25;
 
 export function Tweet({ tweet }) {
   console.log(tweet.derived);
-  const groupby = GroupByOptions.IncidentType;
-  const key = Mappers[groupby](tweet);
-  const [legend] = useLegend();
+  const groupedby = GroupByOptions.IncidentType;
+  const key = Mappers[groupedby](tweet);
+  const legend = useLegend();
   console.log("TWEET/legend", legend);
   let color = "purple";
-  if (legend[groupby]) {
-    const item = legend[groupby].find((d) => d.key === key);
+  if (legend[groupedby]) {
+    const item = legend[groupedby].find((d) => d.key === key);
     item && (color = item.color);
   }
 

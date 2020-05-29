@@ -5,16 +5,14 @@ import { GroupByOptions, groupBy } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.css";
 
-export function ChartGroup({
-  cumulative = false,
-  groupby = GroupByOptions.ZipCode,
-}) {
+export function GroupByType({ cumulative = false }) {
+  const groupedby = GroupByOptions.IncidentType;
   const tweets = useContext(TweetsContext);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const tweetsBy = groupBy(groupby, tweets);
+    const tweetsBy = groupBy(groupedby, tweets);
 
     const withBins = tweetsBy.map(({ values, ...rest }) => ({
       ...rest,
@@ -23,19 +21,14 @@ export function ChartGroup({
       total: values.length,
     }));
 
-    const mainDataset = withBins[0];
-    const datasetGroups = withBins
-      .slice(1, 4)
-      .map((compareTo) => [mainDataset, compareTo]);
-
-    setData(datasetGroups);
+    setData(withBins);
   }, [tweets]);
 
   if (!data.length) {
     return null;
   }
 
-  const groupTitle = `${data[0][0].key} compared to:`;
+  const groupTitle = `> Group by ${groupedby}`;
   const extents = xyExtents(data.flat());
 
   return (
@@ -43,10 +36,10 @@ export function ChartGroup({
       <div>{groupTitle}</div>
       {data.map((d) => (
         <MultiLine
-          datasets={d}
+          datasets={[d]}
           extents={extents}
-          title={d[1].key}
-          total={d[1].total}
+          title={d.key}
+          total={d.total}
         ></MultiLine>
       ))}
     </div>

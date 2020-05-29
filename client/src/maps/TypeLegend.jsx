@@ -1,18 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useLegend } from "./useLegend";
 import styles from "./legend.module.css";
-const size = 12;
+import { GroupByOptions } from "../groupby";
+const size = 10;
 
-export function Legend() {
-  const [legend] = useLegend();
-  const subLegend = legend.type;
+export function TypeLegend({ legend = {}, title }) {
+  const sublegend = legend[GroupByOptions.IncidentType];
 
-  if (!subLegend) {
+  if (!sublegend) {
     return null;
   }
   return (
     <div className={styles.container}>
-      {subLegend.map((d) => (
+      {title && <div className={styles.title}>{title}</div>}
+      {sublegend.map((d) => (
         <div>
           <svg width={size} height={size}>
             <circle
