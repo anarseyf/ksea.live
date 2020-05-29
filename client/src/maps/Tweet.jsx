@@ -6,12 +6,11 @@ import { useLegend } from "./useLegend";
 const iconSize = 25;
 
 export function Tweet({ tweet }) {
-  console.log(tweet.derived);
   const groupedby = GroupByOptions.IncidentType;
   const key = Mappers[groupedby](tweet);
   const legend = useLegend();
-  console.log("TWEET/legend", legend);
   let color = "purple";
+
   if (legend[groupedby]) {
     const item = legend[groupedby].find((d) => d.key === key);
     item && (color = item.color);

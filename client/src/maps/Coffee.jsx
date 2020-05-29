@@ -14,9 +14,9 @@ export function Coffee() {
         <Header />
         <CoffeeMap />
         <Tweets />
-        <GroupByArea />
         <GroupByType cumulative={false} />
         <GroupByType cumulative={true} />
+        <GroupByArea />
       </TweetsProvider>
     </div>
   );

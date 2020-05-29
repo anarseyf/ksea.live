@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import styles from "./chart.module.css";
 import { xyExtents } from "../histogram";
+import { groupBy, GroupByOptions } from "../groupby";
 
-export function MultiLine({ dataset = {}, title, total, extents }) {
+export function MultiLine({ datasets = [], title, total, extents }) {
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = 160,
@@ -16,13 +17,13 @@ export function MultiLine({ dataset = {}, title, total, extents }) {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!dataset.values) {
+    if (!datasets.length) {
       return;
     }
 
-    console.log("MULTILINE", dataset);
+    console.log("MULTILINE", datasets);
 
-    const { xExtent, yExtent } = extents || xyExtents([dataset]);
+    const { xExtent, yExtent } = extents || xyExtents(datasets);
 
     const dateFormatter = d3.timeFormat("%H:%M");
 
@@ -43,14 +44,14 @@ export function MultiLine({ dataset = {}, title, total, extents }) {
       .x((d) => xScale(d.x0))
       .y((d) => yScale(d.length));
 
-    const paths = [line(dataset.bins)];
+    const paths = datasets.map((d) => d.bins).map(line);
 
     setSvgData(
       paths.map((path) => ({
         path,
       }))
     );
-  }, [dataset]);
+  }, [datasets]);
 
   return (
     <div className={styles.container}>
@@ -61,6 +62,14 @@ export function MultiLine({ dataset = {}, title, total, extents }) {
         )}
       </div>
       <svg className={styles.chart} width={svgWidth} height={svgHeight}>
+        <g
+          ref={xAxisRef}
+          transform={`translate(${margin.left},${margin.top + height})`}
+        />
+        <g
+          ref={yAxisRef}
+          transform={`translate(${margin.left},${margin.top})`}
+        />
         <g transform={`translate(${margin.left},${margin.top})`}>
           {svgData.map((d, i) => (
             <path
@@ -71,14 +80,6 @@ export function MultiLine({ dataset = {}, title, total, extents }) {
             ></path>
           ))}
         </g>
-        <g
-          ref={xAxisRef}
-          transform={`translate(${margin.left},${margin.top + height})`}
-        />
-        <g
-          ref={yAxisRef}
-          transform={`translate(${margin.left},${margin.top})`}
-        />
       </svg>
     </div>
   );

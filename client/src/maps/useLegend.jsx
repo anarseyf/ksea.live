@@ -11,7 +11,6 @@ export const legendByType = (tweets = []) => {
     total: values.length,
   }));
   const sublegend = { [groupedby]: legendByType };
-  console.log(`${tweets.length} tweets -> sublegend:`, sublegend);
   return sublegend;
 };
 

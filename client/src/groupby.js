@@ -2,11 +2,13 @@ import { schemeCategory10 } from "d3-scale-chromatic";
 import { scaleOrdinal } from "d3-scale";
 
 export const GroupByOptions = {
-  Nothing: null,
+  Nothing: undefined,
   IncidentType: "type",
   ZipCode: "zip",
   TimeInterval: "time",
 };
+
+export const DefaultInterval = 6 * 3600 * 1000;
 
 const IncidentTypes = {
   Known: { Fire: "fire", Medic: "medic", MVI: "mvi" },
@@ -30,26 +32,26 @@ export const Mappers = {
       if (matchedOption) {
         return matchedOption;
       }
-      return desc.includes(option) ? option : null;
-    }, null);
+      return desc.includes(option) ? option : undefined;
+    }, undefined);
     return match || IncidentTypes.Default;
   },
   [GroupByOptions.ZipCode]: (t) => t.derived.zip,
   [GroupByOptions.TimeInterval]: ({ derived: { timestamp } }) => {
-    const duration = 6 * 3600 * 1000; // hours
-    const end = 1590448143000;
+    const duration = DefaultInterval;
+    const end = 1590448143001;
     const start = end - duration;
 
     const intervals = [
-      { name: "current", from: start, to: end },
-      { name: "previous", from: start - duration, to: start },
+      [start, end],
+      [start - duration, start],
     ];
-    return intervals.reduce((matchedOption, { name, from, to }) => {
+    return intervals.reduce((matchedOption, [from, to]) => {
       if (matchedOption) {
         return matchedOption;
       }
-      return timestamp >= from && timestamp < to ? name : null;
-    }, null);
+      return timestamp >= from && timestamp < to ? from : undefined;
+    }, undefined);
   },
 };
 
@@ -72,8 +74,8 @@ export function groupBy(option = GroupByOptions.Nothing, tweets) {
 const byNothing = (tweets) => {
   return [
     {
-      groupby: null,
-      key: null,
+      groupby: undefined,
+      key: undefined,
       values: tweets,
     },
   ];
@@ -95,7 +97,7 @@ const byZip = (tweets) => {
 };
 
 const byTimeInterval = (tweets) => {
-  return by(GroupByOptions.TimeInterval, tweets);
+  return by(GroupByOptions.TimeInterval, tweets, []);
 };
 
 const by = (option, tweets, requiredKeys = []) => {
@@ -108,6 +110,9 @@ const by = (option, tweets, requiredKeys = []) => {
 
   tweets.forEach((t) => {
     const key = mapper(t);
+    if (key === undefined) {
+      return;
+    }
     const list = mapped[key] || [];
     list.push(t);
     mapped[key] = list;

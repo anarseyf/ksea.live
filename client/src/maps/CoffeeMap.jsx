@@ -36,7 +36,6 @@ export function CoffeeMap() {
     values.map(({ derived: { lat, long } }) => ({ lat, long, color }));
 
   const data = tweetsByType.map(mapper).flat();
-  console.log("MAP DATA", data);
 
   const options = {
     url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}",
