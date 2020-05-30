@@ -17,15 +17,24 @@ export function GroupByType({ cumulative = false }) {
     }
     const tweetsBy = groupBy(groupedby, tweets);
 
-    const newDatasets = tweetsBy.map(({ values, ...rest }) => ({
+    let newDatasets = tweetsBy.map(({ values, ...rest }) => ({
       ...rest,
       values,
-      bins: histogram(values, { cumulative }),
+      // bins: histogram(values, { cumulative }),
       total: values.length,
     }));
 
-    const byTime = groupBy(GroupByOptions.TimeInterval, newDatasets[0].values);
-    console.log("GROUP BY/byTime [0]", byTime);
+    console.log("GROUP BY/before", newDatasets);
+    newDatasets = newDatasets.map(({ values }) => {
+      const byTime = groupBy(GroupByOptions.TimeInterval, values);
+      return byTime.map(({ key, values }) => ({
+        key,
+        values,
+        bins: histogram(values, { cumulative }),
+      }));
+    });
+
+    console.log("GROUP BY/after", newDatasets);
 
     setDatasets(newDatasets);
   }, [tweets]);
@@ -43,10 +52,10 @@ export function GroupByType({ cumulative = false }) {
       <div>{groupTitle}</div>
       {datasets.map((d) => (
         <MultiLine
-          datasets={[d]}
+          dataset={d}
           // extents={extents}
           title={d.key}
-          total={d.total}
+          total={-1}
         ></MultiLine>
       ))}
     </div>

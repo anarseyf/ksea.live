@@ -4,7 +4,7 @@ import styles from "./chart.module.css";
 import { xyExtents } from "../histogram";
 import { groupBy, GroupByOptions } from "../groupby";
 
-export function MultiLine({ datasets = [], title, total, extents }) {
+export function MultiLine({ dataset = [], title, total, extents }) {
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = 160,
@@ -17,13 +17,13 @@ export function MultiLine({ datasets = [], title, total, extents }) {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!datasets.length) {
+    if (!dataset.length) {
       return;
     }
 
-    console.log("MULTILINE", datasets);
+    console.log("MULTILINE", dataset);
 
-    const { xExtent, yExtent } = extents || xyExtents(datasets);
+    const { xExtent, yExtent } = extents || xyExtents([dataset]);
 
     const dateFormatter = d3.timeFormat("%H:%M");
 
@@ -44,14 +44,15 @@ export function MultiLine({ datasets = [], title, total, extents }) {
       .x((d) => xScale(d.x0))
       .y((d) => yScale(d.length));
 
-    const paths = datasets.map((d) => d.bins).map(line);
+    const paths = dataset.map((d) => d.bins).map(line);
+    console.log("MULTI/paths", paths);
 
     setSvgData(
       paths.map((path) => ({
         path,
       }))
     );
-  }, [datasets]);
+  }, [dataset]);
 
   return (
     <div className={styles.container}>

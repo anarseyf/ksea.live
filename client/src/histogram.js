@@ -37,16 +37,15 @@ export function expandedExtent(values, { accessor = defaultAccessor } = {}) {
 }
 
 export function xyExtents(datasets) {
-  const xExtent = expandedExtent(datasets.map((d) => d.values).flat());
+  console.log("XY EXTENTS/datasets", datasets);
+  const toFlatValues = (dataset) => dataset.map(({ values }) => values).flat();
+  const allValues = datasets.map(toFlatValues).flat();
+  console.log("XY EXTENTS/all values", allValues);
+  const xExtent = expandedExtent(allValues);
 
-  console.log("XY EXTENTS", datasets);
+  const toFlatBins = (dataset) => dataset.map(({ bins }) => bins).flat();
 
-  const maxY = d3.max(
-    datasets
-      .map((d) => d.bins)
-      .flat()
-      .map((bin) => bin.length)
-  );
+  const maxY = d3.max(datasets.map(toFlatBins), ({ length }) => length);
   const yExtent = [0, maxY];
   return { xExtent, yExtent };
 }
