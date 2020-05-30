@@ -5,63 +5,70 @@ import { GroupByOptions, groupBy } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.css";
 
-const withOffsets = (dataset = []) => {
-  console.log("WITH OFFSETS/dataset", dataset);
-  let offsetFn = (timestamp) => timestamp;
-  if (dataset.length && dataset[0].groupby === GroupByOptions.TimeInterval) {
-    const start0 = +dataset[0].key;
-    offsetFn = (timestamp, start) => timestamp + (start - start0);
+const computeOffsets = ({ groups, ...rest }) => {
+  // console.log("WITH OFFSETS/dataset", dataset);
+  let offsetFn = (start) => 0;
+  if (groups.length && groups[0].groupby === GroupByOptions.TimeInterval) {
+    const start0 = +groups[0].key;
+    offsetFn = (start) => start0 - start;
   }
 
-  const tweetMapper = ({ derived: { timestamp }, ...rest }, start) => ({
-    ...rest,
+  const offsetGroups = groups.map(({ key, ...group }) => ({
+    key,
+    ...group,
+    offset: offsetFn(+key),
+  }));
+
+  const valueMapper = ({ derived: { timestamp }, ...restValue }, offset) => ({
+    ...restValue,
     derived: {
       timestamp,
-      offset: offsetFn(timestamp, start),
+      offset,
     },
   });
 
-  return dataset.map(({ key, values, ...rest }) => ({
-    key,
-    values: values.map((tweet) => tweetMapper(tweet, +key)),
+  console.log(">> >> computing offsets", offsetGroups);
+
+  return {
     ...rest,
-  }));
+    groups: offsetGroups.map(({ offset, values, ...restGroup }) => ({
+      offset,
+      ...restGroup,
+      values: values.map((v) => valueMapper(v, offset)),
+    })),
+  };
 };
 
 export function GroupByType({ cumulative = false }) {
   const groupedby = GroupByOptions.IncidentType;
   const tweets = useContext(TweetsContext);
-
+  const groupTitle = `> Group by ${groupedby}`;
   const [datasets, setDatasets] = useState([]);
 
   useEffect(() => {
     if (!tweets.length) {
       return;
     }
-    const tweetsBy = groupBy(groupedby, tweets);
+    const groupedByType = groupBy(groupedby, tweets);
 
-    let withTotals = tweetsBy.map(({ values, ...rest }) => ({
-      ...rest,
-      values,
-      // bins: histogram(values, { cumulative }),
-      total: values.length,
-    }));
+    console.log("GROUP BY/byType", groupedByType);
 
-    const offsetDatasets = withOffsets(withTotals);
-
-    console.log("GROUP BY/withOffsets", offsetDatasets);
-
-    const result = withTotals.map(({ values }) => {
-      const byTime = groupBy(GroupByOptions.TimeInterval, values);
-      return byTime.map(({ key, values }) => ({
-        groupby: GroupByOptions.TimeInterval,
-        key,
-        values,
-        bins: histogram(values, { cumulative }),
-      }));
+    const groupedByTime = groupedByType.map(({ values, ...rest }) => {
+      const groupedByTime = groupBy(GroupByOptions.TimeInterval, values);
+      console.log("> > groups by time", groupedByTime);
+      return {
+        ...rest,
+        groups: groupedByTime,
+      };
     });
 
-    console.log("GROUP BY/result", result);
+    console.log("GROUP BY/byTime", groupedByTime);
+    const withOffsets = groupedByTime.map(computeOffsets);
+
+    console.log("GROUP BY/withOffsets", withOffsets);
+
+    const result = withOffsets.map(({}) => ({}));
+    // bins: histogram(values, { cumulative }),
 
     setDatasets(result);
   }, [tweets]);
@@ -70,7 +77,6 @@ export function GroupByType({ cumulative = false }) {
     return null;
   }
 
-  const groupTitle = `> Group by ${groupedby}`;
   console.log("BY TYPE/datasets", datasets);
   // const extents = xyExtents(datasets.flat());
 
