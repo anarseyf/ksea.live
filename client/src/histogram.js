@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 
-const defaultAccessor = (d) => d.derived.timestamp;
+const defaultAccessor = ({ derived: { timestamp, offset = 0 } }) =>
+  timestamp + offset;
 
 export function histogram(
   values,
@@ -37,10 +38,8 @@ export function expandedExtent(values, { accessor = defaultAccessor } = {}) {
 }
 
 export function xyExtents(datasets) {
-  console.log("XY EXTENTS/datasets", datasets);
   const toFlatValues = (dataset) => dataset.map(({ values }) => values).flat();
   const allValues = datasets.map(toFlatValues).flat();
-  console.log("XY EXTENTS/all values", allValues);
   const xExtent = expandedExtent(allValues);
 
   const toFlatBins = (dataset) => dataset.map(({ bins }) => bins).flat();

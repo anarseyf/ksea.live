@@ -45,7 +45,6 @@ export function MultiLine({ dataset = [], title, total, extents }) {
       .y((d) => yScale(d.length));
 
     const paths = dataset.map((d) => d.bins).map(line);
-    console.log("MULTI/paths", paths);
 
     setSvgData(
       paths.map((path) => ({
