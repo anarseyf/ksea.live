@@ -67,8 +67,20 @@ export function GroupByType({ cumulative = false }) {
 
     console.log("GROUP BY/withOffsets", withOffsets);
 
-    const result = withOffsets.map(({}) => ({}));
-    // bins: histogram(values, { cumulative }),
+    const addHistograms = ({ values, ...rest }) => ({
+      ...rest,
+      values,
+      bins: histogram(values, { cumulative }),
+    });
+
+    const datasetToBins = ({ groups, ...rest }) => ({
+      ...rest,
+      groups: groups.map(addHistograms),
+    });
+
+    const result = withOffsets.map(datasetToBins);
+
+    console.log("GROUP BY/result", result);
 
     setDatasets(result);
   }, [tweets]);
@@ -77,7 +89,6 @@ export function GroupByType({ cumulative = false }) {
     return null;
   }
 
-  console.log("BY TYPE/datasets", datasets);
   // const extents = xyExtents(datasets.flat());
 
   return (
@@ -85,7 +96,7 @@ export function GroupByType({ cumulative = false }) {
       <div>{groupTitle}</div>
       {datasets.map((d) => (
         <MultiLine
-          dataset={d}
+          dataset={d.groups}
           // extents={extents}
           title={d.key}
           total={-1}
