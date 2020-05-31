@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.css";
-import { histogram, expandedExtent } from "../histogram";
+import { histogram, expand, getExtent } from "../histogram";
 import { GroupByOptions, groupBy } from "../groupby";
 
 export function Histogram() {
@@ -26,7 +26,7 @@ export function Histogram() {
 
     const data = groupBy(GroupByOptions.Nothing, tweets);
     const bins = histogram(data[0].values);
-    const extent = expandedExtent(tweets);
+    const extent = expand(getExtent(tweets));
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
 
     const yScale = d3

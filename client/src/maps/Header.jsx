@@ -13,7 +13,7 @@ export function Header() {
     <div>
       <Topline number={tweets.length} text="Seattle" />
       <TypeLegend legend={legend} />
-      <Histogram />
+      {/* <Histogram /> */}
     </div>
   );
 }

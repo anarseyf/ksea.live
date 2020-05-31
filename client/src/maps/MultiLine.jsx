@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import styles from "./chart.module.css";
-import { xyExtents } from "../histogram";
-import { groupBy, GroupByOptions } from "../groupby";
+import { expand } from "../histogram";
 
-export function MultiLine({ dataset = [], title, total, extents }) {
+export function MultiLine({ dataset = [], title }) {
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = 160,
@@ -23,7 +22,19 @@ export function MultiLine({ dataset = [], title, total, extents }) {
 
     console.log("MULTILINE", dataset);
 
-    const { xExtent, yExtent } = extents || xyExtents([dataset]);
+    const firstLineBins = dataset[0].bins;
+    const xExtentActual = [
+      firstLineBins[0].x0,
+      firstLineBins[firstLineBins.length - 1].x1,
+    ];
+    const xExtent = expand(xExtentActual);
+
+    const yExtent = [
+      0,
+      d3.max(dataset.flatMap(({ bins }) => bins).map(({ length }) => length)),
+    ];
+
+    console.log("Multiline/extents", xExtent, yExtent);
 
     const dateFormatter = d3.timeFormat("%H:%M");
 
@@ -52,6 +63,12 @@ export function MultiLine({ dataset = [], title, total, extents }) {
       }))
     );
   }, [dataset]);
+
+  if (!dataset.length) {
+    return null;
+  }
+
+  const total = dataset[0].values.length;
 
   return (
     <div className={styles.container}>

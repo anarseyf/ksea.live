@@ -89,8 +89,6 @@ export function GroupByType({ cumulative = false }) {
     return null;
   }
 
-  // const extents = xyExtents(datasets.flat());
-
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>
@@ -99,7 +97,6 @@ export function GroupByType({ cumulative = false }) {
           dataset={d.groups}
           // extents={extents}
           title={d.key}
-          total={-1}
         ></MultiLine>
       ))}
     </div>

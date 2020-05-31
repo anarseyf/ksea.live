@@ -7,7 +7,10 @@ export function histogram(
   values,
   { cumulative = false, accessor = defaultAccessor } = {}
 ) {
-  const extent = expandedExtent(values);
+  const extent = expand(getExtent(values));
+
+  console.log("histogram/values", values);
+  console.log("histogram/extent", getExtent(values), extent);
 
   const histogram = d3
     .histogram()
@@ -28,23 +31,11 @@ export function histogram(
   return hist;
 }
 
-function getExtent(values, accessor) {
+export function getExtent(values, accessor = defaultAccessor) {
   return d3.extent(values, accessor);
 }
 
-export function expandedExtent(values, { accessor = defaultAccessor } = {}) {
-  const extent = getExtent(values, accessor);
-  return [d3.timeHour.offset(extent[0], -1), d3.timeHour.offset(extent[1], 1)];
-}
-
-export function xyExtents(datasets) {
-  const toFlatValues = (dataset) => dataset.map(({ values }) => values).flat();
-  const allValues = datasets.map(toFlatValues).flat();
-  const xExtent = expandedExtent(allValues);
-
-  const toFlatBins = (dataset) => dataset.map(({ bins }) => bins).flat();
-
-  const maxY = d3.max(datasets.map(toFlatBins), ({ length }) => length);
-  const yExtent = [0, maxY];
-  return { xExtent, yExtent };
-}
+export const expand = (extent) => [
+  d3.timeHour.offset(extent[0], -1),
+  d3.timeHour.offset(extent[1], 1),
+];
