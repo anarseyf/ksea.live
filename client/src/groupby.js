@@ -39,7 +39,7 @@ export const Mappers = {
   [GroupByOptions.ZipCode]: (t) => t.derived.zip,
   [GroupByOptions.TimeInterval]: ({ derived: { timestamp } }) => {
     const duration = DefaultInterval;
-    const end = 1590448143001;
+    const end = 1590448143000; // TODO lol
     const start = end - duration;
 
     const intervals = [

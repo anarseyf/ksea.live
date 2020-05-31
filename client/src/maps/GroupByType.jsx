@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { histogram, xyExtents } from "../histogram";
-import { GroupByOptions, groupBy } from "../groupby";
+import { GroupByOptions, groupBy, DefaultInterval } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.css";
+import { key } from "vega";
 
 const computeOffsets = ({ groups, ...rest }) => {
   // console.log("WITH OFFSETS/dataset", dataset);
@@ -26,8 +27,6 @@ const computeOffsets = ({ groups, ...rest }) => {
       offset,
     },
   });
-
-  console.log(">> >> computing offsets", offsetGroups);
 
   return {
     ...rest,
@@ -53,24 +52,24 @@ export function GroupByType({ cumulative = false }) {
 
     console.log("GROUP BY/byType", groupedByType);
 
-    const groupedByTime = groupedByType.map(({ values, ...rest }) => {
-      const groupedByTime = groupBy(GroupByOptions.TimeInterval, values);
-      console.log("> > groups by time", groupedByTime);
-      return {
-        ...rest,
-        groups: groupedByTime,
-      };
-    });
+    const groupedByTime = groupedByType.map(({ values, ...rest }) => ({
+      ...rest,
+      groups: groupBy(GroupByOptions.TimeInterval, values),
+    }));
 
-    console.log("GROUP BY/byTime", groupedByTime);
     const withOffsets = groupedByTime.map(computeOffsets);
 
-    console.log("GROUP BY/withOffsets", withOffsets);
+    const start = +withOffsets[0].groups[0].key;
+    const extent = [start, start + DefaultInterval];
 
-    const addHistograms = ({ values, ...rest }) => ({
-      ...rest,
+    const addHistograms = ({ key, values, ...rest }) => ({
+      key,
       values,
-      bins: histogram(values, { cumulative }),
+      ...rest,
+      bins: histogram(values, {
+        cumulative,
+        extent,
+      }),
     });
 
     const datasetToBins = ({ groups, ...rest }) => ({
@@ -78,7 +77,7 @@ export function GroupByType({ cumulative = false }) {
       groups: groups.map(addHistograms),
     });
 
-    const result = withOffsets.map(datasetToBins);
+    let result = withOffsets.map(datasetToBins);
 
     console.log("GROUP BY/result", result);
 

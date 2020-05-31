@@ -34,13 +34,13 @@ export function Histogram() {
       .domain([0, d3.max(bins, (b) => b.length)])
       .range([height, 0]);
 
-    const dateFormatter = d3.timeFormat("%H:%M"); // "(%b %d) %H:%M"
+    const dateFormatter = d3.timeFormat("%I%p"); // https://github.com/d3/d3-time-format#locale_format
 
     const xAxis = d3
       .axisBottom()
       .tickFormat(dateFormatter)
       .scale(xScale)
-      .ticks(d3.timeHour.every(12));
+      .ticks(d3.timeHour.every(3));
     d3.select(xAxisRef.current).call(xAxis);
 
     const yAxis = d3.axisLeft().scale(yScale).ticks(2);

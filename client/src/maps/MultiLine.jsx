@@ -34,16 +34,14 @@ export function MultiLine({ dataset = [], title }) {
       d3.max(dataset.flatMap(({ bins }) => bins).map(({ length }) => length)),
     ];
 
-    console.log("Multiline/extents", xExtent, yExtent);
-
-    const dateFormatter = d3.timeFormat("%H:%M");
+    const dateFormatter = d3.timeFormat("%I%p"); // https://github.com/d3/d3-time-format#locale_format
 
     const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
     const xAxis = d3
       .axisBottom()
       .tickFormat(dateFormatter)
       .scale(xScale)
-      .ticks(d3.timeHour.every(12));
+      .ticks(d3.timeHour.every(3));
     d3.select(xAxisRef.current).call(xAxis);
 
     const yScale = d3.scaleLinear().domain(yExtent).range([height, 0]);

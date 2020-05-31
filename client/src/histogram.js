@@ -5,18 +5,15 @@ const defaultAccessor = ({ derived: { timestamp, offset = 0 } }) =>
 
 export function histogram(
   values,
-  { cumulative = false, accessor = defaultAccessor } = {}
+  { cumulative = false, accessor = defaultAccessor, extent } = {}
 ) {
-  const extent = expand(getExtent(values));
-
-  console.log("histogram/values", values);
-  console.log("histogram/extent", getExtent(values), extent);
+  const histogramExtent = extent || expand(getExtent(values));
 
   const histogram = d3
     .histogram()
-    .domain(extent)
+    .domain(histogramExtent)
     .value(accessor)
-    .thresholds(d3.timeHours(...extent, 1));
+    .thresholds(d3.timeHours(...histogramExtent, 1));
 
   let hist = histogram(values);
 
