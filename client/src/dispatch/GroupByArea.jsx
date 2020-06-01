@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { TweetsContext } from "./TweetsProvider";
-import { histogram, xyExtents } from "../histogram";
 import { GroupByOptions, groupBy } from "../groupby";
 import styles from "./chart.module.css";
 import { TypeLegend } from "./TypeLegend";
 import { legendByType } from "./useLegend";
 import * as d3 from "d3";
 
-export function GroupByArea({}) {
+export function GroupByArea() {
   const groupedby = GroupByOptions.ZipCode;
   const tweets = useContext(TweetsContext);
 

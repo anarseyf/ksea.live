@@ -3,7 +3,7 @@ import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import zipcodes from "./zip-codes.json";
 
 // import styles from "./map.module.css";
-import "./coffeemap.css";
+import "./map.css";
 import { Dot } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { groupBy, GroupByOptions } from "../groupby";
@@ -28,7 +28,7 @@ const geojsonStyle = {
   weight: 2,
 };
 
-export function CoffeeMap() {
+export function Map() {
   const tweets = useContext(TweetsContext);
 
   const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);

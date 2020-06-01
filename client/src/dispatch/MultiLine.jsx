@@ -6,7 +6,7 @@ import { expand } from "../histogram";
 export function MultiLine({ dataset = [], title }) {
   const [svgData, setSvgData] = useState([]);
 
-  const svgWidth = 160,
+  const svgWidth = 150,
     svgHeight = 80,
     margin = { top: 10, right: 10, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
