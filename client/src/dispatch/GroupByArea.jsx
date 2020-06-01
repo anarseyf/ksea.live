@@ -6,10 +6,12 @@ import styles from "./chart.module.scss";
 import { TypeLegend } from "./TypeLegend";
 import { legendByType } from "./useLegend";
 import * as d3 from "d3";
+import { UserContext, UserContextKeys } from "./UserProvider";
 
 export function GroupByArea() {
   const groupedby = GroupByOptions.ZipCode;
   const [tweets] = useContext(TweetsContext);
+  const [_, setSelection] = useContext(UserContext);
 
   const [data, setData] = useState([]);
 
@@ -28,6 +30,11 @@ export function GroupByArea() {
     setData(newData);
   }, [tweets]);
 
+  const handleMouseEnter = (zipcode) => {
+    console.log("HOVER", zipcode);
+    setSelection(UserContextKeys.HoverArea, zipcode);
+  };
+
   if (!data.length) {
     return null;
   }
@@ -38,7 +45,7 @@ export function GroupByArea() {
     <div className={styles.container}>
       <div>{groupTitle}</div>
       {data.map(({ legend, key, total }) => (
-        <Link to={`${key}`}>
+        <Link to={`${key}`} onMouseEnter={() => handleMouseEnter(key)}>
           <TypeLegend legend={legend} title={key} total={total} />
         </Link>
       ))}

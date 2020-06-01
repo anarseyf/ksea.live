@@ -31,14 +31,17 @@ const tileOptions = {
 };
 
 export function Map({ area }) {
-  const [user] = useContext(UserContext);
-  const selectedTweet = user[UserContextKeys.SelectedTweet];
-
   const [_, tweets] = useContext(TweetsContext);
 
-  const areaFilter = ({ properties: { GEOID10 } }) => GEOID10 === area;
+  const [user] = useContext(UserContext);
+  const selectedTweet = user[UserContextKeys.SelectedTweet];
+  const hoverArea = user[UserContextKeys.HoverArea];
+
+  const activeArea = hoverArea || area;
+  console.log("MAP/active area", activeArea);
+  const areaFilter = ({ properties: { GEOID10 } }) => GEOID10 === activeArea;
   let geojson = zipcodes;
-  if (area) {
+  if (activeArea) {
     const { features, ...rest } = zipcodes;
     geojson = {
       features: features.filter(areaFilter),
@@ -46,8 +49,8 @@ export function Map({ area }) {
     };
   }
 
-  if (area) {
-    zoom = 12;
+  if (activeArea) {
+    // zoom = 12;
   }
   if (selectedTweet) {
     zoom = 13;
@@ -88,7 +91,9 @@ export function Map({ area }) {
       : Appearance.Normal;
   };
 
-  console.log("MAP/rendering", data);
+  console.log(
+    `MAP/rendering with ${data.length} dots, ${geojson.features.length} geo`
+  );
 
   return (
     <LeafletMap
@@ -99,7 +104,7 @@ export function Map({ area }) {
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />
-      <GeoJSON data={geojson} style={geojsonStyle}></GeoJSON>
+      <GeoJSON data={geojson} style={geojsonStyle} />
       {data.map((d) => (
         <Dot
           coordinates={[d.lat, d.long]}

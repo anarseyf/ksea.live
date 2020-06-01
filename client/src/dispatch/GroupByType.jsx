@@ -84,6 +84,8 @@ export function GroupByType({ cumulative = false }) {
     return null;
   }
 
+  console.log("GROUP BY TYPE/render");
+
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>

@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 export const UserContextKeys = {
   SelectedTweet: "SelectedTweet",
+  HoverArea: "HoverArea",
 };
 
 const useUser = () => {
