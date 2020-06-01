@@ -29,7 +29,10 @@ export function MultiLine({ dataset = [], title }) {
 
     const yExtent = [
       0,
-      d3.max(dataset.flatMap(({ bins }) => bins).map(({ length }) => length)),
+      d3.max([
+        1.0,
+        ...dataset.flatMap(({ bins }) => bins).map(({ length }) => length),
+      ]),
     ];
 
     const dateFormatter = d3.timeFormat("%I%p"); // https://github.com/d3/d3-time-format#locale_format

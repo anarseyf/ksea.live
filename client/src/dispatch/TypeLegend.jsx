@@ -11,7 +11,7 @@ export function TypeLegend({ legend = {}, title, total, showLabels }) {
 
   const max = d3.max(sublegend.map(({ total }) => total));
   const maxWidth = 50;
-  const size = 10;
+  const size = 8;
 
   const widthFn = ({ total }) => d3.max([1, maxWidth * (total / max)]);
 
@@ -29,7 +29,7 @@ export function TypeLegend({ legend = {}, title, total, showLabels }) {
       )}
       <div className={styles.body}>
         {sublegend.map((d) => (
-          <div>
+          <div className={styles.item}>
             {showLabels && (
               <div className={styles.label}>
                 {d.key}: {d.total}
