@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
-import styles from "./chart.module.css";
+import styles from "./chart.module.scss";
 import { expand } from "../histogram";
 
 export function MultiLine({ dataset = [], title }) {
@@ -19,8 +19,6 @@ export function MultiLine({ dataset = [], title }) {
     if (!dataset.length) {
       return;
     }
-
-    console.log("MULTILINE", dataset);
 
     const firstLineBins = dataset[0].bins;
     const xExtentActual = [

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./topline.module.css";
+import styles from "./topline.module.scss";
 export function Topline({ number = 0, text }) {
   return (
     <div className={styles.topline}>

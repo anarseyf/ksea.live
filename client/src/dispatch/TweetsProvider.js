@@ -8,8 +8,6 @@ const useTweets = (filters = {}) => {
   const [tweets, setTweets] = useState([]);
   const [filteredTweets, setFilteredTweets] = useState([]);
 
-  console.log("useTweets/filters", filters);
-
   useEffect(() => {
     const fetch = async () => {
       const allTweets = await getTweets();

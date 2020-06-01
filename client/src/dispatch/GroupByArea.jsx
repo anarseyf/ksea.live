@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "@reach/router";
 import { TweetsContext } from "./TweetsProvider";
 import { GroupByOptions, groupBy } from "../groupby";
-import styles from "./chart.module.css";
+import styles from "./chart.module.scss";
 import { TypeLegend } from "./TypeLegend";
 import { legendByType } from "./useLegend";
 import * as d3 from "d3";

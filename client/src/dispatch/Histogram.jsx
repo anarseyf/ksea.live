@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
-import styles from "./chart.module.css";
+import styles from "./chart.module.scss";
 import { histogram, expand, getExtent } from "../histogram";
 import { GroupByOptions, groupBy } from "../groupby";
 

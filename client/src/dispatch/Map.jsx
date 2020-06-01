@@ -36,8 +36,7 @@ export function Map({ area }) {
   }
 
   let center = centroid(geojson.features);
-  console.log("center", center);
-  console.log("geojson", geojson);
+  console.log("MAP/center", center);
 
   const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
   const mapper = ({ color, values }) =>

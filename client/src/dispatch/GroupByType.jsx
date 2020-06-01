@@ -3,7 +3,7 @@ import { TweetsContext } from "./TweetsProvider";
 import { histogram, xyExtents } from "../histogram";
 import { GroupByOptions, groupBy, DefaultInterval } from "../groupby";
 import { MultiLine } from "./MultiLine";
-import styles from "./chart.module.css";
+import styles from "./chart.module.scss";
 import { key } from "vega";
 
 const computeOffsets = ({ groups, ...rest }) => {
@@ -48,10 +48,7 @@ export function GroupByType({ cumulative = false }) {
     if (!tweets.length) {
       return;
     }
-    console.log("GROUP BY/all", tweets);
     const groupedByType = groupBy(groupedby, tweets);
-
-    console.log("GROUP BY/byType", groupedByType);
 
     const groupedByTime = groupedByType.map(({ values, ...rest }) => ({
       ...rest,
@@ -79,8 +76,6 @@ export function GroupByType({ cumulative = false }) {
     });
 
     let result = withOffsets.map(datasetToBins);
-
-    console.log("GROUP BY/result", result);
 
     setDatasets(result);
   }, [tweets]);

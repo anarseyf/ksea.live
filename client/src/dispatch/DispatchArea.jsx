@@ -4,7 +4,7 @@ import { TweetsProvider } from "./TweetsProvider";
 import { GroupByType } from "./GroupByType";
 import { Header } from "./Header";
 import { Tweets } from "./Tweets";
-import styles from "./coffee.module.css";
+import styles from "./coffee.module.scss";
 
 export function DispatchArea({ area }) {
   return (

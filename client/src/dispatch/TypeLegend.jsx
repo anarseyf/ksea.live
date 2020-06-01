@@ -9,7 +9,6 @@ export function TypeLegend({ legend = {}, title, total, showLabels }) {
     return null;
   }
 
-  console.log("sublegend", sublegend);
   const max = d3.max(sublegend.map(({ total }) => total));
   const maxWidth = 50;
   const size = 10;
@@ -17,7 +16,9 @@ export function TypeLegend({ legend = {}, title, total, showLabels }) {
   const widthFn = ({ total }) => d3.max([1, maxWidth * (total / max)]);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${showLabels ? styles.withLabels : ""}`}
+    >
       {title && (
         <div className={styles.header}>
           {typeof total === "number" && (
@@ -28,11 +29,11 @@ export function TypeLegend({ legend = {}, title, total, showLabels }) {
       )}
       <div className={styles.body}>
         {sublegend.map((d) => (
-          <div className={styles.labels}>
+          <div>
             {showLabels && (
-              <span>
+              <div className={styles.label}>
                 {d.key}: {d.total}
-              </span>
+              </div>
             )}
             <svg className={styles.svg} width={maxWidth} height={size}>
               <rect

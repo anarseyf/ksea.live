@@ -5,7 +5,7 @@ import { GroupByType } from "./GroupByType";
 import { GroupByArea } from "./GroupByArea";
 import { Header } from "./Header";
 import { Tweets } from "./Tweets";
-import styles from "./coffee.module.css";
+import styles from "./coffee.module.scss";
 
 export function DispatchAll() {
   return (

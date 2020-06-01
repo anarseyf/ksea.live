@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { TweetsContext } from "./TweetsProvider";
-import styles from "./tweets.module.css";
+import styles from "./tweets.module.scss";
 import { Tweet } from "./Tweet";
 
 export function Tweets() {

@@ -6,25 +6,31 @@
   padding: 0.5em;
   width: 100px;
   min-height: 100px;
-  color: white;
+  color: $text-primary;
+}
+.withLabels {
+  width: 160px;
 }
 .container:hover {
-  color: white;
+  color: $text-primary;
   background-color: $dark-bg;
 }
-.labels {
+.label {
+  display: inline-block;
+  min-width: 80px;
   text-align: right;
   margin-right: 0.25em;
 }
 .header {
-  border-bottom: 1px solid silver;
+  border-bottom: 1px solid $text-secondary;
 }
 .title {
   display: inline-block;
+  color: $text-secondary;
 }
 .total {
   display: inline-block;
-  color: orangered;
+  color: $text-primary;
   font-weight: bold;
   margin-right: 1em;
 }
