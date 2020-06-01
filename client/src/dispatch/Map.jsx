@@ -7,9 +7,9 @@ import "./map.css";
 import { Dot } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { groupBy, GroupByOptions } from "../groupby";
+import { features } from "process";
 // import "../../../node_modules/leaflet/dist/leaflet.css";
 
-const zipcodeGeoJSON = zipcodes;
 const coordinates = [47.606, -122.343];
 const svgBounds = [
   coordinates.map((c) => c - 0.05),
@@ -28,9 +28,19 @@ const geojsonStyle = {
   weight: 2,
 };
 
-export function Map() {
-  const [tweets] = useContext(TweetsContext);
-  console.log("MAP/tweets", tweets);
+export function Map({ area }) {
+  const [_, tweets] = useContext(TweetsContext);
+
+  const areaFilter = ({ properties: { GEOID10 } }) => GEOID10 === area;
+  let geojson = zipcodes;
+  if (area) {
+    const { features, ...rest } = zipcodes;
+    geojson = {
+      features: features.filter(areaFilter),
+      ...rest,
+    };
+  }
+
   const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
   const mapper = ({ color, values }) =>
     values.map(({ derived: { lat, long } }) => ({ lat, long, color }));
@@ -55,7 +65,7 @@ export function Map() {
       zoomControl={false}
     >
       <TileLayer {...options} />
-      <GeoJSON data={zipcodeGeoJSON} style={geojsonStyle}></GeoJSON>
+      <GeoJSON data={geojson} style={geojsonStyle}></GeoJSON>
       {data.map((d) => (
         <Dot
           coordinates={[d.lat, d.long]}

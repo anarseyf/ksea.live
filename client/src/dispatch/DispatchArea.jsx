@@ -11,7 +11,7 @@ export function DispatchArea({ area }) {
     <div className={styles.container}>
       <TweetsProvider filters={{ area }}>
         <Header area={area} />
-        <Map />
+        <Map area={area} />
         <Tweets />
         <GroupByType cumulative={true} />
       </TweetsProvider>
