@@ -12,13 +12,19 @@ const minZoom = 10,
   maxZoom = 14;
 let zoom = 11;
 
-const defaultColor = "purple";
 const overlayColor = "dodgerblue";
-const geojsonStyle = {
+const activeColor = "orangered";
+const geojsonStyleActive = {
+  color: activeColor,
+  fillColor: activeColor,
+  fillOpacity: 0.4,
+  weight: 2,
+};
+const geojsonStyleHidden = {
   color: overlayColor,
   fillColor: overlayColor,
-  fillOpacity: 0.2,
-  weight: 2,
+  fillOpacity: 0.1,
+  weight: 1,
 };
 
 const tileOptions = {
@@ -39,18 +45,21 @@ export function Map({ area }) {
 
   const activeArea = hoverArea || area;
   console.log("MAP/active area", activeArea);
-  const areaFilter = ({ properties: { GEOID10 } }) => GEOID10 === activeArea;
-  let geojson = zipcodes;
-  if (activeArea) {
-    const { features, ...rest } = zipcodes;
-    geojson = {
-      features: features.filter(areaFilter),
-      ...rest,
-    };
-  }
+
+  const selectedAreaFilter = ({ properties: { GEOID10 } }) =>
+    area ? GEOID10 === area : true;
+
+  const activeAreaFilter = ({ properties: { GEOID10 } }) =>
+    activeArea && GEOID10 === activeArea;
+
+  const { features, ...rest } = zipcodes;
+  const geojson = {
+    features: features.filter(selectedAreaFilter),
+    ...rest,
+  };
 
   if (activeArea) {
-    // zoom = 12;
+    zoom = 12;
   }
   if (selectedTweet) {
     zoom = 13;
@@ -58,7 +67,11 @@ export function Map({ area }) {
 
   let center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : centroid(geojson.features);
+    : centroid(
+        geojson.features.filter(
+          (f) => activeAreaFilter(f) || selectedAreaFilter(f)
+        )
+      );
   console.log("MAP/center", center);
 
   const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
@@ -104,11 +117,18 @@ export function Map({ area }) {
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />
-      <GeoJSON data={geojson} style={geojsonStyle} />
+      {geojson.features.map((feature) => (
+        <GeoJSON
+          data={feature}
+          style={() =>
+            activeAreaFilter(feature) ? geojsonStyleActive : geojsonStyleHidden
+          }
+        />
+      ))}
       {data.map((d) => (
         <Dot
           coordinates={[d.lat, d.long]}
-          color={d.color || defaultColor}
+          color={d.color}
           appearance={appearanceFn(d)}
         ></Dot>
       ))}

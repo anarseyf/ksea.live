@@ -30,7 +30,7 @@ export function Dot({
         fillOpacity={opacity}
         stroke={false}
       ></Circle>
-      {appearance >= Appearance.Normal && (
+      {appearance >= Appearance.Highlighted && (
         <Circle
           center={coordinates}
           radius={300}

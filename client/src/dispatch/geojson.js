@@ -1,6 +1,9 @@
 import * as d3 from "d3";
 
 export const centroid = (features) => {
+  if (!features.length) {
+    console.warn("Cannot compute centroid");
+  }
   let coords = features
     .map(({ geometry: { coordinates } }) => coordinates)
     .flat(2);

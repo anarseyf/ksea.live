@@ -31,10 +31,12 @@ export function GroupByArea() {
   }, [tweets]);
 
   const handleMouseEnter = (zipcode) => {
-    console.log("HOVER", zipcode);
     setSelection(UserContextKeys.HoverArea, zipcode);
   };
 
+  const handleMouseLeave = (zipcode) => {
+    setSelection(UserContextKeys.HoverArea, null);
+  };
   if (!data.length) {
     return null;
   }
@@ -45,7 +47,11 @@ export function GroupByArea() {
     <div className={styles.container}>
       <div>{groupTitle}</div>
       {data.map(({ legend, key, total }) => (
-        <Link to={`${key}`} onMouseEnter={() => handleMouseEnter(key)}>
+        <Link
+          to={`${key}`}
+          onMouseEnter={() => handleMouseEnter(key)}
+          onMouseLeave={handleMouseLeave}
+        >
           <TypeLegend legend={legend} title={key} total={total} />
         </Link>
       ))}
