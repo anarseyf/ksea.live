@@ -26,7 +26,9 @@ export function Tweet({ tweet }) {
   }
 
   const handleClick = () => {
-    setSelection(UserContextKeys.SelectedTweet, tweet);
+    const newSelectedTweet =
+      selectedTweet && selectedTweet.id_str === tweet.id_str ? null : tweet;
+    setSelection(UserContextKeys.SelectedTweet, newSelectedTweet);
   };
 
   return (
