@@ -1,23 +1,15 @@
 import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import zipcodes from "./zip-codes.json";
-
-// import styles from "./map.module.css";
+import { centroid } from "./geojson";
 import "./map.css";
 import { Dot } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { groupBy, GroupByOptions } from "../groupby";
-import { features } from "process";
-// import "../../../node_modules/leaflet/dist/leaflet.css";
 
-const coordinates = [47.606, -122.343];
-const svgBounds = [
-  coordinates.map((c) => c - 0.05),
-  coordinates.map((c) => c + 0.05),
-];
-const zoom = 11,
-  minZoom = 10,
+const minZoom = 10,
   maxZoom = 14;
+let zoom = 11;
 
 const defaultColor = "purple";
 const overlayColor = "dodgerblue";
@@ -39,7 +31,13 @@ export function Map({ area }) {
       features: features.filter(areaFilter),
       ...rest,
     };
+
+    zoom = 12;
   }
+
+  let center = centroid(geojson.features);
+  console.log("center", center);
+  console.log("geojson", geojson);
 
   const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
   const mapper = ({ color, values }) =>
@@ -58,7 +56,7 @@ export function Map({ area }) {
 
   return (
     <LeafletMap
-      center={coordinates}
+      center={center}
       zoom={zoom}
       minZoom={minZoom}
       maxZoom={maxZoom}
@@ -72,13 +70,6 @@ export function Map({ area }) {
           color={d.color || defaultColor}
         ></Dot>
       ))}
-      {/* <SVGOverlay
-                    bounds={svgBounds}
-                    // viewBox="0 0 100 100"
-                    opacity="0.7"
-                >
-                    <circle r="10" cx="50%" cy="50%" fill={fillColor} />
-                </SVGOverlay> */}
     </LeafletMap>
   );
 }
