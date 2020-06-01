@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./tweet.module.scss";
 import { Mappers, GroupByOptions } from "../groupby";
 import { useLegend } from "./useLegend";
+import { UserContext, UserContextKeys } from "./UserProvider";
 
 const iconSize = 25;
 
 export function Tweet({ tweet }) {
+  const [user, setSelection] = useContext(UserContext);
+  const selectedTweet = user[UserContextKeys.SelectedTweet];
+  const [isSelected, setIsSelected] = useState(false);
+
+  useEffect(() => {
+    setIsSelected(selectedTweet && selectedTweet.id_str === tweet.id_str);
+  }, [selectedTweet]);
+
   const groupedby = GroupByOptions.IncidentType;
   const key = Mappers[groupedby](tweet);
   const legend = useLegend();
@@ -16,8 +25,15 @@ export function Tweet({ tweet }) {
     item && (color = item.color);
   }
 
+  const handleClick = () => {
+    setSelection(UserContextKeys.SelectedTweet, tweet);
+  };
+
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${isSelected ? styles.selected : ""}`}
+      onClick={handleClick}
+    >
       <div className={styles.tweet}>
         <a href={tweet.derived.tweetUrl} target="_blank">
           <img src={"../twitter.svg"} width={iconSize} height={iconSize} />

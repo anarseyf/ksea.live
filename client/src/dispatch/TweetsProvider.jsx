@@ -22,7 +22,6 @@ const useTweets = (filters = {}) => {
       const grouped = groupBy(GroupByOptions.ZipCode, tweets);
       const group = grouped.find((g) => g.key === filters.area) || {};
       filtered = group.values || [];
-      console.log("FILTERED", filtered);
     }
     setFilteredTweets(filtered);
   }, [tweets]);

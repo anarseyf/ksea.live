@@ -7,6 +7,13 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 .container {
   font-size: 0.7em;
 }
+.container:hover {
+  background-color: $dark-bg;
+  cursor: pointer;
+}
+.container.selected {
+  background-color: $selected-bg;
+}
 
 .tweet {
   border-bottom: 1px solid $twitter-main;
