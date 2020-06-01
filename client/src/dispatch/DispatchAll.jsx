@@ -5,18 +5,15 @@ import { GroupByType } from "./GroupByType";
 import { GroupByArea } from "./GroupByArea";
 import { Header } from "./Header";
 import { Tweets } from "./Tweets";
-import styles from "./coffee.module.scss";
 
 export function DispatchAll() {
   return (
-    <div className={styles.container}>
-      <TweetsProvider>
-        <Header area={"Seattle"} />
-        <Map />
-        <Tweets />
-        <GroupByType cumulative={true} />
-        <GroupByArea />
-      </TweetsProvider>
-    </div>
+    <TweetsProvider>
+      <Header area={"Seattle"} />
+      <Map />
+      <Tweets />
+      <GroupByType cumulative={true} />
+      <GroupByArea />
+    </TweetsProvider>
   );
 }

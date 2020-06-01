@@ -1,5 +1,7 @@
 @import "../colors.scss";
 
+$axis-color: silver;
+
 .container {
   display: inline-block;
   margin: 0.5em;
@@ -17,4 +19,7 @@
 .title {
   float: right;
   color: $text-secondary;
+}
+.axis {
+  color: $axis-color;
 }

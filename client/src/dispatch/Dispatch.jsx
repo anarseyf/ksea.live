@@ -1,6 +1,6 @@
 import React from "react";
 import { TweetsProvider } from "./TweetsProvider";
-import styles from "./coffee.module.scss";
+import styles from "./dispatch.module.scss";
 
 export function Dispatch({ area, type, interval, children }) {
   console.log(`Type: ${type}, interval: ${interval}`);

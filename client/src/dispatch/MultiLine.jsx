@@ -79,10 +79,12 @@ export function MultiLine({ dataset = [], title }) {
       </div>
       <svg className={styles.chart} width={svgWidth} height={svgHeight}>
         <g
+          className={styles.axis}
           ref={xAxisRef}
           transform={`translate(${margin.left},${margin.top + height})`}
         />
         <g
+          className={styles.axis}
           ref={yAxisRef}
           transform={`translate(${margin.left},${margin.top})`}
         />
