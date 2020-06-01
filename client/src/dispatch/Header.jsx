@@ -12,7 +12,7 @@ export function Header({ area }) {
   return (
     <div>
       <Topline number={tweets.length} text={area} />
-      <TypeLegend legend={legend} />
+      <TypeLegend legend={legend} showLabels={true} />
       {/* <Histogram /> */}
     </div>
   );

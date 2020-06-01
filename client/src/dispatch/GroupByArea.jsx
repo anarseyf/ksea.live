@@ -39,7 +39,7 @@ export function GroupByArea() {
       <div>{groupTitle}</div>
       {data.map(({ legend, key, total }) => (
         <Link to={`${key}`}>
-          <TypeLegend {...{ legend, title: key, total }} />
+          <TypeLegend legend={legend} title={key} total={total} />
         </Link>
       ))}
     </div>

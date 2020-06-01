@@ -4,13 +4,17 @@
   display: inline-block;
   margin: 1em;
   padding: 0.5em;
-  min-width: 90px;
+  width: 100px;
   min-height: 100px;
   color: white;
 }
 .container:hover {
   color: white;
   background-color: $dark-bg;
+}
+.labels {
+  text-align: right;
+  margin-right: 0.25em;
 }
 .header {
   border-bottom: 1px solid silver;
@@ -26,4 +30,7 @@
 }
 .body {
   font-size: 0.75rem;
+}
+.svg {
+  margin-left: 0.5em;
 }
