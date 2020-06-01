@@ -8,10 +8,10 @@ export const GroupByOptions = {
   TimeInterval: "time",
 };
 
-export const DefaultInterval = 6 * 3600 * 1000;
+export const DefaultInterval = 12 * 3600 * 1000;
 
 const IncidentTypes = {
-  Known: { Fire: "fire", Medic: "medic", MVI: "mvi" },
+  Known: { Fire: "fire", Medic: "medic", Aid: "aid" },
   Default: "other",
 };
 
@@ -19,7 +19,7 @@ const RequiredKeys = {
   [GroupByOptions.IncidentType]: [
     IncidentTypes.Known.Fire,
     IncidentTypes.Known.Medic,
-    IncidentTypes.Known.MVI,
+    IncidentTypes.Known.Aid,
     IncidentTypes.Default,
   ],
 };
@@ -86,8 +86,8 @@ const byIncidentType = (tweets) => {
   const grouped = by(GroupByOptions.IncidentType, tweets, RequiredKeys[option]);
 
   const color = scaleOrdinal(schemeCategory10);
-  const { Fire, Medic, MVI } = IncidentTypes.Known;
-  color.domain([Medic, IncidentTypes.Default, MVI, Fire]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
+  const { Fire, Medic, Aid } = IncidentTypes.Known;
+  color.domain([Medic, IncidentTypes.Default, Aid, Fire]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
 
   return grouped.map((d) => ({ ...d, color: color(d.key) }));
 };

@@ -40,7 +40,7 @@ const computeOffsets = ({ groups, ...rest }) => {
 
 export function GroupByType({ cumulative = false }) {
   const groupedby = GroupByOptions.IncidentType;
-  const [tweets] = useContext(TweetsContext);
+  const [_, tweets] = useContext(TweetsContext);
   const groupTitle = `> Group by ${groupedby}`;
   const [datasets, setDatasets] = useState([]);
 
@@ -48,6 +48,7 @@ export function GroupByType({ cumulative = false }) {
     if (!tweets.length) {
       return;
     }
+    console.log("GROUP BY/all", tweets);
     const groupedByType = groupBy(groupedby, tweets);
 
     console.log("GROUP BY/byType", groupedByType);

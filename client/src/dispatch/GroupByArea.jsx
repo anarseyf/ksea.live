@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
+import { Link } from "@reach/router";
 import { TweetsContext } from "./TweetsProvider";
 import { GroupByOptions, groupBy } from "../groupby";
 import styles from "./chart.module.css";
@@ -36,8 +37,10 @@ export function GroupByArea() {
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>
-      {data.map(({ legend, key: title, total }) => (
-        <TypeLegend {...{ legend, title, total }} />
+      {data.map(({ legend, key, total }) => (
+        <Link to={`${key}`}>
+          <TypeLegend {...{ legend, title: key, total }} />
+        </Link>
       ))}
     </div>
   );

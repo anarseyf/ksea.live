@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLegend } from "./useLegend";
-import styles from "./legend.module.css";
+import styles from "./legend.module.scss";
 import { GroupByOptions } from "../groupby";
 const size = 10;
 

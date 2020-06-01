@@ -14,7 +14,6 @@ export function DispatchAll() {
         <Header area={"Seattle"} />
         <Map />
         <Tweets />
-        <GroupByType cumulative={false} />
         <GroupByType cumulative={true} />
         <GroupByArea />
       </TweetsProvider>

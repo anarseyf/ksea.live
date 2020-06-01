@@ -8,7 +8,7 @@ export function Tweets() {
   if (!tweets.length) {
     return null;
   }
-  const recentTweets = tweets.slice(0, 5);
+  const recentTweets = tweets; //.slice(0, 5);
 
   return (
     <div className={styles.tweets}>

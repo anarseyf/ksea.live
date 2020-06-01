@@ -2,11 +2,10 @@
 https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_us/Twitter_Brand_Guidelines_V2_0.pdf
 */
 
-$twitter-main: #00acee;
-$twitter-darkgray: #657786;
+@import "../colors.scss";
 
 .container {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .tweet {

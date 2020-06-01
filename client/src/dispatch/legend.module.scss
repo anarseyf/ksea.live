@@ -1,9 +1,16 @@
+@import "../colors.scss";
+
 .container {
   display: inline-block;
   margin: 1em;
   padding: 0.5em;
   min-width: 90px;
   min-height: 100px;
+  color: white;
+}
+.container:hover {
+  color: white;
+  background-color: $dark-bg;
 }
 .header {
   border-bottom: 1px solid silver;

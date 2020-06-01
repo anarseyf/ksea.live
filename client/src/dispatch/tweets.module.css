@@ -1,6 +1,8 @@
 .tweets {
   display: inline-block;
   max-width: 50%;
+  max-height: 300px;
+  overflow-y: scroll;
   padding: 0.5em;
   margin: 0.5em;
 }
