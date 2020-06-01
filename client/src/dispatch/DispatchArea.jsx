@@ -9,7 +9,7 @@ import styles from "./coffee.module.css";
 export function DispatchArea({ area }) {
   return (
     <div className={styles.container}>
-      <TweetsProvider>
+      <TweetsProvider filters={{ area }}>
         <Header area={area} />
         <Map />
         <Tweets />

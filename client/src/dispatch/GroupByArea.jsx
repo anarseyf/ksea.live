@@ -8,7 +8,7 @@ import * as d3 from "d3";
 
 export function GroupByArea() {
   const groupedby = GroupByOptions.ZipCode;
-  const tweets = useContext(TweetsContext);
+  const [tweets] = useContext(TweetsContext);
 
   const [data, setData] = useState([]);
 

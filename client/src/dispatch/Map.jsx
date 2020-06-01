@@ -29,8 +29,8 @@ const geojsonStyle = {
 };
 
 export function Map() {
-  const tweets = useContext(TweetsContext);
-
+  const [tweets] = useContext(TweetsContext);
+  console.log("MAP/tweets", tweets);
   const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
   const mapper = ({ color, values }) =>
     values.map(({ derived: { lat, long } }) => ({ lat, long, color }));

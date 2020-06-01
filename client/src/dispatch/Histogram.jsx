@@ -6,7 +6,7 @@ import { histogram, expand, getExtent } from "../histogram";
 import { GroupByOptions, groupBy } from "../groupby";
 
 export function Histogram() {
-  const tweets = useContext(TweetsContext);
+  const [tweets] = useContext(TweetsContext);
 
   const [svgData, setSvgData] = useState([]);
 

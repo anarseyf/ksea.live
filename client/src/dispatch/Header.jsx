@@ -5,8 +5,8 @@ import { TweetsContext } from "./TweetsProvider";
 import { useLegend } from "./useLegend";
 import { Histogram } from "./Histogram";
 
-export function Header({ area = "???" }) {
-  const tweets = useContext(TweetsContext);
+export function Header({ area }) {
+  const [_, tweets] = useContext(TweetsContext);
   const legend = useLegend();
 
   return (

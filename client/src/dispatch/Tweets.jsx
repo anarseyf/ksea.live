@@ -4,15 +4,15 @@ import styles from "./tweets.module.css";
 import { Tweet } from "./Tweet";
 
 export function Tweets() {
-  const allTweets = useContext(TweetsContext);
-  if (!allTweets.length) {
+  const [_, tweets] = useContext(TweetsContext);
+  if (!tweets.length) {
     return null;
   }
-  const tweets = allTweets.slice(0, 5);
+  const recentTweets = tweets.slice(0, 5);
 
   return (
     <div className={styles.tweets}>
-      {tweets.map((t) => (
+      {recentTweets.map((t) => (
         <Tweet tweet={t} />
       ))}
     </div>

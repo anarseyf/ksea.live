@@ -15,7 +15,7 @@ export const legendByType = (tweets = []) => {
 };
 
 export const useLegend = () => {
-  const tweets = useContext(TweetsContext);
+  const [_, tweets] = useContext(TweetsContext);
   const [legend, setLegend] = useState({});
 
   useEffect(() => {

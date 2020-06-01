@@ -1,25 +1,42 @@
 import React, { createContext } from "react";
 import { useState, useEffect } from "react";
 import { getTweets } from "../api";
+import { groupBy, GroupByOptions } from "../groupby";
 export const TweetsContext = createContext();
 
-const useTweets = () => {
-  let [tweets, setTweets] = useState([]);
+const useTweets = (filters = {}) => {
+  const [tweets, setTweets] = useState([]);
+  const [filteredTweets, setFilteredTweets] = useState([]);
+
+  console.log("useTweets/filters", filters);
 
   useEffect(() => {
     const fetch = async () => {
-      tweets = await getTweets();
-      setTweets(tweets);
+      const allTweets = await getTweets();
+      setTweets(allTweets);
     };
     fetch();
   }, []);
 
-  return [tweets];
+  useEffect(() => {
+    let filtered = tweets;
+    if (tweets.length && filters.area) {
+      const grouped = groupBy(GroupByOptions.ZipCode, tweets);
+      const group = grouped.find((g) => g.key === filters.area) || {};
+      filtered = group.values || [];
+      console.log("FILTERED", filtered);
+    }
+    setFilteredTweets(filtered);
+  }, [tweets]);
+
+  return [tweets, filteredTweets];
 };
 
-export const TweetsProvider = ({ children }) => {
-  const [tweets] = useTweets();
+export const TweetsProvider = ({ filters, children }) => {
+  const [tweets, filteredTweets] = useTweets(filters);
   return (
-    <TweetsContext.Provider value={tweets}>{children}</TweetsContext.Provider>
+    <TweetsContext.Provider value={[tweets, filteredTweets]}>
+      {children}
+    </TweetsContext.Provider>
   );
 };
