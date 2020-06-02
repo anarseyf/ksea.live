@@ -21,7 +21,7 @@ export const useLegend = () => {
       return;
     }
     const sublegend = legendByType(groupedByType);
-    console.log("useLegend/main:", sublegend);
+    console.warn("useLegend/setting main - TODO convert to context");
     setLegend({ ...sublegend });
   }, [groupedByType]);
 
@@ -34,6 +34,7 @@ export const useLegend = () => {
     groupedByAreaByType.forEach(({ key: area, groups }) => {
       legends[area] = legendByType(groups);
     });
+    console.warn("useLegend/setting legendsByArea - TODO convert to context");
     setLegendsByArea(legends);
   }, [groupedByAreaByType]);
 

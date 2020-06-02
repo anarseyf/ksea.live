@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React from "react";
 import styles from "./legend.module.scss";
-import { GroupByOptions } from "../groupby";
 import * as d3 from "d3";
 
 export function TypeLegend({ legend = [], title, showLabels }) {

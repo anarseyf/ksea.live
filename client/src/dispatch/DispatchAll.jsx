@@ -9,7 +9,7 @@ import { Tweets } from "./Tweets";
 export function DispatchAll() {
   return (
     <TweetsProvider>
-      <Header area={"Seattle"} />
+      <Header />
       <Map />
       <Tweets />
       <GroupByType cumulative={true} />

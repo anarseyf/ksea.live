@@ -21,7 +21,6 @@ export function GroupByType({ area, cumulative = false }) {
     const dataset = area
       ? (groupedByAreaByType.find(({ key }) => key === area) || {}).groups
       : groupedByType;
-    console.log("BY TYPE/dataset", dataset);
 
     if (!dataset || !dataset.length) {
       return;
