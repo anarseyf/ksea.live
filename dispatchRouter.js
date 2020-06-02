@@ -3,22 +3,21 @@ const fs = require("fs");
 const util = require("util");
 const router = require("express").Router();
 
-router.get("static", async (req, res, next) => {
+router.get("/static", async (req, res, next) => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("./datasets/seattle911.json");
   const LIMIT = 50;
   res.json(JSON.parse(file).slice(0, LIMIT));
 });
 
-router.get("tweets", async (req, res, next) => {
-  console.log("API:tweets");
+router.get("/tweets", async (req, res, next) => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("./datasets/tweets.json");
   const tweets = JSON.parse(file);
   res.json(tweets);
 });
 
-router.get("seattle-gov", async (req, res, next) => {
+router.get("/seattle-gov", async (req, res, next) => {
   const options = {
     uri: "https://data.seattle.gov/resource/fire-911.json",
     json: true,
