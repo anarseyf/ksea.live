@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TweetsContext } from "./TweetsProvider";
-import { histogram, xyExtents } from "../histogram";
+import { histogram } from "../histogram";
 import {
   GroupByOptions,
   DefaultInterval,
@@ -9,21 +9,19 @@ import {
 } from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.scss";
-import { key } from "vega";
 
 export function GroupByType({ cumulative = false }) {
   const groupedby = GroupByOptions.IncidentType;
-  const [_, tweets] = useContext(TweetsContext);
+  const [_, _2, tweetsByType] = useContext(TweetsContext);
   const groupTitle = `> Group by ${groupedby}`;
   const [datasets, setDatasets] = useState([]);
 
   useEffect(() => {
-    if (!tweets.length) {
+    if (!tweetsByType.length) {
       return;
     }
-    const groupedByType = groupBy(groupedby, tweets);
 
-    const groupedByTime = groupedByType.map(({ values, ...rest }) => ({
+    const groupedByTime = tweetsByType.map(({ values, ...rest }) => ({
       ...rest,
       groups: groupBy(GroupByOptions.TimeInterval, values),
     }));
@@ -51,7 +49,7 @@ export function GroupByType({ cumulative = false }) {
     let result = withOffsets.map(datasetToBins);
 
     setDatasets(result);
-  }, [tweets]);
+  }, [tweetsByType]);
 
   if (!datasets.length) {
     return null;

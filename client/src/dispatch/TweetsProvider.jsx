@@ -1,19 +1,19 @@
 import React, { createContext } from "react";
 import { useState, useEffect } from "react";
-import { getTweets, getTweetsArea } from "../api";
-import { groupBy, GroupByOptions } from "../groupby";
+import { getTweets, getTweetsForArea, getTweetsByType } from "../api";
 export const TweetsContext = createContext();
 
 const useTweets = (filters = {}) => {
-  const [tweets, setTweets] = useState([]);
-  const [filteredTweets, setFilteredTweets] = useState([]);
+  const [allTweets, setAllTweets] = useState([]);
+  const [filteredByArea, setFilteredByArea] = useState([]);
+  const [groupedByType, setGroupedByType] = useState([]);
 
   console.log("useTweets/filters", filters);
 
   useEffect(() => {
     const fetch = async () => {
       const tweets = await getTweets();
-      setTweets(tweets);
+      setAllTweets(tweets);
     };
     fetch();
   }, []);
@@ -21,20 +21,35 @@ const useTweets = (filters = {}) => {
   useEffect(() => {
     const fetch = async () => {
       const area = filters.area || "seattle";
-      const filtered = await getTweetsArea(area);
-      setFilteredTweets(filtered);
+      const filtered = await getTweetsForArea(area);
+      setFilteredByArea(filtered);
     };
     fetch();
   }, []);
 
-  return [tweets, filteredTweets];
+  useEffect(() => {
+    const fetch = async () => {
+      const area = filters.area || "seattle";
+      const filtered = await getTweetsForArea(area);
+      setFilteredByArea(filtered);
+    };
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const grouped = await getTweetsByType();
+      setGroupedByType(grouped);
+    };
+    fetch();
+  }, []);
+
+  return [allTweets, filteredByArea, groupedByType];
 };
 
 export const TweetsProvider = ({ filters, children }) => {
-  const [tweets, filteredTweets] = useTweets(filters);
+  const value = useTweets(filters);
   return (
-    <TweetsContext.Provider value={[tweets, filteredTweets]}>
-      {children}
-    </TweetsContext.Provider>
+    <TweetsContext.Provider value={value}>{children}</TweetsContext.Provider>
   );
 };
