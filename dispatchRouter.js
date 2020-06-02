@@ -42,26 +42,35 @@ const tweetsForType = async (type) => {
   return group.values || [];
 };
 
+const groupByInterval = ({ values, ...rest }) => ({
+  ...rest,
+  intervals: groupBy(GroupByOptions.TimeInterval, values),
+});
+
 const allTweetsController = async (req, res, next) => {
-  const result = await allTweets();
+  const all = await allTweets();
+  const result = groupBy(GroupByOptions.Nothing, all).map(groupByInterval);
   res.json(result);
 };
-
 router.get("/tweets", allTweetsController);
 router.get("/tweets/seattle", allTweetsController);
 
 router.get("/tweets/byType", async (req, res, next) => {
-  const result = await tweetsByType();
-  res.json(result);
+  try {
+    const byType = await tweetsByType();
+    const result = byType.map(groupByInterval);
+    res.json(result);
+  } catch (error) {
+    res.status(500).send({ error });
+  }
 });
 
 router.get("/tweets/byAreaByType", async (req, res, next) => {
   const byArea = await tweetsByArea();
   const result = byArea.map(({ values, ...rest }) => ({
     ...rest,
-    groups: groupBy(GroupByOptions.IncidentType, values),
+    groups: groupBy(GroupByOptions.IncidentType, values).map(groupByInterval),
   }));
-  console.log("> API byAreaByType:", result.length);
   res.json(result);
 });
 

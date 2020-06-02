@@ -17,6 +17,7 @@ const useTweets = (filters = {}) => {
   useEffect(() => {
     const fetch = async () => {
       const tweets = await getTweets();
+      console.log("PROVIDER/all", tweets);
       setAllTweets(tweets);
     };
     fetch();

@@ -2,7 +2,7 @@ import { schemeCategory10 } from "d3-scale-chromatic";
 import { scaleOrdinal } from "d3-scale";
 
 export const GroupByOptions = {
-  Nothing: undefined,
+  Nothing: null,
   IncidentType: "type",
   ZipCode: "zip",
   TimeInterval: "time",
@@ -32,8 +32,8 @@ export const Mappers = {
       if (matchedOption) {
         return matchedOption;
       }
-      return desc.includes(option) ? option : undefined;
-    }, undefined);
+      return desc.includes(option) ? option : null;
+    }, null);
     return match || IncidentTypes.Default;
   },
   [GroupByOptions.ZipCode]: (t) => t.derived.zip,
@@ -50,8 +50,8 @@ export const Mappers = {
       if (matchedOption) {
         return matchedOption;
       }
-      return timestamp >= from && timestamp < to ? from : undefined;
-    }, undefined);
+      return timestamp >= from && timestamp < to ? from : null;
+    }, null);
   },
 };
 
@@ -74,8 +74,8 @@ export function groupBy(option = GroupByOptions.Nothing, tweets) {
 const byNothing = (tweets) => {
   return [
     {
-      groupby: undefined,
-      key: undefined,
+      groupby: null,
+      key: null,
       values: tweets,
     },
   ];
@@ -110,7 +110,7 @@ const by = (option, tweets, requiredKeys = []) => {
 
   tweets.forEach((t) => {
     const key = mapper(t);
-    if (key === undefined) {
+    if (key === null) {
       return;
     }
     const list = mapped[key] || [];
