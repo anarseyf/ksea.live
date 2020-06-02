@@ -5,11 +5,13 @@ const helmet = require("helmet");
 const rp = require("request-promise");
 const fs = require("fs");
 const util = require("util");
+const morgan = require("morgan");
 
 const app = express();
 
 app.use(compression());
 app.use(helmet());
+app.use(morgan("dev"));
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -30,30 +32,25 @@ function getSortedEnv() {
 
 app.use(express.static(path.join(__dirname, staticPath)));
 
-app.use((req, res, next) => {
-  console.log(`>>> ${req.method} ${req.url}`);
-  next();
-});
-
 app.get("/api/env", (req, res) => {
   res.json(getSortedEnv());
 });
 
-app.get("/api/seattle911/static", async (req, res, next) => {
+app.get("/api/dispatch/static", async (req, res, next) => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("datasets/seattle911.json");
   const LIMIT = 50;
   res.json(JSON.parse(file).slice(0, LIMIT));
 });
 
-app.get("/api/seattle911/tweets", async (req, res, next) => {
+app.get("/api/dispatch/tweets", async (req, res, next) => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("datasets/tweets.json");
   const tweets = JSON.parse(file);
   res.json(tweets);
 });
 
-app.get("/api/seattle911", async (req, res, next) => {
+app.get("/api/dispatch/seattle-gov", async (req, res, next) => {
   const options = {
     uri: "https://data.seattle.gov/resource/fire-911.json",
     json: true,

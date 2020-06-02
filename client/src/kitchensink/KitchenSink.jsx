@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Chart } from "./Chart";
 import { DataTable } from "./DataTable";
 import Scatterplot from "./Scatterplot";
-import { getEnv, getSeattle911 } from "../api";
+import { getEnv, getTweetsStatic, getTweetsSeattleGov } from "../api";
 import styles from "./kitchensink.module.scss";
 
 export function KitchenSink() {
@@ -33,7 +33,7 @@ export function KitchenSink() {
   }
 
   function updateData() {
-    getSeattle911()
+    getTweetsSeattleGov()
       .then((data) => {
         console.log("Data from API: ", data);
         setData(data);
