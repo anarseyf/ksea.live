@@ -6,6 +6,10 @@ export async function getTweets() {
   return getByAPI("dispatch/tweets");
 }
 
+export async function getTweetsArea(area: string) {
+  return getByAPI(`dispatch/tweets/${area}`);
+}
+
 export async function getTweetsStatic() {
   return getByAPI("dispatch/static");
 }
