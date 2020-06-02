@@ -6,7 +6,7 @@ import { histogram, expand, getExtent } from "../histogram";
 import { GroupByOptions, groupBy } from "../groupby";
 
 export function Histogram() {
-  const [tweets] = useContext(TweetsContext);
+  const [_, tweetsForArea] = useContext(TweetsContext);
 
   const [svgData, setSvgData] = useState([]);
 
@@ -20,13 +20,12 @@ export function Histogram() {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!tweets.length) {
+    if (!tweetsForArea.length) {
       return;
     }
 
-    const data = groupBy(GroupByOptions.Nothing, tweets);
-    const bins = histogram(data[0].values);
-    const extent = expand(getExtent(tweets));
+    const bins = histogram(tweetsForArea);
+    const extent = expand(getExtent(tweetsForArea));
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
 
     const yScale = d3
@@ -40,7 +39,7 @@ export function Histogram() {
       .axisBottom()
       .tickFormat(dateFormatter)
       .scale(xScale)
-      .ticks(d3.timeHour.every(3));
+      .ticks(d3.timeHour.every(12));
     d3.select(xAxisRef.current).call(xAxis);
 
     const yAxis = d3.axisLeft().scale(yScale).ticks(2);
@@ -61,7 +60,7 @@ export function Histogram() {
     }));
 
     setSvgData(newSvgData);
-  }, [tweets]);
+  }, [tweetsForArea]);
 
   return (
     <div className={styles.container}>

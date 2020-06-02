@@ -2,30 +2,41 @@ import React, { useEffect, useContext, useState } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { GroupByOptions, groupBy } from "../groupby";
 
-export const legendByType = (tweets = []) => {
-  const groupedby = GroupByOptions.IncidentType;
-  const tweetsByType = groupBy(groupedby, tweets);
+const legendByType = (tweetsByType) => {
   const legendByType = tweetsByType.map(({ key, color, values }) => ({
     key,
     color,
     total: values.length,
   }));
-  const sublegend = { [groupedby]: legendByType };
-  return sublegend;
+  return { [GroupByOptions.IncidentType]: legendByType };
 };
 
 export const useLegend = () => {
-  const [_, tweets] = useContext(TweetsContext);
+  const [_, _2, tweetsByType, tweetsByAreaByType] = useContext(TweetsContext);
   const [legend, setLegend] = useState({});
+  const [legendsByArea, setLegendsByArea] = useState({});
 
   useEffect(() => {
-    if (!tweets.length) {
+    if (!tweetsByType.length) {
+      return;
+    }
+    const sublegend = legendByType(tweetsByType);
+    console.log("useLegend/main:", sublegend);
+    setLegend({ ...sublegend });
+  }, [tweetsByType]);
+
+  useEffect(() => {
+    if (!tweetsByAreaByType.length) {
       return;
     }
 
-    setLegend({ ...legend, ...legendByType(tweets) });
-    console.warn("NEW LEGEND! (switch to useContext(LegendContext)?)");
-  }, [tweets]);
+    const legends = {};
+    tweetsByAreaByType.forEach(({ key: area, groups }) => {
+      legends[area] = legendByType(groups);
+    });
+    console.log("useLegend/by area:", legends);
+    setLegendsByArea(legends);
+  }, [tweetsByAreaByType]);
 
-  return legend;
+  return [legend, legendsByArea];
 };

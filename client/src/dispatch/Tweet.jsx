@@ -10,6 +10,7 @@ export function Tweet({ tweet }) {
   const [user, setSelection] = useContext(UserContext);
   const selectedTweet = user[UserContextKeys.SelectedTweet];
   const [isSelected, setIsSelected] = useState(false);
+  const legend = useLegend();
 
   useEffect(() => {
     setIsSelected(selectedTweet && selectedTweet.id_str === tweet.id_str);
@@ -17,7 +18,6 @@ export function Tweet({ tweet }) {
 
   const groupedby = GroupByOptions.IncidentType;
   const key = Mappers[groupedby](tweet);
-  const legend = useLegend();
   let color = "purple";
 
   if (legend[groupedby]) {

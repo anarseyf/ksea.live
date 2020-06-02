@@ -4,44 +4,44 @@ import { TweetsContext } from "./TweetsProvider";
 import { GroupByOptions, groupBy } from "../groupby";
 import styles from "./chart.module.scss";
 import { TypeLegend } from "./TypeLegend";
-import { legendByType } from "./useLegend";
 import * as d3 from "d3";
 import { UserContext, UserContextKeys } from "./UserProvider";
+import { useLegend } from "./useLegend";
 
 export function GroupByArea() {
-  const groupedby = GroupByOptions.ZipCode;
-  const [tweets] = useContext(TweetsContext);
-  const [_, setSelection] = useContext(UserContext);
+  const [_, legendsByArea] = useLegend(TweetsContext);
+  const [_2, setSelection] = useContext(UserContext);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const tweetsBy = groupBy(groupedby, tweets);
+    if (!Object.keys(legendsByArea).length) {
+      return;
+    }
 
-    const newData = tweetsBy
-      .map(({ values, ...rest }) => ({
-        ...rest,
-        values,
-        total: values.length,
-        legend: legendByType(values),
-      }))
-      .sort((a, b) => d3.descending(a.total, b.total));
+    console.log("GROUP AREA/legends", legendsByArea);
 
-    setData(newData);
-  }, [tweets]);
+    // const newData = tweetsByArea
+    //   .map(({ values, ...rest }) => ({
+    //     ...rest,
+    //     values,
+    //     total: values.length,
+    //     legend: legendsByArea[values],
+    //   }))
+    //   .sort((a, b) => d3.descending(a.total, b.total));
+
+    // setData(newData);
+  }, [legendsByArea]);
 
   const handleMouseEnter = (zipcode) => {
     setSelection(UserContextKeys.HoverArea, zipcode);
   };
 
-  const handleMouseLeave = (zipcode) => {
+  const handleMouseLeave = () => {
     setSelection(UserContextKeys.HoverArea, null);
   };
-  if (!data.length) {
-    return null;
-  }
 
-  const groupTitle = `> Group by ${groupedby}`;
+  const groupTitle = `> Group by ${GroupByOptions.ZipCode}`;
 
   return (
     <div className={styles.container}>

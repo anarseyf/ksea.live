@@ -17,6 +17,7 @@ export function GroupByType({ cumulative = false }) {
   const [datasets, setDatasets] = useState([]);
 
   useEffect(() => {
+    console.log("GROUP TYPE/", tweetsByType);
     if (!tweetsByType.length) {
       return;
     }

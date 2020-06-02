@@ -5,7 +5,6 @@ import { centroid } from "./geojson";
 import "./map.css";
 import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
-import { groupBy, GroupByOptions } from "../groupby";
 import { UserContext, UserContextKeys } from "./UserProvider";
 
 const minZoom = 10,
@@ -37,9 +36,13 @@ const tileOptions = {
 };
 
 export function Map({ area }) {
-  const [_, tweets] = useContext(TweetsContext);
-
   const [user] = useContext(UserContext);
+  const [_, _2, tweetsByType] = useContext(TweetsContext);
+
+  if (!tweetsByType.length) {
+    return null;
+  }
+
   const selectedTweet = user[UserContextKeys.SelectedTweet];
   const hoverArea = user[UserContextKeys.HoverArea];
 
@@ -74,7 +77,6 @@ export function Map({ area }) {
       );
   console.log("MAP/center", center);
 
-  const tweetsByType = groupBy(GroupByOptions.IncidentType, tweets);
   const mapper = ({ color, values }) =>
     values.map(({ id_str, derived: { lat, long } }) => ({
       id_str,
