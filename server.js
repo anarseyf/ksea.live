@@ -3,7 +3,9 @@ const path = require("path");
 const compression = require("compression");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const dispatchRouter = require("./dispatchRouter");
+
+import dispatchRouter from "./dispatchRouter";
+import { GroupByOptions } from "./server/groupby";
 
 const app = express();
 
