@@ -2,7 +2,7 @@
   "name": "coffee",
   "version": "0.1.0",
   "description": "Not sure yet",
-  "main": "server/server.js",
+  "main": "server.js",
   "dependencies": {
     "@reach/router": "^1.3.3",
     "@types/react-leaflet": "^2.5.1",
@@ -33,8 +33,8 @@
     "start": "npm run server:prod",
     "app:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "server:prod": "cd server && NODE_ENV=production node server.js",
-    "server:dev": "cd server && NODE_ENV=development nodemon server.js",
+    "server:prod": "NODE_ENV=production node server.js",
+    "server:dev": "NODE_ENV=development nodemon server.js",
     "build": "cd client && npm run build",
     "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
     "test": "echo \"Error: no test specified\" && exit 1"
