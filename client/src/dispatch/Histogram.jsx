@@ -3,12 +3,12 @@ import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import styles from "./chart.module.scss";
 import { histogram, expand, getExtent } from "../histogram";
-import { GroupByOptions, groupBy } from "../groupby";
 
 export function Histogram() {
   const [_, tweetsForArea] = useContext(TweetsContext);
-
   const [svgData, setSvgData] = useState([]);
+
+  const fill = "white";
 
   const svgWidth = 200,
     svgHeight = 80,
@@ -73,15 +73,17 @@ export function Histogram() {
               width={d.width}
               height={d.height}
               rx={d.rx}
-              fill="orangered"
+              fill={fill}
             ></rect>
           ))}
         </g>
         <g
+          className={styles.axis}
           ref={xAxisRef}
           transform={`translate(${margin.left},${margin.top + height})`}
         />
         <g
+          className={styles.axis}
           ref={yAxisRef}
           transform={`translate(${margin.left},${margin.top})`}
         />

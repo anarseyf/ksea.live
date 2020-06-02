@@ -8,15 +8,24 @@ import { GroupByOptions } from "../groupby";
 
 export function Header({ area }) {
   const [_, tweets] = useContext(TweetsContext);
-  const [legend] = useLegend();
+  const [mainLegend, legendsByArea] = useLegend();
+
+  const [legend, setLegend] = useState([]);
+
+  useEffect(() => {
+    const lgnd = area ? legendsByArea[area] : mainLegend;
+    const option = GroupByOptions.IncidentType;
+    lgnd && lgnd[option] && setLegend(lgnd[option]);
+  }, [mainLegend, legendsByArea]);
+
+  if (!legend) {
+    return null;
+  }
 
   return (
     <div>
       <Topline number={tweets.length} text={area} />
-      <TypeLegend
-        legend={legend[GroupByOptions.IncidentType]}
-        showLabels={true}
-      />
+      <TypeLegend legend={legend} showLabels={true} />
       <Histogram />
     </div>
   );
