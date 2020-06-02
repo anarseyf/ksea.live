@@ -53,17 +53,8 @@ router.get("/tweets/byAreaByType", async (req, res, next) => {
 
 router.get("/tweets/:area", async (req, res, next) => {
   try {
-    const result = await tweetsForArea(req.params.area);
-    res.json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ error });
-  }
-});
-
-router.get("/tweets/:type", async (req, res, next) => {
-  try {
-    const result = await tweetsForType(req.params.type);
+    const all = await tweetsForArea(req.params.area);
+    const result = groupBy(GroupByOptions.Nothing, all).map(groupByInterval);
     res.json(result);
   } catch (error) {
     console.error(error);

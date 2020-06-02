@@ -10,6 +10,10 @@ export const GroupByOptions = {
 
 export const DefaultInterval = 12 * 3600 * 1000;
 
+const end = 1590448143000; // TODO lol
+const currentStart = end - DefaultInterval;
+const previousStart = currentStart - DefaultInterval;
+
 const IncidentTypes = {
   Known: { Fire: "fire", Medic: "medic", Aid: "aid" },
   Default: "other",
@@ -22,6 +26,7 @@ const RequiredKeys = {
     IncidentTypes.Known.Aid,
     IncidentTypes.Default,
   ],
+  [GroupByOptions.TimeInterval]: [currentStart, previousStart],
 };
 
 export const Mappers = {
@@ -38,13 +43,9 @@ export const Mappers = {
   },
   [GroupByOptions.ZipCode]: (t) => t.derived.zip,
   [GroupByOptions.TimeInterval]: ({ derived: { timestamp } }) => {
-    const duration = DefaultInterval;
-    const end = 1590448143000; // TODO lol
-    const start = end - duration;
-
     const intervals = [
-      [start, end],
-      [start - duration, start],
+      [currentStart, end],
+      [currentStart - DefaultInterval, currentStart],
     ];
     return intervals.reduce((matchedOption, [from, to]) => {
       if (matchedOption) {
@@ -97,7 +98,11 @@ const byZip = (tweets) => {
 };
 
 const byTimeInterval = (tweets) => {
-  return by(GroupByOptions.TimeInterval, tweets, []);
+  return by(
+    GroupByOptions.TimeInterval,
+    tweets,
+    RequiredKeys[GroupByOptions.TimeInterval]
+  );
 };
 
 const by = (option, tweets, requiredKeys = []) => {
