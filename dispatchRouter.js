@@ -61,6 +61,7 @@ router.get("/tweets/byAreaByType", async (req, res, next) => {
     ...rest,
     groups: groupBy(GroupByOptions.IncidentType, values),
   }));
+  console.log("> API byAreaByType:", result.length);
   res.json(result);
 });
 

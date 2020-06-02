@@ -1,36 +1,31 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "@reach/router";
-import { TweetsContext } from "./TweetsProvider";
-import { GroupByOptions, groupBy } from "../groupby";
+import { GroupByOptions } from "../groupby";
 import styles from "./chart.module.scss";
 import { TypeLegend } from "./TypeLegend";
-import * as d3 from "d3";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { useLegend } from "./useLegend";
+import * as d3 from "d3";
 
 export function GroupByArea() {
-  const [_, legendsByArea] = useLegend(TweetsContext);
+  const [_, legendsByArea] = useLegend();
   const [_2, setSelection] = useContext(UserContext);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log("GROUP AREA/legends", legendsByArea);
+
     if (!Object.keys(legendsByArea).length) {
       return;
     }
 
-    console.log("GROUP AREA/legends", legendsByArea);
-
-    // const newData = tweetsByArea
-    //   .map(({ values, ...rest }) => ({
-    //     ...rest,
-    //     values,
-    //     total: values.length,
-    //     legend: legendsByArea[values],
-    //   }))
-    //   .sort((a, b) => d3.descending(a.total, b.total));
-
-    // setData(newData);
+    const option = GroupByOptions.IncidentType;
+    const data = Object.keys(legendsByArea).map((area) => ({
+      area,
+      total: d3.sum(legendsByArea[area][option].map(({ total }) => total)),
+    }));
+    setData(data.sort((a, b) => b.total - a.total));
   }, [legendsByArea]);
 
   const handleMouseEnter = (zipcode) => {
@@ -46,13 +41,16 @@ export function GroupByArea() {
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>
-      {data.map(({ legend, key, total }) => (
+      {data.map(({ area }) => (
         <Link
-          to={`${key}`}
-          onMouseEnter={() => handleMouseEnter(key)}
+          to={`${area}`}
+          onMouseEnter={() => handleMouseEnter(area)}
           onMouseLeave={handleMouseLeave}
         >
-          <TypeLegend legend={legend} title={key} total={total} />
+          <TypeLegend
+            legend={legendsByArea[area][GroupByOptions.IncidentType]}
+            title={area}
+          />
         </Link>
       ))}
     </div>

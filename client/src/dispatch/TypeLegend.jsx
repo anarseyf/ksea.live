@@ -3,13 +3,14 @@ import styles from "./legend.module.scss";
 import { GroupByOptions } from "../groupby";
 import * as d3 from "d3";
 
-export function TypeLegend({ legend = {}, title, total, showLabels }) {
-  const sublegend = legend[GroupByOptions.IncidentType];
-  if (!sublegend) {
+export function TypeLegend({ legend = [], title, showLabels }) {
+  if (!legend) {
     return null;
   }
 
-  const max = d3.max(sublegend.map(({ total }) => total));
+  const counts = legend.map(({ total }) => total);
+  const max = d3.max(counts);
+  const total = d3.sum(counts);
   const maxWidth = 50;
   const size = 8;
 
@@ -28,7 +29,7 @@ export function TypeLegend({ legend = {}, title, total, showLabels }) {
         </div>
       )}
       <div className={styles.body}>
-        {sublegend.map((d) => (
+        {legend.map((d) => (
           <div className={styles.item}>
             {showLabels && (
               <div className={styles.label}>

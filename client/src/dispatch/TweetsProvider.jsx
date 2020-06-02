@@ -4,7 +4,7 @@ import {
   getTweets,
   getTweetsForArea,
   getTweetsByType,
-  getTweetsByArea as getTweetsByAreaByType,
+  getTweetsByAreaByType,
 } from "../api";
 export const TweetsContext = createContext();
 

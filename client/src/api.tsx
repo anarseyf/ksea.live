@@ -14,8 +14,8 @@ export async function getTweetsByType() {
   return getByAPI(`dispatch/tweets/byType`);
 }
 
-export async function getTweetsByArea() {
-  return getByAPI(`dispatch/tweets/byArea`);
+export async function getTweetsByAreaByType() {
+  return getByAPI(`dispatch/tweets/byAreaByType`);
 }
 
 export async function getTweetsStatic() {
