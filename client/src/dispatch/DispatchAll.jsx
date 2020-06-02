@@ -10,8 +10,8 @@ export function DispatchAll() {
   return (
     <TweetsProvider>
       <Header />
-      {/* <Map /> */}
-      {/* <Tweets /> */}
+      <Map />
+      <Tweets />
       {/* <GroupByType cumulative={true} /> */}
       {/* <GroupByArea /> */}
     </TweetsProvider>

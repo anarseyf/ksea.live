@@ -77,8 +77,8 @@ export function Map({ area }) {
       );
   console.log("MAP/center", center);
 
-  const mapper = ({ color, values }) =>
-    values.map(({ id_str, derived: { lat, long } }) => ({
+  const mapper = ({ color, intervals }) =>
+    intervals[0].values.map(({ id_str, derived: { lat, long } }) => ({
       id_str,
       lat,
       long,

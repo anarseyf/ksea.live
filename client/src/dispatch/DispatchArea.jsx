@@ -9,8 +9,8 @@ export function DispatchArea({ area }) {
   return (
     <TweetsProvider filters={{ area }}>
       <Header area={area} />
-      {/* <Map area={area} /> */}
-      {/* <Tweets /> */}
+      <Map area={area} />
+      <Tweets />
       {/* <GroupByType area={area} cumulative={true} /> */}
     </TweetsProvider>
   );
