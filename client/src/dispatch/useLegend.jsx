@@ -12,31 +12,30 @@ const legendByType = (tweetsByType) => {
 };
 
 export const useLegend = () => {
-  const [_, _2, tweetsByType, tweetsByAreaByType] = useContext(TweetsContext);
+  const { groupedByType, groupedByAreaByType } = useContext(TweetsContext);
   const [legend, setLegend] = useState({});
   const [legendsByArea, setLegendsByArea] = useState({});
 
   useEffect(() => {
-    if (!tweetsByType.length) {
+    if (!groupedByType.length) {
       return;
     }
-    const sublegend = legendByType(tweetsByType);
+    const sublegend = legendByType(groupedByType);
     console.log("useLegend/main:", sublegend);
     setLegend({ ...sublegend });
-  }, [tweetsByType]);
+  }, [groupedByType]);
 
   useEffect(() => {
-    if (!tweetsByAreaByType.length) {
+    if (!groupedByAreaByType.length) {
       return;
     }
 
     const legends = {};
-    tweetsByAreaByType.forEach(({ key: area, groups }) => {
+    groupedByAreaByType.forEach(({ key: area, groups }) => {
       legends[area] = legendByType(groups);
     });
-    console.log("useLegend/by area:", legends);
     setLegendsByArea(legends);
-  }, [tweetsByAreaByType]);
+  }, [groupedByAreaByType]);
 
   return [legend, legendsByArea];
 };

@@ -37,9 +37,9 @@ const tileOptions = {
 
 export function Map({ area }) {
   const [user] = useContext(UserContext);
-  const [_, _2, tweetsByType] = useContext(TweetsContext);
+  const { groupedByType } = useContext(TweetsContext);
 
-  if (!tweetsByType.length) {
+  if (!groupedByType.length) {
     return null;
   }
 
@@ -85,7 +85,7 @@ export function Map({ area }) {
       color,
     }));
 
-  let data = tweetsByType.map(mapper).flat();
+  let data = groupedByType.map(mapper).flat();
 
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
   if (selectedTweet) {

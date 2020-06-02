@@ -7,9 +7,8 @@ import { Histogram } from "./Histogram";
 import { GroupByOptions } from "../groupby";
 
 export function Header({ area }) {
-  const [_, tweets] = useContext(TweetsContext);
+  const { filteredByArea } = useContext(TweetsContext);
   const [mainLegend, legendsByArea] = useLegend();
-
   const [legend, setLegend] = useState([]);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ export function Header({ area }) {
 
   return (
     <div>
-      <Topline number={tweets.length} text={area} />
+      <Topline number={filteredByArea.length} text={area} />
       <TypeLegend legend={legend} showLabels={true} />
       <Histogram />
     </div>

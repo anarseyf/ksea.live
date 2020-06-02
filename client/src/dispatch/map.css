@@ -1,8 +1,11 @@
 @import "~leaflet/dist/leaflet.css";
 
 .leaflet-container {
-  display: inline-block;
+  text-align: center;
   margin-left: 1em;
-  width: 300px;
-  height: 300px;
+  width: 90%;
+  height: 200px;
+}
+.leaflet-pane {
+  margin: auto;
 }

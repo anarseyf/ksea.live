@@ -4,11 +4,11 @@ import styles from "./tweets.module.scss";
 import { Tweet } from "./Tweet";
 
 export function Tweets() {
-  const [_, tweets] = useContext(TweetsContext);
-  if (!tweets.length) {
+  const { filteredByArea } = useContext(TweetsContext);
+  if (!filteredByArea.length) {
     return null;
   }
-  const recentTweets = tweets; //.slice(0, 5);
+  const recentTweets = filteredByArea; //.slice(0, 5);
 
   return (
     <div className={styles.tweets}>

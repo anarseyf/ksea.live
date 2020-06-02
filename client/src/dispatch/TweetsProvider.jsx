@@ -47,7 +47,7 @@ const useTweets = (filters = {}) => {
     fetch();
   }, []);
 
-  return [allTweets, filteredByArea, groupedByType, groupedByAreaByType];
+  return { allTweets, filteredByArea, groupedByType, groupedByAreaByType };
 };
 
 export const TweetsProvider = ({ filters, children }) => {

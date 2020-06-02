@@ -5,7 +5,7 @@ import styles from "./chart.module.scss";
 import { histogram, expand, getExtent } from "../histogram";
 
 export function Histogram() {
-  const [_, tweetsForArea] = useContext(TweetsContext);
+  const { filteredByArea } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
 
   const fill = "white";
@@ -20,12 +20,12 @@ export function Histogram() {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!tweetsForArea.length) {
+    if (!filteredByArea.length) {
       return;
     }
 
-    const bins = histogram(tweetsForArea);
-    const extent = expand(getExtent(tweetsForArea));
+    const bins = histogram(filteredByArea);
+    const extent = expand(getExtent(filteredByArea));
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
 
     const yScale = d3
@@ -60,7 +60,7 @@ export function Histogram() {
     }));
 
     setSvgData(newSvgData);
-  }, [tweetsForArea]);
+  }, [filteredByArea]);
 
   return (
     <div className={styles.container}>

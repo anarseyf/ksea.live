@@ -10,19 +10,24 @@ import {
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.scss";
 
-export function GroupByType({ cumulative = false }) {
+export function GroupByType({ area, cumulative = false }) {
   const groupedby = GroupByOptions.IncidentType;
-  const [_, _2, tweetsByType] = useContext(TweetsContext);
+  const { groupedByType, groupedByAreaByType } = useContext(TweetsContext);
   const groupTitle = `> Group by ${groupedby}`;
   const [datasets, setDatasets] = useState([]);
+  const [dataset, setDataset] = useState([]);
 
   useEffect(() => {
-    console.log("GROUP TYPE/", tweetsByType);
-    if (!tweetsByType.length) {
+    const dataset = area
+      ? (groupedByAreaByType.find(({ key }) => key === area) || {}).groups
+      : groupedByType;
+    console.log("BY TYPE/dataset", dataset);
+
+    if (!dataset || !dataset.length) {
       return;
     }
 
-    const groupedByTime = tweetsByType.map(({ values, ...rest }) => ({
+    const groupedByTime = dataset.map(({ values, ...rest }) => ({
       ...rest,
       groups: groupBy(GroupByOptions.TimeInterval, values),
     }));
@@ -50,7 +55,7 @@ export function GroupByType({ cumulative = false }) {
     let result = withOffsets.map(datasetToBins);
 
     setDatasets(result);
-  }, [tweetsByType]);
+  }, [groupedByType, groupedByAreaByType]);
 
   if (!datasets.length) {
     return null;
