@@ -18,6 +18,20 @@ const allTweets = async () => {
   return JSON.parse(file);
 };
 
+const tweetsByArea = async (area) => {
+  const all = await allTweets();
+  const grouped = groupBy(GroupByOptions.ZipCode, all);
+  const group = grouped.find((g) => g.key === area) || {};
+  return group.values || [];
+};
+
+const tweetsByType = async (type) => {
+  const all = await allTweets();
+  const grouped = groupBy(GroupByOptions.IncidentType, all);
+  const group = grouped.find((g) => g.key === type) || {};
+  return group.values || [];
+};
+
 const allTweetsController = async (req, res, next) => {
   const all = await allTweets();
   res.json(all);
@@ -27,11 +41,19 @@ router.get("/tweets", allTweetsController);
 router.get("/tweets/seattle", allTweetsController);
 
 router.get("/tweets/:area", async (req, res, next) => {
-  const all = await allTweets();
-  const grouped = groupBy(GroupByOptions.ZipCode, all);
-  const group = grouped.find((g) => g.key === req.params.area) || {};
-  const filtered = group.values || [];
+  const filtered = await tweetsByArea(req.params.area);
   res.json(filtered);
+});
+
+router.get("/tweets/:type", async (req, res, next) => {
+  const filtered = await tweetsByType(req.params.type);
+  res.json(filtered);
+});
+
+router.get("/tweets/:area/:type", async (req, res, next) => {
+  const byArea = await tweetsByArea(req.params.area);
+
+  res.json(byArea);
 });
 
 router.get("/seattle-gov", async (req, res, next) => {

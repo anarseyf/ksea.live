@@ -1,42 +1,15 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { histogram, xyExtents } from "../histogram";
-import { GroupByOptions, groupBy, DefaultInterval } from "../groupby";
+import {
+  GroupByOptions,
+  DefaultInterval,
+  groupBy,
+  computeOffsets,
+} from "../groupby";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.scss";
 import { key } from "vega";
-
-const computeOffsets = ({ groups, ...rest }) => {
-  // console.log("WITH OFFSETS/dataset", dataset);
-  let offsetFn = (start) => 0;
-  if (groups.length && groups[0].groupby === GroupByOptions.TimeInterval) {
-    const start0 = +groups[0].key;
-    offsetFn = (start) => start0 - start;
-  }
-
-  const offsetGroups = groups.map(({ key, ...group }) => ({
-    key,
-    ...group,
-    offset: offsetFn(+key),
-  }));
-
-  const valueMapper = ({ derived: { timestamp }, ...restValue }, offset) => ({
-    ...restValue,
-    derived: {
-      timestamp,
-      offset,
-    },
-  });
-
-  return {
-    ...rest,
-    groups: offsetGroups.map(({ offset, values, ...restGroup }) => ({
-      offset,
-      ...restGroup,
-      values: values.map((v) => valueMapper(v, offset)),
-    })),
-  };
-};
 
 export function GroupByType({ cumulative = false }) {
   const groupedby = GroupByOptions.IncidentType;
