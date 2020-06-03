@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import styles from "./chart.module.scss";
-import { expand, intervalExtent } from "../utils";
+import { intervalExtent } from "../utils";
 
 export function MultiLine({ intervals = [], title }) {
   const [svgData, setSvgData] = useState([]);
