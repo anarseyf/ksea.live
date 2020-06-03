@@ -62,11 +62,8 @@ export function Map({ area }) {
     ...rest,
   };
 
-  if (activeArea) {
+  if (activeArea || selectedTweet) {
     zoom = 12;
-  }
-  if (selectedTweet) {
-    zoom = 13;
   }
 
   const center = selectedTweet
