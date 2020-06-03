@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { Topline } from "./Topline";
 import { TypeLegend } from "./TypeLegend";
-import { TweetsContext } from "./TweetsProvider";
+import { TweetsContext, currentInterval } from "./TweetsProvider";
 import { useLegend } from "./useLegend";
 import { Histogram } from "./Histogram";
 import { GroupByOptions } from "../groupingOptions";
@@ -17,9 +17,16 @@ export const Header = ({ area }) => {
     lgnd && lgnd[option] && setLegend(lgnd[option]);
   }, [mainLegend, legendsByArea]);
 
+  if (!filteredByArea.length) {
+    return null;
+  }
+
   return (
     <div>
-      <Topline number={filteredByArea.length} text={area || "Seattle"} />
+      <Topline
+        number={currentInterval(filteredByArea).values.length}
+        text={area || "Seattle"}
+      />
       {legend && <TypeLegend legend={legend} showLabels={true} />}
       <Histogram />
     </div>

@@ -8,7 +8,7 @@ import {
 } from "../api";
 export const TweetsContext = createContext();
 
-const currentInterval = (dataset) => dataset[0].intervals[0].values;
+export const currentInterval = (dataset) => dataset[0].intervals[0];
 
 const useTweets = (filters = {}) => {
   const [allTweets, setAllTweets] = useState([]);
@@ -19,7 +19,7 @@ const useTweets = (filters = {}) => {
   useEffect(() => {
     const fetch = async () => {
       const tweets = await getTweets();
-      setAllTweets(currentInterval(tweets));
+      setAllTweets(currentInterval(tweets).values);
     };
     fetch();
   }, []);
@@ -28,7 +28,7 @@ const useTweets = (filters = {}) => {
     const fetch = async () => {
       const area = filters.area || "seattle";
       const filtered = await getTweetsForArea(area);
-      setFilteredByArea(currentInterval(filtered));
+      setFilteredByArea(filtered);
     };
     fetch();
   }, []);

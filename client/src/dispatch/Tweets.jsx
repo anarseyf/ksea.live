@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TweetsContext } from "./TweetsProvider";
+import { TweetsContext, currentInterval } from "./TweetsProvider";
 import styles from "./tweets.module.scss";
 import { Tweet } from "./Tweet";
 
@@ -8,7 +8,7 @@ export function Tweets() {
   if (!filteredByArea.length) {
     return null;
   }
-  const recentTweets = filteredByArea; //.slice(0, 5);
+  const recentTweets = currentInterval(filteredByArea).values;
 
   return (
     <div className={styles.tweets}>

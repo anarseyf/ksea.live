@@ -11,7 +11,7 @@ const useUser = () => {
   const [user, setUser] = useState({});
 
   const setSelection = (key, value) => {
-    console.log(`USER: ${key} --> ${JSON.stringify(value, null, 2)}`);
+    console.log(`USER: ${key} -->`, value);
     setUser({ ...user, [key]: value });
   };
 

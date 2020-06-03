@@ -2,6 +2,7 @@ const fs = require("fs");
 const util = require("util");
 
 import { GroupByOptions, groupBy, DefaultInterval } from "./server/groupby";
+import { histogram } from "./server/histogram";
 
 export const allTweets = async () => {
   const readFile = util.promisify(fs.readFile);
@@ -33,7 +34,7 @@ export const tweetsForType = async (type) => {
   return group.values || [];
 };
 
-const addTimestamps = ({ key, ...restInterval }) => ({
+const addStartEnd = ({ key, ...restInterval }) => ({
   key,
   start: +key,
   end: +key + DefaultInterval,
@@ -70,11 +71,17 @@ const addOffsets = (intervals) => {
   return result;
 };
 
+const addHistogram = ({ values, ...rest }) => ({
+  ...rest,
+  values,
+  bins: histogram(values, { cumulative: true }),
+});
+
 export const groupByInterval = ({ values, ...rest }) => {
   const intervals = groupBy(GroupByOptions.TimeInterval, values);
 
   return {
     ...rest,
-    intervals: addOffsets(intervals.map(addTimestamps)),
+    intervals: addOffsets(intervals.map(addStartEnd).map(addHistogram)),
   };
 };

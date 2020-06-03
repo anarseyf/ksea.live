@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
-import { TweetsContext } from "./TweetsProvider";
+import { TweetsContext, currentInterval } from "./TweetsProvider";
 import styles from "./chart.module.scss";
-import { histogram, expand, getExtent } from "../histogram";
+import { expand, getExtent, intervalExtent } from "../utils";
 
 export function Histogram() {
   const { filteredByArea } = useContext(TweetsContext);
@@ -24,9 +24,14 @@ export function Histogram() {
       return;
     }
 
-    const bins = histogram(filteredByArea);
-    const extent = expand(getExtent(filteredByArea));
+    console.log("HISTOGRAM/by area", filteredByArea);
+
+    const interval = currentInterval(filteredByArea);
+    const bins = interval.bins;
+    const extent = intervalExtent(interval);
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
+
+    console.log("HISTOGRAM/extent", extent);
 
     const yScale = d3
       .scaleLinear()
@@ -50,6 +55,8 @@ export function Histogram() {
       1,
       Math.floor(xScale(firstRealBin.x1) - xScale(firstRealBin.x0))
     );
+
+    console.log("HISTOGRAM/bins", bins);
 
     const newSvgData = bins.map(({ x0, x1, length }) => ({
       x: xScale(x0) - binWidth / 2,

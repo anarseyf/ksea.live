@@ -14,8 +14,6 @@ export function GroupByArea() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log("GROUP AREA/legends", legendsByArea);
-
     if (!Object.keys(legendsByArea).length) {
       return;
     }

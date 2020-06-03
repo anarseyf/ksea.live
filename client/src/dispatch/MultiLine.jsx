@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import styles from "./chart.module.scss";
-import { expand } from "../histogram";
+import { expand, intervalExtent } from "../utils";
 
 export function MultiLine({ intervals = [], title }) {
   const [svgData, setSvgData] = useState([]);
@@ -20,12 +20,7 @@ export function MultiLine({ intervals = [], title }) {
       return;
     }
 
-    const firstLineBins = intervals[0].bins;
-    const xExtentActual = [
-      firstLineBins[0].x0,
-      firstLineBins[firstLineBins.length - 1].x1,
-    ];
-    const xExtent = expand(xExtentActual);
+    const xExtent = intervalExtent(intervals[0]);
 
     const yExtent = [
       0,

@@ -7,7 +7,9 @@ export function histogram(
   values,
   { cumulative = false, accessor = defaultAccessor, extent } = {}
 ) {
-  const histogramExtent = extent || expand(getExtent(values));
+  const histogramExtent = expand(getExtent(values));
+
+  console.warn(">>> >>> TODO try import d3 histogram");
 
   const histogram = d3
     .histogram()
