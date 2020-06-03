@@ -10,27 +10,28 @@ export const GroupByOptions = {
 
 export const DefaultInterval = 24 * 3600 * 1000;
 
-const end = 1590448143000; // TODO lol
-const currentStart = end - DefaultInterval;
-const previousStart = currentStart - DefaultInterval;
+export const generateIntervals = () => {
+  const currentStart = +new Date(2020, 4, 25); // [now.getFullYear(), now.getMonth(), now.getDay()];
+  const now = new Date();
+  const midnight = new Date(
+    ...[now.getFullYear(), now.getMonth(), now.getDay()]
+  );
+  const sinceMidnight = now - midnight;
+
+  const currentEnd = currentStart + sinceMidnight;
+  return [
+    [currentStart, currentEnd], // TODO — expand to 24h
+    [currentStart - DefaultInterval, currentStart],
+  ];
+};
 
 const IncidentTypes = {
   Known: { Fire: "fire", Medic: "medic", Aid: "aid" },
   Default: "other",
 };
 
-const RequiredKeys = {
-  [GroupByOptions.IncidentType]: [
-    IncidentTypes.Known.Fire,
-    IncidentTypes.Known.Medic,
-    IncidentTypes.Known.Aid,
-    IncidentTypes.Default,
-  ],
-  [GroupByOptions.TimeInterval]: [currentStart, previousStart],
-};
-
-export const Mappers = {
-  [GroupByOptions.IncidentType]: ({ derived: { description } }) => {
+const Mappers = {
+  [GroupByOptions.IncidentType]: () => ({ derived: { description } }) => {
     const options = Object.values(IncidentTypes.Known);
     const desc = description.toLowerCase();
     const match = options.reduce((matchedOption, option) => {
@@ -41,19 +42,14 @@ export const Mappers = {
     }, null);
     return match || IncidentTypes.Default;
   },
-  [GroupByOptions.ZipCode]: (t) => t.derived.zip,
-  [GroupByOptions.TimeInterval]: ({ derived: { timestamp } }) => {
-    const intervals = [
-      [currentStart, end],
-      [currentStart - DefaultInterval, currentStart],
-    ];
-    return intervals.reduce((matchedOption, [from, to]) => {
+  [GroupByOptions.ZipCode]: () => (t) => t.derived.zip,
+  [GroupByOptions.TimeInterval]: (intervals) => ({ derived: { timestamp } }) =>
+    intervals.reduce((matchedOption, [from, to]) => {
       if (matchedOption) {
         return matchedOption;
       }
       return timestamp >= from && timestamp < to ? from : null;
-    }, null);
-  },
+    }, null),
 };
 
 export function groupBy(option = GroupByOptions.Nothing, tweets) {
@@ -84,7 +80,13 @@ const byNothing = (tweets) => {
 
 const byIncidentType = (tweets) => {
   const option = GroupByOptions.IncidentType;
-  const grouped = by(GroupByOptions.IncidentType, tweets, RequiredKeys[option]);
+  const requiredKeys = [
+    IncidentTypes.Known.Fire,
+    IncidentTypes.Known.Medic,
+    IncidentTypes.Known.Aid,
+    IncidentTypes.Default,
+  ];
+  const grouped = by(option, tweets, requiredKeys, Mappers[option]());
 
   const color = scaleOrdinal(schemeCategory10);
   const { Fire, Medic, Aid } = IncidentTypes.Known;
@@ -94,19 +96,18 @@ const byIncidentType = (tweets) => {
 };
 
 const byZip = (tweets) => {
-  return by(GroupByOptions.ZipCode, tweets);
+  const option = GroupByOptions.ZipCode;
+  return by(option, tweets, [], Mappers[option]());
 };
 
 const byTimeInterval = (tweets) => {
-  return by(
-    GroupByOptions.TimeInterval,
-    tweets,
-    RequiredKeys[GroupByOptions.TimeInterval]
-  );
+  const intervals = generateIntervals();
+  const requiredKeys = intervals.map(([start]) => String(start));
+  const option = GroupByOptions.TimeInterval;
+  return by(option, tweets, requiredKeys, Mappers[option](intervals));
 };
 
-const by = (option, tweets, requiredKeys = []) => {
-  const mapper = Mappers[option];
+const by = (option, tweets, requiredKeys = [], mapper) => {
   const mapped = {};
 
   requiredKeys.forEach((key) => {
