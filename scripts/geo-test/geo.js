@@ -12,20 +12,31 @@ const LIMIT = 1;
 const addDerived = (tweets = []) => {
   const delimiter = " - ";
 
-  const mapper = ({ text, derived, ...rest }) => {
+  const mapper = ({ id_str, text, created_at, derived, ...rest }) => {
     const pieces = text.split(delimiter);
     const count = pieces.length;
-    const description = pieces.slice(0, count - 3).join(delimiter);
+    let description, address, units, time;
+    if (count >= 4) {
+      description = pieces.slice(0, count - 3).join(delimiter);
+      address = `${pieces[count - 3]},Seattle,WA`;
+      units = pieces[count - 2];
+      time = pieces[count - 1];
+    } else {
+      console.warn(`Unable to parse text of tweet ${id_str}`);
+    }
 
     return {
+      id_str,
       text,
+      created_at,
       ...rest,
       derived: {
         ...derived,
+        timestamp: +new Date(created_at),
         description,
-        address: `${pieces[count - 3]},Seattle,WA`,
-        units: pieces[count - 2],
-        time: pieces[count - 1],
+        address,
+        units,
+        time,
       },
     };
   };
@@ -110,19 +121,18 @@ const saveDataset = async (fileName, data) => {
 };
 
 const main = async () => {
-  const fromFile = "./unprocessed.json",
-    toFile = "./processed.json";
+  const fromFile = "../../datasets/tweets.json",
+    toFile = "../../datasets/tweets2.json";
 
   const tweets = await readDataset(fromFile);
   const withDerived = addDerived(tweets);
 
-  const hasNoZip = ({ derived: { zip } }) => !zip;
-  const noZip = trim(withDerived.filter(hasNoZip));
-  // console.log("\n>>> NO ZIP: \n", JSON.stringify(noZip, null, 2));
-  const withZip = await resolveAddresses(noZip);
-  const result = withZip;
-  // console.log("\n>>> WITH ZIP: \n", JSON.stringify(withZip, null, 2));
+  // const hasNoZip = ({ derived: { zip } }) => !zip;
+  // const noZip = trim(withDerived.filter(hasNoZip));
+  // const withZip = await resolveAddresses(noZip);
+  // const result = withZip;
 
+  const result = withDerived;
   await saveDataset(toFile, result);
   console.log(`Saved ${result.length} to ${toFile}`);
 };

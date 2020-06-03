@@ -8,7 +8,7 @@ export const GroupByOptions = {
   TimeInterval: "time",
 };
 
-export const DefaultInterval = 12 * 3600 * 1000;
+export const DefaultInterval = 24 * 3600 * 1000;
 
 const end = 1590448143000; // TODO lol
 const currentStart = end - DefaultInterval;

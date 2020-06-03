@@ -10,7 +10,6 @@ import {
   tweetsByType,
   tweetsByArea,
   tweetsForArea,
-  tweetsForType,
 } from "./dispatchHelpers";
 
 const allTweetsController = async (req, res, next) => {
