@@ -1,13 +1,44 @@
 const fs = require("fs");
 const util = require("util");
 
-import { GroupByOptions, groupBy, DefaultInterval } from "./server/groupby";
+import {
+  GroupByOptions,
+  groupBy,
+  DefaultInterval,
+  generateIntervals,
+  intervalsReducer,
+} from "./server/groupby";
 import { histogram } from "./server/histogram";
+
+const filterByIntervals = (tweets) => {
+  const intervals = generateIntervals();
+  const filter = ({ derived: { timestamp } }) =>
+    !!intervals.reduce(intervalsReducer(timestamp), null);
+  return tweets.filter(filter);
+};
+
+const simulateLive_TODO_Delete = (tweets) => {
+  const intervals = generateIntervals();
+  const currentStart = intervals[0][0];
+  const now = new Date();
+  const midnight = new Date(
+    ...[now.getFullYear(), now.getMonth(), now.getDay()]
+  );
+  const sinceMidnight = now - midnight;
+  const cutoff = currentStart + sinceMidnight;
+  const beforeNow = ({ derived: { timestamp } }) => timestamp < cutoff;
+  return tweets.filter(beforeNow);
+};
 
 export const allTweets = async () => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("./datasets/tweets.json");
-  return JSON.parse(file);
+  const all = JSON.parse(file);
+
+  let filtered = filterByIntervals(all);
+  // filtered = simulateLive_TODO_Delete(filtered);
+
+  return filtered;
 };
 
 export const tweetsForArea = async (area) => {

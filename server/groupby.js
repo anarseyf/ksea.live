@@ -10,14 +10,15 @@ export const GroupByOptions = {
 
 export const DefaultInterval = 24 * 3600 * 1000;
 
-export const generateIntervals = () => {
-  const currentStart = +new Date(2020, 4, 25); // [now.getFullYear(), now.getMonth(), now.getDay()];
-  const now = new Date();
-  const midnight = new Date(
-    ...[now.getFullYear(), now.getMonth(), now.getDay()]
-  );
-  const sinceMidnight = now - midnight;
+export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
+  if (matchedOption) {
+    return matchedOption;
+  }
+  return timestamp >= from && timestamp < to ? from : null;
+};
 
+export const generateIntervals = () => {
+  const currentStart = +new Date(2020, 4, 24); // [now.getFullYear(), now.getMonth(), now.getDay()];
   const currentEnd = currentStart + DefaultInterval;
   return [
     [currentStart, currentEnd], // TODO — expand to 24h
@@ -44,12 +45,7 @@ const Mappers = {
   },
   [GroupByOptions.ZipCode]: () => (t) => t.derived.zip,
   [GroupByOptions.TimeInterval]: (intervals) => ({ derived: { timestamp } }) =>
-    intervals.reduce((matchedOption, [from, to]) => {
-      if (matchedOption) {
-        return matchedOption;
-      }
-      return timestamp >= from && timestamp < to ? from : null;
-    }, null),
+    intervals.reduce(intervalsReducer(timestamp), null),
 };
 
 export function groupBy(option = GroupByOptions.Nothing, tweets) {
