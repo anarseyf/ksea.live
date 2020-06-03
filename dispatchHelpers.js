@@ -71,17 +71,22 @@ const addOffsets = (intervals) => {
   return result;
 };
 
-const addHistogram = ({ values, ...rest }) => ({
+const addHistogram = ({ start, end, offset, values, ...rest }) => ({
+  start,
+  end,
+  offset,
   ...rest,
   values,
-  bins: histogram(values, { cumulative: true }),
+  bins: histogram(values, { extent: [start + offset, end + offset] }),
 });
 
 export const groupByInterval = ({ values, ...rest }) => {
-  const intervals = groupBy(GroupByOptions.TimeInterval, values);
+  let intervals = groupBy(GroupByOptions.TimeInterval, values);
+  intervals = intervals.map(addStartEnd);
+  intervals = addOffsets(intervals).map(addHistogram);
 
   return {
     ...rest,
-    intervals: addOffsets(intervals.map(addStartEnd)).map(addHistogram),
+    intervals,
   };
 };

@@ -18,7 +18,7 @@ export const generateIntervals = () => {
   );
   const sinceMidnight = now - midnight;
 
-  const currentEnd = currentStart + sinceMidnight;
+  const currentEnd = currentStart + DefaultInterval;
   return [
     [currentStart, currentEnd], // TODO — expand to 24h
     [currentStart - DefaultInterval, currentStart],
