@@ -11,7 +11,7 @@ export function DispatchArea({ area }) {
       <Header area={area} />
       <Map area={area} />
       <Tweets />
-      {/* <GroupByType area={area} cumulative={true} /> */}
+      <GroupByType area={area} cumulative={true} />
     </TweetsProvider>
   );
 }

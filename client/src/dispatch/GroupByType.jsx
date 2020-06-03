@@ -26,15 +26,10 @@ export function GroupByType({ area, cumulative = false }) {
       return;
     }
 
-    const groupedByTime = dataset.map(({ values, ...rest }) => ({
-      ...rest,
-      groups: groupBy(GroupByOptions.TimeInterval, values),
-    }));
+    console.log("BY TYPE/dataset", dataset);
 
-    const withOffsets = groupedByTime.map(computeOffsets);
-
-    const start = +withOffsets[0].groups[0].key;
-    const extent = [start, start + DefaultInterval];
+    const { start, end } = dataset[0].intervals[0];
+    const extent = [start, end];
 
     const addHistograms = ({ key, values, ...rest }) => ({
       key,
@@ -46,13 +41,13 @@ export function GroupByType({ area, cumulative = false }) {
       }),
     });
 
-    const datasetToBins = ({ groups, ...rest }) => ({
+    const addBins = ({ intervals, ...rest }) => ({
       ...rest,
-      groups: groups.map(addHistograms),
+      intervals: intervals.map(addHistograms),
     });
 
-    let result = withOffsets.map(datasetToBins);
-
+    let result = dataset.map(addBins);
+    console.log("BY TYPE/result", result);
     setDatasets(result);
   }, [groupedByType, groupedByAreaByType]);
 
@@ -67,7 +62,7 @@ export function GroupByType({ area, cumulative = false }) {
       <div>{groupTitle}</div>
       {datasets.map((d) => (
         <MultiLine
-          dataset={d.groups}
+          intervals={d.intervals}
           // extents={extents}
           title={d.key}
         ></MultiLine>

@@ -3,11 +3,8 @@ import { TweetsContext } from "./TweetsProvider";
 import { GroupByOptions, groupBy } from "../groupby";
 
 const legendByType = (tweetsByType) => {
-  console.log("useLegend/tweets", tweetsByType);
+  // console.log("TODO useLegend/tweets", tweetsByType);
   const legendByType = tweetsByType.map(({ key, color, intervals }) => {
-    if (!intervals[0]) {
-      console.log("> useLegend/tweets for:", key, intervals);
-    }
     return {
       key,
       color,
@@ -26,7 +23,7 @@ export const useLegend = () => {
     if (!groupedByType.length) {
       return;
     }
-    console.log("useLegend/sub", groupedByType);
+    // console.log("TODO useLegend/sub", groupedByType);
     const sublegend = legendByType(groupedByType);
     console.warn("useLegend/setting main - TODO convert to context");
     setLegend({ ...sublegend });

@@ -144,14 +144,6 @@ export const computeOffsets = ({ groups, ...rest }) => {
     offset: offsetFn(+key),
   }));
 
-  const valueMapper = ({ derived: { timestamp }, ...restValue }, offset) => ({
-    ...restValue,
-    derived: {
-      timestamp,
-      offset,
-    },
-  });
-
   return {
     ...rest,
     groups: offsetGroups.map(({ offset, values, ...restGroup }) => ({

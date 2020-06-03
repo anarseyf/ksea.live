@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import styles from "./chart.module.scss";
 import { expand } from "../histogram";
 
-export function MultiLine({ dataset = [], title }) {
+export function MultiLine({ intervals = [], title }) {
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = 150,
@@ -16,11 +16,11 @@ export function MultiLine({ dataset = [], title }) {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!dataset.length) {
+    if (!intervals.length) {
       return;
     }
 
-    const firstLineBins = dataset[0].bins;
+    const firstLineBins = intervals[0].bins;
     const xExtentActual = [
       firstLineBins[0].x0,
       firstLineBins[firstLineBins.length - 1].x1,
@@ -31,7 +31,7 @@ export function MultiLine({ dataset = [], title }) {
       0,
       d3.max([
         1.0,
-        ...dataset.flatMap(({ bins }) => bins).map(({ length }) => length),
+        ...intervals.flatMap(({ bins }) => bins).map(({ length }) => length),
       ]),
     ];
 
@@ -54,20 +54,20 @@ export function MultiLine({ dataset = [], title }) {
       .x((d) => xScale(d.x0))
       .y((d) => yScale(d.length));
 
-    const paths = dataset.map((d) => d.bins).map(line);
+    const paths = intervals.map((d) => d.bins).map(line);
 
     setSvgData(
       paths.map((path) => ({
         path,
       }))
     );
-  }, [dataset]);
+  }, [intervals]);
 
-  if (!dataset.length) {
+  if (!intervals.length) {
     return null;
   }
 
-  const total = dataset[0].values.length;
+  const total = intervals[0].values.length;
 
   return (
     <div className={styles.container}>
