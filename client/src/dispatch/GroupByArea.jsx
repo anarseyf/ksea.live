@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "@reach/router";
-import { GroupByOptions } from "../groupby";
+import { GroupByOptions } from "../groupingOptions";
 import styles from "./chart.module.scss";
 import { TypeLegend } from "./TypeLegend";
 import { UserContext, UserContextKeys } from "./UserProvider";
@@ -36,7 +36,7 @@ export function GroupByArea() {
     setSelection(UserContextKeys.HoverArea, null);
   };
 
-  const groupTitle = `> Group by ${GroupByOptions.ZipCode}`;
+  const groupTitle = `> Group by Area`;
 
   return (
     <div className={styles.container}>

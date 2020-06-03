@@ -129,27 +129,3 @@ const by = (option, tweets, requiredKeys = []) => {
     values: mapped[key],
   }));
 };
-
-export const computeOffsets = ({ groups, ...rest }) => {
-  // console.log("WITH OFFSETS/dataset", dataset);
-  let offsetFn = (start) => 0;
-  if (groups.length && groups[0].groupby === GroupByOptions.TimeInterval) {
-    const start0 = +groups[0].key;
-    offsetFn = (start) => start0 - start;
-  }
-
-  const offsetGroups = groups.map(({ key, ...group }) => ({
-    key,
-    ...group,
-    offset: offsetFn(+key),
-  }));
-
-  return {
-    ...rest,
-    groups: offsetGroups.map(({ offset, values, ...restGroup }) => ({
-      offset,
-      ...restGroup,
-      values: values.map((v) => valueMapper(v, offset)),
-    })),
-  };
-};

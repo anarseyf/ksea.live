@@ -1,12 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { histogram } from "../histogram";
-import {
-  GroupByOptions,
-  DefaultInterval,
-  groupBy,
-  computeOffsets,
-} from "../groupby";
+import { GroupByOptions } from "../groupingOptions";
 import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.scss";
 
@@ -15,7 +10,6 @@ export function GroupByType({ area, cumulative = false }) {
   const { groupedByType, groupedByAreaByType } = useContext(TweetsContext);
   const groupTitle = `> Group by ${groupedby}`;
   const [datasets, setDatasets] = useState([]);
-  const [dataset, setDataset] = useState([]);
 
   useEffect(() => {
     const dataset = area

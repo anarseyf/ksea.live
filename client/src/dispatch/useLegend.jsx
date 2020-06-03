@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { TweetsContext } from "./TweetsProvider";
-import { GroupByOptions, groupBy } from "../groupby";
+import { GroupByOptions } from "../groupingOptions";
 
 const legendByType = (tweetsByType) => {
   // console.log("TODO useLegend/tweets", tweetsByType);

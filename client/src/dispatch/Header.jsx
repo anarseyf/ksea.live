@@ -4,7 +4,7 @@ import { TypeLegend } from "./TypeLegend";
 import { TweetsContext } from "./TweetsProvider";
 import { useLegend } from "./useLegend";
 import { Histogram } from "./Histogram";
-import { GroupByOptions } from "../groupby";
+import { GroupByOptions } from "../groupingOptions";
 
 export const Header = ({ area }) => {
   const { filteredByArea } = useContext(TweetsContext);

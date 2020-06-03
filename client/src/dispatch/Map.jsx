@@ -8,8 +8,9 @@ import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 
 const minZoom = 10,
-  maxZoom = 14;
-let zoom = 11;
+  maxZoom = 14,
+  defaultZoom = 11;
+let zoom = defaultZoom;
 
 const overlayColor = "dodgerblue";
 const activeColor = "orangered";
@@ -53,7 +54,7 @@ export function Map({ area }) {
     area ? GEOID10 === area : true;
 
   const activeAreaFilter = ({ properties: { GEOID10 } }) =>
-    activeArea && GEOID10 === activeArea;
+    activeArea ? GEOID10 === activeArea : true;
 
   const { features, ...rest } = zipcodes;
   const geojson = {
@@ -68,13 +69,15 @@ export function Map({ area }) {
     zoom = 13;
   }
 
-  let center = selectedTweet
+  const center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : centroid(
-        geojson.features.filter(
-          (f) => activeAreaFilter(f) || selectedAreaFilter(f)
-        )
-      );
+    : activeArea
+    ? centroid(geojson.features.filter(activeAreaFilter))
+    : centroid(geojson.features.filter(selectedAreaFilter));
+
+  const highlightedAreaFilter = (f) =>
+    activeArea ? activeAreaFilter(f) : selectedAreaFilter(f);
+
   console.log("MAP/center", center);
 
   const mapper = ({ color, intervals }) =>
@@ -123,7 +126,9 @@ export function Map({ area }) {
         <GeoJSON
           data={feature}
           style={() =>
-            activeAreaFilter(feature) ? geojsonStyleActive : geojsonStyleHidden
+            highlightedAreaFilter(feature)
+              ? geojsonStyleActive
+              : geojsonStyleHidden
           }
         />
       ))}
