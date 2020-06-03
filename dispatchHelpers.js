@@ -82,6 +82,6 @@ export const groupByInterval = ({ values, ...rest }) => {
 
   return {
     ...rest,
-    intervals: addOffsets(intervals.map(addStartEnd).map(addHistogram)),
+    intervals: addOffsets(intervals.map(addStartEnd)).map(addHistogram),
   };
 };

@@ -9,8 +9,6 @@ export function histogram(
 ) {
   const histogramExtent = expand(getExtent(values));
 
-  console.warn(">>> >>> TODO try import d3 histogram");
-
   const histogram = d3
     .histogram()
     .domain(histogramExtent)
@@ -19,15 +17,12 @@ export function histogram(
 
   let bins = histogram(values);
 
-  if (cumulative) {
-    const lengths = bins.map((bin) => bin.length);
-    bins = bins.map(({ length, ...bin }, i) => ({
-      ...bin,
-      length: i ? d3.sum(lengths.slice(0, i + 1)) : length,
-    }));
-  }
-
-  console.log(">> BINS", JSON.stringify(bins, null, 2));
+  const lengths = bins.map((bin) => bin.length);
+  bins = bins.map(({ length, ...bin }, i) => ({
+    ...bin,
+    length,
+    cumulative: i ? d3.sum(lengths.slice(0, i + 1)) : length,
+  }));
 
   bins = bins.map(({ x0, x1, ...rest }) => ({
     x0: +new Date(x0),

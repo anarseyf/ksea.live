@@ -32,6 +32,7 @@ export function GroupByType({ area, cumulative = false }) {
       {datasets.map((d) => (
         <MultiLine
           intervals={d.intervals}
+          showCumulative={cumulative}
           // extents={extents}
           title={d.key}
         ></MultiLine>

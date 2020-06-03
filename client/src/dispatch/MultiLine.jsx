@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import styles from "./chart.module.scss";
 import { intervalExtent } from "../utils";
 
-export function MultiLine({ intervals = [], title }) {
+export function MultiLine({ intervals = [], title, showCumulative }) {
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = 150,
@@ -15,6 +15,9 @@ export function MultiLine({ intervals = [], title }) {
   const xAxisRef = useRef(null);
   const yAxisRef = useRef(null);
 
+  const accessor = ({ length, cumulative }) =>
+    showCumulative ? cumulative : length;
+
   useEffect(() => {
     if (!intervals.length) {
       return;
@@ -24,10 +27,7 @@ export function MultiLine({ intervals = [], title }) {
 
     const yExtent = [
       0,
-      d3.max([
-        1.0,
-        ...intervals.flatMap(({ bins }) => bins).map(({ length }) => length),
-      ]),
+      d3.max([1.0, ...intervals.flatMap(({ bins }) => bins).map(accessor)]),
     ];
 
     const dateFormatter = d3.timeFormat("%I%p"); // https://github.com/d3/d3-time-format#locale_format
@@ -47,7 +47,7 @@ export function MultiLine({ intervals = [], title }) {
     const line = d3
       .line()
       .x((d) => xScale(d.x0))
-      .y((d) => yScale(d.length));
+      .y((d) => yScale(accessor(d)));
 
     const paths = intervals.map((d) => d.bins).map(line);
 

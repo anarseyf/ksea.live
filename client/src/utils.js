@@ -7,7 +7,7 @@ export const intervalExtent = (interval) => {
   return expand(actual);
 };
 
-// see server/histogram.js
+// move to server/histogram.js
 export const expand = (extent) => [
   d3.timeHour.offset(extent[0], -1),
   d3.timeHour.offset(extent[1], 1),
