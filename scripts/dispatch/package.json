@@ -7,7 +7,8 @@
     "fetch:dev": "BEARER=$(cat bearer.txt) node -r esm fetch.js",
     "populate:dev": "node -r esm populate.js",
     "resolve:dev": "node -r esm resolve.js",
-    "all:dev": "concurrently \"npm run fetch:dev\" \"npm run populate:dev\" \"npm run resolve:dev\""
+    "split:dev": "node -r esm split.js",
+    "all:dev": "concurrently \"npm run fetch:dev\" \"npm run populate:dev\" \"npm run resolve:dev\" \"npm run split:dev\""
   },
   "keywords": [],
   "author": "",
