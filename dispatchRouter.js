@@ -22,10 +22,12 @@ const allTweetsController = async (req, res, next) => {
     res.status(500).send({ error });
   }
 };
-router.get("/tweets/:mostRecent?", allTweetsController);
-router.get("/tweets/seattle/:mostRecent?", allTweetsController);
+router.get("/tweets", allTweetsController);
+router.get("/tweets/after/:mostRecent?", allTweetsController);
+router.get("/tweets/seattle", allTweetsController);
+router.get("/tweets/seattle/after/:mostRecent?", allTweetsController);
 
-router.get("/tweets/byType/:mostRecent?", async (req, res, next) => {
+const byTypeController = async (req, res, next) => {
   try {
     const byType = await tweetsByType(req.params.mostRecent);
     const result = byType.map(groupByInterval);
@@ -34,9 +36,11 @@ router.get("/tweets/byType/:mostRecent?", async (req, res, next) => {
     console.error(error);
     res.status(500).send({ error });
   }
-});
+};
+router.get("/tweets/byType", byTypeController);
+router.get("/tweets/byType/after/:mostRecent?", byTypeController);
 
-router.get("/tweets/byAreaByType/:mostRecent?", async (req, res, next) => {
+const byAreabyTypeController = async (req, res, next) => {
   try {
     const byArea = await tweetsByArea(req.params.mostRecent);
     const result = byArea.map(({ values, ...rest }) => ({
@@ -48,9 +52,11 @@ router.get("/tweets/byAreaByType/:mostRecent?", async (req, res, next) => {
     console.error(error);
     res.status(500).send({ error });
   }
-});
+};
+router.get("/tweets/byAreaByType", byAreabyTypeController);
+router.get("/tweets/byAreaByType/after/:mostRecent?", byAreabyTypeController);
 
-router.get("/tweets/:area/:mostRecent?", async (req, res, next) => {
+const forAreaController = async (req, res, next) => {
   try {
     const all = await tweetsForArea(req.params.area, req.params.mostRecent);
     const result = groupBy(GroupByOptions.Nothing, all).map(groupByInterval);
@@ -59,7 +65,9 @@ router.get("/tweets/:area/:mostRecent?", async (req, res, next) => {
     console.error(error);
     res.status(500).send({ error });
   }
-});
+};
+router.get("/tweets/:area", forAreaController);
+router.get("/tweets/:area/after/:mostRecent?", forAreaController);
 
 router.get("/seattle-gov", async (req, res, next) => {
   try {

@@ -34,6 +34,8 @@ export const useLegend = () => {
       return;
     }
 
+    console.log("useLegend", groupedByAreaByType);
+
     const legends = {};
     groupedByAreaByType.forEach(({ key: area, groups }) => {
       legends[area] = legendByType(groups);
