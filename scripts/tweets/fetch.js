@@ -1,36 +1,5 @@
-const fs = require("fs");
-const util = require("util");
 const axios = require("axios").default;
-
-const touch = (fileName) => {
-  // https://remarkablemark.org/blog/2017/12/17/touch-file-nodejs/
-  try {
-    fs.utimesSync(fileName, time, time);
-  } catch (err) {
-    fs.closeSync(fs.openSync(fileName, "w"));
-    console.log(`>>> Created file ${fileName}`);
-  }
-};
-
-const readFileAsync = async (fileName, defaultValue) => {
-  try {
-    // touch(fileName);
-    const readFile = util.promisify(fs.readFile);
-    const file = await readFile(fileName);
-    if (!file.length) {
-      return defaultValue;
-    }
-    return JSON.parse(file);
-  } catch (e) {
-    console.warn(">>> Warning:", e);
-    return defaultValue;
-  }
-};
-
-const saveFileAsync = async (fileName, data) => {
-  const writeFile = util.promisify(fs.writeFile);
-  await writeFile(fileName, JSON.stringify(data, null, 2));
-};
+import { readFileAsync, saveFileAsync } from "./fileUtils";
 
 const dedupe = (tweets) => {
   const sorted = tweets.sort((a, b) => b.id_str.localeCompare(a.id_str));
@@ -45,14 +14,16 @@ const dedupe = (tweets) => {
 };
 
 const fetchNew = () => {
+  let intervalId;
   const bearer = process.env.BEARER;
   if (!bearer) {
     console.error("No Bearer token, cannot auth");
     return;
   }
+
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const delay = 5 * 1000;
+  const interval = 3 * 1000;
   const tick = async () => {
     try {
       const status = await readFileAsync("status.json", {});
@@ -90,13 +61,15 @@ const fetchNew = () => {
         });
 
       const newTweets = res.data;
-      console.log(`Fetched ${newTweets.length} tweets`);
+      console.log(`fetch > ${newTweets.length} tweets`);
 
       const unprocessed = await readFileAsync("unprocessed.json", []);
-      console.log(`${unprocessed.length} unprocessed`);
+      console.log(`fetch > ${unprocessed.length} unprocessed`);
       const all = unprocessed.concat(newTweets);
       const result = dedupe(all);
-      console.log(`>>> Sorted and deduped: ${all.length} -> ${result.length}`);
+      console.log(
+        `fetch > Sorted and deduped: ${all.length} -> ${result.length}`
+      );
 
       await saveFileAsync("unprocessed.json", result);
       const lastTweet = result[result.length - 1];
@@ -109,11 +82,12 @@ const fetchNew = () => {
 
       await saveFileAsync("status.json", newStatus);
     } catch (e) {
-      console.error(e);
+      console.error("fetch >>> Canceling 'fetch' runner due to error:", e);
+      clearInterval(intervalId);
     }
   };
   tick();
-  setInterval(tick, delay);
+  intervalId = setInterval(tick, interval);
 };
 
 fetchNew();

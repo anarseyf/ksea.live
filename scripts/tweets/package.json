@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "fetch:dev": "BEARER=$(cat bearer.txt) node fetch.js"
+    "fetch:dev": "BEARER=$(cat bearer.txt) node -r esm fetch.js",
+    "resolve:dev": "node -r esm resolve.js",
+    "populate:dev": "node -r esm populate.js",
+    "all:dev": "concurrently \"npm run fetch:dev\" \"npm run populate:dev\""
   },
   "keywords": [],
   "author": "",
@@ -12,10 +15,13 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.10.1",
     "axios": "^0.19.2",
+    "lockfile": "^1.0.4",
     "node-fetch": "^2.6.0",
     "node-geocoder": "^3.27.0"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
+    "esm": "^3.2.25",
     "nodemon": "^2.0.4"
   }
 }

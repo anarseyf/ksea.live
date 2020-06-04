@@ -45,14 +45,6 @@ const addDerived = (tweets = []) => {
   return tweets.map(mapper);
 };
 
-const trim = (tweets = []) =>
-  tweets.map(({ text, created_at, id_str, derived }) => ({
-    text,
-    created_at,
-    id_str,
-    derived,
-  }));
-
 const getTweets = async () => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("tweets.json");

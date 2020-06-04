@@ -14,7 +14,7 @@ const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
   !!intervals.reduce(intervalsReducer(timestamp), null);
 
 const recentGen = (mostRecent) => {
-  return ({ id_str }) => +id_str > +mostRecent; // TODO - loss of precision?
+  return ({ id_str }) => id_str.localeCompare(mostRecent);
 };
 
 const simulateLiveGen = (intervals) => {
@@ -39,18 +39,11 @@ export const allTweets = async (mostRecent = 0) => {
   const simulateLive = simulateLiveGen(intervals); // TODO - delete
 
   let filtered = all.filter(byIntervals);
-  console.log(`BEFORE FILTER: ${filtered.length}`);
+  const before = filtered.length;
   filtered = filtered.filter(recent);
-  console.log(`AFTER FILTER by ${mostRecent}: ${filtered.length}`);
-  // .filter(simulateLive);
+  console.log(`FILTERED by ${mostRecent}: ${before} --> ${filtered.length}`);
+  filtered = filtered.filter(simulateLive);
   return filtered;
-};
-
-export const tweetsForArea = async (area, mostRecent) => {
-  const all = await allTweets(mostRecent);
-  const grouped = groupBy(GroupByOptions.ZipCode, all);
-  const group = grouped.find((g) => g.key === area) || {};
-  return group.values || [];
 };
 
 export const tweetsByType = async (mostRecent) => {
@@ -63,10 +56,10 @@ export const tweetsByArea = async (mostRecent) => {
   return groupBy(GroupByOptions.ZipCode, all);
 };
 
-export const tweetsForType = async (type, mostRecent) => {
+export const tweetsForArea = async (area, mostRecent) => {
   const all = await allTweets(mostRecent);
-  const grouped = groupBy(GroupByOptions.IncidentType, all);
-  const group = grouped.find((g) => g.key === type) || {};
+  const grouped = groupBy(GroupByOptions.ZipCode, all);
+  const group = grouped.find((g) => g.key === area) || {};
   return group.values || [];
 };
 
