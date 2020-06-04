@@ -23,7 +23,7 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 3 * 1000;
+  const interval = 13 * 1011;
   const tick = async () => {
     try {
       const status = await readFileAsync("status.json", {});
@@ -82,7 +82,7 @@ const fetchNew = () => {
 
       await saveFileAsync("status.json", newStatus);
     } catch (e) {
-      console.error("fetch >>> Canceling 'fetch' runner due to error:", e);
+      console.error("fetch >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
     }
   };

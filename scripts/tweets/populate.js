@@ -38,7 +38,7 @@ const trim = ({ text, created_at, id_str, derived }) => ({
 });
 
 const populate = () => {
-  const interval = 5337;
+  const interval = 5 * 1137;
   let intervalId;
   const tick = async () => {
     try {
@@ -52,10 +52,7 @@ const populate = () => {
         `populate > ${newPopulated.length} new entries, ${result.length} total`
       );
     } catch (e) {
-      console.error(
-        "populate >>> Canceling 'populate' runner due to error:",
-        e
-      );
+      console.error("populate >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
     }
   };
