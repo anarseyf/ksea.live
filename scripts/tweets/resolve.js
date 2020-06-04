@@ -1,4 +1,9 @@
-import { asyncTimeout, readFileAsync, saveFileAsync } from "./fileUtils";
+import {
+  asyncTimeout,
+  readFileAsync,
+  saveFileAsync,
+  appendToFileAsync,
+} from "./fileUtils";
 
 const NodeGeocoder = require("node-geocoder");
 
@@ -58,24 +63,25 @@ const resolve = () => {
       const hasNoCoordinates = (t) => !hasCoordinates(t);
       const withCoordinates = tweets.filter(hasNoCoordinates);
       console.log(`resolve > ${withCoordinates.length} with no lat/long`);
-      const newResolved = (await resolveGeo(withCoordinates)).filter(
+      const newData = (await resolveGeo(withCoordinates)).filter(
         hasCoordinates
       );
 
-      console.log(
-        "Resolved:\n",
-        newResolved.map(
-          ({ id_str, derived: { address, lat, long, zip } }) =>
-            `${id_str}: [${Number.parseFloat(lat).toPrecision(
-              6
-            )},${Number.parseFloat(long).toPrecision(6)}] ${zip} : ${address}`
-        )
-      );
+      // console.log(
+      //   "Resolved:\n",
+      //   newData.map(
+      //     ({ id_str, derived: { address, lat, long, zip } }) =>
+      //       `${id_str}: [${Number.parseFloat(lat).toPrecision(
+      //         6
+      //       )},${Number.parseFloat(long).toPrecision(6)}] ${zip} : ${address}`
+      //   )
+      // );
 
-      const resolved = await readFileAsync("resolved.json", []);
-      const result = resolved.concat(newResolved);
-      await saveFileAsync("resolved.json", result);
+      const newTotal = await appendToFileAsync("resolved.json", newData, {
+        dedupe: true,
+      });
       await saveFileAsync("populated.json", []);
+      console.log(`resolve > new total: ${newTotal}`);
     } catch (e) {
       console.error("resolve >>> Canceling runner due to error:", e);
       clearInterval(intervalId);

@@ -43,14 +43,10 @@ const populate = () => {
   const tick = async () => {
     try {
       const unprocessed = await readFileAsync("unprocessed.json", []);
-      const newPopulated = unprocessed.map(trim).map(addDerived);
-      const populated = await readFileAsync("populated.json", []);
-      const result = populated.concat(newPopulated);
-      await saveFileAsync("populated.json", result);
+      const newData = unprocessed.map(trim).map(addDerived);
+      const newTotal = await appendToFileAsync("populated.json", newData);
       await saveFileAsync("unprocessed.json", []);
-      console.log(
-        `populate > ${newPopulated.length} new entries, ${result.length} total`
-      );
+      console.log(`populate > new total: ${newTotal}`);
     } catch (e) {
       console.error("populate >>> Canceling runner due to error:", e);
       clearInterval(intervalId);

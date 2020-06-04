@@ -67,5 +67,32 @@ export const saveFileAsync = async (fileName, data) => {
   await writeFile(fullFileName, JSON.stringify(data, null, 2));
 };
 
+export const appendToFileAsync = async (
+  fileName,
+  newData = [],
+  { dedupe = true }
+) => {
+  const oldData = await readFileAsync(fileName, []);
+  let result = oldData.concat(newData);
+  if (dedupe) {
+    result = sortAndDeduplicate(result);
+  }
+  await saveFileAsync(fileName, result);
+
+  return result.length;
+};
+
+const sortAndDeduplicate = (tweets) => {
+  const sorted = tweets.sort((a, b) => b.id_str.localeCompare(a.id_str));
+  for (let i = 1; i < tweets.length; i++) {
+    const current = tweets[i],
+      previous = tweets[i - 1];
+    if (previous && current.id_str === previous.id_str) {
+      tweets[i] = undefined;
+    }
+  }
+  return sorted.filter(Boolean);
+};
+
 export const asyncTimeout = (delay) =>
   new Promise((resolve) => setTimeout(resolve, delay));

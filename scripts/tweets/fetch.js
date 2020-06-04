@@ -1,17 +1,5 @@
 const axios = require("axios").default;
-import { readFileAsync, saveFileAsync } from "./fileUtils";
-
-const dedupe = (tweets) => {
-  const sorted = tweets.sort((a, b) => b.id_str.localeCompare(a.id_str));
-  for (let i = 1; i < tweets.length; i++) {
-    const current = tweets[i],
-      previous = tweets[i - 1];
-    if (previous && current.id_str === previous.id_str) {
-      tweets[i] = undefined;
-    }
-  }
-  return sorted.filter(Boolean);
-};
+import { readFileAsync, saveFileAsync, appendToFileAsync } from "./fileUtils";
 
 const fetchNew = () => {
   let intervalId;
@@ -36,7 +24,7 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 2,
+          count: 3,
         },
       };
 
@@ -45,8 +33,7 @@ const fetchNew = () => {
       }
 
       console.log(
-        `Fetching ${2} with max_id ${config.params.max_id} (${+config.params
-          .max_id})...`
+        `fetch > requesting ${config.params.count} with max_id ${config.params.max_id}...`
       );
 
       const res = await axios
@@ -60,27 +47,22 @@ const fetchNew = () => {
           throw e.message;
         });
 
-      const newTweets = res.data;
-      console.log(`fetch > ${newTweets.length} tweets`);
+      const newData = res.data;
+      console.log(`fetch > received ${newData.length} new tweets`);
 
-      const unprocessed = await readFileAsync("unprocessed.json", []);
-      console.log(`fetch > ${unprocessed.length} unprocessed`);
-      const all = unprocessed.concat(newTweets);
-      const result = dedupe(all);
-      console.log(
-        `fetch > Sorted and deduped: ${all.length} -> ${result.length}`
-      );
-
-      await saveFileAsync("unprocessed.json", result);
-      const lastTweet = result[result.length - 1];
+      const newTotal = await appendToFileAsync("unprocessed.json", newData, {
+        dedupe: true,
+      });
+      const last = newData[newData.length - 1];
       const newStatus = {
-        max_id: lastTweet.id_str,
+        max_id: last.id_str,
         updated: new Date().toLocaleString(),
-        fetched: newTweets.length,
-        total: result.length,
+        fetched: newData.length,
+        total: newTotal,
       };
 
       await saveFileAsync("status.json", newStatus);
+      console.log(`fetch > new total: ${newTotal}`);
     } catch (e) {
       console.error("fetch >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
