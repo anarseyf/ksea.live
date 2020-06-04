@@ -10,15 +10,14 @@ import {
 } from "./server/groupby";
 import { histogram } from "./server/histogram";
 
-const filterByIntervals = (tweets) => {
-  const intervals = generateIntervals();
-  const filter = ({ derived: { timestamp } }) =>
-    !!intervals.reduce(intervalsReducer(timestamp), null);
-  return tweets.filter(filter);
+const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
+  !!intervals.reduce(intervalsReducer(timestamp), null);
+
+const recentGen = (mostRecent) => {
+  return ({ id_str }) => +id_str > +mostRecent; // TODO - loss of precision?
 };
 
-const simulateLive_TODO_Delete = (tweets) => {
-  const intervals = generateIntervals();
+const simulateLiveGen = (intervals) => {
   const currentStart = intervals[0][0];
   const now = new Date();
   const midnight = new Date(
@@ -26,40 +25,46 @@ const simulateLive_TODO_Delete = (tweets) => {
   );
   const sinceMidnight = now - midnight;
   const cutoff = currentStart + sinceMidnight;
-  const beforeNow = ({ derived: { timestamp } }) => timestamp < cutoff;
-  return tweets.filter(beforeNow);
+  return ({ derived: { timestamp } }) => timestamp < cutoff;
 };
 
-export const allTweets = async () => {
+export const allTweets = async (mostRecent = 0) => {
   const readFile = util.promisify(fs.readFile);
   const file = await readFile("./datasets/tweets.json");
   const all = JSON.parse(file);
 
-  let filtered = filterByIntervals(all);
-  // filtered = simulateLive_TODO_Delete(filtered);
+  const intervals = generateIntervals();
+  const byIntervals = byIntervalsGen(intervals);
+  const recent = recentGen(mostRecent);
+  const simulateLive = simulateLiveGen(intervals); // TODO - delete
 
+  let filtered = all.filter(byIntervals);
+  console.log(`BEFORE FILTER: ${filtered.length}`);
+  filtered = filtered.filter(recent);
+  console.log(`AFTER FILTER by ${mostRecent}: ${filtered.length}`);
+  // .filter(simulateLive);
   return filtered;
 };
 
-export const tweetsForArea = async (area) => {
-  const all = await allTweets();
+export const tweetsForArea = async (area, mostRecent) => {
+  const all = await allTweets(mostRecent);
   const grouped = groupBy(GroupByOptions.ZipCode, all);
   const group = grouped.find((g) => g.key === area) || {};
   return group.values || [];
 };
 
-export const tweetsByType = async () => {
-  const all = await allTweets();
+export const tweetsByType = async (mostRecent) => {
+  const all = await allTweets(mostRecent);
   return groupBy(GroupByOptions.IncidentType, all);
 };
 
-export const tweetsByArea = async () => {
-  const all = await allTweets();
+export const tweetsByArea = async (mostRecent) => {
+  const all = await allTweets(mostRecent);
   return groupBy(GroupByOptions.ZipCode, all);
 };
 
-export const tweetsForType = async (type) => {
-  const all = await allTweets();
+export const tweetsForType = async (type, mostRecent) => {
+  const all = await allTweets(mostRecent);
   const grouped = groupBy(GroupByOptions.IncidentType, all);
   const group = grouped.find((g) => g.key === type) || {};
   return group.values || [];
