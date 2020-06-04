@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "fetch:dev": "BEARER=$(cat bearer.txt) node -r esm fetch.js",
-    "resolve:dev": "node -r esm resolve.js",
     "populate:dev": "node -r esm populate.js",
-    "all:dev": "concurrently \"npm run fetch:dev\" \"npm run populate:dev\""
+    "resolve:dev": "node -r esm resolve.js",
+    "all:dev": "concurrently \"npm run fetch:dev\" \"npm run populate:dev\" \"npm run resolve:dev\""
   },
   "keywords": [],
   "author": "",
