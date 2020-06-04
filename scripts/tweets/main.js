@@ -1,5 +1,6 @@
 const fs = require("fs");
 const util = require("util");
+
 // const fetch = require("node-fetch");
 const NodeGeocoder = require("node-geocoder");
 const options = {
@@ -137,4 +138,4 @@ const main = async () => {
   console.log(`Saved ${result.length} to ${toFile}`);
 };
 
-main();
+// main();

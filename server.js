@@ -5,7 +5,6 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 
 import dispatchRouter from "./dispatchRouter";
-import { GroupByOptions } from "./server/groupby";
 
 const app = express();
 
