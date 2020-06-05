@@ -38,11 +38,7 @@ const fetchNew = () => {
         config.params.max_id = status.max_id_update;
       }
 
-      console.log(
-        `update > requesting ${config.params.count} with max_id ${config.params.max_id}...`
-      );
-
-      console.log(config.params);
+      console.log(`update > requesting:\n`, config.params);
 
       const newData = await getUserTimeline(config);
       console.log(`update > received ${newData.length} new tweets`);

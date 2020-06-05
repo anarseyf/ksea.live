@@ -9,6 +9,7 @@ import {
   intervalsReducer,
 } from "./server/groupby";
 import { histogram } from "./server/histogram";
+import { toUTCMidnight } from "./scripts/dispatch/fileUtils";
 
 const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
   !!intervals.reduce(intervalsReducer(timestamp), null);
@@ -34,6 +35,9 @@ export const allTweets = async (mostRecent = 0) => {
   const all = JSON.parse(file);
 
   const intervals = generateIntervals();
+
+  console.log("helper > intervals", intervals);
+
   const byIntervals = byIntervalsGen(intervals);
   const recent = recentGen(mostRecent);
   const simulateLive = simulateLiveGen(intervals); // TODO - delete

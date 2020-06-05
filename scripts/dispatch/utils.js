@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-// const bignum = require("bignum");
+const bignum = require("bignum");
 
 export const getUserTimeline = async (config) => {
   const res = await axios
@@ -13,14 +13,8 @@ export const getUserTimeline = async (config) => {
 
 export const pathToScriptsJson = (fileName) => `./json/${fileName}`;
 export const pathToDatasets = (fileName) => `../../datasets/tweets/${fileName}`;
-
-export const incrementIdStr = (id_str) =>
-  // bignum(status.since_id).add(1).toString();
-  String(+id_str + 1000);
-
-export const decrementIdStr = (id_str) =>
-  // bignum(status.since_id).sub(1).toString();
-  String(+id_str - 1000);
+export const incrementIdStr = (id_str) => bignum(id_str).add(1).toString();
+export const decrementIdStr = (id_str) => bignum(id_str).sub(1).toString();
 
 // console.log(
 //   `1268951477848023049 + 1 =\n${incrementIdStr("1268951477848023049")}`

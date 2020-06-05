@@ -35,7 +35,7 @@
     "app:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
     "client": "cd client && npm run start",
     "server:prod": "NODE_ENV=production node -r esm server.js",
-    "server:dev": "NODE_ENV=development nodemon -r esm server.js",
+    "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",
     "build": "cd client && npm run build",
     "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
     "test": "echo \"Error: no test specified\" && exit 1"
