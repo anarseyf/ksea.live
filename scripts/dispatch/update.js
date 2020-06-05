@@ -1,5 +1,5 @@
-const axios = require("axios").default;
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
+import { getUserTimeline } from "./networkUtils";
 
 const fetchNew = () => {
   let intervalId;
@@ -11,12 +11,12 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 6 * 1011;
+  const interval = 3 * 1011;
   const tick = async () => {
     try {
       const status = await readJSONAsync("status.json", {});
 
-      if (!status || !status.since_id) {
+      if (!status.since_id) {
         console.log(`update > no since_id, retrying in ${interval / 1000} sec`);
         return;
       }
@@ -29,7 +29,7 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 3,
+          count: 2,
           since_id: status.since_id,
         },
       };
@@ -42,32 +42,49 @@ const fetchNew = () => {
         `update > requesting ${config.params.count} with max_id ${config.params.max_id}...`
       );
 
-      const res = await axios
-        .get("https://api.twitter.com/1.1/statuses/user_timeline.json", config)
-        .catch((e) => {
-          console.error(
-            "user_timeline call failed:",
-            e.response.status,
-            e.stack
-          );
-          throw e.message;
-        });
-
-      const newData = res.data;
+      const newData = await getUserTimeline(config);
       console.log(`update > received ${newData.length} new tweets`);
 
       const newTotal = await appendJSONAsync("unprocessed.json", newData, {
         dedupe: true,
       });
-      const last = newData[newData.length - 1];
       const newStatus = {
         ...status,
-        max_id_update: last.id_str,
         updated: new Date().toLocaleString(),
         updatedBy: "update",
         fetched: newData.length,
         unprocessed: newTotal,
       };
+      const oldest = newData[newData.length - 1];
+      if (oldest) {
+        newStatus.max_id_update = oldest.id_str;
+      }
+      const newest = newData[0];
+      if (newest && !newStatus.since_id_future) {
+        newStatus.since_id_future = newest.id_str;
+      }
+
+      if (oldest && oldest.id_str) {
+        console.log(
+          `update >\nOLDEST: ${oldest.id_str}\n SINCE: ${
+            status.since_id
+          }\nCOMPARED: ${oldest.id_str.localeCompare(status.since_id)}`
+        );
+      }
+
+      const reachedLimit =
+        oldest &&
+        oldest.id_str &&
+        oldest.id_str.localeCompare(status.since_id) <= 0;
+
+      if (reachedLimit) {
+        newStatus.max_id_update = undefined;
+        newStatus.since_id = newStatus.since_id_future;
+        newStatus.since_id_future = undefined;
+        console.log(
+          `update > reached limit (${status.since_id}) — updating to ${newStatus.since_id}`
+        );
+      }
 
       await saveJSONAsync("status.json", newStatus);
       console.log(`update > new total: ${newTotal}`);
