@@ -11,7 +11,7 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 10 * 1011;
+  const interval = 30 * 1011;
   const tick = async () => {
     try {
       const status = await readJSONAsync("status.json", {});
@@ -30,7 +30,7 @@ const fetchNew = () => {
           exclude_replies: true,
           trim_user: true,
           count: 5,
-          since_id: decrementIdStr(status.since_id), // offset to allow for an overlap of 1 tweet. That's how the stop condition matches.
+          since_id: status.since_id,
         },
       };
 
@@ -59,21 +59,22 @@ const fetchNew = () => {
       };
       const oldest = newData[newData.length - 1];
       if (oldest) {
-        newStatus.max_id_update = oldest.id_str;
+        newStatus.max_id_update = decrementIdStr(oldest.id_str);
       }
       const newest = newData[0];
       if (newest && !newStatus.since_id_future) {
-        newStatus.since_id_future = incrementIdStr(newest.id_str);
+        newStatus.since_id_future = newest.id_str;
       }
 
       const reachedLimit =
-        oldest &&
-        oldest.id_str &&
-        oldest.id_str.localeCompare(status.since_id) <= 0;
+        !oldest ||
+        (oldest.id_str && oldest.id_str.localeCompare(status.since_id) <= 0);
 
       if (reachedLimit) {
         newStatus.max_id_update = undefined;
-        newStatus.since_id = newStatus.since_id_future;
+        if (newStatus.since_id_future) {
+          newStatus.since_id = newStatus.since_id_future;
+        }
         newStatus.since_id_future = undefined;
         console.log(
           `update > reached limit (${status.since_id}) — updating to ${newStatus.since_id}`
