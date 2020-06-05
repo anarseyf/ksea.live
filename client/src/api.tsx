@@ -3,7 +3,10 @@ export async function getEnv() {
 }
 
 export async function getMostRecentId() {
-  return getByAPI("dispatch/mostRecentId");
+  const result = await fetch(`/api/dispatch/mostRecentId`, {
+    headers: { Accept: "text/plain" },
+  });
+  return await result.text();
 }
 
 export async function getTweets() {

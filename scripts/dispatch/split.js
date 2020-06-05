@@ -2,7 +2,7 @@ import {
   readJSONAsync,
   saveJSONAsync,
   appendJSONAsync,
-  toUTCMidnight,
+  toUTCMidnightString,
 } from "./fileUtils";
 import { pathToScriptsJson, pathToDatasets } from "./utils";
 
@@ -17,7 +17,7 @@ const resolve = () => {
       );
       const splits = {};
       tweets.forEach((t) => {
-        const key = toUTCMidnight(t.derived.timestamp);
+        const key = toUTCMidnightString(t.derived.timestamp);
         const list = splits[key] || [];
         list.push(t);
         splits[key] = list;
