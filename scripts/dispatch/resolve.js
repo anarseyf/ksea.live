@@ -1,8 +1,8 @@
 import {
   asyncTimeout,
-  readFileAsync,
-  saveFileAsync,
-  appendToFileAsync,
+  readJSONAsync,
+  saveJSONAsync,
+  appendJSONAsync,
 } from "./fileUtils";
 
 const NodeGeocoder = require("node-geocoder");
@@ -57,7 +57,7 @@ const resolve = () => {
   let intervalId;
   const tick = async () => {
     try {
-      const tweets = await readFileAsync("populated.json", []);
+      const tweets = await readJSONAsync("populated.json", []);
       const hasCoordinates = ({ derived: { lat, long } }) =>
         typeof lat === "number" && typeof long === "number";
       const hasNoCoordinates = (t) => !hasCoordinates(t);
@@ -77,10 +77,10 @@ const resolve = () => {
       //   )
       // );
 
-      const newTotal = await appendToFileAsync("resolved.json", newData, {
+      const newTotal = await appendJSONAsync("resolved.json", newData, {
         dedupe: true,
       });
-      await saveFileAsync("populated.json", []);
+      await saveJSONAsync("populated.json", []);
       console.log(`resolve > new total: ${newTotal}`);
     } catch (e) {
       console.error("resolve >>> Canceling runner due to error:", e);

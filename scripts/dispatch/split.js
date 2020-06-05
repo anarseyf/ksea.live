@@ -1,22 +1,16 @@
-import { readFileAsync, saveFileAsync, appendToFileAsync } from "./fileUtils";
-
-const toUTCMidnight = ({ derived: { timestamp } }) => {
-  const date = new Date(timestamp);
-  const rounded = [
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate(),
-  ];
-  const midnightUTC = new Date(Date.UTC(...rounded));
-  return midnightUTC.toISOString();
-};
+import {
+  readJSONAsync,
+  saveJSONAsync,
+  appendJSONAsync,
+  toUTCMidnight,
+} from "./fileUtils";
 
 const resolve = () => {
   const interval = 3 * 1231;
   let intervalId;
   const tick = async () => {
     try {
-      const tweets = await readFileAsync("resolved.json", []);
+      const tweets = await readJSONAsync("resolved.json", []);
       const splits = {};
       tweets.forEach((t) => {
         const key = toUTCMidnight(t);
@@ -25,7 +19,7 @@ const resolve = () => {
         splits[key] = list;
       });
       Object.keys(splits).forEach(async (fileName) => {
-        await appendToFileAsync(`${fileName}.json`, splits[fileName], {
+        await appendJSONAsync(`${fileName}.json`, splits[fileName], {
           dedupe: true,
         });
       });

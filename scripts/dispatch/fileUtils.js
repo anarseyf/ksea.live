@@ -4,6 +4,17 @@ const lockfile = require("lockfile");
 
 const withPath = (fileName) => `./json/${fileName}`;
 
+export const toUTCMidnight = ({ derived: { timestamp } }) => {
+  const date = new Date(timestamp);
+  const rounded = [
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+  ];
+  const midnightUTC = new Date(Date.UTC(...rounded));
+  return midnightUTC.toISOString();
+};
+
 export const touch = (fileName) => {
   // https://remarkablemark.org/blog/2017/12/17/touch-file-nodejs/
   try {
@@ -30,8 +41,8 @@ export const writeWithLockAsync = async (
         console.error(`>>> Error while locking ${fileToEmpty}`, error);
         throw error;
       }
-      await saveFileAsync(fullFileToWrite, writeContent);
-      await saveFileAsync(fullFileToEmpty, emptyContent);
+      await saveJSONAsync(fullFileToWrite, writeContent);
+      await saveJSONAsync(fullFileToEmpty, emptyContent);
       success = true;
     });
   } catch (error) {
@@ -46,7 +57,7 @@ export const writeWithLockAsync = async (
   }
 };
 
-export const readFileAsync = async (fileName, defaultValue) => {
+export const readJSONAsync = async (fileName, defaultValue) => {
   try {
     const fullFileName = withPath(fileName);
     const readFile = util.promisify(fs.readFile);
@@ -61,28 +72,28 @@ export const readFileAsync = async (fileName, defaultValue) => {
   }
 };
 
-export const saveFileAsync = async (fileName, data) => {
+export const saveJSONAsync = async (fileName, data) => {
   const fullFileName = withPath(fileName);
   const writeFile = util.promisify(fs.writeFile);
   await writeFile(fullFileName, JSON.stringify(data, null, 2));
 };
 
-export const appendToFileAsync = async (
+export const appendJSONAsync = async (
   fileName,
   newData = [],
   { dedupe = true }
 ) => {
-  const oldData = await readFileAsync(fileName, []);
+  const oldData = await readJSONAsync(fileName, []);
   let result = oldData.concat(newData);
   if (dedupe) {
-    result = sortAndDeduplicate(result);
+    result = sortAndDedupe(result);
   }
-  await saveFileAsync(fileName, result);
+  await saveJSONAsync(fileName, result);
 
   return result.length;
 };
 
-const sortAndDeduplicate = (tweets) => {
+const sortAndDedupe = (tweets) => {
   const sorted = tweets.sort((a, b) => b.id_str.localeCompare(a.id_str));
   for (let i = 1; i < tweets.length; i++) {
     const current = tweets[i],

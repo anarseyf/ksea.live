@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-import { readFileAsync, saveFileAsync, appendToFileAsync } from "./fileUtils";
+import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
 
 const fetchNew = () => {
   let intervalId;
@@ -11,10 +11,15 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 13 * 1011;
+  const interval = 6 * 1011;
   const tick = async () => {
     try {
-      const status = await readFileAsync("status.json", {});
+      const status = await readJSONAsync("status.json", {});
+
+      if (!status || !status.since_id) {
+        console.log(`update > no since_id, retrying in ${interval / 1000} sec`);
+        return;
+      }
 
       const config = {
         headers: {
@@ -25,15 +30,16 @@ const fetchNew = () => {
           exclude_replies: true,
           trim_user: true,
           count: 3,
+          since_id: status.since_id,
         },
       };
 
-      if (status && status.max_id) {
-        config.params.max_id = status.max_id;
+      if (status.max_id_update) {
+        config.params.max_id = status.max_id_update;
       }
 
       console.log(
-        `fetch > requesting ${config.params.count} with max_id ${config.params.max_id}...`
+        `update > requesting ${config.params.count} with max_id ${config.params.max_id}...`
       );
 
       const res = await axios
@@ -48,23 +54,25 @@ const fetchNew = () => {
         });
 
       const newData = res.data;
-      console.log(`fetch > received ${newData.length} new tweets`);
+      console.log(`update > received ${newData.length} new tweets`);
 
-      const newTotal = await appendToFileAsync("unprocessed.json", newData, {
+      const newTotal = await appendJSONAsync("unprocessed.json", newData, {
         dedupe: true,
       });
       const last = newData[newData.length - 1];
       const newStatus = {
-        max_id: last.id_str,
+        ...status,
+        max_id_update: last.id_str,
         updated: new Date().toLocaleString(),
+        updatedBy: "update",
         fetched: newData.length,
-        total: newTotal,
+        unprocessed: newTotal,
       };
 
-      await saveFileAsync("status.json", newStatus);
-      console.log(`fetch > new total: ${newTotal}`);
+      await saveJSONAsync("status.json", newStatus);
+      console.log(`update > new total: ${newTotal}`);
     } catch (e) {
-      console.error("fetch >>> Canceling runner due to error:", e);
+      console.error("update >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
     }
   };

@@ -1,4 +1,4 @@
-import { readFileAsync, saveFileAsync, writeWithLockAsync } from "./fileUtils";
+import { readJSONAsync, saveJSONAsync, writeWithLockAsync } from "./fileUtils";
 
 const addDerived = ({ id_str, text, created_at, derived, ...rest }) => {
   const delimiter = " - ";
@@ -42,10 +42,10 @@ const populate = () => {
   let intervalId;
   const tick = async () => {
     try {
-      const unprocessed = await readFileAsync("unprocessed.json", []);
+      const unprocessed = await readJSONAsync("unprocessed.json", []);
       const newData = unprocessed.map(trim).map(addDerived);
       const newTotal = await appendToFileAsync("populated.json", newData);
-      await saveFileAsync("unprocessed.json", []);
+      await saveJSONAsync("unprocessed.json", []);
       console.log(`populate > new total: ${newTotal}`);
     } catch (e) {
       console.error("populate >>> Canceling runner due to error:", e);

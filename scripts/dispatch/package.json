@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "fetch:dev": "BEARER=$(cat bearer.txt) node -r esm fetch.js",
+    "backfill:dev": "BEARER=$(cat bearer.txt) node -r esm backfill.js",
+    "update:dev": "BEARER=$(cat bearer.txt) node -r esm update.js",
     "populate:dev": "node -r esm populate.js",
     "resolve:dev": "node -r esm resolve.js",
     "split:dev": "node -r esm split.js",
