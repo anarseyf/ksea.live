@@ -44,7 +44,8 @@ const populate = () => {
     try {
       const unprocessed = await readJSONAsync("unprocessed.json", []);
       const newData = unprocessed.map(trim).map(addDerived);
-      const newTotal = await appendJSONAsync("populated.json", newData);
+      // const newTotal = await appendJSONAsync("populated.json", newData);
+      const newTotal = await appendJSONAsync("resolved.json", newData); // TODO
       await saveJSONAsync("unprocessed.json", []);
       console.log(`populate > new total: ${newTotal}`);
     } catch (e) {

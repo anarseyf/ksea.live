@@ -10,6 +10,7 @@
     "resolve:dev": "node -r esm resolve.js",
     "split:dev": "node -r esm split.js",
     "nobackfill:dev": "concurrently \"npm run update:dev\" \"npm run populate:dev\" \"npm run resolve:dev\" \"npm run split:dev\"",
+    "nonetwork:dev": "concurrently \"npm run populate:dev\" \"npm run split:dev\"",
     "all:dev": "concurrently \"npm run backfill:dev\" \"npm run update:dev\" \"npm run populate:dev\" \"npm run resolve:dev\" \"npm run split:dev\""
   },
   "keywords": [],
