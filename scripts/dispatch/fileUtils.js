@@ -81,7 +81,7 @@ export const saveJSONAsync = async (fileName, data) => {
 export const appendJSONAsync = async (
   fileName,
   newData = [],
-  { dedupe = true }
+  { dedupe = true } = {}
 ) => {
   const oldData = await readJSONAsync(fileName, []);
   let result = oldData.concat(newData);

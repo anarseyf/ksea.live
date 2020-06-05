@@ -6,7 +6,7 @@ import {
 } from "./fileUtils";
 
 const resolve = () => {
-  const interval = 3 * 1231;
+  const interval = 6 * 1231;
   let intervalId;
   const tick = async () => {
     try {
@@ -23,19 +23,15 @@ const resolve = () => {
           dedupe: true,
         });
       });
-      // await saveFileAsync("resolved.json", []);
-      console.log(
-        `split > wrote to ${Object.keys(splits).length} files: ${Object.keys(
-          splits
-        )}`
-      );
+      await saveJSONAsync("resolved.json", []);
+      console.log(`split > wrote to ${Object.keys(splits).length} files`);
     } catch (e) {
       console.error("split >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
     }
   };
-  tick();
-  // intervalId = setInterval(tick, interval);
+  // tick();
+  intervalId = setInterval(tick, interval);
 };
 
 resolve();

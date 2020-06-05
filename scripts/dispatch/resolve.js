@@ -19,9 +19,8 @@ const resolveGeo = async (tweets = []) => {
     tweets.map(async ({ id_str, derived: { address } }, i) => {
       const delay = 100 * i;
       await asyncTimeout(delay);
-      console.log(`resolve > #${i}: ${id_str}...`);
       return await geocoder.geocode(address).catch((error) => {
-        console.error(`resolve >>>\tERROR in ${i}: ${error}`);
+        console.error(`resolve >>> ERROR in ${i}: ${error}`);
         return [];
       });
     })
@@ -53,7 +52,7 @@ const resolveGeo = async (tweets = []) => {
 };
 
 const resolve = () => {
-  const interval = 4 * 1083;
+  const interval = 8 * 1083;
   let intervalId;
   const tick = async () => {
     try {
@@ -87,7 +86,7 @@ const resolve = () => {
       clearInterval(intervalId);
     }
   };
-  tick();
+  // tick();
   intervalId = setInterval(tick, interval);
 };
 

@@ -1,4 +1,4 @@
-import { readJSONAsync, saveJSONAsync, writeWithLockAsync } from "./fileUtils";
+import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
 
 const addDerived = ({ id_str, text, created_at, derived, ...rest }) => {
   const delimiter = " - ";
@@ -44,7 +44,7 @@ const populate = () => {
     try {
       const unprocessed = await readJSONAsync("unprocessed.json", []);
       const newData = unprocessed.map(trim).map(addDerived);
-      const newTotal = await appendToFileAsync("populated.json", newData);
+      const newTotal = await appendJSONAsync("populated.json", newData);
       await saveJSONAsync("unprocessed.json", []);
       console.log(`populate > new total: ${newTotal}`);
     } catch (e) {

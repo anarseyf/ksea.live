@@ -11,7 +11,7 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 3 * 1011;
+  const interval = 10 * 1011;
   const tick = async () => {
     try {
       const status = await readJSONAsync("status.json", {});
@@ -29,7 +29,7 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 2,
+          count: 5,
           since_id: String(+status.since_id - 1), // offset to allow for an overlap of 1 tweet. That's how the stop condition matches.
         },
       };
@@ -95,7 +95,7 @@ const fetchNew = () => {
       clearInterval(intervalId);
     }
   };
-  tick();
+  // tick();
   intervalId = setInterval(tick, interval);
 };
 

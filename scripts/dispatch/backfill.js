@@ -2,7 +2,7 @@ const axios = require("axios").default;
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
 import { getUserTimeline } from "./networkUtils";
 
-const backfillStop = new Date(2020, 5, 4, 15, 0, 0);
+const backfillStop = new Date(2020, 4, 28);
 
 const fetchNew = () => {
   let intervalId;
@@ -14,7 +14,7 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 4 * 1011;
+  const interval = 3 * 1011;
   const tick = async () => {
     try {
       const status = await readJSONAsync("status.json", {});
@@ -27,7 +27,7 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 3,
+          count: 200,
         },
       };
 
@@ -92,7 +92,7 @@ const fetchNew = () => {
       clearInterval(intervalId);
     }
   };
-  tick();
+  // tick();
   intervalId = setInterval(tick, interval);
 };
 
