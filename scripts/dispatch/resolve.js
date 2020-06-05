@@ -4,6 +4,7 @@ import {
   saveJSONAsync,
   appendJSONAsync,
 } from "./fileUtils";
+import { pathToScriptsJson } from "./utils";
 
 const NodeGeocoder = require("node-geocoder");
 
@@ -60,7 +61,10 @@ const resolve = () => {
 
   const tick = async () => {
     try {
-      let queue = await readJSONAsync("resolveQueue.json", []);
+      let queue = await readJSONAsync(
+        pathToScriptsJson("resolveQueue.json"),
+        []
+      );
       if (queue.length) {
         console.log(
           `resolve > ${queue.length} items in queue, will retry in ${
@@ -70,13 +74,19 @@ const resolve = () => {
         return;
       }
 
-      const tweets = await readJSONAsync("populated.json", []);
+      const tweets = await readJSONAsync(
+        pathToScriptsJson("populated.json"),
+        []
+      );
 
       queue = tweets.slice(0, queueSize);
-      await appendJSONAsync("resolveQueue.json", queue);
+      await appendJSONAsync(pathToScriptsJson("resolveQueue.json"), queue);
       // Note: the queue file is not used as a source of data.
       // It might make sense to use it as a backup.
-      await saveJSONAsync("populated.json", tweets.slice(queueSize)); // TODO - atomic
+      await saveJSONAsync(
+        pathToScriptsJson("populated.json"),
+        tweets.slice(queueSize)
+      ); // TODO - atomic
 
       console.log(
         `resolve > requesting ${queue.length} out of ${tweets.length} total`
@@ -87,20 +97,14 @@ const resolve = () => {
 
       const newData = (await resolveGeo(queue)).filter(hasCoordinates);
 
-      // console.log(
-      //   "Resolved:\n",
-      //   newData.map(
-      //     ({ id_str, derived: { address, lat, long, zip } }) =>
-      //       `${id_str}: [${Number.parseFloat(lat).toPrecision(
-      //         6
-      //       )},${Number.parseFloat(long).toPrecision(6)}] ${zip} : ${address}`
-      //   )
-      // );
-
-      const newTotal = await appendJSONAsync("resolved.json", newData, {
-        dedupe: true,
-      });
-      await saveJSONAsync("resolveQueue.json", []);
+      const newTotal = await appendJSONAsync(
+        pathToScriptsJson("resolved.json"),
+        newData,
+        {
+          dedupe: true,
+        }
+      );
+      await saveJSONAsync(pathToScriptsJson("resolveQueue.json"), []);
       console.log(
         `resolve > resolved ${newData.length}, new total: ${newTotal}`
       );

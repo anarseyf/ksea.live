@@ -1,7 +1,7 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
-import { getUserTimeline } from "./networkUtils";
+import { getUserTimeline, pathToScriptsJson } from "./utils";
 
-const backfillStop = new Date(2020, 5, 4);
+const backfillStop = new Date(2020, 5, 20);
 
 const fetchNew = () => {
   let intervalId;
@@ -16,7 +16,7 @@ const fetchNew = () => {
   const interval = 3 * 1011;
   const tick = async () => {
     try {
-      const status = await readJSONAsync("status.json", {});
+      const status = await readJSONAsync(pathToScriptsJson("status.json"), {});
 
       const config = {
         headers: {
@@ -26,7 +26,7 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 200,
+          count: 5,
         },
       };
 
@@ -58,9 +58,13 @@ const fetchNew = () => {
         );
       }
 
-      const newTotal = await appendJSONAsync("unprocessed.json", newData, {
-        dedupe: true,
-      });
+      const newTotal = await appendJSONAsync(
+        pathToScriptsJson("unprocessed.json"),
+        newData,
+        {
+          dedupe: true,
+        }
+      );
       console.log(`backfill > new total: ${newTotal}`);
 
       const newStatus = {
@@ -88,7 +92,7 @@ const fetchNew = () => {
         clearInterval(intervalId);
         newStatus.max_id_backfill = undefined;
       }
-      await saveJSONAsync("status.json", newStatus);
+      await saveJSONAsync(pathToScriptsJson("status.json"), newStatus);
     } catch (e) {
       console.error("backfill >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
@@ -99,11 +103,11 @@ const fetchNew = () => {
 };
 
 const init = async () => {
-  await saveJSONAsync("status.json", {});
+  await saveJSONAsync(pathToScriptsJson("status.json"), {});
   console.log("backfill > reset status");
   ["unprocessed", "populated", "resolveQueue", "resolved"].forEach(
     async (file) => {
-      await saveJSONAsync(`${file}.json`, []);
+      await saveJSONAsync(pathToScriptsJson(`${file}.json`), []);
       console.log(`backfill > emptied queue ${file}.json`);
     }
   );

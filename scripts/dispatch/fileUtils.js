@@ -2,10 +2,6 @@ const fs = require("fs");
 const util = require("util");
 const lockfile = require("lockfile");
 
-const withPath = (fileName) => `./json/${fileName}`;
-export const withDatasetsPath = (fileName) =>
-  `../../datasets/tweets/${fileName}`;
-
 export const toUTCMidnight = ({ derived: { timestamp } }) => {
   const date = new Date(timestamp);
   const rounded = [
@@ -33,18 +29,16 @@ export const writeWithLockAsync = async (
   fileToEmpty,
   emptyContent
 ) => {
-  const fullFileToWrite = withPath(fileToWrite);
-  const fullFileToEmpty = withPath(fileToEmpty);
   let success = false;
-  const lockName = `${fullFileToEmpty}.lock`;
+  const lockName = `${fileToEmpty}.lock`;
   try {
     lockfile.lock(lockName, {}, async (error) => {
       if (error) {
         console.error(`>>> Error while locking ${fileToEmpty}`, error);
         throw error;
       }
-      await saveJSONAsync(fullFileToWrite, writeContent);
-      await saveJSONAsync(fullFileToEmpty, emptyContent);
+      await saveJSONAsync(fileToWrite, writeContent);
+      await saveJSONAsync(fileToEmpty, emptyContent);
       success = true;
     });
   } catch (error) {
@@ -61,9 +55,8 @@ export const writeWithLockAsync = async (
 
 export const readJSONAsync = async (fileName, defaultValue) => {
   try {
-    const fullFileName = withPath(fileName);
     const readFile = util.promisify(fs.readFile);
-    const file = await readFile(fullFileName);
+    const file = await readFile(fileName);
     if (!file.length) {
       return defaultValue;
     }
@@ -75,9 +68,8 @@ export const readJSONAsync = async (fileName, defaultValue) => {
 };
 
 export const saveJSONAsync = async (fileName, data) => {
-  const fullFileName = withPath(fileName);
   const writeFile = util.promisify(fs.writeFile);
-  await writeFile(fullFileName, JSON.stringify(data, null, 2));
+  await writeFile(fileName, JSON.stringify(data, null, 2));
 };
 
 export const appendJSONAsync = async (

@@ -1,5 +1,5 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
-import { getUserTimeline, decrementIdStr, incrementIdStr } from "./utils";
+import { getUserTimeline, decrementIdStr, pathToScriptsJson } from "./utils";
 
 const fetchNew = () => {
   let intervalId;
@@ -14,7 +14,7 @@ const fetchNew = () => {
   const interval = 30 * 1011;
   const tick = async () => {
     try {
-      const status = await readJSONAsync("status.json", {});
+      const status = await readJSONAsync(pathToScriptsJson("status.json"), {});
 
       if (!status.since_id) {
         console.log(`update > no since_id, retrying in ${interval / 1000} sec`);
@@ -47,9 +47,13 @@ const fetchNew = () => {
       const newData = await getUserTimeline(config);
       console.log(`update > received ${newData.length} new tweets`);
 
-      const newTotal = await appendJSONAsync("unprocessed.json", newData, {
-        dedupe: true,
-      });
+      const newTotal = await appendJSONAsync(
+        pathToScriptsJson("unprocessed.json"),
+        newData,
+        {
+          dedupe: true,
+        }
+      );
       const newStatus = {
         ...status,
         updated: new Date().toLocaleString(),
@@ -81,7 +85,7 @@ const fetchNew = () => {
         );
       }
 
-      await saveJSONAsync("status.json", newStatus);
+      await saveJSONAsync(pathToScriptsJson("status.json"), newStatus);
       console.log(`update > new total: ${newTotal}`);
     } catch (e) {
       console.error("update >>> Canceling runner due to error:", e);

@@ -4,13 +4,17 @@ import {
   appendJSONAsync,
   toUTCMidnight,
 } from "./fileUtils";
+import { pathToScriptsJson, pathToDatasets } from "./utils";
 
 const resolve = () => {
   const interval = 6 * 1231;
   let intervalId;
   const tick = async () => {
     try {
-      const tweets = await readJSONAsync("resolved.json", []);
+      const tweets = await readJSONAsync(
+        pathToScriptsJson("resolved.json"),
+        []
+      );
       const splits = {};
       tweets.forEach((t) => {
         const key = toUTCMidnight(t);
@@ -19,12 +23,20 @@ const resolve = () => {
         splits[key] = list;
       });
       Object.keys(splits).forEach(async (fileName) => {
-        await appendJSONAsync(`${fileName}.json`, splits[fileName], {
-          dedupe: true,
-        });
+        await appendJSONAsync(
+          pathToDatasets(`${fileName}.json`),
+          splits[fileName],
+          {
+            dedupe: true,
+          }
+        );
       });
-      await saveJSONAsync("resolved.json", []);
-      console.log(`split > wrote to ${Object.keys(splits).length} files`);
+      await saveJSONAsync(pathToScriptsJson("resolved.json"), []);
+      console.log(
+        `split > wrote ${tweets.length} items to ${
+          Object.keys(splits).length
+        } files`
+      );
     } catch (e) {
       console.error("split >>> Canceling runner due to error:", e);
       clearInterval(intervalId);

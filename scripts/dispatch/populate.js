@@ -1,4 +1,5 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
+import { pathToScriptsJson } from "./utils";
 
 const addDerived = ({ id_str, text, created_at, derived, ...rest }) => {
   const delimiter = " - ";
@@ -42,11 +43,16 @@ const populate = () => {
   let intervalId;
   const tick = async () => {
     try {
-      const unprocessed = await readJSONAsync("unprocessed.json", []);
+      const unprocessed = await readJSONAsync(
+        pathToScriptsJson("unprocessed.json"),
+        []
+      );
       const newData = unprocessed.map(trim).map(addDerived);
-      const newTotal = await appendJSONAsync("populated.json", newData);
-      // const newTotal = await appendJSONAsync("resolved.json", newData); // TODO
-      await saveJSONAsync("unprocessed.json", []);
+      const newTotal = await appendJSONAsync(
+        pathToScriptsJson("populated.json"),
+        newData
+      );
+      await saveJSONAsync(pathToScriptsJson("unprocessed.json"), []);
       console.log(`populate > new total: ${newTotal}`);
     } catch (e) {
       console.error("populate >>> Canceling runner due to error:", e);

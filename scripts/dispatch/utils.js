@@ -11,6 +11,9 @@ export const getUserTimeline = async (config) => {
   return res.data;
 };
 
+export const pathToScriptsJson = (fileName) => `./json/${fileName}`;
+export const pathToDatasets = (fileName) => `../../datasets/tweets/${fileName}`;
+
 export const incrementIdStr = (id_str) =>
   // bignum(status.since_id).add(1).toString();
   String(+id_str + 1000);
