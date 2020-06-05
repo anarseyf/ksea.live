@@ -10,7 +10,39 @@ import {
   tweetsByType,
   tweetsByArea,
   tweetsForArea,
+  dataPath,
 } from "./dispatchHelpers";
+import { readJSONAsync } from "./scripts/dispatch/fileUtils";
+
+const mostRecentController = async (req, res, next) => {
+  let result;
+  try {
+    const readdirAsync = util.promisify(fs.readdir);
+    const dir = await readdirAsync(dataPath, { withFileTypes: true });
+    const fileNames = dir
+      .map(({ name }) => name)
+      .sort()
+      .reverse();
+
+    let result = null;
+    if (fileNames.length) {
+      const mostRecentFile = fileNames[0];
+      const tweets = await readJSONAsync(`${dataPath}${mostRecentFile}`, []);
+      if (tweets.length) {
+        result = tweets[0].id_str;
+      }
+    }
+
+    if (!result) {
+      throw "mostRecentId not found";
+    }
+    res.send(result);
+  } catch (e) {
+    console.error("error getting mostRecentId", e);
+    res.status(500).send(null);
+  }
+};
+router.get("/mostRecentId", mostRecentController);
 
 const allTweetsController = async (req, res, next) => {
   try {

@@ -11,6 +11,8 @@ import {
   readJSONAsync,
 } from "./scripts/dispatch/fileUtils";
 
+export const dataPath = "./datasets/tweets/";
+
 const nextMidnight = (timestamp) => {
   const date = new Date(timestamp);
   return new Date(
@@ -27,9 +29,7 @@ const toFileNames = ([start, end]) => {
   ) {
     starts.push(timestamp);
   }
-  return starts
-    .map(toUTCMidnightString)
-    .map((f) => `./datasets/tweets/${f}.json`);
+  return starts.map(toUTCMidnightString).map((f) => `${dataPath}${f}.json`);
 };
 
 const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
