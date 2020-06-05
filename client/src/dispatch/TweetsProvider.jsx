@@ -5,51 +5,70 @@ import {
   getTweetsForArea,
   getTweetsByType,
   getTweetsByAreaByType,
+  getMostRecentId,
 } from "../api";
 export const TweetsContext = createContext();
 
 export const currentInterval = (dataset) => dataset[0].intervals[0];
 
+const useMostRecent = () => {
+  let intervalId;
+  const [mostRecentId, setMostRecentId] = useState("");
+
+  useEffect(() => {
+    console.log(
+      "useMostRecent/starting update checker (should only happen once!)"
+    );
+
+    const checkForUpdates = async () => {
+      const newId = await getMostRecentId();
+      console.log(`useMostRecent[${intervalId}]/most recent: '${newId}'`);
+      setMostRecentId(newId);
+    };
+
+    intervalId = setInterval(checkForUpdates, 5000);
+  }, []);
+
+  return mostRecentId;
+};
+
 const useTweets = (filters = {}) => {
+  const mostRecentId = useMostRecent();
   const [allTweets, setAllTweets] = useState([]);
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [groupedByType, setGroupedByType] = useState([]);
   const [groupedByAreaByType, setGroupedByAreaByType] = useState([]);
 
   useEffect(() => {
-    const fetch = async () => {
+    (async () => {
+      console.log("useTweets/fetching all");
       const tweets = await getTweets();
       setAllTweets(currentInterval(tweets).values);
-    };
-    fetch();
-  }, []);
+    })();
 
-  useEffect(() => {
-    const fetch = async () => {
+    (async () => {
       const area = filters.area || "seattle";
       const filtered = await getTweetsForArea(area);
       setFilteredByArea(filtered);
-    };
-    fetch();
-  }, []);
+    })();
 
-  useEffect(() => {
-    const fetch = async () => {
+    (async () => {
       const grouped = await getTweetsByType();
       setGroupedByType(grouped);
-    };
-    fetch();
-  }, []);
+    })();
 
-  useEffect(() => {
-    const fetch = async () => {
+    (async () => {
       const grouped = await getTweetsByAreaByType();
       setGroupedByAreaByType(grouped);
-    };
-    fetch();
-  }, []);
+    })();
+  }, [mostRecentId]);
 
-  return { allTweets, filteredByArea, groupedByType, groupedByAreaByType };
+  return {
+    allTweets,
+    filteredByArea,
+    groupedByType,
+    groupedByAreaByType,
+  };
 };
 
 export const TweetsProvider = ({ filters, children }) => {

@@ -48,7 +48,7 @@ export function Map({ area }) {
   const hoverArea = user[UserContextKeys.HoverArea];
 
   const activeArea = hoverArea || area;
-  console.log("MAP/active area", activeArea);
+  // console.log("MAP/active area", activeArea);
 
   const selectedAreaFilter = ({ properties: { GEOID10 } }) =>
     area ? GEOID10 === area : true;

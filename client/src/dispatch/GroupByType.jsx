@@ -26,8 +26,6 @@ export function GroupByType({ area, cumulative = false }) {
     return null;
   }
 
-  console.log("BY TYPE/[0].intervals", datasets[0].intervals);
-
   return (
     <div className={styles.container}>
       <div>{groupTitle}</div>

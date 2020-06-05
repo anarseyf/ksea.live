@@ -56,8 +56,6 @@ export function Histogram() {
       Math.floor(xScale(firstRealBin.x1) - xScale(firstRealBin.x0))
     );
 
-    console.log("HISTOGRAM/x0", bins[0].x0, xScale(bins[0].x0));
-
     const newSvgData = bins.map(({ x0, x1, length }) => ({
       x: xScale(x0) - binWidth / 2,
       width: binWidth,

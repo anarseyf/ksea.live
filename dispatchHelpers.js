@@ -53,10 +53,8 @@ const simulateLiveGen = (intervals) => {
 export const allTweets = async (mostRecent = 0) => {
   const intervals = generateIntervals();
 
-  console.log("helper > intervals", intervals);
-  console.log("helper > file names", intervals.map(toFileNames));
   const fileNames = [...new Set(intervals.map(toFileNames).flat())].sort();
-  console.log("helper > sorted", fileNames);
+  console.log("helper > files to read", fileNames);
 
   const files = await Promise.all(
     fileNames.map(async (f) => await readJSONAsync(f, []))

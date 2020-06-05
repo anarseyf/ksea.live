@@ -2,6 +2,10 @@ export async function getEnv() {
   return getByAPI("env");
 }
 
+export async function getMostRecentId() {
+  return getByAPI("dispatch/mostRecentId");
+}
+
 export async function getTweets() {
   return getByAPI("dispatch/tweets");
 }
