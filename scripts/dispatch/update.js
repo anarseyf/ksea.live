@@ -30,7 +30,7 @@ const fetchNew = () => {
           exclude_replies: true,
           trim_user: true,
           count: 2,
-          since_id: status.since_id,
+          since_id: String(+status.since_id - 1), // offset to allow for an overlap of 1 tweet. That's how the stop condition matches.
         },
       };
 
@@ -41,6 +41,8 @@ const fetchNew = () => {
       console.log(
         `update > requesting ${config.params.count} with max_id ${config.params.max_id}...`
       );
+
+      console.log(config.params);
 
       const newData = await getUserTimeline(config);
       console.log(`update > received ${newData.length} new tweets`);
