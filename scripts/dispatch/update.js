@@ -1,5 +1,6 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
 import { getUserTimeline, decrementIdStr, pathToScriptsJson } from "./utils";
+import { checkVersion } from "./version";
 
 const fetchNew = () => {
   let intervalId;
@@ -92,4 +93,5 @@ const fetchNew = () => {
   intervalId = setInterval(tick, interval);
 };
 
+checkVersion();
 fetchNew();

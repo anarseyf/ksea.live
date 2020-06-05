@@ -5,6 +5,9 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 
 import dispatchRouter from "./dispatchRouter";
+import { checkVersion } from "./scripts/dispatch/version";
+
+checkVersion();
 
 const app = express();
 

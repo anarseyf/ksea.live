@@ -17,7 +17,7 @@ const resolve = () => {
       );
       const splits = {};
       tweets.forEach((t) => {
-        const key = toUTCMidnight(t);
+        const key = toUTCMidnight(t.derived.timestamp);
         const list = splits[key] || [];
         list.push(t);
         splits[key] = list;

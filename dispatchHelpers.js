@@ -37,6 +37,7 @@ export const allTweets = async (mostRecent = 0) => {
   const intervals = generateIntervals();
 
   console.log("helper > intervals", intervals);
+  console.log("helper > intervals", intervals.flat(2).map(toUTCMidnight));
 
   const byIntervals = byIntervalsGen(intervals);
   const recent = recentGen(mostRecent);

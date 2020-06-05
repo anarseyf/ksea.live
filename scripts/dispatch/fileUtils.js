@@ -2,7 +2,7 @@ const fs = require("fs");
 const util = require("util");
 const lockfile = require("lockfile");
 
-export const toUTCMidnight = ({ derived: { timestamp } }) => {
+export const toUTCMidnight = (timestamp) => {
   const date = new Date(timestamp);
   const rounded = [
     date.getUTCFullYear(),

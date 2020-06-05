@@ -49,5 +49,9 @@
   "bugs": {
     "url": "https://github.com/anarseyf/coffee/issues"
   },
-  "homepage": "https://github.com/anarseyf/coffee#readme"
+  "homepage": "https://github.com/anarseyf/coffee#readme",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  }
 }
