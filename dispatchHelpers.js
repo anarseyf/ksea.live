@@ -1,6 +1,3 @@
-const fs = require("fs");
-const util = require("util");
-
 import {
   GroupByOptions,
   groupBy,
@@ -9,7 +6,31 @@ import {
   intervalsReducer,
 } from "./server/groupby";
 import { histogram } from "./server/histogram";
-import { toUTCMidnight } from "./scripts/dispatch/fileUtils";
+import {
+  toUTCMidnightString,
+  readJSONAsync,
+} from "./scripts/dispatch/fileUtils";
+
+const nextMidnight = (timestamp) => {
+  const date = new Date(timestamp);
+  return new Date(
+    Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 1)
+  );
+};
+
+const toFileNames = ([start, end]) => {
+  const starts = [];
+  for (
+    let timestamp = start;
+    timestamp <= end;
+    timestamp = nextMidnight(timestamp)
+  ) {
+    starts.push(timestamp);
+  }
+  return starts
+    .map(toUTCMidnightString)
+    .map((f) => `./datasets/tweets/${f}.json`);
+};
 
 const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
   !!intervals.reduce(intervalsReducer(timestamp), null);
@@ -30,14 +51,18 @@ const simulateLiveGen = (intervals) => {
 };
 
 export const allTweets = async (mostRecent = 0) => {
-  const readFile = util.promisify(fs.readFile);
-  const file = await readFile("./datasets/tweets.json");
-  const all = JSON.parse(file);
-
   const intervals = generateIntervals();
 
   console.log("helper > intervals", intervals);
-  console.log("helper > intervals", intervals.flat(2).map(toUTCMidnight));
+  console.log("helper > file names", intervals.map(toFileNames));
+  const fileNames = [...new Set(intervals.map(toFileNames).flat())].sort();
+  console.log("helper > sorted", fileNames);
+
+  const files = await Promise.all(
+    fileNames.map(async (f) => await readJSONAsync(f, []))
+  );
+  console.log(`read ${files.length} files: ${files.map((f) => f.length)}`);
+  const all = files.flat();
 
   const byIntervals = byIntervalsGen(intervals);
   const recent = recentGen(mostRecent);

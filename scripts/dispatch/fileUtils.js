@@ -9,9 +9,11 @@ export const toUTCMidnight = (timestamp) => {
     date.getUTCMonth(),
     date.getUTCDate(),
   ];
-  const midnightUTC = new Date(Date.UTC(...rounded));
-  return midnightUTC.toISOString();
+  return +new Date(Date.UTC(...rounded));
 };
+
+export const toUTCMidnightString = (timestamp) =>
+  new Date(toUTCMidnight(timestamp)).toISOString();
 
 export const touch = (fileName) => {
   // https://remarkablemark.org/blog/2017/12/17/touch-file-nodejs/
