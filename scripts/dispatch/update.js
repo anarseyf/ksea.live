@@ -1,5 +1,5 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
-import { getUserTimeline } from "./networkUtils";
+import { getUserTimeline, decrementIdStr, incrementIdStr } from "./utils";
 
 const fetchNew = () => {
   let intervalId;
@@ -30,7 +30,7 @@ const fetchNew = () => {
           exclude_replies: true,
           trim_user: true,
           count: 5,
-          since_id: String(+status.since_id - 1), // offset to allow for an overlap of 1 tweet. That's how the stop condition matches.
+          since_id: decrementIdStr(status.since_id), // offset to allow for an overlap of 1 tweet. That's how the stop condition matches.
         },
       };
 
@@ -63,15 +63,7 @@ const fetchNew = () => {
       }
       const newest = newData[0];
       if (newest && !newStatus.since_id_future) {
-        newStatus.since_id_future = newest.id_str;
-      }
-
-      if (oldest && oldest.id_str) {
-        console.log(
-          `update >\nOLDEST: ${oldest.id_str}\n SINCE: ${
-            status.since_id
-          }\nCOMPARED: ${oldest.id_str.localeCompare(status.since_id)}`
-        );
+        newStatus.since_id_future = incrementIdStr(newest.id_str);
       }
 
       const reachedLimit =

@@ -1,8 +1,7 @@
-const axios = require("axios").default;
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
 import { getUserTimeline } from "./networkUtils";
 
-const backfillStop = new Date(2020, 4, 28);
+const backfillStop = new Date(2020, 5, 4);
 
 const fetchNew = () => {
   let intervalId;
@@ -35,6 +34,9 @@ const fetchNew = () => {
         config.params.max_id = status.max_id_backfill;
       }
 
+      console.log(
+        `backfill > backstop is (${new Date(backfillStop).toLocaleString()})`
+      );
       console.log(
         `backfill > requesting ${config.params.count} with max_id ${config.params.max_id}...`
       );
@@ -79,7 +81,7 @@ const fetchNew = () => {
 
       if (new Date(oldest.created_at) < backfillStop) {
         console.log(
-          `backfill > reached limit (${new Date(
+          `backfill > reached backstop (${new Date(
             backfillStop
           ).toLocaleString()}) — stopping runner`
         );
@@ -96,4 +98,16 @@ const fetchNew = () => {
   intervalId = setInterval(tick, interval);
 };
 
+const init = async () => {
+  await saveJSONAsync("status.json", {});
+  console.log("backfill > reset status");
+  ["unprocessed", "populated", "resolveQueue", "resolved"].forEach(
+    async (file) => {
+      await saveJSONAsync(`${file}.json`, []);
+      console.log(`backfill > emptied queue ${file}.json`);
+    }
+  );
+};
+
+init();
 fetchNew();

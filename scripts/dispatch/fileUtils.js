@@ -3,6 +3,8 @@ const util = require("util");
 const lockfile = require("lockfile");
 
 const withPath = (fileName) => `./json/${fileName}`;
+export const withDatasetsPath = (fileName) =>
+  `../../datasets/tweets/${fileName}`;
 
 export const toUTCMidnight = ({ derived: { timestamp } }) => {
   const date = new Date(timestamp);
