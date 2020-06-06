@@ -9,7 +9,7 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
 
   const svgWidth = 150,
     svgHeight = 80,
-    margin = { top: 10, right: 10, bottom: 20, left: 30 },
+    margin = { top: 10, right: 20, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
 

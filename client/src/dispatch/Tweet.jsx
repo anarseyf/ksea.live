@@ -29,14 +29,11 @@ export function Tweet({ tweet }) {
       onClick={handleClick}
     >
       <div className={styles.tweet}>
+        <div className={styles.location}>{tweet.derived.zip}</div>
         <a href={tweet.derived.tweetUrl} target="_blank">
           <img src={"../twitter.svg"} width={iconSize} height={iconSize} />
         </a>
         {tweet.text}
-      </div>
-      <div className={styles.location}>{tweet.derived.zip}</div>
-      <div className={styles.type} style={{ color }}>
-        {"???"}
       </div>
     </div>
   );

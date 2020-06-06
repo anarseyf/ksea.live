@@ -5,21 +5,23 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 @import "../colors.scss";
 
 .container {
-  font-size: 0.7em;
+  font-size: 0.8em;
   text-align: left;
+  font-variant: small-caps;
+  padding-top: 0.5em;
+  border-bottom: 1px solid $transparent;
 }
 .container:hover {
-  background-color: $dark-bg;
+  border-bottom: 1px solid $twitter-main;
   cursor: pointer;
 }
 .container.selected {
-  background-color: $selected-bg;
+  border-bottom: 1px solid $twitter-main;
 }
 
 .tweet {
-  border-bottom: 1px solid $twitter-main;
   width: 100%;
-  padding-top: 1em;
+  margin-bottom: -0.25em;
 }
 
 .type {
