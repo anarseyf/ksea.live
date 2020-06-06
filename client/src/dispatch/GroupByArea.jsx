@@ -34,6 +34,10 @@ export function GroupByArea() {
     setSelection(UserContextKeys.HoverArea, null);
   };
 
+  if (!data.length) {
+    return null;
+  }
+
   const groupTitle = `> Group by Area`;
 
   return (

@@ -34,6 +34,7 @@
   "scripts": {
     "start": "npm run server:prod",
     "app:dev": "concurrently \"npm run server:dev\" \"npm run client\" \"npm run background:dev\"",
+    "static:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
     "client": "cd client && npm run start",
     "server:prod": "NODE_ENV=production node -r esm server.js",
     "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",

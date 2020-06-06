@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Link } from "@reach/router";
+import { Router, Link, Redirect } from "@reach/router";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -35,6 +35,7 @@ function App() {
         </Navbar>
       </Container>
       <Router>
+        <Redirect from="/" to="/dispatch" />
         <Dispatch path="/dispatch/">
           <DispatchAll default />
           <DispatchArea path=":area" />
