@@ -50,13 +50,14 @@ export function Histogram() {
     const yAxis = d3.axisLeft().scale(yScale).ticks(2);
     d3.select(yAxisRef.current).call(yAxis);
 
-    const firstRealBin = bins[1];
-    const binWidth = Math.max(
-      1,
-      Math.floor(xScale(firstRealBin.x1) - xScale(firstRealBin.x0))
-    );
+    let temp = 0;
+    if (bins.length) {
+      const bin = bins[0];
+      temp = Math.floor(xScale(bin.x1) - xScale(bin.x0));
+    }
+    const binWidth = Math.max(1, temp);
 
-    const newSvgData = bins.map(({ x0, x1, length }) => ({
+    const newSvgData = bins.map(({ x0, length }) => ({
       x: xScale(x0) - binWidth / 2,
       width: binWidth,
       y: yScale(length),
