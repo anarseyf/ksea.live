@@ -101,6 +101,12 @@ const forAreaController = async (req, res, next) => {
 router.get("/tweets/:area", forAreaController);
 router.get("/tweets/:area/after/:mostRecent?", forAreaController);
 
+const mapsController = async (req, res, next) => {
+  console.log(">>> MAPS:", req.url, req.params);
+  res.status(500).send(null);
+};
+router.get("/maps/:z/:x/:y", mapsController);
+
 router.get("/seattle-gov", async (req, res, next) => {
   try {
     const options = {

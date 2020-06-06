@@ -26,7 +26,7 @@ const useMostRecent = () => {
       setMostRecentId(newId);
     };
 
-    intervalId = setInterval(checkForUpdates, 30 * 1000);
+    intervalId = setInterval(checkForUpdates, 15 * 1000);
   }, []);
 
   return mostRecentId;

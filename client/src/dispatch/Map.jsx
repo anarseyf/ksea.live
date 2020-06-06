@@ -3,9 +3,11 @@ import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import zipcodes from "./zip-codes.json";
 import { centroid } from "./geojson";
 import "./map.css";
+import styles from "./map.module.scss";
 import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
+import { MapOptions } from "./mapOptions";
 
 const minZoom = 10,
   maxZoom = 14,
@@ -17,7 +19,7 @@ const activeColor = "orangered";
 const geojsonStyleActive = {
   color: activeColor,
   fillColor: activeColor,
-  fillOpacity: 0.4,
+  fillOpacity: 0.25,
   weight: 2,
 };
 const geojsonStyleHidden = {
@@ -27,16 +29,7 @@ const geojsonStyleHidden = {
   weight: 1,
 };
 
-const tileOptions = {
-  url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}",
-  ext: "png",
-  // accessToken:
-  //   "pk.eyJ1IjoiYW5hcnNleWYiLCJhIjoiY2thZXlra3llMGF4MDJ4cXYzY2ZkamVkdyJ9.K8CENC0jz2D0O6ziL_jnNg", // Mapbox: 'coffee' token
-  attribution:
-    'Tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Data &copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>',
-};
-
-export function Map({ area }) {
+export function Map({ area, tileOptions = MapOptions.Default }) {
   const [user] = useContext(UserContext);
   const { groupedByType } = useContext(TweetsContext);
 
@@ -62,8 +55,11 @@ export function Map({ area }) {
     ...rest,
   };
 
-  if (activeArea || selectedTweet) {
-    zoom = 12;
+  if (activeArea) {
+    zoom = defaultZoom + 1;
+  }
+  if (selectedTweet) {
+    zoom = maxZoom;
   }
 
   const center = selectedTweet
@@ -112,6 +108,7 @@ export function Map({ area }) {
 
   return (
     <LeafletMap
+      className={styles.container}
       center={center}
       zoom={zoom}
       minZoom={minZoom}
