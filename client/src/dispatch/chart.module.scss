@@ -23,3 +23,23 @@ $axis-color: silver;
 .axis {
   color: $axis-color;
 }
+
+.live {
+  animation: pulse 4s infinite ease-in-out;
+}
+.live circle {
+  fill: $live;
+  stroke: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}

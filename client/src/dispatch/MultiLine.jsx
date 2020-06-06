@@ -5,7 +5,7 @@ import { intervalExtent } from "../utils";
 
 export function MultiLine({ intervals = [], title, showCumulative }) {
   const [svgData, setSvgData] = useState([]);
-  const [nowLine, setNowLine] = useState({});
+  const [live, setLive] = useState({});
 
   const svgWidth = 150,
     svgHeight = 80,
@@ -59,11 +59,11 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
     );
 
     const now = +new Date();
-    setNowLine({
-      x1: xScale(now),
-      y1: 0,
-      x2: xScale(now),
-      y2: svgHeight,
+    const bins = intervals[0].bins;
+    setLive({
+      cx: xScale(now),
+      cy: yScale(bins[bins.length - 1].cumulative),
+      r: 4,
     });
   }, [intervals]);
 
@@ -99,9 +99,9 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
               ></path>
             ))}
           </g>
-        </g>
-        <g transform={`translate(${margin.left},0)`}>
-          <line {...nowLine} stroke="white" />
+          <g className={styles.live}>
+            <circle {...live} />
+          </g>
         </g>
       </svg>
     </div>

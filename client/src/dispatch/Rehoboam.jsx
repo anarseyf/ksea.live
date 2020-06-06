@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
-import styles from "./chart.module.scss";
+import styles from "./rehoboam.module.scss";
 import { intervalExtent } from "../utils";
 
-export function Histogram() {
+export function Rehoboam() {
   const { filteredByArea } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
 
   const fill = "white";
 
-  const svgWidth = 200,
-    svgHeight = 80,
-    margin = { top: 10, right: 10, bottom: 20, left: 30 },
+  const svgWidth = 400,
+    svgHeight = 400,
+    margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
 
@@ -24,14 +24,14 @@ export function Histogram() {
       return;
     }
 
-    console.log("HISTOGRAM/by area", filteredByArea);
+    console.log("Rehoboam/by area", filteredByArea);
 
     const interval = currentInterval(filteredByArea);
     const bins = interval.bins;
     const extent = intervalExtent(interval);
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
 
-    console.log("HISTOGRAM/extent", extent);
+    console.log("Rehoboam/extent", extent);
 
     const yScale = d3
       .scaleLinear()
@@ -50,15 +50,35 @@ export function Histogram() {
     const yAxis = d3.axisLeft().scale(yScale).ticks(2);
     d3.select(yAxisRef.current).call(yAxis);
 
-    let temp = 0;
-    if (bins.length) {
-      const bin = bins[0];
-      temp = Math.floor(xScale(bin.x1) - xScale(bin.x0));
-    }
-    const binWidth = Math.max(1, temp);
+    // ==================
+
+    const radial = () => {
+      const maxRadius = width / 2;
+      const arcScale = d3
+        .scaleLinear()
+        .domain([minTemp, maxTemp])
+        .range([maxRadius * 0.25, maxRadius]);
+
+      const startAngleFn = (i) => 2 * Math.PI * (i / data.length);
+      const endAngleFn = (i) => startAngleFn(i + 1);
+
+      const arcFn = (d, i) =>
+        d3
+          .arc()
+          .innerRadius(arcScale(d.low))
+          .outerRadius(arcScale(d.high))
+          .cornerRadius(4)
+          .startAngle(startAngleFn(i))
+          .endAngle(endAngleFn(i));
+
+      return data.map((d, i) => ({
+        path: arcFn(d, i)(),
+        fill: colorScale(d.avg),
+      }));
+    };
 
     const newSvgData = bins.map(({ x0, length }) => ({
-      x: xScale(x0),
+      x: xScale(x0) - binWidth / 2,
       width: binWidth,
       y: yScale(length),
       height: yScale(0) - yScale(length),
