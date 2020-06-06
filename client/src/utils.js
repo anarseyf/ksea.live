@@ -1,10 +1,6 @@
 import * as d3 from "d3";
 
-export const intervalExtent = (interval) => {
-  const bins = interval.bins;
-  const actual = [+new Date(bins[0].x0), +new Date(bins[bins.length - 1].x1)];
-  return expand(actual);
-};
+export const intervalExtent = ({ start, end }) => expand([start, end]);
 
 // move to server/histogram.js
 export const expand = (extent) => [

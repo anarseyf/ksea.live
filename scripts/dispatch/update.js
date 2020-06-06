@@ -30,7 +30,7 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 5,
+          count: 50,
           since_id: status.since_id,
         },
       };
@@ -89,7 +89,7 @@ const fetchNew = () => {
       clearInterval(intervalId);
     }
   };
-  // tick();
+  tick();
   intervalId = setInterval(tick, interval);
 };
 

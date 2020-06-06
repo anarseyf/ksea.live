@@ -124,10 +124,17 @@ const addHistogram = ({ start, end, offset, values, ...rest }) => ({
   bins: histogram(values, { extent: [start + offset, end + offset] }),
 });
 
+const trimToNow = (bins) => {
+  const now = +new Date();
+  return bins.filter(({ x0 }) => x0 <= now);
+};
+
 export const groupByInterval = ({ values, ...rest }) => {
   let intervals = groupBy(GroupByOptions.TimeInterval, values);
   intervals = intervals.map(addStartEnd);
   intervals = addOffsets(intervals).map(addHistogram);
+
+  intervals[0].bins = trimToNow(intervals[0].bins);
 
   return {
     ...rest,
