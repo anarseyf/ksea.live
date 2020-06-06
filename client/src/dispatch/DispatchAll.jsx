@@ -5,6 +5,7 @@ import { GroupByType } from "./GroupByType";
 import { GroupByArea } from "./GroupByArea";
 import { Header } from "./Header";
 import { Tweets } from "./Tweets";
+import { MapOptions } from "./mapOptions";
 
 export function DispatchAll() {
   return (
