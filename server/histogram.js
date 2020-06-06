@@ -3,7 +3,10 @@ import * as d3 from "d3";
 const defaultAccessor = ({ derived: { timestamp, offset = 0 } }) =>
   timestamp + offset;
 
-export function histogram(values, { accessor = defaultAccessor, extent } = {}) {
+export function histogram(
+  values,
+  { accessor = defaultAccessor, extent, thresholdMinutes = 60 } = {}
+) {
   const histogramExtent = extent;
   expand(extent);
 
@@ -11,7 +14,7 @@ export function histogram(values, { accessor = defaultAccessor, extent } = {}) {
     .histogram()
     .domain(histogramExtent)
     .value(accessor)
-    .thresholds(d3.timeHours(...histogramExtent, 1));
+    .thresholds(d3.timeMinutes(...histogramExtent, thresholdMinutes));
 
   let bins = histogram(values);
 

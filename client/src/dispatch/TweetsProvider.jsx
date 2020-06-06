@@ -12,6 +12,7 @@ export const TweetsContext = createContext();
 export const currentInterval = (dataset) => dataset[0].intervals[0];
 
 const useMostRecent = () => {
+  const interval = 15 * 1000;
   let intervalId;
   const [mostRecentId, setMostRecentId] = useState("");
 
@@ -22,11 +23,14 @@ const useMostRecent = () => {
 
     const checkForUpdates = async () => {
       const newId = await getMostRecentId();
-      console.log(`useMostRecent[${intervalId}]/most recent: '${newId}'`);
+      if (newId !== mostRecentId)
+        console.log(
+          `useMostRecent[${intervalId}]/'${mostRecentId}' --> '${newId}'`
+        );
       setMostRecentId(newId);
     };
 
-    intervalId = setInterval(checkForUpdates, 15 * 1000);
+    intervalId = setInterval(checkForUpdates, interval);
   }, []);
 
   return mostRecentId;

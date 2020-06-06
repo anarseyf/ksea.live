@@ -8,6 +8,9 @@ $axis-color: silver;
   color: $text-primary;
   text-align: left;
 }
+.svg {
+  display: inline-block;
+}
 .chart {
   border-top: 1px solid slategray;
 }

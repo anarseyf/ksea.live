@@ -93,10 +93,10 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
             {svgData.map((d, i) => (
               <path
                 d={d.path}
-                stroke={i ? "deepskyblue" : "orangered"}
+                stroke={i ? "deepskyblue" : "orangered"} // TODO use css module
                 strokeWidth={i ? 1 : 3}
                 fill="none"
-              ></path>
+              />
             ))}
           </g>
           <g className={styles.live}>

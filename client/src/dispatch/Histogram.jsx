@@ -70,7 +70,7 @@ export function Histogram() {
 
   return (
     <div className={styles.container}>
-      <svg className={styles.smallchart} width={svgWidth} height={svgHeight}>
+      <svg className={styles.svg} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           {svgData.map((d) => (
             <rect
