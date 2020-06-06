@@ -39,15 +39,16 @@ export function Rehoboam({ area }) {
     const maxLength = d3.max(bins, ({ length }) => length);
     const [start, end] = extent;
 
-    const toXY = (timestamp, length) => {
+    const toRadial = (timestamp, length) => {
       const fraction = (timestamp - start) / (end - start);
       const radians = 2 * Math.PI * fraction;
       const disturbance = maxDisturbance * (length / maxLength);
       return [radians, radius + disturbance];
     };
 
-    const radialData = bins.map(({ x0, length }) => toXY(x0, length));
-    const radialGen = d3.lineRadial().curve(d3.curveCardinal.tension(0.3));
+    const radialData = bins.map(({ x0, length }) => toRadial(x0, length));
+
+    const radialGen = d3.lineRadial().curve(d3.curveCardinal.tension(0.4));
     const path = radialGen(radialData);
     console.log("Rehoboam/data", radialData);
     // console.log("Rehoboam/path", path);
@@ -55,11 +56,11 @@ export function Rehoboam({ area }) {
     setSvgPath(path);
 
     const now = +new Date();
-    const lastBin = bins.length - 1;
-    const [cx, cy] = toXY(now, lastBin.length);
+    const lastBin = bins[bins.length - 1];
+    const [theta, r] = toRadial(now, lastBin.length);
     setLive({
-      cx,
-      cy,
+      cx: r * Math.sin(theta),
+      cy: r * -Math.cos(theta),
       r: 5,
     });
   }, [filteredByArea]);
@@ -86,7 +87,13 @@ export function Rehoboam({ area }) {
             stroke="white"
             strokeWidth={1}
           />
-          <path d={svgPath} fill="none" stroke="red" stroke-width="3" />
+          <path
+            className={rehoboamStyles.line}
+            d={svgPath}
+            fill="none"
+            stroke="red"
+            stroke-width="3"
+          />
           {live && (
             <g className={liveStyles.live}>
               <circle {...live} />
