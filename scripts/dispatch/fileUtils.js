@@ -2,6 +2,8 @@ const fs = require("fs");
 const util = require("util");
 const lockfile = require("lockfile");
 
+import { tz as timezone } from "moment-timezone";
+
 export const toUTCMidnight = (timestamp) => {
   const date = new Date(timestamp);
   const rounded = [
@@ -14,6 +16,13 @@ export const toUTCMidnight = (timestamp) => {
 
 export const toUTCMidnightString = (timestamp) =>
   new Date(toUTCMidnight(timestamp)).toISOString();
+
+export const toPacificMidnight = (timestamp) => {
+  const date = new Date(timestamp);
+  const yyyymmdd = [date.getFullYear(), date.getMonth(), date.getDate()];
+  const moment = timezone(yyyymmdd, "America/Vancouver");
+  return +moment;
+};
 
 export const touch = (fileName) => {
   // https://remarkablemark.org/blog/2017/12/17/touch-file-nodejs/

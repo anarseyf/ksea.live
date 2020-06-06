@@ -1,9 +1,6 @@
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { scaleOrdinal } from "d3-scale";
-import {
-  toUTCMidnightString,
-  toUTCMidnight,
-} from "../scripts/dispatch/fileUtils";
+import { toPacificMidnight } from "../scripts/dispatch/fileUtils";
 
 export const GroupByOptions = {
   Nothing: null,
@@ -22,8 +19,9 @@ export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
 };
 
 export const generateIntervals = () => {
-  const currentStart = toUTCMidnight(+new Date());
+  const currentStart = toPacificMidnight(+new Date());
   const previousStart = currentStart - DefaultInterval;
+
   return [
     [currentStart, currentStart + DefaultInterval], // TODO — offset by 1ms to make it [start, end) ?
     [previousStart, previousStart + DefaultInterval],

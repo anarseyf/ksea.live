@@ -5,6 +5,7 @@ import { intervalExtent } from "../utils";
 
 export function MultiLine({ intervals = [], title, showCumulative }) {
   const [svgData, setSvgData] = useState([]);
+  const [nowLine, setNowLine] = useState({});
 
   const svgWidth = 150,
     svgHeight = 80,
@@ -56,6 +57,14 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
         path,
       }))
     );
+
+    const now = +new Date();
+    setNowLine({
+      x1: xScale(now),
+      y1: 0,
+      x2: xScale(now),
+      y2: svgHeight,
+    });
   }, [intervals]);
 
   if (!intervals.length) {
@@ -73,25 +82,26 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
         )}
       </div>
       <svg className={styles.chart} width={svgWidth} height={svgHeight}>
-        <g
-          className={styles.axis}
-          ref={xAxisRef}
-          transform={`translate(${margin.left},${margin.top + height})`}
-        />
-        <g
-          className={styles.axis}
-          ref={yAxisRef}
-          transform={`translate(${margin.left},${margin.top})`}
-        />
         <g transform={`translate(${margin.left},${margin.top})`}>
-          {svgData.map((d, i) => (
-            <path
-              d={d.path}
-              stroke={i ? "deepskyblue" : "orangered"}
-              strokeWidth={i ? 1 : 3}
-              fill="none"
-            ></path>
-          ))}
+          <g
+            className={styles.axis}
+            ref={xAxisRef}
+            transform={`translate(0,${height})`}
+          />
+          <g className={styles.axis} ref={yAxisRef} />
+          <g>
+            {svgData.map((d, i) => (
+              <path
+                d={d.path}
+                stroke={i ? "deepskyblue" : "orangered"}
+                strokeWidth={i ? 1 : 3}
+                fill="none"
+              ></path>
+            ))}
+          </g>
+        </g>
+        <g transform={`translate(${margin.left},0)`}>
+          <line {...nowLine} stroke="white" />
         </g>
       </svg>
     </div>

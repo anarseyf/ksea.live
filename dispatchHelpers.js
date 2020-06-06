@@ -39,17 +39,6 @@ const recentGen = (mostRecent) => {
   return ({ id_str }) => id_str.localeCompare(mostRecent);
 };
 
-const simulateLiveGen = (intervals) => {
-  const currentStart = intervals[0][0];
-  const now = new Date();
-  const midnight = new Date(
-    ...[now.getFullYear(), now.getMonth(), now.getDay()]
-  );
-  const sinceMidnight = now - midnight;
-  const cutoff = currentStart + sinceMidnight;
-  return ({ derived: { timestamp } }) => timestamp < cutoff;
-};
-
 export const allTweets = async (mostRecent = 0) => {
   const intervals = generateIntervals();
 
@@ -64,13 +53,11 @@ export const allTweets = async (mostRecent = 0) => {
 
   const byIntervals = byIntervalsGen(intervals);
   const recent = recentGen(mostRecent);
-  const simulateLive = simulateLiveGen(intervals); // TODO - delete
 
   let filtered = all.filter(byIntervals);
   const before = filtered.length;
   filtered = filtered.filter(recent);
   console.log(`FILTERED by ${mostRecent}: ${before} --> ${filtered.length}`);
-  filtered = filtered.filter(simulateLive);
   return filtered;
 };
 

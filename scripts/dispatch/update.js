@@ -12,7 +12,7 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 15 * 1011;
+  const interval = 30 * 1011;
   const tick = async () => {
     try {
       const status = await readJSONAsync(pathToScriptsJson("status.json"), {});
