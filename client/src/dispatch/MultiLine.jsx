@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
-import styles from "./chart.module.scss";
+import chartStyles from "./chart.module.scss";
+import liveStyles from "./live.module.scss";
 import { intervalExtent } from "../utils";
 
 export function MultiLine({ intervals = [], title, showCumulative }) {
   const [svgData, setSvgData] = useState([]);
-  const [live, setLive] = useState({});
+  const [live, setLive] = useState(null);
 
   const svgWidth = 150,
     svgHeight = 80,
@@ -74,21 +75,21 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
   const total = intervals[0].values.length;
 
   return (
-    <div className={styles.container}>
+    <div className={chartStyles.container}>
       <div>
-        {title && <div className={styles.title}>{title}</div>}
+        {title && <div className={chartStyles.title}>{title}</div>}
         {typeof total === "number" && (
-          <div className={styles.total}>{total}</div>
+          <div className={chartStyles.total}>{total}</div>
         )}
       </div>
-      <svg className={styles.chart} width={svgWidth} height={svgHeight}>
+      <svg className={chartStyles.chart} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g
-            className={styles.axis}
+            className={chartStyles.axis}
             ref={xAxisRef}
             transform={`translate(0,${height})`}
           />
-          <g className={styles.axis} ref={yAxisRef} />
+          <g className={chartStyles.axis} ref={yAxisRef} />
           <g>
             {svgData.map((d, i) => (
               <path
@@ -99,9 +100,11 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
               />
             ))}
           </g>
-          <g className={styles.live}>
-            <circle {...live} />
-          </g>
+          {live && (
+            <g className={liveStyles.live}>
+              <circle {...live} />
+            </g>
+          )}
         </g>
       </svg>
     </div>

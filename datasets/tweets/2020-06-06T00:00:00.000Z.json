@@ -1,5 +1,413 @@
 [
   {
+    "id_str": "1269393133365866496",
+    "text": "Medic Response - 4th Ave S / S Holgate St - E10 M10 - 3:16",
+    "created_at": "Sat Jun 06 22:18:01 +0000 2020",
+    "derived": {
+      "timestamp": 1591481881000,
+      "description": "Medic Response",
+      "address": "4th Ave S / S Holgate St,Seattle,WA",
+      "units": "E10 M10",
+      "time": "3:16",
+      "lat": 47.5862018,
+      "long": -122.3290539,
+      "resolvedAddress": "S Holgate St & 4th Ave S, Seattle, WA 98134, USA",
+      "provider": "google",
+      "zip": "98134"
+    }
+  },
+  {
+    "id_str": "1269390870740172800",
+    "text": "Aid Response - 3720 Montlake Blvd Ne - E17 - 3:05",
+    "created_at": "Sat Jun 06 22:09:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591481342000,
+      "description": "Aid Response",
+      "address": "3720 Montlake Blvd Ne,Seattle,WA",
+      "units": "E17",
+      "time": "3:05",
+      "lat": 47.6498285,
+      "long": -122.3037819,
+      "resolvedAddress": "3720 Montlake Blvd NE, Seattle, WA 98105, USA",
+      "provider": "google",
+      "zip": "98105"
+    }
+  },
+  {
+    "id_str": "1269390117594169347",
+    "text": "Low Acuity Response - 4602 Sw Cloverdale St - E37 - 3:03",
+    "created_at": "Sat Jun 06 22:06:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591481162000,
+      "description": "Low Acuity Response",
+      "address": "4602 Sw Cloverdale St,Seattle,WA",
+      "units": "E37",
+      "time": "3:03",
+      "lat": 47.5269297,
+      "long": -122.3917077,
+      "resolvedAddress": "4602 SW Cloverdale St, Seattle, WA 98136, USA",
+      "provider": "google",
+      "zip": "98136"
+    }
+  },
+  {
+    "id_str": "1269390116780466179",
+    "text": "Aid Response - Beacon Ave S / S Mcclellan St - A5 - 3:02",
+    "created_at": "Sat Jun 06 22:06:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591481162000,
+      "description": "Aid Response",
+      "address": "Beacon Ave S / S Mcclellan St,Seattle,WA",
+      "units": "A5",
+      "time": "3:02",
+      "lat": 47.5786154,
+      "long": -122.3115947,
+      "resolvedAddress": "S McClellan St & Beacon Ave S, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144"
+    }
+  },
+  {
+    "id_str": "1269390115958403074",
+    "text": "Aid Response - 1712 Summit Av - A25 - 2:38",
+    "created_at": "Sat Jun 06 22:06:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591481162000,
+      "description": "Aid Response",
+      "address": "1712 Summit Av,Seattle,WA",
+      "units": "A25",
+      "time": "2:38",
+      "lat": 47.6166862,
+      "long": -122.3252827,
+      "resolvedAddress": "1712 Summit Ave, Seattle, WA 98122, USA",
+      "provider": "google",
+      "zip": "98122"
+    }
+  },
+  {
+    "id_str": "1269388608533921792",
+    "text": "Fire in Building - 5521 23rd Ave S - A14 AIR10 B2 B5 DEP1 E13 E27 E28 E30 E6 L12 L3 M28 M44 MAR5 R1 REHAB1 SAFT2 STAF10 - 2:58",
+    "created_at": "Sat Jun 06 22:00:03 +0000 2020",
+    "derived": {
+      "timestamp": 1591480803000,
+      "description": "Fire in Building",
+      "address": "5521 23rd Ave S,Seattle,WA",
+      "units": "A14 AIR10 B2 B5 DEP1 E13 E27 E28 E30 E6 L12 L3 M28 M44 MAR5 R1 REHAB1 SAFT2 STAF10",
+      "time": "2:58",
+      "lat": 47.5526231,
+      "long": -122.3042785,
+      "resolvedAddress": "5521 23rd Ave S, Seattle, WA 98108, USA",
+      "provider": "google",
+      "zip": "98108"
+    }
+  },
+  {
+    "id_str": "1269387096432795652",
+    "text": "Aid Response - 43rd Ave E / E Lynn St - E34 - 2:52",
+    "created_at": "Sat Jun 06 21:54:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591480442000,
+      "description": "Aid Response",
+      "address": "43rd Ave E / E Lynn St,Seattle,WA",
+      "units": "E34",
+      "time": "2:52",
+      "lat": 47.639102,
+      "long": -122.2770788,
+      "resolvedAddress": "43rd Ave E & E Lynn St, Seattle, WA 98112, USA",
+      "provider": "google",
+      "zip": "98112"
+    }
+  },
+  {
+    "id_str": "1269385586554667010",
+    "text": "Aid Response - 411 N 64th St - E21 - 2:45",
+    "created_at": "Sat Jun 06 21:48:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591480082000,
+      "description": "Aid Response",
+      "address": "411 N 64th St,Seattle,WA",
+      "units": "E21",
+      "time": "2:45",
+      "lat": 47.67511440000001,
+      "long": -122.3537238,
+      "resolvedAddress": "411 N 64th St, Seattle, WA 98103, USA",
+      "provider": "google",
+      "zip": "98103"
+    }
+  },
+  {
+    "id_str": "1269384075749490689",
+    "text": "Medic Response - 6111 14th Ave Nw - E18 M18 - 2:40",
+    "created_at": "Sat Jun 06 21:42:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591479722000,
+      "description": "Medic Response",
+      "address": "6111 14th Ave Nw,Seattle,WA",
+      "units": "E18 M18",
+      "time": "2:40",
+      "lat": 47.6735164,
+      "long": -122.3738625,
+      "resolvedAddress": "6111 14th Ave NW, Seattle, WA 98107, USA",
+      "provider": "google",
+      "zip": "98107"
+    }
+  },
+  {
+    "id_str": "1269383320141512706",
+    "text": "Aid Response - 2139 Ferry Av Sw - E29 - 2:37",
+    "created_at": "Sat Jun 06 21:39:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591479542000,
+      "description": "Aid Response",
+      "address": "2139 Ferry Av Sw,Seattle,WA",
+      "units": "E29",
+      "time": "2:37",
+      "lat": 47.5844094,
+      "long": -122.3887396,
+      "resolvedAddress": "2139 Ferry Ave SW, Seattle, WA 98116, USA",
+      "provider": "google",
+      "zip": "98116"
+    }
+  },
+  {
+    "id_str": "1269382567083589633",
+    "text": "Illegal Burn - 3959 Dayton Ave N - E9 - 2:33",
+    "created_at": "Sat Jun 06 21:36:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591479362000,
+      "description": "Illegal Burn",
+      "address": "3959 Dayton Ave N,Seattle,WA",
+      "units": "E9",
+      "time": "2:33",
+      "lat": 47.6549155,
+      "long": -122.3529623,
+      "resolvedAddress": "3959 Dayton Ave N, Seattle, WA 98103, USA",
+      "provider": "google",
+      "zip": "98103"
+    }
+  },
+  {
+    "id_str": "1269380304340488192",
+    "text": "Aid Response - 600 Broadway - A25 - 2:23",
+    "created_at": "Sat Jun 06 21:27:03 +0000 2020",
+    "derived": {
+      "timestamp": 1591478823000,
+      "description": "Aid Response",
+      "address": "600 Broadway,Seattle,WA",
+      "units": "A25",
+      "time": "2:23",
+      "lat": 47.60786909999999,
+      "long": -122.3196562,
+      "resolvedAddress": "1021e Cherry St, Seattle, WA 98122, USA",
+      "provider": "google",
+      "zip": "98122"
+    }
+  },
+  {
+    "id_str": "1269380303547707392",
+    "text": "Aid Response - 10th Ave E / E Harrison St - E25 - 2:25",
+    "created_at": "Sat Jun 06 21:27:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591478822000,
+      "description": "Aid Response",
+      "address": "10th Ave E / E Harrison St,Seattle,WA",
+      "units": "E25",
+      "time": "2:25",
+      "lat": 47.6220147,
+      "long": -122.319927,
+      "resolvedAddress": "E Harrison St & 10th Ave E, Seattle, WA 98102, USA",
+      "provider": "google",
+      "zip": "98102"
+    }
+  },
+  {
+    "id_str": "1269379547973275651",
+    "text": "Aid Response - 7043 27th Ave Nw - L8 - 2:20",
+    "created_at": "Sat Jun 06 21:24:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591478642000,
+      "description": "Aid Response",
+      "address": "7043 27th Ave Nw,Seattle,WA",
+      "units": "L8",
+      "time": "2:20",
+      "lat": 47.6807345,
+      "long": -122.3911063,
+      "resolvedAddress": "7043 27th Ave NW, Seattle, WA 98117, USA",
+      "provider": "google",
+      "zip": "98117"
+    }
+  },
+  {
+    "id_str": "1269379547142721542",
+    "text": "Aid Response - 200 6th Av N - A4 - 2:21",
+    "created_at": "Sat Jun 06 21:24:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591478642000,
+      "description": "Aid Response",
+      "address": "200 6th Av N,Seattle,WA",
+      "units": "A4",
+      "time": "2:21",
+      "lat": 47.6204076,
+      "long": -122.3446676,
+      "resolvedAddress": "200 6th Ave N, Seattle, WA 98109, USA",
+      "provider": "google",
+      "zip": "98109"
+    }
+  },
+  {
+    "id_str": "1269378790997843968",
+    "text": "Aid Response - 1546 Ne 96th St - E40 - 2:17",
+    "created_at": "Sat Jun 06 21:21:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591478462000,
+      "description": "Aid Response",
+      "address": "1546 Ne 96th St,Seattle,WA",
+      "units": "E40",
+      "time": "2:17",
+      "lat": 47.69874550000001,
+      "long": -122.3099986,
+      "resolvedAddress": "1546 NE 96th St, Seattle, WA 98115, USA",
+      "provider": "google",
+      "zip": "98115"
+    }
+  },
+  {
+    "id_str": "1269376525696147457",
+    "text": "Aid Response - 10800 Roosevelt Way Ne - E39 - 2:08",
+    "created_at": "Sat Jun 06 21:12:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591477922000,
+      "description": "Aid Response",
+      "address": "10800 Roosevelt Way Ne,Seattle,WA",
+      "units": "E39",
+      "time": "2:08",
+      "lat": 47.7079336,
+      "long": -122.3173992,
+      "resolvedAddress": "10800 Roosevelt Way NE, Seattle, WA 98125, USA",
+      "provider": "google",
+      "zip": "98125"
+    }
+  },
+  {
+    "id_str": "1269374262223212544",
+    "text": "Aid Response - 717 S Michigan St - E27 - 2:01",
+    "created_at": "Sat Jun 06 21:03:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591477382000,
+      "description": "Aid Response",
+      "address": "717 S Michigan St,Seattle,WA",
+      "units": "E27",
+      "time": "2:01",
+      "lat": 47.5474162,
+      "long": -122.3217842,
+      "resolvedAddress": "717 S Michigan St, Seattle, WA 98108, USA",
+      "provider": "google",
+      "zip": "98108"
+    }
+  },
+  {
+    "id_str": "1269373508318085133",
+    "text": "Auto Fire Alarm - 420 4th Av - E10 L1 - 1:58",
+    "created_at": "Sat Jun 06 21:00:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591477202000,
+      "description": "Auto Fire Alarm",
+      "address": "420 4th Av,Seattle,WA",
+      "units": "E10 L1",
+      "time": "1:58",
+      "lat": 47.6024628,
+      "long": -122.3292044,
+      "resolvedAddress": "420 4th Ave, Seattle, WA 98104, USA",
+      "provider": "google",
+      "zip": "98104"
+    }
+  },
+  {
+    "id_str": "1269372001346519042",
+    "text": "Rescue Elevator - 1808 Minor Ave - L10 - 1:51",
+    "created_at": "Sat Jun 06 20:54:03 +0000 2020",
+    "derived": {
+      "timestamp": 1591476843000,
+      "description": "Rescue Elevator",
+      "address": "1808 Minor Ave,Seattle,WA",
+      "units": "L10",
+      "time": "1:51",
+      "lat": 47.6169782,
+      "long": -122.3305804,
+      "resolvedAddress": "1808 Minor Ave, Seattle, WA 98101, USA",
+      "provider": "google",
+      "zip": "98101"
+    }
+  },
+  {
+    "id_str": "1269369736103710726",
+    "text": "Aid Response - 6119 47th Ave S - E28 - 1:42",
+    "created_at": "Sat Jun 06 20:45:03 +0000 2020",
+    "derived": {
+      "timestamp": 1591476303000,
+      "description": "Aid Response",
+      "address": "6119 47th Ave S,Seattle,WA",
+      "units": "E28",
+      "time": "1:42",
+      "lat": 47.5473637,
+      "long": -122.2746726,
+      "resolvedAddress": "6119 47th Ave S, Seattle, WA 98118, USA",
+      "provider": "google",
+      "zip": "98118"
+    }
+  },
+  {
+    "id_str": "1269368976771072009",
+    "text": "Medic Response - 11 W Aloha St - E8 M1 - 1:38",
+    "created_at": "Sat Jun 06 20:42:02 +0000 2020",
+    "derived": {
+      "timestamp": 1591476122000,
+      "description": "Medic Response",
+      "address": "11 W Aloha St,Seattle,WA",
+      "units": "E8 M1",
+      "time": "1:38",
+      "lat": 47.626836,
+      "long": -122.3573327,
+      "resolvedAddress": "11 W Aloha St, Seattle, WA 98119, USA",
+      "provider": "google",
+      "zip": "98119"
+    }
+  },
+  {
+    "id_str": "1269363702534373377",
+    "text": "Aid Response - 13545 8th Ave Nw - A31 - 1:17",
+    "created_at": "Sat Jun 06 20:21:04 +0000 2020",
+    "derived": {
+      "timestamp": 1591474864000,
+      "description": "Aid Response",
+      "address": "13545 8th Ave Nw,Seattle,WA",
+      "units": "A31",
+      "time": "1:17",
+      "lat": 47.7283483,
+      "long": -122.366708,
+      "resolvedAddress": "13545 8th Ave NW, Seattle, WA 98177, USA",
+      "provider": "google",
+      "zip": "98177"
+    }
+  },
+  {
+    "id_str": "1269363701494284288",
+    "text": "Aid Response - 118 Ne 45th St - E31 - 1:17",
+    "created_at": "Sat Jun 06 20:21:04 +0000 2020",
+    "derived": {
+      "timestamp": 1591474864000,
+      "description": "Aid Response",
+      "address": "118 Ne 45th St,Seattle,WA",
+      "units": "E31",
+      "time": "1:17",
+      "lat": 47.6615393,
+      "long": -122.3275022,
+      "resolvedAddress": "118 NE 45th St, Seattle, WA 98105, USA",
+      "provider": "google",
+      "zip": "98105"
+    }
+  },
+  {
     "id_str": "1269362189892280320",
     "text": "Aid Response - 12719 2nd Ave Nw - E24 - 1:12",
     "created_at": "Sat Jun 06 20:15:04 +0000 2020",

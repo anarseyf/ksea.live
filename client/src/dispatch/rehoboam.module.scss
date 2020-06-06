@@ -1,6 +1,15 @@
 @import "../colors.scss";
 
 .container {
+  position: relative;
   margin: auto;
   text-align: center;
+}
+
+.counter {
+  // https://css-tricks.com/centering-css-complete-guide/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

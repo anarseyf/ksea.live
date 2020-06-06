@@ -139,6 +139,7 @@ export const groupByInterval = ({ values, ...rest }) => {
   intervals = addOffsets(intervals).map(addHistograms);
 
   intervals[0].bins = trimToNow(intervals[0].bins);
+  intervals[0].bins15 = trimToNow(intervals[0].bins15);
 
   return {
     ...rest,

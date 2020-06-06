@@ -5,10 +5,12 @@ import { GroupByType } from "./GroupByType";
 import { Header } from "./Header";
 import { Tweets } from "./Tweets";
 import { MapOptions } from "./mapOptions";
+import { Rehoboam } from "./Rehoboam";
 
 export function DispatchArea({ area }) {
   return (
     <TweetsProvider filters={{ area }}>
+      <Rehoboam area={area} />
       <Header area={area} />
       <Map area={area} tileOptions={MapOptions.Jawg_Dark} />
       <Map area={area} tileOptions={MapOptions.CartoDB_DarkMatter} />

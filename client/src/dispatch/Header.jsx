@@ -23,10 +23,6 @@ export const Header = ({ area }) => {
 
   return (
     <div>
-      <Topline
-        number={currentInterval(filteredByArea).values.length}
-        text={area || "Seattle"}
-      />
       {legend && <TypeLegend legend={legend} showLabels={true} />}
       <Histogram />
     </div>
