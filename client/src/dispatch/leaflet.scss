@@ -9,3 +9,12 @@
 .leaflet-pane {
   margin: auto;
 }
+.leaflet-container {
+  .leaflet-control-attribution {
+    background: rgba(50, 50, 50, 0.6);
+    color: darkgray;
+    a {
+      color: rgb(98, 120, 153);
+    }
+  }
+}

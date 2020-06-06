@@ -63,4 +63,4 @@ export const MapOptions = {
   },
 };
 
-MapOptions.Default = MapOptions.Stamen_Toner;
+MapOptions.Default = MapOptions.Jawg_Dark;

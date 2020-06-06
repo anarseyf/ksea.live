@@ -10,8 +10,8 @@ export function DispatchArea({ area }) {
   return (
     <TweetsProvider filters={{ area }}>
       <Header area={area} />
-      <Map area={area} tileOptions={MapOptions.CartoDB_DarkMatter} />
       <Map area={area} tileOptions={MapOptions.Jawg_Dark} />
+      <Map area={area} tileOptions={MapOptions.CartoDB_DarkMatter} />
       <Map area={area} tileOptions={MapOptions.Stadia_Alidade} />
       <Map area={area} tileOptions={MapOptions.Stamen_Toner} />
       <Map area={area} tileOptions={MapOptions.CartoDB_Positron} />

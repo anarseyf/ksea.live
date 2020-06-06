@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import zipcodes from "./zip-codes.json";
 import { centroid } from "./geojson";
-import "./map.css";
+import "./leaflet.scss";
 import styles from "./map.module.scss";
 import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
