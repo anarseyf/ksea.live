@@ -14,6 +14,10 @@
   transform: translate(-50%, -50%);
 }
 
+.circle {
+  stroke: $axis-color;
+}
+
 .line {
   stroke-opacity: 0.8;
 }

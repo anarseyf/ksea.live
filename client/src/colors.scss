@@ -1,11 +1,27 @@
-$body-bg: rgb(25, 26, 26);
-$body-color: white;
+$theme: "dark";
+
+$jawg-dark: rgb(25, 26, 26);
+$jawg-light: rgb(202, 210, 211);
+
+$text-primary-dark: white;
+$text-secondary-dark: slategray;
+$axis-color-dark: silver;
+$body-color-dark: white;
+
+$text-primary-light: black;
+$text-secondary-light: #333333;
+$axis-color-light: darkslategray;
+$body-color-light: black;
+
 $transparent: rgba(0, 0, 0, 0);
 $twitter-main: #00acee;
 $twitter-darkgray: #657786;
 $dark-bg: #3a414e;
 $selected-bg: #485366;
-$text-primary: white;
-$text-secondary: slategray;
 $live: red;
-$axis-color: silver;
+
+$body-bg: $jawg-light;
+$body-color: $body-color-light;
+$text-primary: $text-primary-light;
+$text-secondary: $text-secondary-light;
+$axis-color: $axis-color-light;

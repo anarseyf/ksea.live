@@ -91,11 +91,11 @@ export function Rehoboam({ area }) {
         <g transform={`translate(${margin + radius},${margin + radius})`}>
           <g className={rehoboamStyles.axis} ref={axisRef} />
           <circle
+            className={rehoboamStyles.circle}
             cx={0}
             cy={0}
             r={radius}
             fill="none"
-            stroke="white"
             strokeWidth={1}
           />
           {svgPath && (
