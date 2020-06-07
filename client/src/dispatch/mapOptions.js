@@ -13,9 +13,26 @@ export const MapOptions = {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   },
+  CartoDB_DarkMatterNoLabels: {
+    url: "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+    ext: "png",
+    r: "@2x",
+    subdomains: "abcd",
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  },
   CartoDB_Positron: {
     subdomains: "abcd",
     url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+    ext: "png",
+    r: "@2x",
+
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  },
+  CartoDB_PositronNoLabels: {
+    subdomains: "abcd",
+    url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
     ext: "png",
     r: "@2x",
 
@@ -64,3 +81,4 @@ export const MapOptions = {
 };
 
 MapOptions.Default = MapOptions.Jawg_Dark;
+MapOptions.NoLabels = MapOptions.CartoDB_DarkMatterNoLabels;

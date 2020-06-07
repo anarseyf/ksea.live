@@ -5,11 +5,11 @@
   color: $text-primary;
   text-align: left;
 }
+.header {
+  border-bottom: 1px solid slategray;
+}
 .svg {
   display: inline-block;
-}
-.chart {
-  border-top: 1px solid slategray;
 }
 .total {
   display: inline-block;

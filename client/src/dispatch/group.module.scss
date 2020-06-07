@@ -6,11 +6,19 @@
   color: $text-primary;
   text-align: center;
 }
+.header {
+  text-align: left;
+}
 .item {
-  border-bottom: 1px solid $transparent;
+  color: $text-primary;
+  border-left: 5px solid $transparent;
+  margin-top: 2em;
+}
+
+.item > * {
+  vertical-align: top;
 }
 
 .item:hover {
-  color: $text-primary;
   border-color: $border;
 }

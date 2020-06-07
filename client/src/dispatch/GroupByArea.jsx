@@ -8,6 +8,7 @@ import { TypeLegend } from "./TypeLegend";
 import { MultiLine } from "./MultiLine";
 import { useLegend } from "./useLegend";
 import styles from "./group.module.scss";
+import { AreaShape } from "./AreaShape";
 
 export function GroupByArea() {
   const [_, legends] = useLegend();
@@ -32,21 +33,25 @@ export function GroupByArea() {
     <div className={styles.container}>
       <div>{groupTitle}</div>
       {groupedByArea.map(({ key: area, intervals }) => (
-        <div className={styles.item}>
+        <>
+          <div className={styles.header}>{area}</div>
           <Link
             to={`${area}`}
             onMouseEnter={() => handleMouseEnter(area)}
             onMouseLeave={handleMouseLeave}
           >
-            <MultiLine intervals={intervals} title={area} />
-            {legends[area] && (
-              <TypeLegend
-                legend={legends[area][GroupByOptions.IncidentType]}
-                title={area}
-              />
-            )}
+            <div className={styles.item}>
+              <AreaShape area={area} />
+
+              <MultiLine intervals={intervals} />
+              {legends[area] && (
+                <TypeLegend
+                  legend={legends[area][GroupByOptions.IncidentType]}
+                />
+              )}
+            </div>
           </Link>
-        </div>
+        </>
       ))}
     </div>
   );

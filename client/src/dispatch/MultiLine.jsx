@@ -4,7 +4,12 @@ import chartStyles from "./chart.module.scss";
 import liveStyles from "./live.module.scss";
 import { intervalExtent } from "../utils";
 
-export function MultiLine({ intervals = [], title, showCumulative }) {
+export function MultiLine({
+  intervals = [],
+  title,
+  showHeader = false,
+  useCumulative,
+}) {
   const [svgData, setSvgData] = useState([]);
   const [live, setLive] = useState(null);
 
@@ -18,7 +23,7 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
   const yAxisRef = useRef(null);
 
   const accessor = ({ length, cumulative }) =>
-    showCumulative ? cumulative : length;
+    useCumulative ? cumulative : length;
 
   useEffect(() => {
     // TODO - no need for useEffect?
@@ -39,6 +44,7 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
     const xAxis = d3
       .axisBottom()
       .tickFormat(dateFormatter)
+      .tickSize(3)
       .scale(xScale)
       .ticks(d3.timeHour.every(12));
     d3.select(xAxisRef.current).call(xAxis);
@@ -49,7 +55,7 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
 
     const line = d3
       .line()
-      .curve(d3.curveCardinal.tension(0.4))
+      .curve(d3.curveCardinal.tension(0.3))
       .x((d) => xScale(d.x0))
       .y((d) => yScale(accessor(d)));
 
@@ -78,12 +84,14 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
 
   return (
     <div className={chartStyles.container}>
-      <div>
-        {title && <div className={chartStyles.title}>{title}</div>}
-        {typeof total === "number" && (
-          <div className={chartStyles.total}>{total}</div>
-        )}
-      </div>
+      {showHeader && (
+        <div className={chartStyles.header}>
+          {title && <div className={chartStyles.title}>{title}</div>}
+          {typeof total === "number" && (
+            <div className={chartStyles.total}>{total}</div>
+          )}
+        </div>
+      )}
       <svg className={chartStyles.chart} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g

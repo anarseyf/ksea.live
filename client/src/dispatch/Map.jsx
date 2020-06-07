@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
-import zipcodes from "./zip-codes.json";
-import { centroid } from "./geojson";
-import "./leaflet.scss";
-import styles from "./map.module.scss";
 import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MapOptions } from "./mapOptions";
+import { centroid, zipcodes } from "./geojson";
+import "./leaflet.scss";
+import styles from "./map.module.scss";
 
 const minZoom = 10,
   maxZoom = 14,
