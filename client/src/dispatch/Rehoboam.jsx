@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
+import { axisRadialInner } from "d3-radial-axis";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
 import rehoboamStyles from "./rehoboam.module.scss";
 import liveStyles from "./live.module.scss";
@@ -10,6 +11,7 @@ export function Rehoboam({ area }) {
   const { filteredByArea } = useContext(TweetsContext);
   const [svgPath, setSvgPath] = useState(null);
   const [live, setLive] = useState(null);
+  const axisRef = useRef(null);
 
   const radius = 100;
   const margin = 30,
@@ -31,7 +33,7 @@ export function Rehoboam({ area }) {
 
     console.log("Rehoboam/extent", extent);
 
-    const dateFormatter = d3.timeFormat("%I%p"); // https://github.com/d3/d3-time-format#locale_format
+    const dateFormatter = d3.timeFormat("%-I%p"); // https://github.com/d3/d3-time-format#locale_format
 
     // ==================
 
@@ -50,8 +52,6 @@ export function Rehoboam({ area }) {
 
     const radialGen = d3.lineRadial().curve(d3.curveCardinal.tension(0.4));
     const path = radialGen(radialData);
-    console.log("Rehoboam/data", radialData);
-    // console.log("Rehoboam/path", path);
 
     setSvgPath(path);
 
@@ -63,13 +63,23 @@ export function Rehoboam({ area }) {
       cy: r * -Math.cos(theta),
       r: 5,
     });
+
+    const angleScale = d3
+      .scaleLinear()
+      .domain(extent)
+      .range([0, 2 * Math.PI]);
+    const HOUR = 3600 * 1000;
+    const tickValues = [0, 12].map((h) => current.start + h * HOUR);
+    const axis = axisRadialInner(angleScale, radius)
+      .tickFormat(dateFormatter)
+      .tickSize(0)
+      .tickValues(tickValues); // for some reason d3.timeHour.every() doesn't work here
+    d3.select(axisRef.current).call(axis);
   }, [filteredByArea]);
 
-  if (!svgPath) {
-    return null;
-  }
-
-  const total = currentInterval(filteredByArea).values.length;
+  const total = filteredByArea.length
+    ? currentInterval(filteredByArea).values.length
+    : 0;
   const text = area || "Seattle";
 
   return (
@@ -79,6 +89,7 @@ export function Rehoboam({ area }) {
       </div>
       <svg className={rehoboamStyles.svg} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin + radius},${margin + radius})`}>
+          <g className={rehoboamStyles.axis} ref={axisRef} />
           <circle
             cx={0}
             cy={0}
@@ -87,13 +98,15 @@ export function Rehoboam({ area }) {
             stroke="white"
             strokeWidth={1}
           />
-          <path
-            className={rehoboamStyles.line}
-            d={svgPath}
-            fill="none"
-            stroke="red"
-            stroke-width="3"
-          />
+          {svgPath && (
+            <path
+              className={rehoboamStyles.line}
+              d={svgPath}
+              fill="none"
+              stroke="red"
+              strokeWidth="3"
+            />
+          )}
           {live && (
             <g className={liveStyles.live}>
               <circle {...live} />

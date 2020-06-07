@@ -17,3 +17,11 @@
 .line {
   stroke-opacity: 0.8;
 }
+
+.axis line {
+  stroke: $axis-color;
+}
+
+.axis text {
+  fill: $axis-color;
+}

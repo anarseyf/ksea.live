@@ -38,7 +38,7 @@ export function Histogram() {
       .domain([0, d3.max(bins, (b) => b.length)])
       .range([height, 0]);
 
-    const dateFormatter = d3.timeFormat("%I%p"); // https://github.com/d3/d3-time-format#locale_format
+    const dateFormatter = d3.timeFormat("%-I%p"); // https://github.com/d3/d3-time-format#locale_format
 
     const xAxis = d3
       .axisBottom()
