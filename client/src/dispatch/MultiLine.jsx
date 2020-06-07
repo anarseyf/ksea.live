@@ -49,6 +49,7 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
 
     const line = d3
       .line()
+      .curve(d3.curveCardinal.tension(0.4))
       .x((d) => xScale(d.x0))
       .y((d) => yScale(accessor(d)));
 

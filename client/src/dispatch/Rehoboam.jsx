@@ -25,9 +25,8 @@ export function Rehoboam({ area }) {
       return;
     }
 
-    console.log("Rehoboam/by area", filteredByArea);
-
     const current = currentInterval(filteredByArea);
+    console.log("Rehoboam/current", current);
     const bins = current.bins15;
     const extent = intervalExtent(current);
 
@@ -44,11 +43,12 @@ export function Rehoboam({ area }) {
     const toRadial = (timestamp, length) => {
       const fraction = (timestamp - start) / (end - start);
       const radians = 2 * Math.PI * fraction;
-      const disturbance = maxDisturbance * (length / maxLength);
+      const disturbance = maxLength ? maxDisturbance * (length / maxLength) : 0;
       return [radians, radius + disturbance];
     };
 
     const radialData = bins.map(({ x0, length }) => toRadial(x0, length));
+    console.log("REHOBOAM/radial data", radialData);
 
     const radialGen = d3.lineRadial().curve(d3.curveCardinal.tension(0.4));
     const path = radialGen(radialData);
@@ -56,6 +56,7 @@ export function Rehoboam({ area }) {
     setSvgPath(path);
 
     const now = +new Date();
+    console.log("REHOBOAM/bins".bins);
     const lastBin = bins[bins.length - 1];
     const [theta, r] = toRadial(now, lastBin.length);
     setLive({
