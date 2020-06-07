@@ -42,11 +42,8 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   const activeArea = hoverArea || area;
   // console.log("MAP/active area", activeArea);
 
-  const highlightFilter = ({ properties: { GEOID10 } }) =>
-    GEOID10 === activeArea;
-
   const renderFilter = ({ properties: { GEOID10 } }) =>
-    activeArea ? GEOID10 === activeArea : true;
+    activeArea && GEOID10 === activeArea;
 
   const { features } = zipcodes;
   const rendered = features.filter(renderFilter);
@@ -106,12 +103,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
     >
       <TileLayer {...tileOptions} />
       {rendered.map((feature) => (
-        <GeoJSON
-          data={feature}
-          style={() =>
-            highlightFilter(feature) ? geojsonStyleActive : geojsonStyleHidden
-          }
-        />
+        <GeoJSON data={feature} style={geojsonStyleActive} />
       ))}
       {data.map((d) => (
         <Dot

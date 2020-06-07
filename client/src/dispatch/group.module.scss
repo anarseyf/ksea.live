@@ -2,23 +2,21 @@
 
 .container {
   display: block;
-  margin: 0.25em auto;
   color: $text-primary;
   text-align: center;
 }
-.header {
+.itemContainer {
+  border-left: 5px solid $transparent;
+  border-right: 5px solid $transparent;
+  padding-left: 1em;
+}
+.itemContainer:hover {
+  border-left-color: $border;
+  padding: 1em auto;
+}
+.itemHeader {
   text-align: left;
 }
-.item {
-  color: $text-primary;
-  border-left: 5px solid $transparent;
-  margin-top: 2em;
-}
-
 .item > * {
   vertical-align: top;
-}
-
-.item:hover {
-  border-color: $border;
 }

@@ -31,15 +31,16 @@ export function GroupByArea() {
 
   return (
     <div className={styles.container}>
-      <div>{groupTitle}</div>
+      <div className={styles.header}>{groupTitle}</div>
+
       {groupedByArea.map(({ key: area, intervals }) => (
-        <>
-          <div className={styles.header}>{area}</div>
-          <Link
-            to={`${area}`}
-            onMouseEnter={() => handleMouseEnter(area)}
-            onMouseLeave={handleMouseLeave}
-          >
+        <div
+          className={styles.itemContainer}
+          onMouseEnter={() => handleMouseEnter(area)}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className={styles.itemHeader}>{area}</div>
+          <Link to={`${area}`}>
             <div className={styles.item}>
               <AreaShape area={area} />
 
@@ -51,7 +52,7 @@ export function GroupByArea() {
               )}
             </div>
           </Link>
-        </>
+        </div>
       ))}
     </div>
   );

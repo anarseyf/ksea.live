@@ -10,10 +10,10 @@ import { Rehoboam } from "./Rehoboam";
 export function DispatchAll() {
   return (
     <TweetsProvider>
-      <Map />
-      {/* <Rehoboam />
+      <Rehoboam />
       <Header />
-      <Tweets /> */}
+      <Tweets />
+      <Map />
       {/* <GroupByType cumulative={true} /> */}
       <GroupByArea />
     </TweetsProvider>
