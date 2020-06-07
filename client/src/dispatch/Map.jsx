@@ -30,7 +30,7 @@ const geojsonStyleHidden = {
 };
 
 export function Map({ area, tileOptions = MapOptions.Default }) {
-  const [user] = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { groupedByType } = useContext(TweetsContext);
 
   if (!groupedByType.length) {

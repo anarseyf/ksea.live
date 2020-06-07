@@ -6,3 +6,11 @@
   color: $text-primary;
   text-align: center;
 }
+.item {
+  border-bottom: 1px solid $transparent;
+}
+
+.item:hover {
+  color: $text-primary;
+  border-color: $border;
+}

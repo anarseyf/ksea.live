@@ -6,7 +6,7 @@ import { UserContext, UserContextKeys } from "./UserProvider";
 const iconSize = 25;
 
 export function Tweet({ tweet }) {
-  const [user, setSelection] = useContext(UserContext);
+  const { user, setSelection } = useContext(UserContext);
   const selectedTweet = user[UserContextKeys.SelectedTweet];
   const [isSelected, setIsSelected] = useState(false);
   const [legend] = useLegend();

@@ -15,7 +15,7 @@ const useUser = () => {
     setUser({ ...user, [key]: value });
   };
 
-  return [user, setSelection];
+  return { user, setSelection };
 };
 
 export const UserProvider = ({ children }) => {
