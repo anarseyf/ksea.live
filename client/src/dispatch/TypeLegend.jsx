@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./legend.module.scss";
 import * as d3 from "d3";
 
-export function TypeLegend({ legend = [], title, showLabels }) {
+export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
   if (!legend) {
     return null;
   }
@@ -19,14 +19,13 @@ export function TypeLegend({ legend = [], title, showLabels }) {
     <div
       className={`${styles.container} ${showLabels ? styles.withLabels : ""}`}
     >
-      {title && (
-        <div className={styles.header}>
-          {typeof total === "number" && (
-            <div className={styles.total}>{total}</div>
-          )}
-          <div className={styles.title}>{title}</div>
-        </div>
-      )}
+      {title ||
+        (showTotal && (
+          <div className={styles.header}>
+            {showTotal && <div className={styles.total}>{total}</div>}
+            {title && <div className={styles.title}>{title}</div>}
+          </div>
+        ))}
       <div className={styles.body}>
         {legend.map((d) => (
           <div className={styles.item}>

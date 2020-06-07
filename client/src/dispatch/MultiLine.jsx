@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import chartStyles from "./chart.module.scss";
-import liveStyles from "./live.module.scss";
+import svgStyles from "./svg.module.scss";
 import { intervalExtent } from "../utils";
 
 export function MultiLine({
@@ -95,23 +95,21 @@ export function MultiLine({
       <svg className={chartStyles.chart} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g
-            className={chartStyles.axis}
+            className={svgStyles.axis}
             ref={xAxisRef}
             transform={`translate(0,${height})`}
           />
-          <g className={chartStyles.axis} ref={yAxisRef} />
+          <g className={svgStyles.axis} ref={yAxisRef} />
           <g>
             {svgData.map((d, i) => (
               <path
+                className={`${svgStyles.path} ${i ? "" : svgStyles.highlight}`}
                 d={d.path}
-                stroke={i ? "deepskyblue" : "orangered"} // TODO use css module
-                strokeWidth={i ? 1 : 3}
-                fill="none"
               />
             ))}
           </g>
           {live && (
-            <g className={liveStyles.live}>
+            <g className={svgStyles.live}>
               <circle {...live} />
             </g>
           )}

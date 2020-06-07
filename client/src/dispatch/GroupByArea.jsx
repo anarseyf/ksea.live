@@ -48,6 +48,7 @@ export function GroupByArea() {
               {legends[area] && (
                 <TypeLegend
                   legend={legends[area][GroupByOptions.IncidentType]}
+                  showTotal={true}
                 />
               )}
             </div>

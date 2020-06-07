@@ -1,0 +1,40 @@
+@import "../colors.scss";
+
+.axis {
+  color: $axis-color;
+}
+.axis line {
+  stroke: $axis-color;
+}
+.axis text {
+  fill: $axis-color;
+}
+.path {
+  stroke-linecap: round;
+  stroke: $line-color;
+  stroke-width: 1;
+  fill: none;
+}
+.highlight {
+  stroke: $highlight;
+  stroke-width: 3;
+}
+
+.live {
+  animation: pulse 3s infinite ease-in-out;
+}
+.live circle {
+  fill: $live;
+  stroke: none;
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}

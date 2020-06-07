@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
-import styles from "./chart.module.scss";
+import chartStyles from "./chart.module.scss";
+import svgStyles from "./svg.module.scss";
 import { intervalExtent } from "../utils";
 
 export function Histogram() {
@@ -69,8 +70,8 @@ export function Histogram() {
   }, [filteredByArea]);
 
   return (
-    <div className={styles.container}>
-      <svg className={styles.svg} width={svgWidth} height={svgHeight}>
+    <div className={chartStyles.container}>
+      <svg className={chartStyles.svg} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           {svgData.map((d) => (
             <rect
@@ -84,12 +85,12 @@ export function Histogram() {
           ))}
         </g>
         <g
-          className={styles.axis}
+          className={svgStyles.axis}
           ref={xAxisRef}
           transform={`translate(${margin.left},${margin.top + height})`}
         />
         <g
-          className={styles.axis}
+          className={svgStyles.axis}
           ref={yAxisRef}
           transform={`translate(${margin.left},${margin.top})`}
         />

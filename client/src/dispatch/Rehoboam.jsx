@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { axisRadialInner } from "d3-radial-axis";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
-import rehoboamStyles from "./rehoboam.module.scss";
-import liveStyles from "./live.module.scss";
 import { intervalExtent } from "../utils";
 import { Topline } from "./Topline";
+import rehoboamStyles from "./rehoboam.module.scss";
+import svgStyles from "./svg.module.scss";
 
 export function Rehoboam({ area }) {
   const { filteredByArea } = useContext(TweetsContext);
@@ -90,7 +90,7 @@ export function Rehoboam({ area }) {
       </div>
       <svg className={rehoboamStyles.svg} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin + radius},${margin + radius})`}>
-          <g className={rehoboamStyles.axis} ref={axisRef} />
+          <g className={svgStyles.axis} ref={axisRef} />
           <circle
             className={rehoboamStyles.circle}
             cx={0}
@@ -101,15 +101,12 @@ export function Rehoboam({ area }) {
           />
           {svgPath && (
             <path
-              className={rehoboamStyles.line}
+              className={`${svgStyles.path} ${svgStyles.highlight} ${rehoboamStyles.path}`}
               d={svgPath}
-              fill="none"
-              stroke="red"
-              strokeWidth="3"
             />
           )}
           {live && (
-            <g className={liveStyles.live}>
+            <g className={svgStyles.live}>
               <circle {...live} />
             </g>
           )}
