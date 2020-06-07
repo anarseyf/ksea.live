@@ -11,6 +11,7 @@ import {
   tweetsByArea,
   tweetsForArea,
   dataPath,
+  sortByTotal,
 } from "./dispatchHelpers";
 import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 
@@ -58,6 +59,19 @@ router.get("/tweets", allTweetsController);
 router.get("/tweets/after/:mostRecent?", allTweetsController);
 router.get("/tweets/seattle", allTweetsController);
 router.get("/tweets/seattle/after/:mostRecent?", allTweetsController);
+
+const byAreaController = async (req, res, next) => {
+  try {
+    const byArea = await tweetsByArea(req.params.mostRecent);
+    const result = byArea.map(groupByInterval).sort(sortByTotal);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error });
+  }
+};
+router.get("/tweets/byArea", byAreaController);
+router.get("/tweets/byArea/after/:mostRecent?", byAreaController);
 
 const byTypeController = async (req, res, next) => {
   try {

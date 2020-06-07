@@ -21,6 +21,7 @@ export function MultiLine({ intervals = [], title, showCumulative }) {
     showCumulative ? cumulative : length;
 
   useEffect(() => {
+    // TODO - no need for useEffect?
     if (!intervals.length) {
       return;
     }

@@ -43,17 +43,14 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   const activeArea = hoverArea || area;
   // console.log("MAP/active area", activeArea);
 
-  const selectedAreaFilter = ({ properties: { GEOID10 } }) =>
-    area ? GEOID10 === area : true;
+  const highlightFilter = ({ properties: { GEOID10 } }) =>
+    GEOID10 === activeArea;
 
-  const activeAreaFilter = ({ properties: { GEOID10 } }) =>
+  const renderFilter = ({ properties: { GEOID10 } }) =>
     activeArea ? GEOID10 === activeArea : true;
 
-  const { features, ...rest } = zipcodes;
-  const geojson = {
-    features: features.filter(selectedAreaFilter),
-    ...rest,
-  };
+  const { features } = zipcodes;
+  const rendered = features.filter(renderFilter);
 
   if (activeArea) {
     zoom = defaultZoom + 1;
@@ -64,12 +61,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
 
   const center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : activeArea
-    ? centroid(geojson.features.filter(activeAreaFilter))
-    : centroid(geojson.features.filter(selectedAreaFilter));
-
-  const highlightedAreaFilter = (f) =>
-    activeArea ? activeAreaFilter(f) : selectedAreaFilter(f);
+    : centroid(rendered);
 
   console.log("MAP/center", center);
 
@@ -102,9 +94,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
       : Appearance.Normal;
   };
 
-  console.log(
-    `MAP/rendering with ${data.length} dots, ${geojson.features.length} geo`
-  );
+  console.log(`MAP/rendering with ${data.length} dots, ${rendered.length} geo`);
 
   return (
     <LeafletMap
@@ -116,13 +106,11 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />
-      {geojson.features.map((feature) => (
+      {rendered.map((feature) => (
         <GeoJSON
           data={feature}
           style={() =>
-            highlightedAreaFilter(feature)
-              ? geojsonStyleActive
-              : geojsonStyleHidden
+            highlightFilter(feature) ? geojsonStyleActive : geojsonStyleHidden
           }
         />
       ))}

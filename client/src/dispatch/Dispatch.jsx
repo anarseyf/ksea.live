@@ -1,5 +1,4 @@
 import React from "react";
-import { TweetsProvider } from "./TweetsProvider";
 import { UserProvider } from "./UserProvider";
 import styles from "./dispatch.module.scss";
 

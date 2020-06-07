@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import {
   getTweets,
   getTweetsForArea,
+  getTweetsByArea,
   getTweetsByType,
   getTweetsByAreaByType,
   getMostRecentId,
@@ -41,6 +42,7 @@ const useTweets = (filters = {}) => {
   const [allTweets, setAllTweets] = useState([]);
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [groupedByType, setGroupedByType] = useState([]);
+  const [groupedByArea, setGroupedByArea] = useState([]);
   const [groupedByAreaByType, setGroupedByAreaByType] = useState([]);
 
   useEffect(() => {
@@ -57,6 +59,11 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
+      const grouped = await getTweetsByArea();
+      setGroupedByArea(grouped);
+    })();
+
+    (async () => {
       const grouped = await getTweetsByType();
       setGroupedByType(grouped);
     })();
@@ -70,6 +77,7 @@ const useTweets = (filters = {}) => {
   return {
     allTweets,
     filteredByArea,
+    groupedByArea,
     groupedByType,
     groupedByAreaByType,
   };

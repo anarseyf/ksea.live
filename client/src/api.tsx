@@ -17,6 +17,10 @@ export async function getTweetsForArea(area: string) {
   return getByAPI(`dispatch/tweets/${area}`);
 }
 
+export async function getTweetsByArea() {
+  return getByAPI(`dispatch/tweets/byArea`);
+}
+
 export async function getTweetsByType() {
   return getByAPI(`dispatch/tweets/byType`);
 }

@@ -17,11 +17,12 @@ $transparent: rgba(0, 0, 0, 0);
 $twitter-main: #00acee;
 $twitter-darkgray: #657786;
 $dark-bg: #3a414e;
-$selected-bg: #485366;
+$selected-bg: slategray;
+$border: slategray;
 $live: red;
 
-$body-bg: $jawg-light;
-$body-color: $body-color-light;
-$text-primary: $text-primary-light;
-$text-secondary: $text-secondary-light;
-$axis-color: $axis-color-light;
+$body-bg: $jawg-dark;
+$body-color: $body-color-dark;
+$text-primary: $text-primary-dark;
+$text-secondary: $text-secondary-dark;
+$axis-color: $axis-color-dark;

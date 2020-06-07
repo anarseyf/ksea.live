@@ -115,6 +115,12 @@ const addOffsets = (intervals) => {
   return result;
 };
 
+const addTotals = ({ values, ...rest }) => ({
+  values,
+  total: values.length,
+  ...rest,
+});
+
 const addHistograms = ({ start, end, offset, values, ...rest }) => {
   const extent = [start + offset, end + offset];
   return {
@@ -136,7 +142,7 @@ const trimToNow = (bins) => {
 export const groupByInterval = ({ values, ...rest }) => {
   let intervals = groupBy(GroupByOptions.TimeInterval, values);
   intervals = intervals.map(addStartEnd);
-  intervals = addOffsets(intervals).map(addHistograms);
+  intervals = addOffsets(intervals).map(addTotals).map(addHistograms);
 
   intervals[0].bins = trimToNow(intervals[0].bins);
   intervals[0].bins15 = trimToNow(intervals[0].bins15);
@@ -146,3 +152,6 @@ export const groupByInterval = ({ values, ...rest }) => {
     intervals,
   };
 };
+
+export const sortByTotal = (a, b) =>
+  b.intervals[0].total - a.intervals[0].total;

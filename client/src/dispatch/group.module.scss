@@ -1,0 +1,8 @@
+@import "../colors.scss";
+
+.container {
+  display: block;
+  margin: 0.25em auto;
+  color: $text-primary;
+  text-align: center;
+}
