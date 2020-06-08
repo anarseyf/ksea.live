@@ -1,6 +1,4 @@
 const rp = require("request-promise");
-const fs = require("fs");
-const util = require("util");
 const router = require("express").Router();
 
 import { GroupByOptions, groupBy } from "./server/groupby";
@@ -13,12 +11,11 @@ import {
   dataPath,
   sortByTotal,
 } from "./dispatchHelpers";
-import { readJSONAsync } from "./scripts/dispatch/fileUtils";
+import { readJSONAsync, readdirAsync } from "./scripts/dispatch/fileUtils";
 
 const mostRecentController = async (req, res, next) => {
   let result;
   try {
-    const readdirAsync = util.promisify(fs.readdir);
     const dir = await readdirAsync(dataPath, { withFileTypes: true });
     const fileNames = dir
       .map(({ name }) => name)
@@ -128,6 +125,7 @@ const mapsController = async (req, res, next) => {
 router.get("/maps/:z/:x/:y", mapsController);
 
 router.get("/seattle-gov", async (req, res, next) => {
+  // TODO - delete
   try {
     const options = {
       uri: "https://data.seattle.gov/resource/fire-911.json",
@@ -145,19 +143,6 @@ router.get("/seattle-gov", async (req, res, next) => {
       const latency = (end - start) / 1000;
       res.json(json);
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ error });
-  }
-});
-
-router.get("/static", async (req, res, next) => {
-  try {
-    const readFile = util.promisify(fs.readFile);
-    const file = await readFile("./datasets/seattle911.json");
-    const json = JSON.parse(file);
-    const LIMIT = 2;
-    res.json(json.slice(0, LIMIT));
   } catch (error) {
     console.error(error);
     res.status(500).send({ error });

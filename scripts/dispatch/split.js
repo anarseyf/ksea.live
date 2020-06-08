@@ -12,7 +12,7 @@ const resolve = () => {
   const tick = async () => {
     try {
       const tweets = await readJSONAsync(
-        pathToScriptsJson("resolved.json"),
+        pathToScriptsJson("resolved-nhoods.json"),
         []
       );
       const splits = {};
@@ -31,7 +31,7 @@ const resolve = () => {
           }
         );
       });
-      await saveJSONAsync(pathToScriptsJson("resolved.json"), []);
+      await saveJSONAsync(pathToScriptsJson("resolved-nhoods.json"), []);
       console.log(
         `split > wrote ${tweets.length} items to ${
           Object.keys(splits).length

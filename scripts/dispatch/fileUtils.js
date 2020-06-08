@@ -35,6 +35,7 @@ export const touch = (fileName) => {
 };
 
 export const writeWithLockAsync = async (
+  // TODO - does it work at all?
   fileToWrite,
   writeContent,
   fileToEmpty,
@@ -97,6 +98,8 @@ export const appendJSONAsync = async (
 
   return result.length;
 };
+
+export const readdirAsync = util.promisify(fs.readdir);
 
 const sortAndDedupe = (tweets) => {
   const sorted = tweets.sort((a, b) => b.id_str.localeCompare(a.id_str));
