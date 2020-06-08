@@ -2,27 +2,31 @@ import * as d3 from "d3";
 import zipCodes from "./zip-codes.json";
 import nhoods from "./nhoods.json";
 
-export const areasGeojson = nhoods;
+const nhoodProp = "nhood";
+const zipcodeProp = "GEOID10";
 
-const byArea = () => {
+const byArea = (features, prop) => {
   const map = {};
-  areasGeojson.features.forEach((feature) => {
-    map[feature.properties.GEOID10] = feature;
+  features.forEach((feature) => {
+    const key = feature.properties[prop];
+    const list = map[key] || [];
+    list.push(feature);
+    map[key] = list;
   });
   return map;
 };
 
-const featuresByArea = byArea();
-console.log("geojson/by area", featuresByArea);
-export const featureForArea = (area) => featuresByArea[area];
+const zipcodeFeaturesByArea = byArea(zipCodes.features, zipcodeProp);
+const nhoodFeaturesByArea = byArea(nhoods.features, nhoodProp);
 
-export const pathForArea = (area, { width = 100, height = 100 } = {}) => {
-  // const coordinates = coordinatesByArea[area];
-  // const latExtent = d3.extent(coordinates, ([_,lat])=>lat);
-  // const longExtent = d3.extent(coordinates,([long])=>long);
-  // const xScale = d3.scaleLinear().domain(latExtent).range([height, 0]);
-  // const yScale = d3.scaleLinear().domain(longExtent).range([height, 0]);
-  return null;
+const featuresForZip = (zip) => zipcodeFeaturesByArea[zip];
+const featuresForNhood = (nhood) => nhoodFeaturesByArea[nhood];
+
+export const featuresForArea = featuresForNhood;
+
+export const areas = {
+  geojson: nhoods,
+  areaProp: nhoodProp,
 };
 
 const defaultCentroid = [47.60912, -122.34494];

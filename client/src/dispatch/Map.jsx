@@ -4,7 +4,7 @@ import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MapOptions } from "./mapOptions";
-import { centroid, areasGeojson } from "./geojson";
+import { centroid, areas } from "./geojson";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
 
@@ -36,16 +36,18 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
     return null;
   }
 
+  const { geojson, areaProp } = areas;
+
   const selectedTweet = user[UserContextKeys.SelectedTweet];
   const hoverArea = user[UserContextKeys.HoverArea];
 
   const activeArea = hoverArea || area;
   // console.log("MAP/active area", activeArea);
 
-  const renderFilter = ({ properties: { GEOID10 } }) =>
-    activeArea && GEOID10 === activeArea;
+  const renderFilter = ({ properties }) =>
+    activeArea && properties[areaProp] === activeArea;
 
-  const { features } = areasGeojson;
+  const { features } = geojson;
   const rendered = features.filter(renderFilter);
 
   if (activeArea) {

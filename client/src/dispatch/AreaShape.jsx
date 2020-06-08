@@ -1,8 +1,8 @@
 import React from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
-import { pathForArea, featureForArea, centroid } from "./geojson";
-import styles from "./area.module.scss";
+import { featuresForArea, centroid } from "./geojson";
 import { MapOptions } from "./mapOptions";
+import styles from "./area.module.scss";
 
 const geojsonStyle = {
   color: "orangered",
@@ -12,13 +12,16 @@ const geojsonStyle = {
 };
 
 export const AreaShape = ({ area }) => {
-  const feature = featureForArea(area);
-  if (!feature) {
-    console.warn("AreaShape/no feature for area", area);
+  const features = featuresForArea(area);
+  if (!features.length) {
+    console.warn("AreaShape/no features for area", area);
     return null;
   }
 
-  const center = centroid([feature]);
+  console.log(`AREA/${area} -> `, features);
+
+  const center = centroid(features);
+  console.log(`AREA/center: ${area} -> `, center);
   const zoom = 11;
   const tileOptions = MapOptions.NoLabels;
 
@@ -35,7 +38,7 @@ export const AreaShape = ({ area }) => {
       keyboard={false}
     >
       <TileLayer {...tileOptions} />
-      <GeoJSON data={feature} style={geojsonStyle} />
+      <GeoJSON data={features} style={geojsonStyle} />
     </LeafletMap>
 
     // return (<svg className={styles.container}>

@@ -32,7 +32,7 @@ export function GroupByArea() {
     <div className={styles.container}>
       <div className={styles.header}>{groupTitle}</div>
 
-      {groupedByArea.map(({ key: area, intervals }) => (
+      {groupedByArea.slice(0, 1).map(({ key: area, intervals }) => (
         <div
           className={styles.itemContainer}
           onMouseEnter={() => handleMouseEnter(area)}

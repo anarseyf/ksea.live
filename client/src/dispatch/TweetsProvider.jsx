@@ -60,6 +60,7 @@ const useTweets = (filters = {}) => {
 
     (async () => {
       const grouped = await getTweetsByArea();
+      console.log("PROVIDER", grouped);
       setGroupedByArea(grouped);
     })();
 
