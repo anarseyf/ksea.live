@@ -1,5 +1,936 @@
 [
   {
+    "id_str": "1269852161569153024",
+    "text": "Aid Response - 11532 19th Ave Ne - L5 - 9:39",
+    "created_at": "Mon Jun 08 04:42:02 +0000 2020",
+    "derived": {
+      "lat": 47.7131079,
+      "long": -122.3081195,
+      "timestamp": 1591591322000,
+      "description": "Aid Response",
+      "address": "11532 19th Ave Ne,Seattle,WA",
+      "units": "L5",
+      "time": "9:39",
+      "resolvedAddress": "11532 19th Ave NE, Seattle, WA 98125, USA",
+      "provider": "google",
+      "zip": "98125",
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "1269852160789004289",
+    "text": "Dumpster Fire W/Exp. - Ne 56th St / Roosevelt Way Ne - B6 E31 L9 MAR5 SAFT2 - 9:38",
+    "created_at": "Mon Jun 08 04:42:02 +0000 2020",
+    "derived": {
+      "lat": 47.6694308,
+      "long": -122.317358,
+      "timestamp": 1591591322000,
+      "description": "Dumpster Fire W/Exp.",
+      "address": "Ne 56th St / Roosevelt Way Ne,Seattle,WA",
+      "units": "B6 E31 L9 MAR5 SAFT2",
+      "time": "9:38",
+      "resolvedAddress": "NE 56th St & Roosevelt Way NE, Seattle, WA 98105, USA",
+      "provider": "google",
+      "zip": "98105",
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "1269851406254604288",
+    "text": "Aid Response - 999 Hiawatha Pl S - E6 - 9:35",
+    "created_at": "Mon Jun 08 04:39:02 +0000 2020",
+    "derived": {
+      "lat": 47.593138,
+      "long": -122.308494,
+      "timestamp": 1591591142000,
+      "description": "Aid Response",
+      "address": "999 Hiawatha Pl S,Seattle,WA",
+      "units": "E6",
+      "time": "9:35",
+      "resolvedAddress": "999 Hiawatha Pl S, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "1269847630772940801",
+    "text": "Auto Fire Alarm - 2614 4th Av - E2 L4 - 9:21",
+    "created_at": "Mon Jun 08 04:24:02 +0000 2020",
+    "derived": {
+      "lat": 47.6176936,
+      "long": -122.3472986,
+      "timestamp": 1591590242000,
+      "description": "Auto Fire Alarm",
+      "address": "2614 4th Av,Seattle,WA",
+      "units": "E2 L4",
+      "time": "9:21",
+      "resolvedAddress": "2614 4th Ave, Seattle, WA 98121, USA",
+      "provider": "google",
+      "zip": "98121",
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "1269846878117597184",
+    "text": "Aid Response - 1320 14TH AV S - E13 - 9:15",
+    "created_at": "Mon Jun 08 04:21:03 +0000 2020",
+    "derived": {
+      "lat": 47.5908327,
+      "long": -122.314525,
+      "timestamp": 1591590063000,
+      "description": "Aid Response",
+      "address": "1320 14TH AV S,Seattle,WA",
+      "units": "E13",
+      "time": "9:15",
+      "resolvedAddress": "1320 14th Ave S, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "1269846877446569984",
+    "text": "Aid Response - 11223 8th Av Ne - E39 - 9:17",
+    "created_at": "Mon Jun 08 04:21:02 +0000 2020",
+    "derived": {
+      "lat": 47.7105001,
+      "long": -122.3209625,
+      "timestamp": 1591590062000,
+      "description": "Aid Response",
+      "address": "11223 8th Av Ne,Seattle,WA",
+      "units": "E39",
+      "time": "9:17",
+      "resolvedAddress": "11223 8th Ave NE, Seattle, WA 98125, USA",
+      "provider": "google",
+      "zip": "98125",
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "1269846122362781697",
+    "text": "Medic Response - 1586 Alki Ave Sw - M32 - 9:15",
+    "created_at": "Mon Jun 08 04:18:02 +0000 2020",
+    "derived": {
+      "lat": 47.58856189999999,
+      "long": -122.3947441,
+      "timestamp": 1591589882000,
+      "description": "Medic Response",
+      "address": "1586 Alki Ave Sw,Seattle,WA",
+      "units": "M32",
+      "time": "9:15",
+      "resolvedAddress": "1586 Alki Ave SW, Seattle, WA 98116, USA",
+      "provider": "google",
+      "zip": "98116",
+      "neighborhood": "Alki/Admiral",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "1269846121582559233",
+    "text": "4RED - 2 + 1 + 1 - 8443 48th Ave S - B5 E28 L12 - 9:15",
+    "created_at": "Mon Jun 08 04:18:02 +0000 2020",
+    "derived": {
+      "lat": 47.52660849999999,
+      "long": -122.2727542,
+      "timestamp": 1591589882000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "8443 48th Ave S,Seattle,WA",
+      "units": "B5 E28 L12",
+      "time": "9:15",
+      "resolvedAddress": "8443 48th Ave S, Seattle, WA 98118, USA",
+      "provider": "google",
+      "zip": "98118",
+      "neighborhood": "Rainier Beach",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "1269846120806723585",
+    "text": "Aid Response - 1320 14th Av S - E13 - 9:15",
+    "created_at": "Mon Jun 08 04:18:02 +0000 2020",
+    "derived": {
+      "lat": 47.5908327,
+      "long": -122.314525,
+      "timestamp": 1591589882000,
+      "description": "Aid Response",
+      "address": "1320 14th Av S,Seattle,WA",
+      "units": "E13",
+      "time": "9:15",
+      "resolvedAddress": "1320 14th Ave S, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "1269843102128365568",
+    "text": "Auto Fire Alarm - 1020 Ne 63rd St - E16 L9 - 9:02",
+    "created_at": "Mon Jun 08 04:06:02 +0000 2020",
+    "derived": {
+      "lat": 47.67441909999999,
+      "long": -122.3165628,
+      "timestamp": 1591589162000,
+      "description": "Auto Fire Alarm",
+      "address": "1020 Ne 63rd St,Seattle,WA",
+      "units": "E16 L9",
+      "time": "9:02",
+      "resolvedAddress": "1020 NE 63rd St, Seattle, WA 98115, USA",
+      "provider": "google",
+      "zip": "98115",
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "1269843101339856897",
+    "text": "Aid Response - 9455 27th Av Sw - E37 - 9:02",
+    "created_at": "Mon Jun 08 04:06:02 +0000 2020",
+    "derived": {
+      "lat": 47.5179725,
+      "long": -122.3677417,
+      "timestamp": 1591589162000,
+      "description": "Aid Response",
+      "address": "9455 27th Av Sw,Seattle,WA",
+      "units": "E37",
+      "time": "9:02",
+      "resolvedAddress": "9455 27th Ave SW, Seattle, WA 98126, USA",
+      "provider": "google",
+      "zip": "98126",
+      "neighborhood": "Roxhill/Westwood",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "1269840080711057410",
+    "text": "Automatic Fire Alarm Resd - 1920 7th Ave W - E20 L6 - 8:52",
+    "created_at": "Mon Jun 08 03:54:02 +0000 2020",
+    "derived": {
+      "lat": 47.63662679999999,
+      "long": -122.3659318,
+      "timestamp": 1591588442000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "1920 7th Ave W,Seattle,WA",
+      "units": "E20 L6",
+      "time": "8:52",
+      "resolvedAddress": "1920 7th Ave W, Seattle, WA 98119, USA",
+      "provider": "google",
+      "zip": "98119",
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "1269838571403382789",
+    "text": "Aid Response - 5024 43rd Ave S - E28 - 8:44",
+    "created_at": "Mon Jun 08 03:48:02 +0000 2020",
+    "derived": {
+      "lat": 47.5563325,
+      "long": -122.2793168,
+      "timestamp": 1591588082000,
+      "description": "Aid Response",
+      "address": "5024 43rd Ave S,Seattle,WA",
+      "units": "E28",
+      "time": "8:44",
+      "resolvedAddress": "5024 43rd Ave S, Seattle, WA 98118, USA",
+      "provider": "google",
+      "zip": "98118",
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "1269837816248389632",
+    "text": "Auto Fire Alarm - 520 Terry Ave - E6 L1 - 8:42",
+    "created_at": "Mon Jun 08 03:45:02 +0000 2020",
+    "derived": {
+      "lat": 47.6058032,
+      "long": -122.3229811,
+      "timestamp": 1591587902000,
+      "description": "Auto Fire Alarm",
+      "address": "520 Terry Ave,Seattle,WA",
+      "units": "E6 L1",
+      "time": "8:42",
+      "resolvedAddress": "520 Terry Ave, Seattle, WA 98104, USA",
+      "provider": "google",
+      "zip": "98104",
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "1269836307481743361",
+    "text": "MVI - Motor Vehicle Incident - 4th Ave S / S Jackson St - E10 - 8:36",
+    "created_at": "Mon Jun 08 03:39:02 +0000 2020",
+    "derived": {
+      "lat": 47.5991984,
+      "long": -122.3290272,
+      "timestamp": 1591587542000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "4th Ave S / S Jackson St,Seattle,WA",
+      "units": "E10",
+      "time": "8:36",
+      "resolvedAddress": "S Jackson St & 4th Ave S, Seattle, WA 98104, USA",
+      "provider": "google",
+      "zip": "98104",
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "1269836306764496903",
+    "text": "Aid Response - 3610 33rd Av S - E30 - 8:36",
+    "created_at": "Mon Jun 08 03:39:02 +0000 2020",
+    "derived": {
+      "lat": 47.5711348,
+      "long": -122.2908116,
+      "timestamp": 1591587542000,
+      "description": "Aid Response",
+      "address": "3610 33rd Av S,Seattle,WA",
+      "units": "E30",
+      "time": "8:36",
+      "resolvedAddress": "3610 33rd Ave S, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "1269835552574054400",
+    "text": "Aid Response - 1311 S Massachusetts St - E13 - 8:34",
+    "created_at": "Mon Jun 08 03:36:02 +0000 2020",
+    "derived": {
+      "lat": 47.5882132,
+      "long": -122.3156016,
+      "timestamp": 1591587362000,
+      "description": "Aid Response",
+      "address": "1311 S Massachusetts St,Seattle,WA",
+      "units": "E13",
+      "time": "8:34",
+      "resolvedAddress": "1311 S Massachusetts St, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "1269835551907160064",
+    "text": "Scenes Of Violence 14 - 11th Ave / E Pike St - A10 A25 B2 B5 E25 L10 M17 M28 M44 SAFT2 - 8:35",
+    "created_at": "Mon Jun 08 03:36:02 +0000 2020",
+    "derived": {
+      "lat": 47.6140955,
+      "long": -122.3181216,
+      "timestamp": 1591587362000,
+      "description": "Scenes Of Violence 14",
+      "address": "11th Ave / E Pike St,Seattle,WA",
+      "units": "A10 A25 B2 B5 E25 L10 M17 M28 M44 SAFT2",
+      "time": "8:35",
+      "resolvedAddress": "E Pike St & 11th Ave, Seattle, WA 98122, USA",
+      "provider": "google",
+      "zip": "98122",
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "1269832531693711365",
+    "text": "Scenes Of Violence 7 - 11th Ave / E Pine St - B2 - 8:20",
+    "created_at": "Mon Jun 08 03:24:02 +0000 2020",
+    "derived": {
+      "lat": 47.6152697,
+      "long": -122.3181548,
+      "timestamp": 1591586642000,
+      "description": "Scenes Of Violence 7",
+      "address": "11th Ave / E Pine St,Seattle,WA",
+      "units": "B2",
+      "time": "8:20",
+      "resolvedAddress": "E Pine St & 11th Ave, Seattle, WA 98122, USA",
+      "provider": "google",
+      "zip": "98122",
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "1269832531031011330",
+    "text": "Aid Response - 2219 2nd Av - A4 - 8:21",
+    "created_at": "Mon Jun 08 03:24:02 +0000 2020",
+    "derived": {
+      "lat": 47.613514,
+      "long": -122.3452097,
+      "timestamp": 1591586642000,
+      "description": "Aid Response",
+      "address": "2219 2nd Av,Seattle,WA",
+      "units": "A4",
+      "time": "8:21",
+      "resolvedAddress": "2219 2nd Ave, Seattle, WA 98121, USA",
+      "provider": "google",
+      "zip": "98121",
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "1269832530372579328",
+    "text": "Aid Response - 13000 Lake City Way Ne - E39 - 8:22",
+    "created_at": "Mon Jun 08 03:24:02 +0000 2020",
+    "derived": {
+      "lat": 47.72391529999999,
+      "long": -122.291561,
+      "timestamp": 1591586642000,
+      "description": "Aid Response",
+      "address": "13000 Lake City Way Ne,Seattle,WA",
+      "units": "E39",
+      "time": "8:22",
+      "resolvedAddress": "13000 Lake City Way NE, Seattle, WA 98125, USA",
+      "provider": "google",
+      "zip": "98125",
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "1269831778077990913",
+    "text": "Aid Response - 119 W Roy St - E8 - 8:18",
+    "created_at": "Mon Jun 08 03:21:02 +0000 2020",
+    "derived": {
+      "lat": 47.6255799,
+      "long": -122.3589988,
+      "timestamp": 1591586462000,
+      "description": "Aid Response",
+      "address": "119 W Roy St,Seattle,WA",
+      "units": "E8",
+      "time": "8:18",
+      "resolvedAddress": "119 W Roy St, Seattle, WA 98119, USA",
+      "provider": "google",
+      "zip": "98119",
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "1269831777419395077",
+    "text": "Aid Response - 1420 Western Av - A5 - 8:15",
+    "created_at": "Mon Jun 08 03:21:02 +0000 2020",
+    "derived": {
+      "lat": 47.60802109999999,
+      "long": -122.3404907,
+      "timestamp": 1591586462000,
+      "description": "Aid Response",
+      "address": "1420 Western Av,Seattle,WA",
+      "units": "A5",
+      "time": "8:15",
+      "resolvedAddress": "1420 Western Ave, Seattle, WA 98101, USA",
+      "provider": "google",
+      "zip": "98101",
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "1269831776752582657",
+    "text": "Aid Response - 1418 Nw 65th St - E18 - 8:18",
+    "created_at": "Mon Jun 08 03:21:02 +0000 2020",
+    "derived": {
+      "lat": 47.676859,
+      "long": -122.374338,
+      "timestamp": 1591586462000,
+      "description": "Aid Response",
+      "address": "1418 Nw 65th St,Seattle,WA",
+      "units": "E18",
+      "time": "8:18",
+      "resolvedAddress": "1418 NW 65th St, Seattle, WA 98117, USA",
+      "provider": "google",
+      "zip": "98117",
+      "neighborhood": "Whittier Heights",
+      "neighborhoodGroup": "Ballard"
+    }
+  },
+  {
+    "id_str": "1269828755855417344",
+    "text": "Aid Response - 77 S Washington St - A5 - 8:05",
+    "created_at": "Mon Jun 08 03:09:02 +0000 2020",
+    "derived": {
+      "lat": 47.6006697,
+      "long": -122.3352848,
+      "timestamp": 1591585742000,
+      "description": "Aid Response",
+      "address": "77 S Washington St,Seattle,WA",
+      "units": "A5",
+      "time": "8:05",
+      "resolvedAddress": "77 S Washington St, Seattle, WA 98104, USA",
+      "provider": "google",
+      "zip": "98104",
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "1269828755171786752",
+    "text": "Aid Response - 5717 28th Ave Ne - E38 - 8:07",
+    "created_at": "Mon Jun 08 03:09:02 +0000 2020",
+    "derived": {
+      "lat": 47.6705873,
+      "long": -122.2976229,
+      "timestamp": 1591585742000,
+      "description": "Aid Response",
+      "address": "5717 28th Ave Ne,Seattle,WA",
+      "units": "E38",
+      "time": "8:07",
+      "resolvedAddress": "5717 28th Ave NE, Seattle, WA 98105, USA",
+      "provider": "google",
+      "zip": "98105",
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "1269821205609152512",
+    "text": "Aid Response - 6900 37th Av S - E28 - 7:34",
+    "created_at": "Mon Jun 08 02:39:02 +0000 2020",
+    "derived": {
+      "lat": 47.5402868,
+      "long": -122.2855523,
+      "timestamp": 1591583942000,
+      "description": "Aid Response",
+      "address": "6900 37th Av S,Seattle,WA",
+      "units": "E28",
+      "time": "7:34",
+      "resolvedAddress": "6900 37th Ave S, Seattle, WA 98118, USA",
+      "provider": "google",
+      "zip": "98118",
+      "neighborhood": "South Beacon Hill/NewHolly",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "1269818187744448512",
+    "text": "Water Rescue Response - 809 Lakeside Ave S - A14 B2 B5 E32 E5 E6 FIREBOAT FRB5 L3 L4 M1 M44 PTRL4 R1 SAFT2 - 7:24",
+    "created_at": "Mon Jun 08 02:27:02 +0000 2020",
+    "derived": {
+      "lat": 47.5954355,
+      "long": -122.2881348,
+      "timestamp": 1591583222000,
+      "description": "Water Rescue Response",
+      "address": "809 Lakeside Ave S,Seattle,WA",
+      "units": "A14 B2 B5 E32 E5 E6 FIREBOAT FRB5 L3 L4 M1 M44 PTRL4 R1 SAFT2",
+      "time": "7:24",
+      "resolvedAddress": "809 Lakeside Ave S, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "Madrona/Leschi",
+      "neighborhoodGroup": "Central"
+    }
+  },
+  {
+    "id_str": "1269816678956892160",
+    "text": "Aid Response - 4500 S OTHELLO ST - E28 - 7:16",
+    "created_at": "Mon Jun 08 02:21:02 +0000 2020",
+    "derived": {
+      "lat": 47.53705910000001,
+      "long": -122.2766951,
+      "timestamp": 1591582862000,
+      "description": "Aid Response",
+      "address": "4500 S OTHELLO ST,Seattle,WA",
+      "units": "E28",
+      "time": "7:16",
+      "resolvedAddress": "4500 S Othello St, Seattle, WA 98118, USA",
+      "provider": "google",
+      "zip": "98118",
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "1269816678193541125",
+    "text": "Rubbish Fire - Olson Pl Sw / Myers Way S - E26 - 7:16",
+    "created_at": "Mon Jun 08 02:21:02 +0000 2020",
+    "derived": {
+      "lat": 47.522272,
+      "long": -122.334894,
+      "timestamp": 1591582862000,
+      "description": "Rubbish Fire",
+      "address": "Olson Pl Sw / Myers Way S,Seattle,WA",
+      "units": "E26",
+      "time": "7:16",
+      "resolvedAddress": "Myers Way S & Olson Pl SW, Seattle, WA 98106, USA",
+      "provider": "google",
+      "zip": "98106",
+      "neighborhood": "Highland Park",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "1269815920668672000",
+    "text": "Automatic Fire Alarm Resd - 3512 Ne 97th St - E40 - 7:15",
+    "created_at": "Mon Jun 08 02:18:02 +0000 2020",
+    "derived": {
+      "lat": 47.69958219999999,
+      "long": -122.290038,
+      "timestamp": 1591582682000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "3512 Ne 97th St,Seattle,WA",
+      "units": "E40",
+      "time": "7:15",
+      "resolvedAddress": "3512 NE 97th St, Seattle, WA 98115, USA",
+      "provider": "google",
+      "zip": "98115",
+      "neighborhood": "Wedgwood/View Ridge",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "1269811392808443905",
+    "text": "Aid Response - 1st Ave Ne / Ne 130th St - A31 - 6:57",
+    "created_at": "Mon Jun 08 02:00:02 +0000 2020",
+    "derived": {
+      "lat": 47.723164,
+      "long": -122.32892,
+      "timestamp": 1591581602000,
+      "description": "Aid Response",
+      "address": "1st Ave Ne / Ne 130th St,Seattle,WA",
+      "units": "A31",
+      "time": "6:57",
+      "resolvedAddress": "NE 130th St & 1st Ave NE, Seattle, WA 98133, USA",
+      "provider": "google",
+      "zip": "98133",
+      "neighborhood": "Haller Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "1269808373278609409",
+    "text": "Aid Response - 1167 Republican St - A4 - 6:44",
+    "created_at": "Mon Jun 08 01:48:02 +0000 2020",
+    "derived": {
+      "lat": 47.6228521,
+      "long": -122.3333879,
+      "timestamp": 1591580882000,
+      "description": "Aid Response",
+      "address": "1167 Republican St,Seattle,WA",
+      "units": "A4",
+      "time": "6:44",
+      "resolvedAddress": "1167 Republican St, Seattle, WA 98109, USA",
+      "provider": "google",
+      "zip": "98109",
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "1269806862821724162",
+    "text": "Medic Response - 221 18th Av S - M10 - 6:39",
+    "created_at": "Mon Jun 08 01:42:02 +0000 2020",
+    "derived": {
+      "lat": 47.6003875,
+      "long": -122.3092827,
+      "timestamp": 1591580522000,
+      "description": "Medic Response",
+      "address": "221 18th Av S,Seattle,WA",
+      "units": "M10",
+      "time": "6:39",
+      "resolvedAddress": "221 18th Ave S, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "Judkins Park",
+      "neighborhoodGroup": "Central"
+    }
+  },
+  {
+    "id_str": "1269804598585364482",
+    "text": "Aid Response - 1931 Ne 145th St - E39 - 6:30",
+    "created_at": "Mon Jun 08 01:33:02 +0000 2020",
+    "derived": {
+      "lat": 47.7337257,
+      "long": -122.3079528,
+      "timestamp": 1591579982000,
+      "description": "Aid Response",
+      "address": "1931 Ne 145th St,Seattle,WA",
+      "units": "E39",
+      "time": "6:30",
+      "resolvedAddress": "1931 NE 145th St, Seattle, WA 98155, USA",
+      "provider": "google",
+      "zip": "98155",
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "1269803087201546240",
+    "text": "Automatic Fire Alarm Resd - 7909 8th Ave Sw - E11 - 6:23",
+    "created_at": "Mon Jun 08 01:27:02 +0000 2020",
+    "derived": {
+      "lat": 47.5316374,
+      "long": -122.3457891,
+      "timestamp": 1591579622000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "7909 8th Ave Sw,Seattle,WA",
+      "units": "E11",
+      "time": "6:23",
+      "resolvedAddress": "7909 8th Ave SW, Seattle, WA 98106, USA",
+      "provider": "google",
+      "zip": "98106",
+      "neighborhood": "Highland Park",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "1269803086429720576",
+    "text": "Aid Response - RAINIER AVE S / S MCCLELLAN ST - E30 - 6:23",
+    "created_at": "Mon Jun 08 01:27:02 +0000 2020",
+    "derived": {
+      "lat": 47.578351,
+      "long": -122.2981148,
+      "timestamp": 1591579622000,
+      "description": "Aid Response",
+      "address": "RAINIER AVE S / S MCCLELLAN ST,Seattle,WA",
+      "units": "E30",
+      "time": "6:23",
+      "resolvedAddress": "Rainier Ave S & S McClellan St, Seattle, WA 98144, USA",
+      "provider": "google",
+      "zip": "98144",
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "1269802333803810818",
+    "text": "Medic Response - 3813 Beach Dr Sw - E29 M32 - 6:21",
+    "created_at": "Mon Jun 08 01:24:02 +0000 2020",
+    "derived": {
+      "lat": 47.5696497,
+      "long": -122.4102411,
+      "timestamp": 1591579442000,
+      "description": "Medic Response",
+      "address": "3813 Beach Dr Sw,Seattle,WA",
+      "units": "E29 M32",
+      "time": "6:21",
+      "resolvedAddress": "3813 Beach Dr SW, Seattle, WA 98116, USA",
+      "provider": "google",
+      "zip": "98116",
+      "neighborhood": "Alki/Admiral",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "1269800822700998656",
+    "text": "Medic Response - 7742 East Marginal Way S - E27 M26 - 6:15",
+    "created_at": "Mon Jun 08 01:18:02 +0000 2020",
+    "derived": {
+      "lat": 47.5341824,
+      "long": -122.3122722,
+      "timestamp": 1591579082000,
+      "description": "Medic Response",
+      "address": "7742 East Marginal Way S,Seattle,WA",
+      "units": "E27 M26",
+      "time": "6:15",
+      "resolvedAddress": "3-825, 7742 E Marginal Way S, Seattle, WA 98108, USA",
+      "provider": "google",
+      "zip": "98108",
+      "neighborhood": "Georgetown",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "1269797803536125954",
+    "text": "Aid Response - 1550 N 115th St - A31 - 6:03",
+    "created_at": "Mon Jun 08 01:06:02 +0000 2020",
+    "derived": {
+      "lat": 47.7147302,
+      "long": -122.3371023,
+      "timestamp": 1591578362000,
+      "description": "Aid Response",
+      "address": "1550 N 115th St,Seattle,WA",
+      "units": "A31",
+      "time": "6:03",
+      "resolvedAddress": "1550 N 115th St, Seattle, WA 98133, USA",
+      "provider": "google",
+      "zip": "98133",
+      "neighborhood": "Haller Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "1269796292672335880",
+    "text": "Aid Response - 1410 E John St - A25 - 5:56",
+    "created_at": "Mon Jun 08 01:00:02 +0000 2020",
+    "derived": {
+      "lat": 47.6204958,
+      "long": -122.3132555,
+      "timestamp": 1591578002000,
+      "description": "Aid Response",
+      "address": "1410 E John St,Seattle,WA",
+      "units": "A25",
+      "time": "5:56",
+      "resolvedAddress": "1410 E John St, Seattle, WA 98112, USA",
+      "provider": "google",
+      "zip": "98112",
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "1269794028335267840",
+    "text": "Aid Response - 1423 1st Av - E5 - 5:45",
+    "created_at": "Mon Jun 08 00:51:02 +0000 2020",
+    "derived": {
+      "lat": 47.6083351,
+      "long": -122.3399145,
+      "timestamp": 1591577462000,
+      "description": "Aid Response",
+      "address": "1423 1st Av,Seattle,WA",
+      "units": "E5",
+      "time": "5:45",
+      "resolvedAddress": "1423 1st Ave, Seattle, WA 98101, USA",
+      "provider": "google",
+      "zip": "98101",
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "1269794027513282560",
+    "text": "Aid Response - 3616 33rd Ave W - E41 - 5:46",
+    "created_at": "Mon Jun 08 00:51:02 +0000 2020",
+    "derived": {
+      "lat": 47.6528588,
+      "long": -122.3992341,
+      "timestamp": 1591577462000,
+      "description": "Aid Response",
+      "address": "3616 33rd Ave W,Seattle,WA",
+      "units": "E41",
+      "time": "5:46",
+      "resolvedAddress": "3616 33rd Ave W, Seattle, WA 98199, USA",
+      "provider": "google",
+      "zip": "98199",
+      "neighborhood": "Magnolia",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "1269790252274782215",
+    "text": "Aid Response - 9539 7th Ave Nw - E35 - 5:32",
+    "created_at": "Mon Jun 08 00:36:02 +0000 2020",
+    "derived": {
+      "lat": 47.6990384,
+      "long": -122.3650021,
+      "timestamp": 1591576562000,
+      "description": "Aid Response",
+      "address": "9539 7th Ave Nw,Seattle,WA",
+      "units": "E35",
+      "time": "5:32",
+      "resolvedAddress": "9539 7th Ave NW, Seattle, WA 98117, USA",
+      "provider": "google",
+      "zip": "98117",
+      "neighborhood": "Greenwood/Phinney Ridge",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "1269789498864533507",
+    "text": "Medic Response - 11029 Durland Ave Ne - E39 M17 - 5:27",
+    "created_at": "Mon Jun 08 00:33:02 +0000 2020",
+    "derived": {
+      "lat": 47.7099448,
+      "long": -122.2795849,
+      "timestamp": 1591576382000,
+      "description": "Medic Response",
+      "address": "11029 Durland Ave Ne,Seattle,WA",
+      "units": "E39 M17",
+      "time": "5:27",
+      "resolvedAddress": "11029 Durland Ave NE, Seattle, WA 98125, USA",
+      "provider": "google",
+      "zip": "98125",
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "1269787987740631040",
+    "text": "Aid Response - 1st Ave / Marion St - A10 - 5:22",
+    "created_at": "Mon Jun 08 00:27:02 +0000 2020",
+    "derived": {
+      "lat": 47.6039776,
+      "long": -122.3356,
+      "timestamp": 1591576022000,
+      "description": "Aid Response",
+      "address": "1st Ave / Marion St,Seattle,WA",
+      "units": "A10",
+      "time": "5:22",
+      "resolvedAddress": "Marion St & 1st Ave, Seattle, WA 98174, USA",
+      "provider": "google",
+      "zip": "98174",
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "1269785724666200073",
+    "text": "MVI - Motor Vehicle Incident - Ne 98th St / Roosevelt Way Ne - E40 - 5:14",
+    "created_at": "Mon Jun 08 00:18:02 +0000 2020",
+    "derived": {
+      "lat": 47.7003738,
+      "long": -122.317651,
+      "timestamp": 1591575482000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "Ne 98th St / Roosevelt Way Ne,Seattle,WA",
+      "units": "E40",
+      "time": "5:14",
+      "resolvedAddress": "Roosevelt Way NE & NE 98th St, Seattle, WA 98115, USA",
+      "provider": "google",
+      "zip": "98115",
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "1269784212816703488",
+    "text": "Auto Fire Alarm - 910 Marion St - E10 L1 - 5:08",
+    "created_at": "Mon Jun 08 00:12:02 +0000 2020",
+    "derived": {
+      "lat": 47.6081366,
+      "long": -122.3265432,
+      "timestamp": 1591575122000,
+      "description": "Auto Fire Alarm",
+      "address": "910 Marion St,Seattle,WA",
+      "units": "E10 L1",
+      "time": "5:08",
+      "resolvedAddress": "910 Marion St, Seattle, WA 98104, USA",
+      "provider": "google",
+      "zip": "98104",
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "1269784211986284553",
+    "text": "Aid Response - 301 Mercer St - A4 - 5:06",
+    "created_at": "Mon Jun 08 00:12:02 +0000 2020",
+    "derived": {
+      "lat": 47.624014,
+      "long": -122.3515491,
+      "timestamp": 1591575122000,
+      "description": "Aid Response",
+      "address": "301 Mercer St,Seattle,WA",
+      "units": "A4",
+      "time": "5:06",
+      "resolvedAddress": "301 Mercer St, Seattle, WA 98109, USA",
+      "provider": "google",
+      "zip": "98109",
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
     "id_str": "1269781950199463937",
     "text": "Aid Response - 320 N 101st St - E21 - 5:01",
     "created_at": "Mon Jun 08 00:03:02 +0000 2020",

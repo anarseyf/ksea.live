@@ -4,12 +4,12 @@ export const GroupByOptions = {
   Nothing: undefined,
   IncidentType: "type",
   ZipCode: "zip",
-  Neighborhood: "neighborhood",
+  Area: "area",
   TimeInterval: "time",
 };
 
 export const AreaAccessors = {
   ZipCode: ({ derived: { zip } }) => zip,
-  Neighborhood: ({ derived: { nhood } }) => nhood,
+  Neighborhood: ({ derived: { neighborhoodGroup } }) => neighborhoodGroup,
 };
 AreaAccessors.Default = AreaAccessors.Neighborhood;

@@ -3,9 +3,7 @@ import zipCodes from "./zip-codes.json";
 // import nhoods from "./nhoods.json";
 import nhoods from "./2016_seattle_cra.json";
 
-console.log("GEOJSON/nhoods", nhoods);
-
-const nhoodProp = "CRA_NAM"; // TODO - import from server/groupby.js
+const nhoodProp = "NEIGHBO"; // TODO - import from server/groupby.js
 const zipcodeProp = "GEOID10";
 
 const byArea = (features, prop) => {

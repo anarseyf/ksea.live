@@ -29,16 +29,11 @@ export function GroupByArea() {
 
   const groupTitle = `> Group by Area`;
 
-  const TODO = groupedByArea.slice(15, 16);
-  console.log("AREA/TODO", TODO);
-  const area = TODO[0].key;
-  console.log("BY AREA/", area, featuresForArea(area));
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>{groupTitle}</div>
 
-      {TODO.map(({ key: area, intervals }) => (
+      {groupedByArea.map(({ key: area, intervals }) => (
         <div
           className={styles.itemContainer}
           onMouseEnter={() => handleMouseEnter(area)}

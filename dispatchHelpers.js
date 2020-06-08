@@ -13,7 +13,7 @@ import {
 
 export const dataPath = "./datasets/tweets/";
 
-const areaOption = GroupByOptions.Neighborhood;
+const areaOption = GroupByOptions.Area;
 
 const nextMidnight = (timestamp) => {
   const date = new Date(timestamp);

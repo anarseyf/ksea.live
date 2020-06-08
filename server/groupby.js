@@ -3,10 +3,10 @@ import { scaleOrdinal } from "d3-scale";
 import { toPacificMidnight } from "../scripts/dispatch/fileUtils";
 
 export const GroupByOptions = {
-  Nothing: null,
+  Nothing: undefined,
   IncidentType: "type",
   ZipCode: "zip",
-  Neighborhood: "neighborhood",
+  Area: "area",
   TimeInterval: "time",
 };
 
@@ -16,7 +16,7 @@ export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
   if (matchedOption) {
     return matchedOption;
   }
-  return timestamp >= from && timestamp < to ? from : null;
+  return timestamp >= from && timestamp < to ? from : undefined;
 };
 
 export const generateIntervals = () => {
@@ -42,14 +42,14 @@ const Mappers = {
       if (matchedOption) {
         return matchedOption;
       }
-      return desc.includes(option) ? option : null;
-    }, null);
+      return desc.includes(option) ? option : undefined;
+    }, undefined);
     return match || IncidentTypes.Default;
   },
   [GroupByOptions.ZipCode]: () => (t) => t.derived.zip,
-  [GroupByOptions.Neighborhood]: () => (t) => t.derived.neighborhood,
+  [GroupByOptions.Area]: () => (t) => t.derived.neighborhoodGroup,
   [GroupByOptions.TimeInterval]: (intervals) => ({ derived: { timestamp } }) =>
-    intervals.reduce(intervalsReducer(timestamp), null),
+    intervals.reduce(intervalsReducer(timestamp), undefined),
 };
 
 export function groupBy(option = GroupByOptions.Nothing, tweets) {
@@ -62,8 +62,8 @@ export function groupBy(option = GroupByOptions.Nothing, tweets) {
   if (option === GroupByOptions.ZipCode) {
     return byZip(tweets);
   }
-  if (option === GroupByOptions.Neighborhood) {
-    return byNeighborhood(tweets);
+  if (option === GroupByOptions.Area) {
+    return byArea(tweets);
   }
   if (option === GroupByOptions.TimeInterval) {
     return byTimeInterval(tweets);
@@ -74,8 +74,8 @@ export function groupBy(option = GroupByOptions.Nothing, tweets) {
 const byNothing = (tweets) => {
   return [
     {
-      groupby: null,
-      key: null,
+      groupby: undefined,
+      key: undefined,
       values: tweets,
     },
   ];
@@ -103,8 +103,8 @@ const byZip = (tweets) => {
   return by(option, tweets, [], Mappers[option]());
 };
 
-const byNeighborhood = (tweets) => {
-  const option = GroupByOptions.Neighborhood;
+const byArea = (tweets) => {
+  const option = GroupByOptions.Area;
   return by(option, tweets, [], Mappers[option]());
 };
 
@@ -116,25 +116,25 @@ const byTimeInterval = (tweets) => {
 };
 
 const by = (option, tweets, requiredKeys = [], mapper) => {
-  const mapped = {};
+  const map = {};
 
   requiredKeys.forEach((key) => {
-    mapped[key] = [];
+    map[key] = [];
   });
 
   tweets.forEach((t) => {
     const key = mapper(t);
-    if (key === null) {
+    if (key === undefined) {
       return;
     }
-    const list = mapped[key] || [];
+    const list = map[key] || [];
     list.push(t);
-    mapped[key] = list;
+    map[key] = list;
   });
 
-  return Object.keys(mapped).map((key) => ({
+  return Object.keys(map).map((key) => ({
     groupby: option,
     key,
-    values: mapped[key],
+    values: map[key],
   }));
 };
