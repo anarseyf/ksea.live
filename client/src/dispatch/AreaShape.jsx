@@ -13,7 +13,7 @@ const geojsonStyle = {
 
 export const AreaShape = ({ area }) => {
   const features = featuresForArea(area);
-  if (!features.length) {
+  if (!features || !features.length) {
     console.warn("AreaShape/no features for area", area);
     return null;
   }
@@ -21,7 +21,6 @@ export const AreaShape = ({ area }) => {
   console.log(`AREA/${area} -> `, features);
 
   const center = centroid(features);
-  console.log(`AREA/center: ${area} -> `, center);
   const zoom = 11;
   const tileOptions = MapOptions.NoLabels;
 
@@ -40,9 +39,5 @@ export const AreaShape = ({ area }) => {
       <TileLayer {...tileOptions} />
       <GeoJSON data={features} style={geojsonStyle} />
     </LeafletMap>
-
-    // return (<svg className={styles.container}>
-    //   <rect x={0} y={0} width={100} height={50} fill="none" stroke="red" />
-    // </svg>);
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "@reach/router";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
@@ -8,13 +8,14 @@ import { MultiLine } from "./MultiLine";
 import { useLegend } from "./useLegend";
 import styles from "./group.module.scss";
 import { AreaShape } from "./AreaShape";
+import { featuresForArea } from "./geojson";
 
 export function GroupByArea() {
   const [_, legends] = useLegend();
   const { setSelection } = useContext(UserContext);
   const { groupedByArea } = useContext(TweetsContext);
 
-  if (!groupedByArea || !legends) {
+  if (!groupedByArea.length || !legends) {
     return null;
   }
 
@@ -28,11 +29,16 @@ export function GroupByArea() {
 
   const groupTitle = `> Group by Area`;
 
+  const TODO = groupedByArea.slice(15, 16);
+  console.log("AREA/TODO", TODO);
+  const area = TODO[0].key;
+  console.log("BY AREA/", area, featuresForArea(area));
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>{groupTitle}</div>
 
-      {groupedByArea.slice(0, 1).map(({ key: area, intervals }) => (
+      {TODO.map(({ key: area, intervals }) => (
         <div
           className={styles.itemContainer}
           onMouseEnter={() => handleMouseEnter(area)}

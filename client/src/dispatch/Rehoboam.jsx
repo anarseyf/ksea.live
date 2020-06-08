@@ -48,7 +48,6 @@ export function Rehoboam({ area }) {
     };
 
     const radialData = bins.map(({ x0, length }) => toRadial(x0, length));
-    console.log("REHOBOAM/radial data", radialData);
 
     const radialGen = d3.lineRadial().curve(d3.curveCardinal.tension(0.4));
     const path = radialGen(radialData);
@@ -56,7 +55,6 @@ export function Rehoboam({ area }) {
     setSvgPath(path);
 
     const now = +new Date();
-    console.log("REHOBOAM/bins".bins);
     const lastBin = bins[bins.length - 1];
     const [theta, r] = toRadial(now, lastBin.length);
     setLive({

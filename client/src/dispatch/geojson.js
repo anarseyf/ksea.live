@@ -1,11 +1,15 @@
 import * as d3 from "d3";
 import zipCodes from "./zip-codes.json";
-import nhoods from "./nhoods.json";
+// import nhoods from "./nhoods.json";
+import nhoods from "./2016_seattle_cra.json";
 
-const nhoodProp = "nhood";
+console.log("GEOJSON/nhoods", nhoods);
+
+const nhoodProp = "CRA_NAM"; // TODO - import from server/groupby.js
 const zipcodeProp = "GEOID10";
 
 const byArea = (features, prop) => {
+  console.log("GEOJSON/", prop, features);
   const map = {};
   features.forEach((feature) => {
     const key = feature.properties[prop];

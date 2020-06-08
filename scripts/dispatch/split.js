@@ -42,7 +42,7 @@ const resolve = () => {
       clearInterval(intervalId);
     }
   };
-  // tick();
+  tick();
   intervalId = setInterval(tick, interval);
 };
 

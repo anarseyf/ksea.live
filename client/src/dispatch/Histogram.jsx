@@ -25,14 +25,10 @@ export function Histogram() {
       return;
     }
 
-    console.log("HISTOGRAM/by area", filteredByArea);
-
     const interval = currentInterval(filteredByArea);
     const bins = interval.bins;
     const extent = intervalExtent(interval, 60);
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
-
-    console.log("HISTOGRAM/extent", extent);
 
     const yScale = d3
       .scaleLinear()

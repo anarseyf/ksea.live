@@ -4,7 +4,7 @@ export const GroupByOptions = {
   Nothing: undefined,
   IncidentType: "type",
   ZipCode: "zip",
-  Neighborhood: "nhood",
+  Neighborhood: "neighborhood",
   TimeInterval: "time",
 };
 

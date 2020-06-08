@@ -6,7 +6,7 @@ export const GroupByOptions = {
   Nothing: null,
   IncidentType: "type",
   ZipCode: "zip",
-  Neighborhood: "nhood",
+  Neighborhood: "neighborhood",
   TimeInterval: "time",
 };
 
@@ -47,7 +47,7 @@ const Mappers = {
     return match || IncidentTypes.Default;
   },
   [GroupByOptions.ZipCode]: () => (t) => t.derived.zip,
-  [GroupByOptions.Neighborhood]: () => (t) => t.derived.nhood,
+  [GroupByOptions.Neighborhood]: () => (t) => t.derived.neighborhood,
   [GroupByOptions.TimeInterval]: (intervals) => ({ derived: { timestamp } }) =>
     intervals.reduce(intervalsReducer(timestamp), null),
 };
