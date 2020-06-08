@@ -7,13 +7,13 @@ $text-primary-dark: white;
 $text-secondary-dark: slategray;
 $axis-color-dark: silver;
 $body-color-dark: white;
-$line-color-dark: white;
+$graph-secondary-dark: rgb(225, 225, 225);
 
 $text-primary-light: black;
 $text-secondary-light: #333333;
 $axis-color-light: darkslategray;
 $body-color-light: black;
-$line-color-light: black;
+$graph-secondary-light: darkgray;
 
 $transparent: rgba(0, 0, 0, 0);
 $twitter-main: #00acee;
@@ -29,4 +29,4 @@ $body-color: $body-color-dark;
 $text-primary: $text-primary-dark;
 $text-secondary: $text-secondary-dark;
 $axis-color: $axis-color-dark;
-$line-color: $line-color-dark;
+$graph-secondary: $graph-secondary-dark;

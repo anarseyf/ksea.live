@@ -13,8 +13,8 @@ export function MultiLine({
   const [svgData, setSvgData] = useState([]);
   const [live, setLive] = useState(null);
 
-  const svgWidth = 150,
-    svgHeight = 80,
+  const svgWidth = 160,
+    svgHeight = 70,
     margin = { top: 10, right: 20, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
@@ -61,17 +61,15 @@ export function MultiLine({
 
     const paths = intervals.map((d) => d.bins).map(line);
 
-    setSvgData(
-      paths.map((path) => ({
-        path,
-      }))
-    );
+    let newSvgData = paths.map((path) => ({ path })).reverse(); // render highlight after all others
+
+    setSvgData(newSvgData);
 
     const now = +new Date();
     const bins = intervals[0].bins;
     setLive({
       cx: xScale(now),
-      cy: yScale(bins[bins.length - 1].cumulative),
+      cy: yScale(accessor(bins[bins.length - 1])),
       r: 4,
     });
   }, [intervals]);
@@ -81,6 +79,7 @@ export function MultiLine({
   }
 
   const total = intervals[0].values.length;
+  const lastIndex = svgData.length - 1;
 
   return (
     <div className={chartStyles.container}>
@@ -103,7 +102,9 @@ export function MultiLine({
           <g>
             {svgData.map((d, i) => (
               <path
-                className={`${svgStyles.path} ${i ? "" : svgStyles.highlight}`}
+                className={`${svgStyles.path} ${
+                  i === lastIndex ? svgStyles.highlight : ""
+                }`}
                 d={d.path}
               />
             ))}

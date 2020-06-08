@@ -11,7 +11,7 @@
 }
 .path {
   stroke-linecap: round;
-  stroke: $line-color;
+  stroke: $graph-secondary;
   stroke-width: 1;
   fill: none;
 }
@@ -20,21 +20,24 @@
   stroke-width: 3;
 }
 
-.live {
-  animation: pulse 3s infinite ease-in-out;
+.live circle {
+  animation: pulse 2s infinite ease-in-out;
 }
 .live circle {
   fill: $live;
-  stroke: none;
+  stroke: $live;
 }
 @keyframes pulse {
   0% {
-    opacity: 0.4;
+    opacity: 0.7;
+    stroke-width: 2;
   }
   50% {
     opacity: 1;
+    stroke-width: 5;
   }
   100% {
-    opacity: 0.4;
+    opacity: 0.7;
+    stroke-width: 2;
   }
 }
