@@ -1,11 +1,12 @@
 import * as d3 from "d3";
-import zipCodesJson from "./zip-codes.json";
+import zipCodes from "./zip-codes.json";
+import nhoods from "./nhoods.json";
 
-export const zipcodes = zipCodesJson;
+export const areasGeojson = nhoods;
 
 const byArea = () => {
   const map = {};
-  zipcodes.features.forEach((feature) => {
+  areasGeojson.features.forEach((feature) => {
     map[feature.properties.GEOID10] = feature;
   });
   return map;

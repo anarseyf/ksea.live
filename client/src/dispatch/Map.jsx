@@ -4,7 +4,7 @@ import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MapOptions } from "./mapOptions";
-import { centroid, zipcodes } from "./geojson";
+import { centroid, areasGeojson } from "./geojson";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
 
@@ -45,7 +45,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   const renderFilter = ({ properties: { GEOID10 } }) =>
     activeArea && GEOID10 === activeArea;
 
-  const { features } = zipcodes;
+  const { features } = areasGeojson;
   const rendered = features.filter(renderFilter);
 
   if (activeArea) {

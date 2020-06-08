@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "@reach/router";
-import * as d3 from "d3";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { GroupByOptions } from "../groupingOptions";
@@ -19,8 +18,8 @@ export function GroupByArea() {
     return null;
   }
 
-  const handleMouseEnter = (zipcode) => {
-    setSelection(UserContextKeys.HoverArea, zipcode);
+  const handleMouseEnter = (area) => {
+    setSelection(UserContextKeys.HoverArea, area);
   };
 
   const handleMouseLeave = () => {
