@@ -6,6 +6,7 @@ export const GroupByOptions = {
   Nothing: null,
   IncidentType: "type",
   ZipCode: "zip",
+  Neighborhood: "nhood",
   TimeInterval: "time",
 };
 
@@ -46,6 +47,7 @@ const Mappers = {
     return match || IncidentTypes.Default;
   },
   [GroupByOptions.ZipCode]: () => (t) => t.derived.zip,
+  [GroupByOptions.Neighborhood]: () => (t) => t.derived.nhood,
   [GroupByOptions.TimeInterval]: (intervals) => ({ derived: { timestamp } }) =>
     intervals.reduce(intervalsReducer(timestamp), null),
 };
@@ -59,6 +61,9 @@ export function groupBy(option = GroupByOptions.Nothing, tweets) {
   }
   if (option === GroupByOptions.ZipCode) {
     return byZip(tweets);
+  }
+  if (option === GroupByOptions.Neighborhood) {
+    return byNeighborhood(tweets);
   }
   if (option === GroupByOptions.TimeInterval) {
     return byTimeInterval(tweets);
@@ -95,6 +100,11 @@ const byIncidentType = (tweets) => {
 
 const byZip = (tweets) => {
   const option = GroupByOptions.ZipCode;
+  return by(option, tweets, [], Mappers[option]());
+};
+
+const byNeighborhood = (tweets) => {
+  const option = GroupByOptions.Neighborhood;
   return by(option, tweets, [], Mappers[option]());
 };
 

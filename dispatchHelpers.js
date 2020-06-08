@@ -13,6 +13,8 @@ import {
 
 export const dataPath = "./datasets/tweets/";
 
+const areaOption = GroupByOptions.Neighborhood;
+
 const nextMidnight = (timestamp) => {
   const date = new Date(timestamp);
   return new Date(
@@ -68,12 +70,12 @@ export const tweetsByType = async (mostRecent) => {
 
 export const tweetsByArea = async (mostRecent) => {
   const all = await allTweets(mostRecent);
-  return groupBy(GroupByOptions.ZipCode, all);
+  return groupBy(areaOption, all);
 };
 
 export const tweetsForArea = async (area, mostRecent) => {
   const all = await allTweets(mostRecent);
-  const grouped = groupBy(GroupByOptions.ZipCode, all);
+  const grouped = groupBy(areaOption, all);
   const group = grouped.find((g) => g.key === area) || {};
   return group.values || [];
 };
