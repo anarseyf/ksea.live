@@ -37,11 +37,7 @@ const toFileNames = ([start, end]) => {
 const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
   !!intervals.reduce(intervalsReducer(timestamp), null);
 
-const recentGen = (mostRecent) => {
-  return ({ id_str }) => id_str.localeCompare(mostRecent);
-};
-
-export const allTweets = async (mostRecent = 0) => {
+export const allTweets = async () => {
   const intervals = generateIntervals();
 
   const fileNames = [...new Set(intervals.map(toFileNames).flat())].sort();
@@ -54,27 +50,22 @@ export const allTweets = async (mostRecent = 0) => {
   const all = files.flat();
 
   const byIntervals = byIntervalsGen(intervals);
-  const recent = recentGen(mostRecent);
 
-  let filtered = all.filter(byIntervals);
-  const before = filtered.length;
-  filtered = filtered.filter(recent);
-  console.log(`FILTERED by ${mostRecent}: ${before} --> ${filtered.length}`);
-  return filtered;
+  return all.filter(byIntervals);
 };
 
-export const tweetsByType = async (mostRecent) => {
-  const all = await allTweets(mostRecent);
+export const tweetsByType = async () => {
+  const all = await allTweets();
   return groupBy(GroupByOptions.IncidentType, all);
 };
 
-export const tweetsByArea = async (mostRecent) => {
-  const all = await allTweets(mostRecent);
+export const tweetsByArea = async () => {
+  const all = await allTweets();
   return groupBy(areaOption, all);
 };
 
-export const tweetsForArea = async (area, mostRecent) => {
-  const all = await allTweets(mostRecent);
+export const tweetsForArea = async (area) => {
+  const all = await allTweets();
   const grouped = groupBy(areaOption, all);
   const group = grouped.find((g) => g.key === area) || {};
   return group.values || [];

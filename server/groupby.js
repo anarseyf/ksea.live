@@ -27,7 +27,7 @@ export const generateIntervals = () => {
     currentStart + (iOffset + 1) * DefaultInterval,
   ];
 
-  return [0, -1, -2, -3, -4, -5, -6].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
+  return [0, -1].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
 };
 
 const IncidentTypes = {

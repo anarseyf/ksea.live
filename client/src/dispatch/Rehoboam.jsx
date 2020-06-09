@@ -77,7 +77,7 @@ export function Rehoboam({ area }) {
   }, [filteredByArea]);
 
   const total = filteredByArea.length
-    ? currentInterval(filteredByArea).values.length
+    ? currentInterval(filteredByArea).total
     : 0;
   const text = area || "Seattle";
 

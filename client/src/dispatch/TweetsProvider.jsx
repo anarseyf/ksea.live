@@ -39,19 +39,12 @@ const useMostRecent = () => {
 
 const useTweets = (filters = {}) => {
   const mostRecentId = useMostRecent();
-  const [allTweets, setAllTweets] = useState([]);
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [groupedByType, setGroupedByType] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
   const [groupedByAreaByType, setGroupedByAreaByType] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      console.log("useTweets/fetching all");
-      const tweets = await getTweets();
-      setAllTweets(currentInterval(tweets).values);
-    })();
-
     (async () => {
       const area = filters.area || "seattle";
       const filtered = await getTweetsForArea(area);
@@ -75,7 +68,6 @@ const useTweets = (filters = {}) => {
   }, [mostRecentId]);
 
   return {
-    allTweets,
     filteredByArea,
     groupedByArea,
     groupedByType,

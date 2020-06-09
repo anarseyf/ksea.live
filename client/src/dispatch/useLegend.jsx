@@ -8,7 +8,7 @@ const legendByType = (tweetsByType) => {
     return {
       key,
       color,
-      total: intervals[0].values.length,
+      total: intervals[0].total,
     };
   });
   return { [GroupByOptions.IncidentType]: legendByType };

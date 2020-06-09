@@ -63,7 +63,9 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
 
   console.log("MAP/center", center);
 
-  const mapper = ({ color, intervals }) =>
+  const mapper = (
+    { color, intervals } // TODO - move to server
+  ) =>
     intervals[0].values.map(({ id_str, derived: { lat, long } }) => ({
       id_str,
       lat,

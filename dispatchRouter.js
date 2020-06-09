@@ -44,7 +44,7 @@ router.get("/mostRecentId", mostRecentController);
 
 const allTweetsController = async (req, res, next) => {
   try {
-    const all = await allTweets(req.params.mostRecent);
+    const all = await allTweets();
     const result = groupBy(GroupByOptions.Nothing, all)
       .map(groupByInterval)
       .sort(sortByTotal);
@@ -55,13 +55,11 @@ const allTweetsController = async (req, res, next) => {
   }
 };
 router.get("/tweets", allTweetsController);
-router.get("/tweets/after/:mostRecent?", allTweetsController);
 router.get("/tweets/seattle", allTweetsController);
-router.get("/tweets/seattle/after/:mostRecent?", allTweetsController);
 
 const byAreaController = async (req, res, next) => {
   try {
-    const byArea = await tweetsByArea(req.params.mostRecent);
+    const byArea = await tweetsByArea();
     const result = byArea.map(groupByInterval).sort(sortByTotal);
     res.json(result);
   } catch (error) {
@@ -70,11 +68,10 @@ const byAreaController = async (req, res, next) => {
   }
 };
 router.get("/tweets/byArea", byAreaController);
-router.get("/tweets/byArea/after/:mostRecent?", byAreaController);
 
 const byTypeController = async (req, res, next) => {
   try {
-    const byType = await tweetsByType(req.params.mostRecent);
+    const byType = await tweetsByType();
     const result = byType.map(groupByInterval).sort(sortByTotal);
     res.json(result);
   } catch (error) {
@@ -83,11 +80,10 @@ const byTypeController = async (req, res, next) => {
   }
 };
 router.get("/tweets/byType", byTypeController);
-router.get("/tweets/byType/after/:mostRecent?", byTypeController);
 
 const byAreabyTypeController = async (req, res, next) => {
   try {
-    const byArea = await tweetsByArea(req.params.mostRecent);
+    const byArea = await tweetsByArea();
     const result = byArea.map(({ values, ...rest }) => ({
       ...rest,
       groups: groupBy(GroupByOptions.IncidentType, values)
@@ -101,11 +97,10 @@ const byAreabyTypeController = async (req, res, next) => {
   }
 };
 router.get("/tweets/byAreaByType", byAreabyTypeController);
-router.get("/tweets/byAreaByType/after/:mostRecent?", byAreabyTypeController);
 
 const forAreaController = async (req, res, next) => {
   try {
-    const all = await tweetsForArea(req.params.area, req.params.mostRecent);
+    const all = await tweetsForArea(req.params.area);
     const result = groupBy(GroupByOptions.Nothing, all)
       .map(groupByInterval)
       .sort(sortByTotal);
@@ -116,7 +111,6 @@ const forAreaController = async (req, res, next) => {
   }
 };
 router.get("/tweets/:area", forAreaController);
-router.get("/tweets/:area/after/:mostRecent?", forAreaController);
 
 const mapsController = async (req, res, next) => {
   console.log(">>> MAPS:", req.url, req.params);

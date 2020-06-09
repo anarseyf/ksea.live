@@ -78,7 +78,7 @@ export function MultiLine({
     return null;
   }
 
-  const total = intervals[0].values.length;
+  const total = intervals[0].total;
   const lastIndex = svgData.length - 1;
 
   return (
