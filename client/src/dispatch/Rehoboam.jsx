@@ -14,7 +14,7 @@ export function Rehoboam({ area }) {
   const axisRef = useRef(null);
 
   const radius = 100;
-  const margin = 30,
+  const margin = 20,
     width = 2 * radius,
     height = 2 * radius,
     svgWidth = width + 2 * margin,
@@ -27,7 +27,7 @@ export function Rehoboam({ area }) {
 
     const current = currentInterval(filteredByArea);
     console.log("Rehoboam/current", current);
-    const bins = current.bins15;
+    const bins = current.binsHiRes;
     const extent = intervalExtent(current);
 
     console.log("Rehoboam/extent", extent);

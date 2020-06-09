@@ -132,7 +132,7 @@ const addHistograms = ({ start, end, offset, values, ...rest }) => {
     values,
     ...rest,
     bins: histogram(values, { extent }),
-    bins15: histogram(values, { extent, thresholdMinutes: 15 }),
+    binsHiRes: histogram(values, { extent, thresholdMinutes: 5 }),
   };
 };
 
@@ -147,7 +147,7 @@ export const groupByInterval = ({ values, ...rest }) => {
   intervals = addOffsets(intervals).map(addTotals).map(addHistograms);
 
   intervals[0].bins = trimToNow(intervals[0].bins);
-  intervals[0].bins15 = trimToNow(intervals[0].bins15);
+  intervals[0].binsHiRes = trimToNow(intervals[0].binsHiRes);
 
   return {
     ...rest,

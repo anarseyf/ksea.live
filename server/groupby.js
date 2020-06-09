@@ -21,12 +21,13 @@ export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
 
 export const generateIntervals = () => {
   const currentStart = toPacificMidnight(+new Date());
-  const previousStart = currentStart - DefaultInterval;
 
-  return [
-    [currentStart, currentStart + DefaultInterval], // TODO — offset by 1ms to make it [start, end) ?
-    [previousStart, previousStart + DefaultInterval],
+  const intervalFn = (iOffset) => [
+    currentStart + iOffset * DefaultInterval,
+    currentStart + (iOffset + 1) * DefaultInterval,
   ];
+
+  return [0, -1, -2, -3, -4, -5, -6].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
 };
 
 const IncidentTypes = {

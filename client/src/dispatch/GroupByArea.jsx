@@ -27,6 +27,19 @@ export function GroupByArea() {
     setSelection(UserContextKeys.HoverArea, null);
   };
 
+  const getNeighborhoods = () => {
+    const map = {};
+    groupedByArea
+      .map(({ key }) => key)
+      .forEach((key) => {
+        map[key] = featuresForArea(key).map(
+          ({ properties: { CRA_NAM } }) => CRA_NAM
+        );
+      });
+    return map;
+  };
+  const neighborhoodsMap = getNeighborhoods();
+
   const groupTitle = `> Group by Area`;
 
   return (
@@ -40,11 +53,12 @@ export function GroupByArea() {
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.itemHeader}>{area}</div>
+          <div className={styles.text}>{neighborhoodsMap[area].join(", ")}</div>
           <Link to={`${area}`}>
             <div className={styles.item}>
               <AreaShape area={area} />
 
-              <MultiLine intervals={intervals} />
+              <MultiLine intervals={intervals} useCumulative={true} />
               {legends[area] && (
                 <TypeLegend
                   legend={legends[area][GroupByOptions.IncidentType]}

@@ -5,6 +5,7 @@ import { TweetsContext, currentInterval } from "./TweetsProvider";
 import { useLegend } from "./useLegend";
 import { Histogram } from "./Histogram";
 import { GroupByOptions } from "../groupingOptions";
+import { MultiLine } from "./MultiLine";
 
 export const Header = ({ area }) => {
   const { filteredByArea } = useContext(TweetsContext);
@@ -23,6 +24,7 @@ export const Header = ({ area }) => {
 
   return (
     <div>
+      <MultiLine intervals={filteredByArea[0].intervals} useCumulative={true} />
       {legend && <TypeLegend legend={legend} showLabels={true} />}
       <Histogram />
     </div>
