@@ -13,7 +13,9 @@ export const GroupByOptions = {
 
 const TwentyFourHours = 24 * 3600 * 1000;
 const HistoryBinSizeMinutes = TwentyFourHours / (60 * 1000);
-const HistoryInterval = 7 * TwentyFourHours;
+const HistoryInterval = 30 * TwentyFourHours;
+
+const isHistory = (start, end) => end - start > TwentyFourHours;
 
 export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
   if (matchedOption) {
@@ -23,7 +25,6 @@ export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
 };
 
 export const generateHistoryIntervals = () => {
-  console.log(">>> generateHistoryIntervals");
   const currentStart = toPacificMidnight(+new Date());
   const end = currentStart + TwentyFourHours;
   const start = end - HistoryInterval;
@@ -31,7 +32,6 @@ export const generateHistoryIntervals = () => {
 };
 
 export const generateIntervals = () => {
-  console.log(">>> generateIntervals");
   const currentStart = toPacificMidnight(+new Date());
 
   const intervalFn = (iOffset) => [
@@ -124,14 +124,6 @@ const byArea = (tweets) => {
 const byTimeInterval = (tweets, intervals) => {
   const requiredKeys = intervals.map(([start]) => String(start));
   const option = GroupByOptions.TimeInterval;
-  console.log(">>> GROUP BY: intervals = ", intervals);
-  console.log(
-    ">>> GROUP BY: intervals = ",
-    intervals.map(([s, e]) => [
-      new Date(s).toLocaleString(),
-      new Date(e).toLocaleString(),
-    ])
-  );
   let byInterval = by(option, tweets, requiredKeys, Mappers[option](intervals));
   byInterval.forEach((v, i) => {
     v.start = intervals[i][0];
@@ -203,17 +195,22 @@ const addTotals = ({ values, ...rest }) => ({
 
 const addHistograms = ({ start, end, offset, values, ...rest }) => {
   const extent = [start + offset, end + offset];
-  return {
+  const result = {
     start,
     end,
     offset,
     values,
     ...rest,
-    bins: histogram(values, { extent }),
-    binsHiRes: histogram(values, { extent, thresholdMinutes: 15 }),
+    bins: [],
+    binsHiRes: [],
     binsLowRes: histogram(values, {
       extent,
       thresholdMinutes: HistoryBinSizeMinutes,
     }),
   };
+  if (!isHistory(start, end)) {
+    result.bins = histogram(values, { extent });
+    result.binsHiRes = histogram(values, { extent, thresholdMinutes: 15 });
+  }
+  return result;
 };

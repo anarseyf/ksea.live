@@ -1,10 +1,10 @@
 import React, { createContext } from "react";
 import { useState, useEffect } from "react";
 import {
-  getTweets,
   getTweetsForArea,
   getTweetsByArea,
   getTweetsByType,
+  getHistoryForArea,
   getMostRecentId,
 } from "../api";
 export const TweetsContext = createContext();
@@ -40,6 +40,7 @@ const useTweets = (filters = {}) => {
   const mostRecentId = useMostRecent();
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [byTypeForArea, setByTypeForArea] = useState([]);
+  const [historyForArea, setHistoryForArea] = useState([]);
   const [groupedByType, setGroupedByType] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
 
@@ -64,6 +65,12 @@ const useTweets = (filters = {}) => {
       const grouped = await getTweetsByType();
       setGroupedByType(grouped);
     })();
+
+    (async () => {
+      const area = filters.area || "seattle";
+      const filtered = await getHistoryForArea(area);
+      setHistoryForArea(filtered);
+    })();
   }, [mostRecentId]);
 
   return {
@@ -71,6 +78,7 @@ const useTweets = (filters = {}) => {
     byTypeForArea, // TODO - unused
     groupedByArea,
     groupedByType,
+    historyForArea,
   };
 };
 

@@ -6,12 +6,12 @@ import svgStyles from "./svg.module.scss";
 import { intervalExtent } from "../utils";
 
 export function Histogram() {
-  const { filteredByArea } = useContext(TweetsContext);
+  const { historyForArea } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
 
   const fill = "white";
 
-  const svgWidth = 200,
+  const svgWidth = 400,
     svgHeight = 80,
     margin = { top: 10, right: 10, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
@@ -21,11 +21,11 @@ export function Histogram() {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!filteredByArea.length) {
+    if (!historyForArea.length) {
       return;
     }
 
-    const interval = currentInterval(filteredByArea);
+    const interval = currentInterval(historyForArea);
     const bins = interval.binsLowRes;
     const extent = intervalExtent(interval, 60);
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
@@ -35,13 +35,13 @@ export function Histogram() {
       .domain([0, d3.max(bins, (b) => b.length)])
       .range([height, 0]);
 
-    const dateFormatter = d3.timeFormat("%-I%p"); // https://github.com/d3/d3-time-format#locale_format
+    const dateFormatter = d3.timeFormat("%-m/%-d"); // https://github.com/d3/d3-time-format#locale_format
 
     const xAxis = d3
       .axisBottom()
       .tickFormat(dateFormatter)
       .scale(xScale)
-      .ticks(d3.timeHour.every(6));
+      .ticks(d3.timeDay.every(7));
     d3.select(xAxisRef.current).call(xAxis);
 
     const yAxis = d3.axisLeft().scale(yScale).ticks(2);
@@ -59,11 +59,11 @@ export function Histogram() {
       width: binWidth,
       y: yScale(length),
       height: yScale(0) - yScale(length),
-      rx: binWidth / 4,
+      rx: 4,
     }));
 
     setSvgData(newSvgData);
-  }, [filteredByArea]);
+  }, [historyForArea]);
 
   return (
     <div className={chartStyles.container}>

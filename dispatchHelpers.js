@@ -32,7 +32,7 @@ const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
 
 export const allTweets = async (intervals) => {
   const fileNames = [...new Set(intervals.map(toFileNames).flat())].sort();
-  console.log("helper > files to read", fileNames);
+  // console.log("helper > files to read", fileNames);
 
   const files = await Promise.all(
     fileNames.map(async (f) => await readJSONAsync(f, []))

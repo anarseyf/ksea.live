@@ -9,8 +9,8 @@ export async function getMostRecentId() {
   return await result.text();
 }
 
-export async function getTweets() {
-  return getByAPI("dispatch/tweets");
+export async function getHistoryForArea(area) {
+  return getByAPI(`dispatch/history/${area}`);
 }
 
 export async function getTweetsForArea(area) {

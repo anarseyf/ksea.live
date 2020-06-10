@@ -48,14 +48,18 @@ const mostRecentController = async (req, res, next) => {
     res.status(500).send(null);
   }
 };
-router.get("/mostRecentId", mostRecentController);
 
-const allTweetsController = async (req, res, next) => {
+const forAreaController = async (req, res, next) => {
   try {
     const intervals = generateIntervals();
-    const all = await allTweets(intervals);
+    const area = req.params.area;
+    const all =
+      area === "seattle"
+        ? await allTweets(intervals)
+        : await tweetsForArea(area, intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
+
     const intervalGrouper = groupByIntervalGen(intervals);
     const result = groupBy(GroupByOptions.Nothing, all)
       .map(intervalGrouper)
@@ -67,8 +71,6 @@ const allTweetsController = async (req, res, next) => {
     res.status(500).send({ error });
   }
 };
-router.get("/tweets", allTweetsController);
-router.get("/tweets/seattle", allTweetsController);
 
 const byAreaController = async (req, res, next) => {
   try {
@@ -85,7 +87,6 @@ const byAreaController = async (req, res, next) => {
     res.status(500).send({ error });
   }
 };
-router.get("/tweets/byArea", byAreaController);
 
 const byTypeController = async (req, res, next) => {
   try {
@@ -101,7 +102,6 @@ const byTypeController = async (req, res, next) => {
     res.status(500).send({ error });
   }
 };
-router.get("/tweets/byType/:area?", byTypeController);
 
 const byAreabyTypeController = async (req, res, next) => {
   console.error("TODO - remove this API");
@@ -124,53 +124,23 @@ const byAreabyTypeController = async (req, res, next) => {
     res.status(500).send({ error });
   }
 };
-router.get("/tweets/byAreaByType", byAreabyTypeController);
-
-const forAreaController = async (req, res, next) => {
-  try {
-    const intervals = generateIntervals();
-    const all = await tweetsForArea(req.params.area, intervals);
-    const minimizer =
-      req.query.minimize === "true" ? minimizeGroup : identityFn;
-
-    const intervalGrouper = groupByIntervalGen(intervals);
-    const result = groupBy(GroupByOptions.Nothing, all)
-      .map(intervalGrouper)
-      .map(minimizer)
-      .sort(sortByTotal);
-    res.json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ error });
-  }
-};
-router.get("/tweets/:area", forAreaController);
 
 const historyController = async (req, res, next) => {
   try {
     // TODO: bin size = 24h, interval = 30 days, etc.
 
     const intervals = generateHistoryIntervals();
-    const all = await tweetsForArea(req.params.area, intervals);
+    const area = req.params.area;
+    const all =
+      area === "seattle"
+        ? await allTweets(intervals)
+        : await tweetsForArea(req.params.area, intervals);
     const intervalGrouper = groupByIntervalGen(intervals);
     const groups = groupBy(GroupByOptions.Nothing, all, intervals);
-    console.log(
-      ">>> GROUPS",
-      groups.map(({ values, ...rest }) => ({
-        ...rest,
-        valuesXXX: values.map(({ created_at }) => created_at),
-      }))
-    );
     const result = groups
       .map(intervalGrouper)
       .map(minimizeGroup)
       .sort(sortByTotal);
-
-    const f = (t) => new Date(t).toLocaleString();
-    console.log(
-      ">>> HISTORY result",
-      result[0].intervals.map(({ start, end }) => [f(start), f(end)])
-    );
 
     res.json(result);
   } catch (error) {
@@ -178,12 +148,18 @@ const historyController = async (req, res, next) => {
     res.status(500).send({ error });
   }
 };
-router.get("/history/:area", historyController);
 
 const mapsController = async (req, res, next) => {
   console.log(">>> MAPS:", req.url, req.params);
   res.status(500).send(null);
 };
+
+router.get("/mostRecentId", mostRecentController);
+router.get("/tweets/byArea", byAreaController);
+router.get("/tweets/byType/:area?", byTypeController);
+router.get("/tweets/byAreaByType", byAreabyTypeController);
+router.get("/tweets/:area", forAreaController);
+router.get("/history/:area", historyController);
 router.get("/maps/:z/:x/:y", mapsController);
 
 router.get("/seattle-gov", async (req, res, next) => {
