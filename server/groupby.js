@@ -209,7 +209,6 @@ const addTotals = ({ values, ...rest }) => ({
 const addTypeInfo = (tweet) => {
   const type = typeMapper(tweet);
   const color = colorMapper(type);
-  console.log(`${type} ${color} - ${tweet.derived.description}`);
   return {
     ...tweet,
     derived: {

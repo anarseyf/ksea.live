@@ -41,7 +41,6 @@ const useTweets = (filters = {}) => {
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [byTypeForArea, setByTypeForArea] = useState([]);
   const [historyForArea, setHistoryForArea] = useState([]);
-  const [groupedByType, setGroupedByType] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
 
   useEffect(() => {
@@ -62,11 +61,6 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
-      const grouped = await getTweetsByType();
-      setGroupedByType(grouped);
-    })();
-
-    (async () => {
       const area = filters.area || "seattle";
       const filtered = await getHistoryForArea(area);
       setHistoryForArea(filtered);
@@ -75,9 +69,8 @@ const useTweets = (filters = {}) => {
 
   return {
     filteredByArea,
-    byTypeForArea, // TODO - unused
+    byTypeForArea,
     groupedByArea,
-    groupedByType,
     historyForArea,
   };
 };

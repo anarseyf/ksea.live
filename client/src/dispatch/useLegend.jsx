@@ -15,20 +15,20 @@ const legendByType = (groups) => {
 };
 
 export const useLegend = () => {
-  const { groupedByType } = useContext(TweetsContext);
+  const { byTypeForArea } = useContext(TweetsContext);
   const [legend, setLegend] = useState({});
 
   useEffect(() => {
-    if (!groupedByType.length) {
+    if (!byTypeForArea.length) {
       return;
     }
-    const sublegend = legendByType(groupedByType);
+    const sublegend = legendByType(byTypeForArea);
     console.warn("useLegend/setting main - TODO convert to context");
 
     const newLegend = { ...legend, ...sublegend };
     console.log("new legend:", newLegend);
     setLegend(newLegend);
-  }, [groupedByType]);
+  }, [byTypeForArea]);
 
   return [legend];
 };

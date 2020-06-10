@@ -43,7 +43,11 @@ export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
             }`}
             onClick={() => handleClick(d)}
           >
-            {showLabels && <div className={styles.label}>{d.key}</div>}
+            {showLabels && (
+              <div className={styles.label}>
+                {d.key}: {d.total}
+              </div>
+            )}
             <svg className={styles.svg} width={widthFn(d)} height={size}>
               <rect
                 x={0}
