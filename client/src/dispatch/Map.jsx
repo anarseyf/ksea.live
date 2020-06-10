@@ -29,10 +29,11 @@ const geojsonStyleHidden = {
 };
 
 export function Map({ area, tileOptions = MapOptions.Default }) {
+  const { byTypeForArea } = useContext(TweetsContext);
   const { user } = useContext(UserContext);
-  const { groupedByType } = useContext(TweetsContext);
+  const typeFilter = user[UserContextKeys.TypeFilter];
 
-  if (!groupedByType.length) {
+  if (!byTypeForArea.length) {
     return null;
   }
 
@@ -64,14 +65,20 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   console.log("MAP/center", center);
 
   const mapper = ({ intervals }) =>
-    intervals[0].values.map(({ id_str, derived: { lat, long, color } }) => ({
-      id_str,
-      lat,
-      long,
-      color,
-    }));
+    intervals[0].values.map(
+      ({ id_str, derived: { lat, long, type, color } }) => ({
+        id_str,
+        lat,
+        long,
+        type,
+        color,
+      })
+    );
 
-  let data = groupedByType.map(mapper).flat();
+  let data = byTypeForArea
+    .map(mapper)
+    .flat()
+    .filter(({ type }) => !typeFilter || typeFilter === type);
 
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
   if (selectedTweet) {
