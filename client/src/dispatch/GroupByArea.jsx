@@ -6,6 +6,7 @@ import { MultiLine } from "./MultiLine";
 import styles from "./group.module.scss";
 import { AreaShape } from "./AreaShape";
 import { featuresForArea } from "./geojson";
+import { Total } from "./Total";
 
 export function GroupByArea() {
   const { setSelection } = useContext(UserContext);
@@ -55,6 +56,7 @@ export function GroupByArea() {
               <AreaShape area={area} />
 
               <MultiLine intervals={intervals} useCumulative={true} />
+              <Total total={intervals[0].total} />
             </div>
           </Link>
         </div>
