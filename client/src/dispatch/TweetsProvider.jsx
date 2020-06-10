@@ -57,7 +57,8 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
-      const grouped = await getTweetsByType();
+      const area = filters.area || "seattle";
+      const grouped = await getTweetsByType(area);
       setGroupedByType(grouped);
     })();
 

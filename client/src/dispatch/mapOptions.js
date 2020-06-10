@@ -80,5 +80,5 @@ export const MapOptions = {
   },
 };
 
-MapOptions.Default = MapOptions.Jawg_Light;
-MapOptions.NoLabels = MapOptions.Jawg_Light;
+MapOptions.Default = MapOptions.Jawg_Dark;
+MapOptions.NoLabels = MapOptions.Jawg_Dark;

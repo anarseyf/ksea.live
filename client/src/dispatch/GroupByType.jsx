@@ -6,23 +6,11 @@ import styles from "./chart.module.scss";
 
 export function GroupByType({ area, cumulative = false }) {
   const groupedby = GroupByOptions.IncidentType;
-  const { groupedByType, groupedByAreaByType } = useContext(TweetsContext);
+  const { groupedByType } = useContext(TweetsContext);
   const groupTitle = `> Group by ${groupedby}`;
   const [datasets, setDatasets] = useState([]);
 
-  useEffect(() => {
-    const datasets = area
-      ? (groupedByAreaByType.find(({ key }) => key === area) || {}).groups
-      : groupedByType;
-
-    if (!datasets || !datasets.length) {
-      return;
-    }
-
-    setDatasets(datasets);
-  }, [groupedByType, groupedByAreaByType]);
-
-  if (!datasets.length) {
+  if (!groupedByType.length) {
     return null;
   }
 

@@ -3,7 +3,7 @@ import { TweetsContext } from "./TweetsProvider";
 import { GroupByOptions } from "../groupingOptions";
 
 const legendByType = (tweetsByType) => {
-  // console.log("TODO useLegend/tweets", tweetsByType);
+  console.log("TODO useLegend/tweets", tweetsByType);
   const legendByType = tweetsByType.map(({ key, color, intervals }) => {
     return {
       key,
@@ -26,7 +26,10 @@ export const useLegend = () => {
     // console.log("TODO useLegend/sub", groupedByType);
     const sublegend = legendByType(groupedByType);
     console.warn("useLegend/setting main - TODO convert to context");
-    setLegend({ ...sublegend });
+
+    const newLegend = { ...sublegend };
+    console.log("main legend:", newLegend);
+    setLegend(newLegend);
   }, [groupedByType]);
 
   useEffect(() => {
@@ -38,7 +41,7 @@ export const useLegend = () => {
 
     const legends = {};
     groupedByAreaByType.forEach(({ key: area, groups }) => {
-      legends[area] = legendByType(groups);
+      // legends[area] = legendByType(groups);
     });
     console.warn("useLegend/setting legendsByArea - TODO convert to context");
     setLegendsByArea(legends);

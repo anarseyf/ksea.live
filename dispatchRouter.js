@@ -80,8 +80,7 @@ router.get("/tweets/byArea", byAreaController);
 
 const byTypeController = async (req, res, next) => {
   try {
-    const area = req.params.area;
-    const byType = await tweetsByType(area);
+    const byType = await tweetsByType(req.params.area);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
     const result = byType.map(groupByInterval).map(minimizer).sort(sortByTotal);

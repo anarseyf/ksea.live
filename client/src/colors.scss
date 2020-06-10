@@ -5,7 +5,7 @@ $jawg-light: rgb(202, 210, 211);
 
 $text-primary-dark: white;
 $text-secondary-dark: slategray;
-$axis-color-dark: darkslategray;
+$axis-color-dark: slategray;
 $body-color-dark: white;
 $graph-secondary-dark: rgb(225, 225, 225);
 
@@ -24,9 +24,9 @@ $border: slategray;
 $live: red;
 $highlight: red;
 
-$body-bg: $jawg-light;
-$body-color: $body-color-light;
-$text-primary: $text-primary-light;
-$text-secondary: $text-secondary-light;
-$axis-color: $axis-color-light;
-$graph-secondary: $graph-secondary-light;
+$body-bg: $jawg-dark;
+$body-color: $body-color-dark;
+$text-primary: $text-primary-dark;
+$text-secondary: $text-secondary-dark;
+$axis-color: $axis-color-dark;
+$graph-secondary: $graph-secondary-dark;

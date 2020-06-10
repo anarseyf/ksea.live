@@ -55,7 +55,8 @@ export const allTweets = async () => {
 };
 
 export const tweetsByType = async (area) => {
-  const all = area ? await tweetsForArea(area) : await allTweets();
+  const all =
+    area === "seattle" ? await allTweets() : await tweetsForArea(area);
   return groupBy(GroupByOptions.IncidentType, all);
 };
 
