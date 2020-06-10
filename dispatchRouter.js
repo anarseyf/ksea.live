@@ -10,8 +10,11 @@ import {
   tweetsForArea,
   dataPath,
   sortByTotal,
+  minimizeGroup,
 } from "./dispatchHelpers";
 import { readJSONAsync, readdirAsync } from "./scripts/dispatch/fileUtils";
+
+const identityFn = (v) => v;
 
 const mostRecentController = async (req, res, next) => {
   let result;
@@ -45,8 +48,11 @@ router.get("/mostRecentId", mostRecentController);
 const allTweetsController = async (req, res, next) => {
   try {
     const all = await allTweets();
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
     const result = groupBy(GroupByOptions.Nothing, all)
       .map(groupByInterval)
+      .map(minimizer)
       .sort(sortByTotal);
     res.json(result);
   } catch (error) {
@@ -60,7 +66,10 @@ router.get("/tweets/seattle", allTweetsController);
 const byAreaController = async (req, res, next) => {
   try {
     const byArea = await tweetsByArea();
-    const result = byArea.map(groupByInterval).sort(sortByTotal);
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
+
+    const result = byArea.map(groupByInterval).map(minimizer).sort(sortByTotal);
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -72,7 +81,9 @@ router.get("/tweets/byArea", byAreaController);
 const byTypeController = async (req, res, next) => {
   try {
     const byType = await tweetsByType();
-    const result = byType.map(groupByInterval).sort(sortByTotal);
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
+    const result = byType.map(groupByInterval).map(minimizer).sort(sortByTotal);
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -84,10 +95,13 @@ router.get("/tweets/byType", byTypeController);
 const byAreabyTypeController = async (req, res, next) => {
   try {
     const byArea = await tweetsByArea();
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
     const result = byArea.map(({ values, ...rest }) => ({
       ...rest,
       groups: groupBy(GroupByOptions.IncidentType, values)
         .map(groupByInterval)
+        .map(minimizer)
         .sort(sortByTotal),
     }));
     res.json(result);
@@ -101,8 +115,12 @@ router.get("/tweets/byAreaByType", byAreabyTypeController);
 const forAreaController = async (req, res, next) => {
   try {
     const all = await tweetsForArea(req.params.area);
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
+
     const result = groupBy(GroupByOptions.Nothing, all)
       .map(groupByInterval)
+      .map(minimizer)
       .sort(sortByTotal);
     res.json(result);
   } catch (error) {

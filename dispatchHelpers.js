@@ -123,7 +123,7 @@ const addHistograms = ({ start, end, offset, values, ...rest }) => {
     values,
     ...rest,
     bins: histogram(values, { extent }),
-    binsHiRes: histogram(values, { extent, thresholdMinutes: 5 }),
+    binsHiRes: histogram(values, { extent, thresholdMinutes: 15 }),
   };
 };
 
@@ -148,3 +148,21 @@ export const groupByInterval = ({ values, ...rest }) => {
 
 export const sortByTotal = (a, b) =>
   b.intervals[0].total - a.intervals[0].total;
+
+const minimizeBin = ({ x0, x1, length, cumulative }) => ({
+  x0,
+  x1,
+  length,
+  cumulative,
+});
+
+const minimizeInterval = ({ values, bins, binsHiRes, ...rest }) => ({
+  ...rest,
+  bins: bins.map(minimizeBin),
+  binsHiRes: binsHiRes.map(minimizeBin),
+});
+
+export const minimizeGroup = ({ intervals, ...rest }) => ({
+  ...rest,
+  intervals: intervals.map(minimizeInterval),
+});

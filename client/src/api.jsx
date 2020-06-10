@@ -13,8 +13,8 @@ export async function getTweets() {
   return getByAPI("dispatch/tweets");
 }
 
-export async function getTweetsForArea(area: string) {
-  return getByAPI(`dispatch/tweets/${area}`);
+export async function getTweetsForArea(area) {
+  return getByAPI(`dispatch/tweets/${area}`, { minimize: false });
 }
 
 export async function getTweetsByArea() {
@@ -22,7 +22,7 @@ export async function getTweetsByArea() {
 }
 
 export async function getTweetsByType() {
-  return getByAPI(`dispatch/tweets/byType`);
+  return getByAPI(`dispatch/tweets/byType`, { minimize: false });
 }
 
 export async function getTweetsByAreaByType() {
@@ -37,8 +37,16 @@ export async function getTweetsSeattleGov() {
   return getByAPI("dispatch/seattle-gov");
 }
 
-async function getByAPI(api = "") {
-  const response = await fetch(`/api/${api}`, {
+const queryString = (query = {}) => {
+  const list = Object.keys(query).map(
+    (key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`
+  );
+  return `?${list.join("&")}`;
+};
+
+async function getByAPI(api = "", queryParams = { minimize: true }) {
+  const query = queryString(queryParams);
+  const response = await fetch(`/api/${api}${query}`, {
     headers: { Accept: "application-json" },
   });
 
