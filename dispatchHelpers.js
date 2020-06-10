@@ -54,8 +54,8 @@ export const allTweets = async () => {
   return all.filter(byIntervals);
 };
 
-export const tweetsByType = async () => {
-  const all = await allTweets();
+export const tweetsByType = async (area) => {
+  const all = area ? await tweetsForArea(area) : await allTweets();
   return groupBy(GroupByOptions.IncidentType, all);
 };
 

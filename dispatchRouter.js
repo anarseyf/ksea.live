@@ -80,7 +80,8 @@ router.get("/tweets/byArea", byAreaController);
 
 const byTypeController = async (req, res, next) => {
   try {
-    const byType = await tweetsByType();
+    const area = req.params.area;
+    const byType = await tweetsByType(area);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
     const result = byType.map(groupByInterval).map(minimizer).sort(sortByTotal);
@@ -90,7 +91,7 @@ const byTypeController = async (req, res, next) => {
     res.status(500).send({ error });
   }
 };
-router.get("/tweets/byType", byTypeController);
+router.get("/tweets/byType/:area?", byTypeController);
 
 const byAreabyTypeController = async (req, res, next) => {
   try {
