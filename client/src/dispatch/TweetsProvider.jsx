@@ -39,6 +39,7 @@ const useMostRecent = () => {
 const useTweets = (filters = {}) => {
   const mostRecentId = useMostRecent();
   const [filteredByArea, setFilteredByArea] = useState([]);
+  const [byTypeForArea, setByTypeForArea] = useState([]);
   const [groupedByType, setGroupedByType] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
 
@@ -50,19 +51,24 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
+      const grouped = await getTweetsByType(filters.area || "seattle");
+      setByTypeForArea(grouped);
+    })();
+
+    (async () => {
       const grouped = await getTweetsByArea();
       setGroupedByArea(grouped);
     })();
 
     (async () => {
-      const area = filters.area || "seattle";
-      const grouped = await getTweetsByType(area);
+      const grouped = await getTweetsByType();
       setGroupedByType(grouped);
     })();
   }, [mostRecentId]);
 
   return {
     filteredByArea,
+    byTypeForArea,
     groupedByArea,
     groupedByType,
   };
