@@ -1,23 +1,17 @@
 @import "../colors.scss";
 
 .container {
-  display: inline-block;
-  padding: auto 0.5em;
-  width: 100px;
-  min-height: 100px;
+  width: 100%;
+  padding: 0.5em auto;
   color: $text-primary;
-}
-.withLabels {
-  width: 160px;
+  text-align: right;
 }
 .item {
-  margin-bottom: -0.3em;
+  display: inline-block;
+  margin-left: 1em;
 }
 .label {
   display: inline-block;
-  min-width: 80px;
-  text-align: right;
-  margin-right: 0.25em;
 }
 .header {
   border-bottom: 1px solid $text-secondary;

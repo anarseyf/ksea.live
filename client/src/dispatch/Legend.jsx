@@ -1,13 +1,9 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { TypeLegend } from "./TypeLegend";
-import { TweetsContext, currentInterval } from "./TweetsProvider";
 import { useLegend } from "./useLegend";
-import { Histogram } from "./Histogram";
 import { GroupByOptions } from "../groupingOptions";
-import { MultiLine } from "./MultiLine";
 
-export const Header = ({ area }) => {
-  const { filteredByArea } = useContext(TweetsContext);
+export const LegendSection = () => {
   const [legend] = useLegend();
   const [typeLegend, setTypeLegend] = useState([]);
 
@@ -16,11 +12,9 @@ export const Header = ({ area }) => {
     legend && legend[option] && setTypeLegend(legend[option]);
   }, [legend]);
 
-  if (!filteredByArea.length) {
+  if (!typeLegend.length) {
     return null;
   }
 
-  return (
-    <MultiLine intervals={filteredByArea[0].intervals} useCumulative={true} />
-  );
+  return <TypeLegend legend={typeLegend} showLabels={true} />;
 };

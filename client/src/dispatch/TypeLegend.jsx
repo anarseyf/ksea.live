@@ -11,14 +11,12 @@ export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
   const max = d3.max(counts);
   const total = d3.sum(counts);
   const maxWidth = 50;
-  const size = 8;
+  const size = 10;
 
-  const widthFn = ({ total }) => d3.max([1, maxWidth * (total / max)]);
+  const widthFn = ({ total }) => d3.max([2, maxWidth * (total / max)]);
 
   return (
-    <div
-      className={`${styles.container} ${showLabels ? styles.withLabels : ""}`}
-    >
+    <div className={styles.container}>
       {title ||
         (showTotal && (
           <div className={styles.header}>
@@ -29,18 +27,14 @@ export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
       <div className={styles.body}>
         {legend.map((d) => (
           <div className={styles.item}>
-            {showLabels && (
-              <div className={styles.label}>
-                {d.key}: {d.total}
-              </div>
-            )}
-            <svg className={styles.svg} width={maxWidth} height={size}>
+            {showLabels && <div className={styles.label}>{d.key}</div>}
+            <svg className={styles.svg} width={widthFn(d)} height={size}>
               <rect
                 x={0}
                 y={0}
                 width={widthFn(d)}
                 height={size}
-                rx={4}
+                rx={3}
                 fill={d.color || "white"}
               ></rect>
             </svg>

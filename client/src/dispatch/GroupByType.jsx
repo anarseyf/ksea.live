@@ -5,6 +5,7 @@ import { MultiLine } from "./MultiLine";
 import styles from "./chart.module.scss";
 
 export function GroupByType({ area, cumulative = false }) {
+  // TODO - remove?
   const groupedby = GroupByOptions.IncidentType;
   const { groupedByType } = useContext(TweetsContext);
   const groupTitle = `> Group by ${groupedby}`;
