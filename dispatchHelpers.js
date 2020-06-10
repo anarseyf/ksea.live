@@ -1,11 +1,4 @@
-import {
-  GroupByOptions,
-  groupBy,
-  DefaultInterval,
-  generateIntervals,
-  intervalsReducer,
-} from "./server/groupby";
-import { histogram } from "./server/histogram";
+import { GroupByOptions, groupBy, intervalsReducer } from "./server/groupby";
 import {
   toUTCMidnightString,
   readJSONAsync,
@@ -37,9 +30,7 @@ const toFileNames = ([start, end]) => {
 const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
   !!intervals.reduce(intervalsReducer(timestamp), null);
 
-export const allTweets = async () => {
-  const intervals = generateIntervals();
-
+export const allTweets = async (intervals) => {
   const fileNames = [...new Set(intervals.map(toFileNames).flat())].sort();
   console.log("helper > files to read", fileNames);
 
@@ -54,78 +45,27 @@ export const allTweets = async () => {
   return all.filter(byIntervals);
 };
 
-export const tweetsByType = async (area) => {
+export const tweetsByType = async (area, intervals) => {
   const all =
-    area === "seattle" ? await allTweets() : await tweetsForArea(area);
+    area === "seattle"
+      ? await allTweets(intervals)
+      : await tweetsForArea(area, intervals);
   return groupBy(GroupByOptions.IncidentType, all);
 };
 
-export const tweetsByArea = async () => {
-  const all = await allTweets();
+export const tweetsByArea = async (intervals) => {
+  const all = await allTweets(intervals);
   return groupBy(areaOption, all);
 };
 
-export const tweetsForArea = async (area) => {
-  const all = await allTweets();
+export const tweetsForArea = async (area, intervals) => {
+  if (area === "seattle") {
+    throw `Unexpected area arg in tweetsForArea: ${area}`;
+  }
+  const all = await allTweets(intervals);
   const grouped = groupBy(areaOption, all);
   const group = grouped.find((g) => g.key === area) || {};
   return group.values || [];
-};
-
-const addStartEnd = ({ key, ...restInterval }) => ({
-  key,
-  start: +key,
-  end: +key + DefaultInterval,
-  ...restInterval,
-});
-
-const addOffsets = (intervals) => {
-  const valueMapper = (
-    { derived: { timestamp, ...restDerived }, ...restValue },
-    offset
-  ) => ({
-    ...restValue,
-    derived: {
-      timestamp,
-      offset,
-      ...restDerived,
-    },
-  });
-
-  const start0 = intervals[0].start;
-
-  const withOffsets = intervals.map(({ start, ...rest }) => ({
-    start,
-    offset: start0 - start,
-    ...rest,
-  }));
-
-  const result = withOffsets.map(({ offset, values, ...rest }) => ({
-    offset,
-    values: values.map((v) => valueMapper(v, offset)),
-    ...rest,
-  }));
-
-  return result;
-};
-
-const addTotals = ({ values, ...rest }) => ({
-  values,
-  total: values.length,
-  ...rest,
-});
-
-const addHistograms = ({ start, end, offset, values, ...rest }) => {
-  const extent = [start + offset, end + offset];
-  return {
-    start,
-    end,
-    offset,
-    values,
-    ...rest,
-    bins: histogram(values, { extent }),
-    binsHiRes: histogram(values, { extent, thresholdMinutes: 15 }),
-  };
 };
 
 const trimToNow = (bins) => {
@@ -133,17 +73,16 @@ const trimToNow = (bins) => {
   return bins.filter(({ x0 }) => x0 <= now);
 };
 
-export const groupByInterval = ({ values, ...rest }) => {
-  let intervals = groupBy(GroupByOptions.TimeInterval, values);
-  intervals = intervals.map(addStartEnd);
-  intervals = addOffsets(intervals).map(addTotals).map(addHistograms);
+export const groupByIntervalGen = (intervals) => ({ values, ...rest }) => {
+  let byInterval = groupBy(GroupByOptions.TimeInterval, values, intervals);
 
-  intervals[0].bins = trimToNow(intervals[0].bins);
-  intervals[0].binsHiRes = trimToNow(intervals[0].binsHiRes);
+  byInterval[0].bins = trimToNow(byInterval[0].bins);
+  byInterval[0].binsHiRes = trimToNow(byInterval[0].binsHiRes);
+  byInterval[0].binsLowRes = trimToNow(byInterval[0].binsLowRes);
 
   return {
     ...rest,
-    intervals,
+    intervals: byInterval,
   };
 };
 
@@ -157,10 +96,17 @@ const minimizeBin = ({ x0, x1, length, cumulative }) => ({
   cumulative,
 });
 
-const minimizeInterval = ({ values, bins, binsHiRes, ...rest }) => ({
+const minimizeInterval = ({
+  values,
+  bins,
+  binsHiRes,
+  binsLowRes,
+  ...rest
+}) => ({
   ...rest,
   bins: bins.map(minimizeBin),
   binsHiRes: binsHiRes.map(minimizeBin),
+  binsLowRes: binsLowRes.map(minimizeBin),
 });
 
 export const minimizeGroup = ({ intervals, ...rest }) => ({

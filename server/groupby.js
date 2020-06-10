@@ -1,6 +1,7 @@
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { scaleOrdinal } from "d3-scale";
 import { toPacificMidnight } from "../scripts/dispatch/fileUtils";
+import { histogram } from "./histogram";
 
 export const GroupByOptions = {
   Nothing: undefined,
@@ -10,7 +11,9 @@ export const GroupByOptions = {
   TimeInterval: "time",
 };
 
-export const DefaultInterval = 24 * 3600 * 1000;
+const TwentyFourHours = 24 * 3600 * 1000;
+const HistoryBinSizeMinutes = TwentyFourHours / (60 * 1000);
+const HistoryInterval = 7 * TwentyFourHours;
 
 export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
   if (matchedOption) {
@@ -19,12 +22,21 @@ export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
   return timestamp >= from && timestamp < to ? from : undefined;
 };
 
+export const generateHistoryIntervals = () => {
+  console.log(">>> generateHistoryIntervals");
+  const currentStart = toPacificMidnight(+new Date());
+  const end = currentStart + TwentyFourHours;
+  const start = end - HistoryInterval;
+  return [[start, end]];
+};
+
 export const generateIntervals = () => {
+  console.log(">>> generateIntervals");
   const currentStart = toPacificMidnight(+new Date());
 
   const intervalFn = (iOffset) => [
-    currentStart + iOffset * DefaultInterval,
-    currentStart + (iOffset + 1) * DefaultInterval,
+    currentStart + iOffset * TwentyFourHours,
+    currentStart + (iOffset + 1) * TwentyFourHours,
   ];
 
   return [0, -1].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
@@ -53,7 +65,7 @@ const Mappers = {
     intervals.reduce(intervalsReducer(timestamp), undefined),
 };
 
-export function groupBy(option = GroupByOptions.Nothing, tweets) {
+export function groupBy(option = GroupByOptions.Nothing, tweets, intervals) {
   if (option === GroupByOptions.Nothing) {
     return byNothing(tweets);
   }
@@ -67,7 +79,7 @@ export function groupBy(option = GroupByOptions.Nothing, tweets) {
     return byArea(tweets);
   }
   if (option === GroupByOptions.TimeInterval) {
-    return byTimeInterval(tweets);
+    return byTimeInterval(tweets, intervals);
   }
   throw `Unrecognized groupby option: ${option}`;
 }
@@ -109,11 +121,24 @@ const byArea = (tweets) => {
   return by(option, tweets, [], Mappers[option]());
 };
 
-const byTimeInterval = (tweets) => {
-  const intervals = generateIntervals();
+const byTimeInterval = (tweets, intervals) => {
   const requiredKeys = intervals.map(([start]) => String(start));
   const option = GroupByOptions.TimeInterval;
-  return by(option, tweets, requiredKeys, Mappers[option](intervals));
+  console.log(">>> GROUP BY: intervals = ", intervals);
+  console.log(
+    ">>> GROUP BY: intervals = ",
+    intervals.map(([s, e]) => [
+      new Date(s).toLocaleString(),
+      new Date(e).toLocaleString(),
+    ])
+  );
+  let byInterval = by(option, tweets, requiredKeys, Mappers[option](intervals));
+  byInterval.forEach((v, i) => {
+    v.start = intervals[i][0];
+    v.end = intervals[i][1];
+  });
+  const result = addOffsets(byInterval).map(addTotals).map(addHistograms);
+  return result;
 };
 
 const by = (option, tweets, requiredKeys = [], mapper) => {
@@ -138,4 +163,57 @@ const by = (option, tweets, requiredKeys = [], mapper) => {
     key,
     values: map[key],
   }));
+};
+
+const addOffsets = (intervals) => {
+  const valueMapper = (
+    { derived: { timestamp, ...restDerived }, ...restValue },
+    offset
+  ) => ({
+    ...restValue,
+    derived: {
+      timestamp,
+      offset,
+      ...restDerived,
+    },
+  });
+
+  const start0 = intervals[0].start;
+
+  const withOffsets = intervals.map(({ start, ...rest }) => ({
+    start,
+    offset: start0 - start,
+    ...rest,
+  }));
+
+  const result = withOffsets.map(({ offset, values, ...rest }) => ({
+    offset,
+    values: values.map((v) => valueMapper(v, offset)),
+    ...rest,
+  }));
+
+  return result;
+};
+
+const addTotals = ({ values, ...rest }) => ({
+  values,
+  total: values.length,
+  ...rest,
+});
+
+const addHistograms = ({ start, end, offset, values, ...rest }) => {
+  const extent = [start + offset, end + offset];
+  return {
+    start,
+    end,
+    offset,
+    values,
+    ...rest,
+    bins: histogram(values, { extent }),
+    binsHiRes: histogram(values, { extent, thresholdMinutes: 15 }),
+    binsLowRes: histogram(values, {
+      extent,
+      thresholdMinutes: HistoryBinSizeMinutes,
+    }),
+  };
 };

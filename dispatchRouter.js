@@ -1,10 +1,15 @@
 const rp = require("request-promise");
 const router = require("express").Router();
 
-import { GroupByOptions, groupBy } from "./server/groupby";
+import {
+  GroupByOptions,
+  groupBy,
+  generateHistoryIntervals,
+  generateIntervals,
+} from "./server/groupby";
 import {
   allTweets,
-  groupByInterval,
+  groupByIntervalGen,
   tweetsByType,
   tweetsByArea,
   tweetsForArea,
@@ -47,11 +52,13 @@ router.get("/mostRecentId", mostRecentController);
 
 const allTweetsController = async (req, res, next) => {
   try {
-    const all = await allTweets();
+    const intervals = generateIntervals();
+    const all = await allTweets(intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
+    const intervalGrouper = groupByIntervalGen(intervals);
     const result = groupBy(GroupByOptions.Nothing, all)
-      .map(groupByInterval)
+      .map(intervalGrouper)
       .map(minimizer)
       .sort(sortByTotal);
     res.json(result);
@@ -65,11 +72,13 @@ router.get("/tweets/seattle", allTweetsController);
 
 const byAreaController = async (req, res, next) => {
   try {
-    const byArea = await tweetsByArea();
+    const intervals = generateIntervals();
+    const byArea = await tweetsByArea(intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
 
-    const result = byArea.map(groupByInterval).map(minimizer).sort(sortByTotal);
+    const intervalGrouper = groupByIntervalGen(intervals);
+    const result = byArea.map(intervalGrouper).map(minimizer).sort(sortByTotal);
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -80,10 +89,12 @@ router.get("/tweets/byArea", byAreaController);
 
 const byTypeController = async (req, res, next) => {
   try {
-    const byType = await tweetsByType(req.params.area);
+    const intervals = generateIntervals();
+    const byType = await tweetsByType(req.params.area, intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
-    const result = byType.map(groupByInterval).map(minimizer).sort(sortByTotal);
+    const intervalGrouper = groupByIntervalGen(intervals);
+    const result = byType.map(intervalGrouper).map(minimizer).sort(sortByTotal);
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -95,13 +106,15 @@ router.get("/tweets/byType/:area?", byTypeController);
 const byAreabyTypeController = async (req, res, next) => {
   console.error("TODO - remove this API");
   try {
-    const byArea = await tweetsByArea();
+    const intervals = generateIntervals();
+    const byArea = await tweetsByArea(intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
+    const intervalGrouper = groupByIntervalGen(intervals);
     const result = byArea.map(({ values, ...rest }) => ({
       ...rest,
       groups: groupBy(GroupByOptions.IncidentType, values)
-        .map(groupByInterval)
+        .map(intervalGrouper)
         .map(minimizer)
         .sort(sortByTotal),
     }));
@@ -115,12 +128,14 @@ router.get("/tweets/byAreaByType", byAreabyTypeController);
 
 const forAreaController = async (req, res, next) => {
   try {
-    const all = await tweetsForArea(req.params.area);
+    const intervals = generateIntervals();
+    const all = await tweetsForArea(req.params.area, intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
 
+    const intervalGrouper = groupByIntervalGen(intervals);
     const result = groupBy(GroupByOptions.Nothing, all)
-      .map(groupByInterval)
+      .map(intervalGrouper)
       .map(minimizer)
       .sort(sortByTotal);
     res.json(result);
@@ -135,14 +150,28 @@ const historyController = async (req, res, next) => {
   try {
     // TODO: bin size = 24h, interval = 30 days, etc.
 
-    const all = await tweetsForArea(req.params.area);
-    const minimizer =
-      req.query.minimize === "true" ? minimizeGroup : identityFn;
-
-    const result = groupBy(GroupByOptions.Nothing, all)
-      .map(groupByInterval)
-      .map(minimizer)
+    const intervals = generateHistoryIntervals();
+    const all = await tweetsForArea(req.params.area, intervals);
+    const intervalGrouper = groupByIntervalGen(intervals);
+    const groups = groupBy(GroupByOptions.Nothing, all, intervals);
+    console.log(
+      ">>> GROUPS",
+      groups.map(({ values, ...rest }) => ({
+        ...rest,
+        valuesXXX: values.map(({ created_at }) => created_at),
+      }))
+    );
+    const result = groups
+      .map(intervalGrouper)
+      .map(minimizeGroup)
       .sort(sortByTotal);
+
+    const f = (t) => new Date(t).toLocaleString();
+    console.log(
+      ">>> HISTORY result",
+      result[0].intervals.map(({ start, end }) => [f(start), f(end)])
+    );
+
     res.json(result);
   } catch (error) {
     console.error(error);

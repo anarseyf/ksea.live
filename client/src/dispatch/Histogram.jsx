@@ -26,7 +26,7 @@ export function Histogram() {
     }
 
     const interval = currentInterval(filteredByArea);
-    const bins = interval.bins;
+    const bins = interval.binsLowRes;
     const extent = intervalExtent(interval, 60);
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
 

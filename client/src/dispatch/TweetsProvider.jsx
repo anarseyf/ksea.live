@@ -68,7 +68,7 @@ const useTweets = (filters = {}) => {
 
   return {
     filteredByArea,
-    byTypeForArea,
+    byTypeForArea, // TODO - unused
     groupedByArea,
     groupedByType,
   };
