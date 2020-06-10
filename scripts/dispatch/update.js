@@ -30,7 +30,7 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 10,
+          count: 100,
           since_id: status.since_id,
         },
       };

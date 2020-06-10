@@ -27,7 +27,7 @@ export function Tweet({ tweet }) {
   const units = tweet.derived.units.split(" ").length;
   const unitsStr = `${units} ${units === 1 ? "unit" : "units"}`;
   const size = 10,
-    r = 3;
+    r = 5;
   const color = tweet.derived.color || "silver";
 
   return (
