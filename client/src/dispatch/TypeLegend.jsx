@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./legend.module.scss";
 import * as d3 from "d3";
+import { UserContext, UserContextKeys } from "./UserProvider";
 
 export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
+  const { user, setSelection } = useContext(UserContext);
+  const contextKey = UserContextKeys.TypeFilter;
+
   if (!legend) {
     return null;
   }
@@ -15,6 +19,13 @@ export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
 
   const widthFn = ({ total }) => d3.max([2, maxWidth * (total / max)]);
 
+  const handleClick = ({ key: type }) => {
+    const filter = user[contextKey];
+    setSelection(contextKey, filter === type ? undefined : type);
+  };
+
+  const filter = user[contextKey];
+
   return (
     <div className={styles.container}>
       {title ||
@@ -26,7 +37,12 @@ export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
         ))}
       <div className={styles.body}>
         {legend.map((d) => (
-          <div className={styles.item}>
+          <div
+            className={`${styles.item} ${
+              d.key === filter ? styles.selected : ""
+            }`}
+            onClick={() => handleClick(d)}
+          >
             {showLabels && <div className={styles.label}>{d.key}</div>}
             <svg className={styles.svg} width={widthFn(d)} height={size}>
               <rect
@@ -35,7 +51,7 @@ export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
                 width={widthFn(d)}
                 height={size}
                 rx={3}
-                fill={d.color || "white"}
+                fill={d.color}
               ></rect>
             </svg>
           </div>

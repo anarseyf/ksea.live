@@ -65,6 +65,14 @@ const Mappers = {
     intervals.reduce(intervalsReducer(timestamp), undefined),
 };
 
+const typeMapper = Mappers[GroupByOptions.IncidentType]();
+const colorMapper = (() => {
+  const color = scaleOrdinal(schemeCategory10);
+  const { Fire, Medic, Aid } = IncidentTypes.Known;
+  color.domain([Medic, IncidentTypes.Default, Aid, Fire]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
+  return color;
+})();
+
 export function groupBy(option = GroupByOptions.Nothing, tweets, intervals) {
   if (option === GroupByOptions.Nothing) {
     return byNothing(tweets);
@@ -104,20 +112,14 @@ const byIncidentType = (tweets) => {
   ];
   const grouped = by(option, tweets, requiredKeys, Mappers[option]());
 
-  return grouped.map(addColors);
+  return grouped.map(addColorsToGroup);
 };
 
-const addColors = ({ key, ...rest }) => {
-  const color = scaleOrdinal(schemeCategory10);
-  const { Fire, Medic, Aid } = IncidentTypes.Known;
-  color.domain([Medic, IncidentTypes.Default, Aid, Fire]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
-
-  return {
-    key,
-    color: color(key),
-    ...rest,
-  };
-};
+const addColorsToGroup = ({ key, ...rest }) => ({
+  key,
+  color: colorMapper(key),
+  ...rest,
+});
 
 const byZip = (tweets) => {
   const option = GroupByOptions.ZipCode;
@@ -137,7 +139,10 @@ const byTimeInterval = (tweets, intervals) => {
     v.start = intervals[i][0];
     v.end = intervals[i][1];
   });
-  const result = addOffsets(byInterval).map(addTotals).map(addHistograms);
+  const result = addOffsets(byInterval)
+    .map(addTotals)
+    .map(addTypes)
+    .map(addHistograms);
   return result;
 };
 
@@ -198,6 +203,25 @@ const addOffsets = (intervals) => {
 const addTotals = ({ values, ...rest }) => ({
   values,
   total: values.length,
+  ...rest,
+});
+
+const addTypeInfo = (tweet) => {
+  const type = typeMapper(tweet);
+  const color = colorMapper(type);
+  console.log(`${type} ${color} - ${tweet.derived.description}`);
+  return {
+    ...tweet,
+    derived: {
+      ...tweet.derived,
+      type,
+      color,
+    },
+  };
+};
+
+const addTypes = ({ values, ...rest }) => ({
+  values: values.map(addTypeInfo),
   ...rest,
 });
 

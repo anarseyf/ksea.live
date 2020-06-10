@@ -8,7 +8,13 @@
 }
 .item {
   display: inline-block;
-  margin-left: 1em;
+  padding-left: 1em;
+  border-bottom: 2px solid $transparent;
+}
+.item:hover,
+.item.selected {
+  cursor: pointer;
+  border-color: $hover;
 }
 .label {
   display: inline-block;
