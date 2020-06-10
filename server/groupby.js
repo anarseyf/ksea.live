@@ -104,11 +104,19 @@ const byIncidentType = (tweets) => {
   ];
   const grouped = by(option, tweets, requiredKeys, Mappers[option]());
 
+  return grouped.map(addColors);
+};
+
+const addColors = ({ key, ...rest }) => {
   const color = scaleOrdinal(schemeCategory10);
   const { Fire, Medic, Aid } = IncidentTypes.Known;
   color.domain([Medic, IncidentTypes.Default, Aid, Fire]); // https://github.com/d3/d3-scale-chromatic#schemeCategory10
 
-  return grouped.map((d) => ({ ...d, color: color(d.key) }));
+  return {
+    key,
+    color: color(key),
+    ...rest,
+  };
 };
 
 const byZip = (tweets) => {

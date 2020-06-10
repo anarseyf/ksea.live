@@ -5,6 +5,7 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 @import "../colors.scss";
 
 .container {
+  clear: both;
   font-size: 0.8em;
   text-align: left;
   font-variant: small-caps;
@@ -30,7 +31,12 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
   font-weight: bold;
 }
 
-.location {
+.details {
   float: right;
+}
+.units {
   color: $twitter-darkgray;
+}
+.location {
+  padding: 0.5em;
 }

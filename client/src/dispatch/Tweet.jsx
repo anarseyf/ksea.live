@@ -16,16 +16,19 @@ export function Tweet({ tweet }) {
     setIsSelected(selectedTweet && selectedTweet.id_str === tweet.id_str);
   }, [selectedTweet]);
 
-  let color = "purple";
-
   const handleClick = () => {
     const newSelectedTweet =
       selectedTweet && selectedTweet.id_str === tweet.id_str ? null : tweet;
     setSelection(UserContextKeys.SelectedTweet, newSelectedTweet);
   };
 
-  const accessor = AreaAccessors.Default;
+  const accessor = AreaAccessors.AreaSecondary;
   const area = accessor(tweet);
+  const units = tweet.derived.units.split(" ").length;
+  const unitsStr = `${units} ${units === 1 ? "unit" : "units"}`;
+  const size = 10,
+    r = 3;
+  const color = tweet.derived.color || "silver";
 
   return (
     <div
@@ -33,11 +36,19 @@ export function Tweet({ tweet }) {
       onClick={handleClick}
     >
       <div className={styles.tweet}>
-        <div className={styles.location}>{area}</div>
-        <a href={tweet.derived.tweetUrl} target="_blank">
-          <img src={"../twitter.svg"} width={iconSize} height={iconSize} />
-        </a>
-        {tweet.text}
+        <div className={styles.details}>
+          <span className={styles.units}>{unitsStr}</span>
+          <span className={styles.location}>{area}</span>
+          <svg width={size} height={size}>
+            <circle cx={size / 2} cy={size / 2} r={r} fill={color} />
+          </svg>
+        </div>
+        <div>
+          <a href={tweet.derived.tweetUrl} target="_blank">
+            <img src={"../twitter.svg"} width={iconSize} height={iconSize} />
+          </a>
+          <span>{tweet.text}</span>
+        </div>
       </div>
     </div>
   );

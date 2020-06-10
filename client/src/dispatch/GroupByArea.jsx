@@ -3,10 +3,10 @@ import { Link } from "@reach/router";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MultiLine } from "./MultiLine";
-import styles from "./group.module.scss";
 import { AreaShape } from "./AreaShape";
 import { featuresForArea } from "./geojson";
 import { Total } from "./Total";
+import styles from "./group.module.scss";
 
 export function GroupByArea() {
   const { setSelection } = useContext(UserContext);

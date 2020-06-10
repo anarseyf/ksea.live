@@ -10,6 +10,7 @@ export const GroupByOptions = {
 
 export const AreaAccessors = {
   ZipCode: ({ derived: { zip } }) => zip,
-  Neighborhood: ({ derived: { neighborhoodGroup } }) => neighborhoodGroup,
+  Area: ({ derived: { neighborhoodGroup } }) => neighborhoodGroup,
+  AreaSecondary: ({ derived: { neighborhood } }) => neighborhood,
 };
-AreaAccessors.Default = AreaAccessors.Neighborhood;
+AreaAccessors.Default = AreaAccessors.Area;
