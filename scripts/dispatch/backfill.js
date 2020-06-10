@@ -1,7 +1,7 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
 import { getUserTimeline, pathToScriptsJson } from "./utils";
 
-const backfillStop = new Date(2020, 5, 20);
+const backfillStop = new Date(2020, 4, 1);
 
 const fetchNew = () => {
   let intervalId;
@@ -13,10 +13,16 @@ const fetchNew = () => {
 
   console.log(`Bearer: ...${bearer.slice(bearer.length - 8)}`);
 
-  const interval = 3 * 1011;
+  const interval = 5 * 1011;
   const tick = async () => {
     try {
       const status = await readJSONAsync(pathToScriptsJson("status.json"), {});
+
+      if (!status.max_id_backfill) {
+        console.warn("backfill > No max_id_backfill found, stopping runner");
+        clearInterval(intervalId);
+        return;
+      }
 
       const config = {
         headers: {
@@ -26,13 +32,10 @@ const fetchNew = () => {
           screen_name: "SeaFDIncidents",
           exclude_replies: true,
           trim_user: true,
-          count: 5,
+          count: 200,
+          max_id: status.max_id_backfill,
         },
       };
-
-      if (status && status.max_id_backfill) {
-        config.params.max_id = status.max_id_backfill;
-      }
 
       console.log(
         `backfill > backstop is (${new Date(backfillStop).toLocaleString()})`
@@ -40,6 +43,7 @@ const fetchNew = () => {
       console.log(
         `backfill > requesting ${config.params.count} with max_id ${config.params.max_id}...`
       );
+      console.log(`backfill > `, config.params);
 
       const newData = await getUserTimeline(config);
       console.log(`backfill > received ${newData.length} new tweets`);
@@ -83,7 +87,7 @@ const fetchNew = () => {
         newStatus.since_id = since_id;
       }
 
-      if (new Date(oldest.created_at) < backfillStop) {
+      if (new Date(oldest.created_at) <= backfillStop) {
         console.log(
           `backfill > reached backstop (${new Date(
             backfillStop
@@ -98,13 +102,11 @@ const fetchNew = () => {
       clearInterval(intervalId);
     }
   };
-  // tick();
+  tick();
   intervalId = setInterval(tick, interval);
 };
 
 const init = async () => {
-  await saveJSONAsync(pathToScriptsJson("status.json"), {});
-  console.log("backfill > reset status");
   ["unprocessed", "populated", "resolveQueue", "resolved"].forEach(
     async (file) => {
       await saveJSONAsync(pathToScriptsJson(`${file}.json`), []);

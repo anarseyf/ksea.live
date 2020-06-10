@@ -50,7 +50,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   const { features } = geojson;
   const rendered = features.filter(renderFilter);
 
-  if (activeArea) {
+  if (area) {
     zoom = defaultZoom + 1;
   }
   if (selectedTweet) {
@@ -59,7 +59,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
 
   const center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : centroid(rendered);
+    : centroid(features);
 
   console.log("MAP/center", center);
 

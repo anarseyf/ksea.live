@@ -1,26 +1,25 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
-import { TypeLegend } from "./TypeLegend";
-import { TweetsContext, currentInterval } from "./TweetsProvider";
-import { useLegend } from "./useLegend";
-import { Histogram } from "./Histogram";
-import { GroupByOptions } from "../groupingOptions";
+import React, { useContext } from "react";
+import { TweetsContext } from "./TweetsProvider";
 import { MultiLine } from "./MultiLine";
+import { Paragraph } from "./Paragraph";
 
 export const Header = ({ area }) => {
   const { filteredByArea } = useContext(TweetsContext);
-  const [legend] = useLegend();
-  const [typeLegend, setTypeLegend] = useState([]);
 
-  useEffect(() => {
-    const option = GroupByOptions.IncidentType;
-    legend && legend[option] && setTypeLegend(legend[option]);
-  }, [legend]);
+  const text = `Cumulative number of dispatches for ${area} today, compared to the previous N days`;
 
   if (!filteredByArea.length) {
     return null;
   }
 
   return (
-    <MultiLine intervals={filteredByArea[0].intervals} useCumulative={true} />
+    <>
+      <Paragraph text={text} />
+      <MultiLine
+        intervals={filteredByArea[0].intervals}
+        useCumulative={true}
+        width={300}
+      />
+    </>
   );
 };

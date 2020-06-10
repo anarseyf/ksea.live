@@ -131,6 +131,26 @@ const forAreaController = async (req, res, next) => {
 };
 router.get("/tweets/:area", forAreaController);
 
+const historyController = async (req, res, next) => {
+  try {
+    // TODO: bin size = 24h, interval = 30 days, etc.
+
+    const all = await tweetsForArea(req.params.area);
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
+
+    const result = groupBy(GroupByOptions.Nothing, all)
+      .map(groupByInterval)
+      .map(minimizer)
+      .sort(sortByTotal);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error });
+  }
+};
+router.get("/history/:area", historyController);
+
 const mapsController = async (req, res, next) => {
   console.log(">>> MAPS:", req.url, req.params);
   res.status(500).send(null);

@@ -9,12 +9,12 @@ export function MultiLine({
   title,
   showHeader = false,
   useCumulative,
+  width: svgWidth = 240,
 }) {
   const [svgData, setSvgData] = useState([]);
   const [live, setLive] = useState(null);
 
-  const svgWidth = 160,
-    svgHeight = 70,
+  const svgHeight = 0.3 * svgWidth,
     margin = { top: 10, right: 20, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
