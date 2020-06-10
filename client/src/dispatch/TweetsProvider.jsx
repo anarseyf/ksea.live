@@ -5,7 +5,6 @@ import {
   getTweetsForArea,
   getTweetsByArea,
   getTweetsByType,
-  getTweetsByAreaByType,
   getMostRecentId,
 } from "../api";
 export const TweetsContext = createContext();
@@ -42,7 +41,6 @@ const useTweets = (filters = {}) => {
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [groupedByType, setGroupedByType] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
-  const [groupedByAreaByType, setGroupedByAreaByType] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -61,18 +59,12 @@ const useTweets = (filters = {}) => {
       const grouped = await getTweetsByType(area);
       setGroupedByType(grouped);
     })();
-
-    (async () => {
-      const grouped = await getTweetsByAreaByType();
-      setGroupedByAreaByType(grouped);
-    })();
   }, [mostRecentId]);
 
   return {
     filteredByArea,
     groupedByArea,
     groupedByType,
-    groupedByAreaByType,
   };
 };
 

@@ -93,6 +93,7 @@ const byTypeController = async (req, res, next) => {
 router.get("/tweets/byType/:area?", byTypeController);
 
 const byAreabyTypeController = async (req, res, next) => {
+  console.error("TODO - remove this API");
   try {
     const byArea = await tweetsByArea();
     const minimizer =

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { Topline } from "./Topline";
 import { TypeLegend } from "./TypeLegend";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
 import { useLegend } from "./useLegend";
@@ -9,14 +8,13 @@ import { MultiLine } from "./MultiLine";
 
 export const Header = ({ area }) => {
   const { filteredByArea } = useContext(TweetsContext);
-  const [mainLegend, legendsByArea] = useLegend();
-  const [legend, setLegend] = useState([]);
+  const [legend] = useLegend();
+  const [typeLegend, setTypeLegend] = useState([]);
 
   useEffect(() => {
-    const lgnd = area ? legendsByArea[area] : mainLegend;
     const option = GroupByOptions.IncidentType;
-    lgnd && lgnd[option] && setLegend(lgnd[option]);
-  }, [mainLegend, legendsByArea]);
+    legend && legend[option] && setTypeLegend(legend[option]);
+  }, [legend]);
 
   if (!filteredByArea.length) {
     return null;
@@ -25,7 +23,7 @@ export const Header = ({ area }) => {
   return (
     <div>
       <MultiLine intervals={filteredByArea[0].intervals} useCumulative={true} />
-      {legend && <TypeLegend legend={legend} showLabels={true} />}
+      {typeLegend && <TypeLegend legend={typeLegend} showLabels={true} />}
       <Histogram />
     </div>
   );
