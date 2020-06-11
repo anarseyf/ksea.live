@@ -15,7 +15,11 @@ export const Header = ({ area }) => {
   return (
     <>
       <Paragraph text={text} />
-      <MultiLine intervals={filteredByArea[0].intervals} useCumulative={true} />
+      <MultiLine
+        intervals={filteredByArea[0].intervals}
+        useCumulative={true}
+        fullWidth={true}
+      />
     </>
   );
 };

@@ -37,12 +37,8 @@ export function GroupByArea() {
   };
   const neighborhoodsMap = getNeighborhoods();
 
-  const groupTitle = `> Group by Area`;
-
   return (
     <div className={styles.container}>
-      <div className={styles.header}>{groupTitle}</div>
-
       {groupedByArea.map(({ key: area, intervals }) => (
         <div
           className={styles.itemContainer}
