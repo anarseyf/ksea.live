@@ -1,0 +1,27 @@
+@import "../colors.scss";
+
+.container {
+  border: 1px solid $twitter-main;
+  padding: 0.5em;
+  margin: 0.5em auto;
+  font-variant: small-caps;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.explanation {
+  float: right;
+  font-weight: bold;
+  color: $text-secondary;
+}
+
+.latlong {
+  color: $text-secondary;
+}
+
+.unit {
+  border: 1px solid $border;
+  border-radius: 4px;
+  margin: auto 0.5em;
+  padding: auto 0.5em;
+}

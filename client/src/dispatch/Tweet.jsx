@@ -6,7 +6,7 @@ import { AreaAccessors, GroupByOptions } from "../groupingOptions";
 
 const iconSize = 25;
 
-export function Tweet({ tweet }) {
+export function Tweet({ tweet, greyedOut }) {
   const { user, setSelection } = useContext(UserContext);
   const selectedTweet = user[UserContextKeys.SelectedTweet];
   const [isSelected, setIsSelected] = useState(false);
@@ -32,7 +32,9 @@ export function Tweet({ tweet }) {
 
   return (
     <div
-      className={`${styles.container} ${isSelected ? styles.selected : ""}`}
+      className={`${styles.container} ${isSelected ? styles.selected : ""} ${
+        greyedOut ? styles.greyedOut : ""
+      }`}
       onClick={handleClick}
     >
       <div className={styles.tweet}>
