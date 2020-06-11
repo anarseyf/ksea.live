@@ -1,12 +1,11 @@
 @import "../colors.scss";
 
 .container {
-  border: 1px solid $twitter-main;
+  border-bottom: 1px solid $twitter-main;
   padding: 0.5em;
   margin: 0.5em auto;
   font-variant: small-caps;
   text-align: left;
-  font-size: 0.8em;
 }
 
 .explanation {

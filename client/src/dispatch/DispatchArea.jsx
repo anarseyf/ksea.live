@@ -7,21 +7,31 @@ import { Rehoboam } from "./Rehoboam";
 import { LegendSection } from "./Legend";
 import { Histogram } from "./Histogram";
 import { Paragraph } from "./Paragraph";
+import { Section } from "./Section";
 
 export function DispatchArea({ area }) {
-  const howTo = "How to use this page";
   const sources = "Data sources";
 
   return (
     <TweetsProvider filters={{ area }}>
-      <Rehoboam area={area} />
-      <Header area={area} />
-      <Histogram />
-      <Map area={area} />
-      <LegendSection />
-      <Tweets />
-      <Paragraph text={howTo} />
-      <Paragraph text={sources} />
+      <Section styleOption={1}>
+        <Rehoboam area={area} />
+        <Header area={area} />
+        <Histogram />
+      </Section>
+
+      <Section styleOption={2}>
+        <Map area={area} />
+        <LegendSection />
+      </Section>
+
+      <Section styleOption={1}>
+        <Tweets />
+      </Section>
+
+      <Section styleOption={2}>
+        <Paragraph text={sources} />
+      </Section>
     </TweetsProvider>
   );
 }

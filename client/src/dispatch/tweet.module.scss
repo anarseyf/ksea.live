@@ -10,14 +10,15 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
   text-align: left;
   font-variant: small-caps;
   padding-top: 0.5em;
-  border-bottom: 1px solid $transparent;
 }
 .container:hover {
-  border-bottom: 1px solid $twitter-main;
   cursor: pointer;
 }
 .greyedOut {
   color: $text-secondary;
+}
+.detailed {
+  background-color: $tweet-bg;
 }
 
 .tweet {
