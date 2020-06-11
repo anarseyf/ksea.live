@@ -1,6 +1,6 @@
 import { geoContains } from "d3-geo";
-import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
-import { pathToScriptsJson } from "./utils";
+import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
+import { pathToScriptsJson } from "../utils";
 
 export const featureForPoint = ([lat, long], features) =>
   features.find((feature) => geoContains(feature, [long, lat]));
@@ -26,11 +26,11 @@ export const addNhood = (tweets, features) => {
 
 const modifyExisting = async () => {
   const nhoods = await readJSONAsync(
-    "../../client/src/dispatch/2016_seattle_cra.json"
+    "../../../client/src/dispatch/2016_seattle_cra.json"
   );
   const fileNames = [
-    "../../datasets/tweets/2020-06-03T00:00:00.000Z.json",
-    "../../datasets/tweets/2020-06-04T00:00:00.000Z.json",
+    "../../../datasets/tweets/2020-06-03T00:00:00.000Z.json",
+    "../../../datasets/tweets/2020-06-04T00:00:00.000Z.json",
   ];
 
   for (let fileName of fileNames) {
@@ -54,7 +54,7 @@ const main = async () => {
     const tickStart = new Date();
 
     const nhoods = await readJSONAsync(
-      "../../client/src/dispatch/2016_seattle_cra.json"
+      "../../../client/src/dispatch/2016_seattle_cra.json"
     );
 
     const tweets = await readJSONAsync(pathToScriptsJson("resolved.json"), []);

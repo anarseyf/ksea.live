@@ -3,8 +3,8 @@ import {
   saveJSONAsync,
   appendJSONAsync,
   toUTCMidnightString,
-} from "./fileUtils";
-import { pathToScriptsJson, pathToDatasets } from "./utils";
+} from "../fileUtils";
+import { pathToScriptsJson, pathToDatasetsOfficial } from "../utils";
 
 const resolve = () => {
   const interval = 6 * 1231;
@@ -24,11 +24,8 @@ const resolve = () => {
       });
       Object.keys(splits).forEach(async (fileName) => {
         await appendJSONAsync(
-          pathToDatasets(`${fileName}.json`),
-          splits[fileName],
-          {
-            dedupe: true,
-          }
+          pathToDatasetsOfficial(`${fileName}.json`),
+          splits[fileName]
         );
       });
       await saveJSONAsync(pathToScriptsJson("resolved-nhoods.json"), []);

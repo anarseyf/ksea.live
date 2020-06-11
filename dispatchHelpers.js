@@ -4,7 +4,7 @@ import {
   readJSONAsync,
 } from "./scripts/dispatch/fileUtils";
 
-export const dataPath = "./datasets/tweets/";
+export const dataPath = "./datasets/official/";
 
 const areaOption = GroupByOptions.Area;
 

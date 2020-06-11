@@ -4,7 +4,7 @@ import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MapOptions } from "./mapOptions";
-import { centroid, areas } from "./geojson";
+import { centroid, areas, cityBounds } from "./geojson";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
 
@@ -15,6 +15,11 @@ let zoom = defaultZoom;
 
 const overlayColor = "dodgerblue";
 const activeColor = "orangered";
+const geojsonStyleBounds = {
+  color: activeColor,
+  fillOpacity: 0,
+  weight: 1,
+};
 const geojsonStyleActive = {
   color: activeColor,
   fillColor: activeColor,
@@ -100,6 +105,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   };
 
   console.log(`MAP/rendering with ${data.length} dots, ${rendered.length} geo`);
+  const city = cityBounds.features[0];
 
   return (
     <LeafletMap
@@ -111,6 +117,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />
+      <GeoJSON data={city} style={geojsonStyleBounds} />
       {rendered.map((feature) => (
         <GeoJSON data={feature} style={geojsonStyleActive} />
       ))}

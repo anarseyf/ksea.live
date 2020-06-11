@@ -3,8 +3,8 @@ import {
   readJSONAsync,
   saveJSONAsync,
   appendJSONAsync,
-} from "./fileUtils";
-import { pathToScriptsJson } from "./utils";
+} from "../fileUtils";
+import { pathToScriptsJson } from "../utils";
 
 const NodeGeocoder = require("node-geocoder");
 

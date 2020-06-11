@@ -24,6 +24,11 @@ export const toPacificMidnight = (timestamp) => {
   return +moment;
 };
 
+export const toLocaleString = (date) => {
+  const moment = timezone(date, "America/Vancouver");
+  return moment.format("l"); // https://momentjs.com/ > Multiple Locale Support
+};
+
 export const touch = (fileName) => {
   // https://remarkablemark.org/blog/2017/12/17/touch-file-nodejs/
   try {
@@ -87,7 +92,7 @@ export const saveJSONAsync = async (fileName, data) => {
 export const appendJSONAsync = async (
   fileName,
   newData = [],
-  { dedupe = true } = {}
+  { dedupe = false } = {}
 ) => {
   const oldData = await readJSONAsync(fileName, []);
   let result = oldData.concat(newData);

@@ -9,7 +9,7 @@ export const Section = ({ children, styleOption = 1, edgeToEdge = false }) => {
       ? styles.style2
       : styles.styleDefault;
   return (
-    <div className={`${styles.section} ${style}`}>
+    <section className={`${styles.section} ${style}`}>
       <div className={styles.content}>
         <div
           className={`${styles.subcontent} ${
@@ -19,6 +19,6 @@ export const Section = ({ children, styleOption = 1, edgeToEdge = false }) => {
           {children}
         </div>
       </div>
-    </div>
+    </section>
   );
 };

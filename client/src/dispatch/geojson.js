@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import zipCodes from "./zip-codes.json";
 // import nhoods from "./nhoods.json";
 import nhoods from "./2016_seattle_cra.json";
+import city from "./2016_seattle_city.json";
 
 const nhoodProp = "NEIGHBO"; // TODO - import from server/groupby.js
 const zipcodeProp = "GEOID10";
@@ -30,6 +31,8 @@ export const areas = {
   geojson: nhoods,
   areaProp: nhoodProp,
 };
+
+export const cityBounds = city;
 
 const defaultCentroid = [47.60912, -122.34494];
 

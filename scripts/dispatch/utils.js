@@ -13,7 +13,10 @@ export const getUserTimeline = async (config) => {
 };
 
 export const pathToScriptsJson = (fileName) => `./json/${fileName}`;
-export const pathToDatasets = (fileName) => `../../datasets/tweets/${fileName}`;
+export const pathToDatasetsTweets = (fileName) =>
+  `../../../datasets/tweets/${fileName}`;
+export const pathToDatasetsOfficial = (fileName) =>
+  `../../../datasets/official/${fileName}`;
 
 export const incrementIdStr = (id_str) => (BigInt(id_str) + 1n).toString();
 export const decrementIdStr = (id_str) => (BigInt(id_str) - 1n).toString();

@@ -1,8 +1,8 @@
-import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "./fileUtils";
-import { getUserTimeline, decrementIdStr, pathToScriptsJson } from "./utils";
-import { checkVersion } from "./version";
+import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
+import { getUserTimeline, decrementIdStr, pathToScriptsJson } from "../utils";
+import { checkVersion } from "../version";
 
-const fetchNew = () => {
+const main = () => {
   let intervalId;
   const bearer = process.env.BEARER;
   if (!bearer) {
@@ -94,4 +94,4 @@ const fetchNew = () => {
 };
 
 checkVersion();
-fetchNew();
+main();
