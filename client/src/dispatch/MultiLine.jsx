@@ -13,7 +13,7 @@ export function MultiLine({
   const [svgData, setSvgData] = useState([]);
   const [live, setLive] = useState(null);
 
-  const svgWidth = isPhone ? 150 : 250;
+  const svgWidth = isPhone ? 150 : 320;
   const svgHeight = 0.3 * svgWidth,
     margin = { top: 10, right: 20, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,

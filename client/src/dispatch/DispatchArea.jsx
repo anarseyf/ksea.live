@@ -20,7 +20,7 @@ export function DispatchArea({ area }) {
         <Histogram />
       </Section>
 
-      <Section styleOption={2}>
+      <Section styleOption={2} edgeToEdge={true}>
         <Map area={area} />
         <LegendSection />
       </Section>
