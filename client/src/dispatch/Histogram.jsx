@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
-import { intervalExtent } from "../utils";
+import { intervalExtent, isPhone } from "../utils";
 
 export function Histogram() {
   const { historyForArea } = useContext(TweetsContext);
@@ -11,7 +11,7 @@ export function Histogram() {
 
   const fill = "white";
 
-  const svgWidth = 400,
+  const svgWidth = isPhone ? 250 : 350,
     svgHeight = 80,
     margin = { top: 10, right: 10, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,

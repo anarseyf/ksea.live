@@ -10,6 +10,18 @@
   width: 500px;
 }
 
+@media only screen and (max-device-width: 600px) {
+  .content {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-device-width: 601px) and (max-device-width: 800px) {
+  .content {
+    width: 600px;
+  }
+}
+
 .styleDefault {
   background-color: $body-bg; // rgb(25, 26, 26);
 }
@@ -20,4 +32,11 @@
 
 .style2 {
   background-color: rgb(17, 17, 19);
+}
+
+.subcontent {
+  margin: auto 2em;
+}
+.subcontent.edgeToEdge {
+  margin: auto 0;
 }

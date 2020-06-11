@@ -2,18 +2,18 @@ import React, { useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
-import { intervalExtent } from "../utils";
+import { intervalExtent, isPhone } from "../utils";
 
 export function MultiLine({
   intervals = [],
   title,
   showHeader = false,
   useCumulative,
-  width: svgWidth = 240,
 }) {
   const [svgData, setSvgData] = useState([]);
   const [live, setLive] = useState(null);
 
+  const svgWidth = isPhone ? 150 : 250;
   const svgHeight = 0.3 * svgWidth,
     margin = { top: 10, right: 20, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,

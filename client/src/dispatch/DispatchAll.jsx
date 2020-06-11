@@ -33,7 +33,7 @@ export function DispatchAll() {
         <Histogram />
       </Section>
 
-      <Section>
+      <Section edgeToEdge={true}>
         <Map />
         <LegendSection />
       </Section>
