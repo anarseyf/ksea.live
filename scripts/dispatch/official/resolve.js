@@ -101,7 +101,6 @@ const resolve = () => {
         pathToScriptsJson("resolved.json"),
         resolved
       );
-      await saveJSONAsync(pathToScriptsJson("resolveQueue.json"), []);
 
       const end = new Date();
       console.log(
