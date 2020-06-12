@@ -1,4 +1,4 @@
-import { readJSONAsync, appendJSONAsync } from "../fileUtils";
+import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
 import { pathToScriptsJson } from "../utils";
 
 const main = () => {
@@ -6,6 +6,7 @@ const main = () => {
   let intervalId;
   const tick = async () => {
     try {
+      const start = new Date();
       const entries = await readJSONAsync(
         pathToScriptsJson("scraped.json"),
         []
@@ -52,8 +53,11 @@ const main = () => {
       const result = Object.keys(map).map(mapper).sort(byTimestampDescending);
 
       await appendJSONAsync(pathToScriptsJson("combined.json"), result);
-      console.log(`split > wrote ${result.length} items`);
-      await saveJSONAsync(pathToScriptsJson("scraped.json"), []);
+      const end = new Date();
+      console.log(
+        `combine > ${entries.length} --> ${result.length} (${end - start}ms)`
+      );
+      // await saveJSONAsync(pathToScriptsJson("scraped.json"), []);
     } catch (e) {
       console.error("combine >>> Canceling runner due to error:", e);
       clearInterval(intervalId);

@@ -7,7 +7,7 @@ import {
 import { pathToScriptsJson, pathToDatasetsOfficial } from "../utils";
 
 const resolve = () => {
-  const interval = 6 * 1231;
+  const interval = 13 * 1231;
   let intervalId;
   const tick = async () => {
     try {

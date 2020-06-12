@@ -55,12 +55,20 @@ const scrapeDate = async (dateStr) => {
 };
 
 const main = async () => {
-  const year = 2020,
-    month = 5,
-    date = 11;
-  const dates = [0, -1].map((offset) => new Date(year, month, date + offset));
+  const now = new Date();
+  const year = now.getFullYear(),
+    month = now.getMonth(),
+    day = now.getDate();
+  const dates = [];
+  let offset = 0;
+  let date = new Date(year, month, day + offset);
+  while (date.getFullYear() === 2020) {
+    date = new Date(year, month, day + offset);
+    offset -= 1;
+    dates.push(date);
+  }
   const dateStrings = dates.map(toLocaleString);
-
+  // console.log(dateStrings.slice(-3));
   for (const dateStr of dateStrings) {
     await scrapeDate(dateStr);
   }

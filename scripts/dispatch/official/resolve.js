@@ -5,58 +5,35 @@ import {
   appendJSONAsync,
 } from "../fileUtils";
 import { pathToScriptsJson } from "../utils";
-
-const NodeGeocoder = require("node-geocoder");
-
-const options = {
-  provider: "google",
-  apiKey: "AIzaSyAIaEIC_U0FePOM8GriPCEc3W9SbPjEzJM",
-};
+const axios = require("axios").default;
 
 const geoRateLimit = 100; // millis betweet requests
 
 const resolveGeo = async (tweets = []) => {
-  const geocoder = NodeGeocoder(options);
+  const ids = tweets.map(({ id_str }) => id_str);
+  console.log(`resolve > IDs: ${ids}`);
+  const where = ids.map((id) => `incident_number="${id}"`).join("+OR+");
+  // console.log("WHERE:", where);
+  // console.log("ENCODED:", encodeURIComponent(where));
 
-  const results = await Promise.all(
-    tweets.map(async ({ derived: { address } }, i) => {
-      const delay = geoRateLimit * i;
-      await asyncTimeout(delay);
-      return await geocoder.geocode(address).catch((error) => {
-        console.error(`resolve >>> ERROR in ${i}: ${error}`);
-        return [];
-      });
-    })
-  );
+  const appToken = "DvY4gobAudCWKcwYz3yqTd25h";
 
-  console.log(
-    `resolve > ${tweets.length} requests, ${
-      results.filter((d) => d.length).length
-    } results`
-  );
+  const uri = `https://data.seattle.gov/resource/fire-911.json?$$app_token=${appToken}&$select=incident_number,latitude,longitude&$where=${where}`;
+  const encodedUri = encodeURI(uri);
+  console.log("ENCODED:", encodedUri);
 
-  const geoResults = results
-    .map((list) => list[0] || {})
-    .map((d) => ({
-      lat: d.latitude,
-      long: d.longitude,
-      resolvedAddress: d.formattedAddress,
-      provider: d.provider,
-      zip: d.zipcode,
-    }));
-
-  return tweets.map(({ derived, ...rest }, i) => ({
-    ...rest,
-    derived: {
-      ...derived,
-      ...geoResults[i],
-    },
-  }));
+  const res = await axios.get(encodedUri, {}).catch((e) => {
+    console.error("data.seattle.gov call failed:", e.response.status, e.stack);
+    throw e.message;
+  });
+  const result = res.data;
+  console.log(result);
+  return [];
 };
 
 const resolve = () => {
-  const interval = 3 * 1083;
-  const queueSize = 20;
+  const interval = 4 * 1083;
+  const queueSize = 40;
   let intervalId;
 
   const tick = async () => {
@@ -65,32 +42,32 @@ const resolve = () => {
         pathToScriptsJson("resolveQueue.json"),
         []
       );
-      if (queue.length) {
-        console.log(
-          `resolve > ${queue.length} items in queue, will retry in ${
-            interval / 1000
-          } sec`
-        );
-        return;
-      }
+      // if (queue.length) {
+      //   console.log(
+      //     `resolve > ${queue.length} items in queue, will retry in ${
+      //       interval / 1000
+      //     } sec`
+      //   );
+      //   return;
+      // }
 
-      const tweets = await readJSONAsync(
-        pathToScriptsJson("combined.json"),
-        []
-      );
+      // const tweets = await readJSONAsync(
+      //   pathToScriptsJson("combined.json"),
+      //   []
+      // );
 
-      queue = tweets.slice(0, queueSize);
-      await appendJSONAsync(pathToScriptsJson("resolveQueue.json"), queue);
+      // queue = tweets.slice(0, queueSize);
+      // await appendJSONAsync(pathToScriptsJson("resolveQueue.json"), queue);
+
       // Note: the queue file is not used as a source of data.
       // It might make sense to use it as a backup.
-      await saveJSONAsync(
-        pathToScriptsJson("combined.json"),
-        tweets.slice(queueSize)
-      ); // TODO - atomic
 
-      console.log(
-        `resolve > requesting ${queue.length} out of ${tweets.length} total`
-      );
+      // await saveJSONAsync(
+      //   pathToScriptsJson("combined.json"),
+      //   tweets.slice(queueSize)
+      // ); // TODO - atomic
+
+      console.log(`resolve > requesting ${queue.length}`);
 
       const hasCoordinates = ({ derived: { lat, long } }) =>
         typeof lat === "number" && typeof long === "number";
@@ -101,7 +78,7 @@ const resolve = () => {
         pathToScriptsJson("resolved.json"),
         newData
       );
-      await saveJSONAsync(pathToScriptsJson("resolveQueue.json"), []);
+      // await saveJSONAsync(pathToScriptsJson("resolveQueue.json"), []);
       console.log(
         `resolve > resolved ${newData.length}, new total: ${newTotal}`
       );
@@ -111,7 +88,7 @@ const resolve = () => {
     }
   };
   tick();
-  intervalId = setInterval(tick, interval);
+  // intervalId = setInterval(tick, interval);
 };
 
 resolve();

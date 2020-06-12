@@ -47,7 +47,7 @@ const modifyExisting = async () => {
 };
 
 const main = async () => {
-  const interval = 7 * 1203;
+  const interval = 9 * 1203;
   let intervalId;
 
   const tick = async () => {

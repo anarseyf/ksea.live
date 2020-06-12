@@ -21,6 +21,31 @@ import { readJSONAsync, readdirAsync } from "./scripts/dispatch/fileUtils";
 
 const identityFn = (v) => v;
 
+const seattleGovController = async (req, res, next) => {
+  // TODO - delete
+  try {
+    const options = {
+      uri: "https://data.seattle.gov/resource/fire-911.json",
+      json: true,
+      qs: {
+        $limit: 10,
+        // $where: "date_extract_y(datetime) >= 2020",
+        $$router_token: "DvY4gobAudCWKcwYz3yqTd25h", // https://data.seattle.gov/profile/edit/developer_settings
+      },
+    };
+
+    const start = +new Date();
+    rp(options).then((json) => {
+      const end = +new Date();
+      const latency = (end - start) / 1000;
+      res.json(json);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error });
+  }
+};
+
 const mostRecentController = async (req, res, next) => {
   let result;
   try {
@@ -154,6 +179,7 @@ const mapsController = async (req, res, next) => {
   res.status(500).send(null);
 };
 
+router.get("/seattle911", seattleGovController);
 router.get("/mostRecentId", mostRecentController);
 router.get("/tweets/byArea", byAreaController);
 router.get("/tweets/byType/:area?", byTypeController);
@@ -161,30 +187,5 @@ router.get("/tweets/byAreaByType", byAreabyTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/:area", historyController);
 router.get("/maps/:z/:x/:y", mapsController);
-
-router.get("/seattle-gov", async (req, res, next) => {
-  // TODO - delete
-  try {
-    const options = {
-      uri: "https://data.seattle.gov/resource/fire-911.json",
-      json: true,
-      qs: {
-        $limit: 10,
-        $where: "date_extract_y(datetime) >= 2020",
-        $$router_token: "DvY4gobAudCWKcwYz3yqTd25h", // https://data.seattle.gov/profile/edit/developer_settings
-      },
-    };
-
-    const start = +new Date();
-    rp(options).then((json) => {
-      const end = +new Date();
-      const latency = (end - start) / 1000;
-      res.json(json);
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ error });
-  }
-});
 
 export default router;
