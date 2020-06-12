@@ -41,7 +41,7 @@ export function Histogram() {
       .axisBottom()
       .tickFormat(dateFormatter)
       .scale(xScale)
-      .ticks(d3.timeDay.every(7));
+      .ticks(d3.timeMonth.every(1));
     d3.select(xAxisRef.current).call(xAxis);
 
     const yAxis = d3.axisLeft().scale(yScale).ticks(2);

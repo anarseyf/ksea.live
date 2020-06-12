@@ -10,9 +10,15 @@ const axios = require("axios").default;
 const queueSize = 40;
 
 const resolveGeo = async (entries = []) => {
+  if (!entries.length) {
+    console.log("resolve > nothing to do");
+    return [];
+  }
+
   if (entries.length > queueSize) {
     throw `resolve > requested more than ${queueSize} items: ${entries.length}`;
   }
+
   const ids = entries.map(({ id_str }) => id_str);
   console.log(`resolve > IDs: ${ids}`);
   const where = ids.map((id) => `incident_number="${id}"`).join("+OR+");

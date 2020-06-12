@@ -12,8 +12,8 @@ export const GroupByOptions = {
 };
 
 const TwentyFourHours = 24 * 3600 * 1000;
-const HistoryBinSizeMinutes = TwentyFourHours / (60 * 1000);
-const HistoryInterval = 30 * TwentyFourHours;
+const HistoryBinSizeMinutes = 7 * (TwentyFourHours / (60 * 1000));
+const HistoryInterval = 180 * TwentyFourHours;
 
 const isHistory = (start, end) => end - start > TwentyFourHours;
 
