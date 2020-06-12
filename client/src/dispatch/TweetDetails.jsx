@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./tweetdetails.module.scss";
+import { toPacificStr } from "../utils";
 
 export const TweetDetails = ({
   tweet: {
-    derived: { resolvedAddress, time, units, type, color, lat, long },
+    derived: { timestamp, address, units, type, color, lat, long },
   },
 }) => {
   const unitsList = units.split(" ");
   const unitsStr = `${unitsList.length} ${
     unitsList.length === 1 ? "unit" : "units"
-  } dispatched at ${time}`;
+  } dispatched at ${toPacificStr(timestamp)}`;
 
   const format = (n) => Number.parseFloat(n).toFixed(3);
   const coordinates = `${format(lat)}°N ${format(-long)}°W`;
@@ -18,7 +19,7 @@ export const TweetDetails = ({
       <div className={styles.explanation} style={{ color }}>
         {type}
       </div>
-      <div>{resolvedAddress}</div>
+      <div>{address}</div>
       <div className={styles.latlong}>{coordinates}</div>
       <div className={styles.explanation}>{unitsStr}</div>
       <div>

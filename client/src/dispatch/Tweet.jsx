@@ -45,10 +45,7 @@ export function Tweet({ tweet, mode = TweetModes.Default }) {
           </svg>
         </div>
         <div>
-          <a href={tweet.derived.tweetUrl} target="_blank">
-            <img src={"../twitter.svg"} width={iconSize} height={iconSize} />
-          </a>
-          <span>{tweet.text}</span>
+          <span>{tweet.derived.description}</span>
         </div>
       </div>
       {isDetailed && <TweetDetails tweet={tweet} />}

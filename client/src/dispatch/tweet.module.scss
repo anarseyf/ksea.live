@@ -9,16 +9,17 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
   font-size: 0.8em;
   text-align: left;
   font-variant: small-caps;
-  padding-top: 0.5em;
+  padding: 0.5em;
+  border-bottom: 1px solid $border;
 }
-.container:hover {
+.container:hover,
+.container.detailed {
   cursor: pointer;
+  background-color: $tweet-bg;
+  border-bottom: 1px solid $twitter-main;
 }
 .greyedOut {
   color: $text-secondary;
-}
-.detailed {
-  background-color: $tweet-bg;
 }
 
 .tweet {
@@ -34,6 +35,7 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 
 .details {
   float: right;
+  color: $text-secondary;
 }
 .units {
   color: $twitter-darkgray;

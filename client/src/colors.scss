@@ -8,12 +8,14 @@ $text-secondary-dark: slategray;
 $axis-color-dark: slategray;
 $body-color-dark: white;
 $graph-secondary-dark: rgb(225, 225, 225);
+$border-dark: rgb(54, 65, 87);
 
 $text-primary-light: black;
 $text-secondary-light: #333333;
 $axis-color-light: darkslategray;
 $body-color-light: black;
 $graph-secondary-light: darkgray;
+$border-light: slategray;
 
 $transparent: rgba(0, 0, 0, 0);
 $twitter-main: #00acee;
@@ -21,7 +23,7 @@ $twitter-darkgray: #657786;
 $tweet-bg: #01212e;
 $dark-bg: #3a414e;
 $selected-bg: slategray;
-$border: slategray;
+
 $live: red;
 $highlight: red;
 $hover: silver;
@@ -32,3 +34,4 @@ $text-primary: $text-primary-dark;
 $text-secondary: $text-secondary-dark;
 $axis-color: $axis-color-dark;
 $graph-secondary: $graph-secondary-dark;
+$border: $border-dark;

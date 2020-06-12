@@ -2,7 +2,7 @@ import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
 import { pathToScriptsJson } from "../utils";
 
 const main = () => {
-  const interval = 6 * 1231;
+  const interval = 10 * 1231;
   let intervalId;
   const tick = async () => {
     try {
@@ -57,14 +57,14 @@ const main = () => {
       console.log(
         `combine > ${entries.length} --> ${result.length} (${end - start}ms)`
       );
-      // await saveJSONAsync(pathToScriptsJson("scraped.json"), []);
+      await saveJSONAsync(pathToScriptsJson("scraped.json"), []);
     } catch (e) {
       console.error("combine >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
     }
   };
   tick();
-  // intervalId = setInterval(tick, interval);
+  intervalId = setInterval(tick, interval);
 };
 
 main();

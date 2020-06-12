@@ -65,7 +65,7 @@ const main = async () => {
     console.log(`nhoods > resolved in ${tickEnd - tickStart}ms`);
   };
 
-  tick();
+  // tick();
   intervalId = setInterval(tick, interval);
 };
 

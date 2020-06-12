@@ -25,7 +25,8 @@ const resolve = () => {
       Object.keys(splits).forEach(async (fileName) => {
         await appendJSONAsync(
           pathToDatasetsOfficial(`${fileName}.json`),
-          splits[fileName]
+          splits[fileName],
+          { dedupe: true }
         );
       });
       await saveJSONAsync(pathToScriptsJson("resolved-nhoods.json"), []);
@@ -39,7 +40,7 @@ const resolve = () => {
       clearInterval(intervalId);
     }
   };
-  tick();
+  // tick();
   intervalId = setInterval(tick, interval);
 };
 

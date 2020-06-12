@@ -106,16 +106,20 @@ export const appendJSONAsync = async (
 
 export const readdirAsync = util.promisify(fs.readdir);
 
-const sortAndDedupe = (tweets) => {
-  const sorted = tweets.sort((a, b) => b.id_str.localeCompare(a.id_str));
-  for (let i = 1; i < tweets.length; i++) {
-    const current = tweets[i],
-      previous = tweets[i - 1];
+const sortAndDedupe = (entries) => {
+  const sorted = entries.sort(
+    (a, b) => b.derived.timestamp - a.derived.timestamp
+  );
+  for (let i = 1; i < entries.length; i++) {
+    const current = entries[i],
+      previous = entries[i - 1];
     if (previous && current.id_str === previous.id_str) {
-      tweets[i] = undefined;
+      entries[i] = undefined;
     }
   }
-  return sorted.filter(Boolean);
+  const result = sorted.filter(Boolean);
+  console.log(`>> dedupe >> ${entries.length} --> ${result.length}`);
+  return result;
 };
 
 export const asyncTimeout = (delay) =>

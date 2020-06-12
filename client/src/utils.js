@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { tz as timezone } from "moment-timezone";
 
 export const intervalExtent = ({ start, end }, expandMinutes = 0) =>
   expand([start, end], expandMinutes);
@@ -20,3 +21,6 @@ export const isPhone = () => {
   );
   return query.matches;
 };
+
+export const toPacificStr = (timestamp) =>
+  timezone(timestamp, "America/Vancouver").format("h:mma z");
