@@ -8,3 +8,8 @@
 .svg {
   border: 1px dashed $border;
 }
+
+.axis text {
+  font: bold 1.5em sans-serif;
+  fill: $text-primary;
+}
