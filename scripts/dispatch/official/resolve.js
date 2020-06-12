@@ -1,9 +1,4 @@
-import {
-  asyncTimeout,
-  readJSONAsync,
-  saveJSONAsync,
-  appendJSONAsync,
-} from "../fileUtils";
+import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
 import { pathToScriptsJson } from "../utils";
 const axios = require("axios").default;
 

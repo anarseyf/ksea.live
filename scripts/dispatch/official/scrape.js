@@ -56,19 +56,19 @@ const scrapeDate = async (dateStr) => {
 
 const main = async () => {
   const now = new Date();
-  const year = now.getFullYear(),
-    month = now.getMonth(),
-    day = now.getDate();
+  const year = 2019,
+    month = 11,
+    day = 31;
   const dates = [];
   let offset = 0;
   let date = new Date(year, month, day + offset);
-  while (date.getFullYear() === 2020) {
+  while (date > new Date(2018, 11, 31)) {
     date = new Date(year, month, day + offset);
     offset -= 1;
     dates.push(date);
   }
   const dateStrings = dates.map(toLocaleString);
-  // console.log(dateStrings.slice(-3));
+  console.log("scrape > dates:", dateStrings);
   for (const dateStr of dateStrings) {
     await scrapeDate(dateStr);
   }
