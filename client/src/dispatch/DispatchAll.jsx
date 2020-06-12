@@ -31,7 +31,7 @@ export function DispatchAll() {
         <Paragraph text={intro} />
         <Rehoboam />
         {/* <Header /> */}
-        <Histogram />
+        {/* <Histogram /> */}
       </Section>
 
       {/* <Section edgeToEdge={true}>

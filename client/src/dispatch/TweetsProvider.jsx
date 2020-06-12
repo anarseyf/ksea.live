@@ -10,6 +10,7 @@ import {
 export const TweetsContext = createContext();
 
 export const currentInterval = (dataset) => dataset[0].intervals[0];
+export const previousInterval = (dataset) => dataset[0].intervals[1];
 
 const useMostRecent = () => {
   const interval = 15 * 1000;

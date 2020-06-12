@@ -56,13 +56,13 @@ const scrapeDate = async (dateStr) => {
 
 const main = async () => {
   const now = new Date();
-  const year = 2019,
-    month = 11,
-    day = 31;
+  const year = now.getFullYear(),
+    month = now.getMonth(),
+    day = now.getDate();
   const dates = [];
   let offset = 0;
   let date = new Date(year, month, day + offset);
-  while (date > new Date(2018, 11, 31)) {
+  while (date > new Date(2020, 5, 11)) {
     date = new Date(year, month, day + offset);
     offset -= 1;
     dates.push(date);

@@ -2,6 +2,9 @@
 
 .container {
   border: 1px solid $border;
-  margin: 2em;
   padding: 2em;
+}
+
+.svg {
+  border: 1px dashed $border;
 }

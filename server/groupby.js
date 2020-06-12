@@ -12,7 +12,7 @@ export const GroupByOptions = {
 };
 
 const TwentyFourHours = 24 * 3600 * 1000;
-const HistoryBinSizeMinutes = 7 * (TwentyFourHours / (60 * 1000));
+const HistoryBinSizeMinutes = (1 * TwentyFourHours) / (60 * 1000);
 const HistoryInterval = 180 * TwentyFourHours;
 
 const isHistory = (start, end) => end - start > TwentyFourHours;
@@ -25,10 +25,19 @@ export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
 };
 
 export const generateHistoryIntervals = () => {
-  const currentStart = toPacificMidnight(+new Date());
-  const end = currentStart + TwentyFourHours;
-  const start = end - HistoryInterval;
-  return [[start, end]];
+  const currentStart = toPacificMidnight(new Date(2020, 0, 1));
+  const currentEnd = toPacificMidnight(new Date(2021, 0, 1));
+  const previousStart = toPacificMidnight(new Date(2019, 0, 1));
+  const previousEnd = currentStart;
+  const result = [
+    [currentStart, currentEnd],
+    [previousStart, previousEnd],
+  ];
+  console.log(
+    "HISTORY INTERVALS",
+    result.flat(2).map((d) => d.toLocaleString())
+  );
+  return result;
 };
 
 export const generateIntervals = () => {

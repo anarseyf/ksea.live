@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
-import { intervalExtent, isPhone } from "../utils";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
+import { intervalExtent, isPhone } from "../utils";
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
 

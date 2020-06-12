@@ -6,11 +6,13 @@ import {
 } from "../fileUtils";
 import { pathToScriptsJson, pathToDatasetsOfficial } from "../utils";
 
+const interval = 30 * 1031;
+
 const resolve = () => {
-  const interval = 13 * 1231;
   let intervalId;
   const tick = async () => {
     try {
+      const start = new Date();
       const tweets = await readJSONAsync(
         pathToScriptsJson("resolved-nhoods.json"),
         []
@@ -30,17 +32,18 @@ const resolve = () => {
         );
       });
       await saveJSONAsync(pathToScriptsJson("resolved-nhoods.json"), []);
+      const end = new Date();
       console.log(
-        `split > wrote ${tweets.length} items to ${
+        `split > split ${tweets.length} entries across ${
           Object.keys(splits).length
-        } files`
+        } files (${end - start}ms)`
       );
     } catch (e) {
       console.error("split >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
     }
   };
-  // tick();
+  tick();
   intervalId = setInterval(tick, interval);
 };
 
