@@ -8,6 +8,7 @@ import { LegendSection } from "./Legend";
 import { Histogram } from "./Histogram";
 import { Section } from "./Section";
 import { Paragraph } from "./Paragraph";
+import { History } from "./History";
 
 export function DispatchAll() {
   const intro = `Seattle Fire Department 911 dispatches. This page provides a real-time feed of 911 dispatches of FD units today, along with details and comparisons to previous days.`;
@@ -29,22 +30,23 @@ export function DispatchAll() {
       <Section styleOption={1}>
         <Paragraph text={intro} />
         <Rehoboam />
-        <Header />
+        {/* <Header /> */}
         <Histogram />
       </Section>
 
-      <Section edgeToEdge={true}>
+      {/* <Section edgeToEdge={true}>
         <Map />
         <LegendSection />
-      </Section>
+      </Section> */}
 
-      <Section styleOption={2}>
+      {/* <Section styleOption={2}>
         <Paragraph text={areas} />
         <GroupByArea />
-      </Section>
+      </Section> */}
 
       <Section styleOption={1}>
         <Paragraph text={history} />
+        <History />
       </Section>
 
       <Section styleOption={2}>

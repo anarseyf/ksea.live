@@ -2,7 +2,8 @@ import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
 import { pathToScriptsJson } from "../utils";
 const axios = require("axios").default;
 
-const queueSize = 40;
+const queueSize = 100;
+const interval = 3 * 1083;
 
 const resolveGeo = async (entries = []) => {
   if (!entries.length) {
@@ -16,7 +17,8 @@ const resolveGeo = async (entries = []) => {
 
   const ids = entries.map(({ id_str }) => id_str);
   console.log(`resolve > IDs: ${ids}`);
-  const where = ids.map((id) => `incident_number="${id}"`).join("+OR+");
+  const list = ids.map((id) => `"${id}"`).join(",");
+  const where = `incident_number in(${list})`;
 
   const appToken = "DvY4gobAudCWKcwYz3yqTd25h";
 
@@ -56,31 +58,23 @@ const resolveGeo = async (entries = []) => {
 };
 
 const resolve = () => {
-  const interval = 4 * 1083;
   let intervalId;
 
   const tick = async () => {
     try {
       const start = new Date();
-      let queue = await readJSONAsync(
-        pathToScriptsJson("resolveQueue.json"),
+
+      const entries = await readJSONAsync(
+        pathToScriptsJson("combined.json"),
         []
       );
 
-      if (!queue.length) {
-        const entries = await readJSONAsync(
-          pathToScriptsJson("combined.json"),
-          []
-        );
+      const queue = entries.slice(0, queueSize);
 
-        queue = entries.slice(0, queueSize);
-        await appendJSONAsync(pathToScriptsJson("resolveQueue.json"), queue);
-
-        await saveJSONAsync(
-          pathToScriptsJson("combined.json"),
-          entries.slice(queueSize)
-        ); // TODO - atomic
-      }
+      await saveJSONAsync(
+        pathToScriptsJson("combined.json"),
+        entries.slice(queueSize)
+      ); // TODO - atomic
 
       console.log(`resolve > requesting ${queue.length}`);
 
@@ -88,13 +82,15 @@ const resolve = () => {
         typeof lat === "number" && typeof long === "number";
 
       const newData = await resolveGeo(queue);
+
       const resolved = newData.filter(hasCoordinates);
 
       const unresolved = newData.filter((d) => !hasCoordinates(d));
       if (unresolved.length) {
         const unresolvedTotal = await appendJSONAsync(
           pathToScriptsJson("unresolved.json"),
-          unresolved
+          unresolved,
+          { dedupe: true }
         );
         console.log(
           `resolve > ${unresolved.length} unresolved (${unresolvedTotal} total unresolved)`
@@ -118,7 +114,7 @@ const resolve = () => {
       clearInterval(intervalId);
     }
   };
-  // tick();
+  tick();
   intervalId = setInterval(tick, interval);
 };
 
