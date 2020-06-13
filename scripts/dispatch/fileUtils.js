@@ -79,7 +79,7 @@ export const readJSONAsync = async (fileName, defaultValue) => {
     }
     return JSON.parse(file);
   } catch (e) {
-    // console.warn(">>> Warning:", e.message);
+    console.warn(">>> Warning:", e.message);
     return defaultValue;
   }
 };

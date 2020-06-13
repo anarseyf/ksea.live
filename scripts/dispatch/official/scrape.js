@@ -1,11 +1,6 @@
 import { checkVersion } from "../version";
-import {
-  readJSONAsync,
-  saveJSONAsync,
-  appendJSONAsync,
-  toLocaleString,
-} from "../fileUtils";
-import { getUserTimeline, decrementIdStr, pathToScriptsJson } from "../utils";
+import { appendJSONAsync, toLocaleString } from "../fileUtils";
+import { pathToScriptsJson } from "../utils";
 
 const axios = require("axios").default;
 const jsdom = require("jsdom");

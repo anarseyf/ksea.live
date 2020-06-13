@@ -5,6 +5,7 @@ import {
   getTweetsByArea,
   getTweetsByType,
   getHistoryForArea,
+  getAnnotations,
   getMostRecentId,
 } from "../api";
 export const TweetsContext = createContext();
@@ -41,8 +42,9 @@ const useTweets = (filters = {}) => {
   const mostRecentId = useMostRecent();
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [byTypeForArea, setByTypeForArea] = useState([]);
-  const [historyForArea, setHistoryForArea] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
+  const [historyForArea, setHistoryForArea] = useState([]);
+  const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -66,6 +68,11 @@ const useTweets = (filters = {}) => {
       const filtered = await getHistoryForArea(area);
       setHistoryForArea(filtered);
     })();
+
+    (async () => {
+      const annotations = await getAnnotations();
+      setAnnotations(annotations);
+    })();
   }, [mostRecentId]);
 
   return {
@@ -73,6 +80,7 @@ const useTweets = (filters = {}) => {
     byTypeForArea,
     groupedByArea,
     historyForArea,
+    annotations,
   };
 };
 

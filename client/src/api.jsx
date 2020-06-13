@@ -9,6 +9,10 @@ export async function getMostRecentId() {
   return await result.text();
 }
 
+export async function getAnnotations() {
+  return getByAPI(`dispatch/history/annotations`);
+}
+
 export async function getHistoryForArea(area) {
   return getByAPI(`dispatch/history/${area}`);
 }

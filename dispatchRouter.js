@@ -18,6 +18,7 @@ import {
   minimizeGroup,
 } from "./dispatchHelpers";
 import { readJSONAsync, readdirAsync } from "./scripts/dispatch/fileUtils";
+import { annotation } from "d3-svg-annotation";
 
 const identityFn = (v) => v;
 
@@ -152,8 +153,6 @@ const byAreabyTypeController = async (req, res, next) => {
 
 const historyController = async (req, res, next) => {
   try {
-    // TODO: bin size = 24h, interval = 30 days, etc.
-
     const intervals = generateHistoryIntervals();
     const area = req.params.area;
     const all =
@@ -174,6 +173,19 @@ const historyController = async (req, res, next) => {
   }
 };
 
+const annotationsController = async (req, res, next) => {
+  const data = await readJSONAsync("./datasets/misc/annotations.json", []);
+
+  const result = data.map(({ start, end, ...rest }) => ({
+    start: +new Date(start),
+    end: +new Date(end),
+    offset: new Date(2020, 0) - new Date(new Date(start).getFullYear(), 0),
+    ...rest,
+  }));
+
+  res.json(result);
+};
+
 const mapsController = async (req, res, next) => {
   console.log(">>> MAPS:", req.url, req.params);
   res.status(500).send(null);
@@ -185,6 +197,7 @@ router.get("/tweets/byArea", byAreaController);
 router.get("/tweets/byType/:area?", byTypeController);
 router.get("/tweets/byAreaByType", byAreabyTypeController);
 router.get("/tweets/:area", forAreaController);
+router.get("/history/annotations", annotationsController);
 router.get("/history/:area", historyController);
 router.get("/maps/:z/:x/:y", mapsController);
 

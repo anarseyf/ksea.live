@@ -18,7 +18,7 @@ import svgStyles from "./svg.module.scss";
 console.log("ANNOTATION", d3annotation);
 
 export const History = () => {
-  const { historyForArea } = useContext(TweetsContext);
+  const { historyForArea, annotations } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
   const [annotationRegions, setAnnotationRegions] = useState([]);
 
@@ -101,66 +101,44 @@ export const History = () => {
     d3.select(svgRef.current).call(textureCurrent);
     d3.select(svgRef.current).call(texturePrevious);
 
-    const annotationCurrent = {
-      start: +new Date(2020, 2, 15),
-      end: +new Date(2020, 5, 1),
-      offset: 0,
-    };
-    const annotationPrevious = {
-      start: +new Date(2019, 2, 1),
-      end: +new Date(2019, 2, 31),
-      offset: new Date(2020, 0) - new Date(2019, 0),
-    };
-    const accessorStart = ({ start, offset }) => start + offset;
-    const accessorEnd = ({ end, offset }) => end + offset;
-
-    const annotationData = [
-      {
-        start: +new Date(2020, 2, 15),
-        end: +new Date(2020, 5, 1),
-        offset: 0,
-        textStart: "start1",
-        textEnd: "end1",
-      },
-      {
-        start: +new Date(2019, 2, 1),
-        end: +new Date(2019, 2, 31),
-        offset: new Date(2020, 0) - new Date(2019, 0),
-        textStart: "start2",
-        textEnd: "end2",
-      },
-    ];
-
     const mapper = ({ start, end, offset, textStart, textEnd }) => {
-      const callouts = [
-        {
-          x: annotationRectWidth,
+      const isPrevious = start < intervalCurrent.start;
+      const texture = isPrevious ? texturePrevious : textureCurrent;
+      const side = isPrevious ? -1 : 1;
+
+      const callouts = [];
+      if (textStart) {
+        const callout = {
+          x: side * annotationRectWidth,
           y: yScale(start + offset),
           color: "red",
           subject: {
-            x: "right",
+            x: isPrevious ? "left" : "right",
             y: "top",
             text: textStart,
             radius: 20,
           },
-        },
-        {
+        };
+        callouts.push(callout);
+      }
+      if (textEnd) {
+        const callout = {
           type: d3annotationCalloutCircle,
           note: {
             label: textEnd,
           },
-          x: annotationRectWidth,
+          x: side * annotationRectWidth,
           y: yScale(end + offset),
+          dx: side * 10,
           dy: 10,
-          dx: 10,
           color: "red",
           subject: {
             radius: 5,
           },
-        },
-      ];
-      const isPrevious = start < intervalCurrent.start;
-      const texture = isPrevious ? texturePrevious : textureCurrent;
+        };
+        callouts.push(callout);
+      }
+
       const region = {
         x: xScale(0) - (isPrevious ? annotationRectWidth : 0),
         y: yScale(start + offset),
@@ -171,9 +149,9 @@ export const History = () => {
       return { region, callouts };
     };
 
-    const annotations = annotationData.map(mapper);
-    const regions = annotations.map(({ region }) => region);
-    const callouts = annotations.map(({ callouts }) => callouts).flat();
+    const annotationsSvgData = annotations.map(mapper);
+    const regions = annotationsSvgData.map(({ region }) => region);
+    const callouts = annotationsSvgData.map(({ callouts }) => callouts).flat();
 
     const callout = d3annotation()
       .annotations(callouts)
