@@ -18,7 +18,6 @@ import {
   minimizeGroup,
 } from "./dispatchHelpers";
 import { readJSONAsync, readdirAsync } from "./scripts/dispatch/fileUtils";
-import { annotation } from "d3-svg-annotation";
 
 const identityFn = (v) => v;
 
@@ -176,10 +175,11 @@ const historyController = async (req, res, next) => {
 const annotationsController = async (req, res, next) => {
   const data = await readJSONAsync("./datasets/misc/annotations.json", []);
 
+  const start2020 = new Date(2020, 0);
   const result = data.map(({ start, end, ...rest }) => ({
     start: +new Date(start),
     end: +new Date(end),
-    offset: new Date(2020, 0) - new Date(new Date(start).getFullYear(), 0),
+    offset: start2020 - new Date(new Date(start).getFullYear(), 0),
     ...rest,
   }));
 

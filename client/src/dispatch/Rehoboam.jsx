@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import cx from "classnames";
 import { axisRadialInner } from "d3-radial-axis";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
-import { intervalExtent } from "../utils";
+import { intervalExtent } from "../clientUtils";
 import { Topline } from "./Topline";
 import rehoboamStyles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";

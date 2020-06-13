@@ -11,7 +11,7 @@ import {
   currentInterval,
   previousInterval,
 } from "./TweetsProvider";
-import { intervalExtent, isPhone } from "../utils";
+import { intervalExtent, isPhone } from "../clientUtils";
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./tweetdetails.module.scss";
-import { toPacificStr } from "../utils";
+import { toPacificStr } from "../clientUtils";
 
 export const TweetDetails = ({
   tweet: {
