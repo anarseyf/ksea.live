@@ -30,19 +30,19 @@ export function DispatchAll() {
       <Section styleOption={1}>
         <Paragraph text={intro} />
         <Rehoboam />
-        {/* <Header /> */}
+        <Header />
         {/* <Histogram /> */}
       </Section>
 
-      {/* <Section edgeToEdge={true}>
+      <Section edgeToEdge={true}>
         <Map />
         <LegendSection />
-      </Section> */}
+      </Section>
 
-      {/* <Section styleOption={2}>
+      <Section styleOption={2}>
         <Paragraph text={areas} />
         <GroupByArea />
-      </Section> */}
+      </Section>
 
       <Section styleOption={2}>
         <Paragraph text={history} />

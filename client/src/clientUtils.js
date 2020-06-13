@@ -24,6 +24,3 @@ export const isPhone = () => {
 
 export const toPacificStr = (timestamp) =>
   timezone(timestamp, "America/Vancouver").format("h:mma z");
-
-export const fromPacificStr = (dateStr) =>
-  +timezone(dateStr, "America/Vancouver");

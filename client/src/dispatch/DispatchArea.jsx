@@ -17,7 +17,7 @@ export function DispatchArea({ area }) {
       <Section styleOption={1}>
         <Rehoboam area={area} />
         <Header area={area} />
-        <Histogram />
+        {/* <Histogram /> */}
       </Section>
 
       <Section styleOption={2} edgeToEdge={true}>
