@@ -15,8 +15,6 @@ import { intervalExtent, isPhone } from "../clientUtils";
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
 
-console.log("ANNOTATION", d3annotation);
-
 export const History = () => {
   const { historyForArea, annotations } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);

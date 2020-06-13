@@ -41,7 +41,7 @@ export function DispatchAll() {
 
       <Section styleOption={2}>
         <Paragraph text={areas} />
-        {/* <GroupByArea /> */}
+        <GroupByArea />
       </Section>
 
       <Section styleOption={2}>

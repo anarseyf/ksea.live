@@ -196,47 +196,30 @@ const annotationsController = async (req, res, next) => {
 const mapsController = async (req, res, next) => {
   try {
     let readStream, writeStream;
-    const { s, x, y, z, r, ext } = req.params;
+    const { s, x, y, z, r, theme } = req.params;
     const minZoom = 10,
       maxZoom = 13;
     if (isNaN(+z) || +z < minZoom || +z > maxZoom) {
       throw `/maps: invalid zoom param: ${z}`;
     }
+    if (theme !== "light" && theme !== "dark") {
+      throw `/maps: invalid theme param: ${theme}`;
+    }
 
-    const imageDir = `client/src/images/maps/dark/${z}`;
+    const imageDir = `client/src/images/maps/${theme}/${z}`;
     if (!fs.existsSync(imageDir)) {
       fs.mkdirSync(imageDir);
     }
 
-    const imageNameGen = (x, y, z, r = "@1x", ext = "png") =>
-      `${imageDir}/${z}-${x}-${y}-${r}.${ext}`;
-    const fileName = imageNameGen(x, y, z, r, ext);
+    const imageNameGen = (x, y, z, r = "@1x") =>
+      `${imageDir}/${z}-${x}-${y}-${r}.png`;
+    const fileName = imageNameGen(x, y, z, r, theme);
 
     if (fs.existsSync(fileName)) {
-      console.log(`/maps > file exists:`, fileName);
       readStream = fs.createReadStream(fileName);
     } else {
-      const token =
-        "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H"; // https://www.jawg.io/lab/access-tokens
-      const urlGen = (s = "a", x, y, z, r = "", ext = "png") =>
-        `https://${s}.tile.jawg.io/jawg-dark/${z}/${x}/${y}${r}.${ext}?access-token=${token}`;
-      const url = urlGen(s, x, y, z, r, ext);
-      console.log(`/maps > requesting:`, url);
-
-      const config = {
-        responseType: "stream",
-        timeout: 10000,
-        headers: {
-          "Accept-Encoding": "gzip, deflate, br",
-        },
-      };
-      const response = await axios.get(url, config).catch((e) => {
-        console.error(">>> axios error", e.message);
-        res.status(501);
-      });
-      readStream = response.data;
-      writeStream = fs.createWriteStream(fileName);
-      console.log("/maps > saving to file", fileName);
+      res.status(500).send("FILE NOT FOUND zoom = " + z);
+      return;
     }
     readStream.pipe(res);
     writeStream && readStream.pipe(writeStream);
@@ -254,6 +237,6 @@ router.get("/tweets/byAreaByType", byAreabyTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/annotations", annotationsController);
 router.get("/history/:area", historyController);
-router.get("/maps/:s/:x/:y/:z/:r/:ext?", mapsController);
+router.get("/maps/:s/:x/:y/:z/:r/:theme?", mapsController);
 
 export default router;

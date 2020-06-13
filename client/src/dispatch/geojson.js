@@ -8,7 +8,6 @@ const nhoodProp = "NEIGHBO"; // TODO - import from server/groupby.js
 const zipcodeProp = "GEOID10";
 
 const byArea = (features, prop) => {
-  console.log("GEOJSON/", prop, features);
   const map = {};
   features.forEach((feature) => {
     const key = feature.properties[prop];

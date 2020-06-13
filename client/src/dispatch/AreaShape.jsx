@@ -18,8 +18,6 @@ export const AreaShape = ({ area }) => {
     return null;
   }
 
-  console.log(`AREA/${area} -> `, features);
-
   const center = centroid(features);
   const zoom = 10;
   const tileOptions = MapOptions.NoLabels;
