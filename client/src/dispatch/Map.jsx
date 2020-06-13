@@ -106,7 +106,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
 
   console.log(`MAP/rendering with ${data.length} dots, ${rendered.length} geo`);
   const city = cityGeojson.features[0];
-
+  console.log("ZOOM: ", zoom);
   return (
     <LeafletMap
       className={styles.container}
