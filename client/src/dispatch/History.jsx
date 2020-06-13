@@ -20,7 +20,7 @@ console.log("ANNOTATION", d3annotation);
 export const History = () => {
   const { historyForArea } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
-  const [annotations, setAnnotations] = useState([]);
+  const [annotationRegions, setAnnotationRegions] = useState([]);
 
   const binHeight = 2;
   const svgWidth = isPhone ? 350 : 450,
@@ -114,62 +114,73 @@ export const History = () => {
     const accessorStart = ({ start, offset }) => start + offset;
     const accessorEnd = ({ end, offset }) => end + offset;
 
-    const annotationSvgCurrent = {
-      x: xScale(0),
-      y: yScale(accessorStart(annotationCurrent)),
-      width: annotationRectWidth,
-      height:
-        yScale(accessorEnd(annotationCurrent)) -
-        yScale(accessorStart(annotationCurrent)),
-      fill: textureCurrent.url(),
-    };
-    const annotationSvgPrevious = {
-      x: xScale(0) - annotationRectWidth,
-      y: yScale(accessorStart(annotationPrevious)),
-      width: annotationRectWidth,
-      height:
-        yScale(accessorEnd(annotationPrevious)) -
-        yScale(accessorStart(annotationPrevious)),
-      fill: texturePrevious.url(),
-    };
-    setAnnotations([annotationSvgCurrent, annotationSvgPrevious]);
-
     const annotationData = [
       {
-        note: {
-          title: "Start",
-        },
-        x: annotationRectWidth,
-        y: yScale(+new Date(2020, 2, 15)),
-        color: "red",
-        subject: {
-          x: "right",
-          y: "top",
-          text: "5",
-          innerRadius: 40,
-          outerRadius: 50,
-        },
+        start: +new Date(2020, 2, 15),
+        end: +new Date(2020, 5, 1),
+        offset: 0,
+        textStart: "start1",
+        textEnd: "end1",
       },
       {
-        type: d3annotationCalloutCircle,
-        note: {
-          title: "End",
-        },
-        x: annotationRectWidth,
-        y: yScale(+new Date(2020, 5, 1)),
-        dy: 10,
-        dx: 10,
-        color: "red",
-        subject: {
-          radius: 5,
-        },
+        start: +new Date(2019, 2, 1),
+        end: +new Date(2019, 2, 31),
+        offset: new Date(2020, 0) - new Date(2019, 0),
+        textStart: "start2",
+        textEnd: "end2",
       },
     ];
 
+    const mapper = ({ start, end, offset, textStart, textEnd }) => {
+      const callouts = [
+        {
+          x: annotationRectWidth,
+          y: yScale(start + offset),
+          color: "red",
+          subject: {
+            x: "right",
+            y: "top",
+            text: textStart,
+            radius: 20,
+          },
+        },
+        {
+          type: d3annotationCalloutCircle,
+          note: {
+            label: textEnd,
+          },
+          x: annotationRectWidth,
+          y: yScale(end + offset),
+          dy: 10,
+          dx: 10,
+          color: "red",
+          subject: {
+            radius: 5,
+          },
+        },
+      ];
+      const isPrevious = start < intervalCurrent.start;
+      const texture = isPrevious ? texturePrevious : textureCurrent;
+      const region = {
+        x: xScale(0) - (isPrevious ? annotationRectWidth : 0),
+        y: yScale(start + offset),
+        width: annotationRectWidth,
+        height: yScale(end + offset) - yScale(start + offset),
+        fill: texture.url(),
+      };
+      return { region, callouts };
+    };
+
+    const annotations = annotationData.map(mapper);
+    const regions = annotations.map(({ region }) => region);
+    const callouts = annotations.map(({ callouts }) => callouts).flat();
+
     const callout = d3annotation()
-      .annotations(annotationData)
+      .annotations(callouts)
       .type(d3annotationBadge);
     d3.select(calloutsRef.current).call(callout);
+
+    setAnnotationRegions(regions);
   }, [historyForArea]);
 
   return (
@@ -181,7 +192,7 @@ export const History = () => {
         height={svgHeight}
       >
         <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
-          {annotations.map((annotation) => (
+          {annotationRegions.map((annotation) => (
             <rect {...annotation} />
           ))}
         </g>
