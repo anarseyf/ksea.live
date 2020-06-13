@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import {
   annotation as d3annotation,
-  annotationLabel as d3annotationLabel,
-  annotationCallout as d3annotationCallout,
+  annotationBadge as d3annotationBadge,
+  annotationCalloutCircle as d3annotationCalloutCircle,
 } from "d3-svg-annotation";
 import textures from "textures";
 import {
@@ -30,7 +30,7 @@ export const History = () => {
     height = svgHeight - margin.top - margin.bottom;
   const yearWidth = width / 2;
   const maxBarWidth = yearWidth * 0.5;
-  const annotationWidth = yearWidth * 0.75;
+  const annotationRectWidth = yearWidth * 0.75;
 
   const svgRef = useRef(null);
   const xAxisRef = useRef(null);
@@ -117,16 +117,16 @@ export const History = () => {
     const annotationSvgCurrent = {
       x: xScale(0),
       y: yScale(accessorStart(annotationCurrent)),
-      width: annotationWidth,
+      width: annotationRectWidth,
       height:
         yScale(accessorEnd(annotationCurrent)) -
         yScale(accessorStart(annotationCurrent)),
       fill: textureCurrent.url(),
     };
     const annotationSvgPrevious = {
-      x: xScale(0) - annotationWidth,
+      x: xScale(0) - annotationRectWidth,
       y: yScale(accessorStart(annotationPrevious)),
-      width: annotationWidth,
+      width: annotationRectWidth,
       height:
         yScale(accessorEnd(annotationPrevious)) -
         yScale(accessorStart(annotationPrevious)),
@@ -137,19 +137,38 @@ export const History = () => {
     const annotationData = [
       {
         note: {
-          label: "Label",
-          title: "Title",
+          title: "Start",
         },
-        x: xScale(annotationWidth) - xScale(0),
+        x: annotationRectWidth,
         y: yScale(+new Date(2020, 2, 15)),
-        dy: 0,
-        dx: 100,
+        color: "red",
+        subject: {
+          x: "right",
+          y: "top",
+          text: "5",
+          innerRadius: 40,
+          outerRadius: 50,
+        },
+      },
+      {
+        type: d3annotationCalloutCircle,
+        note: {
+          title: "End",
+        },
+        x: annotationRectWidth,
+        y: yScale(+new Date(2020, 5, 1)),
+        dy: 10,
+        dx: 10,
+        color: "red",
+        subject: {
+          radius: 5,
+        },
       },
     ];
 
     const callout = d3annotation()
       .annotations(annotationData)
-      .type(d3annotationLabel);
+      .type(d3annotationBadge);
     d3.select(calloutsRef.current).call(callout);
   }, [historyForArea]);
 
