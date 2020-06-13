@@ -1,5 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
+import {
+  annotation as d3annotation,
+  annotationLabel as d3annotationLabel,
+  annotationCallout as d3annotationCallout,
+} from "d3-svg-annotation";
 import textures from "textures";
 import {
   TweetsContext,
@@ -10,23 +15,27 @@ import { intervalExtent, isPhone } from "../utils";
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
 
+console.log("ANNOTATION", d3annotation);
+
 export const History = () => {
   const { historyForArea } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
   const [annotations, setAnnotations] = useState([]);
 
   const binHeight = 2;
-  const svgWidth = isPhone ? 200 : 300,
+  const svgWidth = isPhone ? 350 : 450,
     margin = { top: 20, right: 20, bottom: 30, left: 30 },
     svgHeight = 366 * (binHeight + 1) + margin.top + margin.bottom,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
   const yearWidth = width / 2;
-  const maxBarWidth = yearWidth * 0.8;
+  const maxBarWidth = yearWidth * 0.5;
+  const annotationWidth = yearWidth * 0.75;
 
   const svgRef = useRef(null);
   const xAxisRef = useRef(null);
   const yAxisRef = useRef(null);
+  const calloutsRef = useRef(null);
 
   useEffect(() => {
     if (!historyForArea.length) {
@@ -71,14 +80,14 @@ export const History = () => {
       width: xScale(length),
       y: yScale(x0),
       height: binHeight,
-      rx: 4,
+      rx: 1,
     }));
     const previousYear = binsPrevious.map(({ x0, length }) => ({
       x: yearWidth + xScale(0) - xScale(length),
       width: xScale(length),
       y: yScale(x0),
       height: binHeight,
-      rx: 4,
+      rx: 1,
     }));
     setSvgData([currentYear, previousYear]);
 
@@ -108,22 +117,40 @@ export const History = () => {
     const annotationSvgCurrent = {
       x: xScale(0),
       y: yScale(accessorStart(annotationCurrent)),
-      width: yearWidth,
+      width: annotationWidth,
       height:
         yScale(accessorEnd(annotationCurrent)) -
         yScale(accessorStart(annotationCurrent)),
       fill: textureCurrent.url(),
     };
     const annotationSvgPrevious = {
-      x: xScale(0) - yearWidth,
+      x: xScale(0) - annotationWidth,
       y: yScale(accessorStart(annotationPrevious)),
-      width: yearWidth,
+      width: annotationWidth,
       height:
         yScale(accessorEnd(annotationPrevious)) -
         yScale(accessorStart(annotationPrevious)),
       fill: texturePrevious.url(),
     };
     setAnnotations([annotationSvgCurrent, annotationSvgPrevious]);
+
+    const annotationData = [
+      {
+        note: {
+          label: "Label",
+          title: "Title",
+        },
+        x: xScale(annotationWidth) - xScale(0),
+        y: yScale(+new Date(2020, 2, 15)),
+        dy: 0,
+        dx: 100,
+      },
+    ];
+
+    const callout = d3annotation()
+      .annotations(annotationData)
+      .type(d3annotationLabel);
+    d3.select(calloutsRef.current).call(callout);
   }, [historyForArea]);
 
   return (
@@ -148,7 +175,7 @@ export const History = () => {
                 width={d.width}
                 height={d.height}
                 rx={d.rx}
-                fill={iDataset ? "silver" : "white"}
+                fill={iDataset ? "gray" : "white"}
               ></rect>
             ))
           )}
@@ -163,6 +190,11 @@ export const History = () => {
         <g
           className={`${svgStyles.axis} ${historyStyles.axis}`}
           ref={yAxisRef}
+          transform={`translate(${margin.left + yearWidth},${margin.top})`}
+        />
+        <g
+          className={historyStyles.annotations}
+          ref={calloutsRef}
           transform={`translate(${margin.left + yearWidth},${margin.top})`}
         />
       </svg>

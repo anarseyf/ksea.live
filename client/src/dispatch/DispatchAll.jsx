@@ -44,12 +44,12 @@ export function DispatchAll() {
         <GroupByArea />
       </Section> */}
 
-      <Section styleOption={1}>
+      <Section styleOption={2}>
         <Paragraph text={history} />
         <History />
       </Section>
 
-      <Section styleOption={2}>
+      <Section styleOption={1}>
         <Paragraph text={sources} />
       </Section>
     </TweetsProvider>

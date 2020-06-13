@@ -1,15 +1,24 @@
 @import "../colors.scss";
 
 .container {
-  border: 1px solid $border;
-  padding: 2em;
+  // border: 1px solid $border;
 }
 
 .svg {
-  border: 1px dashed $border;
+  border: 2px dotted $border;
 }
 
 .axis text {
   font: bold 1.5em sans-serif;
   fill: $text-primary;
+}
+
+.annotations {
+  color: red;
+}
+
+.annotations .line {
+  fill: green;
+  stroke: yellow;
+  stroke-width: 2px;
 }

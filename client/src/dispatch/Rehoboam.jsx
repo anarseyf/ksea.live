@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
+import cx from "classnames";
 import { axisRadialInner } from "d3-radial-axis";
 import { TweetsContext, currentInterval } from "./TweetsProvider";
 import { intervalExtent } from "../utils";
@@ -99,7 +100,11 @@ export function Rehoboam({ area }) {
           />
           {svgPath && (
             <path
-              className={`${svgStyles.path} ${svgStyles.highlight} ${rehoboamStyles.path}`}
+              className={cx(
+                svgStyles.path,
+                svgStyles.highlight,
+                rehoboamStyles.path
+              )}
               d={svgPath}
             />
           )}
