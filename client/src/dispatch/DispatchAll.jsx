@@ -29,24 +29,24 @@ export function DispatchAll() {
     <TweetsProvider>
       <Section styleOption={1}>
         <Paragraph text={intro} />
-        <Rehoboam />
-        <Header />
+        {/* <Rehoboam /> */}
+        {/* <Header /> */}
         {/* <Histogram /> */}
       </Section>
 
       <Section edgeToEdge={true}>
         <Map />
-        <LegendSection />
+        {/* <LegendSection /> */}
       </Section>
 
       <Section styleOption={2}>
         <Paragraph text={areas} />
-        <GroupByArea />
+        {/* <GroupByArea /> */}
       </Section>
 
       <Section styleOption={2}>
         <Paragraph text={history} />
-        <History />
+        {/* <History /> */}
       </Section>
 
       <Section styleOption={1}>

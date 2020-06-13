@@ -1,5 +1,6 @@
 const rp = require("request-promise");
 const router = require("express").Router();
+const fs = require("fs");
 
 import {
   GroupByOptions,
@@ -17,7 +18,13 @@ import {
   sortByTotal,
   minimizeGroup,
 } from "./dispatchHelpers";
-import { readJSONAsync, readdirAsync } from "./scripts/dispatch/fileUtils";
+import {
+  readJSONAsync,
+  readdirAsync,
+  saveFileAsync,
+} from "./scripts/dispatch/fileUtils";
+
+const axios = require("axios").default;
 
 const identityFn = (v) => v;
 
@@ -187,8 +194,56 @@ const annotationsController = async (req, res, next) => {
 };
 
 const mapsController = async (req, res, next) => {
-  console.log(">>> MAPS:", req.url, req.params);
-  res.status(500).send(null);
+  try {
+    let readStream, writeStream;
+    const { s, x, y, z, r, ext } = req.params;
+    const minZoom = 10,
+      maxZoom = 13;
+    if (isNaN(+z) || +z < minZoom || +z > maxZoom) {
+      throw `/maps: invalid zoom param: ${z}`;
+    }
+
+    const imageDir = `client/src/images/maps/dark/${z}`;
+    if (!fs.existsSync(imageDir)) {
+      fs.mkdirSync(imageDir);
+    }
+
+    const imageNameGen = (x, y, z, r = "@1x", ext = "png") =>
+      `${imageDir}/${z}-${x}-${y}-${r}.${ext}`;
+    const fileName = imageNameGen(x, y, z, r, ext);
+
+    if (fs.existsSync(fileName)) {
+      console.log(`/maps > file exists:`, fileName);
+      readStream = fs.createReadStream(fileName);
+    } else {
+      const token =
+        "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H"; // https://www.jawg.io/lab/access-tokens
+      const urlGen = (s = "a", x, y, z, r = "", ext = "png") =>
+        `https://${s}.tile.jawg.io/jawg-dark/${z}/${x}/${y}${r}.${ext}?access-token=${token}`;
+      const url = urlGen(s, x, y, z, r, ext);
+      console.log(`/maps > requesting:`, url);
+
+      const config = {
+        responseType: "stream",
+        timeout: 10000,
+        headers: {
+          "Accept-Encoding": "gzip, deflate, br",
+        },
+      };
+      const response = await axios.get(url, config).catch((e) => {
+        console.error(">>> axios error", e.message);
+        res.status(501);
+      });
+      readStream = response.data;
+      writeStream = fs.createWriteStream(fileName);
+      console.log("/maps > saving to file", fileName);
+    }
+    readStream.pipe(res);
+    writeStream && readStream.pipe(writeStream);
+  } catch (e) {
+    console.error(e);
+    res.status(500);
+  }
 };
 
 router.get("/seattle911", seattleGovController);
@@ -199,6 +254,6 @@ router.get("/tweets/byAreaByType", byAreabyTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/annotations", annotationsController);
 router.get("/history/:area", historyController);
-router.get("/maps/:z/:x/:y", mapsController);
+router.get("/maps/:s/:x/:y/:z/:r/:ext?", mapsController);
 
 export default router;

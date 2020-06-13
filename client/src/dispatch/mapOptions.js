@@ -1,9 +1,10 @@
 export const MapOptions = {
   Localhost: {
-    url: "/api/dispatch/maps/{z}/{x}/{y}{r}.{ext}",
+    url: "/api/dispatch/maps/{s}/{x}/{y}/{z}/{r}/{ext}",
     ext: "png",
     r: "@2x",
-    attribution: "",
+    attribution:
+      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
   CartoDB_DarkMatter: {
     url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
@@ -80,5 +81,6 @@ export const MapOptions = {
   },
 };
 
-MapOptions.Default = MapOptions.Jawg_Dark;
+MapOptions.Default = MapOptions.Localhost;
+// MapOptions.Default = MapOptions.Jawg_Dark;
 MapOptions.NoLabels = MapOptions.Jawg_Dark;

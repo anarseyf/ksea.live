@@ -32,9 +32,16 @@ export const areas = {
   areaProp: nhoodProp,
 };
 
-export const cityBounds = city;
+export const cityGeojson = city;
 
-const defaultCentroid = [47.60912, -122.34494];
+const lat = 47.60912,
+  long = -122.34494;
+const defaultCentroid = [lat, long];
+
+export const mapBounds = [
+  [lat + 0.2, long - 0.3],
+  [lat - 0.2, long + 0.3],
+];
 
 export const centroid = (features) => {
   if (!features.length) {

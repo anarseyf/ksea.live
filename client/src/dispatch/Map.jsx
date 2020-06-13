@@ -4,14 +4,14 @@ import { Dot, Appearance } from "./Dot";
 import { TweetsContext } from "./TweetsProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MapOptions } from "./mapOptions";
-import { centroid, areas, cityBounds } from "./geojson";
+import { centroid, areas, cityGeojson, mapBounds } from "./geojson";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
 
 const minZoom = 10,
-  maxZoom = 14,
+  maxZoom = 13,
   defaultZoom = 11;
-let zoom = defaultZoom;
+let zoom = maxZoom;
 
 const overlayColor = "dodgerblue";
 const activeColor = "orangered";
@@ -105,7 +105,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   };
 
   console.log(`MAP/rendering with ${data.length} dots, ${rendered.length} geo`);
-  const city = cityBounds.features[0];
+  const city = cityGeojson.features[0];
 
   return (
     <LeafletMap
@@ -114,6 +114,8 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
       zoom={zoom}
       minZoom={minZoom}
       maxZoom={maxZoom}
+      maxBounds={mapBounds}
+      maxBoundsViscosity={0.6}
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />

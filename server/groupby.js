@@ -33,10 +33,6 @@ export const generateHistoryIntervals = () => {
     [currentStart, currentEnd],
     [previousStart, previousEnd],
   ];
-  console.log(
-    "HISTORY INTERVALS",
-    result.flat(2).map((d) => d.toLocaleString())
-  );
   return result;
 };
 

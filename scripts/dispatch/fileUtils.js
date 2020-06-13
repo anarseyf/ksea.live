@@ -84,9 +84,10 @@ export const readJSONAsync = async (fileName, defaultValue) => {
   }
 };
 
+export const saveFileAsync = util.promisify(fs.writeFile);
+
 export const saveJSONAsync = async (fileName, data) => {
-  const writeFile = util.promisify(fs.writeFile);
-  await writeFile(fileName, JSON.stringify(data, null, 2));
+  await saveFileAsync(fileName, JSON.stringify(data, null, 2));
 };
 
 export const appendJSONAsync = async (
