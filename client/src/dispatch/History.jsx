@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
+import cx from "classnames";
 import {
   annotation as d3annotation,
   annotationBadge as d3annotationBadge,
@@ -22,7 +23,7 @@ export const History = () => {
 
   const binHeight = 2;
   const svgWidth = isPhone ? 350 : 450,
-    margin = { top: 20, right: 20, bottom: 30, left: 30 },
+    margin = { top: 10, right: 30, bottom: 30, left: 30 },
     svgHeight = 366 * (binHeight + 1) + margin.top + margin.bottom,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
@@ -149,9 +150,13 @@ export const History = () => {
 
   return (
     <div className={historyStyles.container}>
+      <div className={historyStyles.years}>
+        <div className={historyStyles.left}>2019</div>
+        <div className={historyStyles.right}>2020</div>
+      </div>
       <svg
-        ref={svgRef}
         className={historyStyles.svg}
+        ref={svgRef}
         width={svgWidth}
         height={svgHeight}
       >
@@ -164,12 +169,15 @@ export const History = () => {
           {svgData.map((dataset, iDataset) =>
             dataset.map((d) => (
               <rect
+                className={cx({
+                  [historyStyles.previous]: iDataset,
+                  [historyStyles.current]: !iDataset,
+                })}
                 x={d.x}
                 y={d.y}
                 width={d.width}
                 height={d.height}
                 rx={d.rx}
-                fill={iDataset ? "gray" : "white"}
               ></rect>
             ))
           )}
