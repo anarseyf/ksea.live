@@ -208,12 +208,31 @@ const mapsController = async (req, res, next) => {
       `${imageDir}/${z}-${x}-${y}-${r}.png`;
     const fileName = imageNameGen(x, y, z, r, theme);
 
-    if (fs.existsSync(fileName)) {
-      readStream = fs.createReadStream(fileName);
-    } else {
-      res.status(500).send("FILE NOT FOUND zoom = " + z);
-      return;
-    }
+    // if (fs.existsSync(fileName)) {
+    //   readStream = fs.createReadStream(fileName);
+    // } else {
+    const token =
+      "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H"; // https://www.jawg.io/lab/access-tokens
+    const urlGen = (s = "a", x, y, z, r = "") =>
+      `https://${s}.tile.jawg.io/jawg-${theme}/${z}/${x}/${y}${r}.png?access-token=${token}`;
+    const url = urlGen(s, x, y, z, r);
+    console.log(`/maps > requesting:`, url);
+
+    const config = {
+      responseType: "stream",
+      timeout: 8000,
+      headers: {
+        "Accept-Encoding": "gzip, deflate, br",
+      },
+    };
+    const response = await axios.get(url, config).catch((e) => {
+      console.error(">>> axios error", e.message);
+      res.status(501);
+    });
+    readStream = response.data;
+    writeStream = fs.createWriteStream(fileName);
+    console.log("/maps > saving to file", fileName);
+    // }
     readStream.pipe(res);
     writeStream && readStream.pipe(writeStream);
   } catch (e) {

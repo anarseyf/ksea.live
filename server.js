@@ -3,13 +3,13 @@ const path = require("path");
 const compression = require("compression");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const setTZ = require("set-tz");
 
 import dispatchRouter from "./dispatchRouter";
 import { checkVersion } from "./scripts/dispatch/version";
 
-checkVersion();
+const setTZ = require("set-tz");
 setTZ("America/Vancouver");
+checkVersion();
 
 const app = express();
 

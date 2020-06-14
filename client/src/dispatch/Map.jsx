@@ -11,7 +11,7 @@ import styles from "./map.module.scss";
 const minZoom = 10,
   maxZoom = 13,
   defaultZoom = 11;
-let zoom = maxZoom;
+let zoom = defaultZoom;
 
 const overlayColor = "dodgerblue";
 const activeColor = "orangered";

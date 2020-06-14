@@ -45,7 +45,7 @@
     "client": "cd client && npm run start",
     "server:prod": "NODE_ENV=production node -r esm server.js",
     "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",
-    "background:dev": "cd scripts/dispatch && npm run nobackfill:dev",
+    "background:dev": "cd scripts/dispatch && npm run nobackfill:official",
     "build": "cd client && npm run build",
     "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write"
   },

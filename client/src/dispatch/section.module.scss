@@ -27,11 +27,15 @@
 }
 
 .style1 {
-  background-color: rgb(35, 35, 38);
+  background-color: $bg1;
 }
 
 .style2 {
-  background-color: rgb(17, 17, 19);
+  background-color: $bg2;
+}
+
+.styleMap {
+  background-color: $bg-map;
 }
 
 .subcontent {

@@ -14,7 +14,7 @@ export const currentInterval = (dataset) => dataset[0].intervals[0];
 export const previousInterval = (dataset) => dataset[0].intervals[1];
 
 const useMostRecent = () => {
-  const interval = 15 * 1000;
+  const interval = 60 * 1000;
   let intervalId;
   const [mostRecentId, setMostRecentId] = useState("");
 

@@ -1,5 +1,5 @@
 import { checkVersion } from "../version";
-import { appendJSONAsync, toLocaleString } from "../fileUtils";
+import { appendJSONAsync, toPacificDateString } from "../fileUtils";
 import { pathToScriptsJson } from "../serverUtils";
 
 const axios = require("axios").default;
@@ -17,7 +17,7 @@ const fetchPage = async (dateStr) => {
   return res.data;
 };
 
-const scrapeDate = async (dateStr) => {
+export const scrapeDate = async (dateStr) => {
   const start = new Date();
   const html = await fetchPage(dateStr);
   const dom = new JSDOM(html);
@@ -62,7 +62,7 @@ const main = async () => {
     offset -= 1;
     dates.push(date);
   }
-  const dateStrings = dates.map(toLocaleString);
+  const dateStrings = dates.map(toPacificDateString);
   console.log("scrape > dates:", dateStrings);
   for (const dateStr of dateStrings) {
     await scrapeDate(dateStr);
