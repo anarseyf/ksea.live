@@ -14,23 +14,18 @@ const minZoom = 10,
 let zoom = defaultZoom;
 
 const overlayColor = "dodgerblue";
-const activeColor = "orangered";
+const activeColor = "dodgerblue";
 const geojsonStyleBounds = {
-  color: activeColor,
+  color: "#1e90ff66", // dodgerblue with alpha
   fillOpacity: 0,
-  weight: 1,
+  strokeOpacity: 0.5,
+  weight: 4,
 };
 const geojsonStyleActive = {
   color: activeColor,
   fillColor: activeColor,
-  fillOpacity: 0.25,
+  fillOpacity: 0.15,
   weight: 2,
-};
-const geojsonStyleHidden = {
-  color: overlayColor,
-  fillColor: overlayColor,
-  fillOpacity: 0.1,
-  weight: 1,
 };
 
 export function Map({ area, tileOptions = MapOptions.Default }) {
@@ -71,12 +66,13 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
 
   const mapper = ({ intervals }) =>
     intervals[0].values.map(
-      ({ id_str, derived: { lat, long, type, color, severity } }) => ({
+      ({ id_str, derived: { lat, long, type, color, active, severity } }) => ({
         id_str,
         lat,
         long,
         type,
         color,
+        active,
         severity,
       })
     );
@@ -96,6 +92,11 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
       data[selectedIndex],
     ];
   }
+
+  console.log(
+    "MAP",
+    data.filter(({ active }) => active)
+  );
 
   const appearanceFn = (d) => {
     return selectedTweet
@@ -128,8 +129,9 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
         <Dot // TODO - group under a single container?
           coordinates={[d.lat, d.long]}
           severity={d.severity}
-          // color={d.color}
           appearance={appearanceFn(d)}
+          active={d.active}
+          // color={d.color}
         ></Dot>
       ))}
     </LeafletMap>

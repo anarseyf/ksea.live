@@ -8,24 +8,21 @@ export const Appearance = {
   Highlighted: 1,
 };
 
-export function Dot({
-  coordinates = [51.477, 0], // Greenwich, but why?
-  color = "white",
-  appearance = Appearance.Normal,
-  severity = 0,
-}) {
-  let opacity = 0.7;
-  if (appearance === Appearance.Highlighted) {
+export function Dot({ coordinates, severity = 0, active = false }) {
+  const color = active ? "red" : "white";
+  let opacity = 0.4;
+  if (severity >= 1) {
+    opacity = 0.7;
+  }
+  if (severity >= 2 || active) {
     opacity = 0.9;
-  } else if (appearance === Appearance.Dimmed) {
-    opacity = 0.4;
   }
 
   return (
     <>
       <Circle
         center={coordinates}
-        radius={200}
+        radius={150}
         color={color}
         fill={true}
         fillOpacity={opacity}
@@ -44,7 +41,7 @@ export function Dot({
       {severity >= 2 && (
         <Circle
           center={coordinates}
-          radius={400}
+          radius={500}
           weight={2}
           color={color}
           opacity={opacity}

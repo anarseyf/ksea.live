@@ -5,10 +5,10 @@ import { MapOptions } from "./mapOptions";
 import styles from "./area.module.scss";
 
 const geojsonStyle = {
-  color: "orangered",
-  fillColor: "orangered",
-  fillOpacity: 0.25,
-  weight: 2,
+  color: "dodgerblue",
+  fillColor: "dodgerblue",
+  fillOpacity: 0.15,
+  weight: 1,
 };
 
 export const AreaShape = ({ area }) => {
