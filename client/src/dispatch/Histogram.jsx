@@ -9,8 +9,6 @@ export function Histogram() {
   const { historyForArea } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
 
-  const fill = "white";
-
   const svgWidth = isPhone ? 250 : 350,
     svgHeight = 80,
     margin = { top: 10, right: 10, bottom: 20, left: 30 },
@@ -76,7 +74,6 @@ export function Histogram() {
               width={d.width}
               height={d.height}
               rx={d.rx}
-              fill={fill}
             ></rect>
           ))}
         </g>

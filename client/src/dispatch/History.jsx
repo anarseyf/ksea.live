@@ -102,40 +102,28 @@ export const History = () => {
     const mapper = ({ start, end, offset, textStart, textEnd }) => {
       const isPrevious = start < intervalCurrent.start;
       const texture = isPrevious ? texturePrevious : textureCurrent;
-      const side = isPrevious ? -1 : 1;
+      const sideX = isPrevious ? -1 : 1;
 
       const callouts = [];
-      if (textStart) {
+      const calloutFn = (text, timestamp, isEnd) => {
+        const sideY = isEnd ? 1 : -1;
         const callout = {
-          x: side * annotationRectWidth,
-          y: yScale(start + offset),
-          color: "red",
-          subject: {
-            x: isPrevious ? "left" : "right",
-            y: "top",
-            text: textStart,
-            radius: 20,
-          },
-        };
-        callouts.push(callout);
-      }
-      if (textEnd) {
-        const callout = {
-          type: d3annotationCalloutCircle,
           note: {
-            label: textEnd,
+            label: text,
           },
-          x: side * annotationRectWidth,
-          y: yScale(end + offset),
-          dx: side * 10,
-          dy: 10,
+          x: sideX * annotationRectWidth,
+          y: yScale(timestamp),
+          dx: sideX * 10,
+          dy: sideY * 10,
           color: "red",
           subject: {
-            radius: 5,
+            radius: 6,
           },
         };
-        callouts.push(callout);
-      }
+        return callout;
+      };
+      textStart && callouts.push(calloutFn(textStart, start + offset));
+      textEnd && callouts.push(calloutFn(textEnd, end + offset, true));
 
       const region = {
         x: xScale(0) - (isPrevious ? annotationRectWidth : 0),
@@ -153,7 +141,7 @@ export const History = () => {
 
     const callout = d3annotation()
       .annotations(callouts)
-      .type(d3annotationBadge);
+      .type(d3annotationCalloutCircle);
     d3.select(calloutsRef.current).call(callout);
 
     setAnnotationRegions(regions);

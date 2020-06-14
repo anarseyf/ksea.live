@@ -1,6 +1,7 @@
 $jawg-dark: rgb(25, 26, 26);
 $jawg-light: rgb(202, 210, 211);
 
+$nav-bg-dark: rgb(54, 83, 91);
 $text-primary-dark: white;
 $text-secondary-dark: slategray;
 $axis-color-dark: slategray;
@@ -10,14 +11,15 @@ $border-dark: rgb(54, 65, 87);
 $bg1-dark: rgb(35, 35, 38);
 $bg2-dark: rgb(17, 17, 19);
 
+$nav-bg-light: rgb(177, 190, 208);
 $text-primary-light: black;
 $text-secondary-light: #333333;
 $axis-color-light: darkslategray;
 $body-color-light: black;
 $graph-secondary-light: darkgray;
 $border-light: slategray;
-$bg1-light: rgb(175, 189, 191);
-$bg2-light: rgb(228, 218, 213);
+$bg1-light: #f3f1dd;
+$bg2-light: #ebeae5;
 
 $transparent: rgba(0, 0, 0, 0);
 $twitter-main: #00acee;
@@ -29,8 +31,10 @@ $selected-bg: slategray;
 $live: red;
 $highlight: red;
 $hover: silver;
+$link: darkslategray;
 
 $body-bg: $jawg-light;
+$nav-bg: $nav-bg-light;
 $bg-map: $jawg-light;
 $bg1: $bg1-light;
 $bg2: $bg2-light;

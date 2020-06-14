@@ -10,14 +10,15 @@ import { DispatchAll } from "./dispatch/DispatchAll";
 import { DispatchArea } from "./dispatch/DispatchArea";
 import { KitchenSink } from "./kitchensink/KitchenSink";
 
-import "./App.css";
+import "./App.scss";
+import navStyles from "./nav.styles.scss";
 import logo from "./logo.svg";
 
 function App() {
   return (
     <div className="App">
       <Container>
-        <Navbar variant="dark">
+        <Navbar className={navStyles.nav}>
           <Navbar.Brand>
             <Image src={logo} xs={4} className="App-logo" alt="logo"></Image>
           </Navbar.Brand>
