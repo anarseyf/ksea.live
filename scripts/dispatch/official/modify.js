@@ -5,6 +5,7 @@ import {
   listFilesAsync,
 } from "../fileUtils";
 import { pathToDatasetsOfficial } from "../serverUtils";
+import { severityMapper } from "./mappers";
 
 const interval = 30 * 1031;
 
@@ -31,24 +32,9 @@ export const modifyAll = async (mapper = (v) => v) => {
 const main = () => {
   let intervalId;
 
-  const mapper = ({ derived: { units, ...restDerived }, ...rest }) => {
-    const unitCount = units.split(" ").length;
-    const severity = unitCount >= 10 ? 2 : unitCount >= 5 ? 1 : 0;
-    return {
-      ...rest,
-      derived: {
-        ...restDerived,
-        units,
-        unitCount,
-        severity,
-      },
-    };
-  };
-
-  modifyAll(mapper);
-
   const tick = async () => {
     try {
+      modifyAll(severityMapper);
     } catch (e) {
       console.error("modify >>> Canceling runner due to error:", e);
       clearInterval(intervalId);
@@ -58,4 +44,4 @@ const main = () => {
   // intervalId = setInterval(tick, interval);
 };
 
-main();
+// main();

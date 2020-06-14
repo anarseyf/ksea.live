@@ -31,14 +31,14 @@ export const scrapeDate = async (dateStr) => {
   const result = [...Array.from(rows)].map((row) => {
     const cells = [...Array.from(row.children)].map((cell) => cell.textContent);
     const [date, incidentId, _, units, location, type] = cells;
-    // const active = row.firstElementChild.classList.contains("active");
+    const active = row.firstElementChild.classList.contains("active");
     return {
       date,
       incidentId,
       units,
       location,
       type,
-      // active,
+      active,
     };
   });
 
@@ -69,5 +69,5 @@ const main = async () => {
   }
 };
 
-checkVersion();
-main();
+// checkVersion();
+// main();

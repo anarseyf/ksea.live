@@ -4,12 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backfill:tweets": "cd tweets && BEARER=$(cat bearer.txt) node -r esm backfill.js",
-    "update:tweets": "cd tweets && BEARER=$(cat bearer.txt) node -r esm update.js",
-    "populate:tweets": "cd tweets && node -r esm populate.js",
-    "resolve:tweets": "cd tweets && node -r esm resolve.js",
-    "nhoods:tweets": "cd tweets && node -r esm nhoods.js",
-    "split:tweets": "cd tweets && node -r esm split.js",
     "backfill:official": "cd official && node -r esm scrape.js",
     "update:official": "cd official && node -r esm update.js",
     "combine:official": "cd official && node -r esm combine.js",

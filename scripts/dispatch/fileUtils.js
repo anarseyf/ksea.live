@@ -115,7 +115,7 @@ const sortAndDedupe = (entries) => {
     const current = entries[i],
       previous = entries[i - 1];
     if (previous && current.id_str === previous.id_str) {
-      entries[i] = undefined;
+      entries[i] = undefined; // TODO - this is incorrect. Combine entries into one: concatenate units, etc.
     }
   }
   const result = sorted.filter(Boolean);

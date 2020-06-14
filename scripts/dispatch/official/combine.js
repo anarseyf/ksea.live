@@ -1,5 +1,6 @@
 import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
 import { pathToScriptsJson } from "../serverUtils";
+import { severityMapper } from "./mappers";
 
 const main = () => {
   const interval = 10 * 1231;
@@ -23,6 +24,7 @@ const main = () => {
       const mapper = (id) => {
         const list = map[id].sort((a, b) => a.date.localeCompare(b.date));
         const earliest = list[0];
+        const latest = list[list.length - 1];
         const units = [
           ...new Set(
             list
@@ -43,6 +45,7 @@ const main = () => {
             address: `${earliest.location},Seattle,WA`,
             units,
             entries: list.length,
+            active: latest.active,
           },
         };
       };
@@ -50,7 +53,9 @@ const main = () => {
       const byTimestampDescending = (a, b) =>
         b.derived.timestamp - a.derived.timestamp;
 
-      const result = Object.keys(map).map(mapper).sort(byTimestampDescending);
+      let result = Object.keys(map).map(mapper).sort(byTimestampDescending);
+
+      result = result.map(severityMapper);
 
       await appendJSONAsync(pathToScriptsJson("combined.json"), result);
       const end = new Date();
@@ -63,7 +68,7 @@ const main = () => {
       clearInterval(intervalId);
     }
   };
-  tick();
+  // tick();
   intervalId = setInterval(tick, interval);
 };
 

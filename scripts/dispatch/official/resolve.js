@@ -3,7 +3,7 @@ import { pathToScriptsJson } from "../serverUtils";
 const axios = require("axios").default;
 
 const queueSize = 100;
-const interval = 3 * 1083;
+const interval = 7 * 1083;
 
 const resolveGeo = async (entries = []) => {
   if (!entries.length) {
@@ -113,7 +113,7 @@ const resolve = () => {
       clearInterval(intervalId);
     }
   };
-  tick();
+  // tick();
   intervalId = setInterval(tick, interval);
 };
 
