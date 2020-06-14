@@ -71,12 +71,13 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
 
   const mapper = ({ intervals }) =>
     intervals[0].values.map(
-      ({ id_str, derived: { lat, long, type, color } }) => ({
+      ({ id_str, derived: { lat, long, type, color, severity } }) => ({
         id_str,
         lat,
         long,
         type,
         color,
+        severity,
       })
     );
 
@@ -126,7 +127,8 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
       {data.map((d) => (
         <Dot // TODO - group under a single container?
           coordinates={[d.lat, d.long]}
-          color={d.color}
+          severity={d.severity}
+          // color={d.color}
           appearance={appearanceFn(d)}
         ></Dot>
       ))}

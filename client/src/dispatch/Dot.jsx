@@ -10,8 +10,9 @@ export const Appearance = {
 
 export function Dot({
   coordinates = [51.477, 0], // Greenwich, but why?
-  color = "dodgerblue",
+  color = "white",
   appearance = Appearance.Normal,
+  severity = 0,
 }) {
   let opacity = 0.7;
   if (appearance === Appearance.Highlighted) {
@@ -30,7 +31,7 @@ export function Dot({
         fillOpacity={opacity}
         stroke={false}
       ></Circle>
-      {appearance >= Appearance.Highlighted && (
+      {severity >= 1 && (
         <Circle
           center={coordinates}
           radius={300}
@@ -40,7 +41,7 @@ export function Dot({
           fill={false}
         ></Circle>
       )}
-      {appearance >= Appearance.Highlighted && (
+      {severity >= 2 && (
         <Circle
           center={coordinates}
           radius={400}
