@@ -29,7 +29,7 @@ export function DispatchAll() {
     <TweetsProvider>
       <Section styleOption={2}>
         <Paragraph text={intro} />
-        <Rehoboam />
+        {/* <Rehoboam /> */}
         <Header />
         {/* <Histogram /> */}
       </Section>
@@ -41,7 +41,7 @@ export function DispatchAll() {
 
       <Section styleOption={2}>
         <Paragraph text={areas} />
-        <GroupByArea />
+        {/* <GroupByArea /> */}
       </Section>
 
       <Section styleOption={1}>

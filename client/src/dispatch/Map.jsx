@@ -124,7 +124,7 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
         <GeoJSON data={feature} style={geojsonStyleActive} />
       ))}
       {data.map((d) => (
-        <Dot
+        <Dot // TODO - group under a single container?
           coordinates={[d.lat, d.long]}
           color={d.color}
           appearance={appearanceFn(d)}
