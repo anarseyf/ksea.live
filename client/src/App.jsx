@@ -10,31 +10,11 @@ import { DispatchAll } from "./dispatch/DispatchAll";
 import { DispatchArea } from "./dispatch/DispatchArea";
 import { KitchenSink } from "./kitchensink/KitchenSink";
 
-import "./App.scss";
-import navStyles from "./nav.styles.scss";
-import logo from "./logo.svg";
+import styles from "./app.module.scss";
 
 function App() {
   return (
-    <div className="App">
-      <Container>
-        <Navbar className={navStyles.nav}>
-          <Navbar.Brand>
-            <Image src={logo} xs={4} className="App-logo" alt="logo"></Image>
-          </Navbar.Brand>
-          <Nav>
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-            <Link className="nav-link" to="/dispatch">
-              Dispatch
-            </Link>
-            <Link className="nav-link" to="/kitchensink">
-              Etc.
-            </Link>
-          </Nav>
-        </Navbar>
-      </Container>
+    <div className={styles.app}>
       <Router>
         <Redirect from="/" to="/dispatch" />
         <Dispatch path="/dispatch/">
