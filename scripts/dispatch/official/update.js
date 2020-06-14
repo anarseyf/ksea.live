@@ -1,6 +1,12 @@
 import { checkVersion } from "../version";
-import { appendJSONAsync, toLocaleString } from "../fileUtils";
+import {
+  appendJSONAsync,
+  toPacificDateString,
+  toPacificMidnight,
+  listFilesAsync,
+} from "../fileUtils";
 import { pathToScriptsJson } from "../serverUtils";
+import moment from "moment";
 
 const axios = require("axios").default;
 const jsdom = require("jsdom");
@@ -50,22 +56,25 @@ const scrapeDate = async (dateStr) => {
 };
 
 const main = async () => {
-  const now = new Date();
-  const year = now.getFullYear(),
-    month = now.getMonth(),
-    day = now.getDate();
+  const now = +new Date();
+
+  const path = "../../../datasets/official/";
+  const fileNames = await listFilesAsync(path, { descending: true });
+  const mostRecent = fileNames[0].replace(/\.json$/, "");
+  console.log("update > most recent: ", mostRecent);
+  const mostRecentMidnight = toPacificMidnight(+new Date(mostRecent));
+  let timestamp = mostRecentMidnight;
+
   const dates = [];
-  let offset = 0;
-  let date = new Date(year, month, day + offset);
-  while (date > new Date(2020, 5, 11)) {
-    date = new Date(year, month, day + offset);
-    offset -= 1;
-    dates.push(date);
-  }
-  const dateStrings = dates.map(toLocaleString);
-  console.log("scrape > dates:", dateStrings);
+  do {
+    console.log("Adding:", new Date(timestamp).toLocaleString());
+    dates.push(new Date(timestamp));
+    timestamp = +moment(timestamp).add(1, "days");
+  } while (timestamp < now);
+  const dateStrings = dates.map(toPacificDateString);
+  console.log("update > dates:", dateStrings);
   for (const dateStr of dateStrings) {
-    await scrapeDate(dateStr);
+    // await scrapeDate(dateStr);
   }
 };
 

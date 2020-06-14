@@ -1,6 +1,6 @@
 import { geoContains } from "d3-geo";
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { pathToScriptsJson } from "../utils";
+import { pathToScriptsJson } from "../serverUtils";
 
 export const featureForPoint = ([lat, long], features) =>
   features.find((feature) => geoContains(feature, [long, lat]));

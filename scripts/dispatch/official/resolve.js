@@ -1,5 +1,5 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { pathToScriptsJson } from "../utils";
+import { pathToScriptsJson } from "../serverUtils";
 const axios = require("axios").default;
 
 const queueSize = 100;

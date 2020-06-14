@@ -4,7 +4,7 @@ import {
   appendJSONAsync,
   toUTCMidnightString,
 } from "../fileUtils";
-import { pathToScriptsJson, pathToDatasetsOfficial } from "../utils";
+import { pathToScriptsJson, pathToDatasetsOfficial } from "../serverUtils";
 
 const interval = 30 * 1031;
 

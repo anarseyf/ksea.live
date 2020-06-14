@@ -18,11 +18,7 @@ import {
   sortByTotal,
   minimizeGroup,
 } from "./dispatchHelpers";
-import {
-  readJSONAsync,
-  readdirAsync,
-  saveFileAsync,
-} from "./scripts/dispatch/fileUtils";
+import { readJSONAsync, listFilesAsync } from "./scripts/dispatch/fileUtils";
 
 const axios = require("axios").default;
 
@@ -54,13 +50,10 @@ const seattleGovController = async (req, res, next) => {
 };
 
 const mostRecentController = async (req, res, next) => {
-  let result;
   try {
-    const dir = await readdirAsync(dataPath, { withFileTypes: true });
-    const fileNames = dir
-      .map(({ name }) => name)
-      .sort()
-      .reverse();
+    const fileNames = await listFilesAsync(dataPath, {
+      descending: true,
+    });
 
     let result = null;
     if (fileNames.length) {

@@ -4,7 +4,7 @@ import {
   appendJSONAsync,
   toUTCMidnightString,
 } from "../fileUtils";
-import { pathToScriptsJson, pathToDatasetsTweets } from "../utils";
+import { pathToScriptsJson, pathToDatasetsTweets } from "../serverUtils";
 
 const resolve = () => {
   const interval = 6 * 1231;

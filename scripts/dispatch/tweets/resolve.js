@@ -4,7 +4,7 @@ import {
   saveJSONAsync,
   appendJSONAsync,
 } from "../fileUtils";
-import { pathToScriptsJson } from "../utils";
+import { pathToScriptsJson } from "../serverUtils";
 
 const NodeGeocoder = require("node-geocoder");
 

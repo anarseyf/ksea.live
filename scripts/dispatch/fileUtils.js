@@ -24,7 +24,7 @@ export const toPacificMidnight = (timestamp) => {
   return +moment;
 };
 
-export const toLocaleString = (date) => {
+export const toPacificDateString = (date) => {
   const moment = timezone(date, "America/Vancouver");
   return moment.format("l"); // https://momentjs.com/ > Multiple Locale Support
 };
@@ -125,3 +125,17 @@ const sortAndDedupe = (entries) => {
 
 export const asyncTimeout = (delay) =>
   new Promise((resolve) => setTimeout(resolve, delay));
+
+export const listFilesAsync = async (
+  path,
+  { descending = false, defaultValue = [] } = options
+) => {
+  try {
+    const dir = await readdirAsync(path);
+    let fileNames = dir.sort();
+    return descending ? fileNames.reverse() : fileNames;
+  } catch (e) {
+    console.warn(">>> Warning:", e);
+    return defaultValue;
+  }
+};

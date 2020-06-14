@@ -32,7 +32,7 @@ const useMostRecent = () => {
       setMostRecentId(newId);
     };
 
-    // intervalId = setInterval(checkForUpdates, interval);
+    intervalId = setInterval(checkForUpdates, interval);
   }, []);
 
   return mostRecentId;

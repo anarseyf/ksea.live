@@ -1,5 +1,5 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { getUserTimeline, pathToScriptsJson } from "../utils";
+import { getUserTimeline, pathToScriptsJson } from "../serverUtils";
 
 const backfillStop = new Date(2020, 4, 1);
 

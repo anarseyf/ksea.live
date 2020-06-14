@@ -1,5 +1,5 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { pathToScriptsJson } from "../utils";
+import { pathToScriptsJson } from "../serverUtils";
 
 const addDerived = ({ id_str, text, created_at, derived, ...rest }) => {
   const delimiter = " - ";

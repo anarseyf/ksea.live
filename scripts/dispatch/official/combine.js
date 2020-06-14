@@ -1,5 +1,5 @@
 import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
-import { pathToScriptsJson } from "../utils";
+import { pathToScriptsJson } from "../serverUtils";
 
 const main = () => {
   const interval = 10 * 1231;

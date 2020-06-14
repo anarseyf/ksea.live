@@ -1,5 +1,9 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { getUserTimeline, decrementIdStr, pathToScriptsJson } from "../utils";
+import {
+  getUserTimeline,
+  decrementIdStr,
+  pathToScriptsJson,
+} from "../serverUtils";
 import { checkVersion } from "../version";
 
 const main = () => {
