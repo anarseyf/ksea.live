@@ -53,9 +53,9 @@ export const tweetsByType = async (area, intervals) => {
   return groupBy(GroupByOptions.IncidentType, all);
 };
 
-export const tweetsByArea = async (intervals) => {
+export const tweetsByArea = async (intervals, filter = filterNoop) => {
   const all = await allTweets(intervals);
-  return groupBy(areaOption, all);
+  return groupBy(areaOption, all.filter(filter));
 };
 
 export const tweetsForArea = async (area, intervals) => {
@@ -117,3 +117,6 @@ export const minimizeGroup = ({ intervals, ...rest }) => ({
 export const filterActive = ({ derived: { active } }) => active;
 export const filterSev1 = ({ derived: { severity } }) => severity >= 1;
 export const filterSev2 = ({ derived: { severity } }) => severity >= 2;
+export const filterActiveOrMajor = ({ derived: { active, severity } }) =>
+  active || severity >= 1;
+export const filterNoop = (_) => true;

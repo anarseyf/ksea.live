@@ -25,3 +25,7 @@
 .item > * {
   vertical-align: top;
 }
+.container a {
+  color: $text-primary;
+  text-decoration: none;
+}

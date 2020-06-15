@@ -3,7 +3,13 @@ import styles from "./tweet.module.scss";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { AreaAccessors, GroupByOptions } from "../groupingOptions";
 import { TweetDetails } from "./TweetDetails";
-import { toPacificStr } from "../clientUtils";
+import {
+  toPacificStr,
+  isActive,
+  isAtLeastSev1,
+  isAtLeastSev2,
+} from "../clientUtils";
+import { SvgDot } from "./SvgDot";
 
 export const TweetModes = {
   Default: 0,
@@ -22,17 +28,13 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
       selectedTweet && selectedTweet.id_str === tweet.id_str ? null : tweet;
     setSelection(UserContextKeys.SelectedTweet, newSelectedTweet);
   };
-  const active = tweet.derived.active;
-  const sev1 = tweet.derived.severity >= 1;
-  const sev2 = tweet.derived.severity >= 2;
-  const color = active ? "red" : "white";
+  const active = isActive(tweet);
+  const sev1 = isAtLeastSev1(tweet);
+  const sev2 = isAtLeastSev2(tweet);
 
   const accessor = AreaAccessors.AreaSecondary;
   const area = accessor(tweet);
-  const size = 15,
-    innerRadius = 2,
-    sev1Radius = 5,
-    sev2Radius = 8;
+
   const isGreyedOut = mode === TweetModes.GreyedOut;
   const isDetailed = mode === TweetModes.Detailed;
   const time = toPacificStr(tweet.derived.timestamp);
@@ -49,27 +51,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
           <span className={styles.location}>
             {area} @ {time}
           </span>
-          <svg width={size} height={size}>
-            <circle cx={size / 2} cy={size / 2} r={innerRadius} fill={color} />
-            {sev1 && (
-              <circle
-                cx={size / 2}
-                cy={size / 2}
-                r={sev1Radius}
-                fill="none"
-                stroke={color}
-              />
-            )}
-            {sev2 && (
-              <circle
-                cx={size / 2}
-                cy={size / 2}
-                r={sev2Radius}
-                fill="none"
-                stroke={color}
-              />
-            )}
-          </svg>
+          <SvgDot active={active} sev1={sev1} sev2={sev2} />
         </div>
         <div>
           <span>{tweet.derived.description}</span>

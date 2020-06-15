@@ -24,3 +24,7 @@ export const isPhone = () => {
 
 export const toPacificStr = (timestamp) =>
   timezone(timestamp, "America/Vancouver").format("h:mma");
+
+export const isActive = ({ derived: { active } }) => active;
+export const isAtLeastSev1 = ({ derived: { severity } }) => severity >= 1;
+export const isAtLeastSev2 = ({ derived: { severity } }) => severity >= 2;

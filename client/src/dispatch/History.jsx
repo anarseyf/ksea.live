@@ -146,7 +146,7 @@ export const History = () => {
     d3.select(calloutsRef.current).call(callout);
 
     setAnnotationRegions(regions);
-  }, [historyForArea]);
+  }, [historyForArea, annotations]);
 
   return (
     <div className={historyStyles.container}>

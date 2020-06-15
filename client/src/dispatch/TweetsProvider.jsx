@@ -7,8 +7,8 @@ import {
   getHistoryForArea,
   getAnnotations,
   getMostRecentId,
-  getTweetsActive,
-  getTweetsMajor,
+  getTweetsActive24,
+  getTweetsMajor24,
 } from "../api";
 export const TweetsContext = createContext();
 
@@ -43,11 +43,13 @@ const useMostRecent = () => {
 const useTweets = (filters = {}) => {
   const mostRecentId = useMostRecent();
   const [filteredByArea, setFilteredByArea] = useState([]);
+  const [activeOrMajorForArea, setActiveOrMajorForArea] = useState([]);
+  const [activeOrMajorByArea, setActiveOrMajorByArea] = useState([]);
   const [byTypeForArea, setByTypeForArea] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
   const [historyForArea, setHistoryForArea] = useState([]);
-  const [active, setActive] = useState([]);
-  const [major, setMajor] = useState([]);
+  const [active24, setActive24] = useState([]);
+  const [major24, setMajor24] = useState([]);
   const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
@@ -57,11 +59,24 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
+      const area = filters.area || "seattle";
+      setActiveOrMajorForArea(
+        await getTweetsForArea(area, { activeOrMajor: true })
+      );
+    })();
+
+    (async () => {
       setByTypeForArea(await getTweetsByType(filters.area || "seattle"));
     })();
 
     (async () => {
       setGroupedByArea(await getTweetsByArea());
+    })();
+
+    (async () => {
+      setActiveOrMajorByArea(
+        await getTweetsByArea({ activeOrMajor: true, minimize: false })
+      );
     })();
 
     (async () => {
@@ -74,13 +89,13 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
-      const response = await getTweetsActive();
-      setActive(response[0].intervals[0].values);
+      const response = await getTweetsActive24();
+      setActive24(response[0].intervals[0].values);
     })();
 
     (async () => {
-      const response = await getTweetsMajor();
-      setMajor(response[0].intervals[0].values);
+      const response = await getTweetsMajor24();
+      setMajor24(response[0].intervals[0].values);
     })();
   }, [mostRecentId]);
 
@@ -90,8 +105,10 @@ const useTweets = (filters = {}) => {
     groupedByArea,
     historyForArea,
     annotations,
-    active,
-    major,
+    active24,
+    major24,
+    activeOrMajorForArea,
+    activeOrMajorByArea,
   };
 };
 

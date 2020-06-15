@@ -4,7 +4,7 @@ import { TweetsContext } from "./TweetsProvider";
 import { TweetList } from "./TweetList";
 
 export function TweetsMajor() {
-  const { major } = useContext(TweetsContext);
+  const { major24 } = useContext(TweetsContext);
 
-  return <TweetList tweets={major} />;
+  return <TweetList tweets={major24} />;
 }

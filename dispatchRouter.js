@@ -20,6 +20,8 @@ import {
   minimizeGroup,
   filterActive,
   filterSev1,
+  filterActiveOrMajor,
+  filterNoop,
 } from "./dispatchHelpers";
 import { readJSONAsync, listFilesAsync } from "./scripts/dispatch/fileUtils";
 
@@ -87,9 +89,11 @@ const forAreaController = async (req, res, next) => {
         : await tweetsForArea(area, intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
+    const filter =
+      req.query.activeOrMajor === "true" ? filterActiveOrMajor : filterNoop;
 
     const intervalGrouper = groupByIntervalGen(intervals);
-    const result = groupBy(GroupByOptions.Nothing, all)
+    const result = groupBy(GroupByOptions.Nothing, all.filter(filter))
       .map(intervalGrouper)
       .map(minimizer)
       .sort(sortByTotal);
@@ -100,7 +104,7 @@ const forAreaController = async (req, res, next) => {
   }
 };
 
-const activeController = async (req, res, next) => {
+const active24Controller = async (req, res, next) => {
   try {
     const intervals = generate24HourIntervals();
     const all = await allTweets(intervals);
@@ -119,7 +123,7 @@ const activeController = async (req, res, next) => {
   }
 };
 
-const majorController = async (req, res, next) => {
+const major24Controller = async (req, res, next) => {
   try {
     const intervals = generate24HourIntervals();
     const all = await allTweets(intervals);
@@ -141,7 +145,9 @@ const majorController = async (req, res, next) => {
 const byAreaController = async (req, res, next) => {
   try {
     const intervals = generateIntervals();
-    const byArea = await tweetsByArea(intervals);
+    const filter =
+      req.query.activeOrMajor === "true" ? filterActiveOrMajor : filterNoop;
+    const byArea = await tweetsByArea(intervals, filter);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
 
@@ -284,8 +290,8 @@ const mapsController = async (req, res, next) => {
 
 router.get("/seattle911", seattleGovController);
 router.get("/mostRecentId", mostRecentController);
-router.get("/tweets/active", activeController);
-router.get("/tweets/major", majorController);
+router.get("/tweets/active24", active24Controller);
+router.get("/tweets/major24", major24Controller);
 router.get("/tweets/byArea", byAreaController);
 router.get("/tweets/byType/:area?", byTypeController);
 router.get("/tweets/byAreaByType", byAreabyTypeController);
