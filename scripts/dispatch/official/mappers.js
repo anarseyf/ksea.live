@@ -14,3 +14,14 @@ export const severityMapper = ({
     },
   };
 };
+
+export const removeSeattleWA = (({
+  derived: { address, ...restDerived },
+  ...rest
+}) => ({
+  ...rest,
+  derived: {
+    ...restDerived,
+    address: address.replace(/,Seattle,WA$/,"")
+  }
+}));
