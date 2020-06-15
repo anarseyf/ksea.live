@@ -5,7 +5,6 @@ import { runner as combineRunner } from "./combine";
 import { runner as resolveRunner } from "./resolve";
 import { runner as nhoodsRunner } from "./nhoods";
 import { runner as splitRunner } from "./split";
-import { pathToScriptsJson } from "../serverUtils";
 
 const setTZ = require("set-tz");
 setTZ("America/Vancouver"); // TODO - use in all scripts
@@ -16,6 +15,11 @@ const main = () => {
     try {
       const start = new Date();
 
+      /*
+        TODO:
+        - do not re-resolve incidents for geo
+        - when splitting, merge similarly to combine (otherwise 'active' isn't cleared)
+      */
       let file = await updateRunner();
       file = await combineRunner(file);
       file = await resolveRunner(file);

@@ -19,7 +19,7 @@ import {
   sortByTotal,
   minimizeGroup,
   filterActive,
-  filterSev2,
+  filterSev1,
 } from "./dispatchHelpers";
 import { readJSONAsync, listFilesAsync } from "./scripts/dispatch/fileUtils";
 
@@ -108,7 +108,7 @@ const activeController = async (req, res, next) => {
       req.query.minimize === "true" ? minimizeGroup : identityFn;
 
     const intervalGrouper = groupByIntervalGen(intervals);
-    const result = groupBy(GroupByOptions.Nothing, all.filter(filterSev2))
+    const result = groupBy(GroupByOptions.Nothing, all.filter(filterActive))
       .map(intervalGrouper)
       .map(minimizer)
       .sort(sortByTotal);
@@ -127,7 +127,7 @@ const majorController = async (req, res, next) => {
       req.query.minimize === "true" ? minimizeGroup : identityFn;
 
     const intervalGrouper = groupByIntervalGen(intervals);
-    const result = groupBy(GroupByOptions.Nothing, all.filter(filterSev2))
+    const result = groupBy(GroupByOptions.Nothing, all.filter(filterSev1))
       .map(intervalGrouper)
       .map(minimizer)
       .sort(sortByTotal);

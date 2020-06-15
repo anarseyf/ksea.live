@@ -42,7 +42,7 @@ export const runner = async (sourceFile) => {
         derived: {
           timestamp: +new Date(earliest.date),
           description: earliest.type,
-          address: `${earliest.location},Seattle,WA`,
+          address: earliest.location,
           units,
           entries: list.length,
           active: latest.active,

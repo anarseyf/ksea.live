@@ -3,6 +3,7 @@ import styles from "./tweet.module.scss";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { AreaAccessors, GroupByOptions } from "../groupingOptions";
 import { TweetDetails } from "./TweetDetails";
+import { toPacificStr } from "../clientUtils";
 
 export const TweetModes = {
   Default: 0,
@@ -21,14 +22,20 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
       selectedTweet && selectedTweet.id_str === tweet.id_str ? null : tweet;
     setSelection(UserContextKeys.SelectedTweet, newSelectedTweet);
   };
+  const active = tweet.derived.active;
+  const sev1 = tweet.derived.severity >= 1;
+  const sev2 = tweet.derived.severity >= 2;
+  const color = active ? "red" : "white";
 
   const accessor = AreaAccessors.AreaSecondary;
   const area = accessor(tweet);
-  const size = 10,
-    r = 5;
-  const color = tweet.derived.color || "silver";
+  const size = 15,
+    innerRadius = 2,
+    sev1Radius = 5,
+    sev2Radius = 8;
   const isGreyedOut = mode === TweetModes.GreyedOut;
   const isDetailed = mode === TweetModes.Detailed;
+  const time = toPacificStr(tweet.derived.timestamp);
 
   return (
     <div
@@ -39,9 +46,29 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
     >
       <div className={styles.tweet}>
         <div className={styles.details}>
-          <span className={styles.location}>{area}</span>
+          <span className={styles.location}>
+            {area} @ {time}
+          </span>
           <svg width={size} height={size}>
-            <circle cx={size / 2} cy={size / 2} r={r} fill={color} />
+            <circle cx={size / 2} cy={size / 2} r={innerRadius} fill={color} />
+            {sev1 && (
+              <circle
+                cx={size / 2}
+                cy={size / 2}
+                r={sev1Radius}
+                fill="none"
+                stroke={color}
+              />
+            )}
+            {sev2 && (
+              <circle
+                cx={size / 2}
+                cy={size / 2}
+                r={sev2Radius}
+                fill="none"
+                stroke={color}
+              />
+            )}
           </svg>
         </div>
         <div>

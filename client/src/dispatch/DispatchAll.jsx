@@ -62,6 +62,11 @@ export function DispatchAll() {
       </Section>
 
       <Section styleOption={2}>
+        <p>
+          <a href="http://www2.seattle.gov/fire/realtime911/" target="_blank">
+            Real-time 911 dispatch
+          </a>
+        </p>
         <Paragraph text={sources} />
       </Section>
     </TweetsProvider>

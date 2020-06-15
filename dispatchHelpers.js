@@ -115,4 +115,5 @@ export const minimizeGroup = ({ intervals, ...rest }) => ({
 });
 
 export const filterActive = ({ derived: { active } }) => active;
+export const filterSev1 = ({ derived: { severity } }) => severity >= 1;
 export const filterSev2 = ({ derived: { severity } }) => severity >= 2;

@@ -119,7 +119,7 @@ const sortAndDedupe = (entries) => {
     }
   }
   const result = sorted.filter(Boolean);
-  console.log(`>> dedupe >> ${entries.length} --> ${result.length}`);
+  console.log(`>> dedupe TODO fix logic >> ${entries.length} --> ${result.length}`);
   return result;
 };
 

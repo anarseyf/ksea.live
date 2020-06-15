@@ -4,16 +4,13 @@ import {
   readJSONAsync,
   saveJSONAsync,
   appendJSONAsync,
+  toUTCMidnight,
 } from "../fileUtils";
 import { scrapeDateAsync } from "./scrape";
 import moment from "moment";
 import { pathToScriptsJson } from "../serverUtils";
 
 const targetFile = pathToScriptsJson("updated.json");
-
-const axios = require("axios").default;
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 
 const waitMinutes = 5;
 const MINUTE = 60 * 1000;
@@ -35,13 +32,15 @@ export const runner = async () => {
   const fileNames = await listFilesAsync(path, { descending: true });
   const mostRecentFileName = fileNames[0].replace(/\.json$/, "");
   console.log("update > most recent: ", mostRecentFileName);
-  let timestamp = +new Date(mostRecentFileName);
+  const mostRecentUTCMidnight = new Date(mostRecentFileName);
+  const nextUTCMidnight = moment(toUTCMidnight(now)).add(1, "days");
+  let timestamp = +mostRecentUTCMidnight;
 
   const dates = [];
   do {
     dates.push(new Date(timestamp));
     timestamp = +moment(timestamp).add(1, "days");
-  } while (timestamp < now);
+  } while (timestamp <= nextUTCMidnight);
 
   const dateStrings = dates.map(toPacificDateString);
   console.log("update > dates:", dateStrings);

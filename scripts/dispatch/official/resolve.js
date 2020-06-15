@@ -61,45 +61,49 @@ const resolveGeo = async (entries = []) => {
 export const runner = async (sourceFile) => {
   try {
     const start = new Date();
+    let resolvedTotal = 0, unresolvedTotal = 0;
 
-    const entries = await readJSONAsync(sourceFile, []);
+    while (true) {
+      const entries = await readJSONAsync(sourceFile, []);
+      if (!entries.length) {
+        break;
+      }
 
-    const queue = entries.slice(0, queueSize);
-    if (!queue.length) {
-      console.log("resolve > nothing to do");
-      return;
-    }
+      const queue = entries.slice(0, queueSize);
+      if (!queue.length) {
+        console.log("resolve > nothing to do");
+        return;
+      }
 
-    await saveJSONAsync(sourceFile, entries.slice(queueSize)); // TODO - atomic
-
-    console.log(
-      `resolve > requesting ${queue.length} out of ${entries.length}`
-    );
-
-    const hasCoordinates = ({ derived: { lat, long } }) =>
-      typeof lat === "number" && typeof long === "number";
-
-    const newData = await resolveGeo(queue);
-
-    const resolved = newData.filter(hasCoordinates);
-
-    const unresolved = newData.filter((d) => !hasCoordinates(d));
-    if (unresolved.length) {
-      const unresolvedTotal = await appendJSONAsync(
-        pathToScriptsJson("unresolved.json"),
-        unresolved,
-        { dedupe: true }
-      );
       console.log(
-        `resolve > ${unresolved.length} unresolved (${unresolvedTotal} total unresolved)`
+        `resolve > requesting ${queue.length} out of ${entries.length}`
       );
-    }
 
-    const newTotal = await appendJSONAsync(targetFile, resolved);
+      const hasCoordinates = ({ derived: { lat, long } }) =>
+        typeof lat === "number" && typeof long === "number";
+
+      const newData = await resolveGeo(queue);
+
+      const resolved = newData.filter(hasCoordinates);
+
+      const unresolved = newData.filter((d) => !hasCoordinates(d));
+      if (unresolved.length) {
+        unresolvedTotal = await appendJSONAsync(
+          pathToScriptsJson("unresolved.json"),
+          unresolved,{dedupe:true}
+        );
+        console.log(
+          `resolve > ${unresolved.length} unresolved (${unresolvedTotal} total unresolved)`
+        );
+      }
+
+      resolvedTotal = await appendJSONAsync(targetFile, resolved);
+      await saveJSONAsync(sourceFile, entries.slice(queueSize)); // TODO - atomic
+    }
 
     const end = new Date();
     console.log(
-      `resolve > resolved ${resolved.length}, new total: ${newTotal} (${
+      `resolve > new totals: resolved:${resolvedTotal},unresolved:${unresolvedTotal} (${
         end - start
       }ms)`
     );
