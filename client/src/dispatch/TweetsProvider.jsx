@@ -7,6 +7,8 @@ import {
   getHistoryForArea,
   getAnnotations,
   getMostRecentId,
+  getTweetsActive,
+  getTweetsMajor,
 } from "../api";
 export const TweetsContext = createContext();
 
@@ -44,34 +46,41 @@ const useTweets = (filters = {}) => {
   const [byTypeForArea, setByTypeForArea] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
   const [historyForArea, setHistoryForArea] = useState([]);
+  const [active, setActive] = useState([]);
+  const [major, setMajor] = useState([]);
   const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     (async () => {
       const area = filters.area || "seattle";
-      const filtered = await getTweetsForArea(area);
-      setFilteredByArea(filtered);
+      setFilteredByArea(await getTweetsForArea(area));
     })();
 
     (async () => {
-      const grouped = await getTweetsByType(filters.area || "seattle");
-      setByTypeForArea(grouped);
+      setByTypeForArea(await getTweetsByType(filters.area || "seattle"));
     })();
 
     (async () => {
-      const grouped = await getTweetsByArea();
-      setGroupedByArea(grouped);
+      setGroupedByArea(await getTweetsByArea());
     })();
 
     (async () => {
       const area = filters.area || "seattle";
-      const filtered = await getHistoryForArea(area);
-      setHistoryForArea(filtered);
+      setHistoryForArea(await getHistoryForArea(area));
     })();
 
     (async () => {
-      const annotations = await getAnnotations();
-      setAnnotations(annotations);
+      setAnnotations(await getAnnotations());
+    })();
+
+    (async () => {
+      const response = await getTweetsActive();
+      setActive(response[0].intervals[0].values);
+    })();
+
+    (async () => {
+      const response = await getTweetsMajor();
+      setMajor(response[0].intervals[0].values);
     })();
   }, [mostRecentId]);
 
@@ -81,6 +90,8 @@ const useTweets = (filters = {}) => {
     groupedByArea,
     historyForArea,
     annotations,
+    active,
+    major,
   };
 };
 

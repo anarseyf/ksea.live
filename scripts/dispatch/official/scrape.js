@@ -6,6 +6,8 @@ const axios = require("axios").default;
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
+const targetFile = pathToScriptsJson("scraped.json");
+
 const fetchPage = async (dateStr) => {
   const encodedDate = encodeURIComponent(dateStr);
   const url = `http://www2.seattle.gov/fire/realtime911/getRecsForDatePub.asp?incDate=${encodedDate}&rad1=des`;
@@ -17,7 +19,7 @@ const fetchPage = async (dateStr) => {
   return res.data;
 };
 
-export const scrapeDate = async (dateStr) => {
+export const scrapeDateAsync = async (dateStr) => {
   const start = new Date();
   const html = await fetchPage(dateStr);
   const dom = new JSDOM(html);
@@ -42,14 +44,14 @@ export const scrapeDate = async (dateStr) => {
     };
   });
 
-  await appendJSONAsync(pathToScriptsJson("scraped.json"), result);
-
   const end = new Date();
   console.log(`scrapeDate > ${dateStr} -> ${result.length} (${end - start}ms)`);
-  console.log(result[0]);
+  console.log(`scrapeDate > sample result:`, result[0]);
+
+  return result;
 };
 
-const main = async () => {
+export const runner = async () => {
   const now = new Date();
   const year = now.getFullYear(),
     month = now.getMonth(),
@@ -65,9 +67,11 @@ const main = async () => {
   const dateStrings = dates.map(toPacificDateString);
   console.log("scrape > dates:", dateStrings);
   for (const dateStr of dateStrings) {
-    await scrapeDate(dateStr);
+    await appendJSONAsync(targetFile, await scrapeDateAsync(dateStr));
   }
+  const end = +new Date();
+  console.log(`scrape > ${end-now}ms`);
+  
+  return targetFile;
 };
 
-// checkVersion();
-// main();

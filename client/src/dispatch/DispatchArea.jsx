@@ -2,7 +2,7 @@ import React from "react";
 import { Map } from "./Map";
 import { TweetsProvider } from "./TweetsProvider";
 import { Header } from "./Header";
-import { Tweets } from "./Tweets";
+import { TweetsForArea } from "./TweetsForArea";
 import { Rehoboam } from "./Rehoboam";
 import { LegendSection } from "./Legend";
 import { Histogram } from "./Histogram";
@@ -26,7 +26,7 @@ export function DispatchArea({ area }) {
       </Section>
 
       <Section styleOption={1}>
-        <Tweets />
+        <TweetsForArea />
       </Section>
 
       <Section styleOption={2}>

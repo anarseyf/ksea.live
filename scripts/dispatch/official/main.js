@@ -5,6 +5,7 @@ import { runner as combineRunner } from "./combine";
 import { runner as resolveRunner } from "./resolve";
 import { runner as nhoodsRunner } from "./nhoods";
 import { runner as splitRunner } from "./split";
+import { pathToScriptsJson } from "../serverUtils";
 
 const setTZ = require("set-tz");
 setTZ("America/Vancouver"); // TODO - use in all scripts
@@ -15,11 +16,11 @@ const main = () => {
     try {
       const start = new Date();
 
-      await updateRunner();
-      await combineRunner();
-      await resolveRunner();
-      await nhoodsRunner();
-      await splitRunner();
+      let file = await updateRunner();
+      file = await combineRunner(file);
+      file = await resolveRunner(file);
+      file = await nhoodsRunner(file);
+      await splitRunner(file);
 
       const end = new Date();
       console.log(

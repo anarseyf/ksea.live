@@ -6,11 +6,11 @@ import {
 } from "../fileUtils";
 import { pathToScriptsJson, pathToDatasetsOfficial } from "../serverUtils";
 
-export const runner = async () => {
+export const runner = async (sourceFile) => {
   try {
     const start = new Date();
     const entries = await readJSONAsync(
-      pathToScriptsJson("resolved-nhoods.json"),
+      sourceFile,
       []
     );
     if (!entries.length) {
@@ -32,7 +32,7 @@ export const runner = async () => {
         { dedupe: true }
       );
     });
-    await saveJSONAsync(pathToScriptsJson("resolved-nhoods.json"), []);
+    await saveJSONAsync(sourceFile, []);
     const end = new Date();
     console.log(
       `split > split ${entries.length} entries across ${

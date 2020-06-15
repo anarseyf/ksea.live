@@ -47,6 +47,11 @@ export const generateIntervals = () => {
   return [0, -1].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
 };
 
+export const generate24HourIntervals = () => {
+  const now = +new Date();
+  return [[now - TwentyFourHours, now]];
+};
+
 const IncidentTypes = {
   Known: { Fire: "fire", Medic: "medic", Aid: "aid" },
   Default: "other",

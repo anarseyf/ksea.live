@@ -9,9 +9,14 @@ import { Histogram } from "./Histogram";
 import { Section } from "./Section";
 import { Paragraph } from "./Paragraph";
 import { History } from "./History";
+import { TweetsActive } from "./TweetsActive";
+import { TweetsMajor } from "./TweetsMajor";
 
 export function DispatchAll() {
   const intro = `Seattle Fire Department 911 dispatches. This page provides a real-time feed of 911 dispatches of FD units today, along with details and comparisons to previous days.`;
+
+  const active = `Active events past 24 hours`;
+  const major = `Major events past 24 hours`;
 
   const areas =
     "To examine individual events, first select an area of the city.";
@@ -37,6 +42,13 @@ export function DispatchAll() {
       <Section edgeToEdge={true} styleOption={1}>
         {/* <Map /> */}
         <LegendSection />
+      </Section>
+
+      <Section styleOption={0}>
+        <Paragraph text={active} />
+        <TweetsActive />
+        <Paragraph text={major} />
+        <TweetsMajor />
       </Section>
 
       <Section styleOption={2}>

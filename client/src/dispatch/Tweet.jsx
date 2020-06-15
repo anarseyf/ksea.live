@@ -12,7 +12,7 @@ export const TweetModes = {
 
 const iconSize = 25;
 
-export function Tweet({ tweet, mode = TweetModes.Default }) {
+export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
   const { user, setSelection } = useContext(UserContext);
   const selectedTweet = user[UserContextKeys.SelectedTweet];
 
@@ -51,4 +51,4 @@ export function Tweet({ tweet, mode = TweetModes.Default }) {
       {isDetailed && <TweetDetails tweet={tweet} />}
     </div>
   );
-}
+};

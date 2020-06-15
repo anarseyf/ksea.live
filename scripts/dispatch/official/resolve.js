@@ -4,9 +4,11 @@ const axios = require("axios").default;
 
 const queueSize = 100;
 
+const targetFile = pathToScriptsJson("resolved.json");
+
 const resolveGeo = async (entries = []) => {
   if (!entries.length) {
-    console.log("resolve > nothing to do");
+    console.log("resolveGeo > nothing to do");
     return [];
   }
 
@@ -56,14 +58,11 @@ const resolveGeo = async (entries = []) => {
   return result;
 };
 
-export const runner = async () => {
+export const runner = async (sourceFile) => {
   try {
     const start = new Date();
 
-    const entries = await readJSONAsync(
-      pathToScriptsJson("combined.json"),
-      []
-    );
+    const entries = await readJSONAsync(sourceFile, []);
 
     const queue = entries.slice(0, queueSize);
     if (!queue.length) {
@@ -71,12 +70,11 @@ export const runner = async () => {
       return;
     }
 
-    await saveJSONAsync(
-      pathToScriptsJson("combined.json"),
-      entries.slice(queueSize)
-    ); // TODO - atomic
+    await saveJSONAsync(sourceFile, entries.slice(queueSize)); // TODO - atomic
 
-    console.log(`resolve > requesting ${queue.length}`);
+    console.log(
+      `resolve > requesting ${queue.length} out of ${entries.length}`
+    );
 
     const hasCoordinates = ({ derived: { lat, long } }) =>
       typeof lat === "number" && typeof long === "number";
@@ -97,10 +95,7 @@ export const runner = async () => {
       );
     }
 
-    const newTotal = await appendJSONAsync(
-      pathToScriptsJson("resolved.json"),
-      resolved
-    );
+    const newTotal = await appendJSONAsync(targetFile, resolved);
 
     const end = new Date();
     console.log(
@@ -108,6 +103,8 @@ export const runner = async () => {
         end - start
       }ms)`
     );
+
+    return targetFile;
   } catch (e) {
     console.error("resolve >>> stopped due to error:", e);
   }

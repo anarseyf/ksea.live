@@ -2,10 +2,12 @@ import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
 import { pathToScriptsJson } from "../serverUtils";
 import { severityMapper } from "./mappers";
 
-export const runner = async () => {
+const targetFile = pathToScriptsJson("combined.json");
+
+export const runner = async (sourceFile) => {
   try {
     const start = new Date();
-    const entries = await readJSONAsync(pathToScriptsJson("scraped.json"), []);
+    const entries = await readJSONAsync(sourceFile, []);
     if (!entries.length) {
       console.log("combine > nothing to do");
       return;
@@ -55,12 +57,13 @@ export const runner = async () => {
 
     result = result.map(severityMapper);
 
-    await appendJSONAsync(pathToScriptsJson("combined.json"), result);
+    await appendJSONAsync(targetFile, result);
     const end = new Date();
     console.log(
       `combine > ${entries.length} --> ${result.length} (${end - start}ms)`
     );
-    await saveJSONAsync(pathToScriptsJson("scraped.json"), []);
+    await saveJSONAsync(sourceFile, []);
+    return targetFile;
   } catch (e) {
     console.error("combine >>> Canceling runner due to error:", e);
   }

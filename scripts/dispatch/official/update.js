@@ -3,10 +3,13 @@ import {
   listFilesAsync,
   readJSONAsync,
   saveJSONAsync,
+  appendJSONAsync,
 } from "../fileUtils";
-import { scrapeDate } from "./scrape";
+import { scrapeDateAsync } from "./scrape";
 import moment from "moment";
 import { pathToScriptsJson } from "../serverUtils";
+
+const targetFile = pathToScriptsJson("updated.json");
 
 const axios = require("axios").default;
 const jsdom = require("jsdom");
@@ -22,7 +25,7 @@ export const runner = async () => {
   const statusFile = pathToScriptsJson("status.json");
   const status = await readJSONAsync(statusFile, {});
   console.log("update > status", status);
-  if (now - ((status.update && status.update.lastRun) || 0) < wait) {
+  if (now - ((status.update && +new Date(status.update.lastRun)) || 0) < wait) {
     console.log(`update > need to wait ${waitMinutes}min since last update`);
     return;
   }
@@ -43,9 +46,13 @@ export const runner = async () => {
   const dateStrings = dates.map(toPacificDateString);
   console.log("update > dates:", dateStrings);
   for (const dateStr of dateStrings) {
-    await scrapeDate(dateStr);
+    await appendJSONAsync(targetFile, await scrapeDateAsync(dateStr));
   }
 
-  const newStatus = { ...status, update: { lastRun: +new Date() } };
+  const newStatus = { ...status, update: { lastRun: new Date().toISOString() } };
   await saveJSONAsync(statusFile, newStatus);
+
+  const end = +new Date();
+  console.log(`update > ${end-now}ms`);
+  return targetFile;
 };

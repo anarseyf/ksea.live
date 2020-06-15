@@ -29,6 +29,14 @@ export async function getTweetsByType(area = "seattle") {
   return getByAPI(`dispatch/tweets/byType/${area}`, { minimize: false });
 }
 
+export async function getTweetsMajor() {
+  return getByAPI("dispatch/tweets/major", { minimize: false });
+}
+
+export async function getTweetsActive() {
+  return getByAPI("dispatch/tweets/active", { minimize: false });
+}
+
 export async function getTweetsStatic() {
   return getByAPI("dispatch/static");
 }

@@ -7,6 +7,7 @@ import {
   groupBy,
   generateHistoryIntervals,
   generateIntervals,
+  generate24HourIntervals,
 } from "./server/groupby";
 import {
   allTweets,
@@ -17,6 +18,8 @@ import {
   dataPath,
   sortByTotal,
   minimizeGroup,
+  filterActive,
+  filterSev2,
 } from "./dispatchHelpers";
 import { readJSONAsync, listFilesAsync } from "./scripts/dispatch/fileUtils";
 
@@ -87,6 +90,44 @@ const forAreaController = async (req, res, next) => {
 
     const intervalGrouper = groupByIntervalGen(intervals);
     const result = groupBy(GroupByOptions.Nothing, all)
+      .map(intervalGrouper)
+      .map(minimizer)
+      .sort(sortByTotal);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error });
+  }
+};
+
+const activeController = async (req, res, next) => {
+  try {
+    const intervals = generate24HourIntervals();
+    const all = await allTweets(intervals);
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
+
+    const intervalGrouper = groupByIntervalGen(intervals);
+    const result = groupBy(GroupByOptions.Nothing, all.filter(filterSev2))
+      .map(intervalGrouper)
+      .map(minimizer)
+      .sort(sortByTotal);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error });
+  }
+};
+
+const majorController = async (req, res, next) => {
+  try {
+    const intervals = generate24HourIntervals();
+    const all = await allTweets(intervals);
+    const minimizer =
+      req.query.minimize === "true" ? minimizeGroup : identityFn;
+
+    const intervalGrouper = groupByIntervalGen(intervals);
+    const result = groupBy(GroupByOptions.Nothing, all.filter(filterSev2))
       .map(intervalGrouper)
       .map(minimizer)
       .sort(sortByTotal);
@@ -243,6 +284,8 @@ const mapsController = async (req, res, next) => {
 
 router.get("/seattle911", seattleGovController);
 router.get("/mostRecentId", mostRecentController);
+router.get("/tweets/active", activeController);
+router.get("/tweets/major", majorController);
 router.get("/tweets/byArea", byAreaController);
 router.get("/tweets/byType/:area?", byTypeController);
 router.get("/tweets/byAreaByType", byAreabyTypeController);

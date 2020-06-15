@@ -113,3 +113,6 @@ export const minimizeGroup = ({ intervals, ...rest }) => ({
   ...rest,
   intervals: intervals.map(minimizeInterval),
 });
+
+export const filterActive = ({ derived: { active } }) => active;
+export const filterSev2 = ({ derived: { severity } }) => severity >= 2;
