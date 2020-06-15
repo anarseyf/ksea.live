@@ -26,7 +26,7 @@ export const scrapeDate = async (dateStr) => {
     .querySelector("tbody")
     .children[2].querySelector("tbody")
     .querySelector("tbody").children; // don't blame me...
-  console.log(`scrape > ${dateStr} rows: `, rows.length);
+  console.log(`scrapeDate > ${dateStr} rows: `, rows.length);
 
   const result = [...Array.from(rows)].map((row) => {
     const cells = [...Array.from(row.children)].map((cell) => cell.textContent);
@@ -45,7 +45,7 @@ export const scrapeDate = async (dateStr) => {
   await appendJSONAsync(pathToScriptsJson("scraped.json"), result);
 
   const end = new Date();
-  console.log(`scrape > ${dateStr} -> ${result.length} (${end - start}ms)`);
+  console.log(`scrapeDate > ${dateStr} -> ${result.length} (${end - start}ms)`);
   console.log(result[0]);
 };
 

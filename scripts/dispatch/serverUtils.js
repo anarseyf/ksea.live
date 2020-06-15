@@ -1,5 +1,3 @@
-import { checkVersion } from "./version";
-
 const axios = require("axios").default;
 
 export const getUserTimeline = async (config) => {
@@ -24,5 +22,3 @@ export const decrementIdStr = (id_str) => (BigInt(id_str) - 1n).toString();
 // const test = "1268951477848023049";
 // console.log(`${test} + 1 =\n${incrementIdStr(test)}`);
 // console.log(`${test} - 1 =\n${decrementIdStr(test)}`);
-
-checkVersion();

@@ -3,7 +3,6 @@ import { pathToScriptsJson } from "../serverUtils";
 const axios = require("axios").default;
 
 const queueSize = 100;
-const interval = 7 * 1083;
 
 const resolveGeo = async (entries = []) => {
   if (!entries.length) {
@@ -57,64 +56,59 @@ const resolveGeo = async (entries = []) => {
   return result;
 };
 
-const resolve = () => {
-  let intervalId;
+export const runner = async () => {
+  try {
+    const start = new Date();
 
-  const tick = async () => {
-    try {
-      const start = new Date();
+    const entries = await readJSONAsync(
+      pathToScriptsJson("combined.json"),
+      []
+    );
 
-      const entries = await readJSONAsync(
-        pathToScriptsJson("combined.json"),
-        []
-      );
-
-      const queue = entries.slice(0, queueSize);
-
-      await saveJSONAsync(
-        pathToScriptsJson("combined.json"),
-        entries.slice(queueSize)
-      ); // TODO - atomic
-
-      console.log(`resolve > requesting ${queue.length}`);
-
-      const hasCoordinates = ({ derived: { lat, long } }) =>
-        typeof lat === "number" && typeof long === "number";
-
-      const newData = await resolveGeo(queue);
-
-      const resolved = newData.filter(hasCoordinates);
-
-      const unresolved = newData.filter((d) => !hasCoordinates(d));
-      if (unresolved.length) {
-        const unresolvedTotal = await appendJSONAsync(
-          pathToScriptsJson("unresolved.json"),
-          unresolved,
-          { dedupe: true }
-        );
-        console.log(
-          `resolve > ${unresolved.length} unresolved (${unresolvedTotal} total unresolved)`
-        );
-      }
-
-      const newTotal = await appendJSONAsync(
-        pathToScriptsJson("resolved.json"),
-        resolved
-      );
-
-      const end = new Date();
-      console.log(
-        `resolve > resolved ${resolved.length}, new total: ${newTotal} (${
-          end - start
-        }ms)`
-      );
-    } catch (e) {
-      console.error("resolve >>> Canceling runner due to error:", e);
-      clearInterval(intervalId);
+    const queue = entries.slice(0, queueSize);
+    if (!queue.length) {
+      console.log("resolve > nothing to do");
+      return;
     }
-  };
-  // tick();
-  intervalId = setInterval(tick, interval);
-};
 
-resolve();
+    await saveJSONAsync(
+      pathToScriptsJson("combined.json"),
+      entries.slice(queueSize)
+    ); // TODO - atomic
+
+    console.log(`resolve > requesting ${queue.length}`);
+
+    const hasCoordinates = ({ derived: { lat, long } }) =>
+      typeof lat === "number" && typeof long === "number";
+
+    const newData = await resolveGeo(queue);
+
+    const resolved = newData.filter(hasCoordinates);
+
+    const unresolved = newData.filter((d) => !hasCoordinates(d));
+    if (unresolved.length) {
+      const unresolvedTotal = await appendJSONAsync(
+        pathToScriptsJson("unresolved.json"),
+        unresolved,
+        { dedupe: true }
+      );
+      console.log(
+        `resolve > ${unresolved.length} unresolved (${unresolvedTotal} total unresolved)`
+      );
+    }
+
+    const newTotal = await appendJSONAsync(
+      pathToScriptsJson("resolved.json"),
+      resolved
+    );
+
+    const end = new Date();
+    console.log(
+      `resolve > resolved ${resolved.length}, new total: ${newTotal} (${
+        end - start
+      }ms)`
+    );
+  } catch (e) {
+    console.error("resolve >>> stopped due to error:", e);
+  }
+};

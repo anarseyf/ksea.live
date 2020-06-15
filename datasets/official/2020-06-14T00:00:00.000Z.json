@@ -1,5 +1,2685 @@
 [
   {
+    "id_str": "F200058480",
+    "created_at": "6/14/2020 4:54:07 PM",
+    "derived": {
+      "lat": 47.597453,
+      "long": -122.325062,
+      "timestamp": 1592178847000,
+      "description": "Aid Response",
+      "address": "607 Maynard Av S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058478",
+    "created_at": "6/14/2020 4:50:07 PM",
+    "derived": {
+      "lat": 47.5837,
+      "long": -122.321395,
+      "timestamp": 1592178607000,
+      "description": "Auto Fire Alarm",
+      "address": "2203 AIRPORT WAY S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Duwamish/SODO",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058477",
+    "created_at": "6/14/2020 4:48:11 PM",
+    "derived": {
+      "lat": 47.573203,
+      "long": -122.363438,
+      "timestamp": 1592178491000,
+      "description": "Aid Response",
+      "address": "3443 West Marginal Way Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E36",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "North Delridge",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "F200058476",
+    "created_at": "6/14/2020 4:44:26 PM",
+    "derived": {
+      "lat": 47.714921,
+      "long": -122.341372,
+      "timestamp": 1592178266000,
+      "description": "Aid Response",
+      "address": "11812 Stendall Dr N,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A31 E24",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Haller Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058475",
+    "created_at": "6/14/2020 4:37:17 PM",
+    "derived": {
+      "lat": 47.581214,
+      "long": -122.391903,
+      "timestamp": 1592177837000,
+      "description": "Medic Response",
+      "address": "4700 Sw Admiral Way,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L13 M26",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058474",
+    "created_at": "6/14/2020 4:33:36 PM",
+    "derived": {
+      "lat": 47.705096,
+      "long": -122.344695,
+      "timestamp": 1592177616000,
+      "description": "Aid Response",
+      "address": "10507 Aurora Av N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A31",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Licton Springs",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058473",
+    "created_at": "6/14/2020 4:30:49 PM",
+    "derived": {
+      "lat": 47.609112,
+      "long": -122.29755,
+      "timestamp": 1592177449000,
+      "description": "Aid Response",
+      "address": "811 27th Ave,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E6",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Central Area/Squire Park",
+      "neighborhoodGroup": "Central"
+    }
+  },
+  {
+    "id_str": "F200058469",
+    "created_at": "6/14/2020 4:20:16 PM",
+    "derived": {
+      "lat": 47.653977,
+      "long": -122.386142,
+      "timestamp": 1592176816000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "2311 W Emerson St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E20",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Interbay",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058463",
+    "created_at": "6/14/2020 4:16:29 PM",
+    "derived": {
+      "lat": 47.544264,
+      "long": -122.264147,
+      "timestamp": 1592176589000,
+      "description": "Medic Response, 6 per Rule",
+      "address": "Seward Park Ave S / S Morgan St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E28 L12 M28",
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Seward Park",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058462",
+    "created_at": "6/14/2020 4:16:23 PM",
+    "derived": {
+      "lat": 47.550568,
+      "long": -122.325158,
+      "timestamp": 1592176583000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "7th Ave S / S Fidalgo St,Seattle,WA",
+      "entries": 7,
+      "active": false,
+      "units": "A14 AIR10 B2 B5 DEP1 E11 E13 E26 E28 E36 E5 L1 L12 L3 M10 M26 M44 MAR5 R1 REHAB1 SAFT2 STAF10",
+      "unitCount": 22,
+      "severity": 2,
+      "neighborhood": "Georgetown",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058460",
+    "created_at": "6/14/2020 4:02:16 PM",
+    "derived": {
+      "lat": 47.620023,
+      "long": -122.356745,
+      "timestamp": 1592175736000,
+      "description": "Auto Fire Alarm",
+      "address": "222 Queen Anne Av N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E2 L4",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058458",
+    "created_at": "6/14/2020 3:59:33 PM",
+    "derived": {
+      "lat": 47.657826,
+      "long": -122.35441,
+      "timestamp": 1592175573000,
+      "description": "Alarm Bell",
+      "address": "4207 Phinney Av N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E9 L8",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Fremont",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058456",
+    "created_at": "6/14/2020 3:59:09 PM",
+    "derived": {
+      "lat": 47.582892,
+      "long": -122.386483,
+      "timestamp": 1592175549000,
+      "description": "Medic Response",
+      "address": "2317 California Av Sw,Seattle,WA",
+      "entries": 3,
+      "active": false,
+      "units": "E32 L11 M26",
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Alki/Admiral",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058455",
+    "created_at": "6/14/2020 3:56:43 PM",
+    "derived": {
+      "lat": 47.618652,
+      "long": -122.324006,
+      "timestamp": 1592175403000,
+      "description": "1RED 1 Unit",
+      "address": "115 Belmont Av E,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058454",
+    "created_at": "6/14/2020 3:56:01 PM",
+    "derived": {
+      "lat": 47.544289,
+      "long": -122.293667,
+      "timestamp": 1592175361000,
+      "description": "Aid Response",
+      "address": "6509 30th Ave S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E28",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "South Beacon Hill/NewHolly",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058452",
+    "created_at": "6/14/2020 3:52:16 PM",
+    "derived": {
+      "lat": 47.58474,
+      "long": -122.387914,
+      "timestamp": 1592175136000,
+      "description": "Medic Response",
+      "address": "2139 Ferry Av Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "M32",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Alki/Admiral",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058451",
+    "created_at": "6/14/2020 3:51:48 PM",
+    "derived": {
+      "lat": 47.621994,
+      "long": -122.317823,
+      "timestamp": 1592175108000,
+      "description": "Aid Response",
+      "address": "403 11TH AVE E,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058450",
+    "created_at": "6/14/2020 3:47:05 PM",
+    "derived": {
+      "lat": 47.637904,
+      "long": -122.408188,
+      "timestamp": 1592174825000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "2312 Magnolia Blvd W,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E41",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Magnolia",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058449",
+    "created_at": "6/14/2020 3:45:58 PM",
+    "derived": {
+      "lat": 47.604625,
+      "long": -122.32697,
+      "timestamp": 1592174758000,
+      "description": "Medic Response",
+      "address": "7th Ave / James St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5 M1",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058448",
+    "created_at": "6/14/2020 3:36:27 PM",
+    "derived": {
+      "lat": 47.602999,
+      "long": -122.284627,
+      "timestamp": 1592174187000,
+      "description": "Water Job Minor",
+      "address": "202 Lake Washington Blvd,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E6 L1",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Madrona/Leschi",
+      "neighborhoodGroup": "Central"
+    }
+  },
+  {
+    "id_str": "F200058447",
+    "created_at": "6/14/2020 3:32:26 PM",
+    "derived": {
+      "lat": 47.683439,
+      "long": -122.28838,
+      "timestamp": 1592173946000,
+      "description": "Aid Response",
+      "address": "7544 37th Av Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E40",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Wedgwood/View Ridge",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058444",
+    "created_at": "6/14/2020 3:25:46 PM",
+    "derived": {
+      "lat": 47.690536,
+      "long": -122.341083,
+      "timestamp": 1592173546000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "1323 N 85th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E21",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Green Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058443",
+    "created_at": "6/14/2020 3:25:32 PM",
+    "derived": {
+      "lat": 47.636219,
+      "long": -122.370351,
+      "timestamp": 1592173532000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "1930 10th Ave W,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E20",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058440",
+    "created_at": "6/14/2020 3:18:32 PM",
+    "derived": {
+      "lat": 47.615361,
+      "long": -122.347887,
+      "timestamp": 1592173112000,
+      "description": "Low Acuity Response",
+      "address": "2nd Ave / Wall St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A2",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058437",
+    "created_at": "6/14/2020 3:15:21 PM",
+    "derived": {
+      "lat": 47.594244,
+      "long": -122.310281,
+      "timestamp": 1592172921000,
+      "description": "Aid Response",
+      "address": "852 RAINIER AV S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058436",
+    "created_at": "6/14/2020 3:08:46 PM",
+    "derived": {
+      "lat": 47.609685,
+      "long": -122.334666,
+      "timestamp": 1592172526000,
+      "description": "Aid Response",
+      "address": "5th Ave / Union St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E2",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058435",
+    "created_at": "6/14/2020 2:58:42 PM",
+    "derived": {
+      "lat": 47.639727,
+      "long": -122.323461,
+      "timestamp": 1592171922000,
+      "description": "Aid Response",
+      "address": "Boylston Ave E / E Lynn St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E22",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Montlake/Portage Bay",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058434",
+    "created_at": "6/14/2020 2:55:43 PM",
+    "derived": {
+      "lat": 47.652127,
+      "long": -122.332675,
+      "timestamp": 1592171743000,
+      "description": "Low Acuity Response",
+      "address": "3715 Bagley Ave N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E9",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Wallingford",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058433",
+    "created_at": "6/14/2020 2:53:17 PM",
+    "derived": {
+      "lat": 47.638201,
+      "long": -122.340889,
+      "timestamp": 1592171597000,
+      "description": "Aid Response",
+      "address": "2125 Westlake Av N,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A2 A4",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058431",
+    "created_at": "6/14/2020 2:38:41 PM",
+    "derived": {
+      "lat": 47.721359,
+      "long": -122.296339,
+      "timestamp": 1592170721000,
+      "description": "Aid Response",
+      "address": "12745 30th Av Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E16",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058430",
+    "created_at": "6/14/2020 2:36:59 PM",
+    "derived": {
+      "lat": 47.599187,
+      "long": -122.317225,
+      "timestamp": 1592170619000,
+      "description": "Aid Response",
+      "address": "12th Ave S / S Jackson St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058427",
+    "created_at": "6/14/2020 2:27:41 PM",
+    "derived": {
+      "lat": 47.638428,
+      "long": -122.386426,
+      "timestamp": 1592170061000,
+      "description": "Aid Response",
+      "address": "2315 W Boston St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E41",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Interbay",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058428",
+    "created_at": "6/14/2020 2:27:33 PM",
+    "derived": {
+      "lat": 47.602699,
+      "long": -122.322029,
+      "timestamp": 1592170053000,
+      "description": "Aid Response",
+      "address": "808 Fir St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058425",
+    "created_at": "6/14/2020 2:20:25 PM",
+    "derived": {
+      "lat": 47.587748,
+      "long": -122.309451,
+      "timestamp": 1592169625000,
+      "description": "Alarm Bell",
+      "address": "1801 S State St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E30 L3",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058424",
+    "created_at": "6/14/2020 2:20:21 PM",
+    "derived": {
+      "lat": 47.701444,
+      "long": -122.349468,
+      "timestamp": 1592169621000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "742 N 100th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E21",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Licton Springs",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058423",
+    "created_at": "6/14/2020 2:19:18 PM",
+    "derived": {
+      "lat": 47.648106,
+      "long": -122.332616,
+      "timestamp": 1592169558000,
+      "description": "Auto Fire Alarm",
+      "address": "2143 N Northlake Way,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E9 FB2 FIREBOAT L6",
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "Fremont",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058422",
+    "created_at": "6/14/2020 2:16:56 PM",
+    "derived": {
+      "lat": 47.630652,
+      "long": -122.3548,
+      "timestamp": 1592169416000,
+      "description": "Low Acuity Response",
+      "address": "115 Tower Pl,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E8",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058420",
+    "created_at": "6/14/2020 2:12:35 PM",
+    "derived": {
+      "lat": 47.517475,
+      "long": -122.375793,
+      "timestamp": 1592169155000,
+      "description": "Aid Response",
+      "address": "3421 Sw Roxbury St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E37",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Roxhill/Westwood",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "F200058421",
+    "created_at": "6/14/2020 2:11:37 PM",
+    "derived": {
+      "lat": 47.711677,
+      "long": -122.367702,
+      "timestamp": 1592169097000,
+      "description": "Aid Response",
+      "address": "950 Nw Carkeek Park Rd,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A31 M31",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Broadview/Bitter Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058419",
+    "created_at": "6/14/2020 2:10:40 PM",
+    "derived": {
+      "lat": 47.566493,
+      "long": -122.392132,
+      "timestamp": 1592169040000,
+      "description": "Aid Response",
+      "address": "4122 47th Ave Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L11",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058418",
+    "created_at": "6/14/2020 2:05:19 PM",
+    "derived": {
+      "lat": 47.614317,
+      "long": -122.316839,
+      "timestamp": 1592168719000,
+      "description": "Natural Gas Odor",
+      "address": "1519 12th Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "B2 L10",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058415",
+    "created_at": "6/14/2020 1:41:34 PM",
+    "derived": {
+      "lat": 47.610214,
+      "long": -122.336683,
+      "timestamp": 1592167294000,
+      "description": "Medic Response",
+      "address": "4th Ave / Pike St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5 M1",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058413",
+    "created_at": "6/14/2020 1:36:23 PM",
+    "derived": {
+      "lat": 47.613031,
+      "long": -122.320763,
+      "timestamp": 1592166983000,
+      "description": "Aid Response",
+      "address": "1407 Broadway,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058412",
+    "created_at": "6/14/2020 1:34:41 PM",
+    "derived": {
+      "lat": 47.588411,
+      "long": -122.305827,
+      "timestamp": 1592166881000,
+      "description": "Medic Response",
+      "address": "Rainier Ave S / S Massachusetts St,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E6 M10",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058411",
+    "created_at": "6/14/2020 1:19:34 PM",
+    "derived": {
+      "lat": 47.690609,
+      "long": -122.376806,
+      "timestamp": 1592165974000,
+      "description": "Aid Response",
+      "address": "15th Ave Nw / Nw 85th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E35",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Whittier Heights",
+      "neighborhoodGroup": "Ballard"
+    }
+  },
+  {
+    "id_str": "F200058410",
+    "created_at": "6/14/2020 1:11:28 PM",
+    "derived": {
+      "lat": 47.607075,
+      "long": -122.341529,
+      "timestamp": 1592165488000,
+      "description": "Aid Response",
+      "address": "1419 Alaskan Way,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058409",
+    "created_at": "6/14/2020 1:11:15 PM",
+    "derived": {
+      "lat": 47.600543,
+      "long": -122.331572,
+      "timestamp": 1592165475000,
+      "description": "Aid Response",
+      "address": "240 2nd Av S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058407",
+    "created_at": "6/14/2020 1:05:03 PM",
+    "derived": {
+      "lat": 47.687449,
+      "long": -122.26547,
+      "timestamp": 1592165103000,
+      "description": "Aid Response",
+      "address": "8010 SAND POINT WAY NE,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E40",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Laurelhurst/Sand Point",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058406",
+    "created_at": "6/14/2020 1:04:50 PM",
+    "derived": {
+      "lat": 47.676084,
+      "long": -122.276886,
+      "timestamp": 1592165090000,
+      "description": "Low Acuity Response",
+      "address": "6551 48th Ave Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E38",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Wedgwood/View Ridge",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058405",
+    "created_at": "6/14/2020 12:56:31 PM",
+    "derived": {
+      "lat": 47.520679,
+      "long": -122.335803,
+      "timestamp": 1592164591000,
+      "description": "Rescue Elevator",
+      "address": "9230 2nd Av Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L13",
+      "unitCount": 1,
+      "severity": 0
+    }
+  },
+  {
+    "id_str": "F200058404",
+    "created_at": "6/14/2020 12:54:51 PM",
+    "derived": {
+      "lat": 47.598338,
+      "long": -122.317228,
+      "timestamp": 1592164491000,
+      "description": "Aid Response",
+      "address": "12th Ave S / S King St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058403",
+    "created_at": "6/14/2020 12:50:26 PM",
+    "derived": {
+      "lat": 47.601676,
+      "long": -122.30783,
+      "timestamp": 1592164226000,
+      "description": "Aid Response",
+      "address": "1885 E Yesler Way,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E6",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Central Area/Squire Park",
+      "neighborhoodGroup": "Central"
+    }
+  },
+  {
+    "id_str": "F200058402",
+    "created_at": "6/14/2020 12:38:29 PM",
+    "derived": {
+      "lat": 47.679671,
+      "long": -122.274307,
+      "timestamp": 1592163509000,
+      "description": "Auto Fire Alarm",
+      "address": "7038 50th Ave Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E38 L9",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Laurelhurst/Sand Point",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058401",
+    "created_at": "6/14/2020 12:31:57 PM",
+    "derived": {
+      "lat": 47.564554,
+      "long": -122.386772,
+      "timestamp": 1592163117000,
+      "description": "Rescue Elevator",
+      "address": "4409 California Av Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L11",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058398",
+    "created_at": "6/14/2020 12:22:15 PM",
+    "derived": {
+      "lat": 47.614066,
+      "long": -122.322111,
+      "timestamp": 1592162535000,
+      "description": "Illegal Burn",
+      "address": "Harvard Ave / E Pike St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058396",
+    "created_at": "6/14/2020 12:18:35 PM",
+    "derived": {
+      "lat": 47.607128,
+      "long": -122.326189,
+      "timestamp": 1592162315000,
+      "description": "Aid Response",
+      "address": "821 9th Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058395",
+    "created_at": "6/14/2020 12:15:20 PM",
+    "derived": {
+      "lat": 47.638695,
+      "long": -122.376149,
+      "timestamp": 1592162120000,
+      "description": "Auto Fire Alarm",
+      "address": "2208 15th Av W,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E20 L8",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Interbay",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058394",
+    "created_at": "6/14/2020 12:14:40 PM",
+    "derived": {
+      "lat": 47.615273,
+      "long": -122.315549,
+      "timestamp": 1592162080000,
+      "description": "Aid Response",
+      "address": "1300 E Pine St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058393",
+    "created_at": "6/14/2020 12:11:24 PM",
+    "derived": {
+      "lat": 47.643311,
+      "long": -122.370201,
+      "timestamp": 1592161884000,
+      "description": "Activated CO Detector",
+      "address": "2608 10th Ave W,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L6",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058390",
+    "created_at": "6/14/2020 12:00:38 PM",
+    "derived": {
+      "lat": 47.722975,
+      "long": -122.288603,
+      "timestamp": 1592161238000,
+      "description": "Aid Response",
+      "address": "Ne 130th St / 37th Ave Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E39",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058389",
+    "created_at": "6/14/2020 11:58:14 AM",
+    "derived": {
+      "lat": 47.662126,
+      "long": -122.340654,
+      "timestamp": 1592161094000,
+      "description": "Aid Response",
+      "address": "N 46th St / Interlake Ave N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E17",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Wallingford",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058388",
+    "created_at": "6/14/2020 11:56:56 AM",
+    "derived": {
+      "lat": 47.670172,
+      "long": -122.376604,
+      "timestamp": 1592161016000,
+      "description": "Aid Response",
+      "address": "1530 Nw 57th St,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E18 L8",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard"
+    }
+  },
+  {
+    "id_str": "F200058386",
+    "created_at": "6/14/2020 11:17:40 AM",
+    "derived": {
+      "lat": 47.616434,
+      "long": -122.316593,
+      "timestamp": 1592158660000,
+      "description": "Advised Incident",
+      "address": "1221 E Olive St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058385",
+    "created_at": "6/14/2020 11:17:32 AM",
+    "derived": {
+      "lat": 47.537372,
+      "long": -122.27037,
+      "timestamp": 1592158652000,
+      "description": "Aid Response",
+      "address": "7269 Rainier Av S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L12",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Seward Park",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058384",
+    "created_at": "6/14/2020 11:12:44 AM",
+    "derived": {
+      "lat": 47.577444,
+      "long": -122.329058,
+      "timestamp": 1592158364000,
+      "description": "Aid Response",
+      "address": "2939 4TH AV S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A14",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Duwamish/SODO",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058383",
+    "created_at": "6/14/2020 11:10:38 AM",
+    "derived": {
+      "lat": 47.606982,
+      "long": -122.326056,
+      "timestamp": 1592158238000,
+      "description": "Aid Response",
+      "address": "801 9th Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058382",
+    "created_at": "6/14/2020 11:03:29 AM",
+    "derived": {
+      "lat": 47.591933,
+      "long": -122.382663,
+      "timestamp": 1592157809000,
+      "description": "Aid Response",
+      "address": "1331 Harbor Av Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E36",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Alki/Admiral",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058381",
+    "created_at": "6/14/2020 11:02:41 AM",
+    "derived": {
+      "lat": 47.618652,
+      "long": -122.324006,
+      "timestamp": 1592157761000,
+      "description": "1RED 1 Unit",
+      "address": "115 Belmont Av E,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058379",
+    "created_at": "6/14/2020 10:42:28 AM",
+    "derived": {
+      "lat": 47.606982,
+      "long": -122.326056,
+      "timestamp": 1592156548000,
+      "description": "Aid Response",
+      "address": "801 9th Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058377",
+    "created_at": "6/14/2020 10:30:23 AM",
+    "derived": {
+      "lat": 47.573794,
+      "long": -122.308822,
+      "timestamp": 1592155823000,
+      "description": "Medic Response",
+      "address": "3326 Beacon Av S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E13 M10",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058376",
+    "created_at": "6/14/2020 10:20:21 AM",
+    "derived": {
+      "lat": 47.701342,
+      "long": -122.314975,
+      "timestamp": 1592155221000,
+      "description": "Aid Response",
+      "address": "10017 12th Ave Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E40",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058373",
+    "created_at": "6/14/2020 10:06:15 AM",
+    "derived": {
+      "lat": 47.614174,
+      "long": -122.327923,
+      "timestamp": 1592154375000,
+      "description": "Medic Response",
+      "address": "1520 Melrose Av,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A25 M1",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058372",
+    "created_at": "6/14/2020 10:04:52 AM",
+    "derived": {
+      "lat": 47.600694,
+      "long": -122.319323,
+      "timestamp": 1592154292000,
+      "description": "Aid Response",
+      "address": "221 10th Av S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058371",
+    "created_at": "6/14/2020 10:01:20 AM",
+    "derived": {
+      "lat": 47.612398,
+      "long": -122.340892,
+      "timestamp": 1592154080000,
+      "description": "Aid Response",
+      "address": "3rd Ave / Virginia St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A4",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058370",
+    "created_at": "6/14/2020 9:56:38 AM",
+    "derived": {
+      "lat": 47.705443,
+      "long": -122.333937,
+      "timestamp": 1592153798000,
+      "description": "Aid Response",
+      "address": "10545 Meridian Av N,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A31 E24",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058369",
+    "created_at": "6/14/2020 9:44:59 AM",
+    "derived": {
+      "lat": 47.664884,
+      "long": -122.310756,
+      "timestamp": 1592153099000,
+      "description": "Aid Response",
+      "address": "1604 Ne 50th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E17",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058365",
+    "created_at": "6/14/2020 9:29:02 AM",
+    "derived": {
+      "lat": 47.61695,
+      "long": -122.352561,
+      "timestamp": 1592152142000,
+      "description": "Aid Response",
+      "address": "2905 1ST AV,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A4",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058364",
+    "created_at": "6/14/2020 9:25:49 AM",
+    "derived": {
+      "lat": 47.63499,
+      "long": -122.365012,
+      "timestamp": 1592151949000,
+      "description": "Aid Response",
+      "address": "1821 6th Av W,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E8",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058362",
+    "created_at": "6/14/2020 9:17:54 AM",
+    "derived": {
+      "lat": 47.712853,
+      "long": -122.342133,
+      "timestamp": 1592151474000,
+      "description": "Low Acuity Response",
+      "address": "11550 Stone Av N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A31",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Haller Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058361",
+    "created_at": "6/14/2020 9:16:41 AM",
+    "derived": {
+      "lat": 47.659781,
+      "long": -122.312032,
+      "timestamp": 1592151401000,
+      "description": "Aid Response",
+      "address": "Ne 43rd St / 15th Ave Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E31",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058357",
+    "created_at": "6/14/2020 8:28:15 AM",
+    "derived": {
+      "lat": 47.605387,
+      "long": -122.327511,
+      "timestamp": 1592148495000,
+      "description": "Aid Response",
+      "address": "710 Cherry St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058356",
+    "created_at": "6/14/2020 8:15:19 AM",
+    "derived": {
+      "lat": 47.53967,
+      "long": -122.384128,
+      "timestamp": 1592147719000,
+      "description": "Medic Response",
+      "address": "4032 Sw Myrtle St,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E37 M32",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Fauntleroy/Seaview",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058353",
+    "created_at": "6/14/2020 7:22:59 AM",
+    "derived": {
+      "lat": 47.651083,
+      "long": -122.303907,
+      "timestamp": 1592144579000,
+      "description": "Aid Response",
+      "address": "3800 Montlake Blvd Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E17",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058350",
+    "created_at": "6/14/2020 6:46:43 AM",
+    "derived": {
+      "lat": 47.616446,
+      "long": -122.311456,
+      "timestamp": 1592142403000,
+      "description": "Aid Response",
+      "address": "1600 E Olive St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Central Area/Squire Park",
+      "neighborhoodGroup": "Central"
+    }
+  },
+  {
+    "id_str": "F200058347",
+    "created_at": "6/14/2020 6:37:09 AM",
+    "derived": {
+      "lat": 47.677283,
+      "long": -122.317383,
+      "timestamp": 1592141829000,
+      "description": "Medic Response",
+      "address": "6700 Roosevelt Way Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E16 M17",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058344",
+    "created_at": "6/14/2020 5:58:24 AM",
+    "derived": {
+      "lat": 47.709352,
+      "long": -122.317864,
+      "timestamp": 1592139504000,
+      "description": "Aid Response",
+      "address": "11100 Roosevelt Way Ne,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E39 L5",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058340",
+    "created_at": "6/14/2020 5:22:31 AM",
+    "derived": {
+      "lat": 47.704923,
+      "long": -122.318258,
+      "timestamp": 1592137351000,
+      "description": "Aid Response",
+      "address": "900-b Ne 105th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E39",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058339",
+    "created_at": "6/14/2020 5:16:15 AM",
+    "derived": {
+      "lat": 47.606553,
+      "long": -122.331798,
+      "timestamp": 1592136975000,
+      "description": "Aid Response",
+      "address": "5th Ave / Madison St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058336",
+    "created_at": "6/14/2020 5:06:09 AM",
+    "derived": {
+      "lat": 47.548796,
+      "long": -122.283393,
+      "timestamp": 1592136369000,
+      "description": "Brush Fire",
+      "address": "6000 39th Av S,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E28 MAR5",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058335",
+    "created_at": "6/14/2020 4:57:59 AM",
+    "derived": {
+      "lat": 47.544108,
+      "long": -122.320037,
+      "timestamp": 1592135879000,
+      "description": "Medic Response, 6 per Rule",
+      "address": "S Warsaw St / Flora Ave S,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E26 E27 M26",
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Georgetown",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058334",
+    "created_at": "6/14/2020 4:54:20 AM",
+    "derived": {
+      "lat": 47.613308,
+      "long": -122.342432,
+      "timestamp": 1592135660000,
+      "description": "Aid Response",
+      "address": "2119 3rd Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A2",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058333",
+    "created_at": "6/14/2020 4:37:00 AM",
+    "derived": {
+      "lat": 47.571927,
+      "long": -122.393418,
+      "timestamp": 1592134620000,
+      "description": "Medic Response",
+      "address": "3617 48th Ave Sw,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E29 M32",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058332",
+    "created_at": "6/14/2020 4:35:38 AM",
+    "derived": {
+      "lat": 47.615385,
+      "long": -122.324475,
+      "timestamp": 1592134538000,
+      "description": "Rescue Elevator",
+      "address": "1615 Belmont Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L10",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058328",
+    "created_at": "6/14/2020 4:04:25 AM",
+    "derived": {
+      "lat": 47.615877,
+      "long": -122.35052,
+      "timestamp": 1592132665000,
+      "description": "Aid Response",
+      "address": "111 Cedar St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E2",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058327",
+    "created_at": "6/14/2020 3:57:32 AM",
+    "derived": {
+      "lat": 47.623325,
+      "long": -122.355415,
+      "timestamp": 1592132252000,
+      "description": "Aid Response",
+      "address": "505 1st Av N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A2",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058326",
+    "created_at": "6/14/2020 3:56:28 AM",
+    "derived": {
+      "lat": 47.637097,
+      "long": -122.34048,
+      "timestamp": 1592132188000,
+      "description": "Activated CO Detector",
+      "address": "2040 Westlake Av N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L4",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058323",
+    "created_at": "6/14/2020 3:31:40 AM",
+    "derived": {
+      "lat": 47.698721,
+      "long": -122.34681,
+      "timestamp": 1592130700000,
+      "description": "Aid Response",
+      "address": "937 N 96th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E21",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Licton Springs",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058318",
+    "created_at": "6/14/2020 3:01:34 AM",
+    "derived": {
+      "lat": 47.636712,
+      "long": -122.323696,
+      "timestamp": 1592128894000,
+      "description": "Medic Response, 6 per Rule",
+      "address": "E Newton St / Franklin Pl E,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A25 E22 M17",
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058317",
+    "created_at": "6/14/2020 3:00:11 AM",
+    "derived": {
+      "lat": 47.535321,
+      "long": -122.352784,
+      "timestamp": 1592128811000,
+      "description": "Aid Response",
+      "address": "7525 14th Ave Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E11",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Riverview",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "F200058313",
+    "created_at": "6/14/2020 2:46:18 AM",
+    "derived": {
+      "lat": 47.712291,
+      "long": -122.334056,
+      "timestamp": 1592127978000,
+      "description": "Aid Response",
+      "address": "Meridian Ave N / N 115th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E24",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Haller Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058309",
+    "created_at": "6/14/2020 2:29:28 AM",
+    "derived": {
+      "lat": 47.567731,
+      "long": -122.382809,
+      "timestamp": 1592126968000,
+      "description": "Aid Response",
+      "address": "4034 40th Ave Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E32",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058308",
+    "created_at": "6/14/2020 2:08:18 AM",
+    "derived": {
+      "lat": 47.665746,
+      "long": -122.382417,
+      "timestamp": 1592125698000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "5227 Ballard Ave Nw,Seattle,WA",
+      "entries": 3,
+      "active": false,
+      "units": "B6 E16 E9 L8",
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard"
+    }
+  },
+  {
+    "id_str": "F200058307",
+    "created_at": "6/14/2020 2:07:46 AM",
+    "derived": {
+      "lat": 47.675963,
+      "long": -122.371731,
+      "timestamp": 1592125666000,
+      "description": "Aid Response",
+      "address": "1107 Nw 65th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E18",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Whittier Heights",
+      "neighborhoodGroup": "Ballard"
+    }
+  },
+  {
+    "id_str": "F200058306",
+    "created_at": "6/14/2020 2:01:57 AM",
+    "derived": {
+      "lat": 47.683275,
+      "long": -122.361112,
+      "timestamp": 1592125317000,
+      "description": "Aid Response",
+      "address": "352 Nw 75th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E21",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Greenwood/Phinney Ridge",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058305",
+    "created_at": "6/14/2020 1:58:51 AM",
+    "derived": {
+      "lat": 47.520147,
+      "long": -122.269719,
+      "timestamp": 1592125131000,
+      "description": "Aid Response",
+      "address": "51st Ave S / Rainier Ave S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E28",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Rainier Beach",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058304",
+    "created_at": "6/14/2020 1:56:08 AM",
+    "derived": {
+      "lat": 47.607828,
+      "long": -122.339105,
+      "timestamp": 1592124968000,
+      "description": "Aid Response",
+      "address": "98 Union St,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A10 E10",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058303",
+    "created_at": "6/14/2020 1:55:37 AM",
+    "derived": {
+      "lat": 47.521901,
+      "long": -122.26909,
+      "timestamp": 1592124937000,
+      "description": "Aid Response",
+      "address": "5136 S Director St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E33",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Rainier Beach",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058301",
+    "created_at": "6/14/2020 1:51:14 AM",
+    "derived": {
+      "lat": 47.683222,
+      "long": -122.290485,
+      "timestamp": 1592124674000,
+      "description": "Auto Fire Alarm",
+      "address": "7520 35th Av Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E40 L9",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Wedgwood/View Ridge",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058302",
+    "created_at": "6/14/2020 1:51:09 AM",
+    "derived": {
+      "lat": 47.555755,
+      "long": -122.35705,
+      "timestamp": 1592124669000,
+      "description": "Aid Response",
+      "address": "18th Ave Sw / Sw Dawson St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E36",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Riverview",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "F200058300",
+    "created_at": "6/14/2020 1:39:31 AM",
+    "derived": {
+      "lat": 47.592393,
+      "long": -122.325968,
+      "timestamp": 1592123971000,
+      "description": "Aid Response",
+      "address": "6th Ave S / S Royal Brougham Way,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Duwamish/SODO",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058299",
+    "created_at": "6/14/2020 1:37:17 AM",
+    "derived": {
+      "lat": 47.732429,
+      "long": -122.315418,
+      "timestamp": 1592123837000,
+      "description": "Aid Response",
+      "address": "14330 12th Av Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E39",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058297",
+    "created_at": "6/14/2020 1:22:15 AM",
+    "derived": {
+      "lat": 47.586527,
+      "long": -122.286794,
+      "timestamp": 1592122935000,
+      "description": "Aid Response",
+      "address": "36th Ave S / Lakeside Ave S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E30",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058295",
+    "created_at": "6/14/2020 1:19:40 AM",
+    "derived": {
+      "lat": 47.513395,
+      "long": -122.381823,
+      "timestamp": 1592122780000,
+      "description": "Aid Response",
+      "address": "10041 39th Ave Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E37",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Arbor Heights",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058294",
+    "created_at": "6/14/2020 1:15:08 AM",
+    "derived": {
+      "lat": 47.62214,
+      "long": -122.362695,
+      "timestamp": 1592122508000,
+      "description": "Fire in Building",
+      "address": "W Harrison St / Elliott Ave W,Seattle,WA",
+      "entries": 5,
+      "active": false,
+      "units": "240-260 A2 AIR AIR10 B4 B5 DEP1 E2 E20 E41 E5 E9 L10 L4 L6 M10 M44 MAR5 REHAB1 SAFT2 STAF10",
+      "unitCount": 21,
+      "severity": 2,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058292",
+    "created_at": "6/14/2020 1:13:25 AM",
+    "derived": {
+      "lat": 47.637416,
+      "long": -122.355598,
+      "timestamp": 1592122405000,
+      "description": "Aid Response",
+      "address": "100 Crockett St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E8",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058293",
+    "created_at": "6/14/2020 1:12:03 AM",
+    "derived": {
+      "lat": 47.643961,
+      "long": -122.304098,
+      "timestamp": 1592122323000,
+      "description": "Hazardous Mat, Spill-Leak",
+      "address": "Montlake Blvd E / E Lake Washington Blvd,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10 AIR10 B2 B6 E10 E22 E31 HAZ1 L1 L9 M17 SAFT2 STAF10",
+      "unitCount": 13,
+      "severity": 2,
+      "neighborhood": "Montlake/Portage Bay",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058290",
+    "created_at": "6/14/2020 12:53:05 AM",
+    "derived": {
+      "lat": 47.622249,
+      "long": -122.314667,
+      "timestamp": 1592121185000,
+      "description": "Aid Response",
+      "address": "426 14th Av E,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058286",
+    "created_at": "6/14/2020 12:37:00 AM",
+    "derived": {
+      "lat": 47.66754,
+      "long": -122.398314,
+      "timestamp": 1592120220000,
+      "description": "Aid Response",
+      "address": "3200 Nw 54th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E18",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Sunset Hill/Loyal Heights",
+      "neighborhoodGroup": "Ballard"
+    }
+  },
+  {
+    "id_str": "F200058284",
+    "created_at": "6/14/2020 12:25:08 AM",
+    "derived": {
+      "lat": 47.580087,
+      "long": -122.295178,
+      "timestamp": 1592119508000,
+      "description": "Aid Response",
+      "address": "2540 29th Av S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E30",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058283",
+    "created_at": "6/14/2020 12:20:44 AM",
+    "derived": {
+      "lat": 47.616443,
+      "long": -122.310151,
+      "timestamp": 1592119244000,
+      "description": "Low Acuity Response",
+      "address": "1700 17th Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Central Area/Squire Park",
+      "neighborhoodGroup": "Central"
+    }
+  },
+  {
+    "id_str": "F200058281",
+    "created_at": "6/14/2020 12:09:01 AM",
+    "derived": {
+      "lat": 47.556492,
+      "long": -122.360129,
+      "timestamp": 1592118541000,
+      "description": "Aid Response",
+      "address": "5246 21st Ave Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E36",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Riverview",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "F200058279",
+    "created_at": "6/14/2020 12:06:12 AM",
+    "derived": {
+      "lat": 47.681251,
+      "long": -122.307619,
+      "timestamp": 1592118372000,
+      "description": "Low Acuity Response",
+      "address": "1912 Ne 73rd St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E16",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058277",
+    "created_at": "6/14/2020 12:02:18 AM",
+    "derived": {
+      "lat": 47.539432,
+      "long": -122.320383,
+      "timestamp": 1592118138000,
+      "description": "Aid Response",
+      "address": "1000 S Myrtle St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E27",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Georgetown",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058275",
+    "created_at": "6/14/2020 12:00:28 AM",
+    "derived": {
+      "lat": 47.52107,
+      "long": -122.376761,
+      "timestamp": 1592118028000,
+      "description": "Aid Response",
+      "address": "35th Ave Sw / Sw Barton St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E37",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Roxhill/Westwood",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "F200058276",
+    "created_at": "6/13/2020 11:59:49 PM",
+    "derived": {
+      "lat": 47.52104,
+      "long": -122.369969,
+      "timestamp": 1592117989000,
+      "description": "Aid Response",
+      "address": "29TH AVE SW / SW BARTON ST,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L13",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Roxhill/Westwood",
+      "neighborhoodGroup": "Delridge Neighborhoods"
+    }
+  },
+  {
+    "id_str": "F200058274",
+    "created_at": "6/13/2020 11:56:16 PM",
+    "derived": {
+      "lat": 47.538888,
+      "long": -122.281988,
+      "timestamp": 1592117776000,
+      "description": "Aid Response",
+      "address": "7100 M L King Jr Way S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E28",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "South Beacon Hill/NewHolly",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058272",
+    "created_at": "6/13/2020 11:49:12 PM",
+    "derived": {
+      "lat": 47.55123,
+      "long": -122.288096,
+      "timestamp": 1592117352000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "M L King Jr Way S / S Orcas St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E28",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Beacon Hill",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058267",
+    "created_at": "6/13/2020 11:36:07 PM",
+    "derived": {
+      "lat": 47.608821,
+      "long": -122.340013,
+      "timestamp": 1592116567000,
+      "description": "Medic Response",
+      "address": "1st Ave / Pike St,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A2 M1",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058266",
+    "created_at": "6/13/2020 11:35:47 PM",
+    "derived": {
+      "lat": 47.717331,
+      "long": -122.289297,
+      "timestamp": 1592116547000,
+      "description": "Activated CO Detector",
+      "address": "3601 Ne 123rd St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058265",
+    "created_at": "6/13/2020 11:34:34 PM",
+    "derived": {
+      "lat": 47.619877,
+      "long": -122.331698,
+      "timestamp": 1592116474000,
+      "description": "Aid Response",
+      "address": "219 Pontius Av N,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "A2 E2",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058263",
+    "created_at": "6/13/2020 11:33:46 PM",
+    "derived": {
+      "lat": 47.613025,
+      "long": -122.316745,
+      "timestamp": 1592116426000,
+      "description": "AFA4 - Auto Alarm 2 + 1 + 1",
+      "address": "1412 12th Ave,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "B2 E10 E5 L1",
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058262",
+    "created_at": "6/13/2020 11:31:51 PM",
+    "derived": {
+      "lat": 47.66749,
+      "long": -122.383093,
+      "timestamp": 1592116311000,
+      "description": "Medic Response",
+      "address": "5433 Leary Av Nw,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E18 M31",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard"
+    }
+  },
+  {
+    "id_str": "F200058261",
+    "created_at": "6/13/2020 11:25:44 PM",
+    "derived": {
+      "lat": 47.671758,
+      "long": -122.272909,
+      "timestamp": 1592115944000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "4983 Purdue Ave Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E17",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058260",
+    "created_at": "6/13/2020 11:24:17 PM",
+    "derived": {
+      "lat": 47.661385,
+      "long": -122.343048,
+      "timestamp": 1592115857000,
+      "description": "Aid Response",
+      "address": "1215 N 45th St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E9",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Wallingford",
+      "neighborhoodGroup": "Lake Union"
+    }
+  },
+  {
+    "id_str": "F200058258",
+    "created_at": "6/13/2020 11:12:03 PM",
+    "derived": {
+      "lat": 47.717823,
+      "long": -122.296319,
+      "timestamp": 1592115123000,
+      "description": "Aid Response",
+      "address": "12325 30th Av Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E39",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North"
+    }
+  },
+  {
+    "id_str": "F200058257",
+    "created_at": "6/13/2020 11:11:36 PM",
+    "derived": {
+      "lat": 47.537049,
+      "long": -122.280735,
+      "timestamp": 1592115096000,
+      "description": "Medic Response",
+      "address": "4200 S Othello St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "L12 M28",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058256",
+    "created_at": "6/13/2020 11:11:03 PM",
+    "derived": {
+      "lat": 47.606553,
+      "long": -122.331798,
+      "timestamp": 1592115063000,
+      "description": "Aid Response",
+      "address": "Madison St / 5th Ave,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058254",
+    "created_at": "6/13/2020 11:03:35 PM",
+    "derived": {
+      "lat": 47.663057,
+      "long": -122.309683,
+      "timestamp": 1592114615000,
+      "description": "Aid Response",
+      "address": "Ne 47th St / 17th Ave Ne,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E31",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058253",
+    "created_at": "6/13/2020 10:56:18 PM",
+    "derived": {
+      "lat": 47.546991,
+      "long": -122.314914,
+      "timestamp": 1592114178000,
+      "description": "Illegal Burn",
+      "address": "S Albro Pl / Stanley Ave S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E27",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Georgetown",
+      "neighborhoodGroup": "Greater Duwamish"
+    }
+  },
+  {
+    "id_str": "F200058252",
+    "created_at": "6/13/2020 10:52:32 PM",
+    "derived": {
+      "lat": 47.550638,
+      "long": -122.258093,
+      "timestamp": 1592113952000,
+      "description": "Medic Response",
+      "address": "5898 Lake Washington Blvd S,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E28 M28",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Seward Park",
+      "neighborhoodGroup": "Southeast"
+    }
+  },
+  {
+    "id_str": "F200058249",
+    "created_at": "6/13/2020 10:44:12 PM",
+    "derived": {
+      "lat": 47.666267,
+      "long": -122.300605,
+      "timestamp": 1592113452000,
+      "description": "Medic Response",
+      "address": "5101 25th Av Ne,Seattle,WA",
+      "entries": 2,
+      "active": false,
+      "units": "E31 E38 M17",
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058250",
+    "created_at": "6/13/2020 10:44:07 PM",
+    "derived": {
+      "lat": 47.666799,
+      "long": -122.31191,
+      "timestamp": 1592113447000,
+      "description": "Auto Fire Alarm",
+      "address": "5253 15TH AVE NE,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E17 L9",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast"
+    }
+  },
+  {
+    "id_str": "F200058248",
+    "created_at": "6/13/2020 10:37:43 PM",
+    "derived": {
+      "lat": 47.557488,
+      "long": -122.380189,
+      "timestamp": 1592113063000,
+      "description": "Aid Response",
+      "address": "5005 38th Av Sw,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E32",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest"
+    }
+  },
+  {
+    "id_str": "F200058247",
+    "created_at": "6/13/2020 10:27:17 PM",
+    "derived": {
+      "lat": 47.613497,
+      "long": -122.346355,
+      "timestamp": 1592112437000,
+      "description": "Aid Response",
+      "address": "118 Bell St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A2",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058245",
+    "created_at": "6/13/2020 10:24:32 PM",
+    "derived": {
+      "lat": 47.608268,
+      "long": -122.330056,
+      "timestamp": 1592112272000,
+      "description": "Aid Response",
+      "address": "715 Spring St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A25",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
+    "id_str": "F200058244",
+    "created_at": "6/13/2020 10:22:51 PM",
+    "derived": {
+      "lat": 47.727202,
+      "long": -122.335558,
+      "timestamp": 1592112171000,
+      "description": "Low Acuity Response",
+      "address": "13539 Burke Ave N,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E24",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Haller Lake",
+      "neighborhoodGroup": "Northwest"
+    }
+  },
+  {
+    "id_str": "F200058242",
+    "created_at": "6/13/2020 10:03:28 PM",
+    "derived": {
+      "lat": 47.633255,
+      "long": -122.378853,
+      "timestamp": 1592111008000,
+      "description": "Hazardous Mat, Spill-Leak",
+      "address": "2001 W Garfield St,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A10 AIR10 B2 B4 E10 E20 E41 HAZ1 L1 L6 M18 SAFT2 STAF10",
+      "unitCount": 13,
+      "severity": 2,
+      "neighborhood": "Interbay",
+      "neighborhoodGroup": "Magnolia/Queen Anne"
+    }
+  },
+  {
+    "id_str": "F200058243",
+    "created_at": "6/13/2020 10:02:01 PM",
+    "derived": {
+      "lat": 47.601886,
+      "long": -122.330511,
+      "timestamp": 1592110921000,
+      "description": "Aid Response",
+      "address": "450 3rd Av,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "A5",
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown"
+    }
+  },
+  {
+    "id_str": "F200058240",
+    "created_at": "6/13/2020 9:50:46 PM",
+    "derived": {
+      "lat": 47.602255,
+      "long": -122.320739,
+      "timestamp": 1592110246000,
+      "description": "Auto Fire Alarm",
+      "address": "120 BROADWAY,Seattle,WA",
+      "entries": 1,
+      "active": false,
+      "units": "E31 L4",
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East"
+    }
+  },
+  {
     "id_str": "F200058239",
     "created_at": "6/13/2020 9:45:26 PM",
     "derived": {

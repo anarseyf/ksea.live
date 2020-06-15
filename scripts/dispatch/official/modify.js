@@ -1,13 +1,10 @@
 import {
   readJSONAsync,
   saveJSONAsync,
-  appendJSONAsync,
   listFilesAsync,
 } from "../fileUtils";
 import { pathToDatasetsOfficial } from "../serverUtils";
 import { severityMapper } from "./mappers";
-
-const interval = 30 * 1031;
 
 export const modifyAll = async (mapper = (v) => v) => {
   try {
@@ -29,19 +26,11 @@ export const modifyAll = async (mapper = (v) => v) => {
   }
 };
 
-const main = () => {
-  let intervalId;
-
-  const tick = async () => {
-    try {
-      modifyAll(severityMapper);
-    } catch (e) {
-      console.error("modify >>> Canceling runner due to error:", e);
-      clearInterval(intervalId);
-    }
-  };
-  tick();
-  // intervalId = setInterval(tick, interval);
+export const runner = () => {
+  try {
+    modifyAll(severityMapper);
+  } catch (e) {
+    console.error("modify >>> stopped due to error:", e);
+  }
 };
 
-// main();
