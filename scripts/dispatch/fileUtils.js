@@ -87,6 +87,11 @@ export const toPacificDateString = (date) => {
   return moment.format("l"); // For example "6/13/2020". See https://momentjs.com/ > Multiple Locale Support
 };
 
+export const toPacificStringMMMD = (date) => {
+  const moment = timezone(date, "America/Vancouver");
+  return moment.format("MMM D"); // For example "Jun 1". See https://momentjs.com/docs/#/parsing/string-format/
+};
+
 export const writeWithLockAsync = async (
   // TODO - does it work at all?
   fileToWrite,

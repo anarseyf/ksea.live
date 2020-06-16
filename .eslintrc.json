@@ -21,7 +21,7 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
-  "ignorePatterns": ["client/"],
+  // "ignorePatterns": ["client/"],
   "rules": {
     "no-unused-vars": "warn"
   }

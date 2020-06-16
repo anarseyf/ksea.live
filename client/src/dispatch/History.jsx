@@ -100,65 +100,77 @@ export const History = () => {
     d3.select(svgRef.current).call(textureCurrent);
     d3.select(svgRef.current).call(texturePrevious);
 
-    const mapper = ({ start, end, offset, value, textStart, textEnd }) => {
-      const isPrevious = start < intervalCurrent.start;
-      const texture = isPrevious ? texturePrevious : textureCurrent;
+    const calloutFn = ({ title, label, value, timestamp }, isEnd = false) => {
+      const isPrevious = timestamp < intervalCurrent.start;
       const sideX = isPrevious ? -1 : 1;
 
-      const callouts = [];
-      const calloutFn = (text, timestamp, isEnd) => {
-        const x = value ? xScale(value) : annotationRectWidth;
-        const sideY = isEnd ? 1 : -1;
-        const y = yScale(timestamp);
-        const callout = {
-          note: {
-            label: text,
-          },
-          x: sideX * x,
-          y,
-          color: "red",
-          subject: {
-            radius: 6,
-          },
-        };
-
-        if (value) {
-          callout.nx = sideX * (annotationRectWidth + 10);
-          callout.ny = y;
-        } else {
-          callout.dx = sideX * 10;
-          callout.dy = sideY * 10;
-        }
-        return callout;
+      const x = value ? xScale(value) : annotationRectWidth;
+      const sideY = isEnd ? 1 : -1;
+      const y = yScale(timestamp);
+      const callout = {
+        note: {
+          title,
+          label,
+        },
+        x: sideX * x,
+        y,
+        color: "red",
+        subject: {
+          radius: 6,
+        },
       };
-      textStart && callouts.push(calloutFn(textStart, start + offset));
-      textEnd && callouts.push(calloutFn(textEnd, end + offset, true));
 
-      const region =
-        start && end
-          ? {
-              x: xScale(0) - (isPrevious ? annotationRectWidth : 0),
-              y: yScale(start + offset),
-              width: annotationRectWidth,
-              height: yScale(end + offset) - yScale(start + offset),
-              fill: texture.url(),
-            }
-          : undefined;
-      return { region, callouts };
+      if (value) {
+        callout.nx = sideX * (annotationRectWidth + 10);
+        callout.ny = y;
+      } else {
+        callout.dx = sideX * 10;
+        callout.dy = sideY * 10;
+      }
+      return callout;
+    };
+
+    const calloutsFn = ({ start, end }) =>
+      [calloutFn(start), end ? calloutFn(end, true) : undefined].filter(
+        Boolean
+      );
+
+    const regionFn = ({ start, end, offset }) => {
+      if (!start || !end) {
+        return undefined;
+      }
+
+      const isCurrent = offset === 0;
+      const texture = isCurrent ? textureCurrent : texturePrevious;
+
+      return {
+        x: xScale(0) - (isCurrent ? 0 : annotationRectWidth),
+        y: yScale(start.timestamp + offset),
+        width: annotationRectWidth,
+        height:
+          yScale(end.timestamp + offset) - yScale(start.timestamp + offset),
+        fill: texture.url(),
+      };
     };
 
     // TODO - move to separate components
-    const annotationsSvgData = annotations.map(mapper);
-    const regions = annotationsSvgData.map(({ region }) => region);
-    const callouts = annotationsSvgData.map(({ callouts }) => callouts).flat();
+    const calloutsSvgData = annotations.flatMap(calloutsFn);
+    const regions = annotations.map(regionFn);
 
     const callout = d3annotation()
-      .annotations(callouts)
+      .annotations(calloutsSvgData)
       .type(d3annotationCalloutCircle);
     d3.select(calloutsRef.current).call(callout);
 
     setAnnotationRegions(regions);
-  }, [history, annotations]);
+  }, [
+    history,
+    annotations,
+    maxBarWidth,
+    height,
+    yearWidth,
+    annotationRectWidth,
+  ]);
 
   return (
     <div className={historyStyles.container}>

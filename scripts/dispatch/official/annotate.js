@@ -2,7 +2,11 @@ const path = require("path");
 const { getHistoryAsync } = require("../../../dispatchHelpers");
 
 import * as d3 from "d3";
-import { toPacificDateString, saveJSONAsync } from "../fileUtils";
+import {
+  toPacificDateString,
+  toPacificStringMMMD,
+  saveJSONAsync,
+} from "../fileUtils";
 import { datasetsPath } from "../serverUtils";
 
 const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
@@ -17,19 +21,27 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   const minBin = bins.find(({ length }) => length === min);
   const maxBin = bins.find(({ length }) => length === max);
 
-  const maxDate = toPacificDateString(new Date(maxBin.x0 - offset));
-  const minDate = toPacificDateString(new Date(minBin.x0 - offset));
-  const annotationMax = {
-    start: maxDate,
-    textStart: `${year} high`,
-    value: max,
-  };
+  const minDate = new Date(minBin.x0 - offset);
+  const maxDate = new Date(maxBin.x0 - offset);
+  const minDateStr = toPacificDateString(minDate);
+  const maxDateStr = toPacificDateString(maxDate);
   const annotationMin = {
-    start: minDate,
-    textStart: `${year} low`,
-    value: min,
+    start: {
+      date: minDateStr,
+      title: `${year} low`,
+      label: `${toPacificStringMMMD(minDate)}: ${min}`,
+      value: min,
+    },
   };
-  return [annotationMax, annotationMin];
+  const annotationMax = {
+    start: {
+      date: maxDateStr,
+      title: `${year} low`,
+      label: `${toPacificStringMMMD(maxDate)}: ${max}`,
+      value: max,
+    },
+  };
+  return [annotationMin, annotationMax];
 };
 
 const main = async () => {

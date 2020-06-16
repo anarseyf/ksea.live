@@ -6,13 +6,7 @@
   "scripts": {
     "start": "cd official && node -r esm main.js",
     "update:once": "cd official && node -r esm runOnce.js update",
-    "backfill:official": "cd official && node -r esm scrape.js",
-    "combine:official": "cd official && node -r esm combine.js",
-    "resolve:official": "cd official && node -r esm resolve.js",
-    "nhoods:official": "cd official && node -r esm nhoods.js",
-    "split:official": "cd official && node -r esm split.js",
-    "nobackfill:official": "concurrently \"npm run update:official\" \"npm run combine:official\" \"npm run resolve:official\" \"npm run nhoods:official\" \"npm run split:official\"",
-    "all:official": "concurrently \"npm run nobackfill:official\" \"npm run backfill:official\""
+    "annotate": "cd official && node -r esm annotate.js"
   },
   "keywords": [],
   "author": "",

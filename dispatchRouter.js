@@ -203,9 +203,17 @@ const annotationsController = async (req, res) => {
 
   const start2020 = new Date(2020, 0);
   const result = data.map(({ start, end, ...rest }) => ({
-    start: +new Date(start),
-    end: +new Date(end),
-    offset: start2020 - new Date(new Date(start).getFullYear(), 0),
+    start: {
+      ...start,
+      timestamp: +new Date(start.date),
+    },
+    end: end
+      ? {
+          ...end,
+          timestamp: +new Date(end.date),
+        }
+      : undefined,
+    offset: start2020 - new Date(new Date(start.date).getFullYear(), 0),
     ...rest,
   }));
 
