@@ -84,7 +84,7 @@ export const toPacificMidnight = (timestamp) => {
 
 export const toPacificDateString = (date) => {
   const moment = timezone(date, "America/Vancouver");
-  return moment.format("l"); // https://momentjs.com/ > Multiple Locale Support
+  return moment.format("l"); // For example "6/13/2020". See https://momentjs.com/ > Multiple Locale Support
 };
 
 export const writeWithLockAsync = async (

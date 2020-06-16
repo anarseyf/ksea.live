@@ -26,6 +26,7 @@ import {
 } from "./dispatchHelpers";
 import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
+import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
 const axios = require("axios").default;
 
@@ -192,7 +193,7 @@ const historyController = async (req, res) => {
 };
 
 const annotationsController = async (req, res) => {
-  const annotationsPath = path.join(__dirname, "datasets/misc/");
+  const annotationsPath = path.join(datasetsPath, "../misc");
   const manualFile = path.join(annotationsPath, "manualAnnotations.json");
   const generatedFile = path.join(annotationsPath, "generatedAnnotations.json");
   const manualData = await readJSONAsync(manualFile, []);

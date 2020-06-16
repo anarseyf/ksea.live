@@ -28,8 +28,8 @@ export const History = () => {
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
   const yearWidth = width / 2;
-  const maxBarWidth = yearWidth * 0.5;
-  const annotationRectWidth = yearWidth * 0.75;
+  const maxBarWidth = yearWidth * 0.45;
+  const annotationRectWidth = yearWidth * 0.55;
 
   const svgRef = useRef(null);
   const xAxisRef = useRef(null);
@@ -100,42 +100,54 @@ export const History = () => {
     d3.select(svgRef.current).call(textureCurrent);
     d3.select(svgRef.current).call(texturePrevious);
 
-    const mapper = ({ start, end, offset, textStart, textEnd }) => {
+    const mapper = ({ start, end, offset, value, textStart, textEnd }) => {
       const isPrevious = start < intervalCurrent.start;
       const texture = isPrevious ? texturePrevious : textureCurrent;
       const sideX = isPrevious ? -1 : 1;
 
       const callouts = [];
       const calloutFn = (text, timestamp, isEnd) => {
+        const x = value ? xScale(value) : annotationRectWidth;
         const sideY = isEnd ? 1 : -1;
+        const y = yScale(timestamp);
         const callout = {
           note: {
             label: text,
           },
-          x: sideX * annotationRectWidth,
-          y: yScale(timestamp),
-          dx: sideX * 10,
-          dy: sideY * 10,
+          x: sideX * x,
+          y,
           color: "red",
           subject: {
             radius: 6,
           },
         };
+
+        if (value) {
+          callout.nx = sideX * (annotationRectWidth + 10);
+          callout.ny = y;
+        } else {
+          callout.dx = sideX * 10;
+          callout.dy = sideY * 10;
+        }
         return callout;
       };
       textStart && callouts.push(calloutFn(textStart, start + offset));
       textEnd && callouts.push(calloutFn(textEnd, end + offset, true));
 
-      const region = {
-        x: xScale(0) - (isPrevious ? annotationRectWidth : 0),
-        y: yScale(start + offset),
-        width: annotationRectWidth,
-        height: yScale(end + offset) - yScale(start + offset),
-        fill: texture.url(),
-      };
+      const region =
+        start && end
+          ? {
+              x: xScale(0) - (isPrevious ? annotationRectWidth : 0),
+              y: yScale(start + offset),
+              width: annotationRectWidth,
+              height: yScale(end + offset) - yScale(start + offset),
+              fill: texture.url(),
+            }
+          : undefined;
       return { region, callouts };
     };
 
+    // TODO - move to separate components
     const annotationsSvgData = annotations.map(mapper);
     const regions = annotationsSvgData.map(({ region }) => region);
     const callouts = annotationsSvgData.map(({ callouts }) => callouts).flat();
