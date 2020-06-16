@@ -107,19 +107,8 @@ export const appendJSONAsync = async (
 export const readdirAsync = util.promisify(fs.readdir);
 
 const sortAndDedupe = (entries) => {
-  const sorted = entries.sort(
-    (a, b) => b.derived.timestamp - a.derived.timestamp
-  );
-  for (let i = 1; i < entries.length; i++) {
-    const current = entries[i],
-      previous = entries[i - 1];
-    if (previous && current.id_str === previous.id_str) {
-      entries[i] = undefined; // TODO - this is incorrect. Combine entries into one: concatenate units, etc.
-    }
-  }
-  const result = sorted.filter(Boolean);
-  console.log(`>> dedupe TODO fix logic >> ${entries.length} --> ${result.length}`);
-  return result;
+  const map = {};
+  entries.forEach(({id_str})=> { map[id_str] = []; })
 };
 
 export const asyncTimeout = (delay) =>

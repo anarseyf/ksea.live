@@ -9,10 +9,7 @@ import { withScriptsJsonPath, withDatasetsPath } from "../serverUtils";
 export const runner = async (sourceFile) => {
   try {
     const start = new Date();
-    const entries = await readJSONAsync(
-      sourceFile,
-      []
-    );
+    const entries = await readJSONAsync(sourceFile, []);
     if (!entries.length) {
       console.log("split > nothing to do");
       return;
