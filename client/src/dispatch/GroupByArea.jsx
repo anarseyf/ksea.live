@@ -17,6 +17,9 @@ export function GroupByArea() {
 
   useEffect(() => {
     const map = {};
+    groupedByArea.forEach(({ key: area }) => {
+      map[area] = { active: 0, sev1: 0, sev2: 0 };
+    });
     activeOrMajorByArea.forEach(({ key: area, intervals }) => {
       const values = intervals[0].values;
       map[area] = {
@@ -26,7 +29,7 @@ export function GroupByArea() {
       };
     });
     setTotalsMap(map);
-  }, [activeOrMajorByArea]);
+  }, [groupedByArea, activeOrMajorByArea]);
 
   if (!groupedByArea.length) {
     return null;
@@ -74,7 +77,7 @@ export function GroupByArea() {
               <div>
                 <span>{totalsMap[area].active} active</span>
                 <SvgDot active={true} />
-                <span>, {totalsMap[area].sev2} major</span>
+                <span>{totalsMap[area].sev2} major</span>
                 <SvgDot sev2={true} />
               </div>
             )}

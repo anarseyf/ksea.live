@@ -17,7 +17,7 @@ import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const History = () => {
-  const { historyForArea, annotations } = useContext(TweetsContext);
+  const { history, annotations } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
   const [annotationRegions, setAnnotationRegions] = useState([]);
 
@@ -37,12 +37,12 @@ export const History = () => {
   const calloutsRef = useRef(null);
 
   useEffect(() => {
-    if (!historyForArea.length) {
+    if (!history.length) {
       return;
     }
 
-    const intervalCurrent = currentInterval(historyForArea);
-    const intervalPrevious = previousInterval(historyForArea);
+    const intervalCurrent = currentInterval(history);
+    const intervalPrevious = previousInterval(history);
     const binsCurrent = intervalCurrent.binsLowRes;
     const binsPrevious = intervalPrevious.binsLowRes;
     const timeExtent = intervalExtent(intervalCurrent, 60);
@@ -146,7 +146,7 @@ export const History = () => {
     d3.select(calloutsRef.current).call(callout);
 
     setAnnotationRegions(regions);
-  }, [historyForArea, annotations]);
+  }, [history, annotations]);
 
   return (
     <div className={historyStyles.container}>

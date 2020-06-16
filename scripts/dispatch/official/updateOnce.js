@@ -1,2 +1,2 @@
-import { updateOnce } from './scriptUtil'
+import { updateOnce } from "./scriptUtil";
 updateOnce(true);

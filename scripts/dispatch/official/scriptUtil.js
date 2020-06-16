@@ -1,9 +1,5 @@
 const path = require("path");
-import {
-  readJSONAsync,
-  saveJSONAsync,
-  listFilesAsync,
-} from "../fileUtils";
+import { readJSONAsync, saveJSONAsync, listFilesAsync } from "../fileUtils";
 import { datasetsPath } from "../serverUtils";
 
 import { runner as updateRunner } from "./update";
@@ -12,17 +8,23 @@ import { runner as resolveRunner } from "./resolve";
 import { runner as nhoodsRunner } from "./nhoods";
 import { runner as splitRunner } from "./split";
 
-export const updateOnce = async(ignoreStatus) => {
+export const updateOnce = async (ignoreStatus) => {
   const start = new Date();
-  console.log(`>> updateOnce > ${ignoreStatus ? "(ignoring status) " : " "}started`);
+  console.log(
+    `>> updateOnce > ${ignoreStatus ? "(ignoring status) " : " "}started`
+  );
   let file = await updateRunner(ignoreStatus);
   file = await combineRunner(file);
   file = await resolveRunner(file);
   file = await nhoodsRunner(file);
   await splitRunner(file);
   const end = new Date();
-  console.log(`>> updateOnce > ${ignoreStatus ? "(ignoring status) " : " "}finished in ${end-start}ms`);
-}
+  console.log(
+    `>> updateOnce > ${ignoreStatus ? "(ignoring status) " : " "}finished in ${
+      end - start
+    }ms`
+  );
+};
 
 export const modifyAll = async (mapper = (v) => v) => {
   try {
@@ -30,7 +32,7 @@ export const modifyAll = async (mapper = (v) => v) => {
     const files = await listFilesAsync(datasetsPath, { defaultValue: [] });
 
     files.forEach(async (fileName) => {
-      const withPath = path.join(datasetsPath,fileName);
+      const withPath = path.join(datasetsPath, fileName);
       const entries = await readJSONAsync(withPath, []);
       const result = entries.map(mapper);
       console.log(`>> modifyAll > ${result.length} entries in ${fileName}`);
@@ -49,12 +51,14 @@ export const runForAll = async (callback) => {
     const results = [];
     const files = await listFilesAsync(datasetsPath, { defaultValue: [] });
 
-    await Promise.all(files.map(async (fileName) => {
-      const withPath = path.join(datasetsPath,fileName);
-      const entries = await readJSONAsync(withPath, []);
-      console.log(`>> runForAll > ${entries.length} entries in: ${fileName}`);
-      results.push(callback(entries, fileName));
-    }));
+    await Promise.all(
+      files.map(async (fileName) => {
+        const withPath = path.join(datasetsPath, fileName);
+        const entries = await readJSONAsync(withPath, []);
+        console.log(`>> runForAll > ${entries.length} entries in: ${fileName}`);
+        results.push(callback(entries, fileName));
+      })
+    );
     const end = new Date();
     console.log(`>> modifyAll > ${results.length} submaps (${end - start}ms)`);
     return results;
@@ -62,5 +66,4 @@ export const runForAll = async (callback) => {
     console.error(">> modifyAll >>>", e);
     return [];
   }
-}
-
+};

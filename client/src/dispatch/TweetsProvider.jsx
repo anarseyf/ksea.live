@@ -4,7 +4,7 @@ import {
   getTweetsForArea,
   getTweetsByArea,
   getTweetsByType,
-  getHistoryForArea,
+  getHistory,
   getAnnotations,
   getMostRecentId,
   getTweetsActive24,
@@ -47,7 +47,7 @@ const useTweets = (filters = {}) => {
   const [activeOrMajorByArea, setActiveOrMajorByArea] = useState([]);
   const [byTypeForArea, setByTypeForArea] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
-  const [historyForArea, setHistoryForArea] = useState([]);
+  const [history, setHistory] = useState([]);
   const [active24, setActive24] = useState([]);
   const [major24, setMajor24] = useState([]);
   const [annotations, setAnnotations] = useState([]);
@@ -81,7 +81,7 @@ const useTweets = (filters = {}) => {
 
     (async () => {
       const area = filters.area || "seattle";
-      setHistoryForArea(await getHistoryForArea(area));
+      setHistory(await getHistory(area));
     })();
 
     (async () => {
@@ -103,7 +103,7 @@ const useTweets = (filters = {}) => {
     filteredByArea,
     byTypeForArea,
     groupedByArea,
-    historyForArea,
+    history,
     annotations,
     active24,
     major24,

@@ -32,7 +32,9 @@ export const scrapeDateAsync = async (dateStr) => {
     console.log(`>> scrapeDate > ${dateStr} rows: `, rows.length);
 
     const result = [...Array.from(rows)].map((row) => {
-      const cells = [...Array.from(row.children)].map((cell) => cell.textContent);
+      const cells = [...Array.from(row.children)].map(
+        (cell) => cell.textContent
+      );
       const [date, incidentId, _, units, location, type] = cells;
       const active = row.firstElementChild.classList.contains("active");
       return {
@@ -46,7 +48,9 @@ export const scrapeDateAsync = async (dateStr) => {
     });
 
     const end = new Date();
-    console.log(`>> scrapeDate > ${dateStr} -> ${result.length} (${end - start}ms)`);
+    console.log(
+      `>> scrapeDate > ${dateStr} -> ${result.length} (${end - start}ms)`
+    );
 
     return result;
   } catch (e) {
@@ -74,8 +78,7 @@ export const runner = async () => {
     await appendJSONAsync(targetFile, await scrapeDateAsync(dateStr));
   }
   const end = +new Date();
-  console.log(`scrape > ${end-now}ms`);
-  
+  console.log(`scrape > ${end - now}ms`);
+
   return targetFile;
 };
-

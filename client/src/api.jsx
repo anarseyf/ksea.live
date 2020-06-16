@@ -13,8 +13,8 @@ export async function getAnnotations() {
   return getByAPI(`dispatch/history/annotations`);
 }
 
-export async function getHistoryForArea(area) {
-  return getByAPI(`dispatch/history/${area}`);
+export async function getHistory() {
+  return getByAPI(`dispatch/history`);
 }
 
 export async function getTweetsForArea(

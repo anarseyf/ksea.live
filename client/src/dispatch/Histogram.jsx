@@ -6,7 +6,7 @@ import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export function Histogram() {
-  const { historyForArea } = useContext(TweetsContext);
+  const { history } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = isPhone ? 250 : 350,
@@ -19,11 +19,11 @@ export function Histogram() {
   const yAxisRef = useRef(null);
 
   useEffect(() => {
-    if (!historyForArea.length) {
+    if (!history.length) {
       return;
     }
 
-    const interval = currentInterval(historyForArea);
+    const interval = currentInterval(history);
     const bins = interval.binsLowRes;
     const extent = intervalExtent(interval, 60);
     const xScale = d3.scaleTime().domain(extent).range([0, width]);
@@ -61,7 +61,7 @@ export function Histogram() {
     }));
 
     setSvgData(newSvgData);
-  }, [historyForArea]);
+  }, [history]);
 
   return (
     <div className={chartStyles.container}>

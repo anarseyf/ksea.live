@@ -1,11 +1,11 @@
 const rp = require("request-promise");
 const router = require("express").Router();
 const fs = require("fs");
+const path = require("path");
 
 import {
   GroupByOptions,
   groupBy,
-  generateHistoryIntervals,
   generateIntervals,
   generate24HourIntervals,
 } from "./server/groupby";
@@ -22,8 +22,9 @@ import {
   filterActiveOrMajor,
   filterNoop,
   getMostRecentAsync,
+  getHistoryAsync,
 } from "./dispatchHelpers";
-import { readJSONAsync  } from "./scripts/dispatch/fileUtils";
+import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 
 const axios = require("axios").default;
@@ -182,19 +183,7 @@ const byAreabyTypeController = async (req, res) => {
 
 const historyController = async (req, res) => {
   try {
-    const intervals = generateHistoryIntervals();
-    const area = req.params.area;
-    const all =
-      area === "seattle"
-        ? await allTweets(intervals)
-        : await tweetsForArea(req.params.area, intervals);
-    const intervalGrouper = groupByIntervalGen(intervals);
-    const groups = groupBy(GroupByOptions.Nothing, all, intervals);
-    const result = groups
-      .map(intervalGrouper)
-      .map(minimizeGroup)
-      .sort(sortByTotal);
-
+    const result = await getHistoryAsync();
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -203,7 +192,13 @@ const historyController = async (req, res) => {
 };
 
 const annotationsController = async (req, res) => {
-  const data = await readJSONAsync("./datasets/misc/annotations.json", []);
+  const annotationsPath = path.join(__dirname, "datasets/misc/");
+  const manualFile = path.join(annotationsPath, "manualAnnotations.json");
+  const generatedFile = path.join(annotationsPath, "generatedAnnotations.json");
+  const manualData = await readJSONAsync(manualFile, []);
+  const generatedData = await readJSONAsync(generatedFile, []);
+
+  const data = manualData.concat(generatedData);
 
   const start2020 = new Date(2020, 0);
   const result = data.map(({ start, end, ...rest }) => ({
@@ -289,7 +284,7 @@ router.get("/tweets/byType/:area?", byTypeController);
 router.get("/tweets/byAreaByType", byAreabyTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/annotations", annotationsController);
-router.get("/history/:area", historyController);
+router.get("/history/", historyController);
 router.get("/maps/:s/:x/:y/:z/:r/:theme?", mapsController);
 
 export default router;
