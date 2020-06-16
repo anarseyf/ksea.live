@@ -4,7 +4,7 @@ import {
   appendJSONAsync,
   toUTCMidnightString,
 } from "../fileUtils";
-import { pathToScriptsJson, pathToDatasetsOfficial } from "../serverUtils";
+import { withScriptsJsonPath, withDatasetsPath } from "../serverUtils";
 
 export const runner = async (sourceFile) => {
   try {
@@ -27,7 +27,7 @@ export const runner = async (sourceFile) => {
     });
     Object.keys(splits).forEach(async (fileName) => {
       await appendJSONAsync(
-        pathToDatasetsOfficial(`${fileName}.json`),
+        withDatasetsPath(`${fileName}.json`),
         splits[fileName],
         { dedupe: true }
       );

@@ -1,8 +1,11 @@
 import { geoContains } from "d3-geo";
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { pathToScriptsJson } from "../serverUtils";
+import { withScriptsJsonPath } from "../serverUtils";
+const path = require("path")
 
-const targetFile = pathToScriptsJson("nhoods.json");
+const targetFile = withScriptsJsonPath("nhoods.json");
+const neighborhoodsFile = path.join(__dirname, 
+  "../../../client/src/dispatch/2016_seattle_cra.json");
 
 export const featureForPoint = ([lat, long], features) =>
   features.find((feature) => geoContains(feature, [long, lat]));
@@ -29,8 +32,7 @@ export const addNhood = (entries, features) => (
 export const runner = async (sourceFile) => {
   const start = new Date();
 
-  const nhoods = await readJSONAsync(
-    "../../../client/src/dispatch/2016_seattle_cra.json"
+  const nhoods = await readJSONAsync(neighborhoodsFile
   );
 
   const entries = await readJSONAsync(sourceFile, []);

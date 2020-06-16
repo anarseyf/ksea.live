@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
-import cx from "classnames";
+import classnames from "classnames";
 import {
   annotation as d3annotation,
   annotationBadge as d3annotationBadge,
@@ -169,7 +169,7 @@ export const History = () => {
           {svgData.map((dataset, iDataset) =>
             dataset.map((d) => (
               <rect
-                className={cx({
+                className={classnames({
                   [historyStyles.previous]: iDataset,
                   [historyStyles.current]: !iDataset,
                 })}

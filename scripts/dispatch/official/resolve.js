@@ -1,10 +1,10 @@
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { pathToScriptsJson } from "../serverUtils";
+import { withScriptsJsonPath } from "../serverUtils";
 const axios = require("axios").default;
 
 const queueSize = 100;
 
-const targetFile = pathToScriptsJson("resolved.json");
+const targetFile = withScriptsJsonPath("resolved.json");
 
 const resolveGeo = async (entries = []) => {
   if (!entries.length) {
@@ -89,7 +89,7 @@ export const runner = async (sourceFile) => {
       const unresolved = newData.filter((d) => !hasCoordinates(d));
       if (unresolved.length) {
         unresolvedTotal = await appendJSONAsync(
-          pathToScriptsJson("unresolved.json"),
+          withScriptsJsonPath("unresolved.json"),
           unresolved,{dedupe:true}
         );
         console.log(

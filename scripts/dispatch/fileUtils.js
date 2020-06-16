@@ -20,8 +20,7 @@ export const toUTCMidnightString = (timestamp) =>
 export const toPacificMidnight = (timestamp) => {
   const date = new Date(timestamp);
   const yyyymmdd = [date.getFullYear(), date.getMonth(), date.getDate()];
-  const moment = timezone(yyyymmdd, "America/Vancouver");
-  return +moment;
+  return +timezone(yyyymmdd, "America/Vancouver");
 };
 
 export const toPacificDateString = (date) => {

@@ -1,4 +1,5 @@
 const axios = require("axios").default;
+const path = require("path");
 
 export const getUserTimeline = async (config) => {
   const res = await axios
@@ -10,15 +11,10 @@ export const getUserTimeline = async (config) => {
   return res.data;
 };
 
-export const pathToScriptsJson = (fileName) => `./json/${fileName}`;
-export const pathToDatasetsTweets = (fileName) =>
-  `../../../datasets/tweets/${fileName}`;
-export const pathToDatasetsOfficial = (fileName) =>
-  `../../../datasets/official/${fileName}`;
+export const datasetsPath = path.join(__dirname, "../../datasets/official/");
+export const scriptsJsonPath = path.join(__dirname, "./official/json/");
 
-export const incrementIdStr = (id_str) => (BigInt(id_str) + 1n).toString();
-export const decrementIdStr = (id_str) => (BigInt(id_str) - 1n).toString();
+export const withDatasetsPath = (fileName) => path.join(datasetsPath, fileName);
 
-// const test = "1268951477848023049";
-// console.log(`${test} + 1 =\n${incrementIdStr(test)}`);
-// console.log(`${test} - 1 =\n${decrementIdStr(test)}`);
+export const withScriptsJsonPath = (fileName) =>
+  path.join(scriptsJsonPath, fileName);

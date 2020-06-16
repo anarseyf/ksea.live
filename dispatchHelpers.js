@@ -2,6 +2,7 @@ import { GroupByOptions, groupBy, intervalsReducer } from "./server/groupby";
 import {
   toUTCMidnightString,
   readJSONAsync,
+  listFilesAsync,
 } from "./scripts/dispatch/fileUtils";
 
 export const dataPath = "./datasets/official/";
@@ -71,6 +72,23 @@ export const tweetsForArea = async (area, intervals) => {
 const trimToNow = (bins) => {
   const now = +new Date();
   return bins.filter(({ x0 }) => x0 <= now);
+};
+
+export const getMostRecentAsync = async () => {
+  const fileNames = await listFilesAsync(dataPath, {
+    descending: true,
+  });
+
+  let result = null;
+  if (fileNames.length) {
+    const mostRecentFile = fileNames[0];
+    const tweets = await readJSONAsync(`${dataPath}${mostRecentFile}`, []);
+    if (tweets.length) {
+      result = tweets[0].id_str;
+    }
+  }
+
+  return result;
 };
 
 export const groupByIntervalGen = (intervals) => ({ values, ...rest }) => {

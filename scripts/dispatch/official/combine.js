@@ -1,8 +1,8 @@
 import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
-import { pathToScriptsJson } from "../serverUtils";
+import { withScriptsJsonPath } from "../serverUtils";
 import { severityMapper } from "./mappers";
 
-const targetFile = pathToScriptsJson("combined.json");
+const targetFile = withScriptsJsonPath("combined.json");
 
 export const runner = async (sourceFile) => {
   try {

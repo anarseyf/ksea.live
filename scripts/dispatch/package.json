@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cd official && node -r esm main.js",
+    "update:once": "cd official && node -r esm runOnce.js update",
     "backfill:official": "cd official && node -r esm scrape.js",
-    "update:official": "cd official && node -r esm update.js",
     "combine:official": "cd official && node -r esm combine.js",
     "resolve:official": "cd official && node -r esm resolve.js",
     "nhoods:official": "cd official && node -r esm nhoods.js",

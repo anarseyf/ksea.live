@@ -1,4 +1,6 @@
 import React from "react";
+import classnames from "classnames";
+import svgStyles from "./svg.module.scss";
 
 export const SvgDot = ({ active = false, sev1 = false, sev2 = false }) => {
   const color = active ? "red" : "white";
@@ -8,7 +10,11 @@ export const SvgDot = ({ active = false, sev1 = false, sev2 = false }) => {
     sev2Radius = 8;
 
   return (
-    <svg width={size} height={size}>
+    <svg
+      className={classnames({ [svgStyles.live]: active })}
+      width={size}
+      height={size}
+    >
       <circle cx={size / 2} cy={size / 2} r={innerRadius} fill={color} />
       {sev1 && (
         <circle

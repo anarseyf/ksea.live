@@ -12,7 +12,7 @@ export const TweetList = ({ tweets = [] }) => {
       ? id_str === selected.id_str
         ? TweetModes.Detailed
         : TweetModes.GreyedOut
-      : TweetModes.Default;
+      : TweetModes.Default; // TODO - remove modes
 
   return (
     <div className={styles.tweets}>

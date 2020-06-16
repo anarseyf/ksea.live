@@ -1,12 +1,11 @@
-import { checkVersion } from "../version";
 import { appendJSONAsync, toPacificDateString } from "../fileUtils";
-import { pathToScriptsJson } from "../serverUtils";
+import { withScriptsJsonPath } from "../serverUtils";
 
 const axios = require("axios").default;
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-const targetFile = pathToScriptsJson("scraped.json");
+const targetFile = withScriptsJsonPath("scraped.json");
 
 const fetchPage = async (dateStr) => {
   const encodedDate = encodeURIComponent(dateStr);
@@ -21,34 +20,40 @@ const fetchPage = async (dateStr) => {
 
 export const scrapeDateAsync = async (dateStr) => {
   const start = new Date();
-  const html = await fetchPage(dateStr);
-  const dom = new JSDOM(html);
-  const { document } = dom.window;
-  const rows = document
-    .querySelector("tbody")
-    .children[2].querySelector("tbody")
-    .querySelector("tbody").children; // don't blame me...
-  console.log(`scrapeDate > ${dateStr} rows: `, rows.length);
+  console.log(">> scrapeDate > ", dateStr);
+  try {
+    const html = await fetchPage(dateStr);
+    const dom = new JSDOM(html);
+    const { document } = dom.window;
+    const rows = document
+      .querySelector("tbody")
+      .children[2].querySelector("tbody")
+      .querySelector("tbody").children; // don't blame me...
+    console.log(`>> scrapeDate > ${dateStr} rows: `, rows.length);
 
-  const result = [...Array.from(rows)].map((row) => {
-    const cells = [...Array.from(row.children)].map((cell) => cell.textContent);
-    const [date, incidentId, _, units, location, type] = cells;
-    const active = row.firstElementChild.classList.contains("active");
-    return {
-      date,
-      incidentId,
-      units,
-      location,
-      type,
-      active,
-    };
-  });
+    const result = [...Array.from(rows)].map((row) => {
+      const cells = [...Array.from(row.children)].map((cell) => cell.textContent);
+      const [date, incidentId, _, units, location, type] = cells;
+      const active = row.firstElementChild.classList.contains("active");
+      return {
+        date,
+        incidentId,
+        units,
+        location,
+        type,
+        active,
+      };
+    });
 
-  const end = new Date();
-  console.log(`scrapeDate > ${dateStr} -> ${result.length} (${end - start}ms)`);
-  console.log(`scrapeDate > sample result:`, result[0]);
+    const end = new Date();
+    console.log(`>> scrapeDate > ${dateStr} -> ${result.length} (${end - start}ms)`);
+    console.log(`>> scrapeDate > sample result:`, result[0]);
 
-  return result;
+    return result;
+  } catch (e) {
+    console.warn(">> scrapeDate > Warning:", e.message);
+    return [];
+  }
 };
 
 export const runner = async () => {

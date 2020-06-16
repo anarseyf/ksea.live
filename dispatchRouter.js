@@ -15,15 +15,16 @@ import {
   tweetsByType,
   tweetsByArea,
   tweetsForArea,
-  dataPath,
   sortByTotal,
   minimizeGroup,
   filterActive,
   filterSev1,
   filterActiveOrMajor,
   filterNoop,
+  getMostRecentAsync,
 } from "./dispatchHelpers";
 import { readJSONAsync, listFilesAsync } from "./scripts/dispatch/fileUtils";
+import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 
 const axios = require("axios").default;
 
@@ -56,23 +57,8 @@ const seattleGovController = async (req, res, next) => {
 
 const mostRecentController = async (req, res, next) => {
   try {
-    const fileNames = await listFilesAsync(dataPath, {
-      descending: true,
-    });
-
-    let result = null;
-    if (fileNames.length) {
-      const mostRecentFile = fileNames[0];
-      const tweets = await readJSONAsync(`${dataPath}${mostRecentFile}`, []);
-      if (tweets.length) {
-        result = tweets[0].id_str;
-      }
-    }
-
-    if (!result) {
-      throw "mostRecentId not found";
-    }
-    res.send(result);
+    const mostRecentId = await getMostRecentAsync();
+    res.send(mostRecentId);
   } catch (e) {
     console.error("error getting mostRecentId", e);
     res.status(500).send(null);
@@ -288,7 +274,16 @@ const mapsController = async (req, res, next) => {
   }
 };
 
+const updateOnceController = async (req, res, next) => {
+  const start = new Date();
+  await updateOnce(true);
+  const mostRecentId = await getMostRecentAsync();
+  const end = new Date();
+  res.json({ mostRecentId, latency: end - start });
+};
+
 router.get("/seattle911", seattleGovController);
+router.get("/updateOnce", updateOnceController);
 router.get("/mostRecentId", mostRecentController);
 router.get("/tweets/active24", active24Controller);
 router.get("/tweets/major24", major24Controller);
