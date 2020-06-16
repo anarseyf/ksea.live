@@ -5,6 +5,7 @@ import {
   toUTCMidnightString,
 } from "../fileUtils";
 import { withScriptsJsonPath, withDatasetsPath } from "../serverUtils";
+import { xml } from "d3";
 
 export const runner = async (sourceFile) => {
   try {
@@ -22,6 +23,7 @@ export const runner = async (sourceFile) => {
       list.push(t);
       splits[key] = list;
     });
+
     Object.keys(splits).forEach(async (fileName) => {
       await appendJSONAsync(
         withDatasetsPath(`${fileName}.json`),

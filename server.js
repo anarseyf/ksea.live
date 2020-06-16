@@ -31,6 +31,7 @@ function getSortedEnv() {
     .forEach((k) => {
       env[k] = process.env[k];
     });
+
   return env;
 }
 
