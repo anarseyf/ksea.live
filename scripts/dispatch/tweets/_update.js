@@ -52,7 +52,7 @@ const main = () => {
         pathToScriptsJson("unprocessed.json"),
         newData,
         {
-          dedupe: true,
+          merge: true,
         }
       );
       const newStatus = {

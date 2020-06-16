@@ -3,6 +3,64 @@ const util = require("util");
 const lockfile = require("lockfile");
 
 import { tz as timezone } from "moment-timezone";
+import { severityMapper } from "./official/mappers";
+import { sortByTimestampDescending } from "./serverUtils";
+
+const getUnits = (entries) =>
+  [
+    ...new Set(
+      entries
+        .map(({ derived: { units } }) => units)
+        .join(" ")
+        .split(" ")
+    ),
+  ]
+    .sort()
+    .join(" ");
+
+const mergeSameId = (sortedEntries) => {
+  const count = sortedEntries.length;
+  const newest = sortedEntries[0],
+    oldest = sortedEntries[count - 1];
+  const units = getUnits(sortedEntries);
+  const unitCount = units.split(" ").length;
+
+  const entry = {
+    id_str: oldest.id_str,
+    created_at: oldest.created_at,
+    derived: {
+      ...oldest.derived,
+      units,
+      unitCount,
+      active: newest.derived.active,
+    },
+  };
+
+  const result = severityMapper(entry);
+  if (sortedEntries.length > 1) {
+    console.log(
+      `>> merge > ${sortedEntries.length} entries for ${oldest.id_str}`
+    );
+  }
+  return result;
+};
+
+const mergeAll = (entries) => {
+  const map = {};
+  entries.forEach(({ id_str }) => {
+    map[id_str] = [];
+  });
+  entries.forEach((entry) => {
+    map[entry.id_str].push(entry);
+  });
+
+  const merged = Object.keys(map).map((key) =>
+    mergeSameId(map[key].sort(sortByTimestampDescending))
+  );
+
+  const result = merged.sort(sortByTimestampDescending);
+  return result;
+};
 
 export const toUTCMidnight = (timestamp) => {
   const date = new Date(timestamp);
@@ -83,12 +141,12 @@ export const saveJSONAsync = async (fileName, data) => {
 export const appendJSONAsync = async (
   fileName,
   newData = [],
-  { dedupe = false } = {}
+  { merge } = { merge: false }
 ) => {
   const oldData = await readJSONAsync(fileName, []);
   let result = oldData.concat(newData);
-  if (dedupe) {
-    result = sortAndDedupe(result);
+  if (merge) {
+    result = mergeAll(result);
   }
   await saveJSONAsync(fileName, result);
 
@@ -96,11 +154,6 @@ export const appendJSONAsync = async (
 };
 
 export const readdirAsync = util.promisify(fs.readdir);
-
-const sortAndDedupe = (entries) => {
-  const map = {};
-  entries.forEach(({id_str})=> { map[id_str] = []; })
-};
 
 export const asyncTimeout = (delay) =>
   new Promise((resolve) => setTimeout(resolve, delay));

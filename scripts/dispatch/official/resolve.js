@@ -10,8 +10,7 @@ const incidentsMapFile = withScriptsJsonPath("incidentsMap.json");
 const deadLetterQueue = withScriptsJsonPath("unresolved.json");
 
 const hasCoordinates = ({ derived: { lat, long } }) =>
-        typeof lat === "number" && typeof long === "number";
-
+  typeof lat === "number" && typeof long === "number";
 
 const hasNoCoordinates = (d) => !hasCoordinates(d);
 
@@ -68,40 +67,39 @@ const resolveGeo = async (entries = []) => {
 };
 
 const resolveLocally = async (sourceFile) => {
-  let entries = await readJSONAsync(sourceFile, []);
-
-  // Do not attempt to resolve incidents which previously came back unresolvable
-  const unresolvedIds = (await readJSONAsync(deadLetterQueue, [])).map(({id_str})=>id_str);
-  entries = entries.filter(({id_str}) => !unresolvedIds.includes(id_str));
+  const entries = await readJSONAsync(sourceFile, []);
 
   const incidentsMap = await readJSONAsync(incidentsMapFile, {});
   const empty = [];
-  const result = entries.map(({id_str, derived, ...rest}) => {
-    const [lat,long] = incidentsMap[id_str] || empty;
+  const result = entries.map(({ id_str, derived, ...rest }) => {
+    const [lat, long] = incidentsMap[id_str] || empty;
     return {
       id_str,
       ...rest,
-      derived:{
+      derived: {
         ...derived,
-        lat, 
-        long
-      }
+        lat,
+        long,
+      },
     };
   });
   const unresolved = result.filter(hasNoCoordinates);
   await saveJSONAsync(sourceFile, unresolved);
   const resolved = result.filter(hasCoordinates);
   await appendJSONAsync(targetFile, resolved);
-  console.log(`>> resolveLocally > resolved ${resolved.length} out of ${result.length}`);
-}
+  console.log(
+    `>> resolveLocally > resolved ${resolved.length} out of ${result.length}`
+  );
+};
 
 export const runner = async (sourceFile) => {
   try {
     const start = new Date();
-    let resolvedTotal = 0, unresolvedTotal = 0;
+    let resolvedTotal = 0,
+      unresolvedTotal = 0;
 
     await resolveLocally(sourceFile);
-    
+
     for (;;) {
       const entries = await readJSONAsync(sourceFile, []);
       if (!entries.length) {
@@ -123,17 +121,15 @@ export const runner = async (sourceFile) => {
       const resolved = newData.filter(hasCoordinates);
 
       const unresolved = newData.filter(hasNoCoordinates);
-      unresolvedTotal = await appendJSONAsync(
-        deadLetterQueue,
-        unresolved,
-        { dedupe: true }
-      );
+      unresolvedTotal = await appendJSONAsync(deadLetterQueue, unresolved, {
+        merge: true,
+      });
       console.log(
         `resolve > ${unresolved.length} unresolved (${unresolvedTotal} total unresolved)`
       );
 
       let incidentsMap = await readJSONAsync(incidentsMapFile, {});
-      incidentsMap = {...incidentsMap, ...getIncidentsMap(resolved)};
+      incidentsMap = { ...incidentsMap, ...getIncidentsMap(resolved) };
       await saveJSONAsync(incidentsMapFile, incidentsMap);
 
       resolvedTotal = await appendJSONAsync(targetFile, resolved);

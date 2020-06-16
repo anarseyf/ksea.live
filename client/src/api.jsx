@@ -62,6 +62,7 @@ async function getByAPI(api = "", queryParams = {}) {
   };
   const query = queryString(allQueryParams);
   const response = await fetch(`/api/${api}${query}`, {
+    // TODO - use axios?
     headers: { Accept: "application-json" },
   });
 

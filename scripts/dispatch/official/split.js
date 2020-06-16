@@ -4,7 +4,7 @@ import {
   appendJSONAsync,
   toUTCMidnightString,
 } from "../fileUtils";
-import {  withDatasetsPath } from "../serverUtils";
+import { withDatasetsPath } from "../serverUtils";
 
 export const runner = async (sourceFile) => {
   try {
@@ -27,7 +27,7 @@ export const runner = async (sourceFile) => {
       await appendJSONAsync(
         withDatasetsPath(`${fileName}.json`),
         splits[fileName],
-        { dedupe: true }
+        { merge: true }
       );
     });
     await saveJSONAsync(sourceFile, []);

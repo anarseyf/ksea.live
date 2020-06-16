@@ -27,7 +27,7 @@ const resolve = () => {
           pathToDatasetsTweets(`${fileName}.json`),
           splits[fileName],
           {
-            dedupe: true,
+            merge: true,
           }
         );
       });

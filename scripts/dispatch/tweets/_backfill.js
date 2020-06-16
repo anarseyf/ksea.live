@@ -66,7 +66,7 @@ const fetchNew = () => {
         pathToScriptsJson("unprocessed.json"),
         newData,
         {
-          dedupe: true,
+          merge: true,
         }
       );
       console.log(`backfill > new total: ${newTotal}`);

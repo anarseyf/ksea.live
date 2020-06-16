@@ -1,5 +1,5 @@
 import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
-import { withScriptsJsonPath } from "../serverUtils";
+import { withScriptsJsonPath, sortByTimestampDescending } from "../serverUtils";
 import { severityMapper } from "./mappers";
 
 const targetFile = withScriptsJsonPath("combined.json");
@@ -23,8 +23,8 @@ export const runner = async (sourceFile) => {
 
     const mapper = (id) => {
       const list = map[id].sort((a, b) => a.date.localeCompare(b.date));
-      const earliest = list[0];
-      const latest = list[list.length - 1];
+      const oldest = list[0];
+      const newest = list[list.length - 1];
       const units = [
         ...new Set(
           list
@@ -37,25 +37,23 @@ export const runner = async (sourceFile) => {
         .join(" ");
 
       return {
-        created_at: earliest.date,
-        id_str: earliest.incidentId,
+        // TODO - mostly redundant with merge @ split stage
+        created_at: oldest.date,
+        id_str: oldest.incidentId,
         derived: {
-          timestamp: +new Date(earliest.date),
-          description: earliest.type,
-          address: earliest.location,
+          timestamp: +new Date(oldest.date),
+          description: oldest.type,
+          address: oldest.location,
           units,
-          entries: list.length,
-          active: latest.active,
+          active: newest.active,
         },
       };
     };
 
-    const byTimestampDescending = (a, b) =>
-      b.derived.timestamp - a.derived.timestamp;
-
-    let result = Object.keys(map).map(mapper).sort(byTimestampDescending);
-
-    result = result.map(severityMapper);
+    const result = Object.keys(map)
+      .map(mapper)
+      .sort(sortByTimestampDescending)
+      .map(severityMapper);
 
     await appendJSONAsync(targetFile, result);
     const end = new Date();
