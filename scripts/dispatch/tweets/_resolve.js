@@ -19,7 +19,7 @@ const resolveGeo = async (tweets = []) => {
   const geocoder = NodeGeocoder(options);
 
   const results = await Promise.all(
-    tweets.map(async ({ id_str, derived: { address } }, i) => {
+    tweets.map(async ({  derived: { address } }, i) => {
       const delay = geoRateLimit * i;
       await asyncTimeout(delay);
       return await geocoder.geocode(address).catch((error) => {

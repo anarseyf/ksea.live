@@ -23,14 +23,14 @@ import {
   filterNoop,
   getMostRecentAsync,
 } from "./dispatchHelpers";
-import { readJSONAsync, listFilesAsync } from "./scripts/dispatch/fileUtils";
+import { readJSONAsync  } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 
 const axios = require("axios").default;
 
 const identityFn = (v) => v;
 
-const seattleGovController = async (req, res, next) => {
+const seattleGovController = async (req, res) => {
   // TODO - delete
   try {
     const options = {
@@ -43,10 +43,7 @@ const seattleGovController = async (req, res, next) => {
       },
     };
 
-    const start = +new Date();
     rp(options).then((json) => {
-      const end = +new Date();
-      const latency = (end - start) / 1000;
       res.json(json);
     });
   } catch (error) {
@@ -55,7 +52,7 @@ const seattleGovController = async (req, res, next) => {
   }
 };
 
-const mostRecentController = async (req, res, next) => {
+const mostRecentController = async (req, res) => {
   try {
     const mostRecentId = await getMostRecentAsync();
     res.send(mostRecentId);
@@ -65,7 +62,7 @@ const mostRecentController = async (req, res, next) => {
   }
 };
 
-const forAreaController = async (req, res, next) => {
+const forAreaController = async (req, res) => {
   try {
     const intervals = generateIntervals();
     const area = req.params.area;
@@ -90,7 +87,7 @@ const forAreaController = async (req, res, next) => {
   }
 };
 
-const active24Controller = async (req, res, next) => {
+const active24Controller = async (req, res) => {
   try {
     const intervals = generate24HourIntervals();
     const all = await allTweets(intervals);
@@ -109,7 +106,7 @@ const active24Controller = async (req, res, next) => {
   }
 };
 
-const major24Controller = async (req, res, next) => {
+const major24Controller = async (req, res) => {
   try {
     const intervals = generate24HourIntervals();
     const all = await allTweets(intervals);
@@ -128,7 +125,7 @@ const major24Controller = async (req, res, next) => {
   }
 };
 
-const byAreaController = async (req, res, next) => {
+const byAreaController = async (req, res) => {
   try {
     const intervals = generateIntervals();
     const filter =
@@ -146,7 +143,7 @@ const byAreaController = async (req, res, next) => {
   }
 };
 
-const byTypeController = async (req, res, next) => {
+const byTypeController = async (req, res) => {
   try {
     const intervals = generateIntervals();
     const byType = await tweetsByType(req.params.area, intervals);
@@ -161,7 +158,7 @@ const byTypeController = async (req, res, next) => {
   }
 };
 
-const byAreabyTypeController = async (req, res, next) => {
+const byAreabyTypeController = async (req, res) => {
   console.error("TODO - remove this API");
   try {
     const intervals = generateIntervals();
@@ -183,7 +180,7 @@ const byAreabyTypeController = async (req, res, next) => {
   }
 };
 
-const historyController = async (req, res, next) => {
+const historyController = async (req, res) => {
   try {
     const intervals = generateHistoryIntervals();
     const area = req.params.area;
@@ -205,7 +202,7 @@ const historyController = async (req, res, next) => {
   }
 };
 
-const annotationsController = async (req, res, next) => {
+const annotationsController = async (req, res) => {
   const data = await readJSONAsync("./datasets/misc/annotations.json", []);
 
   const start2020 = new Date(2020, 0);
@@ -219,7 +216,7 @@ const annotationsController = async (req, res, next) => {
   res.json(result);
 };
 
-const mapsController = async (req, res, next) => {
+const mapsController = async (req, res) => {
   try {
     let readStream, writeStream;
     const { s, x, y, z, r, theme } = req.params;
@@ -274,7 +271,7 @@ const mapsController = async (req, res, next) => {
   }
 };
 
-const updateOnceController = async (req, res, next) => {
+const updateOnceController = async (req, res) => {
   const start = new Date();
   await updateOnce(true);
   const mostRecentId = await getMostRecentAsync();

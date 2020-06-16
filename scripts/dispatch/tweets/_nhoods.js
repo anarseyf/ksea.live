@@ -24,31 +24,8 @@ export const addNhood = (tweets, features) => {
   );
 };
 
-const modifyExisting = async () => {
-  const nhoods = await readJSONAsync(
-    "../../../client/src/dispatch/2016_seattle_cra.json"
-  );
-  const fileNames = [
-    "../../../datasets/tweets/2020-06-03T00:00:00.000Z.json",
-    "../../../datasets/tweets/2020-06-04T00:00:00.000Z.json",
-  ];
-
-  for (let fileName of fileNames) {
-    console.log("FILE:", fileName);
-    // const tweets = await readJSONAsync(pathToScriptsJson("resolved.json"), []);
-    const tweets = await readJSONAsync(fileName, []);
-    const result = addNhood(tweets, nhoods.features);
-    const newTotal = await appendJSONAsync(
-      pathToScriptsJson("resolved-nhoods.json"),
-      result
-    );
-    console.log("TOTAL:", newTotal);
-  }
-};
-
 const main = async () => {
   const interval = 7 * 1203;
-  let intervalId;
 
   const tick = async () => {
     const tickStart = new Date();
@@ -66,7 +43,7 @@ const main = async () => {
   };
 
   tick();
-  intervalId = setInterval(tick, interval);
+  setInterval(tick, interval);
 };
 
 main();

@@ -4,8 +4,7 @@ import {
   appendJSONAsync,
   toUTCMidnightString,
 } from "../fileUtils";
-import { withScriptsJsonPath, withDatasetsPath } from "../serverUtils";
-import { xml } from "d3";
+import {  withDatasetsPath } from "../serverUtils";
 
 export const runner = async (sourceFile) => {
   try {
