@@ -28,16 +28,6 @@ export const toPacificDateString = (date) => {
   return moment.format("l"); // https://momentjs.com/ > Multiple Locale Support
 };
 
-export const touch = (fileName) => {
-  // https://remarkablemark.org/blog/2017/12/17/touch-file-nodejs/
-  try {
-    fs.utimesSync(fileName, time, time);
-  } catch (err) {
-    fs.closeSync(fs.openSync(fileName, "w"));
-    console.log(`>>> Created file ${fileName}`);
-  }
-};
-
 export const writeWithLockAsync = async (
   // TODO - does it work at all?
   fileToWrite,
@@ -45,7 +35,7 @@ export const writeWithLockAsync = async (
   fileToEmpty,
   emptyContent
 ) => {
-  let success = false;
+  let isSuccess = false;
   const lockName = `${fileToEmpty}.lock`;
   try {
     lockfile.lock(lockName, {}, async (error) => {
@@ -55,17 +45,18 @@ export const writeWithLockAsync = async (
       }
       await saveJSONAsync(fileToWrite, writeContent);
       await saveJSONAsync(fileToEmpty, emptyContent);
-      success = true;
+      isSuccess = true;
     });
+    return isSuccess;
   } catch (error) {
     console.error(">>> Error in writeWithLock(): ", error);
+    return isSuccess;
   } finally {
     lockfile.unlock(lockName, (error) => {
       if (error) {
         console.error(`>>> Error while unlocking ${fileToEmpty}`, error);
       }
     });
-    return success;
   }
 };
 
@@ -116,7 +107,7 @@ export const asyncTimeout = (delay) =>
 
 export const listFilesAsync = async (
   path,
-  { descending = false, defaultValue = [] } = options
+  { descending = false, defaultValue = [] }
 ) => {
   try {
     const dir = await readdirAsync(path);

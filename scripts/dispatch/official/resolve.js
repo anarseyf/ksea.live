@@ -102,7 +102,7 @@ export const runner = async (sourceFile) => {
 
     await resolveLocally(sourceFile);
     
-    while (true) {
+    for (;;) {
       const entries = await readJSONAsync(sourceFile, []);
       if (!entries.length) {
         break;

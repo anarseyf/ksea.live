@@ -1,5 +1,5 @@
-import { severityMapper, removeSeattleWA, getIncidentsMap } from "./mappers";
-import { modifyAll, runForAll } from "./scriptUtil";
+import { getIncidentsMap } from "./mappers";
+import { runForAll } from "./scriptUtil";
 import { saveJSONAsync } from "../fileUtils";
 import { withScriptsJsonPath } from "../serverUtils";
 

@@ -1,33 +1,13 @@
-import { geoContains } from "d3-geo";
+
 import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
 import { withScriptsJsonPath } from "../serverUtils";
+import { addNhood } from "./mappers";
 const path = require("path")
 
 const targetFile = withScriptsJsonPath("nhoods.json");
 const neighborhoodsFile = path.join(__dirname, 
   "../../../client/src/dispatch/2016_seattle_cra.json");
 
-export const featureForPoint = ([lat, long], features) =>
-  features.find((feature) => geoContains(feature, [long, lat]));
-
-export const addNhood = (entries, features) => (
-  // TODO - move to mappers.js
-  entries.map(
-    ({ derived: { lat, long, nhood, nested, ...restDerived }, ...rest }) => {
-      const feature = featureForPoint([lat, long], features);
-      const { CRA_NAM, NEIGHBO } = (feature || {}).properties || {};
-      return {
-        ...rest,
-        derived: {
-          lat,
-          long,
-          ...restDerived,
-          neighborhood: CRA_NAM,
-          neighborhoodGroup: NEIGHBO,
-        },
-      };
-    }
-  ));
 
 export const runner = async (sourceFile) => {
   const start = new Date();
