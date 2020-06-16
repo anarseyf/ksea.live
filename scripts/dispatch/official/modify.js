@@ -1,9 +1,22 @@
-import { severityMapper, removeSeattleWA } from "./mappers";
-import { modifyAll } from "./scriptUtil";
+import { severityMapper, removeSeattleWA, getIncidentsMap } from "./mappers";
+import { modifyAll, runForAll } from "./scriptUtil";
+import { saveJSONAsync } from "../fileUtils";
+import { withScriptsJsonPath } from "../serverUtils";
 
-const main = () => {
+const main = async () => {
   try {
-    modifyAll(removeSeattleWA);
+    const start = new Date();
+    const results = await runForAll(getIncidentsMap);
+    const map = {};
+    results.forEach(submap => {
+      Object.keys(submap).forEach(subkey => {
+        map[subkey] = submap[subkey];
+      });
+    })
+    const file = withScriptsJsonPath("incidentsMap.json");
+    await saveJSONAsync(file, map);
+    const end = new Date();
+    console.log(`modify > mapped ${Object.keys(map).length} incidents (${end-start}ms)`);
   } catch (e) {
     console.error("modify >>> ", e);
   }

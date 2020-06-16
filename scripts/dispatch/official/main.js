@@ -5,14 +5,13 @@ const setTZ = require("set-tz");
 setTZ("America/Vancouver"); // TODO - use in all scripts
 
 const main = () => {
-  const delay = 5 * 1000;
+  const delay = 15 * 1000;
   const tick = async () => {
     try {
       const start = new Date();
 
       /*
         TODO:
-        - do not re-resolve incidents for geo
         - when splitting, merge similarly to combine (otherwise 'active' isn't cleared)
       */
       await updateOnce();

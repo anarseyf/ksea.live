@@ -36,18 +36,12 @@ export const runner = async (ignoreStatus) => {
     }
   }
 
-  console.log(`update > 
-  cwd: ${process.cwd()},
-  __dirname: ${__dirname},
-  datasetsPath: ${datasetsPath}`)
-
   const fileNames = await listFilesAsync(datasetsPath, { descending: true });
   const mostRecentFileName = fileNames[0];
-  console.log("update > most recent: ", mostRecentFileName);
-  console.log("update > reading: ", withDatasetsPath(mostRecentFileName));
+  console.log("update > most recent:", mostRecentFileName);
+  console.log("update > reading:", withDatasetsPath(mostRecentFileName));
   const entries = await readJSONAsync(withDatasetsPath(mostRecentFileName), []);
   const { derived } = entries[0];
-  console.log("update > entry: ", entries[0]);
 
   let timestamp = toPacificMidnight(derived.timestamp);
   const futureMidnight = moment(toPacificMidnight(now)).add(1, "days");

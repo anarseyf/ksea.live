@@ -25,3 +25,11 @@ export const removeSeattleWA = (({
     address: address.replace(/,Seattle,WA$/,"")
   }
 }));
+
+export const getIncidentsMap = (entries) => {
+  const map = {};
+  entries.forEach(({id_str, derived:{lat, long}}) => {
+    map[id_str] = [lat,long];
+  })
+  return map;
+};

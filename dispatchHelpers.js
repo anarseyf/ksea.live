@@ -1,3 +1,4 @@
+const path = require("path");
 import { GroupByOptions, groupBy, intervalsReducer } from "./server/groupby";
 import {
   toUTCMidnightString,
@@ -25,7 +26,9 @@ const toFileNames = ([start, end]) => {
   ) {
     starts.push(timestamp);
   }
-  return starts.map(toUTCMidnightString).map((f) => `${dataPath}${f}.json`);
+  return starts
+    .map(toUTCMidnightString)
+    .map((f) => path.join(dataPath, `${f}.json`));
 };
 
 const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
@@ -82,7 +85,7 @@ export const getMostRecentAsync = async () => {
   let result = null;
   if (fileNames.length) {
     const mostRecentFile = fileNames[0];
-    const tweets = await readJSONAsync(`${dataPath}${mostRecentFile}`, []);
+    const tweets = await readJSONAsync(path.join(dataPath, mostRecentFile), []);
     if (tweets.length) {
       result = tweets[0].id_str;
     }

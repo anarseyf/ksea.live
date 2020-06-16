@@ -20,7 +20,7 @@ const fetchPage = async (dateStr) => {
 
 export const scrapeDateAsync = async (dateStr) => {
   const start = new Date();
-  console.log(">> scrapeDate > ", dateStr);
+  console.log(`>> scrapeDate > ${dateStr}`);
   try {
     const html = await fetchPage(dateStr);
     const dom = new JSDOM(html);
@@ -47,7 +47,6 @@ export const scrapeDateAsync = async (dateStr) => {
 
     const end = new Date();
     console.log(`>> scrapeDate > ${dateStr} -> ${result.length} (${end - start}ms)`);
-    console.log(`>> scrapeDate > sample result:`, result[0]);
 
     return result;
   } catch (e) {
