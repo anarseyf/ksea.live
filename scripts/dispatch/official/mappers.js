@@ -1,6 +1,9 @@
 import { geoContains } from "d3-geo";
 
-export const severityMapper = ({ derived: { units, ...restDerived }, ...rest }) => {
+export const severityMapper = ({
+  derived: { units, ...restDerived },
+  ...rest
+}) => {
   const unitCount = units.split(" ").length;
   const severity = unitCount >= 10 ? 2 : unitCount >= 5 ? 1 : 0;
   return {
@@ -14,7 +17,15 @@ export const severityMapper = ({ derived: { units, ...restDerived }, ...rest }) 
   };
 };
 
-export const removeSeattleWA = ({ derived: { address, ...restDerived }, ...rest }) => ({
+export const markAsOld = (entry) => {
+  entry.derived._old = true;
+  return entry;
+};
+
+export const removeSeattleWA = ({
+  derived: { address, ...restDerived },
+  ...rest
+}) => ({
   ...rest,
   derived: {
     ...restDerived,

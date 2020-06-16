@@ -16,6 +16,19 @@ export const scriptsJsonPath = path.join(__dirname, "./official/json/");
 
 export const withDatasetsPath = (fileName) => path.join(datasetsPath, fileName);
 
-export const withScriptsJsonPath = (fileName) => path.join(scriptsJsonPath, fileName);
+export const withScriptsJsonPath = (fileName) =>
+  path.join(scriptsJsonPath, fileName);
 
-export const sortByTimestampDescending = (a, b) => b.derived.timestamp - a.derived.timestamp;
+export const sortByTimestampDescending = (a, b) =>
+  b.derived.timestamp - a.derived.timestamp;
+
+export const sortNewFirst = (a, b) => {
+  const oldA = a.derived._old,
+    oldB = b.derived._old;
+  const timeA = a.derived.timestamp,
+    timeB = b.derived.timestamp;
+  if (oldA === oldB) {
+    return timeB - timeA;
+  }
+  return oldA ? 1 : -1;
+};

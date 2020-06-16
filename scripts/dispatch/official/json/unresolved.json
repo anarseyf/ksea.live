@@ -1,18 +1,5 @@
 [
   {
-    "id_str": "F200058949",
-    "created_at": "6/15/2020 11:45:33 PM",
-    "derived": {
-      "timestamp": 1592289933000,
-      "description": "Aid Response",
-      "address": "5803 15th Ave Nw",
-      "active": true,
-      "unitCount": 1,
-      "severity": 0,
-      "units": "E18"
-    }
-  },
-  {
     "id_str": "F200058801",
     "created_at": "6/15/2020 4:02:24 PM",
     "derived": {
@@ -22,6 +9,7 @@
       "active": false,
       "unitCount": 1,
       "severity": 0,
+      "_old": true,
       "units": "MAR5"
     }
   },
@@ -35,6 +23,7 @@
       "active": false,
       "unitCount": 1,
       "severity": 0,
+      "_old": true,
       "units": "MAR5"
     }
   }

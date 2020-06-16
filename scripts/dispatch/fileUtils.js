@@ -3,8 +3,8 @@ const util = require("util");
 const lockfile = require("lockfile");
 
 import { tz as timezone } from "moment-timezone";
-import { severityMapper } from "./official/mappers";
-import { sortByTimestampDescending } from "./serverUtils";
+import { severityMapper, markAsOld } from "./official/mappers";
+import { sortByTimestampDescending, sortNewFirst } from "./serverUtils";
 
 const getUnits = (entries) =>
   [
@@ -37,9 +37,10 @@ const mergeSameId = (sortedEntries) => {
   };
 
   const result = severityMapper(entry);
+
   if (sortedEntries.length > 1) {
     console.log(
-      `>> merge > ${sortedEntries.length} entries for ${oldest.id_str}`
+      `>> merge > ${sortedEntries.length} : ${result.id_str} : active=${result.derived.active}`
     );
   }
   return result;
@@ -55,7 +56,7 @@ const mergeAll = (entries) => {
   });
 
   const merged = Object.keys(map).map((key) =>
-    mergeSameId(map[key].sort(sortByTimestampDescending))
+    mergeSameId(map[key].sort(sortNewFirst))
   );
 
   const result = merged.sort(sortByTimestampDescending);
@@ -144,12 +145,13 @@ export const appendJSONAsync = async (
   { merge } = { merge: false }
 ) => {
   const oldData = await readJSONAsync(fileName, []);
-  let result = oldData.concat(newData);
+  let result;
   if (merge) {
-    result = mergeAll(result);
+    result = mergeAll(oldData.map(markAsOld).concat(newData));
+  } else {
+    result = oldData.concat(newData);
   }
   await saveJSONAsync(fileName, result);
-
   return result.length;
 };
 

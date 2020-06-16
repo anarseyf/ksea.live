@@ -86,17 +86,18 @@ export function Map({ area, tileOptions = MapOptions.Default }) {
   if (selectedTweet) {
     // Render selected dot last, so it appears on top
     const selectedIndex = data.findIndex(isSelectedDot);
-    data = [
-      ...data.slice(0, selectedIndex),
-      ...data.slice(selectedIndex + 1),
-      data[selectedIndex],
-    ];
+
+    data =
+      selectedIndex === -1
+        ? []
+        : [
+            ...data.slice(0, selectedIndex),
+            ...data.slice(selectedIndex + 1),
+            data[selectedIndex],
+          ];
   }
 
-  console.log(
-    "MAP",
-    data.filter(({ active }) => active)
-  );
+  console.log("MAP data", data);
 
   const appearanceFn = (d) => {
     return selectedTweet

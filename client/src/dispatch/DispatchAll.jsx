@@ -15,7 +15,7 @@ import { TweetsMajor } from "./TweetsMajor";
 export function DispatchAll() {
   const intro = `Seattle Fire Department 911 dispatches. This page provides a real-time feed of 911 dispatches of FD units today, along with details and comparisons to previous days.`;
 
-  const active = `Active events past 24 hours`;
+  const active = `Active events`;
   const major = `Major events past 24 hours`;
 
   const areas =
