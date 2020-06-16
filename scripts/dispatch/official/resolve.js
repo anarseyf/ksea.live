@@ -1,4 +1,9 @@
-import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
+import {
+  readJSONAsync,
+  saveJSONAsync,
+  appendJSONAsync,
+  saveFileAsync,
+} from "../fileUtils";
 import { withScriptsJsonPath } from "../serverUtils";
 import { getIncidentsMap } from "./mappers";
 const axios = require("axios").default;
@@ -66,10 +71,8 @@ const resolveGeo = async (entries = []) => {
   return result;
 };
 
-const resolveLocally = async (sourceFile) => {
+const resolveLocally = async (sourceFile, incidentsMap) => {
   const entries = await readJSONAsync(sourceFile, []);
-
-  const incidentsMap = await readJSONAsync(incidentsMapFile, {});
   const empty = [];
   const result = entries.map(({ id_str, derived, ...rest }) => {
     const [lat, long] = incidentsMap[id_str] || empty;
@@ -92,13 +95,26 @@ const resolveLocally = async (sourceFile) => {
   );
 };
 
+const cleanupUnresolved = async (incidentsMap) => {
+  const unresolved = await readJSONAsync(deadLetterQueue, []);
+  const stillUnresolved = unresolved.filter(
+    ({ id_str }) => !incidentsMap[id_str]
+  );
+  await saveJSONAsync(deadLetterQueue, stillUnresolved);
+  console.log(
+    `>> cleanup unresolved > ${unresolved.length} -> ${stillUnresolved.length}`
+  );
+  return stillUnresolved.length;
+};
+
 export const runner = async (sourceFile) => {
   try {
     const start = new Date();
     let resolvedTotal = 0,
       unresolvedTotal = 0;
 
-    await resolveLocally(sourceFile);
+    let incidentsMap = await readJSONAsync(incidentsMapFile, {});
+    await resolveLocally(sourceFile, incidentsMap);
 
     for (;;) {
       const entries = await readJSONAsync(sourceFile, []);
@@ -121,24 +137,22 @@ export const runner = async (sourceFile) => {
       const resolved = newData.filter(hasCoordinates);
 
       const unresolved = newData.filter(hasNoCoordinates);
-      unresolvedTotal = await appendJSONAsync(deadLetterQueue, unresolved, {
+      await appendJSONAsync(deadLetterQueue, unresolved, {
         merge: true,
       });
-      console.log(
-        `resolve > ${unresolved.length} unresolved (${unresolvedTotal} total unresolved)`
-      );
 
-      let incidentsMap = await readJSONAsync(incidentsMapFile, {});
       incidentsMap = { ...incidentsMap, ...getIncidentsMap(resolved) };
-      await saveJSONAsync(incidentsMapFile, incidentsMap);
 
       resolvedTotal = await appendJSONAsync(targetFile, resolved);
       await saveJSONAsync(sourceFile, entries.slice(queueSize)); // TODO - atomic
     }
 
+    await saveJSONAsync(incidentsMapFile, incidentsMap);
+    unresolvedTotal = await cleanupUnresolved(incidentsMap);
+
     const end = new Date();
     console.log(
-      `resolve > new totals: resolved:${resolvedTotal},unresolved:${unresolvedTotal} (${
+      `resolve > new totals: resolved: ${resolvedTotal}, unresolved: ${unresolvedTotal} (${
         end - start
       }ms)`
     );
