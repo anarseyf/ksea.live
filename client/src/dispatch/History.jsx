@@ -24,12 +24,11 @@ const closedPath = (bins, line) => {
 
 export const History = () => {
   const { history } = useContext(TweetsContext);
-  const [svgData, setSvgData] = useState([]);
+  // const [svgData, setSvgData] = useState([]);
   const [scales, setScales] = useState([]);
   const [currentStart, setCurrentStart] = useState([]);
   const [paths, setPaths] = useState([]);
-  const [clipPaths, setClipPaths] = useState([]);
-  const clipPathRef = useRef(null);
+  const [clipPaths, setClipPaths] = useState({});
 
   const binHeight = 2;
   const svgWidth = isPhone ? 350 : 500,
@@ -79,21 +78,21 @@ export const History = () => {
     const xAxis = d3.axisBottom().scale(xScale).ticks(2);
     d3.select(xAxisRef.current).call(xAxis);
 
-    const currentYear = binsCurrent.map(({ x0, length }) => ({
-      x: xScale(0),
-      width: xScale(length),
-      y: yScale(x0),
-      height: binHeight,
-      rx: 1,
-    }));
-    const previousYear = binsPrevious.map(({ x0, length }) => ({
-      x: xScale(0) - xScale(length),
-      width: xScale(length),
-      y: yScale(x0),
-      height: binHeight,
-      rx: 1,
-    }));
-    setSvgData([currentYear, previousYear]);
+    // const currentYear = binsCurrent.map(({ x0, length }) => ({
+    //   x: xScale(0),
+    //   width: xScale(length),
+    //   y: yScale(x0),
+    //   height: binHeight,
+    //   rx: 1,
+    // }));
+    // const previousYear = binsPrevious.map(({ x0, length }) => ({
+    //   x: xScale(0) - xScale(length),
+    //   width: xScale(length),
+    //   y: yScale(x0),
+    //   height: binHeight,
+    //   rx: 1,
+    // }));
+    // setSvgData([currentYear, previousYear]);
 
     const lineCurrent = d3
       .line()
@@ -111,13 +110,19 @@ export const History = () => {
       .x((d) => xScale(d.length))
       .y((d) => yScale(d.x0));
 
+    const clipLinePrevious = d3
+      .line()
+      .x((d) => xScale(-d.length))
+      .y((d) => yScale(d.x0));
+
     const pathCurrent = lineCurrent(binsCurrent);
     const pathPrevious = linePrevious(binsPrevious);
     setPaths([pathCurrent, pathPrevious]);
 
     const clipPathCurrent = closedPath(binsCurrent, clipLineCurrent);
+    const clipPathPrevious = closedPath(binsPrevious, clipLinePrevious);
 
-    setClipPaths([clipPathCurrent]);
+    setClipPaths({ current: clipPathCurrent, previous: clipPathPrevious });
 
     console.log("HISTORY/useEffect end");
   }, [height, history, maxBarWidth]);
@@ -137,8 +142,8 @@ export const History = () => {
         height={svgHeight}
       >
         <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
-          <g>
-            {/* {svgData.map((dataset, iDataset) =>
+          {/* <g>
+            {svgData.map((dataset, iDataset) =>
               dataset.map((d) => (
                 <rect
                   className={classnames({
@@ -152,21 +157,9 @@ export const History = () => {
                   rx={d.rx}
                 ></rect>
               ))
-            )} */}
-          </g>
-          <defs>
-            <clipPath id="clippath" ref={clipPathRef}>
-              <path d={clipPaths[0]} />
-            </clipPath>
-          </defs>
-          <rect
-            x={0}
-            y={100}
-            width={100}
-            height={200}
-            fill="#00FF0088"
-            clipPath="url(#clippath)"
-          ></rect>
+            )}
+          </g> */}
+
           <g>
             {paths.map((path) => (
               <path
@@ -193,6 +186,7 @@ export const History = () => {
             rectWidth={annotationRectWidth}
             currentStart={currentStart}
             scales={scales}
+            clipPaths={clipPaths}
           />
         </g>
       </svg>

@@ -17,7 +17,7 @@ const textureCurrent = textures
   .stroke("#51aae8");
 const texturePrevious = textures.lines().lighter().size(8).stroke("silver");
 
-export const Annotations = ({ rectWidth, scales, currentStart }) => {
+export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
   const calloutsRef = useRef(null);
   const regionsRef = useRef(null);
   const { annotations } = useContext(TweetsContext);
@@ -27,10 +27,16 @@ export const Annotations = ({ rectWidth, scales, currentStart }) => {
   d3.select(regionsRef.current).call(texturePrevious);
 
   useEffect(() => {
+    console.log("ANN/scales:", scales);
+    if (!scales.length) {
+      return;
+    }
+
     const regionFn = ({ start, end, offset }) => {
       if (!start || !end) {
         return undefined;
       }
+
       const [xScale, yScale] = scales;
 
       const isCurrent = offset === 0;
@@ -106,10 +112,16 @@ export const Annotations = ({ rectWidth, scales, currentStart }) => {
 
   return (
     <>
+      <defs>
+        <clipPath id="clippath">
+          <path d={clipPaths.current} />
+          <path d={clipPaths.previous} />
+        </clipPath>
+      </defs>
       <g className={styles.annotations} ref={calloutsRef} />
       <g ref={regionsRef}>
         {regions.map((annotation) => (
-          <rect {...annotation} />
+          <rect {...annotation} clipPath="url(#clippath)" />
         ))}
       </g>
     </>
