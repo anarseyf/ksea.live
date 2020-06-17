@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import { TweetsContext } from "./TweetsProvider";
-import { MultiLine } from "./MultiLine";
 import { AreaShape } from "./AreaShape";
 import { featuresForArea } from "./geojson";
-import { Total } from "./Total";
 import { isActive, isAtLeastSev2, isAtLeastSev1 } from "../clientUtils";
 import { SvgDot } from "./SvgDot";
+import { Spark } from "./Spark";
+import { MultiLine } from "./MultiLine";
+import { Total } from "./Total";
 import classnames from "classnames";
 import styles from "./group.module.scss";
 
@@ -18,11 +19,13 @@ export const GroupByArea = () => {
     const map = {};
     activeOrMajorByArea.forEach(({ key: area, intervals }) => {
       const values = intervals[0].values;
-      map[area] = {
-        active: values.filter(isActive).length,
-        sev1: values.filter(isAtLeastSev1).length,
-        sev2: values.filter(isAtLeastSev2).length,
-      };
+      if (values.length) {
+        map[area] = {
+          active: values.filter(isActive).length,
+          sev1: values.filter(isAtLeastSev1).length,
+          sev2: values.filter(isAtLeastSev2).length,
+        };
+      }
     });
     setTotalsMap(map);
   }, [groupedByArea, activeOrMajorByArea]);
@@ -36,9 +39,9 @@ export const GroupByArea = () => {
     groupedByArea
       .map(({ key }) => key)
       .forEach((key) => {
-        map[key] = featuresForArea(key).map(
-          ({ properties: { CRA_NAM } }) => CRA_NAM
-        );
+        map[key] = featuresForArea(key)
+          .map(({ properties: { CRA_NAM } }) => CRA_NAM)
+          .sort();
       });
     return map;
   };
@@ -49,30 +52,51 @@ export const GroupByArea = () => {
       {groupedByArea.map(({ key: area, intervals }) => (
         <div className={styles.itemContainer}>
           <Link to={`${encodeURIComponent(area)}`}>
-            <div className={classnames(styles.item, styles.text)}>
-              <div>{area}</div>
-              <div className={styles.list}>
-                {neighborhoodsMap[area].join(", ")}
+            <div className={styles.fullWidth}>
+              <div className={classnames(styles.item, styles.float)}>
+                <Spark
+                  intervals={intervals}
+                  useCumulative={true}
+                  showTotal={true}
+                />
               </div>
+              <div>&nbsp;</div>
             </div>
-            <div className={styles.item}>
-              <MultiLine intervals={intervals} useCumulative={true} />
-              <Total total={intervals[0].total} />
+
+            <div className={classnames(styles.item, styles.float)}>
+              <div>
+                <AreaShape area={area} />
+              </div>
+              {/* <Total total={intervals[0].total} /> */}
               {totalsMap[area] && (
                 <div>
-                  <span>{totalsMap[area].active} active</span>
-                  <SvgDot active={true} />
-                  <span>{totalsMap[area].sev2} major</span>
-                  <SvgDot sev2={true} />
+                  {totalsMap[area].active > 0 && (
+                    <span>
+                      <span>{totalsMap[area].active} active</span>
+                      <SvgDot active={true} />
+                    </span>
+                  )}
+                  {totalsMap[area].sev2 > 0 && (
+                    <span>
+                      <span>{totalsMap[area].sev2} major</span>
+                      <SvgDot sev2={true} />
+                    </span>
+                  )}
                 </div>
               )}
             </div>
-            <div className={styles.item}>
-              <AreaShape area={area} />
+
+            <div className={classnames(styles.item, styles.text)}>
+              <div>{area}</div>
+              <div className={styles.list}>
+                {neighborhoodsMap[area].map((v) => (
+                  <div>{v}</div>
+                ))}
+              </div>
             </div>
           </Link>
         </div>
       ))}
     </div>
   );
-}
+};

@@ -1,13 +1,16 @@
 @import "../colors.scss";
 
+// TODO - switch to flexbox
 .container {
   display: block;
-  margin: 1em auto;
+  margin: 1em 2em;
   color: $text-primary;
-  text-align: center;
+  text-align: left;
 }
 .itemContainer {
   display: block;
+  clear: both;
+  padding: 3em auto;
   border-left: 5px solid $transparent;
   border-right: 5px solid $transparent;
 }
@@ -16,16 +19,27 @@
   padding: 1em auto;
 }
 
-.text {
-  width: 100px;
+.fullWidth {
+  width: 100%;
+}
+
+.float {
+  float: right;
   text-align: left;
+  padding-left: 1em;
+}
+
+.text {
+  text-align: right;
 }
 .list {
-  font-size: 0.7em;
+  font-size: 0.8em;
+  color: $text-secondary;
 }
 .item {
+  clear: both;
   display: inline-block;
-  // border: 1px dashed red;
+  width: 50%;
   vertical-align: top;
 }
 .item > * {
