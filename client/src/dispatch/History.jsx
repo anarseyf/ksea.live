@@ -1,11 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import classnames from "classnames";
-import {
-  annotation as d3annotation,
-  annotationBadge as d3annotationBadge,
-  annotationCalloutCircle as d3annotationCalloutCircle,
-} from "d3-svg-annotation";
+
 import textures from "textures";
 import {
   TweetsContext,
@@ -15,11 +11,14 @@ import {
 import { intervalExtent, isPhone } from "../clientUtils";
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
+import { Annotations } from "./Annotations";
 
 export const History = () => {
   const { history, annotations } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
   const [annotationRegions, setAnnotationRegions] = useState([]);
+  const [scales, setScales] = useState([]);
+  const [currentStart, setCurrentStart] = useState([]);
 
   const binHeight = 2;
   const svgWidth = isPhone ? 350 : 450,
@@ -34,7 +33,6 @@ export const History = () => {
   const svgRef = useRef(null);
   const xAxisRef = useRef(null);
   const yAxisRef = useRef(null);
-  const calloutsRef = useRef(null);
 
   useEffect(() => {
     if (!history.length) {
@@ -42,6 +40,7 @@ export const History = () => {
     }
 
     const intervalCurrent = currentInterval(history);
+    setCurrentStart(intervalCurrent.start);
     const intervalPrevious = previousInterval(history);
     const binsCurrent = intervalCurrent.binsLowRes;
     const binsPrevious = intervalPrevious.binsLowRes;
@@ -53,6 +52,8 @@ export const History = () => {
       .range([0, maxBarWidth]);
 
     const yScale = d3.scaleTime().domain(timeExtent).range([0, height]);
+
+    setScales([xScale,yScale]);
 
     const dateFormatter = d3.timeFormat("%-m/%-d"); // https://github.com/d3/d3-time-format#locale_format
 
@@ -100,39 +101,6 @@ export const History = () => {
     d3.select(svgRef.current).call(textureCurrent);
     d3.select(svgRef.current).call(texturePrevious);
 
-    const calloutFn = ({ title, label, value, timestamp }, offset, isEnd = false) => {
-      const isPrevious = timestamp < intervalCurrent.start;
-      const sideX = isPrevious ? -1 : 1;
-
-      const x = value ? xScale(value) : annotationRectWidth;
-      const sideY = isEnd ? 1 : -1;
-      const y = yScale(timestamp + offset);
-      const callout = {
-        note: {
-          title,
-          label,
-        },
-        x: sideX * x,
-        y,
-        color: "red",
-        subject: {
-          radius: 6,
-        },
-      };
-
-      if (value) {
-        callout.nx = sideX * (annotationRectWidth + 10);
-        callout.ny = y;
-      } else {
-        callout.dx = sideX * 10;
-        callout.dy = sideY * 10;
-      }
-      return callout;
-    };
-
-    const calloutsFn = ({ start, end, offset }) =>
-      [calloutFn(start, offset), end ? calloutFn(end, offset, true) : undefined];
-
     const regionFn = ({ start, end, offset }) => {
       if (!start || !end) {
         return undefined;
@@ -151,28 +119,12 @@ export const History = () => {
       };
     };
 
-    // TODO - move to separate components
-    const calloutsSvgData = annotations.flatMap(calloutsFn).filter(Boolean);
-    console.log("HISTORY/annotations",annotations);
-    console.log("HISTORY/callouts",annotations.flatMap(calloutsFn));
     const regions = annotations.map(regionFn).filter(Boolean);
 
-    console.log("HISTORY/regious",regions);
-
-    const callout = d3annotation()
-      .annotations(calloutsSvgData)
-      .type(d3annotationCalloutCircle);
-    d3.select(calloutsRef.current).call(callout);
+    console.log("HISTORY/regious", regions);
 
     setAnnotationRegions(regions);
-  }, [
-    history,
-    annotations,
-    maxBarWidth,
-    height,
-    yearWidth,
-    annotationRectWidth,
-  ]);
+  }, [history, maxBarWidth, height, yearWidth, annotationRectWidth, annotations]);
 
   return (
     <div className={historyStyles.container}>
@@ -220,11 +172,9 @@ export const History = () => {
           ref={yAxisRef}
           transform={`translate(${margin.left + yearWidth},${margin.top})`}
         />
-        <g
-          className={historyStyles.annotations}
-          ref={calloutsRef}
-          transform={`translate(${margin.left + yearWidth},${margin.top})`}
-        />
+        <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
+        <Annotations rectWidth={annotationRectWidth} currentStart={currentStart} scales={scales} />
+        </g>
       </svg>
     </div>
   );
