@@ -1,5 +1,18 @@
 [
   {
+    "id_str": "F200059447",
+    "created_at": "6/17/2020 4:31:47 PM",
+    "derived": {
+      "timestamp": 1592436707000,
+      "description": "Auto Fire Alarm",
+      "address": "100 Crockett St",
+      "active": true,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E8 L6"
+    }
+  },
+  {
     "id_str": "F200059365",
     "created_at": "6/17/2020 11:11:14 AM",
     "derived": {
@@ -9,6 +22,7 @@
       "active": false,
       "unitCount": 1,
       "severity": 0,
+      "_old": true,
       "units": "E5"
     }
   },

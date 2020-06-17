@@ -56,9 +56,8 @@ export const Rehoboam = ({ area }) => {
 
     setSvgPath(path);
 
-    const now = +new Date();
     const lastBin = bins[bins.length - 1];
-    const [theta, r] = toRadial(now, lastBin.length);
+    const [theta, r] = toRadial(lastBin.x0, lastBin.length);
     setLive({
       cx: r * Math.sin(theta),
       cy: r * -Math.cos(theta),
@@ -82,6 +81,8 @@ export const Rehoboam = ({ area }) => {
     ? currentInterval(filteredByArea).total
     : 0;
   const text = area || "Seattle";
+
+  console.log("REHOBOAM/render");
 
   return (
     <div className={rehoboamStyles.container}>

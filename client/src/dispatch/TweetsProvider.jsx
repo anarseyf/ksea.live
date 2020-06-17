@@ -10,6 +10,7 @@ import {
   getTweetsMajor24,
   getStatus,
 } from "../api";
+const deepEqual = require("fast-deep-equal/es6/react");
 export const TweetsContext = createContext();
 
 export const currentInterval = (dataset) => dataset[0].intervals[0];
@@ -17,27 +18,57 @@ export const previousInterval = (dataset) => dataset[0].intervals[1];
 
 const useStatus = () => {
   const [status, setStatus] = useState({});
+  const [previousStatus, setPreviousStatus] = useState({});
 
   useEffect(() => {
-    const delay = 5 * 1000;
-    let intervalId;
-    console.log("useStatus/starting checker (should only happen once!)");
+    const delay = 10 * 1000;
+
+    console.log("🔺useStatus/starting checker (should only happen once!)");
 
     const checkForUpdates = async () => {
       const newStatus = await getStatus();
-      console.log(`useStatus(${intervalId})/new status:`, newStatus);
-      setStatus(newStatus);
+      console.log(
+        `useStatus(${intervalId})/new status (next check in ${
+          delay / 1000
+        } sec)`,
+        newStatus
+      );
+
+      if (!deepEqual(newStatus, status)) {
+        console.log("useStatus/setting new status:", newStatus);
+        setPreviousStatus({ ...status });
+        setStatus(newStatus);
+      }
     };
 
-    intervalId = setInterval(checkForUpdates, delay);
-  }, []);
+    const intervalId = setInterval(checkForUpdates, delay);
+    return () => clearInterval(intervalId);
+    //   XXXXXX   eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
 
-  return status;
+  return { status, previousStatus };
 };
 
 const useTweets = (filters = {}) => {
-  const { mostRecentId } = useStatus();
-  console.log("useTweets/mostRecentId:", mostRecentId);
+  const initialValue = {
+    filteredByArea: [],
+    activeOrMajorForArea: [],
+    activeOrMajorByArea: [],
+    byTypeForArea: [],
+    groupedByArea: [],
+    history: [],
+    active24: [],
+    major24: [],
+    annotations: [],
+  };
+  const [value, setValue] = useState(initialValue);
+  const { status, previousStatus } = useStatus();
+  console.log(
+    `useTweets/most recent:${status.mostRecentId}, previous:${previousStatus.mostRecentId}`
+  );
+  const mostRecentId = previousStatus.mostRecentId
+    ? status.mostRecentId
+    : undefined;
 
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [activeOrMajorForArea, setActiveOrMajorForArea] = useState([]);
@@ -50,7 +81,7 @@ const useTweets = (filters = {}) => {
   const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
-    console.log("PROVIDER/fetching all data");
+    console.log("🟢 PROVIDER/fetching all data");
 
     (async () => {
       const area = filters.area || "seattle";
@@ -98,17 +129,31 @@ const useTweets = (filters = {}) => {
     })();
   }, [filters.area, mostRecentId]);
 
-  return {
-    filteredByArea,
+  useEffect(() => {
+    setValue({
+      filteredByArea,
+      byTypeForArea,
+      groupedByArea,
+      history,
+      annotations,
+      active24,
+      major24,
+      activeOrMajorForArea,
+      activeOrMajorByArea,
+    });
+  }, [
+    active24,
+    activeOrMajorByArea,
+    activeOrMajorForArea,
+    annotations,
     byTypeForArea,
+    filteredByArea,
     groupedByArea,
     history,
-    annotations,
-    active24,
     major24,
-    activeOrMajorForArea,
-    activeOrMajorByArea,
-  };
+  ]);
+
+  return value;
 };
 
 export const TweetsProvider = ({ filters, children }) => {

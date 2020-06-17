@@ -56,10 +56,10 @@ const seattleGovController = async (req, res) => {
 
 const statusController = async (req, res) => {
   try {
-    const mostRecentId = await getMostRecentAsync();
+    const mostRecentId = await getMostRecentAsync(); // TODO
     const status = {
       mostRecentId,
-      lastUpdated: +new Date(),
+      lastUpdated: 0, //+new Date(),
     };
     res.json(status);
   } catch (e) {
