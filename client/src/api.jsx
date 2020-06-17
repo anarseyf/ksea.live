@@ -2,11 +2,8 @@ export async function getEnv() {
   return getByAPI("env");
 }
 
-export async function getMostRecentId() {
-  const result = await fetch(`/api/dispatch/mostRecentId`, {
-    headers: { Accept: "text/plain" },
-  });
-  return await result.text();
+export async function getStatus() {
+  return getByAPI(`/dispatch/status`);
 }
 
 export async function getAnnotations() {
@@ -52,7 +49,7 @@ const queryString = (query = {}) => {
   const list = Object.keys(query).map(
     (key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`
   );
-  return `?${list.join("&")}`;
+  return list.join("&");
 };
 
 async function getByAPI(api = "", queryParams = {}) {
@@ -61,7 +58,7 @@ async function getByAPI(api = "", queryParams = {}) {
     ...queryParams,
   };
   const query = queryString(allQueryParams);
-  const response = await fetch(`/api/${api}${query}`, {
+  const response = await fetch(`/api/${api}?${query}`, {
     // TODO - use axios?
     headers: { Accept: "application-json" },
   });

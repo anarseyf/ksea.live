@@ -6,42 +6,39 @@ import {
   getTweetsByType,
   getHistory,
   getAnnotations,
-  getMostRecentId,
   getTweetsActive24,
   getTweetsMajor24,
+  getStatus,
 } from "../api";
 export const TweetsContext = createContext();
 
 export const currentInterval = (dataset) => dataset[0].intervals[0];
 export const previousInterval = (dataset) => dataset[0].intervals[1];
 
-const useMostRecent = () => {
-  const interval = 60 * 1000;
-  let intervalId;
-  const [mostRecentId, setMostRecentId] = useState("");
+const useStatus = () => {
+  const [status, setStatus] = useState({});
 
   useEffect(() => {
-    console.log(
-      "useMostRecent/starting update checker (should only happen once!)"
-    );
+    const delay = 5 * 1000;
+    let intervalId;
+    console.log("useStatus/starting checker (should only happen once!)");
 
     const checkForUpdates = async () => {
-      const newId = await getMostRecentId();
-      if (newId !== mostRecentId)
-        console.log(
-          `useMostRecent[${intervalId}]/'${mostRecentId}' --> '${newId}'`
-        );
-      setMostRecentId(newId);
+      const newStatus = await getStatus();
+      console.log(`useStatus(${intervalId})/new status:`, newStatus);
+      setStatus(newStatus);
     };
 
-    intervalId = setInterval(checkForUpdates, interval);
+    intervalId = setInterval(checkForUpdates, delay);
   }, []);
 
-  return mostRecentId;
+  return status;
 };
 
 const useTweets = (filters = {}) => {
-  const mostRecentId = useMostRecent();
+  const { mostRecentId } = useStatus();
+  console.log("useTweets/mostRecentId:", mostRecentId);
+
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [activeOrMajorForArea, setActiveOrMajorForArea] = useState([]);
   const [activeOrMajorByArea, setActiveOrMajorByArea] = useState([]);
@@ -53,6 +50,8 @@ const useTweets = (filters = {}) => {
   const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
+    console.log("PROVIDER/fetching all data");
+
     (async () => {
       const area = filters.area || "seattle";
       setFilteredByArea(await getTweetsForArea(area));
@@ -97,7 +96,7 @@ const useTweets = (filters = {}) => {
       const response = await getTweetsMajor24();
       setMajor24(response[0].intervals[0].values);
     })();
-  }, [mostRecentId]);
+  }, [filters.area, mostRecentId]);
 
   return {
     filteredByArea,

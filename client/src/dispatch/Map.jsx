@@ -58,8 +58,6 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
     : centroid(features);
 
-  console.log("MAP/center", center);
-
   const mapper = ({ intervals }) =>
     intervals[0].values.map(
       ({ id_str, derived: { lat, long, type, color, active, severity } }) => ({
@@ -96,8 +94,6 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
               data[selectedIndex],
             ];
     }
-
-    console.log("MAP data", data);
   }
 
   const appearanceFn = (d) => {
@@ -108,7 +104,7 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
       : Appearance.Normal;
   };
 
-  console.log(`MAP/rendering with ${data.length} dots, ${rendered.length} geo`);
+  console.log(`MAP/rendering with ${data.length} dots, ${rendered.length} geo, center: ${center}`);
   const city = cityGeojson.features[0];
 
   return (

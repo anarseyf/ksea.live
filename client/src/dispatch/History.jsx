@@ -139,7 +139,7 @@ export const History = () => {
     setClipPaths({ current: clipPathCurrent, previous: clipPathPrevious });
 
     console.log("HISTORY/useEffect end");
-  }, [height, history, maxBarWidth]);
+  }, [history, height, maxBarWidth]);
 
   console.log("HISTORY/render");
 

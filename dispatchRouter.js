@@ -54,10 +54,14 @@ const seattleGovController = async (req, res) => {
   }
 };
 
-const mostRecentController = async (req, res) => {
+const statusController = async (req, res) => {
   try {
     const mostRecentId = await getMostRecentAsync();
-    res.send(mostRecentId);
+    const status = {
+      mostRecentId,
+      lastUpdated: +new Date(),
+    };
+    res.json(status);
   } catch (e) {
     console.error("error getting mostRecentId", e);
     res.status(500).send(null);
@@ -285,7 +289,7 @@ const updateOnceController = async (req, res) => {
 
 router.get("/seattle911", seattleGovController);
 router.get("/updateOnce", updateOnceController);
-router.get("/mostRecentId", mostRecentController);
+router.get("/status", statusController);
 router.get("/tweets/active24", active24Controller);
 router.get("/tweets/major24", major24Controller);
 router.get("/tweets/byArea", byAreaController);
