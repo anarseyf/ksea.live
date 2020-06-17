@@ -28,7 +28,8 @@ export function Rehoboam({ area }) {
 
     const current = currentInterval(filteredByArea);
     console.log("Rehoboam/current", current);
-    const bins = current.binsHiRes;
+    // const bins = current.binsHiRes;
+    const bins = current.bins;
     const extent = intervalExtent(current);
 
     console.log("Rehoboam/extent", extent);

@@ -7,20 +7,26 @@
   text-align: center;
 }
 .itemContainer {
+  display: block;
   border-left: 5px solid $transparent;
   border-right: 5px solid $transparent;
-  padding-left: 1em;
 }
 .itemContainer:hover {
   border-left-color: $border;
   padding: 1em auto;
 }
-.itemHeader {
+
+.text {
+  width: 100px;
   text-align: left;
 }
-.text {
+.list {
   font-size: 0.7em;
-  text-align: left;
+}
+.item {
+  display: inline-block;
+  // border: 1px dashed red;
+  vertical-align: top;
 }
 .item > * {
   vertical-align: top;

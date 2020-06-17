@@ -32,11 +32,11 @@ export function DispatchAll() {
 
   return (
     <TweetsProvider>
-      <Section styleOption={2}>
+      {/* <Section styleOption={2}>
         <Paragraph text={intro} />
         <Rehoboam />
         <Header />
-        {/* <Histogram /> */}
+        <Histogram />
       </Section>
 
       <Section edgeToEdge={true} styleOption={1}>
@@ -49,7 +49,7 @@ export function DispatchAll() {
         <TweetsActive />
         <Paragraph text={major} />
         <TweetsMajor />
-      </Section>
+      </Section> */}
 
       <Section styleOption={2}>
         <Paragraph text={areas} />

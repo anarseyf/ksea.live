@@ -1,17 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import { TweetsContext } from "./TweetsProvider";
-import { UserContext, UserContextKeys } from "./UserProvider";
 import { MultiLine } from "./MultiLine";
 import { AreaShape } from "./AreaShape";
 import { featuresForArea } from "./geojson";
 import { Total } from "./Total";
-import styles from "./group.module.scss";
 import { isActive, isAtLeastSev2, isAtLeastSev1 } from "../clientUtils";
 import { SvgDot } from "./SvgDot";
+import classnames from "classnames";
+import styles from "./group.module.scss";
 
 export function GroupByArea() {
-  const { setSelection } = useContext(UserContext);
   const { groupedByArea, activeOrMajorByArea } = useContext(TweetsContext);
   const [totalsMap, setTotalsMap] = useState({});
 
@@ -35,14 +34,6 @@ export function GroupByArea() {
     return null;
   }
 
-  const handleMouseEnter = (area) => {
-    setSelection(UserContextKeys.HoverArea, area);
-  };
-
-  const handleMouseLeave = () => {
-    setSelection(UserContextKeys.HoverArea, null);
-  };
-
   const getNeighborhoods = () => {
     const map = {};
     groupedByArea
@@ -59,28 +50,29 @@ export function GroupByArea() {
   return (
     <div className={styles.container}>
       {groupedByArea.map(({ key: area, intervals }) => (
-        <div
-          className={styles.itemContainer}
-          onMouseEnter={() => handleMouseEnter(area)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.itemHeader}>{area}</div>
-          <div className={styles.text}>{neighborhoodsMap[area].join(", ")}</div>
+        <div className={styles.itemContainer}>
           <Link to={`${encodeURIComponent(area)}`}>
+            <div className={classnames(styles.item, styles.text)}>
+              <div>{area}</div>
+              <div className={styles.list}>
+                {neighborhoodsMap[area].join(", ")}
+              </div>
+            </div>
             <div className={styles.item}>
-              <AreaShape area={area} />
-
               <MultiLine intervals={intervals} useCumulative={true} />
               <Total total={intervals[0].total} />
+              {totalsMap[area] && (
+                <div>
+                  <span>{totalsMap[area].active} active</span>
+                  <SvgDot active={true} />
+                  <span>{totalsMap[area].sev2} major</span>
+                  <SvgDot sev2={true} />
+                </div>
+              )}
             </div>
-            {totalsMap[area] && (
-              <div>
-                <span>{totalsMap[area].active} active</span>
-                <SvgDot active={true} />
-                <span>{totalsMap[area].sev2} major</span>
-                <SvgDot sev2={true} />
-              </div>
-            )}
+            <div className={styles.item}>
+              <AreaShape area={area} />
+            </div>
           </Link>
         </div>
       ))}

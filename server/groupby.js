@@ -44,7 +44,7 @@ export const generateIntervals = () => {
     currentStart + (iOffset + 1) * TwentyFourHours,
   ];
 
-  return [0, -1].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
+  return [0, -1, -2, -3, -4, -5, -6].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
 };
 
 export const generate24HourIntervals = () => {
