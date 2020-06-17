@@ -11,9 +11,18 @@ import { Paragraph } from "./Paragraph";
 import { History } from "./History";
 import { TweetsActive } from "./TweetsActive";
 import { TweetsMajor } from "./TweetsMajor";
+import { SvgDot } from "./SvgDot";
 
 export const DispatchAll = () => {
-  const intro = `Seattle Fire Department 911 dispatches. This page provides a real-time feed of 911 dispatches of FD units today, along with details and comparisons to previous days.`;
+  const intro = (
+    <div>
+      A near-real-time view of Seattle Fire Department 911 dispatches. All
+      timestamps are in local time (Pacific timezone). It is now{" "}
+      <strong>1:45PM</strong> in Seattle. Active incidents are marked{" "}
+      <SvgDot active={true} />. Incidents with ≥10 units dispatched are marked
+      as major <SvgDot sev2={true} />.
+    </div>
+  );
 
   const pastWeek = `Cumulative number of dispatches for Seattle today, compared to the past 7 days`;
 
