@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
+import textures from "textures";
 import {
   annotation as d3annotation,
   annotationCalloutCircle as d3annotationCalloutCircle,
@@ -10,50 +11,84 @@ import styles from './annotations.module.scss';
 
 export const Annotations = ({rectWidth, scales, currentStart}) => {
   const calloutsRef = useRef(null);
+  const regionsRef = useRef(null);
   const {  annotations } = useContext(TweetsContext);
+  const [regions, setRegions] = useState([]);
 
-  const calloutFn = ({
-    item: { title, label, value, timestamp },
-    offset,
-    scales:[xScale,yScale],
-    isEnd = false
-  }
-  ) => {
-    const isPrevious = timestamp < currentStart;
-    const sideX = isPrevious ? -1 : 1;
-  
-    const x = value ? xScale(value) : rectWidth;
-    const sideY = isEnd ? 1 : -1;
-    const y = yScale(timestamp + offset);
-    const callout = {
-      note: {
-        title,
-        label,
-      },
-      x: sideX * x,
-      y,
-      color: "red",
-      subject: {
-        radius: 6,
-      },
-    };
-  
-    if (value) {
-      callout.nx = sideX * (rectWidth + 10);
-      callout.ny = y;
-    } else {
-      callout.dx = sideX * 10;
-      callout.dy = sideY * 10;
-    }
-    return callout;
-  };
-  
-  const calloutsFn = ({ start, end, offset }) => [
-    calloutFn({item:start, offset,scales}),
-    end ? calloutFn({item:end,offset,scales, isEnd:true}) : undefined,
-  ];
+  const textureCurrent = textures
+    .lines()
+    .lighter()
+    .size(8)
+    .orientation("6/8")
+    .stroke("#51aae8");
+  const texturePrevious = textures.lines().lighter().size(8).stroke("silver");
+  d3.select(regionsRef.current).call(textureCurrent);
+  d3.select(regionsRef.current).call(texturePrevious);
 
   useEffect(() => {
+      
+    const regionFn = ({ start, end, offset }) => {
+      if (!start || !end) {
+        return undefined;
+      }
+      const[xScale,yScale]=scales; 
+  
+      const isCurrent = offset === 0;
+      const texture = isCurrent ? textureCurrent : texturePrevious;
+
+      return {
+        x: xScale(0) - (isCurrent ? 0 : rectWidth),
+        y: yScale(start.timestamp + offset),
+        width: rectWidth,
+        height:
+          yScale(end.timestamp + offset) - yScale(start.timestamp + offset),
+        fill: texture.url(),
+      };
+    };
+
+    const calloutFn = ({
+      item: { title, label, value, timestamp },
+      offset,
+      scales:[xScale,yScale],
+      isEnd = false
+    }
+    ) => {
+      const isPrevious = timestamp < currentStart;
+      const sideX = isPrevious ? -1 : 1;
+    
+      const x = value ? xScale(value) : rectWidth;
+      const sideY = isEnd ? 1 : -1;
+      const y = yScale(timestamp + offset);
+      const callout = {
+        note: {
+          title,
+          label,
+        },
+        x: sideX * x,
+        y,
+        color: "red",
+        subject: {
+          radius: 6,
+        },
+      };
+    
+      if (value) {
+        callout.nx = sideX * (rectWidth + 10);
+        callout.ny = y;
+      } else {
+        callout.dx = sideX * 10;
+        callout.dy = sideY * 10;
+      }
+      return callout;
+    };
+  
+ 
+
+    const calloutsFn = ({ start, end, offset }) => [
+      calloutFn({item:start, offset,scales}),
+      end ? calloutFn({item:end,offset,scales, isEnd:true}) : undefined,
+    ];
+
     const calloutsSvgData = annotations.flatMap(calloutsFn).filter(Boolean);
     console.log("HISTORY/annotations", annotations);
     console.log("HISTORY/callouts", annotations.flatMap(calloutsFn));
@@ -63,13 +98,21 @@ export const Annotations = ({rectWidth, scales, currentStart}) => {
       .type(d3annotationCalloutCircle);
 
     d3.select(calloutsRef.current).call(callout);
-  });
 
-  return (
+    const newRegions = annotations.map(regionFn).filter(Boolean);
+    setRegions(newRegions);
+  }, [annotations, currentStart, rectWidth, scales, textureCurrent, texturePrevious]);
+
+  return (<>
     <g
       className={styles.annotations}
       ref={calloutsRef}
-      
     />
+    <g ref={regionsRef}>
+      {regions.map((annotation) => (
+        <rect {...annotation} />
+      ))}
+    </g>
+    </>
   );
 };

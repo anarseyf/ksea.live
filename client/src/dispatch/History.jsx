@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import classnames from "classnames";
 
-import textures from "textures";
+
 import {
   TweetsContext,
   currentInterval,
@@ -16,7 +16,6 @@ import { Annotations } from "./Annotations";
 export const History = () => {
   const { history, annotations } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
-  const [annotationRegions, setAnnotationRegions] = useState([]);
   const [scales, setScales] = useState([]);
   const [currentStart, setCurrentStart] = useState([]);
 
@@ -90,40 +89,6 @@ export const History = () => {
       rx: 1,
     }));
     setSvgData([currentYear, previousYear]);
-
-    const textureCurrent = textures
-      .lines()
-      .lighter()
-      .size(8)
-      .orientation("6/8")
-      .stroke("#51aae8");
-    const texturePrevious = textures.lines().lighter().size(8).stroke("silver");
-    d3.select(svgRef.current).call(textureCurrent);
-    d3.select(svgRef.current).call(texturePrevious);
-
-    const regionFn = ({ start, end, offset }) => {
-      if (!start || !end) {
-        return undefined;
-      }
-
-      const isCurrent = offset === 0;
-      const texture = isCurrent ? textureCurrent : texturePrevious;
-
-      return {
-        x: xScale(0) - (isCurrent ? 0 : annotationRectWidth),
-        y: yScale(start.timestamp + offset),
-        width: annotationRectWidth,
-        height:
-          yScale(end.timestamp + offset) - yScale(start.timestamp + offset),
-        fill: texture.url(),
-      };
-    };
-
-    const regions = annotations.map(regionFn).filter(Boolean);
-
-    console.log("HISTORY/regious", regions);
-
-    setAnnotationRegions(regions);
   }, [history, maxBarWidth, height, yearWidth, annotationRectWidth, annotations]);
 
   return (
@@ -138,11 +103,6 @@ export const History = () => {
         width={svgWidth}
         height={svgHeight}
       >
-        <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
-          {annotationRegions.map((annotation) => (
-            <rect {...annotation} />
-          ))}
-        </g>
         <g transform={`translate(${margin.left},${margin.top})`}>
           {svgData.map((dataset, iDataset) =>
             dataset.map((d) => (
