@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import classnames from "classnames";
 import * as d3 from "d3";
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
@@ -23,14 +24,13 @@ export function MultiLine({
   const xAxisRef = useRef(null);
   const yAxisRef = useRef(null);
 
-  const accessor = ({ length, cumulative }) =>
-    useCumulative ? cumulative : length;
-
   useEffect(() => {
     // TODO - no need for useEffect?
     if (!intervals.length) {
       return;
     }
+    const accessor = ({ length, cumulative }) =>
+      useCumulative ? cumulative : length;
 
     const xExtent = intervalExtent(intervals[0]);
 
@@ -73,7 +73,7 @@ export function MultiLine({
       cy: yScale(accessor(bins[bins.length - 1])),
       r: 4,
     });
-  }, [intervals]);
+  }, [height, intervals, useCumulative, width]);
 
   if (!intervals.length) {
     return null;
@@ -103,9 +103,9 @@ export function MultiLine({
           <g>
             {svgData.map((d, i) => (
               <path
-                className={`${svgStyles.path} ${
-                  i === lastIndex ? svgStyles.highlight : ""
-                }`}
+                className={classnames(svgStyles.path, {
+                  [svgStyles.highlight]: i === lastIndex,
+                })}
                 d={d.path}
               />
             ))}

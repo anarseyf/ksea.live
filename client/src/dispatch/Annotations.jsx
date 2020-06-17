@@ -7,32 +7,32 @@ import {
 } from "d3-svg-annotation";
 import { TweetsContext } from "./TweetsProvider";
 
-import styles from './annotations.module.scss';
+import styles from "./annotations.module.scss";
 
-export const Annotations = ({rectWidth, scales, currentStart}) => {
+const textureCurrent = textures
+  .lines()
+  .lighter()
+  .size(8)
+  .orientation("6/8")
+  .stroke("#51aae8");
+const texturePrevious = textures.lines().lighter().size(8).stroke("silver");
+
+export const Annotations = ({ rectWidth, scales, currentStart }) => {
   const calloutsRef = useRef(null);
   const regionsRef = useRef(null);
-  const {  annotations } = useContext(TweetsContext);
+  const { annotations } = useContext(TweetsContext);
   const [regions, setRegions] = useState([]);
 
-  const textureCurrent = textures
-    .lines()
-    .lighter()
-    .size(8)
-    .orientation("6/8")
-    .stroke("#51aae8");
-  const texturePrevious = textures.lines().lighter().size(8).stroke("silver");
   d3.select(regionsRef.current).call(textureCurrent);
   d3.select(regionsRef.current).call(texturePrevious);
 
   useEffect(() => {
-      
     const regionFn = ({ start, end, offset }) => {
       if (!start || !end) {
         return undefined;
       }
-      const[xScale,yScale]=scales; 
-  
+      const [xScale, yScale] = scales;
+
       const isCurrent = offset === 0;
       const texture = isCurrent ? textureCurrent : texturePrevious;
 
@@ -49,13 +49,12 @@ export const Annotations = ({rectWidth, scales, currentStart}) => {
     const calloutFn = ({
       item: { title, label, value, timestamp },
       offset,
-      scales:[xScale,yScale],
-      isEnd = false
-    }
-    ) => {
+      scales: [xScale, yScale],
+      isEnd = false,
+    }) => {
       const isPrevious = timestamp < currentStart;
       const sideX = isPrevious ? -1 : 1;
-    
+
       const x = value ? xScale(value) : rectWidth;
       const sideY = isEnd ? 1 : -1;
       const y = yScale(timestamp + offset);
@@ -71,7 +70,7 @@ export const Annotations = ({rectWidth, scales, currentStart}) => {
           radius: 6,
         },
       };
-    
+
       if (value) {
         callout.nx = sideX * (rectWidth + 10);
         callout.ny = y;
@@ -81,12 +80,10 @@ export const Annotations = ({rectWidth, scales, currentStart}) => {
       }
       return callout;
     };
-  
- 
 
     const calloutsFn = ({ start, end, offset }) => [
-      calloutFn({item:start, offset,scales}),
-      end ? calloutFn({item:end,offset,scales, isEnd:true}) : undefined,
+      calloutFn({ item: start, offset, scales }),
+      end ? calloutFn({ item: end, offset, scales, isEnd: true }) : undefined,
     ];
 
     const calloutsSvgData = annotations.flatMap(calloutsFn).filter(Boolean);
@@ -101,18 +98,20 @@ export const Annotations = ({rectWidth, scales, currentStart}) => {
 
     const newRegions = annotations.map(regionFn).filter(Boolean);
     setRegions(newRegions);
-  }, [annotations, currentStart, rectWidth, scales, textureCurrent, texturePrevious]);
 
-  return (<>
-    <g
-      className={styles.annotations}
-      ref={calloutsRef}
-    />
-    <g ref={regionsRef}>
-      {regions.map((annotation) => (
-        <rect {...annotation} />
-      ))}
-    </g>
+    console.log("ANNOTATIONS/useEffect end");
+  }, [annotations, currentStart, rectWidth, scales]);
+
+  console.log("ANNOTATIONS/render");
+
+  return (
+    <>
+      <g className={styles.annotations} ref={calloutsRef} />
+      <g ref={regionsRef}>
+        {regions.map((annotation) => (
+          <rect {...annotation} />
+        ))}
+      </g>
     </>
   );
 };
