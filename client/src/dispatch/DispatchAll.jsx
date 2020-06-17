@@ -58,7 +58,7 @@ export function DispatchAll() {
 
       <Section styleOption={1}>
         <Paragraph text={history} />
-        <History />
+        {/* <History /> */}
       </Section>
 
       <Section styleOption={2}>
