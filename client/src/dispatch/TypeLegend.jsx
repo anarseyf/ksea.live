@@ -3,7 +3,7 @@ import styles from "./legend.module.scss";
 import * as d3 from "d3";
 import { UserContext, UserContextKeys } from "./UserProvider";
 
-export function TypeLegend({ legend = [], title, showTotal, showLabels }) {
+export const TypeLegend = ({ legend = [], title, showTotal, showLabels }) => {
   const { user, setSelection } = useContext(UserContext);
   const contextKey = UserContextKeys.TypeFilter;
 

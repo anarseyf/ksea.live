@@ -5,7 +5,7 @@ import { intervalExtent, isPhone } from "../clientUtils";
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
 
-export function Histogram() {
+export const Histogram = () => {
   const { history } = useContext(TweetsContext);
   const [svgData, setSvgData] = useState([]);
 
@@ -61,7 +61,7 @@ export function Histogram() {
     }));
 
     setSvgData(newSvgData);
-  }, [history]);
+  }, [height, history, width]);
 
   return (
     <div className={chartStyles.container}>

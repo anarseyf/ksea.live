@@ -31,6 +31,6 @@ const vegaData = {
     ],
 };
 
-export function Chart() {
+export const Chart = () => {
     return <VegaLite spec={vegaSpec} data={vegaData}></VegaLite>;
 }

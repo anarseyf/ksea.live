@@ -28,7 +28,7 @@ const geojsonStyleActive = {
   weight: 2,
 };
 
-export function Map({ area, tileOptions = MapOptions.Default }) {
+export const Map = ({ area, tileOptions = MapOptions.Default }) => {
   const { byTypeForArea } = useContext(TweetsContext);
   const { user } = useContext(UserContext);
   const typeFilter = user[UserContextKeys.TypeFilter];

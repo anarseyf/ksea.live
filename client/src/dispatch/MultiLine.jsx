@@ -5,13 +5,13 @@ import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
 import { intervalExtent, isPhone } from "../clientUtils";
 
-export function MultiLine({
+export const MultiLine = ({
   intervals = [],
   title,
   showHeader = false,
   useCumulative,
   fullWidth = false,
-}) {
+}) => {
   const [svgData, setSvgData] = useState([]);
   const [live, setLive] = useState(null);
 

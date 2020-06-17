@@ -5,7 +5,7 @@ type Props = {
     data: any[];
 };
 
-export function DataTable(props: Props) {
+export const DataTable = (props: Props) => {
     return (
         <Table size="sm" bordered hover variant="dark">
             <tbody>

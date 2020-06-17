@@ -8,7 +8,7 @@ export const Appearance = {
   Highlighted: 1,
 };
 
-export function Dot({ coordinates, severity = 0, active = false }) {
+export const Dot = ({ coordinates, severity = 0, active = false }) => {
   const color = active ? "red" : "white";
   let opacity = 0.4;
   if (severity >= 1) {

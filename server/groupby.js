@@ -251,7 +251,7 @@ const addHistograms = ({ start, end, offset, values, ...rest }) => {
   };
   if (!isHistory(start, end)) {
     result.bins = histogram(values, { extent });
-    result.binsHiRes = histogram(values, { extent, thresholdMinutes: 15 });
+    // result.binsHiRes = histogram(values, { extent, thresholdMinutes: 15 });
   }
   return result;
 };

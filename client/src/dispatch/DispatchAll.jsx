@@ -12,7 +12,7 @@ import { History } from "./History";
 import { TweetsActive } from "./TweetsActive";
 import { TweetsMajor } from "./TweetsMajor";
 
-export function DispatchAll() {
+export const DispatchAll = () => {
   const intro = `Seattle Fire Department 911 dispatches. This page provides a real-time feed of 911 dispatches of FD units today, along with details and comparisons to previous days.`;
 
   const active = `Active events`;

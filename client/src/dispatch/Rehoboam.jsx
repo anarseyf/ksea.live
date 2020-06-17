@@ -8,7 +8,7 @@ import { Topline } from "./Topline";
 import rehoboamStyles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
-export function Rehoboam({ area }) {
+export const Rehoboam = ({ area }) => {
   const { filteredByArea } = useContext(TweetsContext);
   const [svgPath, setSvgPath] = useState(null);
   const [live, setLive] = useState(null);

@@ -10,15 +10,12 @@ import { SvgDot } from "./SvgDot";
 import classnames from "classnames";
 import styles from "./group.module.scss";
 
-export function GroupByArea() {
+export const GroupByArea = () => {
   const { groupedByArea, activeOrMajorByArea } = useContext(TweetsContext);
   const [totalsMap, setTotalsMap] = useState({});
 
   useEffect(() => {
     const map = {};
-    groupedByArea.forEach(({ key: area }) => {
-      map[area] = { active: 0, sev1: 0, sev2: 0 };
-    });
     activeOrMajorByArea.forEach(({ key: area, intervals }) => {
       const values = intervals[0].values;
       map[area] = {

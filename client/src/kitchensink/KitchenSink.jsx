@@ -6,7 +6,7 @@ import Scatterplot from "./Scatterplot";
 import { getEnv, getTweetsStatic, getTweetsSeattleGov } from "../api";
 import styles from "./kitchensink.module.scss";
 
-export function KitchenSink() {
+export const KitchenSink = () => {
   const initialData = [
     {
       address: "15TH AV E / E REPUBLICAN ST",

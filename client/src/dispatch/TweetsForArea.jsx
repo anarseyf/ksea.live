@@ -5,7 +5,7 @@ import { Tweet, TweetModes } from "./Tweet";
 import { UserContextKeys, UserContext } from "./UserProvider";
 import { TweetList } from "./TweetList";
 
-export function TweetsForArea() {
+export const TweetsForArea = () => {
   const { filteredByArea } = useContext(TweetsContext);
   const { user } = useContext(UserContext);
   const filter = user[UserContextKeys.TypeFilter];

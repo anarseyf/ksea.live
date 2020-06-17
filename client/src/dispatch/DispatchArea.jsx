@@ -9,7 +9,7 @@ import { Histogram } from "./Histogram";
 import { Paragraph } from "./Paragraph";
 import { Section } from "./Section";
 
-export function DispatchArea({ area }) {
+export const DispatchArea = ({ area }) => {
   const sources = "Data sources";
 
   return (
