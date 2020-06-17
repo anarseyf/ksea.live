@@ -3,13 +3,13 @@ export const MapOptions = {
     url: "/api/dispatch/maps/{s}/{x}/{y}/{z}/{r}/light",
     r: "@2x",
     attribution:
-      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
   ProxyDark: {
     url: "/api/dispatch/maps/{s}/{x}/{y}/{z}/{r}/dark",
     r: "@2x",
     attribution:
-      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
   CartoDB_DarkMatter: {
     url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
@@ -52,7 +52,7 @@ export const MapOptions = {
     r: "@2x",
     subdomains: "abcd",
     attribution:
-      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     token: "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H", // https://www.jawg.io/lab/access-tokens
   },
   Jawg_Light: {
@@ -62,7 +62,7 @@ export const MapOptions = {
     r: "@2x",
     subdomains: "abcd",
     attribution:
-      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     token: "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H", // https://www.jawg.io/lab/access-tokens
   },
   Mapbox: {
