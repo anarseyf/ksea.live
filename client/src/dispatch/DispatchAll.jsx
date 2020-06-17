@@ -15,6 +15,8 @@ import { TweetsMajor } from "./TweetsMajor";
 export const DispatchAll = () => {
   const intro = `Seattle Fire Department 911 dispatches. This page provides a real-time feed of 911 dispatches of FD units today, along with details and comparisons to previous days.`;
 
+  const lines = `Cumulative number of dispatches for Seattle today, compared to the past 7 days`;
+
   const active = `Active events`;
   const major = `Major events past 24 hours`;
 
@@ -32,16 +34,15 @@ export const DispatchAll = () => {
 
   return (
     <TweetsProvider>
-      {/* <Section styleOption={2}>
+      <Section styleOption={2}>
         <Paragraph text={intro} />
         <Rehoboam />
+        <Paragraph text={lines} />
         <Header />
-        <Histogram />
       </Section>
 
       <Section edgeToEdge={true} styleOption={1}>
         <Map />
-        <LegendSection />
       </Section>
 
       <Section styleOption={0}>
@@ -49,7 +50,7 @@ export const DispatchAll = () => {
         <TweetsActive />
         <Paragraph text={major} />
         <TweetsMajor />
-      </Section> */}
+      </Section>
 
       <Section styleOption={2}>
         <Paragraph text={areas} />
@@ -58,7 +59,7 @@ export const DispatchAll = () => {
 
       <Section styleOption={1}>
         <Paragraph text={history} />
-        {/* <History /> */}
+        <History />
       </Section>
 
       <Section styleOption={2}>

@@ -3,7 +3,6 @@
 // TODO - switch to flexbox
 .container {
   display: block;
-  margin: 1em 2em;
   color: $text-primary;
   text-align: left;
 }
@@ -14,11 +13,13 @@
 }
 .itemContainer:hover {
   border-left-color: $border;
+  background-color: $bg-hover;
   padding: 1em auto;
 }
 
 .vpadding {
-  padding-top: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
 }
 .fullWidth {
   width: 100%;
@@ -42,6 +43,7 @@
   padding-right: 1em;
 }
 .list {
+  padding-top: 0.25em;
   font-size: 0.8em;
   line-height: 1.3em;
   color: $text-secondary;

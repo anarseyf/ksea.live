@@ -15,13 +15,10 @@ export const TweetDetails = ({
   const coordinates = `${format(lat)}°N ${format(-long)}°W`;
   return (
     <div className={styles.container}>
-      <div className={styles.explanation} style={{ color }}>
-        {type}
-      </div>
       <div>{address}</div>
       <div className={styles.latlong}>{coordinates}</div>
-      <div>{unitsStr}</div>
       <div>
+        <span>{unitsStr}</span>
         {unitsList.map((unit) => (
           <span className={styles.unit}>{unit}</span>
         ))}

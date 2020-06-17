@@ -68,7 +68,7 @@ export const GroupByArea = () => {
                 <div>{area}</div>
                 <div className={styles.list}>
                   {neighborhoodsMap[area].map((v) => (
-                    <div>{v}</div>
+                    <div>• {v}</div>
                   ))}
                 </div>
               </div>
