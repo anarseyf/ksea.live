@@ -1,6 +1,5 @@
 import React from "react";
 import { Circle } from "react-leaflet";
-import App from "../App";
 
 export const Appearance = {
   Normal: 0,
@@ -14,15 +13,16 @@ export const Dot = ({ coordinates, severity = 0, active = false }) => {
   if (severity >= 1) {
     opacity = 0.7;
   }
-  if (severity >= 2 || active) {
+  if (active) {
     opacity = 0.9;
   }
+  const baseRadius = active ? 250 : 150;
 
   return (
     <>
       <Circle
         center={coordinates}
-        radius={150}
+        radius={baseRadius}
         color={color}
         fill={true}
         fillOpacity={opacity}
@@ -31,8 +31,8 @@ export const Dot = ({ coordinates, severity = 0, active = false }) => {
       {severity >= 1 && (
         <Circle
           center={coordinates}
-          radius={300}
-          weight={3}
+          radius={baseRadius + 150}
+          weight={2}
           color={color}
           opacity={opacity}
           fill={false}
@@ -41,7 +41,7 @@ export const Dot = ({ coordinates, severity = 0, active = false }) => {
       {severity >= 2 && (
         <Circle
           center={coordinates}
-          radius={500}
+          radius={baseRadius + 300}
           weight={2}
           color={color}
           opacity={opacity}

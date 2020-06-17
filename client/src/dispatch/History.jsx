@@ -156,11 +156,11 @@ export const History = () => {
         height={svgHeight}
       >
         <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
-          <g
+          {/* <g
             className={`${svgStyles.axis} ${historyStyles.axis}`}
             ref={xAxisRef}
             transform={`translate(0,${height})`}
-          />
+          /> */}
           <g
             className={`${svgStyles.axis} ${historyStyles.axis}`}
             ref={yAxisRef}

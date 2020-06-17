@@ -12,7 +12,7 @@ export const Spark = ({  intervals = [],
   showPrevious
 }) => {
   const [svgData, setSvgData] = useState([]);
-  const [live, setLive] = useState(null);
+  const [nowDot, setNowDot] = useState(null);
 
   const svgWidth = isPhone ? 100 : 150;
   const svgHeight = 0.2 * svgWidth,
@@ -53,12 +53,12 @@ export const Spark = ({  intervals = [],
 
     setSvgData(newSvgData);
 
-    const now = +new Date();
     const bins = data[0].bins;
-    setLive({
-      cx: xScale(now),
-      cy: yScale(accessor(bins[bins.length - 1])),
-      r: 4,
+    const lastBin = bins[bins.length - 1];
+    setNowDot({
+      cx: xScale(lastBin.x0),
+      cy: yScale(accessor(lastBin)),
+      r: 3,
     });
   }, [width, height, intervals, showPrevious, useCumulative]);
 
@@ -78,15 +78,15 @@ export const Spark = ({  intervals = [],
             {svgData.map((d, i) => (
               <path
                 className={classnames(svgStyles.path, {
-                  [svgStyles.highlight]: i === lastIndex,
+                  [svgStyles.current]: i === lastIndex,
                 })}
                 d={d.path}
               />
             ))}
           </g>
-          {live && (
-            <g className={svgStyles.live}>
-              <circle {...live} />
+          {nowDot && (
+            <g className={svgStyles.now}>
+              <circle {...nowDot} />
             </g>
           )}
         </g>
