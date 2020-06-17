@@ -29,13 +29,18 @@
   stroke-width: 2;
 }
 
+.now circle {
+  animation: pulse 2s infinite ease-in-out;
+  fill: white;
+  stroke: white;
+}
+
 .live circle {
   animation: pulse 2s infinite ease-in-out;
-}
-.live circle {
   fill: $live;
   stroke: $live;
 }
+
 @keyframes pulse {
   0% {
     opacity: 0.5;

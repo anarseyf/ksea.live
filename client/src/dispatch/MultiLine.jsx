@@ -10,14 +10,13 @@ export const MultiLine = ({
   title,
   showHeader = false,
   useCumulative,
-  fullWidth = false,
 }) => {
   const [svgData, setSvgData] = useState([]);
-  const [live, setLive] = useState(null);
+  const [nowDot, setNowDot] = useState(null);
 
-  const svgWidth = fullWidth ? 320 : 150;
-  const svgHeight = fullWidth ? 100 : 70,
-    margin = { top: 10, right: 20, bottom: 20, left: 30 },
+  const svgWidth = isPhone ? 350 : 500;
+  const svgHeight = 0.35 * svgWidth,
+    margin = { top: 20, right: 30, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
 
@@ -66,12 +65,12 @@ export const MultiLine = ({
 
     setSvgData(newSvgData);
 
-    const now = +new Date();
     const bins = intervals[0].bins;
-    setLive({
-      cx: xScale(now),
-      cy: yScale(accessor(bins[bins.length - 1])),
-      r: 4,
+    const lastBin = bins[bins.length - 1];
+    setNowDot({
+      cx: xScale(lastBin.x0),
+      cy: yScale(accessor(lastBin)),
+      r: 3,
     });
   }, [height, intervals, useCumulative, width]);
 
@@ -104,15 +103,15 @@ export const MultiLine = ({
             {svgData.map((d, i) => (
               <path
                 className={classnames(svgStyles.path, {
-                  [svgStyles.highlight]: i === lastIndex,
+                  [svgStyles.current]: i === lastIndex,
                 })}
                 d={d.path}
               />
             ))}
           </g>
-          {live && (
-            <g className={svgStyles.live}>
-              <circle {...live} />
+          {nowDot && (
+            <g className={svgStyles.now}>
+              <circle {...nowDot} />
             </g>
           )}
         </g>

@@ -1,5 +1,753 @@
 [
   {
+    "id_str": "F200059413",
+    "created_at": "6/17/2020 2:34:25 PM",
+    "derived": {
+      "lat": 47.564617,
+      "long": -122.329378,
+      "timestamp": 1592429665000,
+      "description": "Aid Response",
+      "address": "4401 4th Av S",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Duwamish/SODO",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E27"
+    }
+  },
+  {
+    "id_str": "F200059412",
+    "created_at": "6/17/2020 2:31:48 PM",
+    "derived": {
+      "lat": 47.611243,
+      "long": -122.334557,
+      "timestamp": 1592429508000,
+      "description": "AFA4 - Auto Alarm 2 + 1 + 1",
+      "address": "1511 6th Av",
+      "active": true,
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "B5 E10 E2 L4"
+    }
+  },
+  {
+    "id_str": "F200059411",
+    "created_at": "6/17/2020 2:30:57 PM",
+    "derived": {
+      "lat": 47.66599,
+      "long": -122.405754,
+      "timestamp": 1592429457000,
+      "description": "Aid Response",
+      "address": "3626 W COMMODORE WAY",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Magnolia",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "E20"
+    }
+  },
+  {
+    "id_str": "F200059409",
+    "created_at": "6/17/2020 2:24:27 PM",
+    "derived": {
+      "lat": 47.700279,
+      "long": -122.304233,
+      "timestamp": 1592429067000,
+      "description": "Medic Response, 6 per Rule",
+      "address": "23RD AVE NE / NE 98TH ST",
+      "active": true,
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North",
+      "units": "E39 E40 M17"
+    }
+  },
+  {
+    "id_str": "F200059408",
+    "created_at": "6/17/2020 2:09:20 PM",
+    "derived": {
+      "lat": 47.599191,
+      "long": -122.321025,
+      "timestamp": 1592428160000,
+      "description": "Aid Response",
+      "address": "900 S Jackson St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200059407",
+    "created_at": "6/17/2020 2:04:15 PM",
+    "derived": {
+      "lat": 47.573908,
+      "long": -122.314835,
+      "timestamp": 1592427855000,
+      "description": "Aid Response",
+      "address": "3321 14th Ave S",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Duwamish/SODO",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E13 E30"
+    }
+  },
+  {
+    "id_str": "F200059404",
+    "created_at": "6/17/2020 1:59:31 PM",
+    "derived": {
+      "lat": 47.711677,
+      "long": -122.367702,
+      "timestamp": 1592427571000,
+      "description": "Aid Response",
+      "address": "950 Nw Carkeek Park Rd",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Broadview/Bitter Lake",
+      "neighborhoodGroup": "Northwest",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200059403",
+    "created_at": "6/17/2020 1:43:58 PM",
+    "derived": {
+      "lat": 47.596646,
+      "long": -122.308976,
+      "timestamp": 1592426638000,
+      "description": "Aid Response",
+      "address": "18th Ave S / S Lane St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Judkins Park",
+      "neighborhoodGroup": "Central",
+      "units": "E6"
+    }
+  },
+  {
+    "id_str": "F200059401",
+    "created_at": "6/17/2020 1:40:34 PM",
+    "derived": {
+      "lat": 47.669454,
+      "long": -122.384743,
+      "timestamp": 1592426434000,
+      "description": "Aid Response",
+      "address": "5601 22nd Av Nw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard",
+      "units": "E18"
+    }
+  },
+  {
+    "id_str": "F200059399",
+    "created_at": "6/17/2020 1:36:08 PM",
+    "derived": {
+      "lat": 47.633463,
+      "long": -122.277157,
+      "timestamp": 1592426168000,
+      "description": "Aid Response",
+      "address": "1620 43rd Av E",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Madison Park",
+      "neighborhoodGroup": "East",
+      "units": "E34"
+    }
+  },
+  {
+    "id_str": "F200059397",
+    "created_at": "6/17/2020 1:31:26 PM",
+    "derived": {
+      "lat": 47.613977,
+      "long": -122.343441,
+      "timestamp": 1592425886000,
+      "description": "Aid Response",
+      "address": "306 Blanchard St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200059396",
+    "created_at": "6/17/2020 1:23:53 PM",
+    "derived": {
+      "lat": 47.670727,
+      "long": -122.337005,
+      "timestamp": 1592425433000,
+      "description": "Aid Response",
+      "address": "5601 Mckinley Pl N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Green Lake",
+      "neighborhoodGroup": "Northwest",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F200059395",
+    "created_at": "6/17/2020 1:20:18 PM",
+    "derived": {
+      "lat": 47.601722,
+      "long": -122.334179,
+      "timestamp": 1592425218000,
+      "description": "Natural Gas Odor",
+      "address": "100 Yesler Way",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "L1"
+    }
+  },
+  {
+    "id_str": "F200059394",
+    "created_at": "6/17/2020 1:14:10 PM",
+    "derived": {
+      "lat": 47.658955,
+      "long": -122.358414,
+      "timestamp": 1592424850000,
+      "description": "1RED 1 Unit",
+      "address": "202 NW 43RD ST",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Fremont",
+      "neighborhoodGroup": "Lake Union",
+      "units": "E34 E9"
+    }
+  },
+  {
+    "id_str": "F200059393",
+    "created_at": "6/17/2020 1:05:21 PM",
+    "derived": {
+      "lat": 47.53025,
+      "long": -122.269989,
+      "timestamp": 1592424321000,
+      "description": "Aid Response",
+      "address": "8124 Rainier Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Rainier Beach",
+      "neighborhoodGroup": "Southeast",
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F200059392",
+    "created_at": "6/17/2020 1:03:23 PM",
+    "derived": {
+      "lat": 47.557886,
+      "long": -122.302513,
+      "timestamp": 1592424203000,
+      "description": "Medic Response",
+      "address": "4941 24th Ave S",
+      "active": true,
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Beacon Hill",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E13 E30 M28"
+    }
+  },
+  {
+    "id_str": "F200059391",
+    "created_at": "6/17/2020 1:00:42 PM",
+    "derived": {
+      "lat": 47.523922,
+      "long": -122.325003,
+      "timestamp": 1592424042000,
+      "description": "Auto Fire Alarm",
+      "address": "723 S Concord St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "South Park",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E26 R1"
+    }
+  },
+  {
+    "id_str": "F200059388",
+    "created_at": "6/17/2020 12:39:37 PM",
+    "derived": {
+      "lat": 47.663106,
+      "long": -122.315263,
+      "timestamp": 1592422777000,
+      "description": "Aid Response",
+      "address": "4700 12th Av Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200059387",
+    "created_at": "6/17/2020 12:33:32 PM",
+    "derived": {
+      "lat": 47.591288,
+      "long": -122.297467,
+      "timestamp": 1592422412000,
+      "description": "Aid Response",
+      "address": "S Irving St / M L King Jr Way S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast",
+      "units": "L3"
+    }
+  },
+  {
+    "id_str": "F200059386",
+    "created_at": "6/17/2020 12:30:05 PM",
+    "derived": {
+      "lat": 47.652257,
+      "long": -122.35341,
+      "timestamp": 1592422205000,
+      "description": "Aid Response",
+      "address": "3636 Francis Av N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Fremont",
+      "neighborhoodGroup": "Lake Union",
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F200059384",
+    "created_at": "6/17/2020 12:09:48 PM",
+    "derived": {
+      "lat": 47.542466,
+      "long": -122.275011,
+      "timestamp": 1592420988000,
+      "description": "Aid Response",
+      "address": "4628 S Holly St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast",
+      "units": "E28 M26"
+    }
+  },
+  {
+    "id_str": "F200059383",
+    "created_at": "6/17/2020 12:06:25 PM",
+    "derived": {
+      "lat": 47.571408,
+      "long": -122.291001,
+      "timestamp": 1592420785000,
+      "description": "Aid Response",
+      "address": "3621 33rd Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast",
+      "units": "E30"
+    }
+  },
+  {
+    "id_str": "F200059382",
+    "created_at": "6/17/2020 12:03:16 PM",
+    "derived": {
+      "lat": 47.721329,
+      "long": -122.296339,
+      "timestamp": 1592420596000,
+      "description": "Low Acuity Response",
+      "address": "12740 30th Av Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North",
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F200059381",
+    "created_at": "6/17/2020 12:02:30 PM",
+    "derived": {
+      "lat": 47.694213,
+      "long": -122.35382,
+      "timestamp": 1592420550000,
+      "description": "Aid Response",
+      "address": "411 N 90th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Greenwood/Phinney Ridge",
+      "neighborhoodGroup": "Northwest",
+      "units": "E35"
+    }
+  },
+  {
+    "id_str": "F200059379",
+    "created_at": "6/17/2020 11:52:19 AM",
+    "derived": {
+      "lat": 47.521023,
+      "long": -122.364548,
+      "timestamp": 1592419939000,
+      "description": "Aid Response",
+      "address": "25th Ave Sw / Sw Barton St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Roxhill/Westwood",
+      "neighborhoodGroup": "Delridge Neighborhoods",
+      "units": "L13"
+    }
+  },
+  {
+    "id_str": "F200059378",
+    "created_at": "6/17/2020 11:47:10 AM",
+    "derived": {
+      "lat": 47.708034,
+      "long": -122.345975,
+      "timestamp": 1592419630000,
+      "description": "Aid Response",
+      "address": "1008 N 109th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Broadview/Bitter Lake",
+      "neighborhoodGroup": "Northwest",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200059376",
+    "created_at": "6/17/2020 11:40:13 AM",
+    "derived": {
+      "lat": 47.596646,
+      "long": -122.308976,
+      "timestamp": 1592419213000,
+      "description": "Aid Response",
+      "address": "18th Ave S / S Lane St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Judkins Park",
+      "neighborhoodGroup": "Central",
+      "units": "E6"
+    }
+  },
+  {
+    "id_str": "F200059375",
+    "created_at": "6/17/2020 11:38:52 AM",
+    "derived": {
+      "lat": 47.664321,
+      "long": -122.298926,
+      "timestamp": 1592419132000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "2684 Ne 49th St",
+      "active": false,
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast",
+      "units": "B6 E16 E38 L10"
+    }
+  },
+  {
+    "id_str": "F200059374",
+    "created_at": "6/17/2020 11:37:39 AM",
+    "derived": {
+      "lat": 47.597515,
+      "long": -122.326367,
+      "timestamp": 1592419059000,
+      "description": "Aid Response",
+      "address": "6th Ave S / S Weller St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F200059373",
+    "created_at": "6/17/2020 11:34:05 AM",
+    "derived": {
+      "lat": 47.638695,
+      "long": -122.376149,
+      "timestamp": 1592418845000,
+      "description": "Medic Response",
+      "address": "2208 15th Av W",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Interbay",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "L6 M18"
+    }
+  },
+  {
+    "id_str": "F200059372",
+    "created_at": "6/17/2020 11:32:00 AM",
+    "derived": {
+      "lat": 47.614076,
+      "long": -122.32078,
+      "timestamp": 1592418720000,
+      "description": "Low Acuity Response",
+      "address": "Broadway / E Pike St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East",
+      "units": "HEALTH1"
+    }
+  },
+  {
+    "id_str": "F200059371",
+    "created_at": "6/17/2020 11:31:16 AM",
+    "derived": {
+      "lat": 47.661385,
+      "long": -122.343048,
+      "timestamp": 1592418676000,
+      "description": "Medic Response",
+      "address": "1215 N 45th St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Wallingford",
+      "neighborhoodGroup": "Lake Union",
+      "units": "E9 M17"
+    }
+  },
+  {
+    "id_str": "F200059369",
+    "created_at": "6/17/2020 11:25:55 AM",
+    "derived": {
+      "lat": 47.657383,
+      "long": -122.309749,
+      "timestamp": 1592418355000,
+      "description": "Aid Response",
+      "address": "4100 Memorial Way Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200059368",
+    "created_at": "6/17/2020 11:15:15 AM",
+    "derived": {
+      "lat": 47.602813,
+      "long": -122.331449,
+      "timestamp": 1592417715000,
+      "description": "Hang-Up, Aid",
+      "address": "607 3rd Av",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200059366",
+    "created_at": "6/17/2020 11:12:48 AM",
+    "derived": {
+      "lat": 47.712306,
+      "long": -122.286618,
+      "timestamp": 1592417568000,
+      "description": "Aid Response",
+      "address": "11545 39th Ave Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North",
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F200059367",
+    "created_at": "6/17/2020 11:12:42 AM",
+    "derived": {
+      "lat": 47.549431,
+      "long": -122.326378,
+      "timestamp": 1592417562000,
+      "description": "Aid Response",
+      "address": "5964 6th Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Georgetown",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E27"
+    }
+  },
+  {
+    "id_str": "F200059364",
+    "created_at": "6/17/2020 11:05:53 AM",
+    "derived": {
+      "lat": 47.603233,
+      "long": -122.330297,
+      "timestamp": 1592417153000,
+      "description": "Aid Response",
+      "address": "4th Ave / James St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "A2 A4"
+    }
+  },
+  {
+    "id_str": "F200059360",
+    "created_at": "6/17/2020 10:51:44 AM",
+    "derived": {
+      "lat": 47.656,
+      "long": -122.314425,
+      "timestamp": 1592416304000,
+      "description": "Aid Response",
+      "address": "Brooklyn Ave Ne / Ne Campus Pkwy",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast",
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "F200059361",
+    "created_at": "6/17/2020 10:51:40 AM",
+    "derived": {
+      "lat": 47.608054,
+      "long": -122.32821,
+      "timestamp": 1592416300000,
+      "description": "Medic Response",
+      "address": "823 Madison St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "A5 M1"
+    }
+  },
+  {
+    "id_str": "F200059359",
+    "created_at": "6/17/2020 10:50:44 AM",
+    "derived": {
+      "lat": 47.670913,
+      "long": -122.385203,
+      "timestamp": 1592416244000,
+      "description": "Low Acuity Response",
+      "address": "2233 Nw 58th St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard",
+      "units": "E21 L8"
+    }
+  },
+  {
+    "id_str": "F200059358",
+    "created_at": "6/17/2020 10:47:13 AM",
+    "derived": {
+      "lat": 47.719585,
+      "long": -122.292729,
+      "timestamp": 1592416033000,
+      "description": "Aid Response",
+      "address": "12546 33rd Av Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North",
+      "units": "L5"
+    }
+  },
+  {
+    "id_str": "F200059354",
+    "created_at": "6/17/2020 10:38:53 AM",
+    "derived": {
+      "lat": 47.62691,
+      "long": -122.359305,
+      "timestamp": 1592415533000,
+      "description": "Low Acuity Response",
+      "address": "919 2nd Av W",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "E2 E8"
+    }
+  },
+  {
+    "id_str": "F200059355",
+    "created_at": "6/17/2020 10:38:27 AM",
+    "derived": {
+      "lat": 47.669446,
+      "long": -122.37945,
+      "timestamp": 1592415507000,
+      "description": "Aid Response",
+      "address": "1753 Nw 56th St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard",
+      "units": "E18 E21"
+    }
+  },
+  {
+    "id_str": "F200059356",
+    "created_at": "6/17/2020 10:37:58 AM",
+    "derived": {
+      "lat": 47.585238,
+      "long": -122.296405,
+      "timestamp": 1592415478000,
+      "description": "Investigate Out Of Service",
+      "address": "2020 28th Ave S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast",
+      "units": "E6"
+    }
+  },
+  {
     "id_str": "F200059350",
     "created_at": "6/17/2020 10:20:48 AM",
     "derived": {
@@ -13,6 +761,7 @@
       "severity": 0,
       "neighborhood": "West Seattle Junction/Genesee Hill",
       "neighborhoodGroup": "Southwest",
+      "_old": true,
       "units": "E29"
     }
   },
@@ -30,6 +779,7 @@
       "severity": 0,
       "neighborhood": "First Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "E10 L1"
     }
   },
@@ -42,11 +792,12 @@
       "timestamp": 1592414313000,
       "description": "Auto Fire Alarm",
       "address": "1704 Ne Columbia Rd",
-      "active": true,
+      "active": false,
       "unitCount": 4,
       "severity": 0,
       "neighborhood": "University District",
       "neighborhoodGroup": "Northeast",
+      "_old": true,
       "units": "B6 E17 E31 L6"
     }
   },
@@ -64,6 +815,7 @@
       "severity": 0,
       "neighborhood": "Beacon Hill",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "E28"
     }
   },
@@ -81,6 +833,7 @@
       "severity": 0,
       "neighborhood": "North Beach/Blue Ridge",
       "neighborhoodGroup": "Ballard",
+      "_old": true,
       "units": "A31"
     }
   },
@@ -98,6 +851,7 @@
       "severity": 0,
       "neighborhood": "Rainier Beach",
       "neighborhoodGroup": "Southeast",
+      "_old": true,
       "units": "E33"
     }
   },
@@ -115,6 +869,7 @@
       "severity": 0,
       "neighborhood": "Duwamish/SODO",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "A14"
     }
   },
@@ -132,6 +887,7 @@
       "severity": 0,
       "neighborhood": "University District",
       "neighborhoodGroup": "Northeast",
+      "_old": true,
       "units": "E17"
     }
   },
@@ -149,6 +905,7 @@
       "severity": 0,
       "neighborhood": "Cedar Park/Meadowbrook",
       "neighborhoodGroup": "North",
+      "_old": true,
       "units": "E39"
     }
   },
@@ -166,6 +923,7 @@
       "severity": 0,
       "neighborhood": "Alki/Admiral",
       "neighborhoodGroup": "Southwest",
+      "_old": true,
       "units": "E29 M32"
     }
   },
@@ -178,11 +936,12 @@
       "timestamp": 1592411080000,
       "description": "Aid Response",
       "address": "Spring St / Summit Ave",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "Capitol Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A25 HEALTH1"
     }
   },
@@ -200,6 +959,7 @@
       "severity": 0,
       "neighborhood": "Duwamish/SODO",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "E10 L1"
     }
   },
@@ -217,6 +977,7 @@
       "severity": 0,
       "neighborhood": "Fremont",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "E9"
     }
   },
@@ -234,6 +995,7 @@
       "severity": 0,
       "neighborhood": "Madrona/Leschi",
       "neighborhoodGroup": "Central",
+      "_old": true,
       "units": "A10"
     }
   },
@@ -251,6 +1013,7 @@
       "severity": 0,
       "neighborhood": "Columbia City",
       "neighborhoodGroup": "Southeast",
+      "_old": true,
       "units": "E28 M28"
     }
   },
@@ -268,6 +1031,7 @@
       "severity": 0,
       "neighborhood": "Central Area/Squire Park",
       "neighborhoodGroup": "Central",
+      "_old": true,
       "units": "E6"
     }
   },
@@ -285,6 +1049,7 @@
       "severity": 0,
       "neighborhood": "Cedar Park/Meadowbrook",
       "neighborhoodGroup": "North",
+      "_old": true,
       "units": "E39"
     }
   },
@@ -302,6 +1067,7 @@
       "severity": 0,
       "neighborhood": "North Beacon Hill/Jefferson Park",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "A10"
     }
   },
@@ -319,6 +1085,7 @@
       "severity": 0,
       "neighborhood": "Capitol Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "L10"
     }
   },
@@ -336,6 +1103,7 @@
       "severity": 0,
       "neighborhood": "Sunset Hill/Loyal Heights",
       "neighborhoodGroup": "Ballard",
+      "_old": true,
       "units": "E35 M31"
     }
   },
@@ -353,6 +1121,7 @@
       "severity": 0,
       "neighborhood": "Cascade/Eastlake",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "A2"
     }
   },
@@ -370,6 +1139,7 @@
       "severity": 0,
       "neighborhood": "Pioneer Square/International District",
       "neighborhoodGroup": "Downtown",
+      "_old": true,
       "units": "A5"
     }
   },
@@ -387,6 +1157,7 @@
       "severity": 0,
       "neighborhood": "West Seattle Junction/Genesee Hill",
       "neighborhoodGroup": "Southwest",
+      "_old": true,
       "units": "E29 M32"
     }
   },
@@ -404,6 +1175,7 @@
       "severity": 0,
       "neighborhood": "Cascade/Eastlake",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "A2"
     }
   },
@@ -421,6 +1193,7 @@
       "severity": 0,
       "neighborhood": "Seward Park",
       "neighborhoodGroup": "Southeast",
+      "_old": true,
       "units": "E28 M28"
     }
   },
@@ -438,6 +1211,7 @@
       "severity": 0,
       "neighborhood": "High Point",
       "neighborhoodGroup": "Delridge Neighborhoods",
+      "_old": true,
       "units": "E37"
     }
   },
@@ -455,6 +1229,7 @@
       "severity": 0,
       "neighborhood": "Capitol Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A25"
     }
   },
@@ -472,6 +1247,7 @@
       "severity": 0,
       "neighborhood": "Greenwood/Phinney Ridge",
       "neighborhoodGroup": "Northwest",
+      "_old": true,
       "units": "E21"
     }
   },
@@ -489,6 +1265,7 @@
       "severity": 0,
       "neighborhood": "Downtown Commercial Core",
       "neighborhoodGroup": "Downtown",
+      "_old": true,
       "units": "A10"
     }
   },
@@ -506,6 +1283,7 @@
       "severity": 0,
       "neighborhood": "Cascade/Eastlake",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "A2"
     }
   },
@@ -523,6 +1301,7 @@
       "severity": 0,
       "neighborhood": "Central Area/Squire Park",
       "neighborhoodGroup": "Central",
+      "_old": true,
       "units": "E34"
     }
   },
@@ -540,6 +1319,7 @@
       "severity": 0,
       "neighborhood": "First Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A5 M10"
     }
   },
@@ -557,6 +1337,7 @@
       "severity": 0,
       "neighborhood": "Ballard",
       "neighborhoodGroup": "Ballard",
+      "_old": true,
       "units": "E18"
     }
   },
@@ -574,6 +1355,7 @@
       "severity": 0,
       "neighborhood": "Roxhill/Westwood",
       "neighborhoodGroup": "Delridge Neighborhoods",
+      "_old": true,
       "units": "E37"
     }
   },
@@ -591,6 +1373,7 @@
       "severity": 2,
       "neighborhood": "Interbay",
       "neighborhoodGroup": "Magnolia/Queen Anne",
+      "_old": true,
       "units": "A14 B4 B6 E20 E36 E5 FB1 FIREBOAT FRB5 L8 MRN1 PTRL4 R1 SAFT2"
     }
   },
@@ -608,6 +1391,7 @@
       "severity": 0,
       "neighborhood": "Pioneer Square/International District",
       "neighborhoodGroup": "Downtown",
+      "_old": true,
       "units": "A10"
     }
   },
@@ -625,6 +1409,7 @@
       "severity": 0,
       "neighborhood": "Ravenna/Bryant",
       "neighborhoodGroup": "Northeast",
+      "_old": true,
       "units": "E38 M17"
     }
   },
@@ -642,6 +1427,7 @@
       "severity": 0,
       "neighborhood": "Cascade/Eastlake",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "A2"
     }
   },
@@ -659,6 +1445,7 @@
       "severity": 0,
       "neighborhood": "Queen Anne",
       "neighborhoodGroup": "Magnolia/Queen Anne",
+      "_old": true,
       "units": "E2 L4"
     }
   },
@@ -676,6 +1463,7 @@
       "severity": 0,
       "neighborhood": "Downtown Commercial Core",
       "neighborhoodGroup": "Downtown",
+      "_old": true,
       "units": "E5"
     }
   },
@@ -693,6 +1481,7 @@
       "severity": 0,
       "neighborhood": "South Beacon Hill/NewHolly",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "E28"
     }
   },
@@ -710,6 +1499,7 @@
       "severity": 0,
       "neighborhood": "Seward Park",
       "neighborhoodGroup": "Southeast",
+      "_old": true,
       "units": "E28 L12"
     }
   },
@@ -727,6 +1517,7 @@
       "severity": 0,
       "neighborhood": "Fremont",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "E9 M17"
     }
   },
@@ -744,6 +1535,7 @@
       "severity": 0,
       "neighborhood": "First Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A5"
     }
   },
@@ -761,6 +1553,7 @@
       "severity": 0,
       "neighborhood": "Columbia City",
       "neighborhoodGroup": "Southeast",
+      "_old": true,
       "units": "E30 L12"
     }
   },
@@ -778,6 +1571,7 @@
       "severity": 2,
       "neighborhood": "Seward Park",
       "neighborhoodGroup": "Southeast",
+      "_old": true,
       "units": "A10 A14 B2 B5 E28 E33 L12 M28 M44 R1 SAFT2"
     }
   },
@@ -795,6 +1589,7 @@
       "severity": 0,
       "neighborhood": "Wallingford",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "B6 E17 E9 L9"
     }
   },
@@ -812,6 +1607,7 @@
       "severity": 0,
       "neighborhood": "Judkins Park",
       "neighborhoodGroup": "Central",
+      "_old": true,
       "units": "E6 M1"
     }
   },
@@ -829,6 +1625,7 @@
       "severity": 0,
       "neighborhood": "Capitol Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A25"
     }
   },
@@ -846,6 +1643,7 @@
       "severity": 0,
       "neighborhood": "Greenwood/Phinney Ridge",
       "neighborhoodGroup": "Northwest",
+      "_old": true,
       "units": "E21"
     }
   },
@@ -863,6 +1661,7 @@
       "severity": 0,
       "neighborhood": "Downtown Commercial Core",
       "neighborhoodGroup": "Downtown",
+      "_old": true,
       "units": "A5"
     }
   },
@@ -880,6 +1679,7 @@
       "severity": 0,
       "neighborhood": "Cascade/Eastlake",
       "neighborhoodGroup": "Lake Union",
+      "_old": true,
       "units": "E22"
     }
   },
@@ -897,6 +1697,7 @@
       "severity": 0,
       "neighborhood": "Olympic Hills/Victory Heights",
       "neighborhoodGroup": "North",
+      "_old": true,
       "units": "E39"
     }
   },
@@ -914,6 +1715,7 @@
       "severity": 0,
       "neighborhood": "North Beacon Hill/Jefferson Park",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "E13"
     }
   },
@@ -931,6 +1733,7 @@
       "severity": 0,
       "neighborhood": "Pioneer Square/International District",
       "neighborhoodGroup": "Downtown",
+      "_old": true,
       "units": "A10"
     }
   },
@@ -948,6 +1751,7 @@
       "severity": 0,
       "neighborhood": "Capitol Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A25"
     }
   },
@@ -965,6 +1769,7 @@
       "severity": 0,
       "neighborhood": "Interbay",
       "neighborhoodGroup": "Magnolia/Queen Anne",
+      "_old": true,
       "units": "E20"
     }
   },
@@ -982,6 +1787,7 @@
       "severity": 0,
       "neighborhood": "Cedar Park/Meadowbrook",
       "neighborhoodGroup": "North",
+      "_old": true,
       "units": "E39"
     }
   },
@@ -999,6 +1805,7 @@
       "severity": 0,
       "neighborhood": "Fauntleroy/Seaview",
       "neighborhoodGroup": "Southwest",
+      "_old": true,
       "units": "E32"
     }
   },
@@ -1016,6 +1823,7 @@
       "severity": 0,
       "neighborhood": "Roxhill/Westwood",
       "neighborhoodGroup": "Delridge Neighborhoods",
+      "_old": true,
       "units": "E37"
     }
   },
@@ -1033,6 +1841,7 @@
       "severity": 0,
       "neighborhood": "North Beacon Hill/Jefferson Park",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "A14 E13 M28"
     }
   },
@@ -1050,6 +1859,7 @@
       "severity": 0,
       "neighborhood": "High Point",
       "neighborhoodGroup": "Delridge Neighborhoods",
+      "_old": true,
       "units": "E36"
     }
   },
@@ -1067,6 +1877,7 @@
       "severity": 0,
       "neighborhood": "Rainier Beach",
       "neighborhoodGroup": "Southeast",
+      "_old": true,
       "units": "E33"
     }
   },
@@ -1084,6 +1895,7 @@
       "severity": 0,
       "neighborhood": "Downtown Commercial Core",
       "neighborhoodGroup": "Downtown",
+      "_old": true,
       "units": "L4"
     }
   },
@@ -1101,6 +1913,7 @@
       "severity": 0,
       "neighborhood": "Haller Lake",
       "neighborhoodGroup": "Northwest",
+      "_old": true,
       "units": "E24 M31"
     }
   },
@@ -1118,6 +1931,7 @@
       "severity": 0,
       "neighborhood": "Ballard",
       "neighborhoodGroup": "Ballard",
+      "_old": true,
       "units": "B4 E18 E20 L8"
     }
   },
@@ -1135,6 +1949,7 @@
       "severity": 0,
       "neighborhood": "First Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A5"
     }
   },
@@ -1152,6 +1967,7 @@
       "severity": 0,
       "neighborhood": "Queen Anne",
       "neighborhoodGroup": "Magnolia/Queen Anne",
+      "_old": true,
       "units": "E8"
     }
   },
@@ -1169,6 +1985,7 @@
       "severity": 0,
       "neighborhood": "Ravenna/Bryant",
       "neighborhoodGroup": "Northeast",
+      "_old": true,
       "units": "E31 L9"
     }
   },
@@ -1186,6 +2003,7 @@
       "severity": 0,
       "neighborhood": "Broadview/Bitter Lake",
       "neighborhoodGroup": "Northwest",
+      "_old": true,
       "units": "E24"
     }
   },
@@ -1203,6 +2021,7 @@
       "severity": 0,
       "neighborhood": "North Beacon Hill/Jefferson Park",
       "neighborhoodGroup": "Greater Duwamish",
+      "_old": true,
       "units": "E13"
     }
   },
@@ -1220,6 +2039,7 @@
       "severity": 0,
       "neighborhood": "First Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "A10 M10"
     }
   },
@@ -1237,6 +2057,7 @@
       "severity": 0,
       "neighborhood": "Queen Anne",
       "neighborhoodGroup": "Magnolia/Queen Anne",
+      "_old": true,
       "units": "E8"
     }
   },
@@ -1254,6 +2075,7 @@
       "severity": 0,
       "neighborhood": "Capitol Hill",
       "neighborhoodGroup": "East",
+      "_old": true,
       "units": "E17"
     }
   },

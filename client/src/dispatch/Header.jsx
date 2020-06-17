@@ -14,7 +14,6 @@ export const Header = ({ area }) => {
       <MultiLine
         intervals={filteredByArea[0].intervals}
         useCumulative={false}
-        fullWidth={true}
       />
   );
 };
