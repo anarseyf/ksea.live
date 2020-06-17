@@ -9,14 +9,23 @@
 .axis text {
   fill: $axis-color;
 }
+
 .path {
   stroke-linecap: round;
   stroke: $graph-secondary;
   stroke-width: 1;
   fill: none;
 }
-.highlight {
+.path.highlight {
   stroke: $highlight;
+  stroke-width: 2;
+}
+.path.previous {
+  stroke: gray;
+  stroke-width: 2;
+}
+.path.current {
+  stroke: white;
   stroke-width: 2;
 }
 

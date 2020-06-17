@@ -36,7 +36,7 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   const annotationMax = {
     start: {
       date: maxDateStr,
-      title: `${year} low`,
+      title: `${year} high`,
       label: `${toPacificStringMMMD(maxDate)}: ${max}`,
       value: max,
     },

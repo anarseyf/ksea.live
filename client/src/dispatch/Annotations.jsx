@@ -15,7 +15,7 @@ const textureCurrent = textures
   .size(8)
   .orientation("6/8")
   .stroke("#51aae8");
-const texturePrevious = textures.lines().lighter().size(8).stroke("silver");
+const texturePrevious = textures.lines().lighter().size(8).stroke("#51aae8");
 
 export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
   const calloutsRef = useRef(null);
@@ -118,12 +118,12 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
           <path d={clipPaths.previous} />
         </clipPath>
       </defs>
-      <g className={styles.annotations} ref={calloutsRef} />
       <g ref={regionsRef}>
         {regions.map((annotation) => (
           <rect {...annotation} clipPath="url(#clippath)" />
         ))}
       </g>
+      <g className={styles.annotations} ref={calloutsRef} />
     </>
   );
 };

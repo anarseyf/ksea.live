@@ -12,13 +12,18 @@ import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
 import { Annotations } from "./Annotations";
 
-const closedPath = (bins, line) => {
-  const first = bins[0],
-    last = bins[bins.length - 1];
-  const extraBottom = { x0: last.x0, length: 10000 };
-  const extraTop = { x0: first.x0, length: 10000 };
+const closedPath = (bins, line, offset) => {
+  let data = bins.map(({ x0, length }) => ({
+    timestamp: x0,
+    value: length + offset,
+  }));
 
-  const data = [...bins, extraBottom, extraTop, first];
+  const first = data[0],
+    last = data[data.length - 1];
+  const extraBottom = { timestamp: last.timestamp, value: 10000 };
+  const extraTop = { timestamp: first.timestamp, value: 10000 };
+
+  data = [...data, extraBottom, extraTop, first];
   return line(data);
 };
 
@@ -105,22 +110,31 @@ export const History = () => {
       .x((d) => xScale(-d.length))
       .y((d) => yScale(d.x0));
 
-    const clipLineCurrent = d3
-      .line()
-      .x((d) => xScale(d.length))
-      .y((d) => yScale(d.x0));
-
-    const clipLinePrevious = d3
-      .line()
-      .x((d) => xScale(-d.length))
-      .y((d) => yScale(d.x0));
-
     const pathCurrent = lineCurrent(binsCurrent);
     const pathPrevious = linePrevious(binsPrevious);
     setPaths([pathCurrent, pathPrevious]);
 
-    const clipPathCurrent = closedPath(binsCurrent, clipLineCurrent);
-    const clipPathPrevious = closedPath(binsPrevious, clipLinePrevious);
+    const clipLineCurrent = d3
+      .line()
+      .x((d) => xScale(d.value))
+      .y((d) => yScale(d.timestamp));
+
+    const clipLinePrevious = d3
+      .line()
+      .x((d) => xScale(-d.value))
+      .y((d) => yScale(d.timestamp));
+
+    const pixelOffset = xScale.invert(2) - xScale.invert(0);
+    const clipPathCurrent = closedPath(
+      binsCurrent,
+      clipLineCurrent,
+      pixelOffset
+    );
+    const clipPathPrevious = closedPath(
+      binsPrevious,
+      clipLinePrevious,
+      pixelOffset
+    );
 
     setClipPaths({ current: clipPathCurrent, previous: clipPathPrevious });
 
@@ -142,6 +156,15 @@ export const History = () => {
         height={svgHeight}
       >
         <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
+          <g
+            className={`${svgStyles.axis} ${historyStyles.axis}`}
+            ref={xAxisRef}
+            transform={`translate(0,${height})`}
+          />
+          <g
+            className={`${svgStyles.axis} ${historyStyles.axis}`}
+            ref={yAxisRef}
+          />
           {/* <g>
             {svgData.map((dataset, iDataset) =>
               dataset.map((d) => (
@@ -159,35 +182,25 @@ export const History = () => {
               ))
             )}
           </g> */}
-
           <g>
-            {paths.map((path) => (
+            {paths.map((path, i) => (
               <path
-                className={classnames(svgStyles.path, svgStyles.highlight)}
+                className={classnames(svgStyles.path, {
+                  [svgStyles.current]: !i,
+                  [svgStyles.previous]: i,
+                })}
                 d={path}
               />
             ))}
           </g>
-        </g>
-        <g
-          className={`${svgStyles.axis} ${historyStyles.axis}`}
-          ref={xAxisRef}
-          transform={`translate(${margin.left + yearWidth},${
-            margin.top + height
-          })`}
-        />
-        <g
-          className={`${svgStyles.axis} ${historyStyles.axis}`}
-          ref={yAxisRef}
-          transform={`translate(${margin.left + yearWidth},${margin.top})`}
-        />
-        <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
-          <Annotations
-            rectWidth={annotationRectWidth}
-            currentStart={currentStart}
-            scales={scales}
-            clipPaths={clipPaths}
-          />
+          <g>
+            <Annotations
+              rectWidth={annotationRectWidth}
+              currentStart={currentStart}
+              scales={scales}
+              clipPaths={clipPaths}
+            />
+          </g>
         </g>
       </svg>
     </div>
