@@ -52,46 +52,48 @@ export const GroupByArea = () => {
       {groupedByArea.map(({ key: area, intervals }) => (
         <div className={styles.itemContainer}>
           <Link to={`${encodeURIComponent(area)}`}>
-            <div className={styles.fullWidth}>
-              <div className={classnames(styles.item, styles.float)}>
-                <Spark
-                  intervals={intervals}
-                  useCumulative={true}
-                  showTotal={true}
-                />
-              </div>
-              <div>&nbsp;</div>
-            </div>
-
-            <div className={classnames(styles.item, styles.float)}>
-              <div>
-                <AreaShape area={area} />
-              </div>
-              {/* <Total total={intervals[0].total} /> */}
-              {totalsMap[area] && (
-                <div>
-                  {totalsMap[area].active > 0 && (
-                    <span>
-                      <span>{totalsMap[area].active} active</span>
-                      <SvgDot active={true} />
-                    </span>
-                  )}
-                  {totalsMap[area].sev2 > 0 && (
-                    <span>
-                      <span>{totalsMap[area].sev2} major</span>
-                      <SvgDot sev2={true} />
-                    </span>
-                  )}
+            <div className={styles.vpadding}>
+              <div className={styles.fullWidth}>
+                <div className={styles.item}>&nbsp;</div>
+                <div className={classnames(styles.item, styles.right)}>
+                  <Spark
+                    intervals={intervals}
+                    useCumulative={true}
+                    showTotal={true}
+                  />
                 </div>
-              )}
-            </div>
+              </div>
 
-            <div className={classnames(styles.item, styles.text)}>
-              <div>{area}</div>
-              <div className={styles.list}>
-                {neighborhoodsMap[area].map((v) => (
-                  <div>{v}</div>
-                ))}
+              <div className={classnames(styles.item, styles.text)}>
+                <div>{area}</div>
+                <div className={styles.list}>
+                  {neighborhoodsMap[area].map((v) => (
+                    <div>{v}</div>
+                  ))}
+                </div>
+              </div>
+
+              <div className={classnames(styles.item, styles.right)}>
+                <div>
+                  <AreaShape area={area} />
+                </div>
+                {/* <Total total={intervals[0].total} /> */}
+                {totalsMap[area] && (
+                  <div className={styles.major}>
+                    {totalsMap[area].active > 0 && (
+                      <span>
+                        <span>{totalsMap[area].active} active</span>
+                        <SvgDot active={true} />
+                      </span>
+                    )}
+                    {totalsMap[area].sev2 > 0 && (
+                      <span>
+                        <span>{totalsMap[area].sev2} major</span>
+                        <SvgDot sev2={true} />
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </Link>
