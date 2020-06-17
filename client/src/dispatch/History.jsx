@@ -100,13 +100,13 @@ export const History = () => {
     d3.select(svgRef.current).call(textureCurrent);
     d3.select(svgRef.current).call(texturePrevious);
 
-    const calloutFn = ({ title, label, value, timestamp }, isEnd = false) => {
+    const calloutFn = ({ title, label, value, timestamp }, offset, isEnd = false) => {
       const isPrevious = timestamp < intervalCurrent.start;
       const sideX = isPrevious ? -1 : 1;
 
       const x = value ? xScale(value) : annotationRectWidth;
       const sideY = isEnd ? 1 : -1;
-      const y = yScale(timestamp);
+      const y = yScale(timestamp + offset);
       const callout = {
         note: {
           title,
@@ -130,10 +130,8 @@ export const History = () => {
       return callout;
     };
 
-    const calloutsFn = ({ start, end }) =>
-      [calloutFn(start), end ? calloutFn(end, true) : undefined].filter(
-        Boolean
-      );
+    const calloutsFn = ({ start, end, offset }) =>
+      [calloutFn(start, offset), end ? calloutFn(end, offset, true) : undefined];
 
     const regionFn = ({ start, end, offset }) => {
       if (!start || !end) {
@@ -154,8 +152,12 @@ export const History = () => {
     };
 
     // TODO - move to separate components
-    const calloutsSvgData = annotations.flatMap(calloutsFn);
-    const regions = annotations.map(regionFn);
+    const calloutsSvgData = annotations.flatMap(calloutsFn).filter(Boolean);
+    console.log("HISTORY/annotations",annotations);
+    console.log("HISTORY/callouts",annotations.flatMap(calloutsFn));
+    const regions = annotations.map(regionFn).filter(Boolean);
+
+    console.log("HISTORY/regious",regions);
 
     const callout = d3annotation()
       .annotations(calloutsSvgData)

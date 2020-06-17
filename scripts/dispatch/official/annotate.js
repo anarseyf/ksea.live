@@ -53,9 +53,6 @@ const main = async () => {
   const annotations2019 = annotationsForYear(history2019);
   const annotations2020 = annotationsForYear(history2020);
 
-  console.log("annotate > 2019: \n", annotations2019);
-  console.log("annotate > 2020: \n", annotations2020);
-
   const file = path.join(datasetsPath, "../misc/generatedAnnotations.json");
   await saveJSONAsync(file, [...annotations2019, ...annotations2020]);
   // await saveJSONAsync(file, annotations2019);
