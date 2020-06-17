@@ -33,10 +33,6 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
   const { user } = useContext(UserContext);
   const typeFilter = user[UserContextKeys.TypeFilter];
 
-  if (!byTypeForArea.length) {
-    return null;
-  }
-
   const { geojson, areaProp } = areas;
 
   const selectedTweet = user[UserContextKeys.SelectedTweet];
@@ -77,27 +73,32 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
       })
     );
 
-  let data = byTypeForArea
-    .map(mapper)
-    .flat()
-    .filter(({ type }) => !typeFilter || typeFilter === type);
-
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
-  if (selectedTweet) {
-    // Render selected dot last, so it appears on top
-    const selectedIndex = data.findIndex(isSelectedDot);
 
-    data =
-      selectedIndex === -1
-        ? []
-        : [
-            ...data.slice(0, selectedIndex),
-            ...data.slice(selectedIndex + 1),
-            data[selectedIndex],
-          ];
+  let data = [];
+
+  if (byTypeForArea.length) {
+    data = byTypeForArea
+      .map(mapper)
+      .flat()
+      .filter(({ type }) => !typeFilter || typeFilter === type);
+
+    if (selectedTweet) {
+      // Render selected dot last, so it appears on top
+      const selectedIndex = data.findIndex(isSelectedDot);
+
+      data =
+        selectedIndex === -1
+          ? []
+          : [
+              ...data.slice(0, selectedIndex),
+              ...data.slice(selectedIndex + 1),
+              data[selectedIndex],
+            ];
+    }
+
+    console.log("MAP data", data);
   }
-
-  console.log("MAP data", data);
 
   const appearanceFn = (d) => {
     return selectedTweet
@@ -137,4 +138,4 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
       ))}
     </LeafletMap>
   );
-}
+};

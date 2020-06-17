@@ -1,3 +1,21 @@
+@import "../colors.scss";
+
 .paragraph {
   text-align: left;
+  margin: 1em auto;
+}
+.paragraph h3 {
+  color: $heading;
+}
+.text {
+  color: $text-secondary;
+}
+.text a {
+  color: $link;
+  border-bottom: 2px solid $link;
+  text-decoration: none;
+}
+.margin {
+  margin-left: 1em;
+  margin-right: 1em;
 }
