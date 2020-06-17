@@ -21,14 +21,14 @@ const useStatus = () => {
   const [previousStatus, setPreviousStatus] = useState({});
 
   useEffect(() => {
-    const delay = 10 * 1000;
+    const delay = 30 * 1000;
 
-    console.log("🔺useStatus/starting checker (should only happen once!)");
+    console.log(`🔺useStatus/starting checker @ every ${delay / 1000} seconds`);
 
     const checkForUpdates = async () => {
       const newStatus = await getStatus();
       console.log(
-        `useStatus(${intervalId})/new status (next check in ${
+        `useStatus(${intervalId})/current status (next check in ${
           delay / 1000
         } sec)`,
         newStatus
@@ -43,7 +43,6 @@ const useStatus = () => {
 
     const intervalId = setInterval(checkForUpdates, delay);
     return () => clearInterval(intervalId);
-    //   XXXXXX   eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   return { status, previousStatus };
