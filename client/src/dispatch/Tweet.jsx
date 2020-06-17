@@ -17,8 +17,6 @@ export const TweetModes = {
   GreyedOut: 2,
 };
 
-const iconSize = 25;
-
 export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
   const { user, setSelection } = useContext(UserContext);
   const selectedTweet = user[UserContextKeys.SelectedTweet];
@@ -54,7 +52,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
           <SvgDot active={active} sev1={sev1} sev2={sev2} />
         </div>
         <div>
-          <span>{tweet.derived.description}</span>
+          {tweet.derived.description}
         </div>
       </div>
       {isDetailed && <TweetDetails tweet={tweet} />}
