@@ -53,7 +53,8 @@
     "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",
     "background:dev": "cd scripts/dispatch && npm run nobackfill:official",
     "build": "cd client && npm run build",
-    "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write"
+    "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
+    "bundle:aws": "git archive -v -o coffee-aws.zip --format=zip HEAD"
   },
   "repository": {
     "type": "git",
