@@ -60,7 +60,7 @@ const statusController = async (req, res) => {
     const mostRecentId = await getMostRecentAsync(); // TODO
     const runnersStatus = await readJSONAsync(statusFile, {});
     const lastUpdated =
-      (runnersStatus.split && +new Date(runnersStatus.split.lastRun)) || 0;
+      (runnersStatus.split && runnersStatus.split.lastRun) || 0;
 
     const status = {
       mostRecentId,

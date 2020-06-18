@@ -3,7 +3,7 @@ export async function getEnv() {
 }
 
 export async function getStatus() {
-  return getByAPI(`/dispatch/status`);
+  return getByAPI(`dispatch/status`);
 }
 
 export async function getAnnotations() {

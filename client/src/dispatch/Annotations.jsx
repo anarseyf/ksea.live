@@ -27,7 +27,6 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
   d3.select(regionsRef.current).call(texturePrevious);
 
   useEffect(() => {
-    console.log("ANN/scales:", scales);
     if (!scales.length) {
       return;
     }
@@ -107,8 +106,6 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
 
     console.log("ANNOTATIONS/useEffect end");
   }, [annotations, currentStart, rectWidth, scales]);
-
-  console.log("ANNOTATIONS/render");
 
   return (
     <>

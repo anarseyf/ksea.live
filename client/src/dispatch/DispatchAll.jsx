@@ -28,8 +28,8 @@ export const DispatchAll = () => {
       {/*Data is current as of
       <strong>TODO</strong> in Seattle.*/} Active
       incidents are marked
-      <SvgDot active={true} />. Incidents with ≥10 units dispatched are marked
-      as major <SvgDot sev2={true} />.
+      <SvgDot active={true} />. Incidents with 5 or more units dispatched are
+      marked <SvgDot sev1={true} />, with 10 or more <SvgDot sev2={true} />.
     </p>
   );
 
@@ -45,7 +45,7 @@ export const DispatchAll = () => {
   );
 
   const areas =
-    "To examine individual events, first select an area of the city.";
+    "TODO - update this text. Select an area of the city to zoom in to incidents there.";
 
   const history =
     "This views shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
@@ -73,7 +73,10 @@ export const DispatchAll = () => {
 
   const notes = (
     <>
-      <p>The data is up-to-date to within a minute or so.</p>
+      <p>
+        The data is up-to-date to within a minute or so. Incidents for which no
+        geolocation data is available are not shown and not counted.
+      </p>
       <p>
         Visualization by{" "}
         <a href="http://linkedin.com/in/anarseyf/">Anar Seyf</a>.

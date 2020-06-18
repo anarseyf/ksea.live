@@ -98,8 +98,6 @@ export const Rehoboam = ({ area }) => {
     : 0;
   const text = area || "Seattle";
 
-  console.log("REHOBOAM/render");
-
   return (
     <div className={rehoboamStyles.container}>
       <div className={rehoboamStyles.counter}>
