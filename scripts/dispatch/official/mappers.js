@@ -22,6 +22,11 @@ export const markAsOld = (entry) => {
   return entry;
 };
 
+export const unmarkAsOld = (entry) => {
+  delete entry.derived._old;
+  return entry;
+};
+
 export const removeSeattleWA = ({
   derived: { address, ...restDerived },
   ...rest

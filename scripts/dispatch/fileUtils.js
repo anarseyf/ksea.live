@@ -3,7 +3,7 @@ const util = require("util");
 const lockfile = require("lockfile");
 
 import { tz as timezone } from "moment-timezone";
-import { severityMapper, markAsOld } from "./official/mappers";
+import { severityMapper, markAsOld, unmarkAsOld } from "./official/mappers";
 import { sortByTimestampDescending, sortNewFirst } from "./serverUtils";
 
 const getUnits = (entries) =>
@@ -152,7 +152,7 @@ export const appendJSONAsync = async (
   const oldData = await readJSONAsync(fileName, []);
   let result;
   if (merge) {
-    result = mergeAll(oldData.map(markAsOld).concat(newData));
+    result = mergeAll(oldData.map(markAsOld).concat(newData)).map(unmarkAsOld);
   } else {
     result = oldData.concat(newData);
   }

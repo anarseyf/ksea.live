@@ -16,8 +16,8 @@ import { SvgDot } from "./SvgDot";
 export const DispatchAll = () => {
   const intro = (
     <p>
-      A near-real-time visualization of Seattle Fire Department 911 dispatches. All
-      timestamps are in local time (Pacific timezone). It is now{" "}
+      A near-real-time visualization of Seattle Fire Department 911 dispatches.
+      All timestamps are in local time (Pacific timezone). It is now{" "}
       <strong>1:45PM</strong> in Seattle. Active incidents are marked{" "}
       <SvgDot active={true} />. Incidents with ≥10 units dispatched are marked
       as major <SvgDot sev2={true} />.
@@ -62,7 +62,15 @@ export const DispatchAll = () => {
     </p>
   );
 
-  const notes = (<><p>The data is up-to-date to within a minute or so.</p><p>Created by <a href="http://linkedin.com/in/anarseyf/">Anar Seyf</a>.</p></>);
+  const notes = (
+    <>
+      <p>The data is up-to-date to within a minute or so.</p>
+      <p>
+        Visualization by{" "}
+        <a href="http://linkedin.com/in/anarseyf/">Anar Seyf</a>.
+      </p>
+    </>
+  );
 
   return (
     <TweetsProvider>
@@ -80,9 +88,9 @@ export const DispatchAll = () => {
 
       <Section styleOption={0}>
         <Paragraph title="Active Incidents" content={""} />
-        {/* <TweetsActive /> */}
+        <TweetsActive />
         <Paragraph title="Major Incidents" content={major} />
-        {/* <TweetsMajor /> */}
+        <TweetsMajor />
       </Section>
 
       <Section styleOption={2}>

@@ -124,7 +124,7 @@ const minimizeBin = ({ x0, x1, length, cumulative, sev1, sev2 }) => ({
 });
 
 const minimizeInterval = ({
-  values,
+  values, // dropped on purpose
   bins,
   binsHiRes,
   binsLowRes,
