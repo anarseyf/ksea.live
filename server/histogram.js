@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { isAtLeastSev1, isAtLeastSev2 } from "../client/src/clientUtils";
+import { isExactlySev1, isExactlySev2 } from "../client/src/clientUtils";
 
 const defaultAccessor = ({ derived: { timestamp, offset = 0 } }) =>
   timestamp + offset;
@@ -19,8 +19,8 @@ export function histogram(
 
   let bins = histogram(values);
 
-  let binsSev1 = histogram(values.filter(isAtLeastSev1));
-  let binsSev2 = histogram(values.filter(isAtLeastSev2));
+  let binsSev1 = histogram(values.filter(isExactlySev1));
+  let binsSev2 = histogram(values.filter(isExactlySev2));
 
   bins.forEach((bin, i) => {
     bin.sev1 = binsSev1[i].length;

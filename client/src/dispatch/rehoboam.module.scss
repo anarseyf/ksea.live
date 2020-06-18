@@ -16,8 +16,14 @@
 
 .circle {
   stroke: $axis-color;
+  stroke-width: 1;
+  fill: none;
 }
 
 .path {
   stroke-opacity: 0.8;
+}
+
+.sev2 {
+  fill: white;
 }

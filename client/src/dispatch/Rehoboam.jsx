@@ -9,9 +9,10 @@ import rehoboamStyles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Rehoboam = ({ area }) => {
-  const { filteredByArea, activeOrMajorForArea } = useContext(TweetsContext);
+  const { filteredByArea } = useContext(TweetsContext);
   const [svgPath, setSvgPath] = useState(null);
   const [live, setLive] = useState(null);
+  const [sev2Circles, setSev2Circles] = useState([]);
   const axisRef = useRef(null);
 
   const radius = 100;
@@ -75,6 +76,25 @@ export const Rehoboam = ({ area }) => {
       .tickSize(0)
       .tickValues(tickValues); // for some reason d3.timeHour.every() doesn't work here
     d3.select(axisRef.current).call(axis);
+
+    const toSev2Points = ({ x0, sev2 }) => {
+      const stack = [...new Array(sev2)].map((_, i) => ({
+        x0,
+        index: i + 1,
+      }));
+      return stack;
+    };
+    const sev2Data = bins.flatMap(toSev2Points);
+    console.log("REHOBOAM/sev2 data", sev2Data);
+    const radialSev2Data = sev2Data.map(({ x0, index }) => toRadial(x0, index));
+
+    const circles = radialSev2Data.map(([theta, r]) => ({
+      cx: r * Math.sin(theta),
+      cy: r * -Math.cos(theta),
+      r: 5,
+    }));
+
+    setSev2Circles(circles);
   }, [filteredByArea]);
 
   const total = filteredByArea.length
@@ -92,14 +112,7 @@ export const Rehoboam = ({ area }) => {
       <svg className={rehoboamStyles.svg} width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin + radius},${margin + radius})`}>
           <g className={svgStyles.axis} ref={axisRef} />
-          <circle
-            className={rehoboamStyles.circle}
-            cx={0}
-            cy={0}
-            r={radius}
-            fill="none"
-            strokeWidth={1}
-          />
+          <circle className={rehoboamStyles.circle} cx={0} cy={0} r={radius} />
           {svgPath && (
             <path
               className={classnames(
@@ -115,6 +128,14 @@ export const Rehoboam = ({ area }) => {
               <circle {...live} />
             </g>
           )}
+          <g>
+            {sev2Circles.map((c) => (
+              <>
+                <circle className={rehoboamStyles.sev2} {...c} />
+                <circle {...c} r={c.r + 3} fill="none" stroke="white" />
+              </>
+            ))}
+          </g>
         </g>
       </svg>
     </div>

@@ -69,30 +69,30 @@ export const DispatchAll = () => {
       <Section styleOption={2}>
         <Paragraph title="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
-        <Paragraph title="Past week" content={pastWeek} />
+        <Paragraph title="Past Week" content={pastWeek} />
         <Header />
       </Section>
 
       <Section edgeToEdge={true} styleOption={1}>
-        <Paragraph title="Map" content={map} margin={true} />
-        <Map />
+        <Paragraph title="Today's Incidents" content={map} margin={true} />
+        {/* <Map /> */}
       </Section>
 
       <Section styleOption={0}>
-        <Paragraph title="Active incidents" content={""} />
-        <TweetsActive />
-        <Paragraph title="Major incidents" content={major} />
-        <TweetsMajor />
+        <Paragraph title="Active Incidents" content={""} />
+        {/* <TweetsActive /> */}
+        <Paragraph title="Major Incidents" content={major} />
+        {/* <TweetsMajor /> */}
       </Section>
 
       <Section styleOption={2}>
-        <Paragraph title="Areas of the city" content={areas} />
-        <GroupByArea />
+        <Paragraph title="City Areas" content={areas} />
+        {/* <GroupByArea /> */}
       </Section>
 
       <Section styleOption={1}>
-        <Paragraph title="2020 vs 2019" content={history} />
-        <History />
+        <Paragraph title="Last Year vs This Year" content={history} />
+        {/* <History /> */}
       </Section>
 
       <Section styleOption={2}>

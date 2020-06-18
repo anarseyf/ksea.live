@@ -28,3 +28,6 @@ export const toPacificStr = (timestamp) =>
 export const isActive = ({ derived: { active } }) => active;
 export const isAtLeastSev1 = ({ derived: { severity } }) => severity >= 1;
 export const isAtLeastSev2 = ({ derived: { severity } }) => severity >= 2;
+
+export const isExactlySev1 = ({ derived: { severity } }) => severity === 1;
+export const isExactlySev2 = ({ derived: { severity } }) => severity === 2;

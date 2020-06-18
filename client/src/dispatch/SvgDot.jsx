@@ -16,7 +16,7 @@ export const SvgDot = ({ active = false, sev1 = false, sev2 = false }) => {
       height={size}
     >
       <circle cx={size / 2} cy={size / 2} r={innerRadius} fill={color} />
-      {sev1 && (
+      {(sev1 || sev2) && (
         <circle
           cx={size / 2}
           cy={size / 2}

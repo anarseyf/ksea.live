@@ -17,19 +17,19 @@
 }
 
 .years {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .years .left {
   display: inline-block;
   text-align: right;
-  color: $text-secondary;
+  color: $graph-secondary;
   padding-right: 0.2em;
 }
 .years .right {
   display: inline-block;
   text-align: left;
-  color: $text-primary;
+  color: $graph-primary;
   padding-left: 0.2em;
 }
 
