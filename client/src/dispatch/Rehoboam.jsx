@@ -62,7 +62,7 @@ export const Rehoboam = ({ area }) => {
     d3.select(axisRef.current).call(axis);
 
     if (activeOrMajorForArea.length) {
-      const toRadialCircle = (timestamp, index) => {
+      const toRadialDot = (timestamp, index) => {
         const fraction = (timestamp - start) / (end - start);
         const radians = 2 * Math.PI * fraction;
         const offset = index * 2 * dotRadius;
@@ -80,7 +80,7 @@ export const Rehoboam = ({ area }) => {
       const sev2Data = activeOrMajorBins.flatMap(toSev2Points);
       console.log("REHOBOAM/sev2 data", sev2Data);
       const radialSev2Data = sev2Data.map(({ x0, index }) =>
-        toRadialCircle(x0, index)
+        toRadialDot(x0, index)
       );
 
       const circles = radialSev2Data.map(([theta, r]) => ({

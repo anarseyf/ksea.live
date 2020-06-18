@@ -83,7 +83,7 @@ export const DispatchAll = () => {
 
       <Section edgeToEdge={true} styleOption={1}>
         <Paragraph title="Today's Incidents" content={map} margin={true} />
-        {/* <Map /> */}
+        <Map />
       </Section>
 
       <Section styleOption={0}>
@@ -95,12 +95,12 @@ export const DispatchAll = () => {
 
       <Section styleOption={2}>
         <Paragraph title="City Areas" content={areas} />
-        {/* <GroupByArea /> */}
+        <GroupByArea />
       </Section>
 
       <Section styleOption={1}>
         <Paragraph title="Last Year vs This Year" content={history} />
-        {/* <History /> */}
+        <History />
       </Section>
 
       <Section styleOption={2}>
