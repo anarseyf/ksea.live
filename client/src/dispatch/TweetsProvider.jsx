@@ -23,7 +23,9 @@ const useStatus = () => {
   useEffect(() => {
     const delay = 30 * 1000;
 
-    console.log(`🔺useStatus/starting checker @ every ${delay / 1000} seconds`);
+    console.log(
+      `🟥 useStatus/starting checker @ every ${delay / 1000} seconds`
+    );
 
     const checkForUpdates = async () => {
       const newStatus = await getStatus();
@@ -90,7 +92,7 @@ const useTweets = (filters = {}) => {
     (async () => {
       const area = filters.area || "seattle";
       setActiveOrMajorForArea(
-        await getTweetsForArea(area, { activeOrMajor: true })
+        await getTweetsForArea(area, { activeOrMajor: true, minimize: false })
       );
     })();
 

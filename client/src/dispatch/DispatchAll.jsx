@@ -15,13 +15,13 @@ import { SvgDot } from "./SvgDot";
 
 export const DispatchAll = () => {
   const intro = (
-    <div>
-      A near-real-time view of Seattle Fire Department 911 dispatches. All
+    <p>
+      A near-real-time visualization of Seattle Fire Department 911 dispatches. All
       timestamps are in local time (Pacific timezone). It is now{" "}
       <strong>1:45PM</strong> in Seattle. Active incidents are marked{" "}
       <SvgDot active={true} />. Incidents with ≥10 units dispatched are marked
       as major <SvgDot sev2={true} />.
-    </div>
+    </p>
   );
 
   const pastWeek = `Cumulative number of dispatches for Seattle today, compared to the past 7 days`;
@@ -29,10 +29,10 @@ export const DispatchAll = () => {
   const map = "Seattle map";
 
   const major = (
-    <div>
+    <p>
       Incidents in the past 24 hours with <strong>ten or more</strong> units
       deployed
-    </div>
+    </p>
   );
 
   const areas =
@@ -42,7 +42,7 @@ export const DispatchAll = () => {
     "This views shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
 
   const sources = (
-    <div>
+    <p>
       The primary data source is{" "}
       <a href="http://www2.seattle.gov/fire/realTime911/">
         Real-Time 911 Dispatch
@@ -59,13 +59,15 @@ export const DispatchAll = () => {
       <a href="https://react-leaflet.js.org">react-leaflet</a>. Map tiles
       provided by{" "}
       <a href="https://www.jawg.io/docs/apidocs/static-maps/">Jawg Maps</a>.
-    </div>
+    </p>
   );
+
+  const notes = (<><p>The data is up-to-date to within a minute or so.</p><p>Created by <a href="http://linkedin.com/in/anarseyf/">Anar Seyf</a>.</p></>);
 
   return (
     <TweetsProvider>
       <Section styleOption={2}>
-        <Paragraph title="Seattle FD Real-Time Dispatch" content={intro} />
+        <Paragraph title="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
         <Paragraph title="Past week" content={pastWeek} />
         <Header />
@@ -95,6 +97,7 @@ export const DispatchAll = () => {
 
       <Section styleOption={2}>
         <Paragraph title="Data Sources" content={sources} />
+        <Paragraph title="Notes" content={notes} />
       </Section>
     </TweetsProvider>
   );

@@ -9,7 +9,7 @@ import rehoboamStyles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Rehoboam = ({ area }) => {
-  const { filteredByArea } = useContext(TweetsContext);
+  const { filteredByArea, activeOrMajorForArea } = useContext(TweetsContext);
   const [svgPath, setSvgPath] = useState(null);
   const [live, setLive] = useState(null);
   const axisRef = useRef(null);
@@ -119,4 +119,4 @@ export const Rehoboam = ({ area }) => {
       </svg>
     </div>
   );
-}
+};
