@@ -67,3 +67,8 @@ export const runForAll = async (callback) => {
     return [];
   }
 };
+
+export const hasCoordinates = ({ derived: { lat, long } }) =>
+  typeof lat === "number" && typeof long === "number";
+
+export const hasNoCoordinates = (d) => !hasCoordinates(d);

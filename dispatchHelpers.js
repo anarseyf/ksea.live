@@ -11,6 +11,7 @@ import {
   listFilesAsync,
 } from "./scripts/dispatch/fileUtils";
 import { withScriptsJsonPath } from "./scripts/dispatch/serverUtils";
+import { hasCoordinates } from "./scripts/dispatch/official/scriptUtil";
 
 export const dataPath = path.join(__dirname, "datasets/official/");
 export const statusFile = withScriptsJsonPath("status.json");
@@ -47,7 +48,7 @@ export const allTweets = async (intervals) => {
   const files = await Promise.all(
     fileNames.map(async (f) => await readJSONAsync(f, []))
   );
-  const all = files.flat();
+  const all = files.flat().filter(hasCoordinates);
   console.log(`read ${files.length} files: ${all.length} total entries`);
 
   const byIntervals = byIntervalsGen(intervals);

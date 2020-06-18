@@ -1,10 +1,6 @@
-import {
-  readJSONAsync,
-  saveJSONAsync,
-  appendJSONAsync,
-  saveFileAsync,
-} from "../fileUtils";
+import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
 import { withScriptsJsonPath } from "../serverUtils";
+import { hasCoordinates, hasNoCoordinates } from "./scriptUtil";
 import { getIncidentsMap } from "./mappers";
 const axios = require("axios").default;
 
@@ -13,11 +9,6 @@ const queueSize = 100;
 const targetFile = withScriptsJsonPath("resolved.json");
 const incidentsMapFile = withScriptsJsonPath("incidentsMap.json");
 const deadLetterQueue = withScriptsJsonPath("unresolved.json");
-
-const hasCoordinates = ({ derived: { lat, long } }) =>
-  typeof lat === "number" && typeof long === "number";
-
-const hasNoCoordinates = (d) => !hasCoordinates(d);
 
 const resolveGeo = async (entries = []) => {
   if (!entries.length) {
@@ -52,7 +43,7 @@ const resolveGeo = async (entries = []) => {
       geoData.find(({ incident_number }) => id_str === incident_number) || {};
 
     let lat, long;
-    if (incident_number) {
+    if (incident_number && latitude && longitude) {
       lat = +latitude;
       long = +longitude;
     }

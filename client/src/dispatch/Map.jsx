@@ -13,7 +13,6 @@ const minZoom = 10,
   defaultZoom = 11;
 let zoom = defaultZoom;
 
-const overlayColor = "dodgerblue";
 const activeColor = "dodgerblue";
 const geojsonStyleBounds = {
   color: "#1e90ff66", // dodgerblue with alpha
@@ -77,9 +76,10 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   if (byTypeForArea.length) {
     data = byTypeForArea
-      .map(mapper)
-      .flat()
+      .flatMap(mapper)
       .filter(({ type }) => !typeFilter || typeFilter === type);
+
+    console.log("Entries with no lat/long:", data.filter(({lat}) => !lat).map(({id_str})=>id_str));
 
     if (selectedTweet) {
       // Render selected dot last, so it appears on top

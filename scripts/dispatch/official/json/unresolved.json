@@ -1,15 +1,93 @@
 [
   {
-    "id_str": "F200059743",
-    "created_at": "6/18/2020 12:12:45 PM",
+    "id_str": "F200059773",
+    "created_at": "6/18/2020 1:26:35 PM",
     "derived": {
-      "timestamp": 1592507565000,
-      "description": "Illegal Burn",
-      "address": "9046 11TH AVE SW",
+      "timestamp": 1592511995000,
+      "description": "Medic Response",
+      "address": "9731 32nd Ave Sw",
       "active": true,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "L13 M32"
+    }
+  },
+  {
+    "id_str": "F200059662",
+    "created_at": "6/18/2020 9:43:36 AM",
+    "derived": {
+      "timestamp": 1592498616000,
+      "description": "Alarm Bell",
+      "address": "9600 9th Av Nw",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E35 L8"
+    }
+  },
+  {
+    "id_str": "F200059660",
+    "created_at": "6/18/2020 9:36:02 AM",
+    "derived": {
+      "timestamp": 1592498162000,
+      "description": "Aid Response",
+      "address": "5410 S Prentice St",
+      "active": false,
       "unitCount": 1,
       "severity": 0,
-      "units": "E11"
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F200059659",
+    "created_at": "6/18/2020 9:34:11 AM",
+    "derived": {
+      "timestamp": 1592498051000,
+      "description": "Reduce Resp Opposite Tunnel",
+      "address": "2931 S Mount Baker Blvd",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E30"
+    }
+  },
+  {
+    "id_str": "F200059658",
+    "created_at": "6/18/2020 9:25:06 AM",
+    "derived": {
+      "timestamp": 1592497506000,
+      "description": "Medic Response",
+      "address": "9455 27th Av Sw",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E37 M26"
+    }
+  },
+  {
+    "id_str": "F200059657",
+    "created_at": "6/18/2020 9:22:22 AM",
+    "derived": {
+      "timestamp": 1592497342000,
+      "description": "Auto Fire Alarm",
+      "address": "111 Cedar St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E2 L6"
+    }
+  },
+  {
+    "id_str": "F200059653",
+    "created_at": "6/18/2020 9:05:29 AM",
+    "derived": {
+      "timestamp": 1592496329000,
+      "description": "Low Acuity Response",
+      "address": "501 Rainier Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E6"
     }
   },
   {
@@ -49,6 +127,2788 @@
       "unitCount": 1,
       "severity": 0,
       "units": "MAR5"
+    }
+  },
+  {
+    "id_str": "F200054870",
+    "created_at": "6/3/2020 9:27:27 PM",
+    "derived": {
+      "timestamp": 1591244847000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "200 THOMAS ST",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F200052026",
+    "created_at": "5/27/2020 10:43:51 AM",
+    "derived": {
+      "timestamp": 1590601431000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1000 Minor Ave",
+      "units": "E25"
+    }
+  },
+  {
+    "id_str": "F200052025",
+    "created_at": "5/27/2020 10:37:31 AM",
+    "derived": {
+      "timestamp": 1590601051000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "151 John St",
+      "units": "A2 M10"
+    }
+  },
+  {
+    "id_str": "F200052024",
+    "created_at": "5/27/2020 10:33:26 AM",
+    "derived": {
+      "timestamp": 1590600806000,
+      "description": "Medic Response",
+      "entries": 3,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "4245 Roosevelt Way Ne",
+      "units": "E17 E31 M17"
+    }
+  },
+  {
+    "id_str": "F200052023",
+    "created_at": "5/27/2020 10:32:32 AM",
+    "derived": {
+      "timestamp": 1590600752000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "910 Marion St",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200052021",
+    "created_at": "5/27/2020 10:28:19 AM",
+    "derived": {
+      "timestamp": 1590600499000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1st Ave / Pike St",
+      "units": "E5 M1"
+    }
+  },
+  {
+    "id_str": "F200052017",
+    "created_at": "5/27/2020 10:25:36 AM",
+    "derived": {
+      "timestamp": 1590600336000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "17th Ave / E Madison St",
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F200052018",
+    "created_at": "5/27/2020 10:25:27 AM",
+    "derived": {
+      "timestamp": 1590600327000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "4218 Sw Massachusetts St",
+      "units": "E29"
+    }
+  },
+  {
+    "id_str": "F200052016",
+    "created_at": "5/27/2020 10:23:26 AM",
+    "derived": {
+      "timestamp": 1590600206000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "7907 Aurora Av N",
+      "units": "E21"
+    }
+  },
+  {
+    "id_str": "F200052014",
+    "created_at": "5/27/2020 9:57:24 AM",
+    "derived": {
+      "timestamp": 1590598644000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "4126 49th Ave S",
+      "units": "L12"
+    }
+  },
+  {
+    "id_str": "F200052013",
+    "created_at": "5/27/2020 9:53:59 AM",
+    "derived": {
+      "timestamp": 1590598439000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3720 Montlake Blvd Ne",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200052012",
+    "created_at": "5/27/2020 9:50:06 AM",
+    "derived": {
+      "timestamp": 1590598206000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "9430 Haraden Pl S",
+      "units": "E28 M28"
+    }
+  },
+  {
+    "id_str": "F200052011",
+    "created_at": "5/27/2020 9:41:04 AM",
+    "derived": {
+      "timestamp": 1590597664000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "418 E Loretta Pl",
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F200052009",
+    "created_at": "5/27/2020 9:26:50 AM",
+    "derived": {
+      "timestamp": 1590596810000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1565 Nw 90th St",
+      "units": "E35"
+    }
+  },
+  {
+    "id_str": "F200052008",
+    "created_at": "5/27/2020 9:25:24 AM",
+    "derived": {
+      "timestamp": 1590596724000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1565 N 90TH ST",
+      "units": "E21"
+    }
+  },
+  {
+    "id_str": "F200052005",
+    "created_at": "5/27/2020 9:17:25 AM",
+    "derived": {
+      "timestamp": 1590596245000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "7751 63rd Ave Ne",
+      "units": "E38"
+    }
+  },
+  {
+    "id_str": "F200052004",
+    "created_at": "5/27/2020 9:16:14 AM",
+    "derived": {
+      "timestamp": 1590596174000,
+      "description": "Natural Gas Odor",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "University Way Ne / Ne 42nd St",
+      "units": "L9"
+    }
+  },
+  {
+    "id_str": "F200052003",
+    "created_at": "5/27/2020 9:16:01 AM",
+    "derived": {
+      "timestamp": 1590596161000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "9963 Rainier Ave S",
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F200052002",
+    "created_at": "5/27/2020 9:07:37 AM",
+    "derived": {
+      "timestamp": 1590595657000,
+      "description": "Aid Response",
+      "entries": 3,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2905 1st Av",
+      "units": "A2 A4"
+    }
+  },
+  {
+    "id_str": "F200052001",
+    "created_at": "5/27/2020 9:06:43 AM",
+    "derived": {
+      "timestamp": 1590595603000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "6940 37th Av S",
+      "units": "E28"
+    }
+  },
+  {
+    "id_str": "F200051999",
+    "created_at": "5/27/2020 9:00:59 AM",
+    "derived": {
+      "timestamp": 1590595259000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1718 N 103rd St",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200047291",
+    "created_at": "5/18/2020 9:15:21 AM",
+    "derived": {
+      "timestamp": 1589818521000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "5398 RUSSELL AV NW",
+      "units": "E18 M18"
+    }
+  },
+  {
+    "id_str": "F200042408",
+    "created_at": "5/3/2020 12:09:44 PM",
+    "derived": {
+      "timestamp": 1588532984000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "22122 95th Pl W",
+      "units": "CHAP7"
+    }
+  },
+  {
+    "id_str": "F200039443",
+    "created_at": "4/23/2020 7:19:11 PM",
+    "derived": {
+      "timestamp": 1587694751000,
+      "description": "1RED 1 Unit",
+      "entries": 2,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "8300 16th Av S",
+      "units": "E5 FB2 FRB5"
+    }
+  },
+  {
+    "id_str": "F200032321",
+    "created_at": "4/1/2020 10:45:42 AM",
+    "derived": {
+      "timestamp": 1585763142000,
+      "description": "AFA4 - Auto Alarm 2 + 1 + 1",
+      "entries": 2,
+      "unitCount": 4,
+      "severity": 0,
+      "address": "1305 E Fir St",
+      "units": "B2 E25 E6 L3"
+    }
+  },
+  {
+    "id_str": "F200032320",
+    "created_at": "4/1/2020 10:38:40 AM",
+    "derived": {
+      "timestamp": 1585762720000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2701 Beacon Av S",
+      "units": "E13"
+    }
+  },
+  {
+    "id_str": "F200032319",
+    "created_at": "4/1/2020 10:35:54 AM",
+    "derived": {
+      "timestamp": 1585762554000,
+      "description": "Rescue Lock In/Out",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "314 2nd Av S",
+      "units": "E10 L1"
+    }
+  },
+  {
+    "id_str": "F200032317",
+    "created_at": "4/1/2020 10:28:48 AM",
+    "derived": {
+      "timestamp": 1585762128000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "144 N 130th St",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200032315",
+    "created_at": "4/1/2020 10:21:09 AM",
+    "derived": {
+      "timestamp": 1585761669000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3203 Ne 88th St",
+      "units": "E40"
+    }
+  },
+  {
+    "id_str": "F200032314",
+    "created_at": "4/1/2020 10:21:03 AM",
+    "derived": {
+      "timestamp": 1585761663000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1st Ave / Cherry St",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200032313",
+    "created_at": "4/1/2020 10:15:12 AM",
+    "derived": {
+      "timestamp": 1585761312000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3601 34th Av S",
+      "units": "E30"
+    }
+  },
+  {
+    "id_str": "F200032311",
+    "created_at": "4/1/2020 10:08:44 AM",
+    "derived": {
+      "timestamp": 1585760924000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "450 Alaskan Way S",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200032310",
+    "created_at": "4/1/2020 10:05:31 AM",
+    "derived": {
+      "timestamp": 1585760731000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "5450 Leary Av Nw",
+      "units": "L8 M18"
+    }
+  },
+  {
+    "id_str": "F200032309",
+    "created_at": "4/1/2020 10:03:59 AM",
+    "derived": {
+      "timestamp": 1585760639000,
+      "description": "Automatic Fire Alarm False",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2202 8th Ave",
+      "units": "E2"
+    }
+  },
+  {
+    "id_str": "F200032307",
+    "created_at": "4/1/2020 9:57:44 AM",
+    "derived": {
+      "timestamp": 1585760264000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "10507 Aurora Av N",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200032306",
+    "created_at": "4/1/2020 9:48:17 AM",
+    "derived": {
+      "timestamp": 1585759697000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2445 NW 62ND ST",
+      "units": "E18"
+    }
+  },
+  {
+    "id_str": "F200027632",
+    "created_at": "3/18/2020 10:38:15 AM",
+    "derived": {
+      "timestamp": 1584553095000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1222 1st AvE",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200018591",
+    "created_at": "2/21/2020 11:03:27 AM",
+    "derived": {
+      "timestamp": 1582311807000,
+      "description": "Aid Response Freeway",
+      "entries": 2,
+      "unitCount": 11,
+      "severity": 2,
+      "address": "NB SR99 AT 14TH AVE S",
+      "units": "A14 A2 B5 B7 E26 E27 L11 M28 M44 R1 SAFT2"
+    }
+  },
+  {
+    "id_str": "F200018134",
+    "created_at": "2/20/2020 11:06:27 AM",
+    "derived": {
+      "timestamp": 1582225587000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1915 Ne Naomi Pl",
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "F200018132",
+    "created_at": "2/20/2020 11:00:20 AM",
+    "derived": {
+      "timestamp": 1582225220000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "12036 40th Ave Ne",
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F200018129",
+    "created_at": "2/20/2020 10:51:52 AM",
+    "derived": {
+      "timestamp": 1582224712000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "209 2nd Av S",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200018127",
+    "created_at": "2/20/2020 10:48:54 AM",
+    "derived": {
+      "timestamp": 1582224534000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2105 5th Av",
+      "units": "E2 L4"
+    }
+  },
+  {
+    "id_str": "F200018125",
+    "created_at": "2/20/2020 10:45:52 AM",
+    "derived": {
+      "timestamp": 1582224352000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "325 9th Av",
+      "units": "HEALTH1"
+    }
+  },
+  {
+    "id_str": "F200018123",
+    "created_at": "2/20/2020 10:41:15 AM",
+    "derived": {
+      "timestamp": 1582224075000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "700 Broadway",
+      "units": "A25 E25"
+    }
+  },
+  {
+    "id_str": "F200018118",
+    "created_at": "2/20/2020 10:28:41 AM",
+    "derived": {
+      "timestamp": 1582223321000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "700 Broadway",
+      "units": "A25 M10"
+    }
+  },
+  {
+    "id_str": "F200018117",
+    "created_at": "2/20/2020 10:27:23 AM",
+    "derived": {
+      "timestamp": 1582223243000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "900 12th Av",
+      "units": "E25 L10"
+    }
+  },
+  {
+    "id_str": "F200018116",
+    "created_at": "2/20/2020 10:26:32 AM",
+    "derived": {
+      "timestamp": 1582223192000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1604 Ne 50th St",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200018115",
+    "created_at": "2/20/2020 10:25:50 AM",
+    "derived": {
+      "timestamp": 1582223150000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "100 Crockett St",
+      "units": "L6"
+    }
+  },
+  {
+    "id_str": "F200018114",
+    "created_at": "2/20/2020 10:21:08 AM",
+    "derived": {
+      "timestamp": 1582222868000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "409 8th Av S",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F200018113",
+    "created_at": "2/20/2020 10:10:17 AM",
+    "derived": {
+      "timestamp": 1582222217000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2519 1st Av",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200018111",
+    "created_at": "2/20/2020 10:01:22 AM",
+    "derived": {
+      "timestamp": 1582221682000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "323 W Raye St",
+      "units": "E8 E9"
+    }
+  },
+  {
+    "id_str": "F200018110",
+    "created_at": "2/20/2020 9:58:28 AM",
+    "derived": {
+      "timestamp": 1582221508000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "326 9th Av",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200018108",
+    "created_at": "2/20/2020 9:51:39 AM",
+    "derived": {
+      "timestamp": 1582221099000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "9427 25th Ave Ne",
+      "units": "E40"
+    }
+  },
+  {
+    "id_str": "F200018107",
+    "created_at": "2/20/2020 9:41:14 AM",
+    "derived": {
+      "timestamp": 1582220474000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "118 Republican St",
+      "units": "E2"
+    }
+  },
+  {
+    "id_str": "F200018106",
+    "created_at": "2/20/2020 9:35:35 AM",
+    "derived": {
+      "timestamp": 1582220135000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2nd Ave N / Mercer St",
+      "units": "E8"
+    }
+  },
+  {
+    "id_str": "F200018105",
+    "created_at": "2/20/2020 9:34:00 AM",
+    "derived": {
+      "timestamp": 1582220040000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "2203 Airport Way S",
+      "units": "A14 M1 M10"
+    }
+  },
+  {
+    "id_str": "F200018104",
+    "created_at": "2/20/2020 9:33:09 AM",
+    "derived": {
+      "timestamp": 1582219989000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2445 Nw 57th St",
+      "units": "E18"
+    }
+  },
+  {
+    "id_str": "F200018103",
+    "created_at": "2/20/2020 9:31:10 AM",
+    "derived": {
+      "timestamp": 1582219870000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "305 Harrison St",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F200018102",
+    "created_at": "2/20/2020 9:27:02 AM",
+    "derived": {
+      "timestamp": 1582219622000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2nd Ave N / Mercer St",
+      "units": "A2 A4"
+    }
+  },
+  {
+    "id_str": "F200015254",
+    "created_at": "2/12/2020 12:44:15 PM",
+    "derived": {
+      "timestamp": 1581540255000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "10750 30th Av Ne9",
+      "units": "E39 L5"
+    }
+  },
+  {
+    "id_str": "F200010500",
+    "created_at": "1/30/2020 11:39:51 AM",
+    "derived": {
+      "timestamp": 1580413191000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "5968 Rainier Av S8",
+      "units": "E28 M28"
+    }
+  },
+  {
+    "id_str": "F200001026",
+    "created_at": "1/3/2020 4:21:10 PM",
+    "derived": {
+      "timestamp": 1578097270000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "12535 Lake City Way Ne",
+      "units": "L6"
+    }
+  },
+  {
+    "id_str": "F200001025",
+    "created_at": "1/3/2020 4:21:04 PM",
+    "derived": {
+      "timestamp": 1578097264000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "12535 Lake City Way Ne",
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F190133580",
+    "created_at": "12/19/2019 6:00:20 PM",
+    "derived": {
+      "timestamp": 1576807220000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "6727 Rainier Av S",
+      "units": "E28"
+    }
+  },
+  {
+    "id_str": "F190133579",
+    "created_at": "12/19/2019 6:00:20 PM",
+    "derived": {
+      "timestamp": 1576807220000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "Harrison St / Terry Av N",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F190133578",
+    "created_at": "12/19/2019 5:56:27 PM",
+    "derived": {
+      "timestamp": 1576806987000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "6521 21st Av Sw",
+      "units": "E11 M10"
+    }
+  },
+  {
+    "id_str": "F190133577",
+    "created_at": "12/19/2019 5:54:46 PM",
+    "derived": {
+      "timestamp": 1576806886000,
+      "description": "Illegal Burn",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "Aurora Av N / N 80th St",
+      "units": "E21"
+    }
+  },
+  {
+    "id_str": "F190133576",
+    "created_at": "12/19/2019 5:50:13 PM",
+    "derived": {
+      "timestamp": 1576806613000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1100 Fairview Av N",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F190133575",
+    "created_at": "12/19/2019 5:50:00 PM",
+    "derived": {
+      "timestamp": 1576806600000,
+      "description": "Rescue Elevator",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3150 Airport Way S",
+      "units": "R1"
+    }
+  },
+  {
+    "id_str": "F190133572",
+    "created_at": "12/19/2019 5:40:33 PM",
+    "derived": {
+      "timestamp": 1576806033000,
+      "description": "Automatic Medical Alarm",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "4733 51st Av S",
+      "units": "E28"
+    }
+  },
+  {
+    "id_str": "F190133569",
+    "created_at": "12/19/2019 5:37:28 PM",
+    "derived": {
+      "timestamp": 1576805848000,
+      "description": "Automatic Fire Alarm Resd",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "719 30th Av S",
+      "units": "E6"
+    }
+  },
+  {
+    "id_str": "F190133565",
+    "created_at": "12/19/2019 5:29:08 PM",
+    "derived": {
+      "timestamp": 1576805348000,
+      "description": "Water Job Minor",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "9455 27th Av Sw",
+      "units": "L11"
+    }
+  },
+  {
+    "id_str": "F190133564",
+    "created_at": "12/19/2019 5:29:06 PM",
+    "derived": {
+      "timestamp": 1576805346000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "3433 61st Av Sw",
+      "units": "E29 M32"
+    }
+  },
+  {
+    "id_str": "F190133562",
+    "created_at": "12/19/2019 5:25:46 PM",
+    "derived": {
+      "timestamp": 1576805146000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "300 Pine St",
+      "units": "A4 M1"
+    }
+  },
+  {
+    "id_str": "F190133561",
+    "created_at": "12/19/2019 5:25:28 PM",
+    "derived": {
+      "timestamp": 1576805128000,
+      "description": "Water Rescue Response",
+      "entries": 1,
+      "unitCount": 8,
+      "severity": 1,
+      "address": "2401 N Northlake Way",
+      "units": "B4 FIREBOAT FRB5 L9 M18 M44 PTRL4 SAFT2"
+    }
+  },
+  {
+    "id_str": "F190133559",
+    "created_at": "12/19/2019 5:23:39 PM",
+    "derived": {
+      "timestamp": 1576805019000,
+      "description": "Water Rescue Recon Response",
+      "entries": 1,
+      "unitCount": 6,
+      "severity": 1,
+      "address": "2401 N Northlake Way",
+      "units": "A14 B6 E17 E18 E9 R1"
+    }
+  },
+  {
+    "id_str": "F190133558",
+    "created_at": "12/19/2019 5:23:36 PM",
+    "derived": {
+      "timestamp": 1576805016000,
+      "description": "Electrical Problem",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1819 Ne 47th St",
+      "units": "E31 L9"
+    }
+  },
+  {
+    "id_str": "F190133556",
+    "created_at": "12/19/2019 5:14:40 PM",
+    "derived": {
+      "timestamp": 1576804480000,
+      "description": "Automatic Fire Alarm Resd",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "9611 39th Av Sw",
+      "units": "E37"
+    }
+  },
+  {
+    "id_str": "F190133554",
+    "created_at": "12/19/2019 5:07:09 PM",
+    "derived": {
+      "timestamp": 1576804029000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "4517 California Av Sw",
+      "units": "L11"
+    }
+  },
+  {
+    "id_str": "F190133553",
+    "created_at": "12/19/2019 5:04:22 PM",
+    "derived": {
+      "timestamp": 1576803862000,
+      "description": "Wires Down",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "James St / Minor Av",
+      "units": "E25"
+    }
+  },
+  {
+    "id_str": "F190133551",
+    "created_at": "12/19/2019 4:56:11 PM",
+    "derived": {
+      "timestamp": 1576803371000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "9125 Rainier Av S",
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F190133549",
+    "created_at": "12/19/2019 4:51:54 PM",
+    "derived": {
+      "timestamp": 1576803114000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "Brooklyn Av Ne / Ne 77th St",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F190133548",
+    "created_at": "12/19/2019 4:48:19 PM",
+    "derived": {
+      "timestamp": 1576802899000,
+      "description": "Medic Response",
+      "entries": 6,
+      "unitCount": 7,
+      "severity": 1,
+      "address": "5207 35TH AV SW",
+      "units": "E31 E32 L9 M10 M18 M31 M32"
+    }
+  },
+  {
+    "id_str": "F190133546",
+    "created_at": "12/19/2019 4:41:53 PM",
+    "derived": {
+      "timestamp": 1576802513000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "3820 Rainier Av S",
+      "units": "E28 E30"
+    }
+  },
+  {
+    "id_str": "F190133545",
+    "created_at": "12/19/2019 4:41:00 PM",
+    "derived": {
+      "timestamp": 1576802460000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "12343 Lake City Way Ne",
+      "units": "E39 M17"
+    }
+  },
+  {
+    "id_str": "F190133544",
+    "created_at": "12/19/2019 4:40:02 PM",
+    "derived": {
+      "timestamp": 1576802402000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "13200 Aurora Av N",
+      "units": "E24"
+    }
+  },
+  {
+    "id_str": "F190133543",
+    "created_at": "12/19/2019 4:38:02 PM",
+    "derived": {
+      "timestamp": 1576802282000,
+      "description": "Automatic Fire Alarm Resd",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "6538 29th Av Sw",
+      "units": "E11 E37"
+    }
+  },
+  {
+    "id_str": "F190133542",
+    "created_at": "12/19/2019 4:34:36 PM",
+    "derived": {
+      "timestamp": 1576802076000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "4634 26th Av Ne",
+      "units": "E38"
+    }
+  },
+  {
+    "id_str": "F190133541",
+    "created_at": "12/19/2019 4:31:05 PM",
+    "derived": {
+      "timestamp": 1576801865000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2140 N Northgate Way",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F190133539",
+    "created_at": "12/19/2019 4:23:37 PM",
+    "derived": {
+      "timestamp": 1576801417000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "5933 32nd Av Sw",
+      "units": "E37"
+    }
+  },
+  {
+    "id_str": "F190133538",
+    "created_at": "12/19/2019 4:21:48 PM",
+    "derived": {
+      "timestamp": 1576801308000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1301 1st Av",
+      "units": "E25 L1"
+    }
+  },
+  {
+    "id_str": "F190133537",
+    "created_at": "12/19/2019 4:19:02 PM",
+    "derived": {
+      "timestamp": 1576801142000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "3820 Rainier Av S",
+      "units": "E28 E30"
+    }
+  },
+  {
+    "id_str": "F190133536",
+    "created_at": "12/19/2019 4:17:33 PM",
+    "derived": {
+      "timestamp": 1576801053000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1914 3rd Av",
+      "units": "E10 M10"
+    }
+  },
+  {
+    "id_str": "F190133535",
+    "created_at": "12/19/2019 4:11:47 PM",
+    "derived": {
+      "timestamp": 1576800707000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "102 Pike St",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F190133534",
+    "created_at": "12/19/2019 4:06:22 PM",
+    "derived": {
+      "timestamp": 1576800382000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "4012 Sw Alaska St",
+      "units": "E32"
+    }
+  },
+  {
+    "id_str": "F190133533",
+    "created_at": "12/19/2019 4:03:32 PM",
+    "derived": {
+      "timestamp": 1576800212000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "904 7th Av",
+      "units": "A5 M1"
+    }
+  },
+  {
+    "id_str": "F190133532",
+    "created_at": "12/19/2019 4:01:01 PM",
+    "derived": {
+      "timestamp": 1576800061000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2615 1st Av",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F190133529",
+    "created_at": "12/19/2019 3:54:36 PM",
+    "derived": {
+      "timestamp": 1576799676000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "401 15th Av E",
+      "units": "E25"
+    }
+  },
+  {
+    "id_str": "F190133528",
+    "created_at": "12/19/2019 3:51:30 PM",
+    "derived": {
+      "timestamp": 1576799490000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "7th Av S / S Jackson St",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F190133527",
+    "created_at": "12/19/2019 3:35:34 PM",
+    "derived": {
+      "timestamp": 1576798534000,
+      "description": "MVI Freeway",
+      "entries": 3,
+      "unitCount": 5,
+      "severity": 1,
+      "address": "Sb I5 At Spokane / Sb I5 To Wb Wsea Frwy",
+      "units": "A10 A5 E2 E5 L1"
+    }
+  },
+  {
+    "id_str": "F190133526",
+    "created_at": "12/19/2019 3:29:46 PM",
+    "derived": {
+      "timestamp": 1576798186000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1000 4th Av",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F190133525",
+    "created_at": "12/19/2019 3:28:03 PM",
+    "derived": {
+      "timestamp": 1576798083000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1st Av / Marion St",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F190133524",
+    "created_at": "12/19/2019 3:24:14 PM",
+    "derived": {
+      "timestamp": 1576797854000,
+      "description": "MVI - Motor Vehicle Incident",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "S Holgate St / Occidental Av S",
+      "units": "R1"
+    }
+  },
+  {
+    "id_str": "F190133523",
+    "created_at": "12/19/2019 3:15:15 PM",
+    "derived": {
+      "timestamp": 1576797315000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "94 Bay St",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F190133522",
+    "created_at": "12/19/2019 3:09:37 PM",
+    "derived": {
+      "timestamp": 1576796977000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1101 Madison St",
+      "units": "A25 E25"
+    }
+  },
+  {
+    "id_str": "F190133521",
+    "created_at": "12/19/2019 3:09:12 PM",
+    "derived": {
+      "timestamp": 1576796952000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1915 Ne Chelan Ln",
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "F190133519",
+    "created_at": "12/19/2019 3:04:26 PM",
+    "derived": {
+      "timestamp": 1576796666000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "10200 1st Av Ne",
+      "units": "E16 M17"
+    }
+  },
+  {
+    "id_str": "F190133518",
+    "created_at": "12/19/2019 3:03:31 PM",
+    "derived": {
+      "timestamp": 1576796611000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1301 1st Av",
+      "units": "E5 L1"
+    }
+  },
+  {
+    "id_str": "F190133517",
+    "created_at": "12/19/2019 2:55:01 PM",
+    "derived": {
+      "timestamp": 1576796101000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1144 Eastlake Av E",
+      "units": "E22"
+    }
+  },
+  {
+    "id_str": "F190133516",
+    "created_at": "12/19/2019 2:50:49 PM",
+    "derived": {
+      "timestamp": 1576795849000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2544 S Raymond St",
+      "units": "E28 L12"
+    }
+  },
+  {
+    "id_str": "F190133515",
+    "created_at": "12/19/2019 2:45:59 PM",
+    "derived": {
+      "timestamp": 1576795559000,
+      "description": "MVI - Motor Vehicle Incident",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1100 N 115th St",
+      "units": "E24"
+    }
+  },
+  {
+    "id_str": "F190133513",
+    "created_at": "12/19/2019 2:34:36 PM",
+    "derived": {
+      "timestamp": 1576794876000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1236 S Donovan St",
+      "units": "E26 M28"
+    }
+  },
+  {
+    "id_str": "F190133512",
+    "created_at": "12/19/2019 2:34:03 PM",
+    "derived": {
+      "timestamp": 1576794843000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1609 19th Av",
+      "units": "E25 L10"
+    }
+  },
+  {
+    "id_str": "F190133511",
+    "created_at": "12/19/2019 2:32:00 PM",
+    "derived": {
+      "timestamp": 1576794720000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2559 30th Av W",
+      "units": "E41 M18"
+    }
+  },
+  {
+    "id_str": "F190133510",
+    "created_at": "12/19/2019 2:28:18 PM",
+    "derived": {
+      "timestamp": 1576794498000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "4th Av / Lenora St",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F190133509",
+    "created_at": "12/19/2019 2:25:34 PM",
+    "derived": {
+      "timestamp": 1576794334000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "509 3rd Av",
+      "units": "A10 E5"
+    }
+  },
+  {
+    "id_str": "F190133506",
+    "created_at": "12/19/2019 2:23:12 PM",
+    "derived": {
+      "timestamp": 1576794192000,
+      "description": "Car Fire Freeway",
+      "entries": 2,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "Nb I5 At Spring",
+      "units": "E10 E6 L1"
+    }
+  },
+  {
+    "id_str": "F190125842",
+    "created_at": "11/27/2019 4:00:36 PM",
+    "derived": {
+      "timestamp": 1574899236000,
+      "description": "Illegal Burn",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "SB I5 FROM 50",
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "M190122818",
+    "created_at": "11/18/2019 6:29:36 PM",
+    "derived": {
+      "timestamp": 1574130576000,
+      "description": "MVI - Motor Vehicle Incident",
+      "entries": 1,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "EB I90 TO ISLAND CREST WAY",
+      "units": "A10 E5 E6"
+    }
+  },
+  {
+    "id_str": "F190118407",
+    "created_at": "11/6/2019 4:04:42 PM",
+    "derived": {
+      "timestamp": 1573085082000,
+      "description": "Mutual Aid, Engine",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "8300 16th Av S",
+      "units": "E26"
+    }
+  },
+  {
+    "id_str": "F190115928",
+    "created_at": "10/30/2019 7:31:26 PM",
+    "derived": {
+      "timestamp": 1572489086000,
+      "description": "Car Fire Freeway",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "EB I90 AT W MERCER WAY",
+      "units": "E13 E6"
+    }
+  },
+  {
+    "id_str": "F190108226",
+    "created_at": "10/10/2019 10:28:20 AM",
+    "derived": {
+      "timestamp": 1570728500000,
+      "description": "Automatic Fire Alarm False",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "917 S Nebraska St",
+      "units": "E27 L12"
+    }
+  },
+  {
+    "id_str": "F190108225",
+    "created_at": "10/10/2019 10:23:46 AM",
+    "derived": {
+      "timestamp": 1570728226000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "Nw 70th St / 24th Av Nw",
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F190108224",
+    "created_at": "10/10/2019 10:12:44 AM",
+    "derived": {
+      "timestamp": 1570727564000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2401 Ne Blakeley St",
+      "units": "E38 M17"
+    }
+  },
+  {
+    "id_str": "F190108223",
+    "created_at": "10/10/2019 10:08:47 AM",
+    "derived": {
+      "timestamp": 1570727327000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "WINONA AV N / N 77TH ST",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F190108222",
+    "created_at": "10/10/2019 10:03:18 AM",
+    "derived": {
+      "timestamp": 1570726998000,
+      "description": "Medic Response",
+      "entries": 3,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1635 8th Av",
+      "units": "A4 M1"
+    }
+  },
+  {
+    "id_str": "F190108220",
+    "created_at": "10/10/2019 9:47:39 AM",
+    "derived": {
+      "timestamp": 1570726059000,
+      "description": "Investigate Out Of Service",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "9009 Greenwood Av N",
+      "units": "E24"
+    }
+  },
+  {
+    "id_str": "F190108219",
+    "created_at": "10/10/2019 9:45:11 AM",
+    "derived": {
+      "timestamp": 1570725911000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2988 Sw Avalon Way",
+      "units": "E29"
+    }
+  },
+  {
+    "id_str": "F190108216",
+    "created_at": "10/10/2019 9:36:04 AM",
+    "derived": {
+      "timestamp": 1570725364000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1120 Spring St",
+      "units": "E6 L3"
+    }
+  },
+  {
+    "id_str": "F190108215",
+    "created_at": "10/10/2019 9:34:56 AM",
+    "derived": {
+      "timestamp": 1570725296000,
+      "description": "Natural Gas Odor",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "M L King Jr Way S / S Graham St",
+      "units": "L12"
+    }
+  },
+  {
+    "id_str": "F190108214",
+    "created_at": "10/10/2019 9:30:56 AM",
+    "derived": {
+      "timestamp": 1570725056000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "7547 24th Av Nw",
+      "units": "E35"
+    }
+  },
+  {
+    "id_str": "F190108213",
+    "created_at": "10/10/2019 9:29:05 AM",
+    "derived": {
+      "timestamp": 1570724945000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "11050 8th Av Ne",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F190108212",
+    "created_at": "10/10/2019 9:28:22 AM",
+    "derived": {
+      "timestamp": 1570724902000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "618 John St",
+      "units": "E25 L10"
+    }
+  },
+  {
+    "id_str": "F190108211",
+    "created_at": "10/10/2019 9:27:18 AM",
+    "derived": {
+      "timestamp": 1570724838000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "420 4th Av",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F190108210",
+    "created_at": "10/10/2019 9:18:26 AM",
+    "derived": {
+      "timestamp": 1570724306000,
+      "description": "Aid Response Yellow",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "12341 35th Av Ne",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F190108209",
+    "created_at": "10/10/2019 9:16:31 AM",
+    "derived": {
+      "timestamp": 1570724191000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "555 16th Av",
+      "units": "A25 M10"
+    }
+  },
+  {
+    "id_str": "F190108208",
+    "created_at": "10/10/2019 9:06:04 AM",
+    "derived": {
+      "timestamp": 1570723564000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3649 44th Av Sw",
+      "units": "E29"
+    }
+  },
+  {
+    "id_str": "F190108207",
+    "created_at": "10/10/2019 9:02:49 AM",
+    "derived": {
+      "timestamp": 1570723369000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "6346 Seward Park Av S",
+      "units": "E28"
+    }
+  },
+  {
+    "id_str": "F190108206",
+    "created_at": "10/10/2019 8:56:53 AM",
+    "derived": {
+      "timestamp": 1570723013000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "6557 47th Av Ne",
+      "units": "E38"
+    }
+  },
+  {
+    "id_str": "F190108205",
+    "created_at": "10/10/2019 8:56:04 AM",
+    "derived": {
+      "timestamp": 1570722964000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "910 4th Av",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F190108204",
+    "created_at": "10/10/2019 8:55:20 AM",
+    "derived": {
+      "timestamp": 1570722920000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1630 43rd Av E",
+      "units": "E25"
+    }
+  },
+  {
+    "id_str": "F190108203",
+    "created_at": "10/10/2019 8:54:42 AM",
+    "derived": {
+      "timestamp": 1570722882000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "325 9th Av N",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F190108202",
+    "created_at": "10/10/2019 8:54:15 AM",
+    "derived": {
+      "timestamp": 1570722855000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "408 Lake Washington Blvd E",
+      "units": "M1"
+    }
+  },
+  {
+    "id_str": "F190097266",
+    "created_at": "9/10/2019 4:52:42 PM",
+    "derived": {
+      "timestamp": 1568159562000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "123 Queen Anne Av N",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F190097265",
+    "created_at": "9/10/2019 4:47:19 PM",
+    "derived": {
+      "timestamp": 1568159239000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "9244 12th Av Sw",
+      "units": "E37 M32"
+    }
+  },
+  {
+    "id_str": "F190097263",
+    "created_at": "9/10/2019 4:43:28 PM",
+    "derived": {
+      "timestamp": 1568159008000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1111 3rd Av",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F190097262",
+    "created_at": "9/10/2019 4:43:03 PM",
+    "derived": {
+      "timestamp": 1568158983000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "710 Cherry St",
+      "units": "A5 M10"
+    }
+  },
+  {
+    "id_str": "F190097261",
+    "created_at": "9/10/2019 4:41:49 PM",
+    "derived": {
+      "timestamp": 1568158909000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1400 Hubbell Pl",
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F190093384",
+    "created_at": "8/31/2019 4:27:55 PM",
+    "derived": {
+      "timestamp": 1567294075000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1915 3rd Av",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F190093103",
+    "created_at": "8/30/2019 8:28:57 PM",
+    "derived": {
+      "timestamp": 1567222137000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1904 3rd Av",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F190092420",
+    "created_at": "8/29/2019 9:38:10 AM",
+    "derived": {
+      "timestamp": 1567096690000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "4550 Fauntleroy Way Sw",
+      "units": "E32 M32"
+    }
+  },
+  {
+    "id_str": "F190092418",
+    "created_at": "8/29/2019 9:34:36 AM",
+    "derived": {
+      "timestamp": 1567096476000,
+      "description": "Medic Response, 6 per Rule",
+      "entries": 1,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "51st Av S / S Bond St",
+      "units": "E28 E33 M28"
+    }
+  },
+  {
+    "id_str": "F190092417",
+    "created_at": "8/29/2019 9:33:59 AM",
+    "derived": {
+      "timestamp": 1567096439000,
+      "description": "Reduce Resp Opposite Tunnel",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "East Marginal Er Way S / S Spokane St",
+      "units": "R1"
+    }
+  },
+  {
+    "id_str": "F190092416",
+    "created_at": "8/29/2019 9:32:26 AM",
+    "derived": {
+      "timestamp": 1567096346000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "7101 62nd Av Ne",
+      "units": "E31 E38 M17"
+    }
+  },
+  {
+    "id_str": "F190092411",
+    "created_at": "8/29/2019 9:21:26 AM",
+    "derived": {
+      "timestamp": 1567095686000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "11224 35th Av Sw",
+      "units": "E37 M32"
+    }
+  },
+  {
+    "id_str": "F190092410",
+    "created_at": "8/29/2019 9:19:04 AM",
+    "derived": {
+      "timestamp": 1567095544000,
+      "description": "Brush Fire",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1st Av S / S Spokane St",
+      "units": "E36"
+    }
+  },
+  {
+    "id_str": "F190092406",
+    "created_at": "8/29/2019 9:07:43 AM",
+    "derived": {
+      "timestamp": 1567094863000,
+      "description": "Automatic Fire Alarm False",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "11 W Aloha St",
+      "units": "L6"
+    }
+  },
+  {
+    "id_str": "F190092405",
+    "created_at": "8/29/2019 9:06:55 AM",
+    "derived": {
+      "timestamp": 1567094815000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "803 S Lane St",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F190092404",
+    "created_at": "8/29/2019 9:06:46 AM",
+    "derived": {
+      "timestamp": 1567094806000,
+      "description": "Natural Gas Odor",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "8th Av S / S Massachusetts St",
+      "units": "L1"
+    }
+  },
+  {
+    "id_str": "F190092403",
+    "created_at": "8/29/2019 9:05:34 AM",
+    "derived": {
+      "timestamp": 1567094734000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "1516 21ST AV S",
+      "units": "A25 E6 M10"
+    }
+  },
+  {
+    "id_str": "F190092402",
+    "created_at": "8/29/2019 9:04:36 AM",
+    "derived": {
+      "timestamp": 1567094676000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1630 QUEEN ANNE AV N",
+      "units": "E8"
+    }
+  },
+  {
+    "id_str": "F190092401",
+    "created_at": "8/29/2019 8:57:41 AM",
+    "derived": {
+      "timestamp": 1567094261000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1601 15th Av W",
+      "units": "A2 E20"
+    }
+  },
+  {
+    "id_str": "F190087004",
+    "created_at": "8/15/2019 10:33:40 AM",
+    "derived": {
+      "timestamp": 1565890420000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1915 3rd Av",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F190077815",
+    "created_at": "7/23/2019 9:56:39 AM",
+    "derived": {
+      "timestamp": 1563900999000,
+      "description": "Automatic Fire Alarm Resd",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "23 W Florentia St",
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F190077814",
+    "created_at": "7/23/2019 9:56:26 AM",
+    "derived": {
+      "timestamp": 1563900986000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3801 34th Av W",
+      "units": "E41"
+    }
+  },
+  {
+    "id_str": "F190077813",
+    "created_at": "7/23/2019 9:56:16 AM",
+    "derived": {
+      "timestamp": 1563900976000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2244 6th Av S",
+      "units": "A10 E10"
+    }
+  },
+  {
+    "id_str": "F190077812",
+    "created_at": "7/23/2019 9:54:22 AM",
+    "derived": {
+      "timestamp": 1563900862000,
+      "description": "4RED - 2 + 1 + 1",
+      "entries": 1,
+      "unitCount": 4,
+      "severity": 0,
+      "address": "600 Pine St",
+      "units": "B2 E2 E5 L1"
+    }
+  },
+  {
+    "id_str": "F190077810",
+    "created_at": "7/23/2019 9:51:19 AM",
+    "derived": {
+      "timestamp": 1563900679000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "700 BROADWAY E",
+      "units": "E25 L4"
+    }
+  },
+  {
+    "id_str": "F190077811",
+    "created_at": "7/23/2019 9:50:30 AM",
+    "derived": {
+      "timestamp": 1563900630000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "15th Av Ne / Ne 143rd St",
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F190077809",
+    "created_at": "7/23/2019 9:49:07 AM",
+    "derived": {
+      "timestamp": 1563900547000,
+      "description": "Alarm Bell",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2418 Nw 56th St",
+      "units": "E18"
+    }
+  },
+  {
+    "id_str": "F190077807",
+    "created_at": "7/23/2019 9:44:01 AM",
+    "derived": {
+      "timestamp": 1563900241000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "500 4th Av",
+      "units": "A5 M10"
+    }
+  },
+  {
+    "id_str": "F190077803",
+    "created_at": "7/23/2019 9:32:49 AM",
+    "derived": {
+      "timestamp": 1563899569000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "500 4th Av",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F190072254",
+    "created_at": "7/9/2019 4:33:58 PM",
+    "derived": {
+      "timestamp": 1562715238000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2905 1st Av",
+      "units": "E2"
+    }
+  },
+  {
+    "id_str": "F190068629",
+    "created_at": "6/30/2019 5:14:07 PM",
+    "derived": {
+      "timestamp": 1561940047000,
+      "description": "Aid Response Freeway",
+      "entries": 2,
+      "unitCount": 5,
+      "severity": 1,
+      "address": "NB I5 CD AT MADISON",
+      "units": "A10 A5 E10 E30 E5"
+    }
+  },
+  {
+    "id_str": "F190067137",
+    "created_at": "6/27/2019 10:21:56 AM",
+    "derived": {
+      "timestamp": 1561656116000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "517 3rd Av",
+      "units": "A5 E10"
+    }
+  },
+  {
+    "id_str": "F190067136",
+    "created_at": "6/27/2019 10:19:28 AM",
+    "derived": {
+      "timestamp": 1561655968000,
+      "description": "MVI - Motor Vehicle Incident",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "Lake City Way Ne / Ne 80th St",
+      "units": "L9"
+    }
+  },
+  {
+    "id_str": "F190067135",
+    "created_at": "6/27/2019 10:17:06 AM",
+    "derived": {
+      "timestamp": 1561655826000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2100 Alaskan Way",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F190067133",
+    "created_at": "6/27/2019 10:15:42 AM",
+    "derived": {
+      "timestamp": 1561655742000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3939 Stone Way N",
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F190067132",
+    "created_at": "6/27/2019 10:14:55 AM",
+    "derived": {
+      "timestamp": 1561655695000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "900 3rd Av",
+      "units": "A10 M1"
+    }
+  },
+  {
+    "id_str": "F190067128",
+    "created_at": "6/27/2019 10:11:33 AM",
+    "derived": {
+      "timestamp": 1561655493000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "RENTON AV S / 55TH AV S",
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F190067127",
+    "created_at": "6/27/2019 10:06:36 AM",
+    "derived": {
+      "timestamp": 1561655196000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "7101 62nd Av Ne",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F190067124",
+    "created_at": "6/27/2019 9:59:28 AM",
+    "derived": {
+      "timestamp": 1561654768000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "3020 Ne 45th St",
+      "units": "E38"
+    }
+  },
+  {
+    "id_str": "F190067123",
+    "created_at": "6/27/2019 9:57:49 AM",
+    "derived": {
+      "timestamp": 1561654669000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2401 Sw Brandon St",
+      "units": "E36"
+    }
+  },
+  {
+    "id_str": "F190067122",
+    "created_at": "6/27/2019 9:56:56 AM",
+    "derived": {
+      "timestamp": 1561654616000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "500 5th Av",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F190067120",
+    "created_at": "6/27/2019 9:41:57 AM",
+    "derived": {
+      "timestamp": 1561653717000,
+      "description": "Medic Response",
+      "entries": 2,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "4225 Roosevelt Way Ne",
+      "units": "E17 M17 M18"
+    }
+  },
+  {
+    "id_str": "F190067118",
+    "created_at": "6/27/2019 9:38:33 AM",
+    "derived": {
+      "timestamp": 1561653513000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "600 W Olympic Pl",
+      "units": "E8"
+    }
+  },
+  {
+    "id_str": "F190067117",
+    "created_at": "6/27/2019 9:36:25 AM",
+    "derived": {
+      "timestamp": 1561653385000,
+      "description": "MVI - Motor Vehicle Incident",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "M L King Jr Way S / S Massachusetts St",
+      "units": "E6"
+    }
+  },
+  {
+    "id_str": "F190067116",
+    "created_at": "6/27/2019 9:30:20 AM",
+    "derived": {
+      "timestamp": 1561653020000,
+      "description": "Automatic Fire Alarm Resd",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "8016 Stroud Av N",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F190067115",
+    "created_at": "6/27/2019 9:28:43 AM",
+    "derived": {
+      "timestamp": 1561652923000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "318 2nd Av Et S",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F190067113",
+    "created_at": "6/27/2019 9:24:55 AM",
+    "derived": {
+      "timestamp": 1561652695000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2555 43rd Av W",
+      "units": "E41"
+    }
+  },
+  {
+    "id_str": "F190067112",
+    "created_at": "6/27/2019 9:24:11 AM",
+    "derived": {
+      "timestamp": 1561652651000,
+      "description": "MVI - Motor Vehicle Incident",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "Beacon Av S / S Dawson St",
+      "units": "E13"
+    }
+  },
+  {
+    "id_str": "F190067111",
+    "created_at": "6/27/2019 9:23:08 AM",
+    "derived": {
+      "timestamp": 1561652588000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "Boylston Av / E Pike St",
+      "units": "L10"
+    }
+  },
+  {
+    "id_str": "F190067109",
+    "created_at": "6/27/2019 9:18:00 AM",
+    "derived": {
+      "timestamp": 1561652280000,
+      "description": "Automatic Fire Alarm Resd",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "918 E Hamlin St",
+      "units": "E22"
+    }
+  },
+  {
+    "id_str": "F190067108",
+    "created_at": "6/27/2019 9:14:35 AM",
+    "derived": {
+      "timestamp": 1561652075000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1609 E Columbia St",
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F190060480",
+    "created_at": "6/10/2019 6:30:03 PM",
+    "derived": {
+      "timestamp": 1560216603000,
+      "description": "MVI - Motor Vehicle Incident",
+      "entries": 1,
+      "unitCount": 3,
+      "severity": 0,
+      "address": "Eb I90 To W Mercer Wy",
+      "units": "A14 E13 E30"
+    }
+  },
+  {
+    "id_str": "F190057607",
+    "created_at": "6/3/2019 9:15:08 AM",
+    "derived": {
+      "timestamp": 1559578508000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1904 3rd Av",
+      "units": "E5 L4"
+    }
+  },
+  {
+    "id_str": "F190055008",
+    "created_at": "5/30/2019 9:35:42 AM",
+    "derived": {
+      "timestamp": 1559234142000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "401 Broadway",
+      "units": "L1"
+    }
+  },
+  {
+    "id_str": "F190055007",
+    "created_at": "5/30/2019 9:33:34 AM",
+    "derived": {
+      "timestamp": 1559234014000,
+      "description": "Aid Response",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "Pike St / 3rd Av",
+      "units": "A2 E2"
+    }
+  },
+  {
+    "id_str": "F190055006",
+    "created_at": "5/30/2019 9:33:13 AM",
+    "derived": {
+      "timestamp": 1559233993000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "77 S Washington St",
+      "units": "E5 M1"
+    }
+  },
+  {
+    "id_str": "F190055005",
+    "created_at": "5/30/2019 9:26:26 AM",
+    "derived": {
+      "timestamp": 1559233586000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2000 California Av Sw",
+      "units": "E29"
+    }
+  },
+  {
+    "id_str": "F190055004",
+    "created_at": "5/30/2019 9:25:47 AM",
+    "derived": {
+      "timestamp": 1559233547000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "1191 2nd Av",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F190055003",
+    "created_at": "5/30/2019 9:23:31 AM",
+    "derived": {
+      "timestamp": 1559233411000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "2106 2nd Av",
+      "units": "A4 M1"
+    }
+  },
+  {
+    "id_str": "F190055002",
+    "created_at": "5/30/2019 9:23:19 AM",
+    "derived": {
+      "timestamp": 1559233399000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "903 23rd Av",
+      "units": "E6"
+    }
+  },
+  {
+    "id_str": "F190053312",
+    "created_at": "5/25/2019 11:47:57 PM",
+    "derived": {
+      "timestamp": 1558853277000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "w stevens way/rainier vista",
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "F190050543",
+    "created_at": "5/18/2019 2:53:15 PM",
+    "derived": {
+      "timestamp": 1558216395000,
+      "description": "Mutual Aid, Aid",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "9620 28TH AV SW",
+      "units": "E26"
+    }
+  },
+  {
+    "id_str": "F190049878",
+    "created_at": "5/16/2019 6:23:51 PM",
+    "derived": {
+      "timestamp": 1558056231000,
+      "description": "Fire Response Freeway",
+      "entries": 2,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "SB SR99 AT HENDERSON",
+      "units": "E26 E27"
+    }
+  },
+  {
+    "id_str": "F190049494",
+    "created_at": "5/15/2019 5:13:32 PM",
+    "derived": {
+      "timestamp": 1557965612000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "2046 Bayview Ave E",
+      "units": "E13"
+    }
+  },
+  {
+    "id_str": "F190041322",
+    "created_at": "4/25/2019 10:11:41 AM",
+    "derived": {
+      "timestamp": 1556212301000,
+      "description": "Rescue Elevator",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "8720 Phinney Av N",
+      "units": "L5"
+    }
+  },
+  {
+    "id_str": "F190041320",
+    "created_at": "4/25/2019 10:07:01 AM",
+    "derived": {
+      "timestamp": 1556212021000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "8511 15th Av Ne",
+      "units": "A31 M17"
+    }
+  },
+  {
+    "id_str": "F190041319",
+    "created_at": "4/25/2019 10:06:03 AM",
+    "derived": {
+      "timestamp": 1556211963000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1000 8th Av",
+      "units": "E25 L10"
+    }
+  },
+  {
+    "id_str": "F190041317",
+    "created_at": "4/25/2019 10:01:28 AM",
+    "derived": {
+      "timestamp": 1556211688000,
+      "description": "Auto Fire Alarm",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1016 Republican St",
+      "units": "E2 L4"
+    }
+  },
+  {
+    "id_str": "F190041316",
+    "created_at": "4/25/2019 9:52:54 AM",
+    "derived": {
+      "timestamp": 1556211174000,
+      "description": "Medic Response",
+      "entries": 1,
+      "unitCount": 2,
+      "severity": 0,
+      "address": "1630 43rd Av E",
+      "units": "E34 M10"
+    }
+  },
+  {
+    "id_str": "F190041314",
+    "created_at": "4/25/2019 9:51:37 AM",
+    "derived": {
+      "timestamp": 1556211097000,
+      "description": "Aid Response",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "908 Jefferson St",
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F190041312",
+    "created_at": "4/25/2019 9:49:09 AM",
+    "derived": {
+      "timestamp": 1556210949000,
+      "description": "Automatic Medical Alarm",
+      "entries": 1,
+      "unitCount": 1,
+      "severity": 0,
+      "address": "221 10th Av S",
+      "units": "A5"
     }
   }
 ]

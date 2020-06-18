@@ -11,8 +11,7 @@ function App() {
   return (
     <div className={styles.app}>
       <Router>
-        <Redirect from="/" to="/dispatch" />
-        <Dispatch path="/dispatch/">
+        <Dispatch path="/">
           <DispatchAll default />
           <DispatchArea path=":area" />
         </Dispatch>

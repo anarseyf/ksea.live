@@ -1,5 +1,362 @@
 [
   {
+    "id_str": "F200059770",
+    "created_at": "6/18/2020 1:20:00 PM",
+    "derived": {
+      "lat": 47.607742,
+      "long": -122.326595,
+      "timestamp": 1592511600000,
+      "description": "Aid Response",
+      "address": "910 Marion St",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200059769",
+    "created_at": "6/18/2020 1:19:23 PM",
+    "derived": {
+      "lat": 47.640085,
+      "long": -122.329388,
+      "timestamp": 1592511563000,
+      "description": "Aid Response",
+      "address": "2331 Fairview Av E",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Montlake/Portage Bay",
+      "neighborhoodGroup": "Northeast",
+      "units": "E22"
+    }
+  },
+  {
+    "id_str": "F200059768",
+    "created_at": "6/18/2020 1:15:27 PM",
+    "derived": {
+      "lat": 47.589197,
+      "long": -122.312569,
+      "timestamp": 1592511327000,
+      "description": "Medic Response",
+      "address": "1553 Cherrylane Ave S",
+      "active": true,
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "North Beacon Hill/Jefferson Park",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E13 M1 M28"
+    }
+  },
+  {
+    "id_str": "F200059767",
+    "created_at": "6/18/2020 1:14:56 PM",
+    "derived": {
+      "lat": 47.630881,
+      "long": -122.303522,
+      "timestamp": 1592511296000,
+      "description": "Aid Response",
+      "address": "1251 22nd Ave E",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Miller Park",
+      "neighborhoodGroup": "East",
+      "units": "E34"
+    }
+  },
+  {
+    "id_str": "F200059765",
+    "created_at": "6/18/2020 1:13:54 PM",
+    "derived": {
+      "lat": 47.614242,
+      "long": -122.346,
+      "timestamp": 1592511234000,
+      "description": "Aid Response",
+      "address": "2327 2nd Av",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200059764",
+    "created_at": "6/18/2020 1:06:06 PM",
+    "derived": {
+      "lat": 47.523056,
+      "long": -122.319795,
+      "timestamp": 1592510766000,
+      "description": "Medic Response",
+      "address": "1040 S Henderson St",
+      "active": true,
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "South Park",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "A5 E27 M26"
+    }
+  },
+  {
+    "id_str": "F200059763",
+    "created_at": "6/18/2020 1:05:37 PM",
+    "derived": {
+      "lat": 47.615235,
+      "long": -122.320799,
+      "timestamp": 1592510737000,
+      "description": "Aid Response",
+      "address": "Broadway / E Pine St",
+      "active": false,
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East",
+      "units": "A5 B2 E25 L10"
+    }
+  },
+  {
+    "id_str": "F200059762",
+    "created_at": "6/18/2020 12:59:16 PM",
+    "derived": {
+      "lat": 47.555732,
+      "long": -122.33529,
+      "timestamp": 1592510356000,
+      "description": "Aid Response",
+      "address": "S Dawson St / Utah Ave S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Georgetown",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "A14"
+    }
+  },
+  {
+    "id_str": "F200059761",
+    "created_at": "6/18/2020 12:58:45 PM",
+    "derived": {
+      "lat": 47.683954,
+      "long": -122.311606,
+      "timestamp": 1592510325000,
+      "description": "Aid Response",
+      "address": "1537 Ne 76th St",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200059760",
+    "created_at": "6/18/2020 12:57:03 PM",
+    "derived": {
+      "lat": 47.625121,
+      "long": -122.329167,
+      "timestamp": 1592510223000,
+      "description": "Medic Response",
+      "address": "Eastlake Ave E / Roy St",
+      "active": false,
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union",
+      "units": "A25 M1 M28"
+    }
+  },
+  {
+    "id_str": "F200059758",
+    "created_at": "6/18/2020 12:47:27 PM",
+    "derived": {
+      "lat": 47.544669,
+      "long": -122.373777,
+      "timestamp": 1592509647000,
+      "description": "Aid Response",
+      "address": "3204 Sw Morgan St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "High Point",
+      "neighborhoodGroup": "Delridge Neighborhoods",
+      "units": "E32"
+    }
+  },
+  {
+    "id_str": "F200059759",
+    "created_at": "6/18/2020 12:46:25 PM",
+    "derived": {
+      "lat": 47.572163,
+      "long": -122.296173,
+      "timestamp": 1592509585000,
+      "description": "Aid Response",
+      "address": "2821 S Walden St",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast",
+      "units": "E30"
+    }
+  },
+  {
+    "id_str": "F200059755",
+    "created_at": "6/18/2020 12:45:42 PM",
+    "derived": {
+      "lat": 47.610056,
+      "long": -122.34329,
+      "timestamp": 1592509542000,
+      "description": "Aid Response",
+      "address": "1901 Western Av",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F200059752",
+    "created_at": "6/18/2020 12:29:08 PM",
+    "derived": {
+      "lat": 47.688215,
+      "long": -122.319921,
+      "timestamp": 1592508548000,
+      "description": "Aid Response",
+      "address": "826 Ne 82nd St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Green Lake",
+      "neighborhoodGroup": "Northwest",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200059750",
+    "created_at": "6/18/2020 12:23:57 PM",
+    "derived": {
+      "lat": 47.575875,
+      "long": -122.294935,
+      "timestamp": 1592508237000,
+      "description": "Aid Response",
+      "address": "2931 S Mount Baker Blvd",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast",
+      "units": "E30"
+    }
+  },
+  {
+    "id_str": "F200059749",
+    "created_at": "6/18/2020 12:22:56 PM",
+    "derived": {
+      "lat": 47.608682,
+      "long": -122.341421,
+      "timestamp": 1592508176000,
+      "description": "Medic Response",
+      "address": "1533 Western Av",
+      "active": true,
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "A4 M10 M32"
+    }
+  },
+  {
+    "id_str": "F200059748",
+    "created_at": "6/18/2020 12:20:04 PM",
+    "derived": {
+      "lat": 47.703486,
+      "long": -122.333907,
+      "timestamp": 1592508004000,
+      "description": "Aid Response",
+      "address": "10330 MERIDIAN AV N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F200059747",
+    "created_at": "6/18/2020 12:19:30 PM",
+    "derived": {
+      "lat": 47.616698,
+      "long": -122.342214,
+      "timestamp": 1592507970000,
+      "description": "Aid Response",
+      "address": "6th Ave / Bell St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200059746",
+    "created_at": "6/18/2020 12:18:54 PM",
+    "derived": {
+      "lat": 47.693785,
+      "long": -122.395705,
+      "timestamp": 1592507934000,
+      "description": "Aid Response",
+      "address": "8915 30th Ave Nw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "North Beach/Blue Ridge",
+      "neighborhoodGroup": "Ballard",
+      "units": "E35"
+    }
+  },
+  {
+    "id_str": "F200059744",
+    "created_at": "6/18/2020 12:13:19 PM",
+    "derived": {
+      "lat": 47.535218,
+      "long": -122.287746,
+      "timestamp": 1592507599000,
+      "description": "Low Acuity Response",
+      "address": "3528 S Webster St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "South Beacon Hill/NewHolly",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F200059743",
+    "created_at": "6/18/2020 12:12:45 PM",
+    "derived": {
+      "lat": 47.522402,
+      "long": -122.349272,
+      "timestamp": 1592507565000,
+      "description": "Illegal Burn",
+      "address": "9046 11TH AVE SW",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Highland Park",
+      "neighborhoodGroup": "Delridge Neighborhoods",
+      "units": "E11"
+    }
+  },
+  {
     "id_str": "F200059737",
     "created_at": "6/18/2020 11:43:10 AM",
     "derived": {
@@ -93,7 +450,7 @@
       "timestamp": 1592505218000,
       "description": "MVI Medic",
       "address": "S Spokane St / E Marg-duwamish Br Rp",
-      "active": true,
+      "active": false,
       "unitCount": 3,
       "severity": 0,
       "neighborhood": "Duwamish/SODO",
@@ -127,7 +484,7 @@
       "timestamp": 1592505012000,
       "description": "Medic Response",
       "address": "ALASKAN WAY / MARION ST",
-      "active": true,
+      "active": false,
       "unitCount": 3,
       "severity": 0,
       "neighborhood": "Downtown Commercial Core",
@@ -195,7 +552,7 @@
       "timestamp": 1592503829000,
       "description": "Medic Response",
       "address": "314 Ne Thornton Pl",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "Northgate/Maple Leaf",
@@ -229,7 +586,7 @@
       "timestamp": 1592503530000,
       "description": "Aid Response Yellow",
       "address": "852 Nw 65th St",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "Whittier Heights",
@@ -314,7 +671,7 @@
       "timestamp": 1592502837000,
       "description": "Medic Response",
       "address": "6035 Oakhurst Rd S",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Seward Park",

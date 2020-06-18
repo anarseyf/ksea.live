@@ -1,4 +1,5 @@
 import { geoContains } from "d3-geo";
+import { hasCoordinates } from "./scriptUtil";
 
 export const severityMapper = ({
   derived: { units, ...restDerived },
@@ -60,7 +61,8 @@ export const addNhood = (entries, features) =>
 
 export const getIncidentsMap = (entries) => {
   const map = {};
-  entries.forEach(({ id_str, derived: { lat, long } }) => {
+  const filtered = entries.filter(hasCoordinates);
+  filtered.forEach(({ id_str, derived: { lat, long } }) => {
     map[id_str] = [lat, long];
   });
   return map;

@@ -18,6 +18,11 @@ export const Dot = ({ coordinates, severity = 0, active = false }) => {
   }
   const baseRadius = active ? 250 : 150;
 
+  if (!coordinates[0]) {
+    console.warn(`Dot: coordinates = ${coordinates}`);
+    return null;
+  }
+
   return (
     <>
       <Circle
@@ -50,4 +55,4 @@ export const Dot = ({ coordinates, severity = 0, active = false }) => {
       )}
     </>
   );
-}
+};

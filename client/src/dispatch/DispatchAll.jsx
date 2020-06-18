@@ -13,6 +13,7 @@ import { TweetsActive } from "./TweetsActive";
 import { TweetsMajor } from "./TweetsMajor";
 import { SvgDot } from "./SvgDot";
 import * as d3 from "d3";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 const formatter = d3.timeFormat("%-I%p");
 
@@ -91,7 +92,9 @@ export const DispatchAll = () => {
 
       <Section edgeToEdge={true} styleOption={1}>
         <Paragraph title="Today" content={map} margin={true} />
-        <Map />
+        <ErrorBoundary>
+          <Map />
+        </ErrorBoundary>
       </Section>
 
       <Section styleOption={0}>
