@@ -9,18 +9,20 @@ import rehoboamStyles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Rehoboam = ({ area }) => {
-  const { filteredByArea } = useContext(TweetsContext);
+  const { filteredByArea, activeOrMajorForArea } = useContext(TweetsContext);
   const [svgPath, setSvgPath] = useState(null);
   const [live, setLive] = useState(null);
   const [sev2Circles, setSev2Circles] = useState([]);
   const axisRef = useRef(null);
 
-  const radius = 100;
-  const margin = 20,
-    width = 2 * radius,
-    height = 2 * radius,
+  const mainRadius = 100;
+  const margin = 30,
+    width = 2 * mainRadius,
+    height = 2 * mainRadius,
     svgWidth = width + 2 * margin,
     svgHeight = height + 2 * margin;
+
+  const dotRadius = 5;
 
   useEffect(() => {
     if (!filteredByArea.length) {
@@ -28,18 +30,10 @@ export const Rehoboam = ({ area }) => {
     }
 
     const current = currentInterval(filteredByArea);
-    console.log("Rehoboam/current", current);
     // const bins = current.binsHiRes;
     const bins = current.bins;
     const extent = intervalExtent(current);
-
-    console.log("Rehoboam/extent", extent);
-
-    const dateFormatter = d3.timeFormat("%-I%p"); // https://github.com/d3/d3-time-format#locale_format
-
-    // ==================
-
-    const maxDisturbance = margin;
+    const maxDisturbance = margin / 2;
     const maxLength = d3.max(bins, ({ length }) => length);
     const [start, end] = extent;
 
@@ -47,14 +41,12 @@ export const Rehoboam = ({ area }) => {
       const fraction = (timestamp - start) / (end - start);
       const radians = 2 * Math.PI * fraction;
       const disturbance = maxLength ? maxDisturbance * (length / maxLength) : 0;
-      return [radians, radius + disturbance];
+      return [radians, mainRadius + disturbance];
     };
 
     const radialData = bins.map(({ x0, length }) => toRadial(x0, length));
-
     const radialGen = d3.lineRadial().curve(d3.curveCardinal.tension(0.4));
     const path = radialGen(radialData);
-
     setSvgPath(path);
 
     const lastBin = bins[bins.length - 1];
@@ -62,7 +54,7 @@ export const Rehoboam = ({ area }) => {
     setLive({
       cx: r * Math.sin(theta),
       cy: r * -Math.cos(theta),
-      r: 5,
+      r: dotRadius,
     });
 
     const angleScale = d3
@@ -70,32 +62,45 @@ export const Rehoboam = ({ area }) => {
       .domain(extent)
       .range([0, 2 * Math.PI]);
     const HOUR = 3600 * 1000;
-    const tickValues = [0, 12].map((h) => current.start + h * HOUR);
-    const axis = axisRadialInner(angleScale, radius)
+    const dateFormatter = d3.timeFormat("%-I%p"); // https://github.com/d3/d3-time-format#locale_format
+    const tickValues = [0, 6, 12, 18].map((h) => current.start + h * HOUR);
+    const axis = axisRadialInner(angleScale, mainRadius)
       .tickFormat(dateFormatter)
       .tickSize(0)
       .tickValues(tickValues); // for some reason d3.timeHour.every() doesn't work here
     d3.select(axisRef.current).call(axis);
 
-    const toSev2Points = ({ x0, sev2 }) => {
-      const stack = [...new Array(sev2)].map((_, i) => ({
-        x0,
-        index: i + 1,
+    if (activeOrMajorForArea.length) {
+      const toRadialCircle = (timestamp, index) => {
+        const fraction = (timestamp - start) / (end - start);
+        const radians = 2 * Math.PI * fraction;
+        const offset = index * 2 * dotRadius;
+        return [radians, mainRadius + offset];
+      };
+
+      const activeOrMajorBins = currentInterval(activeOrMajorForArea).bins;
+      const toSev2Points = ({ x0, sev2 }) => {
+        const stack = [...new Array(sev2 * 3)].map((_, i) => ({
+          x0,
+          index: i,
+        }));
+        return stack;
+      };
+      const sev2Data = activeOrMajorBins.flatMap(toSev2Points);
+      console.log("REHOBOAM/sev2 data", sev2Data);
+      const radialSev2Data = sev2Data.map(({ x0, index }) =>
+        toRadialCircle(x0, index)
+      );
+
+      const circles = radialSev2Data.map(([theta, r]) => ({
+        cx: r * Math.sin(theta),
+        cy: r * -Math.cos(theta),
+        r: dotRadius,
       }));
-      return stack;
-    };
-    const sev2Data = bins.flatMap(toSev2Points);
-    console.log("REHOBOAM/sev2 data", sev2Data);
-    const radialSev2Data = sev2Data.map(({ x0, index }) => toRadial(x0, index));
 
-    const circles = radialSev2Data.map(([theta, r]) => ({
-      cx: r * Math.sin(theta),
-      cy: r * -Math.cos(theta),
-      r: 5,
-    }));
-
-    setSev2Circles(circles);
-  }, [filteredByArea]);
+      setSev2Circles(circles);
+    }
+  }, [activeOrMajorForArea, filteredByArea]);
 
   const total = filteredByArea.length
     ? currentInterval(filteredByArea).total
@@ -110,9 +115,16 @@ export const Rehoboam = ({ area }) => {
         <Topline number={total} text={text} />
       </div>
       <svg className={rehoboamStyles.svg} width={svgWidth} height={svgHeight}>
-        <g transform={`translate(${margin + radius},${margin + radius})`}>
+        <g
+          transform={`translate(${margin + mainRadius},${margin + mainRadius})`}
+        >
           <g className={svgStyles.axis} ref={axisRef} />
-          <circle className={rehoboamStyles.circle} cx={0} cy={0} r={radius} />
+          <circle
+            className={rehoboamStyles.circle}
+            cx={0}
+            cy={0}
+            r={mainRadius}
+          />
           {svgPath && (
             <path
               className={classnames(
