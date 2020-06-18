@@ -114,11 +114,13 @@ export const groupByIntervalGen = (intervals) => ({ values, ...rest }) => {
 export const sortByTotal = (a, b) =>
   b.intervals[0].total - a.intervals[0].total;
 
-const minimizeBin = ({ x0, x1, length, cumulative }) => ({
+const minimizeBin = ({ x0, x1, length, cumulative, sev1, sev2 }) => ({
   x0,
   x1,
   length,
   cumulative,
+  sev1,
+  sev2,
 });
 
 const minimizeInterval = ({

@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { isAtLeastSev1, isAtLeastSev2 } from "../client/src/clientUtils";
 
 const defaultAccessor = ({ derived: { timestamp, offset = 0 } }) =>
   timestamp + offset;
@@ -17,6 +18,14 @@ export function histogram(
     .thresholds(d3.timeMinutes(...histogramExtent, thresholdMinutes));
 
   let bins = histogram(values);
+
+  let binsSev1 = histogram(values.filter(isAtLeastSev1));
+  let binsSev2 = histogram(values.filter(isAtLeastSev2));
+
+  bins.forEach((bin, i) => {
+    bin.sev1 = binsSev1[i].length;
+    bin.sev2 = binsSev2[i].length;
+  });
 
   const lengths = bins.map((bin) => bin.length);
   bins = bins.map(({ length, ...bin }, i) => ({
