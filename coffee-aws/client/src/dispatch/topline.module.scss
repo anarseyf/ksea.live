@@ -1,0 +1,16 @@
+@import "../colors.scss";
+
+.topline {
+  display: inline-block;
+  margin: auto;
+}
+.number {
+  display: inline-module;
+  font-size: 4em;
+  color: red;
+  margin: -0.5em auto;
+}
+.text {
+  font-size: 2em;
+  color: $text-primary;
+}

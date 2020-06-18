@@ -1,0 +1,46 @@
+/* 
+https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_us/Twitter_Brand_Guidelines_V2_0.pdf
+*/
+
+@import "../colors.scss";
+
+.container {
+  clear: both;
+  font-size: 0.8em;
+  text-align: left;
+  font-variant: small-caps;
+  padding: 0.5em;
+  border-bottom: 1px solid $border;
+}
+.container:hover,
+.container.detailed {
+  cursor: pointer;
+  background-color: $tweet-bg;
+  border-bottom: 1px solid $twitter-main;
+}
+.greyedOut {
+  color: $text-secondary;
+}
+
+.tweet {
+  width: 100%;
+  margin-bottom: -0.25em;
+  color: $text-primary;
+}
+
+.type {
+  display: inline-block;
+  color: orangered;
+  font-weight: bold;
+}
+
+.details {
+  float: right;
+  color: $text-secondary;
+}
+.units {
+  color: $twitter-darkgray;
+}
+.location {
+  padding: 0.5em;
+}

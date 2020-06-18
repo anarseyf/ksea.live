@@ -1,0 +1,8 @@
+@import "../colors.scss";
+
+.container {
+  display: inline-block;
+  border: 1px solid $border;
+  width: 120px;
+  height: 120px;
+}

@@ -1,0 +1,26 @@
+@import "../colors.scss";
+
+.container {
+  clear: both;
+  padding-top: 0.5em;
+  font-variant: small-caps;
+  text-align: left;
+}
+
+.explanation {
+  float: right;
+  font-weight: bold;
+  color: $text-secondary;
+}
+
+.latlong {
+  color: $text-secondary;
+}
+
+.unit {
+  display: inline-block;
+  border: 1px solid $border;
+  border-radius: 4px;
+  margin: 0.25em;
+  padding: 0 0.5em;
+}

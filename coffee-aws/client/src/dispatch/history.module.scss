@@ -1,0 +1,39 @@
+@import "../colors.scss";
+
+.container {
+  // border: 1px solid $border;
+}
+
+.svg {
+  // border: 2px dotted $border;
+}
+
+.svg rect.previous {
+  fill: silver;
+}
+
+.svg rect.current {
+  fill: white;
+}
+
+.years {
+  font-size: 1.5em;
+}
+
+.years .left {
+  display: inline-block;
+  text-align: right;
+  color: $graph-secondary;
+  padding-right: 0.2em;
+}
+.years .right {
+  display: inline-block;
+  text-align: left;
+  color: $graph-primary;
+  padding-left: 0.2em;
+}
+
+.axis text {
+  font-size: 1.5em;
+  fill: $text-primary;
+}
