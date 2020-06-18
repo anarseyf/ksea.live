@@ -284,7 +284,7 @@ const mapsController = async (req, res) => {
   }
 };
 
-const updateOnceController = async (req, res) => {
+const updateController = async (req, res) => {
   const start = new Date();
   await updateOnce(true);
   const mostRecentId = await getMostRecentAsync();
@@ -293,7 +293,7 @@ const updateOnceController = async (req, res) => {
 };
 
 router.get("/seattle911", seattleGovController);
-router.get("/updateOnce", updateOnceController);
+router.get("/update", updateController);
 router.get("/status", statusController);
 router.get("/tweets/active24", active24Controller);
 router.get("/tweets/major24", major24Controller);

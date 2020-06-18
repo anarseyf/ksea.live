@@ -23,8 +23,10 @@ export const DispatchAll = () => {
   const intro = (
     <p>
       A near-real-time visualization of Seattle Fire Department 911 dispatches.
-      All timestamps are in local time (Pacific timezone). Data is current as of
-      <strong>TODO</strong> in Seattle. Active incidents are marked
+      All timestamps are in local time (Pacific timezone).
+      {/*Data is current as of
+      <strong>TODO</strong> in Seattle.*/} Active
+      incidents are marked
       <SvgDot active={true} />. Incidents with ≥10 units dispatched are marked
       as major <SvgDot sev2={true} />.
     </p>
@@ -32,7 +34,7 @@ export const DispatchAll = () => {
 
   const pastWeek = `Cumulative number of dispatches for Seattle today, compared to the past 7 days`;
 
-  const map = "Seattle map";
+  const map = "";
 
   const major = (
     <p>
@@ -88,7 +90,7 @@ export const DispatchAll = () => {
       </Section>
 
       <Section edgeToEdge={true} styleOption={1}>
-        <Paragraph title="Today's Incidents" content={map} margin={true} />
+        <Paragraph title="Today" content={map} margin={true} />
         <Map />
       </Section>
 
