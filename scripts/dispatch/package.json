@@ -18,15 +18,13 @@
     "moment": "^2.26.0",
     "node-fetch": "^2.6.0",
     "node-geocoder": "^3.27.0",
-    "semver": "^7.3.2"
-  },
-  "devDependencies": {
+    "semver": "^7.3.2",
     "concurrently": "^5.2.0",
     "esm": "^3.2.25",
     "nodemon": "^2.0.4"
   },
   "engines": {
-    "node": ">=12.18.1 <13.0.0",
+    "node": ">=12.9.1",
     "npm": "6.x"
   }
 }

@@ -1,6 +1,5 @@
 const fs = require("fs");
 const util = require("util");
-const lockfile = require("lockfile");
 
 import { tz as timezone } from "moment-timezone";
 import { severityMapper, markAsOld, unmarkAsOld } from "./official/mappers";
@@ -90,38 +89,6 @@ export const toPacificDateString = (date) => {
 export const toPacificStringMMMD = (date) => {
   const moment = timezone(date, "America/Vancouver");
   return moment.format("MMM D"); // For example "Jun 1". See https://momentjs.com/docs/#/parsing/string-format/
-};
-
-export const writeWithLockAsync = async (
-  // TODO - does it work at all?
-  fileToWrite,
-  writeContent,
-  fileToEmpty,
-  emptyContent
-) => {
-  let isSuccess = false;
-  const lockName = `${fileToEmpty}.lock`;
-  try {
-    lockfile.lock(lockName, {}, async (error) => {
-      if (error) {
-        console.error(`>>> Error while locking ${fileToEmpty}`, error);
-        throw error;
-      }
-      await saveJSONAsync(fileToWrite, writeContent);
-      await saveJSONAsync(fileToEmpty, emptyContent);
-      isSuccess = true;
-    });
-    return isSuccess;
-  } catch (error) {
-    console.error(">>> Error in writeWithLock(): ", error);
-    return isSuccess;
-  } finally {
-    lockfile.unlock(lockName, (error) => {
-      if (error) {
-        console.error(`>>> Error while unlocking ${fileToEmpty}`, error);
-      }
-    });
-  }
 };
 
 export const readJSONAsync = async (fileName, defaultValue) => {

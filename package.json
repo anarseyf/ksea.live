@@ -25,7 +25,15 @@
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "set-tz": "^0.2.0",
-    "textures": "^1.2.2"
+    "textures": "^1.2.2",
+    "jsdom": "^16.2.2",
+    "lockfile": "^1.0.4",
+    "moment": "^2.26.0",
+    "node-fetch": "^2.6.0",
+    "node-geocoder": "^3.27.0",
+    "semver": "^7.3.2",
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
