@@ -53,7 +53,7 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "npm run server:prod",
+    "start": "npm install && npm run server:prod",
     "app:dev": "concurrently \"npm run server:dev\" \"npm run client\" \"npm run background:dev\"",
     "static:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
     "client": "cd client && npm run start",
@@ -62,7 +62,7 @@
     "background:dev": "cd scripts/dispatch && npm run nobackfill:official",
     "build": "cd client && npm run build",
     "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
-    "bundle:aws": "git archive -v -o coffee-aws.zip --format=zip HEAD"
+    "bundle:aws": "git add --all && git commit -m 'AWS Bundle' && git archive -v -o coffee-aws.zip --format=zip HEAD"
   },
   "repository": {
     "type": "git",
