@@ -61,6 +61,7 @@ const useTweets = (filters = {}) => {
     active24: [],
     major24: [],
     annotations: [],
+    status: {},
   };
   const [value, setValue] = useState(initialValue);
   const { status, previousStatus } = useStatus();
@@ -141,6 +142,7 @@ const useTweets = (filters = {}) => {
       major24,
       activeOrMajorForArea,
       activeOrMajorByArea,
+      status,
     });
   }, [
     active24,
@@ -152,6 +154,7 @@ const useTweets = (filters = {}) => {
     groupedByArea,
     history,
     major24,
+    status,
   ]);
 
   return value;

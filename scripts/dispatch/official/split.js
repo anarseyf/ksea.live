@@ -4,7 +4,7 @@ import {
   appendJSONAsync,
   toUTCMidnightString,
 } from "../fileUtils";
-import { withDatasetsPath } from "../serverUtils";
+import { withDatasetsPath, withScriptsJsonPath } from "../serverUtils";
 
 export const runner = async (sourceFile) => {
   try {
@@ -37,6 +37,12 @@ export const runner = async (sourceFile) => {
         Object.keys(splits).length
       } files (${end - start}ms)`
     );
+
+    const statusFile = withScriptsJsonPath("status.json");
+    const status = await readJSONAsync(statusFile, {});
+    const splitStatus = { lastRun: new Date().toISOString() };
+    const newStatus = { ...status, split: splitStatus };
+    await saveJSONAsync(statusFile, newStatus);
   } catch (e) {
     console.error("split >>> stopped due to error:", e);
   }

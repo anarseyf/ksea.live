@@ -10,8 +10,10 @@ import {
   readJSONAsync,
   listFilesAsync,
 } from "./scripts/dispatch/fileUtils";
+import { withScriptsJsonPath } from "./scripts/dispatch/serverUtils";
 
 export const dataPath = path.join(__dirname, "datasets/official/");
+export const statusFile = withScriptsJsonPath("status.json");
 
 const areaOption = GroupByOptions.Area;
 

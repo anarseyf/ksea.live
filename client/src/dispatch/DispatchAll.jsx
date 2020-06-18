@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Map } from "./Map";
-import { TweetsProvider } from "./TweetsProvider";
+import { TweetsProvider, TweetsContext } from "./TweetsProvider";
 import { GroupByArea } from "./GroupByArea";
 import { Header } from "./Header";
 import { Rehoboam } from "./Rehoboam";
@@ -12,13 +12,19 @@ import { History } from "./History";
 import { TweetsActive } from "./TweetsActive";
 import { TweetsMajor } from "./TweetsMajor";
 import { SvgDot } from "./SvgDot";
+import * as d3 from "d3";
+
+const formatter = d3.timeFormat("%-I%p");
 
 export const DispatchAll = () => {
+  // const { status } = useContext(TweetsContext);
+  // const time = formatter(status.lastUpdated);
+
   const intro = (
     <p>
       A near-real-time visualization of Seattle Fire Department 911 dispatches.
-      All timestamps are in local time (Pacific timezone). It is now{" "}
-      <strong>1:45PM</strong> in Seattle. Active incidents are marked{" "}
+      All timestamps are in local time (Pacific timezone). Data is current as of
+      <strong>TODO</strong> in Seattle. Active incidents are marked
       <SvgDot active={true} />. Incidents with ≥10 units dispatched are marked
       as major <SvgDot sev2={true} />.
     </p>

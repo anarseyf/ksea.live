@@ -23,6 +23,7 @@ import {
   filterNoop,
   getMostRecentAsync,
   getHistoryAsync,
+  statusFile,
 } from "./dispatchHelpers";
 import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
@@ -57,9 +58,13 @@ const seattleGovController = async (req, res) => {
 const statusController = async (req, res) => {
   try {
     const mostRecentId = await getMostRecentAsync(); // TODO
+    const runnersStatus = await readJSONAsync(statusFile, {});
+    const lastUpdated =
+      (runnersStatus.split && +new Date(runnersStatus.split.lastRun)) || 0;
+
     const status = {
       mostRecentId,
-      lastUpdated: 0, //+new Date(),
+      lastUpdated,
     };
     res.json(status);
   } catch (e) {
