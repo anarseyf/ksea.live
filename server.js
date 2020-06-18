@@ -43,8 +43,10 @@ app.get("/api/env", (req, res) => {
 
 app.use("/api/dispatch", dispatchRouter);
 
+const indexFile = path.join(__dirname, "client/public", "index.html");
+
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "client/public", "index.html"));
+  res.sendFile(indexFile);
 });
 
 app.listen(port, () => {
