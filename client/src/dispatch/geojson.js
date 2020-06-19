@@ -45,6 +45,7 @@ export const centroid = (features) => {
   if (!features.length) {
     return defaultCentroid;
   }
+  
   let coords = features
     .map(({ geometry: { coordinates } }) => coordinates)
     .flat(2);

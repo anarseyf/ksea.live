@@ -14,9 +14,10 @@ export const Spark = ({  intervals = [],
   const [svgData, setSvgData] = useState([]);
   const [nowDot, setNowDot] = useState(null);
 
+  const radius = 3;
   const svgWidth = isPhone ? 100 : 150;
   const svgHeight = 0.2 * svgWidth,
-    margin = { top: 5, right: 5, bottom: 5, left: 5 },
+    margin = { top: radius+1, right: radius+1, bottom: radius+1, left: radius+1 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
 
@@ -59,7 +60,7 @@ export const Spark = ({  intervals = [],
       setNowDot({
         cx: xScale(lastBin.x0),
         cy: yScale(accessor(lastBin)),
-        r: 3,
+        r: radius,
       });
     }
   }, [width, height, intervals, showPrevious, useCumulative]);
@@ -74,7 +75,7 @@ export const Spark = ({  intervals = [],
   return (
     <div className={sparkStyles.container}>
       
-      <svg className={sparkStyles.svg} width={svgWidth} height={svgHeight}>
+      <svg width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g>
             {svgData.map((d, i) => (
