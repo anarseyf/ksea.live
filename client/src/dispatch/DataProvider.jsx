@@ -80,6 +80,16 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
+      const response = await getTweetsActive24();
+      setActive24(response[0].intervals[0].values);
+    })();
+
+    (async () => {
+      const response = await getTweetsMajor24();
+      setMajor24(response[0].intervals[0].values);
+    })();
+
+    (async () => {
       setByTypeForArea(await getTweetsByType(filters.area || "seattle"));
     })();
 
@@ -94,24 +104,16 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
-      const area = filters.area || "seattle";
-      setHistory(await getHistory(area));
-    })();
-
-    (async () => {
       setAnnotations(await getAnnotations());
     })();
 
-    (async () => {
-      const response = await getTweetsActive24();
-      setActive24(response[0].intervals[0].values);
-    })();
-
-    (async () => {
-      const response = await getTweetsMajor24();
-      setMajor24(response[0].intervals[0].values);
-    })();
-  }, [filters.area, mostRecentId, shouldFetch]);
+    if (!history.length) {
+      (async () => {
+        const area = filters.area || "seattle";
+        setHistory(await getHistory(area));
+      })();
+    }
+  }, [filters.area, history.length, mostRecentId, shouldFetch]);
 
   useEffect(() => {
     setValue({

@@ -78,7 +78,6 @@ export const Rehoboam = ({ area }) => {
         return stack;
       };
       const sev2Data = activeOrMajorBins.flatMap(toSev2Points);
-      console.log("REHOBOAM/sev2 data", sev2Data);
       const radialSev2Data = sev2Data.map(({ x0, index }) =>
         toRadialDot(x0, index)
       );

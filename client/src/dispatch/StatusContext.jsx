@@ -9,7 +9,7 @@ const useStatus = () => {
   const [previousStatus, setPreviousStatus] = useState({});
 
   useEffect(() => {
-    const delay = 5 * 1000;
+    const delay = 30 * 1000;
 
     console.log(
       `🟥 useStatus/starting checker @ every ${delay / 1000} seconds`
@@ -28,9 +28,13 @@ const useStatus = () => {
         setPreviousStatus(status);
         setStatus(newStatus);
       }
+
+      if (status.env === "development") {
+        document.title = "KSEA.live (dev)";
+      }
     };
 
-    // checkForUpdates();
+    checkForUpdates();
     const intervalId = setInterval(checkForUpdates, delay);
     return () => clearInterval(intervalId);
   }, [status]);
