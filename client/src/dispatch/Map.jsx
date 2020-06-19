@@ -59,7 +59,9 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   const center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : centroid(rendered);
+    : area ?
+   centroid(rendered)
+   : centroid(cityGeojson.features);
 
   const mapper = ({ intervals }) =>
     intervals[0].values.map(

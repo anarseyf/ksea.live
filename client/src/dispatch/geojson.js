@@ -33,9 +33,8 @@ export const areas = {
 
 export const cityGeojson = city;
 
-const lat = 47.60912,
-  long = -122.34494;
-const defaultCentroid = [lat, long];
+const lat = 47.61485, long = -122.32838;
+const defaultCentroid = [lat, long]; // approx. centroid of cityGeojson
 
 export const mapBounds = [
   [lat + 0.2, long - 0.3],
