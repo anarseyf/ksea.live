@@ -11,14 +11,12 @@ function App() {
   return (
     <div className={styles.app}>
       <Router>
-        <Dispatch path="/">
-          <StatusProvider default>
+        <StatusProvider path="/">
+          <Dispatch default>
             <DispatchAll default />
-          </StatusProvider>
-          <StatusProvider path=":area">
             <DispatchArea path=":area" />
-          </StatusProvider>
-        </Dispatch>
+          </Dispatch>
+        </StatusProvider>
       </Router>
     </div>
   );

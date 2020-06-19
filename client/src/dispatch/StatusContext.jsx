@@ -9,7 +9,7 @@ const useStatus = () => {
   const [previousStatus, setPreviousStatus] = useState({});
 
   useEffect(() => {
-    const delay = 30 * 1000;
+    const delay = 60 * 1000;
 
     console.log(
       `🟥 useStatus/starting checker @ every ${delay / 1000} seconds`

@@ -16,7 +16,7 @@ export const DispatchArea = ({ area }) => {
     <DataProvider filters={{ area }}>
       <Section styleOption={2}>
         <Paragraph
-          title={
+          content={
             <Link className={paragraphStyles.link} to="/">
               « to main page
             </Link>

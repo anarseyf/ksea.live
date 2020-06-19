@@ -25,10 +25,11 @@ export const DispatchAll = () => {
   const intro = (
     <p>
       A near-real-time visualization of Seattle Fire Department 911 dispatches.
-      All timestamps are in local time (Pacific timezone).
-      Active incidents are marked
+      All timestamps are in local time (Pacific timezone). Active incidents are
+      marked
       <SvgDot active={true} />. Incidents with five or more units dispatched are
-      marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />. See notes at the bottom for more details.
+      marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />.
+      See notes at the bottom for more details.
     </p>
   );
 
@@ -73,9 +74,14 @@ export const DispatchAll = () => {
   const notes = (
     <>
       <p>
-      {time && (
-        <span> Data is current as of <strong> {time}</strong>. </span>
-      )}Incidents for which no geolocation data is available are not shown and not counted.
+        {time && (
+          <span>
+            {" "}
+            Data is current as of <strong> {time}</strong>.{" "}
+          </span>
+        )}
+        Incidents for which no geolocation data is available are not shown and
+        not counted.
       </p>
       <p>
         Visualization by{" "}
@@ -107,8 +113,8 @@ export const DispatchAll = () => {
         <TweetsMajor />
       </Section>
 
-      <Section styleOption={2}>
-        <Paragraph title="City Areas" content={areas} />
+      <Section styleOption={2} edgeToEdge={true}>
+        <Paragraph title="City Areas" content={areas} margin={true} />
         <GroupByArea />
       </Section>
 

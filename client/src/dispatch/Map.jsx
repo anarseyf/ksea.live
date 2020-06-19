@@ -5,6 +5,7 @@ import { DataContext } from "./DataProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MapOptions } from "./mapOptions";
 import { centroid, areas, cityGeojson, mapBounds } from "./geojson";
+import classnames from "classnames";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
 
@@ -115,7 +116,7 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   return (
     <LeafletMap
-      className={styles.container}
+      className={classnames(styles.container, { [styles.area]: area })}
       center={center}
       zoom={zoom}
       minZoom={minZoom}
