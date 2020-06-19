@@ -23,7 +23,8 @@ export const runner = async (sourceFile) => {
       splits[key] = list;
     });
 
-    Object.keys(splits).forEach(async (fileName) => {
+    const fileNames = Object.keys(splits);
+    fileNames.forEach(async (fileName) => {
       await appendJSONAsync(
         withDatasetsPath(`${fileName}.json`),
         splits[fileName],
@@ -34,8 +35,9 @@ export const runner = async (sourceFile) => {
     const end = new Date();
     console.log(
       `split > split ${entries.length} entries across ${
-        Object.keys(splits).length
-      } files (${end - start}ms)`
+        fileNames.length
+      } files (${end - start}ms) :\n`,
+      fileNames
     );
 
     const statusFile = withScriptsJsonPath("status.json");

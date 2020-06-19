@@ -39,6 +39,7 @@ function getSortedEnv() {
   return env;
 }
 
+// TODO — serve tiles from outside of client
 app.use(express.static(path.join(__dirname, staticPath)));
 
 app.get("/api/env", (req, res) => {
