@@ -16,6 +16,7 @@ $ eb init # from project root
 
 ```sh
 $ git add . && git commit -m "AWS deploy"
+$ npm run build # creates minified files in client/build
 $ eb deploy # creates a .zip bundle based on git HEAD
 ```
 
