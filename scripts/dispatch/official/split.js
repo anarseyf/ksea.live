@@ -17,10 +17,10 @@ export const runner = async (sourceFile) => {
 
     const splits = {};
     entries.forEach((t) => {
-      const key = toUTCMidnightString(t.derived.timestamp);
-      const list = splits[key] || [];
+      const fileName = toUTCMidnightString(t.derived.timestamp);
+      const list = splits[fileName] || [];
       list.push(t);
-      splits[key] = list;
+      splits[fileName] = list;
     });
 
     const fileNames = Object.keys(splits);
