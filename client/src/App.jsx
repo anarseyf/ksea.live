@@ -6,16 +6,19 @@ import { DispatchArea } from "./dispatch/DispatchArea";
 
 import styles from "./app.module.scss";
 import { StatusProvider } from "./dispatch/StatusContext";
+import { UserProvider } from "./dispatch/UserProvider";
 
 function App() {
   return (
     <div className={styles.app}>
       <Router>
         <StatusProvider path="/">
-          <Dispatch default>
+          <UserProvider default>
             <DispatchAll default />
-            <DispatchArea path=":area" />
-          </Dispatch>
+          </UserProvider>
+          <UserProvider path=":area">
+            <DispatchArea path="/" />
+          </UserProvider>
         </StatusProvider>
       </Router>
     </div>

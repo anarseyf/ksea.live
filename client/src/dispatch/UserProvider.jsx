@@ -1,10 +1,9 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 export const UserContext = createContext();
 
 export const UserContextKeys = {
   SelectedTweet: "SelectedTweet",
-  HoverArea: "HoverArea",
   TypeFilter: "TypeFilter",
 };
 
@@ -15,6 +14,8 @@ const useUser = () => {
     console.log(`USER: ${key} -->`, value);
     setUser({ ...user, [key]: value });
   };
+
+  useEffect(()=>{console.log('USER/useEffect')},[]);
 
   return { user, setSelection };
 };

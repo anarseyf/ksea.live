@@ -12,7 +12,6 @@ import styles from "./map.module.scss";
 const minZoom = 10,
   maxZoom = 13,
   defaultZoom = 11;
-let zoom = defaultZoom;
 
 const activeColor = "dodgerblue";
 const geojsonStyleBounds = {
@@ -41,27 +40,26 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   const typeFilter = user[UserContextKeys.TypeFilter];
   const selectedTweet = user[UserContextKeys.SelectedTweet];
-  const hoverArea = user[UserContextKeys.HoverArea];
-
-  const activeArea = hoverArea || area;
-  // console.log("MAP/active area", activeArea);
 
   const renderFilter = ({ properties }) =>
-    activeArea && properties[areaProp] === activeArea;
+    area && properties[areaProp] === area;
 
   const { features } = geojson;
   const rendered = features.filter(renderFilter);
 
+  let zoom = defaultZoom;
   if (area) {
-    zoom = defaultZoom + 1;
+    zoom = defaultZoom + 1; 
   }
   if (selectedTweet) {
     zoom = maxZoom;
   }
 
+  console.log(`MAP/area=${area}, zoom = ${zoom}, selected: ${(selectedTweet||{}).id_str}, features: ${rendered.length}/${features.length}`);
+
   const center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : centroid(features);
+    : centroid(rendered);
 
   const mapper = ({ intervals }) =>
     intervals[0].values.map(
