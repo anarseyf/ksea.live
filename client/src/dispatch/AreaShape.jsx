@@ -3,6 +3,7 @@ import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { featuresForArea, centroid } from "./geojson";
 import { MapOptions } from "./mapOptions";
 import styles from "./area.module.scss";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 const geojsonStyle = {
   color: "dodgerblue",
@@ -23,18 +24,20 @@ export const AreaShape = ({ area }) => {
   const tileOptions = MapOptions.NoLabels;
 
   return (
-    <LeafletMap
-      className={styles.container}
-      center={center}
-      zoom={zoom}
-      minZoom={zoom}
-      maxZoom={zoom}
-      zoomControl={false}
-      attributionControl={false}
-      keyboard={false}
-    >
-      <TileLayer {...tileOptions} />
-      <GeoJSON data={features} style={geojsonStyle} />
-    </LeafletMap>
+    <ErrorBoundary>
+      <LeafletMap
+        className={styles.container}
+        center={center}
+        zoom={zoom}
+        minZoom={zoom}
+        maxZoom={zoom}
+        zoomControl={false}
+        attributionControl={false}
+        keyboard={false}
+      >
+        <TileLayer {...tileOptions} />
+        <GeoJSON data={features} style={geojsonStyle} />
+      </LeafletMap>
+    </ErrorBoundary>
   );
 };

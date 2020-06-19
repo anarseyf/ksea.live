@@ -49,7 +49,7 @@ export const GroupByArea = () => {
   const neighborhoodsMap = getNeighborhoods();
 
   return (
-    <ErrorBoundary>
+    
       <div className={styles.container}>
         {groupedByArea.map(({ key: area, intervals }) => (
           <div className={styles.itemContainer}>
@@ -58,11 +58,13 @@ export const GroupByArea = () => {
                 <div className={styles.fullWidth}>
                   <div className={styles.item}>&nbsp;</div>
                   <div className={classnames(styles.item, styles.right)}>
+                  <ErrorBoundary>
                     <Spark
                       intervals={intervals}
                       useCumulative={true}
                       showTotal={true}
                     />
+                    </ErrorBoundary>
                   </div>
                 </div>
 
@@ -102,6 +104,5 @@ export const GroupByArea = () => {
           </div>
         ))}
       </div>
-    </ErrorBoundary>
   );
 };

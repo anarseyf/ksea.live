@@ -25,6 +25,10 @@ app.set("port", port);
 const staticPath = isProd ? "client/build" : "client/src";
 
 function getSortedEnv() {
+  if (isProd) {
+    return { NODE_ENV: process.env.NODE_ENV };
+  }
+
   const env = {};
   Object.keys(process.env)
     .sort()

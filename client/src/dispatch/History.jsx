@@ -13,6 +13,10 @@ import svgStyles from "./svg.module.scss";
 import { Annotations } from "./Annotations";
 
 const closedPath = (bins, line, offset) => {
+  if (!bins.length) {
+    return "";
+  }
+  
   let data = bins.map(({ x0, length }) => ({
     timestamp: x0,
     value: length + offset,

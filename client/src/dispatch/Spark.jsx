@@ -54,12 +54,14 @@ export const Spark = ({  intervals = [],
     setSvgData(newSvgData);
 
     const bins = data[0].bins;
-    const lastBin = bins[bins.length - 1];
-    setNowDot({
-      cx: xScale(lastBin.x0),
-      cy: yScale(accessor(lastBin)),
-      r: 3,
-    });
+    if (bins.length) {
+      const lastBin = bins[bins.length - 1];
+      setNowDot({
+        cx: xScale(lastBin.x0),
+        cy: yScale(accessor(lastBin)),
+        r: 3,
+      });
+    }
   }, [width, height, intervals, showPrevious, useCumulative]);
 
   if (!intervals.length) {
