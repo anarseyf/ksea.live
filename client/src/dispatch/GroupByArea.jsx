@@ -10,6 +10,7 @@ import { MultiLine } from "./MultiLine";
 import { Total } from "./Total";
 import classnames from "classnames";
 import styles from "./group.module.scss";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 export const GroupByArea = () => {
   const { groupedByArea, activeOrMajorByArea } = useContext(TweetsContext);
@@ -48,57 +49,59 @@ export const GroupByArea = () => {
   const neighborhoodsMap = getNeighborhoods();
 
   return (
-    <div className={styles.container}>
-      {groupedByArea.map(({ key: area, intervals }) => (
-        <div className={styles.itemContainer}>
-          <Link to={`${encodeURIComponent(area)}`}>
-            <div className={styles.vpadding}>
-              <div className={styles.fullWidth}>
-                <div className={styles.item}>&nbsp;</div>
-                <div className={classnames(styles.item, styles.right)}>
-                  <Spark
-                    intervals={intervals}
-                    useCumulative={true}
-                    showTotal={true}
-                  />
-                </div>
-              </div>
-
-              <div className={classnames(styles.item, styles.text)}>
-                <div>{area}</div>
-                <div className={styles.list}>
-                  {neighborhoodsMap[area].map((v) => (
-                    <div>• {v}</div>
-                  ))}
-                </div>
-              </div>
-
-              <div className={classnames(styles.item, styles.right)}>
-                <div>
-                  <AreaShape area={area} />
-                </div>
-                {/* <Total total={intervals[0].total} /> */}
-                {totalsMap[area] && (
-                  <div className={styles.major}>
-                    {totalsMap[area].active > 0 && (
-                      <span>
-                        <span>{totalsMap[area].active} active</span>
-                        <SvgDot active={true} />
-                      </span>
-                    )}
-                    {totalsMap[area].sev2 > 0 && (
-                      <span>
-                        <span>{totalsMap[area].sev2} major</span>
-                        <SvgDot sev2={true} />
-                      </span>
-                    )}
+    <ErrorBoundary>
+      <div className={styles.container}>
+        {groupedByArea.map(({ key: area, intervals }) => (
+          <div className={styles.itemContainer}>
+            <Link to={`${encodeURIComponent(area)}`}>
+              <div className={styles.vpadding}>
+                <div className={styles.fullWidth}>
+                  <div className={styles.item}>&nbsp;</div>
+                  <div className={classnames(styles.item, styles.right)}>
+                    <Spark
+                      intervals={intervals}
+                      useCumulative={true}
+                      showTotal={true}
+                    />
                   </div>
-                )}
+                </div>
+
+                <div className={classnames(styles.item, styles.text)}>
+                  <div>{area}</div>
+                  <div className={styles.list}>
+                    {neighborhoodsMap[area].map((v) => (
+                      <div>• {v}</div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={classnames(styles.item, styles.right)}>
+                  <div>
+                    <AreaShape area={area} />
+                  </div>
+                  {/* <Total total={intervals[0].total} /> */}
+                  {totalsMap[area] && (
+                    <div className={styles.major}>
+                      {totalsMap[area].active > 0 && (
+                        <span>
+                          <span>{totalsMap[area].active} active</span>
+                          <SvgDot active={true} />
+                        </span>
+                      )}
+                      {totalsMap[area].sev2 > 0 && (
+                        <span>
+                          <span>{totalsMap[area].sev2} major</span>
+                          <SvgDot sev2={true} />
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </Link>
-        </div>
-      ))}
-    </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </ErrorBoundary>
   );
 };

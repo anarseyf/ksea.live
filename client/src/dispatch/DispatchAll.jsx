@@ -45,7 +45,7 @@ export const DispatchAll = () => {
   );
 
   const areas =
-    "TODO - update this text. Select an area of the city to zoom in to incidents there.";
+    "Select an area of the city to see all of today's incidents there. (TODO - update this text.)";
 
   const history =
     "This views shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
@@ -103,7 +103,7 @@ export const DispatchAll = () => {
       <Section styleOption={0}>
         <Paragraph title="Active Incidents" content={""} />
         <TweetsActive />
-        <Paragraph title="Major Incidents" content={major} />
+        <Paragraph title="Major Incidents (24 Hours)" content={major} />
         <TweetsMajor />
       </Section>
 

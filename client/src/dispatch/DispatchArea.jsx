@@ -1,28 +1,39 @@
 import React from "react";
+import { Link } from "@reach/router";
 import { Map } from "./Map";
 import { TweetsProvider } from "./TweetsProvider";
 import { Header } from "./Header";
 import { TweetsForArea } from "./TweetsForArea";
-import { Rehoboam } from "./Rehoboam";
-import { LegendSection } from "./Legend";
-import { Histogram } from "./Histogram";
 import { Paragraph } from "./Paragraph";
 import { Section } from "./Section";
+import { ErrorBoundary } from "./ErrorBoundary";
+import paragraphStyles from "./paragraph.module.scss";
 
 export const DispatchArea = ({ area }) => {
   const sources = "Data sources";
 
   return (
     <TweetsProvider filters={{ area }}>
+      <Section styleOption={2}>
+        <Paragraph
+          title={
+            <Link className={paragraphStyles.link} to="/">
+              « to main page
+            </Link>
+          }
+        />
+      </Section>
+
       <Section styleOption={1}>
-        <Rehoboam area={area} />
+        <Paragraph title={area} />
         <Header area={area} />
-        <Histogram />
+        {/* <Histogram /> */}
       </Section>
 
       <Section styleOption={2} edgeToEdge={true}>
-        <Map area={area} />
-        <LegendSection />
+        <ErrorBoundary>
+          <Map area={area} />
+        </ErrorBoundary>
       </Section>
 
       <Section styleOption={1}>
@@ -34,4 +45,4 @@ export const DispatchArea = ({ area }) => {
       </Section>
     </TweetsProvider>
   );
-}
+};

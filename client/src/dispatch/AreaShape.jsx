@@ -31,7 +31,6 @@ export const AreaShape = ({ area }) => {
       maxZoom={zoom}
       zoomControl={false}
       attributionControl={false}
-      dragging={false}
       keyboard={false}
     >
       <TileLayer {...tileOptions} />

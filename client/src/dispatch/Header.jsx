@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { TweetsContext } from "./TweetsProvider";
 import { MultiLine } from "./MultiLine";
-import { Paragraph } from "./Paragraph";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 export const Header = ({ area }) => {
   const { filteredByArea } = useContext(TweetsContext);
@@ -11,9 +11,11 @@ export const Header = ({ area }) => {
   }
 
   return (
+    <ErrorBoundary>
       <MultiLine
         intervals={filteredByArea[0].intervals}
-        useCumulative={false}
+        useCumulative={!!area}
       />
+    </ErrorBoundary>
   );
 };

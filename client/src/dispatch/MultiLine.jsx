@@ -66,12 +66,14 @@ export const MultiLine = ({
     setSvgData(newSvgData);
 
     const bins = intervals[0].bins;
-    const lastBin = bins[bins.length - 1];
-    setNowDot({
-      cx: xScale(lastBin.x0),
-      cy: yScale(accessor(lastBin)),
-      r: 3,
-    });
+    if (bins.length) {
+      const lastBin = bins[bins.length - 1];
+      setNowDot({
+        cx: xScale(lastBin.x0),
+        cy: yScale(accessor(lastBin)),
+        r: 3,
+      });
+    }
   }, [height, intervals, useCumulative, width]);
 
   if (!intervals.length) {
@@ -118,4 +120,4 @@ export const MultiLine = ({
       </svg>
     </div>
   );
-}
+};

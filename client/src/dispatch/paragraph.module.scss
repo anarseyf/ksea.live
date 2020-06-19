@@ -10,7 +10,10 @@
 .text {
   color: $text-secondary;
 }
-.text a {
+.text a,
+.text a:hover,
+.link,
+.link:hover {
   color: $link;
   border-bottom: 2px solid $link;
   text-decoration: none;
