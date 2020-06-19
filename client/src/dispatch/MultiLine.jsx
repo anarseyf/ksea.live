@@ -38,7 +38,8 @@ export const MultiLine = ({
       d3.max([1.0, ...intervals.flatMap(({ bins }) => bins).map(accessor)]),
     ];
 
-    const dateFormatter = d3.timeFormat("%-I%p"); // https:/github.com/d3/d3-time-format#locale_format
+    const dateFormatter = d3.timeFormat("%-I%p"); 
+    // https://github.com/d3/d3-time-format#locale_format
 
     const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
     const xAxis = d3

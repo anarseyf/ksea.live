@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { TweetsContext } from "./TweetsProvider";
+import { DataContext } from "./DataProvider";
 import { MultiLine } from "./MultiLine";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 export const Header = ({ area }) => {
-  const { filteredByArea } = useContext(TweetsContext);
+  const { filteredByArea } = useContext(DataContext);
 
   if (!filteredByArea.length) {
     return null;

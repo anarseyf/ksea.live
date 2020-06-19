@@ -65,6 +65,7 @@ const statusController = async (req, res) => {
     const status = {
       mostRecentId,
       lastUpdated,
+      env: process.env.NODE_ENV,
     };
     res.json(status);
   } catch (e) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { TweetsContext } from "./TweetsProvider";
+import { DataContext } from "./DataProvider";
 import { GroupByOptions } from "../groupingOptions";
 
 const legendByType = (groups) => {
@@ -15,7 +15,7 @@ const legendByType = (groups) => {
 };
 
 export const useLegend = () => {
-  const { byTypeForArea } = useContext(TweetsContext);
+  const { byTypeForArea } = useContext(DataContext);
   const [legend, setLegend] = useState({});
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const useLegend = () => {
     const newLegend = { ...legend, ...sublegend };
     console.log("new legend:", newLegend);
     setLegend(newLegend);
-  }, [byTypeForArea]);
+  }, [byTypeForArea, legend]);
 
   return [legend];
 };

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
-import { TweetsContext, currentInterval } from "./TweetsProvider";
+import { DataContext, currentInterval } from "./DataProvider";
 import { intervalExtent, isPhone } from "../clientUtils";
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Histogram = () => {
-  const { history } = useContext(TweetsContext);
+  const { history } = useContext(DataContext);
   const [svgData, setSvgData] = useState([]);
 
   const svgWidth = isPhone ? 350 : 550,

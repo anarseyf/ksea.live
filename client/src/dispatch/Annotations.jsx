@@ -5,7 +5,7 @@ import {
   annotation as d3annotation,
   annotationCalloutCircle as d3annotationCalloutCircle,
 } from "d3-svg-annotation";
-import { TweetsContext } from "./TweetsProvider";
+import { DataContext } from "./DataProvider";
 
 import styles from "./annotations.module.scss";
 
@@ -20,7 +20,7 @@ const texturePrevious = textures.lines().lighter().size(8).stroke("#51aae8");
 export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
   const calloutsRef = useRef(null);
   const regionsRef = useRef(null);
-  const { annotations } = useContext(TweetsContext);
+  const { annotations } = useContext(DataContext);
   const [regions, setRegions] = useState([]);
 
   d3.select(regionsRef.current).call(textureCurrent);
@@ -92,8 +92,6 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
     ];
 
     const calloutsSvgData = annotations.flatMap(calloutsFn).filter(Boolean);
-    console.log("HISTORY/annotations", annotations);
-    console.log("HISTORY/callouts", annotations.flatMap(calloutsFn));
 
     const callout = d3annotation()
       .annotations(calloutsSvgData)
@@ -104,7 +102,6 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
     const newRegions = annotations.map(regionFn).filter(Boolean);
     setRegions(newRegions);
 
-    console.log("ANNOTATIONS/useEffect end");
   }, [annotations, currentStart, rectWidth, scales]);
 
   return (

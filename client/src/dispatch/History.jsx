@@ -3,10 +3,10 @@ import * as d3 from "d3";
 import classnames from "classnames";
 
 import {
-  TweetsContext,
+  DataContext,
   currentInterval,
   previousInterval,
-} from "./TweetsProvider";
+} from "./DataProvider";
 import { intervalExtent, isPhone } from "../clientUtils";
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
@@ -32,7 +32,7 @@ const closedPath = (bins, line, offset) => {
 };
 
 export const History = () => {
-  const { history } = useContext(TweetsContext);
+  const { history } = useContext(DataContext);
   // const [svgData, setSvgData] = useState([]);
   const [scales, setScales] = useState([]);
   const [currentStart, setCurrentStart] = useState([]);
@@ -142,10 +142,9 @@ export const History = () => {
 
     setClipPaths({ current: clipPathCurrent, previous: clipPathPrevious });
 
-    console.log("HISTORY/useEffect end");
   }, [history, height, maxBarWidth]);
 
-  console.log("HISTORY/render");
+  // console.log("HISTORY/render");
 
   return (
     <div className={historyStyles.container}>

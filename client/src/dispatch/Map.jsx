@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { Dot, Appearance } from "./Dot";
-import { TweetsContext } from "./TweetsProvider";
+import { DataContext } from "./DataProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import { MapOptions } from "./mapOptions";
 import { centroid, areas, cityGeojson, mapBounds } from "./geojson";
@@ -28,12 +28,17 @@ const geojsonStyleActive = {
 };
 
 export const Map = ({ area, tileOptions = MapOptions.Default }) => {
-  const { byTypeForArea } = useContext(TweetsContext);
+  // TODO - no need for types, so don't use byTypeForArea
+  const { byTypeForArea } = useContext(DataContext);
   const { user } = useContext(UserContext);
-  const typeFilter = user[UserContextKeys.TypeFilter];
+
+  if (!byTypeForArea.length) {
+    return null;
+  }
 
   const { geojson, areaProp } = areas;
 
+  const typeFilter = user[UserContextKeys.TypeFilter];
   const selectedTweet = user[UserContextKeys.SelectedTweet];
   const hoverArea = user[UserContextKeys.HoverArea];
 
@@ -72,28 +77,27 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
 
-  let data = [];
+  let data = byTypeForArea
+    .flatMap(mapper)
+    .filter(({ type }) => !typeFilter || typeFilter === type);
 
-  if (byTypeForArea.length) {
-    data = byTypeForArea
-      .flatMap(mapper)
-      .filter(({ type }) => !typeFilter || typeFilter === type);
+  console.log(
+    "Entries with no lat/long:",
+    data.filter(({ lat }) => !lat).map(({ id_str }) => id_str)
+  );
 
-    console.log("Entries with no lat/long:", data.filter(({lat}) => !lat).map(({id_str})=>id_str));
+  if (selectedTweet) {
+    // Render selected dot last, so it appears on top
+    const selectedIndex = data.findIndex(isSelectedDot);
 
-    if (selectedTweet) {
-      // Render selected dot last, so it appears on top
-      const selectedIndex = data.findIndex(isSelectedDot);
-
-      data =
-        selectedIndex === -1
-          ? []
-          : [
-              ...data.slice(0, selectedIndex),
-              ...data.slice(selectedIndex + 1),
-              data[selectedIndex],
-            ];
-    }
+    data =
+      selectedIndex === -1
+        ? []
+        : [
+            ...data.slice(0, selectedIndex),
+            ...data.slice(selectedIndex + 1),
+            data[selectedIndex],
+          ];
   }
 
   const appearanceFn = (d) => {
@@ -104,7 +108,9 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
       : Appearance.Normal;
   };
 
-  console.log(`MAP/rendering with ${data.length} dots, ${rendered.length} geo, center: ${center}`);
+  console.log(
+    `MAP/rendering with ${data.length} dots, ${rendered.length} geo, center: ${center}`
+  );
   const city = cityGeojson.features[0];
 
   return (

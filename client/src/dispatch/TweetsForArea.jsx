@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { TweetsContext, currentInterval } from "./TweetsProvider";
+import { DataContext, currentInterval } from "./DataProvider";
 
 import { Tweet, TweetModes } from "./Tweet";
 import { UserContextKeys, UserContext } from "./UserProvider";
 import { TweetList } from "./TweetList";
 
 export const TweetsForArea = () => {
-  const { filteredByArea } = useContext(TweetsContext);
+  const { filteredByArea } = useContext(DataContext);
   const { user } = useContext(UserContext);
   const filter = user[UserContextKeys.TypeFilter];
 

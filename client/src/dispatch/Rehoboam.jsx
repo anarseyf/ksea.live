@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import classnames from "classnames";
 import { axisRadialInner } from "d3-radial-axis";
-import { TweetsContext, currentInterval } from "./TweetsProvider";
+import { DataContext, currentInterval } from "./DataProvider";
 import { intervalExtent } from "../clientUtils";
 import { Topline } from "./Topline";
 import rehoboamStyles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Rehoboam = ({ area }) => {
-  const { filteredByArea, activeOrMajorForArea } = useContext(TweetsContext);
+  const { filteredByArea, activeOrMajorForArea } = useContext(DataContext);
   const [svgPath, setSvgPath] = useState(null);
   const [sev2Circles, setSev2Circles] = useState([]);
   const axisRef = useRef(null);

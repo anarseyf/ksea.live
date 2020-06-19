@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { TweetsContext } from "./TweetsProvider";
+import { DataContext } from "./DataProvider";
 
 import { TweetList } from "./TweetList";
 
 export const TweetsActive = () => {
-  const { active24 } = useContext(TweetsContext);
+  const { active24 } = useContext(DataContext);
 
   return <TweetList tweets={active24} />;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { Map } from "./Map";
-import { TweetsProvider } from "./TweetsProvider";
+import { DataProvider } from "./DataProvider";
 import { Header } from "./Header";
 import { TweetsForArea } from "./TweetsForArea";
 import { Paragraph } from "./Paragraph";
@@ -13,7 +13,7 @@ export const DispatchArea = ({ area }) => {
   const sources = "Data sources";
 
   return (
-    <TweetsProvider filters={{ area }}>
+    <DataProvider filters={{ area }}>
       <Section styleOption={2}>
         <Paragraph
           title={
@@ -43,6 +43,6 @@ export const DispatchArea = ({ area }) => {
       <Section styleOption={2}>
         <Paragraph text={sources} />
       </Section>
-    </TweetsProvider>
+    </DataProvider>
   );
 };

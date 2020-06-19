@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { Map } from "./Map";
-import { TweetsProvider, TweetsContext } from "./TweetsProvider";
+import { DataProvider } from "./DataProvider";
 import { GroupByArea } from "./GroupByArea";
 import { Header } from "./Header";
 import { Rehoboam } from "./Rehoboam";
-import { LegendSection } from "./Legend";
-import { Histogram } from "./Histogram";
 import { Section } from "./Section";
 import { Paragraph } from "./Paragraph";
 import { History } from "./History";
@@ -14,20 +12,27 @@ import { TweetsMajor } from "./TweetsMajor";
 import { SvgDot } from "./SvgDot";
 import * as d3 from "d3";
 import { ErrorBoundary } from "./ErrorBoundary";
+import { StatusContext } from "./StatusContext";
 
-const formatter = d3.timeFormat("%-I%p");
+const formatter = d3.timeFormat("%-I:%M %p");
 
 export const DispatchAll = () => {
-  // const { status } = useContext(TweetsContext);
-  // const time = formatter(status.lastUpdated);
+  const { status = {} } = useContext(StatusContext);
+  const time = status.lastUpdated
+    ? formatter(new Date(status.lastUpdated))
+    : undefined;
 
   const intro = (
     <p>
       A near-real-time visualization of Seattle Fire Department 911 dispatches.
       All timestamps are in local time (Pacific timezone).
-      {/*Data is current as of
-      <strong>TODO</strong> in Seattle.*/} Active
-      incidents are marked
+      {time && (
+        <span>
+          Data is current as of
+          <strong> {time} </strong>.
+        </span>
+      )}{" "}
+      Active incidents are marked
       <SvgDot active={true} />. Incidents with 5 or more units dispatched are
       marked <SvgDot sev1={true} />, with 10 or more <SvgDot sev2={true} />.
     </p>
@@ -85,7 +90,7 @@ export const DispatchAll = () => {
   );
 
   return (
-    <TweetsProvider>
+    <DataProvider>
       <Section styleOption={2}>
         <Paragraph title="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
@@ -121,6 +126,6 @@ export const DispatchAll = () => {
         <Paragraph title="Data Sources" content={sources} />
         <Paragraph title="Notes" content={notes} />
       </Section>
-    </TweetsProvider>
+    </DataProvider>
   );
 };

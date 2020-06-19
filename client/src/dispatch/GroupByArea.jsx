@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "@reach/router";
-import { TweetsContext } from "./TweetsProvider";
+import { DataContext } from "./DataProvider";
 import { AreaShape } from "./AreaShape";
 import { featuresForArea } from "./geojson";
 import { isActive, isAtLeastSev2, isAtLeastSev1 } from "../clientUtils";
@@ -13,7 +13,7 @@ import styles from "./group.module.scss";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 export const GroupByArea = () => {
-  const { groupedByArea, activeOrMajorByArea } = useContext(TweetsContext);
+  const { groupedByArea, activeOrMajorByArea } = useContext(DataContext);
   const [totalsMap, setTotalsMap] = useState({});
 
   useEffect(() => {
