@@ -1,5 +1,73 @@
 [
   {
+    "id_str": "F200059980",
+    "created_at": "6/19/2020 1:01:59 AM",
+    "derived": {
+      "lat": 47.655871,
+      "long": -122.386479,
+      "timestamp": 1592553719000,
+      "description": "Investigate Out Of Service",
+      "address": "Gilman Ave W / W Thurman St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Interbay",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "E20"
+    }
+  },
+  {
+    "id_str": "F200059979",
+    "created_at": "6/19/2020 12:44:38 AM",
+    "derived": {
+      "lat": 47.557041,
+      "long": -122.28463,
+      "timestamp": 1592552678000,
+      "description": "Aid Response",
+      "address": "Rainier Ave S / S Hudson St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast",
+      "units": "E28"
+    }
+  },
+  {
+    "id_str": "F200059977",
+    "created_at": "6/19/2020 12:35:37 AM",
+    "derived": {
+      "lat": 47.630586,
+      "long": -122.342296,
+      "timestamp": 1592552137000,
+      "description": "Aid Response",
+      "address": "1300 Dexter Av N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "L4"
+    }
+  },
+  {
+    "id_str": "F200059976",
+    "created_at": "6/19/2020 12:32:42 AM",
+    "derived": {
+      "lat": 47.544573,
+      "long": -122.376448,
+      "timestamp": 1592551962000,
+      "description": "Aid Response Yellow",
+      "address": "6512 35th Av Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "High Point",
+      "neighborhoodGroup": "Delridge Neighborhoods",
+      "units": "E37"
+    }
+  },
+  {
     "id_str": "F200059975",
     "created_at": "6/19/2020 12:29:29 AM",
     "derived": {
@@ -8,7 +76,7 @@
       "timestamp": 1592551769000,
       "description": "Aid Response",
       "address": "925 Alaskan Way",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Downtown Commercial Core",
@@ -25,7 +93,7 @@
       "timestamp": 1592551609000,
       "description": "Aid Response",
       "address": "300 Pine St",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Downtown Commercial Core",
@@ -59,7 +127,7 @@
       "timestamp": 1592551060000,
       "description": "Aid Response",
       "address": "2215 1st Av",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Belltown",
@@ -178,7 +246,7 @@
       "timestamp": 1592546284000,
       "description": "AFA4 - Auto Alarm 2 + 1 + 1",
       "address": "1201 1st Av S",
-      "active": true,
+      "active": false,
       "unitCount": 5,
       "severity": 1,
       "neighborhood": "Duwamish/SODO",

@@ -64,13 +64,6 @@ const statusController = async (req, res) => {
     const lastUpdated =
       (runnersStatus.split && runnersStatus.split.lastRun) || 0;
 
-    const now = new Date();
-    console.log(
-      `Server time: ${now.toLocaleString()} (${+now}) (toPacificMidnight: ${toPacificMidnight(
-        now
-      )})`
-    );
-
     const status = {
       mostRecentId,
       lastUpdated,
