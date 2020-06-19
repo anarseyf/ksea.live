@@ -48,6 +48,11 @@ export const allTweets = async (intervals) => {
   const files = await Promise.all(
     fileNames.map(async (f) => await readJSONAsync(f, []))
   );
+  console.log(">> allTweets > files:\n", fileNames);
+  console.log(
+    ">> allTweets > totals\n",
+    files.map((f) => f.length)
+  );
   const all = files.flat().filter(hasCoordinates);
   console.log(`read ${files.length} files: ${all.length} total entries`);
 
