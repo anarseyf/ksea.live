@@ -57,7 +57,9 @@ const seattleGovController = async (req, res) => {
 
 const statusController = async (req, res) => {
   try {
-    const mostRecentId = await getMostRecentAsync(); // TODO
+    const mostRecentId = await getMostRecentAsync();
+    const intervals = generateIntervals().slice(0, 1);
+    const total = (await allTweets(intervals)).length;
     const runnersStatus = await readJSONAsync(statusFile, {});
     const lastUpdated =
       (runnersStatus.split && runnersStatus.split.lastRun) || 0;
@@ -65,6 +67,7 @@ const statusController = async (req, res) => {
     const status = {
       mostRecentId,
       lastUpdated,
+      total,
       env: process.env.NODE_ENV,
     };
     res.json(status);
