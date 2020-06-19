@@ -26,15 +26,9 @@ export const DispatchAll = () => {
     <p>
       A near-real-time visualization of Seattle Fire Department 911 dispatches.
       All timestamps are in local time (Pacific timezone).
-      {time && (
-        <span> 
-          Data is current as of
-          <strong> {time}</strong>.
-        </span>
-      )}{" "}
       Active incidents are marked
       <SvgDot active={true} />. Incidents with five or more units dispatched are
-      marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />.
+      marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />. See notes at the bottom for more details.
     </p>
   );
 
@@ -79,8 +73,9 @@ export const DispatchAll = () => {
   const notes = (
     <>
       <p>
-        The data is up-to-date to within a minute or so. Incidents for which no
-        geolocation data is available are not shown and not counted.
+      {time && (
+        <span> Data is current as of <strong> {time}</strong>. </span>
+      )}Incidents for which no geolocation data is available are not shown and not counted.
       </p>
       <p>
         Visualization by{" "}

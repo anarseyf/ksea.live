@@ -1,5 +1,192 @@
 [
   {
+    "id_str": "F200059956",
+    "created_at": "6/18/2020 10:26:33 PM",
+    "derived": {
+      "lat": 47.656302,
+      "long": -122.317834,
+      "timestamp": 1592544393000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "4030 Roosevelt Way Ne",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200059955",
+    "created_at": "6/18/2020 10:26:01 PM",
+    "derived": {
+      "lat": 47.61761,
+      "long": -122.315586,
+      "timestamp": 1592544361000,
+      "description": "Aid Response",
+      "address": "13th Ave / E Howell St",
+      "active": true,
+      "unitCount": 3,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East",
+      "units": "A5 B2 L10"
+    }
+  },
+  {
+    "id_str": "F200059954",
+    "created_at": "6/18/2020 10:23:05 PM",
+    "derived": {
+      "lat": 47.723218,
+      "long": -122.348195,
+      "timestamp": 1592544185000,
+      "description": "Illegal Burn",
+      "address": "N 130th St / Linden Ave N",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Broadview/Bitter Lake",
+      "neighborhoodGroup": "Northwest",
+      "units": "E24"
+    }
+  },
+  {
+    "id_str": "F200059950",
+    "created_at": "6/18/2020 10:13:19 PM",
+    "derived": {
+      "lat": 47.601719,
+      "long": -122.331966,
+      "timestamp": 1592543599000,
+      "description": "Auto Fire Alarm",
+      "address": "201 Yesler Way",
+      "active": true,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E10 L1"
+    }
+  },
+  {
+    "id_str": "F200059949",
+    "created_at": "6/18/2020 10:09:15 PM",
+    "derived": {
+      "lat": 47.608073,
+      "long": -122.320755,
+      "timestamp": 1592543355000,
+      "description": "Aid Response",
+      "address": "Cherry St / Broadway",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "E25"
+    }
+  },
+  {
+    "id_str": "F200059947",
+    "created_at": "6/18/2020 10:04:43 PM",
+    "derived": {
+      "lat": 47.608682,
+      "long": -122.32454,
+      "timestamp": 1592543083000,
+      "description": "Medic Response",
+      "address": "909 Boren Av",
+      "active": true,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "A25 M10"
+    }
+  },
+  {
+    "id_str": "F200059946",
+    "created_at": "6/18/2020 9:58:09 PM",
+    "derived": {
+      "lat": 47.538315,
+      "long": -122.334445,
+      "timestamp": 1592542689000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "Highland Park Way Sw / West Marginal Way S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "South Park",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E26"
+    }
+  },
+  {
+    "id_str": "F200059943",
+    "created_at": "6/18/2020 9:54:53 PM",
+    "derived": {
+      "lat": 47.603061,
+      "long": -122.337788,
+      "timestamp": 1592542493000,
+      "description": "Aid Response",
+      "address": "Alaskan Way / Marion St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200059945",
+    "created_at": "6/18/2020 9:54:13 PM",
+    "derived": {
+      "lat": 47.674549,
+      "long": -122.376832,
+      "timestamp": 1592542453000,
+      "description": "Illegal Burn",
+      "address": "1547 Nw 63rd St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Whittier Heights",
+      "neighborhoodGroup": "Ballard",
+      "units": "E18"
+    }
+  },
+  {
+    "id_str": "F200059941",
+    "created_at": "6/18/2020 9:52:22 PM",
+    "derived": {
+      "lat": 47.649775,
+      "long": -122.350985,
+      "timestamp": 1592542342000,
+      "description": "Auto Fire Alarm",
+      "address": "620 N 34th St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Fremont",
+      "neighborhoodGroup": "Lake Union",
+      "units": "E9 L6"
+    }
+  },
+  {
+    "id_str": "F200059938",
+    "created_at": "6/18/2020 9:47:08 PM",
+    "derived": {
+      "lat": 47.578119,
+      "long": -122.287632,
+      "timestamp": 1592542028000,
+      "description": "Auto Fire Alarm",
+      "address": "2811 Mount Rainier Dr S",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast",
+      "units": "E30 L3"
+    }
+  },
+  {
     "id_str": "F200059935",
     "created_at": "6/18/2020 9:25:47 PM",
     "derived": {
@@ -8,7 +195,7 @@
       "timestamp": 1592540747000,
       "description": "Aid Response",
       "address": "S Jackson St / Maynard Ave S",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Pioneer Square/International District",
@@ -25,7 +212,7 @@
       "timestamp": 1592539146000,
       "description": "Auto Fire Alarm",
       "address": "121 Nw 85th St",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "Greenwood/Phinney Ridge",
