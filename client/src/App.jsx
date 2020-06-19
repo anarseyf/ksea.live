@@ -1,6 +1,5 @@
 import React from "react";
 import { Router } from "@reach/router";
-import { Dispatch } from "./dispatch/Dispatch";
 import { DispatchAll } from "./dispatch/DispatchAll";
 import { DispatchArea } from "./dispatch/DispatchArea";
 

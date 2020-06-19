@@ -44,9 +44,6 @@ export const mapBounds = [
 
 export const centroid = (features) => {
   if (!features.length) {
-    console.warn(
-      `Cannot compute centroid, returning default: ${defaultCentroid}`
-    );
     return defaultCentroid;
   }
   let coords = features

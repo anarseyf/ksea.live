@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "@reach/router";
 import { Map } from "./Map";
 import { DataProvider } from "./DataProvider";
-import { Header } from "./Header";
 import { TweetsForArea } from "./TweetsForArea";
 import { Paragraph } from "./Paragraph";
 import { Section } from "./Section";
 import { ErrorBoundary } from "./ErrorBoundary";
+
 import paragraphStyles from "./paragraph.module.scss";
+import { AreaPageHeader } from "./AreaPageHeader";
 
 export const DispatchArea = ({ area }) => {
   const sources = "Data sources";
@@ -25,9 +26,7 @@ export const DispatchArea = ({ area }) => {
       </Section>
 
       <Section styleOption={1}>
-        <Paragraph title={area} />
-        <Header area={area} />
-        {/* <Histogram /> */}
+        <AreaPageHeader area={area} />
       </Section>
 
       <Section styleOption={2} edgeToEdge={true}>

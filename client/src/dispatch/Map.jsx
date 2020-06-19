@@ -124,7 +124,7 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />
-      <GeoJSON data={city} style={geojsonStyleBounds} />
+      {!area && <GeoJSON data={city} style={geojsonStyleBounds} />}
       {rendered.map((feature) => (
         <GeoJSON data={feature} style={geojsonStyleActive} />
       ))}

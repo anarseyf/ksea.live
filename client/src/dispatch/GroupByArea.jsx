@@ -2,19 +2,20 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import { DataContext } from "./DataProvider";
 import { AreaShape } from "./AreaShape";
-import { featuresForArea } from "./geojson";
+
 import { isActive, isAtLeastSev2, isAtLeastSev1 } from "../clientUtils";
 import { SvgDot } from "./SvgDot";
 import { Spark } from "./Spark";
-import { MultiLine } from "./MultiLine";
-import { Total } from "./Total";
 import classnames from "classnames";
 import styles from "./group.module.scss";
 import { ErrorBoundary } from "./ErrorBoundary";
+import { useNeighborhoods } from "./neighborhoods";
 
 export const GroupByArea = () => {
   const { groupedByArea, activeOrMajorByArea } = useContext(DataContext);
   const [totalsMap, setTotalsMap] = useState({});
+
+  const neighborhoodsMap = useNeighborhoods();
 
   useEffect(() => {
     const map = {};
@@ -29,27 +30,13 @@ export const GroupByArea = () => {
       }
     });
     setTotalsMap(map);
-  }, [groupedByArea, activeOrMajorByArea]);
+  }, [activeOrMajorByArea]);
 
   if (!groupedByArea.length) {
     return null;
   }
 
-  const getNeighborhoods = () => {
-    const map = {};
-    groupedByArea
-      .map(({ key }) => key)
-      .forEach((key) => {
-        map[key] = featuresForArea(key)
-          .map(({ properties: { CRA_NAM } }) => CRA_NAM)
-          .sort();
-      });
-    return map;
-  };
-  const neighborhoodsMap = getNeighborhoods();
-
   return (
-    
       <div className={styles.container}>
         {groupedByArea.map(({ key: area, intervals }) => (
           <div className={styles.itemContainer}>
@@ -70,11 +57,11 @@ export const GroupByArea = () => {
 
                 <div className={classnames(styles.item, styles.text)}>
                   <div>{area}</div>
-                  <div className={styles.list}>
+                  {neighborhoodsMap[area] && <div className={styles.list}>
                     {neighborhoodsMap[area].map((v) => (
                       <div>• {v}</div>
                     ))}
-                  </div>
+                  </div>}
                 </div>
 
                 <div className={classnames(styles.item, styles.right)}>
