@@ -1,5 +1,107 @@
 [
   {
+    "id_str": "F200059970",
+    "created_at": "6/19/2020 12:04:31 AM",
+    "derived": {
+      "lat": 47.604991,
+      "long": -122.333174,
+      "timestamp": 1592550271000,
+      "description": "1RED 1 Unit",
+      "address": "317 Marion St",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200059968",
+    "created_at": "6/19/2020 12:00:16 AM",
+    "derived": {
+      "lat": 47.604991,
+      "long": -122.333174,
+      "timestamp": 1592550016000,
+      "description": "Aid Response",
+      "address": "317 MARION ST",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200059967",
+    "created_at": "6/18/2020 11:59:32 PM",
+    "derived": {
+      "lat": 47.661371,
+      "long": -122.287209,
+      "timestamp": 1592549972000,
+      "description": "Aid Response",
+      "address": "38th Ave Ne / Sand Point Way Ne",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Laurelhurst/Sand Point",
+      "neighborhoodGroup": "Northeast",
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "F200059964",
+    "created_at": "6/18/2020 11:39:59 PM",
+    "derived": {
+      "lat": 47.668499,
+      "long": -122.270357,
+      "timestamp": 1592548799000,
+      "description": "Aid Response",
+      "address": "5415 Ne 55th St",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Laurelhurst/Sand Point",
+      "neighborhoodGroup": "Northeast",
+      "units": "E38"
+    }
+  },
+  {
+    "id_str": "F200059962",
+    "created_at": "6/18/2020 11:26:31 PM",
+    "derived": {
+      "lat": 47.602114,
+      "long": -122.330809,
+      "timestamp": 1592547991000,
+      "description": "Auto Fire Alarm",
+      "address": "509 3rd Av",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E2 L4"
+    }
+  },
+  {
+    "id_str": "F200059961",
+    "created_at": "6/18/2020 11:23:05 PM",
+    "derived": {
+      "lat": 47.680887,
+      "long": -122.267966,
+      "timestamp": 1592547785000,
+      "description": "Aid Response",
+      "address": "7207 56th Ave Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Laurelhurst/Sand Point",
+      "neighborhoodGroup": "Northeast",
+      "units": "E38"
+    }
+  },
+  {
     "id_str": "F200059958",
     "created_at": "6/18/2020 10:58:04 PM",
     "derived": {
@@ -9,11 +111,11 @@
       "description": "AFA4 - Auto Alarm 2 + 1 + 1",
       "address": "1201 1st Av S",
       "active": true,
-      "unitCount": 4,
-      "severity": 0,
+      "unitCount": 5,
+      "severity": 1,
       "neighborhood": "Duwamish/SODO",
       "neighborhoodGroup": "Greater Duwamish",
-      "units": "B2 E10 E5 L1"
+      "units": "B2 E10 E5 L1 MAR5"
     }
   },
   {
