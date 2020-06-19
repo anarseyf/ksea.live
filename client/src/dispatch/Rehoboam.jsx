@@ -12,6 +12,7 @@ export const Rehoboam = ({ area }) => {
   const { filteredByArea, activeOrMajorForArea } = useContext(DataContext);
   const [svgPath, setSvgPath] = useState(null);
   const [sev2Circles, setSev2Circles] = useState([]);
+  const [total, setTotal] = useState(undefined);
   const axisRef = useRef(null);
 
   const mainRadius = 100;
@@ -27,6 +28,8 @@ export const Rehoboam = ({ area }) => {
     if (!filteredByArea.length) {
       return;
     }
+
+    setTotal(currentInterval(filteredByArea).total);
 
     const current = currentInterval(filteredByArea);
     // const bins = current.binsHiRes;
@@ -92,15 +95,12 @@ export const Rehoboam = ({ area }) => {
     }
   }, [activeOrMajorForArea, filteredByArea]);
 
-  const total = filteredByArea.length
-    ? currentInterval(filteredByArea).total
-    : 0;
   const text = area || "Seattle";
 
   return (
     <div className={rehoboamStyles.container}>
       <div className={rehoboamStyles.counter}>
-        <Topline number={total} text={text} />
+        <Topline total={total} text={text} />
       </div>
       <svg className={rehoboamStyles.svg} width={svgWidth} height={svgHeight}>
         <g

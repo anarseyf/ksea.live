@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./topline.module.scss";
-export const Topline = ({ number = 0, text }) => {
+export const Topline = ({ total, text }) => {
   return (
     <div className={styles.topline}>
       {text && <div className={styles.text}>{text}</div>}
-      <div className={styles.number}>{number}</div>
+      {typeof total === "number" && <div className={styles.total}>{total}</div>}
     </div>
   );
 }

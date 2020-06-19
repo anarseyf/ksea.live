@@ -25,7 +25,7 @@ import {
   getHistoryAsync,
   statusFile,
 } from "./dispatchHelpers";
-import { readJSONAsync } from "./scripts/dispatch/fileUtils";
+import { readJSONAsync, toPacificMidnight } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
@@ -63,6 +63,13 @@ const statusController = async (req, res) => {
     const runnersStatus = await readJSONAsync(statusFile, {});
     const lastUpdated =
       (runnersStatus.split && runnersStatus.split.lastRun) || 0;
+
+    const now = new Date();
+    console.log(
+      `Server time: ${now.toLocaleString()} (${+now}) (toPacificMidnight: ${toPacificMidnight(
+        now
+      )})`
+    );
 
     const status = {
       mostRecentId,

@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { isExactlySev1, isExactlySev2 } from "../client/src/clientUtils";
+import { isExactlySev1, isExactlySev2 } from "../client/src/clientUtils"; // TODO - do not import from client!!
 
 const defaultAccessor = ({ derived: { timestamp, offset = 0 } }) =>
   timestamp + offset;

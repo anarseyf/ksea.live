@@ -1,8 +1,8 @@
 import { checkVersion } from "../version";
 import { updateOnce } from "./scriptUtil";
 
-const setTZ = require("set-tz");
-setTZ("America/Vancouver"); // TODO - use in all scripts
+// const setTZ = require("set-tz");
+// setTZ("America/Vancouver"); // TODO - use in all scripts
 
 const main = () => {
   const delay = 15 * 1000;
