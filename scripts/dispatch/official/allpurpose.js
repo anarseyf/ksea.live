@@ -1,17 +1,21 @@
-const { runForAll } = require("./scriptUtil");
-const { saveJSONAsync } = require("../fileUtils");
-const { withScriptsJsonPath } = require("../serverUtils");
+import moment from "moment";
+import { tz } from "moment-timezone";
 
-const callback = (entries) => {
-  const list = entries.filter(({ derived: { lat } }) => lat === null);
+const str = "6/11/2020 5:36:08 PM";
+console.log(str);
 
-  return list;
-};
+const format = "MM/DD/YYYY hh:mm:ss A";
+const timezone = "America/Vancouver";
+const m1 = tz(str, format, timezone);
+const m2 = tz(str, format, "UTC");
 
-(async () => {
-  const lists = await runForAll(callback);
-  const list = lists.flat();
-  console.log(list.length, list[0]);
+console.log(m1.toDate().toLocaleString());
+console.log(m2.toDate().toLocaleString());
 
-  // await saveJSONAsync(withScriptsJsonPath("combined.json"), list);
-})();
+console.log(moment.tz.names());
+console.log(
+  moment.tz
+    .names()
+    .filter((v) => v.includes("America"))
+    .join("\n")
+);

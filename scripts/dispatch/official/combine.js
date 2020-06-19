@@ -1,8 +1,14 @@
 import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
 import { withScriptsJsonPath, sortByTimestampDescending } from "../serverUtils";
 import { severityMapper } from "./mappers";
+import { tz } from "moment-timezone";
 
 const targetFile = withScriptsJsonPath("combined.json");
+
+// https://momentjs.com/docs/#/parsing/string-format/
+const format = "MM/DD/YYYY hh:mm:ss A";
+const timezone = "America/Vancouver";
+const localStrToTimestamp = (str) => +tz(str, format, timezone);
 
 export const runner = async (sourceFile) => {
   try {
@@ -22,7 +28,9 @@ export const runner = async (sourceFile) => {
     });
 
     const mapper = (id) => {
-      const list = map[id].sort((a, b) => a.date.localeCompare(b.date));
+      const list = map[id].sort(
+        (a, b) => localStrToTimestamp(a.date) - localStrToTimestamp(b.date)
+      );
       const oldest = list[0];
       const newest = list[list.length - 1];
       const units = [
@@ -41,7 +49,7 @@ export const runner = async (sourceFile) => {
         created_at: oldest.date,
         id_str: oldest.incidentId,
         derived: {
-          timestamp: +new Date(oldest.date),
+          timestamp: localStrToTimestamp(oldest.date),
           description: oldest.type,
           address: oldest.location,
           units,
