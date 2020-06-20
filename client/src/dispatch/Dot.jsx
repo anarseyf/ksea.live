@@ -7,13 +7,21 @@ export const Appearance = {
   Highlighted: 1,
 };
 
-export const Dot = ({ coordinates, severity = 0, active = false }) => {
+export const Dot = ({ coordinates, severity = 0, active = false, appearance = Appearance.Normal }) => {
   const color = active ? "red" : "white";
+
+  // TODO - set opacity in CSS
   let opacity = 0.4;
   if (severity >= 1) {
     opacity = 0.7;
   }
   if (active) {
+    opacity = 0.9;
+  }
+  if (appearance === Appearance.Dimmed) {
+    opacity = 0.35;
+  }
+  if (appearance === Appearance.Highlighted) {
     opacity = 0.9;
   }
   const baseRadius = active ? 250 : 150;
