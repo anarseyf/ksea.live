@@ -18,9 +18,14 @@ const formatter = d3.timeFormat("%-I:%M %p");
 
 export const DispatchAll = () => {
   const { status = {} } = useContext(StatusContext);
+
   const time = status.lastUpdated
     ? formatter(new Date(status.lastUpdated))
     : undefined;
+
+    const dataText = time ? (
+      <span>Data is current as of <strong> {time}</strong>.</span>
+    ) : <span>&nbsp;</span>;
 
   const intro = (
     <p>
@@ -30,9 +35,9 @@ export const DispatchAll = () => {
     </p>
   );
 
-  const pastWeek = `Cumulative number of dispatches for Seattle today, compared to the past 7 days`;
+  const todayText = "";
 
-  const map = "";
+  const pastWeek = `The past 7 days of dispatches`;
 
   const major = (
     <p>
@@ -71,12 +76,6 @@ export const DispatchAll = () => {
   const notes = (
     <>
       <p>
-        {time && (
-          <span>
-            {" "}
-            Data is current as of <strong> {time}</strong>.{" "}
-          </span>
-        )}
         Incidents for which no geolocation data is available are not shown and
         not counted.
       </p>
@@ -92,12 +91,12 @@ export const DispatchAll = () => {
       <Section styleOption={1}>
         <Paragraph h1="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
-        <Paragraph title="Past Week" content={pastWeek} />
-        <Header />
+        <Paragraph content={dataText} />
       </Section>
 
       <Section edgeToEdge={true} styleOption={2}>
-        <Paragraph title="Today" content={map} margin={true} />
+        <Paragraph title="" content={todayText} margin={true} />
+
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
@@ -106,8 +105,13 @@ export const DispatchAll = () => {
       <Section styleOption={1}>
         <Paragraph title="Active Incidents" content={""} />
         <TweetsActive />
-        <Paragraph title="Major Incidents (24 Hours)" content={major} />
+        <Paragraph title="Major Incidents (24 hours)" content={major} />
         <TweetsMajor />
+      </Section>
+
+      <Section styleOption={1}>
+        <Paragraph title="Past Week" content={pastWeek} />
+        <Header />
       </Section>
 
       <Section styleOption={2} edgeToEdge={true}>

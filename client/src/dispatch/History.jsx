@@ -35,10 +35,10 @@ export const History = () => {
   const [paths, setPaths] = useState([]);
   const [clipPaths, setClipPaths] = useState({});
 
-  const binHeight = 2;
+  const binHeight = 2.5;
   const svgWidth = isPhone() ? 350 : 500,
     margin = { top: 10, right: 30, bottom: 30, left: 30 },
-    svgHeight = 366 * (binHeight + 1) + margin.top + margin.bottom,
+    svgHeight = 366 * (binHeight) + margin.top + margin.bottom,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
   const yearWidth = width / 2;

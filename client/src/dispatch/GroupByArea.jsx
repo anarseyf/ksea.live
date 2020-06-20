@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import { DataContext } from "./DataProvider";
 import { AreaShape } from "./AreaShape";
 
-import { isActive, isAtLeastSev2, isAtLeastSev1 } from "../clientUtils";
+import { isActive, isAtLeastSev2, isAtLeastSev1, isPhone } from "../clientUtils";
 import { SvgDot } from "./SvgDot";
 import { Spark } from "./Spark";
 import classnames from "classnames";
@@ -15,8 +15,8 @@ export const GroupByArea = () => {
   const { groupedByArea, activeOrMajorByArea } = useContext(DataContext);
   const [totalsMap, setTotalsMap] = useState({});
   const [data, setData] = useState([]);
-
   const neighborhoodsMap = useNeighborhoods();
+  const phone = isPhone();
 
   useEffect(() => {
     if (!activeOrMajorByArea.length) {
@@ -101,10 +101,10 @@ export const GroupByArea = () => {
                 </div>
               </div>
 
-              <div className={classnames(styles.item, styles.text)}>
-                <div>{area}</div>
+              <div className={classnames(styles.item, styles.text, {[styles.phone]:phone})}>
+                <div className={styles.area}>{area}</div>
                 {neighborhoodsMap[area] && (
-                  <div className={styles.list}>
+                  <div className={classnames(styles.list)}>
                     {neighborhoodsMap[area].map((v) => (
                       <div key={v}>• {v}</div>
                     ))}

@@ -4,13 +4,13 @@
   display: inline-block;
   margin: auto;
 }
+.text {
+  font-size: 2em;
+  color: $text-secondary;
+}
 .total {
   display: inline-module;
   font-size: 4em;
-  color: red;
-  margin: -0.5em auto;
-}
-.text {
-  font-size: 2em;
   color: $text-primary;
+  margin: -0.6em auto;
 }

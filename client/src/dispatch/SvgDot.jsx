@@ -2,11 +2,12 @@ import React from "react";
 import classnames from "classnames";
 import svgStyles from "./svg.module.scss";
 
-export const SvgDot = ({ radius = 3, active = false, sev1 = false, sev2 = false }) => {
+export const SvgDot = ({ radius = 0, active = false, sev1 = false, sev2 = false }) => {
   const color = active ? "red" : "white";
   const size = 18,
     sev1Radius = 5,
     sev2Radius = 8;
+  const baseRadius = radius || (active ? 5 : 3);
 
   return (
     <svg
@@ -14,7 +15,7 @@ export const SvgDot = ({ radius = 3, active = false, sev1 = false, sev2 = false 
       width={size}
       height={size}
     >
-      <circle cx={size / 2} cy={size / 2} r={radius} fill={color} />
+      <circle cx={size / 2} cy={size / 2} r={baseRadius} fill={color} />
       {(sev1 || sev2) && (
         <circle
           cx={size / 2}

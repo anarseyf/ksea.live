@@ -20,7 +20,7 @@ export const isPhone = () =>
 
 // see also fileUtils.js
 export const toPacificStr = (timestamp) =>
-  timezone(timestamp, "America/Vancouver").format("h:mma");
+  timezone(timestamp, "America/Vancouver").format("h:mm a");
 
 export const isActive = ({ derived: { active } }) => active;
 export const isAtLeastSev1 = ({ derived: { severity } }) => severity >= 1;

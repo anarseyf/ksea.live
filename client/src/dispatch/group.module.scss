@@ -18,8 +18,8 @@
 }
 
 .vpadding {
-  padding-top: 0.5em;
-  padding-bottom: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.5em;
 }
 .fullWidth {
   width: 100%;
@@ -37,6 +37,9 @@
   vertical-align: top;
 }
 
+.area {
+  font-size: 1.2em;
+}
 .text {
   text-align: right;
   margin-top: -0.25em;
@@ -44,10 +47,14 @@
 }
 .list {
   padding-top: 0.25em;
-  font-size: 0.8em;
   line-height: 1.3em;
   color: $text-secondary;
 }
+
+.phone {
+  font-size: 0.8em;
+}
+
 .major {
   margin-bottom: 0;
 }
