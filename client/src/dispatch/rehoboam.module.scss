@@ -15,7 +15,11 @@
 }
 
 .path {
-  stroke-opacity: 0.8;
+  // stroke-opacity: 0.8;
+  stroke-linecap: round;
+  stroke: $graph-primary;
+  stroke-width: 2;
+  fill: none;
 }
 
 .maincircle {
@@ -36,7 +40,7 @@
   stroke-width: 1;
   fill: none;
 }
-.active {
+.active circle {
   fill: $highlight;
   stroke: $highlight;
 }

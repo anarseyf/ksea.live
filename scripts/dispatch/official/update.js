@@ -43,6 +43,9 @@ export const runner = async (ignoreStatus) => {
   const entries = await readJSONAsync(withDatasetsPath(mostRecentFileName), []);
   let tMostRecent = entries[0].derived.timestmap;
 
+  // TODO:
+  // 1. Check if -1 days is necessary.
+  // 2. Update yesterday's incidents, make sure they're unmarked as active.
   let timestamp = moment(toPacificMidnight(tMostRecent)).subtract(1, "days");
   const futureMidnight = moment(toPacificMidnight(now)).add(1, "days");
 
