@@ -15,27 +15,28 @@ const minZoom = 10,
   defaultZoom = 11;
 
 const activeColor = "dodgerblue";
-const geojsonStyleBounds = {
-  color: "#1e90ff66", // dodgerblue with alpha
-  fillOpacity: 0,
-  strokeOpacity: 0.5,
-  weight: 4,
-};
-const geojsonStyleActive = {
-  color: activeColor,
-  fillColor: activeColor,
-  fillOpacity: 0.15,
-  weight: 2,
-};
 
 export const Map = ({ area, tileOptions = MapOptions.Default }) => {
   // TODO - no need for types, so don't use byTypeForArea
-  const { byTypeForArea } = useContext(DataContext);
   const { user } = useContext(UserContext);
-
+  const { byTypeForArea } = useContext(DataContext);
   if (!byTypeForArea.length) {
     return null;
   }
+
+  const geojsonStyleBounds = {
+    color: "#1e90ff66", // dodgerblue with alpha
+    fillOpacity: 0,
+    strokeOpacity: 0.5,
+    weight: 4,
+  };
+  const geojsonStyleActive = {
+    color: activeColor,
+    fillColor: activeColor,
+    fillOpacity: 0.1,
+    strokeOpacity: 0.5,
+    weight: 2
+  };
 
   const { geojson, areaProp } = areas;
 

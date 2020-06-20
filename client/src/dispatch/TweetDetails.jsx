@@ -17,13 +17,13 @@ export const TweetDetails = ({tweet}) => {
   return (
     <div className={styles.container}>
       <div>{address}</div>
-      <div className={styles.secondary}>{coordinates}</div>
       {phone && <div className={styles.secondary}>{area}</div>}
+      <div className={styles.secondary}>{coordinates}</div>
       <div>
         <span>{unitsStr}</span>
         {unitsList.map((unit) => (
           <span key={unit} className={styles.unit}>{unit}</span>
-        ))}
+          ))}
       </div>
     </div>
   );

@@ -13,13 +13,15 @@ import { AreaPageHeader } from "./AreaPageHeader";
 export const DispatchArea = ({ area }) => {
   const sources = "Data sources";
 
+  const today = "Today's Incidents";
+
   return (
     <DataProvider filters={{ area }}>
       <Section styleOption={2}>
         <Paragraph
           content={
             <Link className={paragraphStyles.link} to="/">
-              « to main page
+              « main page
             </Link>
           }
         />
@@ -36,11 +38,12 @@ export const DispatchArea = ({ area }) => {
       </Section>
 
       <Section styleOption={1}>
+        <Paragraph title={today} />
         <TweetsForArea />
       </Section>
 
       <Section styleOption={2}>
-        <Paragraph text={sources} />
+        <Paragraph content={sources} />
       </Section>
     </DataProvider>
   );

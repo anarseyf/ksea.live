@@ -10,11 +10,15 @@ import {
 import { datasetsPath } from "../serverUtils";
 
 const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
-  let bins = binsLowRes;
+  let data = binsLowRes;
   let result = [];
+
+  // TODO - make sure this works as intended past 2020
   if (offset === 0) {
-    // TODO - make sure this works as intended past 2020
-    const lastBin = binsLowRes[binsLowRes.length - 1];
+    // Current year — ignore today's bin as it's incomplete
+    data = binsLowRes.slice(0, -1);
+
+    const lastBin = data[data.length - 1];
     const date = new Date(lastBin.x0);
     const annotationToday = {
       end: {
@@ -24,15 +28,12 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
       },
     };
     result.push(annotationToday);
-
-    // Current year — ignore today's bin as it's incomplete
-    bins = binsLowRes.slice(0, -1);
   }
   const year = new Date(yearStart).getFullYear();
-  const lengths = bins.map(({ length }) => length);
+  const lengths = data.map(({ length }) => length);
   const [min, max] = d3.extent(lengths);
-  const minBin = bins.find(({ length }) => length === min);
-  const maxBin = bins.find(({ length }) => length === max);
+  const minBin = data.find(({ length }) => length === min);
+  const maxBin = data.find(({ length }) => length === max);
 
   const minDate = new Date(minBin.x0 - offset);
   const maxDate = new Date(maxBin.x0 - offset);
