@@ -9,7 +9,7 @@ import styles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Rehoboam = ({ area }) => {
-  const { filteredByArea, activeOrMajorForArea } = useContext(DataContext);
+  const { filteredByAreaMin, activeOrMajorForArea } = useContext(DataContext);
   const [svgPath, setSvgPath] = useState(null);
   const [circles, setCircles] = useState([]);
   const [total, setTotal] = useState(undefined);
@@ -25,13 +25,13 @@ export const Rehoboam = ({ area }) => {
   const dotRadius = 5;
 
   useEffect(() => {
-    if (!filteredByArea.length) {
+    if (!filteredByAreaMin.length) {
       return;
     }
 
-    setTotal(currentInterval(filteredByArea).total); // TODO - use status
+    setTotal(currentInterval(filteredByAreaMin).total); // TODO - use status
 
-    const current = currentInterval(filteredByArea);
+    const current = currentInterval(filteredByAreaMin);
     // const bins = current.binsHiRes;
     const bins = current.bins;
     const extent = intervalExtent(current);
@@ -92,7 +92,7 @@ export const Rehoboam = ({ area }) => {
 
       setCircles(newCircles);
     }
-  }, [activeOrMajorForArea, filteredByArea]);
+  }, [activeOrMajorForArea, filteredByAreaMin]);
 
   const text = area || "Seattle";
 

@@ -7,6 +7,7 @@ import {
   getAnnotations,
   getTweetsActive24,
   getTweetsMajor24,
+  getTweetsForAreaMin,
 } from "../api";
 
 import { StatusContext } from "./StatusContext";
@@ -20,6 +21,7 @@ export const previousInterval = (dataset) => dataset[0].intervals[1];
 const useTweets = (filters = {}) => {
   const initialValue = {
     filteredByArea: [],
+    filteredByAreaMin: [],
     activeOrMajorForArea: [],
     activeOrMajorByArea: [],
     byTypeForArea: [],
@@ -41,6 +43,7 @@ const useTweets = (filters = {}) => {
   }
 
   const [filteredByArea, setFilteredByArea] = useState([]);
+  const [filteredByAreaMin, setFilteredByAreaMin] = useState([]);
   const [activeOrMajorForArea, setActiveOrMajorForArea] = useState([]);
   const [activeOrMajorByArea, setActiveOrMajorByArea] = useState([]);
   const [byTypeForArea, setByTypeForArea] = useState([]);
@@ -64,16 +67,22 @@ const useTweets = (filters = {}) => {
       return;
     }
     console.log("🟢 PROVIDER/fetching all data");
-
     setShouldFetch(false);
 
-    (async () => {
-      const area = filters.area || "seattle";
-      setFilteredByArea(await getTweetsForArea(area));
-    })();
+    const area = filters.area || "seattle";
+
+    console.log("PROVIDER/filters.area=", area);
+    if (area === "seattle") {
+      (async () => {
+        setFilteredByAreaMin(await getTweetsForAreaMin(area));
+      })();
+    } else {
+      (async () => {
+        setFilteredByArea(await getTweetsForArea(area));
+      })();
+    }
 
     (async () => {
-      const area = filters.area || "seattle";
       setActiveOrMajorForArea(
         await getTweetsForArea(area, { activeOrMajor: true, minimize: false })
       );
@@ -90,7 +99,7 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
-      setByTypeForArea(await getTweetsByType(filters.area || "seattle"));
+      setByTypeForArea(await getTweetsByType(area));
     })();
 
     (async () => {
@@ -109,7 +118,6 @@ const useTweets = (filters = {}) => {
 
     if (!history.length) {
       (async () => {
-        const area = filters.area || "seattle";
         setHistory(await getHistory(area));
       })();
     }
@@ -118,6 +126,7 @@ const useTweets = (filters = {}) => {
   useEffect(() => {
     setValue({
       filteredByArea,
+      filteredByAreaMin,
       byTypeForArea,
       groupedByArea,
       history,
@@ -135,6 +144,7 @@ const useTweets = (filters = {}) => {
     annotations,
     byTypeForArea,
     filteredByArea,
+    filteredByAreaMin,
     groupedByArea,
     history,
     major24,
