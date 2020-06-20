@@ -16,7 +16,7 @@ export const runner = async (sourceFile) => {
     const entries = await readJSONAsync(sourceFile, []);
     if (!entries.length) {
       console.log("combine > nothing to do");
-      return;
+      return targetFile;
     }
 
     const map = {};

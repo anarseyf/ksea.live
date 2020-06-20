@@ -5,7 +5,7 @@ import { updateOnce } from "./scriptUtil";
 // setTZ("America/Vancouver"); // TODO - use in all scripts
 
 const main = () => {
-  const delay = 15 * 1000;
+  const delay = 60 * 1000;
   const tick = async () => {
     try {
       const start = new Date();

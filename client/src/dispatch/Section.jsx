@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./section.module.scss";
+import classnames from "classnames";
+import { isPhone } from "../clientUtils";
 
 export const Section = ({ children, styleOption = 0, edgeToEdge = false }) => {
   const style =
@@ -11,12 +13,16 @@ export const Section = ({ children, styleOption = 0, edgeToEdge = false }) => {
       ? styles.styleMap
       : styles.styleDefault;
   return (
-    <section className={`${styles.section} ${style}`}>
-      <div className={styles.content}>
+    <section className={classnames(styles.section, style)}>
+      <div
+        className={classnames(styles.content, {
+          [styles.phone]: isPhone(),
+        })}
+      >
         <div
-          className={`${styles.subcontent} ${
-            edgeToEdge ? styles.edgeToEdge : ""
-          }`}
+          className={classnames(styles.subcontent, {
+            [styles.edgeToEdge]: edgeToEdge,
+          })}
         >
           {children}
         </div>

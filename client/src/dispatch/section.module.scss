@@ -5,22 +5,16 @@
   text-align: center;
   border-bottom: 1px solid $border;
 }
+
 .content {
   margin: 1em auto;
   display: inline-block;
-  width: 500px;
+  width: 600px;
+  border-left: 1px dotted darkslategray;
+  border-right: 1px dotted darkslategray;
 }
-
-@media only screen and (max-device-width: 600px) {
-  .content {
-    width: 100%;
-  }
-}
-
-@media only screen and (min-device-width: 601px) and (max-device-width: 800px) {
-  .content {
-    width: 600px;
-  }
+.content.phone {
+  width: 100%;
 }
 
 .styleDefault {

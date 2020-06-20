@@ -14,9 +14,9 @@ export const MultiLine = ({
   const [svgData, setSvgData] = useState([]);
   const [nowDot, setNowDot] = useState(null);
 
-  const svgWidth = isPhone ? 350 : 500;
+  const svgWidth = isPhone() ? 350 : 500;
   const svgHeight = 0.35 * svgWidth,
-    margin = { top: 20, right: 30, bottom: 20, left: 30 },
+    margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
 
@@ -28,6 +28,7 @@ export const MultiLine = ({
     if (!intervals.length) {
       return;
     }
+
     const accessor = ({ length, cumulative }) =>
       useCumulative ? cumulative : length;
 
@@ -38,7 +39,7 @@ export const MultiLine = ({
       d3.max([1.0, ...intervals.flatMap(({ bins }) => bins).map(accessor)]),
     ];
 
-    const dateFormatter = d3.timeFormat("%-I%p"); 
+    const dateFormatter = d3.timeFormat("%-I%p");
     // https://github.com/d3/d3-time-format#locale_format
 
     const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
@@ -83,9 +84,13 @@ export const MultiLine = ({
 
   const total = intervals[0].total;
   const lastIndex = svgData.length - 1;
+  const phone = isPhone();
 
   return (
     <div className={chartStyles.container}>
+      <div>
+        IS PHONE: <span>{phone ? "YES" : "NO"}</span>
+      </div>
       {showHeader && (
         <div className={chartStyles.header}>
           {title && <div className={chartStyles.title}>{title}</div>}

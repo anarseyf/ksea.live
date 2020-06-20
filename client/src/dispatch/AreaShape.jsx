@@ -2,8 +2,10 @@ import React from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { featuresForArea, centroid } from "./geojson";
 import { MapOptions } from "./mapOptions";
-import styles from "./area.module.scss";
 import { ErrorBoundary } from "./ErrorBoundary";
+import { isPhone } from "../clientUtils";
+import classnames from "classnames";
+import styles from "./areashape.module.scss";
 
 const geojsonStyle = {
   color: "dodgerblue",
@@ -23,12 +25,14 @@ export const AreaShape = ({ area }) => {
   const zoom = 10;
   const tileOptions = MapOptions.NoLabels;
 
-  console.log(`AREA/zoom: ${zoom}, features: ${features.length}, area: ${area}`);
+  console.log(
+    `AREA/zoom: ${zoom}, features: ${features.length}, area: ${area}`
+  );
 
   return (
     <ErrorBoundary>
       <LeafletMap
-        className={styles.container}
+        className={classnames(styles.container, { [styles.phone]: isPhone() })}
         center={center}
         zoom={zoom}
         minZoom={zoom}

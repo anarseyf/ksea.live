@@ -12,7 +12,7 @@ const deadLetterQueue = withScriptsJsonPath("unresolved.json");
 
 const resolveGeo = async (entries = []) => {
   if (!entries.length) {
-    console.log("resolveGeo > nothing to do");
+    console.log(">> resolveGeo > nothing to do");
     return [];
   }
 
@@ -116,7 +116,7 @@ export const runner = async (sourceFile) => {
       const queue = entries.slice(0, queueSize);
       if (!queue.length) {
         console.log("resolve > nothing to do");
-        return;
+        return targetFile;
       }
 
       console.log(

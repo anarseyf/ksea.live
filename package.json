@@ -53,13 +53,14 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "npm install && npm run server:prod",
+    "start": "npm install && concurrently \"npm run server:prod\" \"npm run update:loop\"",
+    "server:prod": "NODE_ENV=production node -r esm server.js",
+    "client": "cd client && npm run start",
     "app:dev": "concurrently \"npm run server:dev\" \"npm run client\" \"npm run background:dev\"",
     "static:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "server:prod": "NODE_ENV=production node -r esm server.js",
     "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",
-    "background:dev": "cd scripts/dispatch && npm run nobackfill:official",
+    "update:loop": "cd scripts/dispatch && npm run update:loop",
+    "update:once": "cd scripts/dispatch && npm run update:once",
     "build": "cd client && npm run build",
     "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
     "bundle:aws": "git add --all; git commit -m 'AWS Bundle'; git archive -v -o coffee-aws.zip --format=zip HEAD"

@@ -8,6 +8,7 @@ import { centroid, areas, cityGeojson, mapBounds } from "./geojson";
 import classnames from "classnames";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
+import { isPhone } from "../clientUtils";
 
 const minZoom = 10,
   maxZoom = 13,
@@ -49,19 +50,23 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   let zoom = defaultZoom;
   if (area) {
-    zoom = defaultZoom + 1; 
+    zoom = defaultZoom + 1;
   }
   if (selectedTweet) {
     zoom = maxZoom;
   }
 
-  console.log(`MAP/area=${area}, zoom = ${zoom}, selected: ${(selectedTweet||{}).id_str}, features: ${rendered.length}/${features.length}`);
+  console.log(
+    `MAP/area=${area}, zoom = ${zoom}, selected: ${
+      (selectedTweet || {}).id_str
+    }, features: ${rendered.length}/${features.length}`
+  );
 
   const center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : area ?
-   centroid(rendered)
-   : centroid(cityGeojson.features);
+    : area
+    ? centroid(rendered)
+    : centroid(cityGeojson.features);
 
   const mapper = ({ intervals }) =>
     intervals[0].values.map(
@@ -116,7 +121,10 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   return (
     <LeafletMap
-      className={classnames(styles.container, { [styles.area]: area })}
+      className={classnames(styles.container, {
+        [styles.area]: area,
+        [styles.phone]: isPhone(),
+      })}
       center={center}
       zoom={zoom}
       minZoom={minZoom}

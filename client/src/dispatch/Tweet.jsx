@@ -10,6 +10,7 @@ import {
   isAtLeastSev2,
 } from "../clientUtils";
 import { SvgDot } from "./SvgDot";
+import classnames from "classnames";
 
 export const TweetModes = {
   Default: 0,
@@ -39,9 +40,10 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
 
   return (
     <div
-      className={`${styles.container} ${isDetailed ? styles.detailed : ""} ${
-        isGreyedOut ? styles.greyedOut : ""
-      }`}
+      className={classnames(styles.container, {
+        [styles.detailed]: isDetailed,
+        [styles.greyedOut]: isGreyedOut,
+      })}
       onClick={handleClick}
     >
       <div className={styles.tweet}>
@@ -51,9 +53,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
           </span>
           <SvgDot active={active} sev1={sev1} sev2={sev2} />
         </div>
-        <div>
-          {tweet.derived.description}
-        </div>
+        <div>{tweet.derived.description}</div>
       </div>
       {isDetailed && <TweetDetails tweet={tweet} />}
     </div>

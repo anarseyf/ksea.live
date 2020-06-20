@@ -9,7 +9,7 @@ export const Histogram = () => {
   const { history } = useContext(DataContext);
   const [svgData, setSvgData] = useState([]);
 
-  const svgWidth = isPhone ? 350 : 550,
+  const svgWidth = isPhone() ? 350 : 550,
     svgHeight = 80,
     margin = { top: 10, right: 10, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
@@ -90,4 +90,4 @@ export const Histogram = () => {
       </svg>
     </div>
   );
-}
+};

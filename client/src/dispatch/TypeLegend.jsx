@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styles from "./legend.module.scss";
 import * as d3 from "d3";
 import { UserContext, UserContextKeys } from "./UserProvider";
+import classnames from "classnames";
 
 export const TypeLegend = ({ legend = [], title, showTotal, showLabels }) => {
   const { user, setSelection } = useContext(UserContext);
@@ -38,9 +39,9 @@ export const TypeLegend = ({ legend = [], title, showTotal, showLabels }) => {
       <div className={styles.body}>
         {legend.map((d) => (
           <div
-            className={`${styles.item} ${
-              d.key === filter ? styles.selected : ""
-            }`}
+            className={classnames(styles.item, {
+              [styles.selected]: d.key === filter,
+            })}
             onClick={() => handleClick(d)}
           >
             {showLabels && (
@@ -63,4 +64,4 @@ export const TypeLegend = ({ legend = [], title, showTotal, showLabels }) => {
       </div>
     </div>
   );
-}
+};

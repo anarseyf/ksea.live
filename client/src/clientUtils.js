@@ -13,14 +13,10 @@ export const expand = (extent, expandMinutes = 0) => [
 // TODO - coordinate with section.module.scss, or find a way to use vars
 
 const maxWidthPhone = 600;
-export const getMaxWidth = () => 400; // TODO - useWindowSize()
+const queryText = `only screen and (max-device-width: ${maxWidthPhone}px)`;
 
-export const isPhone = () => {
-  const query = window.matchMedia(
-    `only screen and (max-device-width: ${maxWidthPhone}px)`
-  );
-  return query.matches;
-};
+export const isPhone = () =>
+  window ? !!window.matchMedia(queryText).matches : true;
 
 export const toPacificStr = (timestamp) =>
   timezone(timestamp, "America/Vancouver").format("h:mma");

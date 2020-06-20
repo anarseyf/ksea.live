@@ -5,19 +5,25 @@ import sparkStyles from "./spark.module.scss";
 import svgStyles from "./svg.module.scss";
 import { intervalExtent, isPhone } from "../clientUtils";
 
-export const Spark = ({  intervals = [],
+export const Spark = ({
+  intervals = [],
   title,
   showTotal,
   useCumulative,
-  showPrevious
+  showPrevious,
 }) => {
   const [svgData, setSvgData] = useState([]);
   const [nowDot, setNowDot] = useState(null);
 
   const radius = 3;
-  const svgWidth = isPhone ? 100 : 150;
+  const svgWidth = isPhone() ? 100 : 130;
   const svgHeight = 0.2 * svgWidth,
-    margin = { top: radius+1, right: radius+1, bottom: radius+1, left: radius+1 },
+    margin = {
+      top: radius + 1,
+      right: radius + 1,
+      bottom: radius + 1,
+      left: radius + 1,
+    },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
 
@@ -27,7 +33,7 @@ export const Spark = ({  intervals = [],
       return;
     }
 
-    const data = (showPrevious ? intervals : intervals.slice(0,1));
+    const data = showPrevious ? intervals : intervals.slice(0, 1);
 
     const accessor = ({ length, cumulative }) =>
       useCumulative ? cumulative : length;
@@ -41,7 +47,7 @@ export const Spark = ({  intervals = [],
 
     const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
     const yScale = d3.scaleLinear().domain(yExtent).range([height, 0]);
-    
+
     const line = d3
       .line()
       .curve(d3.curveCardinal.tension(0.3))
@@ -74,7 +80,6 @@ export const Spark = ({  intervals = [],
 
   return (
     <div className={sparkStyles.container}>
-      
       <svg width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g>
@@ -97,4 +102,4 @@ export const Spark = ({  intervals = [],
       {showTotal && <span className={sparkStyles.total}>{total}</span>}
     </div>
   );
-}
+};

@@ -2,11 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import classnames from "classnames";
 
-import {
-  DataContext,
-  currentInterval,
-  previousInterval,
-} from "./DataProvider";
+import { DataContext, currentInterval, previousInterval } from "./DataProvider";
 import { intervalExtent, isPhone } from "../clientUtils";
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
@@ -16,7 +12,7 @@ const closedPath = (bins, line, offset) => {
   if (!bins.length) {
     return "";
   }
-  
+
   let data = bins.map(({ x0, length }) => ({
     timestamp: x0,
     value: length + offset,
@@ -40,7 +36,7 @@ export const History = () => {
   const [clipPaths, setClipPaths] = useState({});
 
   const binHeight = 2;
-  const svgWidth = isPhone ? 350 : 500,
+  const svgWidth = isPhone() ? 350 : 500,
     margin = { top: 10, right: 30, bottom: 30, left: 30 },
     svgHeight = 366 * (binHeight + 1) + margin.top + margin.bottom,
     width = svgWidth - margin.left - margin.right,
@@ -141,7 +137,6 @@ export const History = () => {
     );
 
     setClipPaths({ current: clipPathCurrent, previous: clipPathPrevious });
-
   }, [history, height, maxBarWidth]);
 
   // console.log("HISTORY/render");
@@ -160,12 +155,12 @@ export const History = () => {
       >
         <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
           {/* <g
-            className={`${svgStyles.axis} ${historyStyles.axis}`}
+            className={classnames(svgStyles.axis, historyStyles.axis)}
             ref={xAxisRef}
             transform={`translate(0,${height})`}
           /> */}
           <g
-            className={`${svgStyles.axis} ${historyStyles.axis}`}
+            className={classnames(svgStyles.axis, historyStyles.axis)}
             ref={yAxisRef}
           />
           {/* <g>
