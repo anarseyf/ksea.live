@@ -112,7 +112,10 @@ export const History = () => {
 
     const pathCurrent = lineCurrent(binsCurrent);
     const pathPrevious = linePrevious(binsPrevious);
-    setPaths([pathCurrent, pathPrevious]);
+    setPaths([
+      { path: pathCurrent, key: "current" },
+      { path: pathPrevious, key: "previous" },
+    ]);
 
     const clipLineCurrent = d3
       .line()
@@ -181,8 +184,9 @@ export const History = () => {
             )}
           </g> */}
           <g>
-            {paths.map((path, i) => (
+            {paths.map(({ path, key }, i) => (
               <path
+                key={key}
                 className={classnames(svgStyles.path, {
                   [svgStyles.current]: !i,
                   [svgStyles.previous]: i,

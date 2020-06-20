@@ -76,7 +76,7 @@ export const GroupByArea = () => {
   return (
     <div className={styles.container}>
       {data.map(({ key: area, intervals }) => (
-        <div className={styles.itemContainer}>
+        <div key={area} className={styles.itemContainer}>
           <Link to={`${encodeURIComponent(area)}`}>
             <div className={styles.vpadding}>
               <div className={styles.fullWidth}>
@@ -106,7 +106,7 @@ export const GroupByArea = () => {
                 {neighborhoodsMap[area] && (
                   <div className={styles.list}>
                     {neighborhoodsMap[area].map((v) => (
-                      <div>• {v}</div>
+                      <div key={v}>• {v}</div>
                     ))}
                   </div>
                 )}

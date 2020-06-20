@@ -85,17 +85,22 @@ export const Rehoboam = ({ area }) => {
         toRadialDot(x0, index)
       );
 
-      const circles = radialSev2Data.map(([theta, r]) => ({
+      const circles = radialSev2Data.map(([theta, r], i) => ({
         cx: r * Math.sin(theta),
         cy: r * -Math.cos(theta),
         r: dotRadius,
+        key: `circle-${i}`
       }));
+
+      console.log("REHO/circles",circles);
 
       setSev2Circles(circles);
     }
   }, [activeOrMajorForArea, filteredByArea]);
 
   const text = area || "Seattle";
+
+  console.log("REHO/sev2Circles",sev2Circles.map(({key})=>key));
 
   return (
     <div className={rehoboamStyles.container}>
@@ -124,11 +129,11 @@ export const Rehoboam = ({ area }) => {
             />
           )}
           <g className={rehoboamStyles.dots}>
-            {sev2Circles.map((c) => (
-              <>
-                <circle className={rehoboamStyles.sev2} {...c} />
-                <circle {...c} r={c.r + 3} fill="none" stroke="white" />
-              </>
+            {sev2Circles.map(({cx, cy, r, key}) => (
+              <g key={key}>
+                <circle className={rehoboamStyles.sev2inner} cx={cx} cy={cy} r={r}  />
+                <circle className={rehoboamStyles.sev2outer} cx={cx} cy={cy} r={r+3} />
+              </g>
             ))}
           </g>
         </g>

@@ -20,7 +20,7 @@ export const TweetDetails = ({
       <div>
         <span>{unitsStr}</span>
         {unitsList.map((unit) => (
-          <span className={styles.unit}>{unit}</span>
+          <span key={unit} className={styles.unit}>{unit}</span>
         ))}
       </div>
     </div>

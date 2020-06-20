@@ -56,7 +56,7 @@ export const Spark = ({
 
     const paths = data.map((d) => d.bins).map(line);
 
-    let newSvgData = paths.map((path) => ({ path })).reverse(); // render highlight after all others
+    let newSvgData = paths.map((path, i) => ({ path, key: i })).reverse(); // render highlight after all others
 
     setSvgData(newSvgData);
 
@@ -83,12 +83,13 @@ export const Spark = ({
       <svg width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g>
-            {svgData.map((d, i) => (
+            {svgData.map(({path,key}, i) => (
               <path
+              key={key}
                 className={classnames(svgStyles.path, {
                   [svgStyles.current]: i === lastIndex,
                 })}
-                d={d.path}
+                d={path}
               />
             ))}
           </g>

@@ -24,12 +24,9 @@ export const DispatchAll = () => {
 
   const intro = (
     <p>
-      A near-real-time visualization of Seattle Fire Department 911 dispatches.
-      All timestamps are in local time (Pacific timezone). Active incidents are
-      marked
-      <SvgDot active={true} />. Incidents with five or more units dispatched are
-      marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />.
-      See notes at the bottom for more details.
+      A near-real-time visualization of Seattle Fire Department 911 dispatches. Active incidents are
+      marked <SvgDot active={true} />. Incidents with five or more units dispatched are
+      marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />. All timestamps are in Seattle time (Pacific timezone). See notes at the bottom for more details.
     </p>
   );
 

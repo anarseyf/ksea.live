@@ -31,7 +31,7 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
       return;
     }
 
-    const regionFn = ({ start, end, offset }) => {
+    const regionFn = ({ start, end, offset }, i) => {
       if (!start || !end) {
         return undefined;
       }
@@ -42,6 +42,7 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
       const texture = isCurrent ? textureCurrent : texturePrevious;
 
       return {
+        key: `${start}-${end}-${i}`,
         x: xScale(0) - (isCurrent ? 0 : rectWidth),
         y: yScale(start.timestamp + offset),
         width: rectWidth,

@@ -24,10 +24,14 @@
   stroke-opacity: 0.8;
 }
 
-.sev2 {
+.sev2inner {
   fill: white;
 }
 
+.sev2outer {
+  fill: none;
+  stroke: white;
+}
 .dots {
   opacity: 0.8;
 }

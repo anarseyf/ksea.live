@@ -136,10 +136,11 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
       <TileLayer {...tileOptions} />
       {!area && <GeoJSON data={city} style={geojsonStyleBounds} />}
       {rendered.map((feature) => (
-        <GeoJSON data={feature} style={geojsonStyleActive} />
+        <GeoJSON key={feature.properties.CRA_NAM} data={feature} style={geojsonStyleActive} />
       ))}
       {data.map((d) => (
         <Dot // TODO - group under a single container?
+          key={d.id_str}
           coordinates={[d.lat, d.long]}
           severity={d.severity}
           appearance={appearanceFn(d)}

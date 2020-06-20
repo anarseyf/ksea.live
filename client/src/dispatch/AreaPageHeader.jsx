@@ -8,7 +8,7 @@ export const AreaPageHeader = ({ area }) => {
   const subareas = (
     <div>
       {(neighborhoodsMap[area] || []).map((subarea) => (
-        <div>{subarea}</div>
+        <div key={subarea}>{subarea}</div>
       ))}
     </div>
   );

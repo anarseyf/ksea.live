@@ -17,7 +17,7 @@ export const TweetList = ({ tweets = [] }) => {
   return (
     <div className={styles.tweets}>
       {tweets.map((t) => (
-        <Tweet tweet={t} mode={mode(t)} />
+        <Tweet key={t.id_str} tweet={t} mode={mode(t)} />
       ))}
     </div>
   );
