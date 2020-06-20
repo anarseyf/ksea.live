@@ -16,7 +16,7 @@ import {
 
 const targetFile = withScriptsJsonPath("updated.json");
 
-const waitMinutes = 5;
+const waitMinutes = 1;
 const MINUTE = 60 * 1000;
 const wait = waitMinutes * MINUTE;
 
