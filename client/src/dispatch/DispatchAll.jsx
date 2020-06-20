@@ -90,12 +90,12 @@ export const DispatchAll = () => {
   return (
     <DataProvider>
       <Section styleOption={1}>
-        <Paragraph title="Seattle Fire Real-Time Dispatch" content={intro} />
+        <Paragraph title="Seattle" content={intro} />
         <Rehoboam />
         <Paragraph title="Past Week" content={pastWeek} />
-        <Header />
+        {/* <Header /> */}
       </Section>
-
+{/* 
       <Section edgeToEdge={true} styleOption={2}>
         <Paragraph title="Today" content={map} margin={true} />
         <ErrorBoundary>
@@ -123,7 +123,7 @@ export const DispatchAll = () => {
       <Section styleOption={2}>
         <Paragraph title="Data Sources" content={sources} />
         <Paragraph title="Notes" content={notes} />
-      </Section>
+      </Section> */}
     </DataProvider>
   );
 };

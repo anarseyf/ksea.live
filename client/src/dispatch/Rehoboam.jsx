@@ -11,7 +11,7 @@ import svgStyles from "./svg.module.scss";
 export const Rehoboam = ({ area }) => {
   const { filteredByArea, activeOrMajorForArea } = useContext(DataContext);
   const [svgPath, setSvgPath] = useState(null);
-  const [sev2Circles, setSev2Circles] = useState([]);
+  const [circles, setCircles] = useState([]);
   const [total, setTotal] = useState(undefined);
   const axisRef = useRef(null);
 
@@ -65,34 +65,24 @@ export const Rehoboam = ({ area }) => {
     d3.select(axisRef.current).call(axis);
 
     if (activeOrMajorForArea.length) {
-      const toRadialDot = (timestamp, index) => {
+      const toRadialDot = ({ derived: { timestamp } }) => {
         const fraction = (timestamp - start) / (end - start);
         const radians = 2 * Math.PI * fraction;
-        const offset = index * 2 * dotRadius;
-        return [radians, mainRadius + offset];
+        return [radians, mainRadius];
       };
 
-      const activeOrMajorBins = currentInterval(activeOrMajorForArea).bins;
-      const toSev2Points = ({ x0, sev2 }) => {
-        const stack = [...new Array(sev2)].map((_, i) => ({
-          x0,
-          index: i,
-        }));
-        return stack;
-      };
-      const sev2Data = activeOrMajorBins.flatMap(toSev2Points);
-      const radialSev2Data = sev2Data.map(({ x0, index }) =>
-        toRadialDot(x0, index)
-      );
+      const activeOrMajorValues = currentInterval(activeOrMajorForArea).values;
 
-      const circles = radialSev2Data.map(([theta, r], i) => ({
+      const radialDots = activeOrMajorValues.map(toRadialDot);
+
+      const newCircles = radialDots.map(([theta, r], i) => ({
         cx: r * Math.sin(theta),
         cy: r * -Math.cos(theta),
         r: dotRadius,
-        key: `circle-${i}`,
+        key: i,
       }));
 
-      setSev2Circles(circles);
+      setCircles(newCircles);
     }
   }, [activeOrMajorForArea, filteredByArea]);
 
@@ -125,19 +115,13 @@ export const Rehoboam = ({ area }) => {
             />
           )}
           <g className={rehoboamStyles.dots}>
-            {sev2Circles.map(({ cx, cy, r, key }) => (
+            {circles.map(({ cx, cy, r, key }) => (
               <g key={key}>
                 <circle
                   className={rehoboamStyles.sev2inner}
                   cx={cx}
                   cy={cy}
                   r={r}
-                />
-                <circle
-                  className={rehoboamStyles.sev2outer}
-                  cx={cx}
-                  cy={cy}
-                  r={r + 3}
                 />
               </g>
             ))}
