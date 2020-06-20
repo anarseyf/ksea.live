@@ -100,6 +100,9 @@ const cleanupUnresolved = async (incidentsMap) => {
 
 export const runner = async (sourceFile) => {
   try {
+    if (!sourceFile) {
+      throw "resolve > No source file provided";
+    }
     const start = new Date();
     let resolvedTotal = 0,
       unresolvedTotal = 0;

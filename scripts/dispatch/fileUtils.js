@@ -75,19 +75,22 @@ export const toUTCMidnight = (timestamp) => {
 export const toUTCMidnightString = (timestamp) =>
   new Date(toUTCMidnight(timestamp)).toISOString();
 
-export const toPacificMidnight = (timestamp) => {
-  const date = new Date(timestamp);
-  const yyyymmdd = [date.getFullYear(), date.getMonth(), date.getDate()];
-  return +timezone(yyyymmdd, "America/Vancouver");
-};
+// https://momentjs.com/docs/#/parsing/string-format/
+const format = "MM/DD/YYYY hh:mm:ss A";
+const seattleTimezone = "America/Vancouver";
+export const localStrToTimestamp = (str) =>
+  +timezone(str, format, seattleTimezone);
+
+export const toPacificMidnight = (timestamp) =>
+  +timezone(timestamp, seattleTimezone).startOf("day");
 
 export const toPacificDateString = (date) => {
-  const moment = timezone(date, "America/Vancouver");
+  const moment = timezone(date, seattleTimezone);
   return moment.format("l"); // For example "6/13/2020". See https://momentjs.com/ > Multiple Locale Support
 };
 
 export const toPacificStringMMMD = (date) => {
-  const moment = timezone(date, "America/Vancouver");
+  const moment = timezone(date, seattleTimezone);
   return moment.format("MMM D"); // For example "Jun 1". See https://momentjs.com/docs/#/parsing/string-format/
 };
 

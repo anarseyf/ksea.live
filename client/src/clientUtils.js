@@ -18,6 +18,7 @@ const queryText = `only screen and (max-device-width: ${maxWidthPhone}px)`;
 export const isPhone = () =>
   window ? !!window.matchMedia(queryText).matches : true;
 
+// see also fileUtils.js
 export const toPacificStr = (timestamp) =>
   timezone(timestamp, "America/Vancouver").format("h:mma");
 

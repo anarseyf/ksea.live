@@ -10,6 +10,10 @@ const neighborhoodsFile = path.join(
 );
 
 export const runner = async (sourceFile) => {
+  if (!sourceFile) {
+    throw "nhoods > No source file provided";
+  }
+
   const start = new Date();
 
   const nhoods = await readJSONAsync(neighborhoodsFile);

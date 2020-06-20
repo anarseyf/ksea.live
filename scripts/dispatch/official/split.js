@@ -8,6 +8,10 @@ import { withDatasetsPath, withScriptsJsonPath } from "../serverUtils";
 
 export const runner = async (sourceFile) => {
   try {
+    if (!sourceFile) {
+      throw "split > No source file provided";
+    }
+
     const start = new Date();
     const entries = await readJSONAsync(sourceFile, []);
     if (!entries.length) {

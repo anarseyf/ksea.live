@@ -1,17 +1,15 @@
 import { readJSONAsync, appendJSONAsync, saveJSONAsync } from "../fileUtils";
 import { withScriptsJsonPath, sortByTimestampDescending } from "../serverUtils";
 import { severityMapper } from "./mappers";
-import { tz } from "moment-timezone";
+import { localStrToTimestamp } from "../fileUtils";
 
 const targetFile = withScriptsJsonPath("combined.json");
 
-// https://momentjs.com/docs/#/parsing/string-format/
-const format = "MM/DD/YYYY hh:mm:ss A";
-const timezone = "America/Vancouver";
-const localStrToTimestamp = (str) => +tz(str, format, timezone);
-
 export const runner = async (sourceFile) => {
   try {
+    if (!sourceFile) {
+      throw "combine > No source file provided";
+    }
     const start = new Date();
     const entries = await readJSONAsync(sourceFile, []);
     if (!entries.length) {
