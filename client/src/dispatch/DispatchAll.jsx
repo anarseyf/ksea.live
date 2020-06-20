@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import * as d3 from "d3";
 import { Map } from "./Map";
 import { DataProvider } from "./DataProvider";
 import { GroupByArea } from "./GroupByArea";
@@ -10,9 +11,9 @@ import { History } from "./History";
 import { TweetsActive } from "./TweetsActive";
 import { TweetsMajor } from "./TweetsMajor";
 import { SvgDot } from "./SvgDot";
-import * as d3 from "d3";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { StatusContext } from "./StatusContext";
+import { Sources } from "./Sources";
 
 const formatter = d3.timeFormat("%-I:%M %p");
 
@@ -56,27 +57,6 @@ export const DispatchAll = () => {
 
   const history =
     "This views shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
-
-  const sources = (
-    <p>
-      The primary data source is{" "}
-      <a href="http://www2.seattle.gov/fire/realTime911/">
-        Real-Time 911 Dispatch
-      </a>
-      . GPS locations for each incident are retrieved from{" "}
-      <a href="https://dev.socrata.com/foundry/data.seattle.gov/kzjm-xkqj">
-        this Socrata dataset
-      </a>
-      . Seattle neighborhood GeoJSON data is from the{" "}
-      <a href="https://github.com/seattleflu/seattle-geojson/tree/master/seattle_geojsons">
-        seattleflu/seattle-geojson
-      </a>{" "}
-      repository. Map powered by <a href="http://leafletjs.com">Leaflet</a> via{" "}
-      <a href="https://react-leaflet.js.org">react-leaflet</a>. Map tiles
-      provided by{" "}
-      <a href="https://www.jawg.io/docs/apidocs/static-maps/">Jawg Maps</a>.
-    </p>
-  );
 
   const notes = (
     <>
@@ -130,7 +110,7 @@ export const DispatchAll = () => {
       </Section>
 
       <Section styleOption={2}>
-        <Paragraph title="Data Sources" content={sources} />
+        <Sources />
         <Paragraph title="Notes" content={notes} />
       </Section>
     </DataProvider>

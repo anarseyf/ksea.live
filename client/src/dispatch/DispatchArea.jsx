@@ -6,14 +6,11 @@ import { TweetsForArea } from "./TweetsForArea";
 import { Paragraph } from "./Paragraph";
 import { Section } from "./Section";
 import { ErrorBoundary } from "./ErrorBoundary";
-
-import paragraphStyles from "./paragraph.module.scss";
+import { Sources } from "./Sources";
 import { AreaPageHeader } from "./AreaPageHeader";
+import paragraphStyles from "./paragraph.module.scss";
 
 export const DispatchArea = ({ area }) => {
-  const sources = "Data sources";
-
-  const today = "Today's Incidents";
 
   return (
     <DataProvider filters={{ area }}>
@@ -38,12 +35,12 @@ export const DispatchArea = ({ area }) => {
       </Section>
 
       <Section styleOption={1}>
-        <Paragraph title={today} />
+        <Paragraph title="Today's Incidents" />
         <TweetsForArea />
       </Section>
 
       <Section styleOption={2}>
-        <Paragraph content={sources} />
+        <Sources />
       </Section>
     </DataProvider>
   );
