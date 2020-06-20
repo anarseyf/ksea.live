@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run annotate && npm run update:loop",
     "update:loop": "cd official && node -r esm main.js",
     "update:once": "cd official && node -r esm runOnce.js update",
     "annotate": "cd official && node -r esm annotate.js"

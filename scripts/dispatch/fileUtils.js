@@ -37,11 +37,11 @@ const mergeSameId = (sortedEntries) => {
 
   const result = severityMapper(entry);
 
-  if (sortedEntries.length > 1) {
-    console.log(
-      `>> merge > ${sortedEntries.length} : ${result.id_str} : active=${result.derived.active}`
-    );
-  }
+  // if (sortedEntries.length > 1) {
+  //   console.log(
+  //     `>> merge > ${sortedEntries.length} : ${result.id_str} : active=${result.derived.active}`
+  //   );
+  // }
   return result;
 };
 

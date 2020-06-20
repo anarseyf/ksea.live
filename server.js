@@ -7,8 +7,6 @@ const morgan = require("morgan");
 import dispatchRouter from "./dispatchRouter";
 import { checkVersion } from "./scripts/dispatch/version";
 
-const setTZ = require("set-tz");
-setTZ("America/Vancouver");
 checkVersion();
 
 const app = express();
