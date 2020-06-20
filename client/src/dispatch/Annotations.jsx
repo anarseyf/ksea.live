@@ -71,10 +71,10 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
         },
         x: sideX * x,
         y,
-        color: "red",
         subject: {
           radius: 6,
         },
+        color: "rgb(223, 69, 69)" // sync with colors.scss $annotation
       };
 
       if (value) {

@@ -35,7 +35,7 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
     fillColor: activeColor,
     fillOpacity: 0.1,
     strokeOpacity: 0.5,
-    weight: 2
+    weight: 2,
   };
 
   const { geojson, areaProp } = areas;
@@ -78,9 +78,17 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
 
+  const importantOnTop =
+    (a,
+    (b) => {
+      // TODO
+      return 0;
+    });
+
   let data = byTypeForArea
     .flatMap(mapper)
     .filter(({ type }) => !typeFilter || typeFilter === type);
+  // .sort(importantOnTop);
 
   if (selectedTweet) {
     // Render selected dot last, so it appears on top
@@ -107,7 +115,9 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
   console.log(
     `MAP/render area=${area}, zoom=${zoom}, selected:${
       (selectedTweet || {}).id_str
-    }, features:${rendered.length}/${features.length}, dots:${data.length}, geo:${rendered.length}, center:${center}`
+    }, features:${rendered.length}/${features.length}, dots:${
+      data.length
+    }, geo:${rendered.length}, center:${center}`
   );
   const city = cityGeojson.features[0];
 
@@ -128,7 +138,11 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
       <TileLayer {...tileOptions} />
       {!area && <GeoJSON data={city} style={geojsonStyleBounds} />}
       {rendered.map((feature) => (
-        <GeoJSON key={feature.properties.CRA_NAM} data={feature} style={geojsonStyleActive} />
+        <GeoJSON
+          key={feature.properties.CRA_NAM}
+          data={feature}
+          style={geojsonStyleActive}
+        />
       ))}
       {data.map((d) => (
         <Dot // TODO - group under a single container?

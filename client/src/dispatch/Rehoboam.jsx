@@ -111,7 +111,7 @@ export const Rehoboam = ({ area }) => {
           {svgPath && <path className={classnames(styles.path)} d={svgPath} />}
           <g className={styles.events}>
             {circles.map(({ key, cx, cy, r, sev1, sev2, active }) => (
-              <g key={key} className={classnames({ [styles.active]: active })}>
+              <g key={key} className={classnames({ [svgStyles.live]: active })}>
                 <circle
                   className={classnames(styles.eventcircle)}
                   cx={cx}

@@ -43,15 +43,12 @@
 
 @keyframes pulse {
   0% {
-    opacity: 0.5;
-    // stroke-width: 2;
+    opacity: 0.6;
   }
   50% {
     opacity: 1;
-    // stroke-width: 5;
   }
   100% {
-    opacity: 0.5;
-    // stroke-width: 2;
+    opacity: 0.6;
   }
 }

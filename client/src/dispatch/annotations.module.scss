@@ -1,11 +1,5 @@
 @import "../colors.scss";
 
-.annotations {
-  color: red;
-}
-
 .annotations .line {
-  fill: green;
-  stroke: yellow;
   stroke-width: 2px;
 }
