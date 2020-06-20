@@ -25,7 +25,7 @@ export const DispatchAll = () => {
   const intro = (
     <p>
       A near-real-time visualization of Seattle Fire Department 911 dispatches. Active incidents are
-      marked <SvgDot active={true} />. Incidents with five or more units dispatched are
+      marked <SvgDot active={true} radius={5} />. Incidents with five or more units dispatched are
       marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />. All timestamps are in Seattle time (Pacific timezone). See notes at the bottom for more details.
     </p>
   );
@@ -90,7 +90,7 @@ export const DispatchAll = () => {
   return (
     <DataProvider>
       <Section styleOption={1}>
-        <Paragraph title="Seattle" content={intro} />
+        <Paragraph h1="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
         <Paragraph title="Past Week" content={pastWeek} />
         <Header />
