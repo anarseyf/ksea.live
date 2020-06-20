@@ -25,10 +25,6 @@ export const AreaShape = ({ area }) => {
   const zoom = 10;
   const tileOptions = MapOptions.NoLabels;
 
-  console.log(
-    `AREA/zoom: ${zoom}, features: ${features.length}, area: ${area}`
-  );
-
   return (
     <ErrorBoundary>
       <LeafletMap

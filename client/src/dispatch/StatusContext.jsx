@@ -16,12 +16,12 @@ const useStatus = () => {
     );
     const checkForUpdates = async () => {
       const newStatus = await getStatus();
-      console.log(
-        `useStatus(${intervalId})/current status (next check in ${
-          delay / 1000
-        } sec)`,
-        newStatus
-      );
+      // console.log(
+      //   `useStatus(${intervalId})/current status (next check in ${
+      //     delay / 1000
+      //   } sec)`,
+      //   newStatus
+      // );
 
       if (!deepEqual(status, newStatus)) {
         console.log("useStatus/setting new status:", newStatus);

@@ -56,12 +56,6 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
     zoom = maxZoom;
   }
 
-  console.log(
-    `MAP/area=${area}, zoom = ${zoom}, selected: ${
-      (selectedTweet || {}).id_str
-    }, features: ${rendered.length}/${features.length}`
-  );
-
   const center = selectedTweet
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
     : area
@@ -87,11 +81,6 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
     .flatMap(mapper)
     .filter(({ type }) => !typeFilter || typeFilter === type);
 
-  console.log(
-    "Entries with no lat/long:",
-    data.filter(({ lat }) => !lat).map(({ id_str }) => id_str)
-  );
-
   if (selectedTweet) {
     // Render selected dot last, so it appears on top
     const selectedIndex = data.findIndex(isSelectedDot);
@@ -115,7 +104,9 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
   };
 
   console.log(
-    `MAP/rendering with ${data.length} dots, ${rendered.length} geo, center: ${center}`
+    `MAP/render area=${area}, zoom=${zoom}, selected:${
+      (selectedTweet || {}).id_str
+    }, features:${rendered.length}/${features.length}, dots:${data.length}, geo:${rendered.length}, center:${center}`
   );
   const city = cityGeojson.features[0];
 

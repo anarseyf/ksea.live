@@ -29,7 +29,7 @@ export const Rehoboam = ({ area }) => {
       return;
     }
 
-    setTotal(currentInterval(filteredByArea).total);
+    setTotal(currentInterval(filteredByArea).total); // TODO - use status
 
     const current = currentInterval(filteredByArea);
     // const bins = current.binsHiRes;
@@ -89,18 +89,14 @@ export const Rehoboam = ({ area }) => {
         cx: r * Math.sin(theta),
         cy: r * -Math.cos(theta),
         r: dotRadius,
-        key: `circle-${i}`
+        key: `circle-${i}`,
       }));
-
-      console.log("REHO/circles",circles);
 
       setSev2Circles(circles);
     }
   }, [activeOrMajorForArea, filteredByArea]);
 
   const text = area || "Seattle";
-
-  console.log("REHO/sev2Circles",sev2Circles.map(({key})=>key));
 
   return (
     <div className={rehoboamStyles.container}>
@@ -129,10 +125,20 @@ export const Rehoboam = ({ area }) => {
             />
           )}
           <g className={rehoboamStyles.dots}>
-            {sev2Circles.map(({cx, cy, r, key}) => (
+            {sev2Circles.map(({ cx, cy, r, key }) => (
               <g key={key}>
-                <circle className={rehoboamStyles.sev2inner} cx={cx} cy={cy} r={r}  />
-                <circle className={rehoboamStyles.sev2outer} cx={cx} cy={cy} r={r+3} />
+                <circle
+                  className={rehoboamStyles.sev2inner}
+                  cx={cx}
+                  cy={cy}
+                  r={r}
+                />
+                <circle
+                  className={rehoboamStyles.sev2outer}
+                  cx={cx}
+                  cy={cy}
+                  r={r + 3}
+                />
               </g>
             ))}
           </g>
