@@ -12,7 +12,7 @@ export const expand = (extent, expandMinutes = 0) => [
 
 // TODO - coordinate with section.module.scss, or find a way to use vars
 
-const maxWidthPhone = 600;
+const maxWidthPhone = 500;
 const queryText = `only screen and (max-device-width: ${maxWidthPhone}px)`;
 
 export const isPhone = () =>

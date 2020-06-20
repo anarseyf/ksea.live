@@ -15,7 +15,7 @@ export const MultiLine = ({
   const [nowDot, setNowDot] = useState(null);
 
   const svgWidth = isPhone() ? 350 : 500;
-  const svgHeight = 0.35 * svgWidth,
+  const svgHeight = 0.3 * svgWidth,
     margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
@@ -84,13 +84,9 @@ export const MultiLine = ({
 
   const total = intervals[0].total;
   const lastIndex = svgData.length - 1;
-  const phone = isPhone();
 
   return (
     <div className={chartStyles.container}>
-      <div>
-        IS PHONE: <span>{phone ? "YES" : "NO"}</span>
-      </div>
       {showHeader && (
         <div className={chartStyles.header}>
           {title && <div className={chartStyles.title}>{title}</div>}

@@ -113,11 +113,7 @@ export const GroupByArea = () => {
               </div>
 
               <div className={classnames(styles.item, styles.right)}>
-                <div>
-                  <AreaShape area={area} />
-                </div>
-                {/* <Total total={intervals[0].total} /> */}
-
+                <AreaShape area={area} />
                 <ErrorBoundary>
                   <Spark
                     className={styles.spark}

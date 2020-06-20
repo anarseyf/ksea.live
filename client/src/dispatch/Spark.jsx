@@ -16,7 +16,7 @@ export const Spark = ({
   const [nowDot, setNowDot] = useState(null);
 
   const radius = 3;
-  const svgWidth = isPhone() ? 100 : 130;
+  const svgWidth = isPhone() ? 90 : 120;
   const svgHeight = 0.2 * svgWidth,
     margin = {
       top: radius + 1,
