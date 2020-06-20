@@ -23,15 +23,21 @@ export const DispatchAll = () => {
     ? formatter(new Date(status.lastUpdated))
     : undefined;
 
-    const dataText = time ? (
-      <span>Data is current as of <strong> {time}</strong>.</span>
-    ) : <span>&nbsp;</span>;
+  const dataText = time ? (
+    <span>
+      Data is current as of <strong> {time}</strong>.
+    </span>
+  ) : (
+    <span>&nbsp;</span>
+  );
 
   const intro = (
     <p>
-      A near-real-time visualization of Seattle Fire Department 911 dispatches. Active incidents are
-      marked <SvgDot active={true} radius={5} />. Incidents with five or more units dispatched are
-      marked <SvgDot sev1={true} />, with ten or more <SvgDot sev2={true} />. All timestamps are in Seattle time (Pacific timezone). See notes at the bottom for more details.
+      A near-real-time visualization of Seattle Fire Department 911 dispatches.
+      Active incidents are marked <SvgDot active={true} radius={5} />. Incidents
+      with five or more units dispatched are marked <SvgDot sev1={true} />, with
+      ten or more <SvgDot sev2={true} />. All timestamps are in Seattle time
+      (Pacific timezone). See notes at the bottom for more details.
     </p>
   );
 
@@ -46,8 +52,7 @@ export const DispatchAll = () => {
     </p>
   );
 
-  const areas =
-    "Select an area of the city to see all of today's incidents there. (TODO - update this text.)";
+  const areas = "Select an area to zoom in on today's incidents there.";
 
   const history =
     "This views shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
@@ -88,13 +93,13 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
-      <Section styleOption={1}>
+      <Section styleOption={2}>
         <Paragraph h1="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
         <Paragraph content={dataText} />
       </Section>
 
-      <Section edgeToEdge={true} styleOption={2}>
+      <Section edgeToEdge={true} styleOption={1}>
         <Paragraph title="" content={todayText} margin={true} />
 
         <ErrorBoundary>
@@ -102,7 +107,7 @@ export const DispatchAll = () => {
         </ErrorBoundary>
       </Section>
 
-      <Section styleOption={1}>
+      <Section styleOption={2}>
         <Paragraph title="Active Incidents" content={""} />
         <TweetsActive />
         <Paragraph title="Major Incidents (24 hours)" content={major} />

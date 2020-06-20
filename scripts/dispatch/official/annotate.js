@@ -15,10 +15,11 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   if (offset === 0) {
     // TODO - make sure this works as intended past 2020
     const lastBin = binsLowRes[binsLowRes.length - 1];
+    const date = new Date(lastBin.x0);
     const annotationToday = {
       end: {
-        date: toPacificDateString(new Date(lastBin.x0)),
-        title: "Today",
+        date: toPacificDateString(date),
+        title: toPacificStringMMMD(date),
         value: lastBin.length,
       },
     };
@@ -41,7 +42,7 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
     start: {
       date: minDateStr,
       title: `${year} low`,
-      label: `${toPacificStringMMMD(minDate)}: ${min}`,
+      label: `${min} (${toPacificStringMMMD(minDate)})`,
       value: min,
     },
   };
@@ -49,7 +50,7 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
     start: {
       date: maxDateStr,
       title: `${year} high`,
-      label: `${toPacificStringMMMD(maxDate)}: ${max}`,
+      label: `${max} (${toPacificStringMMMD(maxDate)})`,
       value: max,
     },
   };
