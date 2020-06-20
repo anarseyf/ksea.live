@@ -14,24 +14,29 @@
   transform: translate(-50%, -50%);
 }
 
-.circle {
+.path {
+  stroke-opacity: 0.8;
+}
+
+.maincircle {
   stroke: $axis-color;
   stroke-width: 1;
   fill: none;
 }
 
-.path {
-  stroke-opacity: 0.8;
-}
-
-.sev2inner {
-  fill: white;
-}
-
-.sev2outer {
-  fill: none;
-  stroke: white;
-}
-.dots {
+.events {
   opacity: 0.8;
+}
+.eventcircle {
+  fill: $graph-primary;
+  stroke: none;
+}
+.major {
+  stroke: $graph-primary;
+  stroke-width: 1;
+  fill: none;
+}
+.active {
+  fill: $highlight;
+  stroke: $highlight;
 }

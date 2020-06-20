@@ -41,9 +41,9 @@ export const runner = async (ignoreStatus) => {
   console.log("update > most recent:", mostRecentFileName);
   console.log("update > reading:", withDatasetsPath(mostRecentFileName));
   const entries = await readJSONAsync(withDatasetsPath(mostRecentFileName), []);
-  const { derived } = entries[0];
+  let tMostRecent = entries[0].derived.timestmap;
 
-  let timestamp = toPacificMidnight(derived.timestamp);
+  let timestamp = moment(toPacificMidnight(tMostRecent)).subtract(1, "days");
   const futureMidnight = moment(toPacificMidnight(now)).add(1, "days");
 
   const dates = [];

@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
-import classnames from "classnames";
 import { axisRadialInner } from "d3-radial-axis";
 import { DataContext, currentInterval } from "./DataProvider";
 import { intervalExtent } from "../clientUtils";
 import { Topline } from "./Topline";
-import rehoboamStyles from "./rehoboam.module.scss";
+import classnames from "classnames";
+import styles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Rehoboam = ({ area }) => {
@@ -75,12 +75,20 @@ export const Rehoboam = ({ area }) => {
 
       const radialDots = activeOrMajorValues.map(toRadialDot);
 
-      const newCircles = radialDots.map(([theta, r], i) => ({
-        cx: r * Math.sin(theta),
-        cy: r * -Math.cos(theta),
-        r: dotRadius,
-        key: i,
-      }));
+      const newCircles = radialDots.map(([theta, r], i) => {
+        const {
+          derived: { severity, active },
+        } = activeOrMajorValues[i];
+        return {
+          key: i,
+          cx: r * Math.sin(theta),
+          cy: r * -Math.cos(theta),
+          r: dotRadius,
+          sev1: severity >= 1,
+          sev2: severity >= 2,
+          active,
+        };
+      });
 
       setCircles(newCircles);
     }
@@ -89,40 +97,41 @@ export const Rehoboam = ({ area }) => {
   const text = area || "Seattle";
 
   return (
-    <div className={rehoboamStyles.container}>
-      <div className={rehoboamStyles.counter}>
+    <div className={styles.container}>
+      <div className={styles.counter}>
         <Topline total={total} text={text} />
       </div>
-      <svg className={rehoboamStyles.svg} width={svgWidth} height={svgHeight}>
+      <svg className={styles.svg} width={svgWidth} height={svgHeight}>
         <g
           transform={`translate(${margin + mainRadius},${margin + mainRadius})`}
         >
           <g className={svgStyles.axis} ref={axisRef} />
-          <circle
-            className={rehoboamStyles.circle}
-            cx={0}
-            cy={0}
-            r={mainRadius}
-          />
+          <circle className={styles.maincircle} cx={0} cy={0} r={mainRadius} />
           {svgPath && (
             <path
               className={classnames(
                 svgStyles.path,
                 svgStyles.highlight,
-                rehoboamStyles.path
+                styles.path
               )}
               d={svgPath}
             />
           )}
-          <g className={rehoboamStyles.dots}>
-            {circles.map(({ cx, cy, r, key }) => (
-              <g key={key}>
+          <g className={styles.events}>
+            {circles.map(({ key, cx, cy, r, sev1, sev2, active }) => (
+              <g key={key} className={classnames({ [styles.active]: active })}>
                 <circle
-                  className={rehoboamStyles.sev2inner}
+                  className={classnames(styles.eventcircle)}
                   cx={cx}
                   cy={cy}
                   r={r}
                 />
+                {sev1 && (
+                  <circle className={styles.major} cx={cx} cy={cy} r={r + 2} />
+                )}
+                {sev2 && (
+                  <circle className={styles.major} cx={cx} cy={cy} r={r + 4} />
+                )}
               </g>
             ))}
           </g>
