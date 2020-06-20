@@ -15,7 +15,7 @@
 }
 
 .path {
-  // stroke-opacity: 0.8;
+  stroke-opacity: 0.6;
   stroke-linecap: round;
   stroke: $graph-primary;
   stroke-width: 2;
@@ -29,7 +29,7 @@
 }
 
 .events {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .eventcircle {
   fill: $graph-primary;

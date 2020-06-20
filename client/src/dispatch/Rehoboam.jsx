@@ -22,7 +22,7 @@ export const Rehoboam = ({ area }) => {
     svgWidth = width + 2 * margin,
     svgHeight = height + 2 * margin;
 
-  const dotRadius = 5;
+  const dotRadius = 7;
 
   useEffect(() => {
     if (!filteredByAreaMin.length) {
@@ -32,10 +32,11 @@ export const Rehoboam = ({ area }) => {
     setTotal(currentInterval(filteredByAreaMin).total); // TODO - use status
 
     const current = currentInterval(filteredByAreaMin);
-    // const bins = current.binsHiRes;
-    const bins = current.bins;
+    console.log("REHOBOAM/current",current);
+    const bins = current.binsHiRes;
+    // const bins = current.bins;
     const extent = intervalExtent(current);
-    const maxDisturbance = margin / 2;
+    const maxDisturbance = 20;
     const maxLength = d3.max(bins, ({ length }) => length);
     const [start, end] = extent;
 

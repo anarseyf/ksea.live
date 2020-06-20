@@ -69,7 +69,7 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
         lat,
         long,
         type,
-        color,
+        color, // TODO - do not use
         active,
         severity,
       })

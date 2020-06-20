@@ -82,7 +82,7 @@ export const DispatchAll = () => {
       </p>
       <p>
         Visualization by{" "}
-        <a href="http://linkedin.com/in/anarseyf/">Anar Seyf</a>.
+        <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
       </p>
     </>
   );

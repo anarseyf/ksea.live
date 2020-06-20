@@ -83,7 +83,12 @@ const colorMapper = (() => {
   return color;
 })();
 
-export function groupBy(option = GroupByOptions.Nothing, tweets, intervals) {
+export function groupBy(
+  option = GroupByOptions.Nothing,
+  tweets,
+  intervals,
+  hiRes = false
+) {
   if (option === GroupByOptions.Nothing) {
     return byNothing(tweets);
   }
@@ -97,7 +102,7 @@ export function groupBy(option = GroupByOptions.Nothing, tweets, intervals) {
     return byArea(tweets);
   }
   if (option === GroupByOptions.TimeInterval) {
-    return byTimeInterval(tweets, intervals);
+    return byTimeInterval(tweets, intervals, hiRes);
   }
   throw `Unrecognized groupby option: ${option}`;
 }
@@ -141,7 +146,7 @@ const byArea = (tweets) => {
   return by(option, tweets, [], Mappers[option]());
 };
 
-const byTimeInterval = (tweets, intervals) => {
+const byTimeInterval = (tweets, intervals, hiRes) => {
   const requiredKeys = intervals.map(([start]) => String(start));
   const option = GroupByOptions.TimeInterval;
   let byInterval = by(option, tweets, requiredKeys, Mappers[option](intervals));
@@ -152,7 +157,7 @@ const byTimeInterval = (tweets, intervals) => {
   const result = addOffsets(byInterval)
     .map(addTotals)
     .map(addTypes)
-    .map(addHistograms);
+    .map((interval) => addHistograms(interval, hiRes));
   return result;
 };
 
@@ -234,7 +239,7 @@ const addTypes = ({ values, ...rest }) => ({
   ...rest,
 });
 
-const addHistograms = ({ start, end, offset, values, ...rest }) => {
+const addHistograms = ({ start, end, offset, values, ...rest }, hiRes) => {
   const extent = [start + offset, end + offset];
   const result = {
     start,
@@ -251,7 +256,9 @@ const addHistograms = ({ start, end, offset, values, ...rest }) => {
   };
   if (!isHistory(start, end)) {
     result.bins = histogram(values, { extent });
-    // result.binsHiRes = histogram(values, { extent, thresholdMinutes: 15 });
+    if (hiRes) {
+      result.binsHiRes = histogram(values, { extent, thresholdMinutes: 5 });
+    }
   }
   return result;
 };

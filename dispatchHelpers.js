@@ -101,8 +101,16 @@ export const getMostRecentAsync = async () => {
   return result;
 };
 
-export const groupByIntervalGen = (intervals) => ({ values, ...rest }) => {
-  let byInterval = groupBy(GroupByOptions.TimeInterval, values, intervals);
+export const groupByIntervalGen = (intervals, hiRes) => ({
+  values,
+  ...rest
+}) => {
+  let byInterval = groupBy(
+    GroupByOptions.TimeInterval,
+    values,
+    intervals,
+    hiRes
+  );
 
   byInterval[0].bins = trimToNow(byInterval[0].bins);
   byInterval[0].binsHiRes = trimToNow(byInterval[0].binsHiRes);

@@ -89,8 +89,9 @@ const forAreaController = async (req, res) => {
       req.query.minimize === "true" ? minimizeGroup : identityFn;
     const filter =
       req.query.activeOrMajor === "true" ? filterActiveOrMajor : filterNoop;
+    const hiRes = req.query.hiRes === "true";
 
-    const intervalGrouper = groupByIntervalGen(intervals);
+    const intervalGrouper = groupByIntervalGen(intervals, hiRes);
     const result = groupBy(GroupByOptions.Nothing, all.filter(filter))
       .map(intervalGrouper)
       .map(minimizer)
