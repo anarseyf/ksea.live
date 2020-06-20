@@ -88,7 +88,7 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
     };
 
     const calloutsFn = ({ start, end, offset }) => [
-      calloutFn({ item: start, offset, scales }),
+      start ? calloutFn({ item: start, offset, scales }) : undefined,
       end ? calloutFn({ item: end, offset, scales, isEnd: true }) : undefined,
     ];
 

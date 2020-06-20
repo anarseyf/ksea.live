@@ -11,7 +11,19 @@ import { datasetsPath } from "../serverUtils";
 
 const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   let bins = binsLowRes;
+  let result = [];
   if (offset === 0) {
+    // TODO - make sure this works as intended past 2020
+    const lastBin = binsLowRes[binsLowRes.length - 1];
+    const annotationToday = {
+      end: {
+        date: toPacificDateString(new Date(lastBin.x0)),
+        title: "Today",
+        value: lastBin.length,
+      },
+    };
+    result.push(annotationToday);
+
     // Current year — ignore today's bin as it's incomplete
     bins = binsLowRes.slice(0, -1);
   }
@@ -41,10 +53,13 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
       value: max,
     },
   };
-  return [annotationMin, annotationMax];
+
+  result = result.concat(annotationMin, annotationMax);
+  return result;
 };
 
 const main = async () => {
+  // TODO - run as a low-frequency loop
   const history = await getHistoryAsync();
 
   const history2020 = history[0].intervals[0];
