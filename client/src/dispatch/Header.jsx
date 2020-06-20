@@ -4,16 +4,16 @@ import { MultiLine } from "./MultiLine";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 export const Header = ({ area }) => {
-  const { filteredByAreaMin } = useContext(DataContext);
+  const { filteredByAreaMinWeek } = useContext(DataContext);
 
-  if (!filteredByAreaMin.length) {
+  if (!filteredByAreaMinWeek.length) {
     return null;
   }
 
   return (
     <ErrorBoundary>
       <MultiLine
-        intervals={filteredByAreaMin[0].intervals}
+        intervals={filteredByAreaMinWeek[0].intervals}
         useCumulative={!!area}
       />
     </ErrorBoundary>

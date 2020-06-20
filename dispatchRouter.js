@@ -79,8 +79,13 @@ const statusController = async (req, res) => {
 
 const forAreaController = async (req, res) => {
   try {
-    const intervals = generateIntervals();
     const area = req.params.area;
+    const compare = +req.query.compare || 0;
+    if (compare > 7 || compare < 0) {
+      throw "Invalid value for query param 'compare'";
+    }
+    console.log(`> > > > AREA: ${area} compare: ${compare}`);
+    const intervals = generateIntervals(compare);
     const all =
       area === "seattle"
         ? await allTweets(intervals)

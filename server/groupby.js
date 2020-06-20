@@ -36,15 +36,18 @@ export const generateHistoryIntervals = () => {
   return result;
 };
 
-export const generateIntervals = () => {
+export const generateIntervals = (compare = 0) => {
   const currentStart = toPacificMidnight(+new Date());
 
-  const intervalFn = (iOffset) => [
-    currentStart + iOffset * TwentyFourHours,
-    currentStart + (iOffset + 1) * TwentyFourHours,
+  const intervalFn = (offset) => [
+    currentStart + offset * TwentyFourHours,
+    currentStart + (offset + 1) * TwentyFourHours,
   ];
 
-  return [0, -1].map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
+  const offsets = [...new Array(compare + 1)].map((_, i) => -i);
+  console.log(`compare: ${compare} --> offsets: ${offsets}`);
+
+  return offsets.map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
 };
 
 export const generate24HourIntervals = () => {

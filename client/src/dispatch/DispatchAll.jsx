@@ -43,12 +43,12 @@ export const DispatchAll = () => {
 
   const todayText = "";
 
-  const pastWeek = `The past 7 days of dispatches`;
+  const pastWeek = `The past 7 days of dispatches.`;
 
   const major = (
     <p>
-      Incidents in the past 24 hours with <strong>ten or more</strong> units
-      deployed
+      Incidents in the past 24 hours with <strong>five or more</strong> units
+      deployed.
     </p>
   );
 
@@ -110,7 +110,7 @@ export const DispatchAll = () => {
       <Section styleOption={2}>
         <Paragraph title="Active Incidents" content={""} />
         <TweetsActive />
-        <Paragraph title="Major Incidents (24 hours)" content={major} />
+        <Paragraph title="Major Incidents" content={major} />
         <TweetsMajor />
       </Section>
 

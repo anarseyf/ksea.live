@@ -8,6 +8,7 @@ import {
   getTweetsActive24,
   getTweetsMajor24,
   getTweetsForAreaMin,
+  getTweetsForAreaMinWeek,
 } from "../api";
 
 import { StatusContext } from "./StatusContext";
@@ -22,6 +23,7 @@ const useTweets = (filters = {}) => {
   const initialValue = {
     filteredByArea: [],
     filteredByAreaMin: [],
+    filteredByAreaMinWeek: [],
     activeOrMajorForArea: [],
     activeOrMajorByArea: [],
     byTypeForArea: [],
@@ -44,6 +46,7 @@ const useTweets = (filters = {}) => {
 
   const [filteredByArea, setFilteredByArea] = useState([]);
   const [filteredByAreaMin, setFilteredByAreaMin] = useState([]);
+  const [filteredByAreaMinWeek, setFilteredByAreaMinWeek] = useState([]);
   const [activeOrMajorForArea, setActiveOrMajorForArea] = useState([]);
   const [activeOrMajorByArea, setActiveOrMajorByArea] = useState([]);
   const [byTypeForArea, setByTypeForArea] = useState([]);
@@ -75,6 +78,7 @@ const useTweets = (filters = {}) => {
     if (area === "seattle") {
       (async () => {
         setFilteredByAreaMin(await getTweetsForAreaMin(area));
+        setFilteredByAreaMinWeek(await getTweetsForAreaMinWeek(area));
       })();
     } else {
       (async () => {
@@ -127,6 +131,7 @@ const useTweets = (filters = {}) => {
     setValue({
       filteredByArea,
       filteredByAreaMin,
+      filteredByAreaMinWeek,
       byTypeForArea,
       groupedByArea,
       history,
@@ -145,6 +150,7 @@ const useTweets = (filters = {}) => {
     byTypeForArea,
     filteredByArea,
     filteredByAreaMin,
+    filteredByAreaMinWeek,
     groupedByArea,
     history,
     major24,

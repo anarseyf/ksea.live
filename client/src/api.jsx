@@ -28,6 +28,13 @@ export async function getTweetsForAreaMin(
   return getByAPI(`dispatch/tweets/${area}`, queryParams);
 }
 
+export async function getTweetsForAreaMinWeek(
+  area,
+  queryParams = { activeOrMajor: false, minimize: true, compare: 6 }
+) {
+  return getByAPI(`dispatch/tweets/${area}`, queryParams);
+}
+
 export async function getTweetsByArea(queryParams = { activeOrMajor: false }) {
   return getByAPI(`dispatch/tweets/byArea`, queryParams);
 }

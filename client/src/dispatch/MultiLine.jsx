@@ -48,7 +48,7 @@ export const MultiLine = ({
       .tickFormat(dateFormatter)
       .tickSize(3)
       .scale(xScale)
-      .ticks(d3.timeHour.every(12));
+      .ticks(d3.timeHour.every(6));
     d3.select(xAxisRef.current).call(xAxis);
 
     const yScale = d3.scaleLinear().domain(yExtent).range([height, 0]);
