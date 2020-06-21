@@ -49,7 +49,7 @@ export const DispatchAll = () => {
   const major = (
     <p>
       Incidents in the past 24 hours with <strong>five or more</strong> units
-      deployed.
+      dispatched.
     </p>
   );
 
@@ -69,7 +69,7 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
-      <Section styleOption={2}>
+      {/* <Section styleOption={2}>
         <Paragraph h1="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
         <Paragraph content={dataText} />
@@ -98,7 +98,7 @@ export const DispatchAll = () => {
       <Section styleOption={2} edgeToEdge={true}>
         <Paragraph title="City Areas" content={areas} margin={true} />
         <GroupByArea />
-      </Section>
+      </Section> */}
 
       <Section styleOption={1}>
         <Paragraph title="Last Year vs This Year" content={history} />

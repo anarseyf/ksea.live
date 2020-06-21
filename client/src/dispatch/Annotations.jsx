@@ -17,7 +17,7 @@ const textureCurrent = textures
   .stroke("#51aae8");
 const texturePrevious = textures.lines().lighter().size(8).stroke("#51aae8");
 
-export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
+export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
   const calloutsRef = useRef(null);
   const regionsRef = useRef(null);
   const { annotations } = useContext(DataContext);
@@ -35,9 +35,7 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
       if (!start || !end) {
         return undefined;
       }
-
       const [xScale, yScale] = scales;
-
       const isCurrent = offset === 0;
       const texture = isCurrent ? textureCurrent : texturePrevious;
 
@@ -74,7 +72,7 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
         subject: {
           radius: 6,
         },
-        color: "rgb(223, 69, 69)" // sync with colors.scss $annotation
+        color: "rgb(223, 69, 69)", // sync with colors.scss $annotation
       };
 
       if (value) {
@@ -102,7 +100,6 @@ export const Annotations = ({ rectWidth, scales, currentStart, clipPaths }) => {
 
     const newRegions = annotations.map(regionFn).filter(Boolean);
     setRegions(newRegions);
-
   }, [annotations, currentStart, rectWidth, scales]);
 
   return (

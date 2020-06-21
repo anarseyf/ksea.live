@@ -4,9 +4,10 @@ import classnames from "classnames";
 
 import { DataContext, currentInterval, previousInterval } from "./DataProvider";
 import { intervalExtent, isPhone } from "../clientUtils";
+import { Annotations } from "./Annotations";
+import { HistoryEvents } from "./HistoryEvents";
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
-import { Annotations } from "./Annotations";
 
 const closedPath = (bins, line, offset) => {
   if (!bins.length) {
@@ -38,7 +39,7 @@ export const History = () => {
   const binHeight = 2.5;
   const svgWidth = isPhone() ? 350 : 500,
     margin = { top: 10, right: 30, bottom: 30, left: 30 },
-    svgHeight = 366 * (binHeight) + margin.top + margin.bottom,
+    svgHeight = 366 * binHeight + margin.top + margin.bottom,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
   const yearWidth = width / 2;
@@ -59,7 +60,7 @@ export const History = () => {
     const intervalPrevious = previousInterval(history);
     const binsCurrent = intervalCurrent.binsLowRes;
     const binsPrevious = intervalPrevious.binsLowRes;
-    const timeExtent = intervalExtent(intervalCurrent, 60);
+    const timeExtent = intervalExtent(intervalCurrent);
 
     const xScale = d3
       .scaleLinear()
@@ -196,9 +197,12 @@ export const History = () => {
             ))}
           </g>
           <g>
+            <HistoryEvents scales={scales} />
+          </g>
+          <g>
             <Annotations
-              rectWidth={annotationRectWidth}
               currentStart={currentStart}
+              rectWidth={annotationRectWidth}
               scales={scales}
               clipPaths={clipPaths}
             />

@@ -29,6 +29,15 @@
   stroke-width: 2;
 }
 
+.current circle {
+  fill: white;
+  fill-opacity: 0.4;
+}
+
+.previous circle {
+  fill: gray;
+}
+
 .now circle {
   animation: pulse 2s infinite ease-in-out;
   fill: white;
