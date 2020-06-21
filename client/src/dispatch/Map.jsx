@@ -80,10 +80,10 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   const importantOnTop =
     (a,
-    (b) => {
+    b) => {
       // TODO
       return 0;
-    });
+    };
 
   let data = byTypeForArea
     .flatMap(mapper)

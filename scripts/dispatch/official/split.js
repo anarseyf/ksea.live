@@ -34,6 +34,7 @@ export const runner = async (sourceFile) => {
         splits[fileName],
         { merge: true }
       );
+      console.log(`split > ${splits[fileName].length} entries to ${fileName}`);
     });
     await saveJSONAsync(sourceFile, []);
     const end = new Date();

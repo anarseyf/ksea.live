@@ -73,7 +73,7 @@ export const toUTCMidnight = (timestamp) => {
 };
 
 export const toUTCMidnightString = (timestamp) =>
-  new Date(toUTCMidnight(timestamp)).toISOString();
+  timezone(toUTCMidnight(timestamp), "UTC").toISOString();
 
 // https://momentjs.com/docs/#/parsing/string-format/
 const format = "MM/DD/YYYY hh:mm:ss A";
