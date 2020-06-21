@@ -53,11 +53,11 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
   if (area) {
     zoom = defaultZoom + 1;
   }
-  if (selectedTweet) {
+  if (selectedTweet && selectedTweet.derived.lat) {
     zoom = maxZoom;
   }
 
-  const center = selectedTweet
+  const center = selectedTweet && selectedTweet.derived.lat
     ? [selectedTweet.derived.lat, selectedTweet.derived.long]
     : area
     ? centroid(rendered)

@@ -137,7 +137,7 @@ export const runner = async (sourceFile) => {
 
       incidentsMap = { ...incidentsMap, ...getIncidentsMap(resolved) };
 
-      resolvedTotal = await appendJSONAsync(targetFile, resolved);
+      resolvedTotal = await appendJSONAsync(targetFile, newData);
       await saveJSONAsync(sourceFile, entries.slice(queueSize)); // TODO - atomic
     }
 

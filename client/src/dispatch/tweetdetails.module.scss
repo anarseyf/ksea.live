@@ -24,3 +24,12 @@
   margin: 0.25em;
   padding: 0 0.5em;
 }
+
+.link {
+  color: $link;
+  border-bottom: 1px solid $link;
+}
+.link:hover {
+  color: $link;
+  text-decoration: none;
+}

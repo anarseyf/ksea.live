@@ -48,7 +48,7 @@ export const allTweets = async (intervals) => {
   const files = await Promise.all(
     fileNames.map(async (f) => await readJSONAsync(f, []))
   );
-  const all = files.flat().filter(hasCoordinates);
+  const all = files.flat(); //.filter(hasCoordinates);
   console.log(`read ${files.length} files: ${all.length} total entries`);
 
   const byIntervals = byIntervalsGen(intervals);

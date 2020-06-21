@@ -56,14 +56,10 @@ export const DispatchAll = () => {
   const areas = "Select an area to zoom in on today's incidents there.";
 
   const history =
-    "This views shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
+    "This view shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
 
   const notes = (
     <>
-      <p>
-        Incidents for which no geolocation data is available are not shown and
-        not counted.
-      </p>
       <p>
         Visualization by{" "}
         <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
