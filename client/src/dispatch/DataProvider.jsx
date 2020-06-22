@@ -6,7 +6,7 @@ import {
   getHistory,
   getAnnotations,
   getTweetsActive24,
-  getTweetsMajor24,
+  getTweetsMajor,
   getTweetsForAreaMin,
   getTweetsForAreaMinWeek,
 } from "../api";
@@ -98,7 +98,7 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
-      const response = await getTweetsMajor24();
+      const response = await getTweetsMajor();
       setMajor24(response[0].intervals[0].values);
     })();
 

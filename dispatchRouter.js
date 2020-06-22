@@ -127,9 +127,9 @@ const active24Controller = async (req, res) => {
   }
 };
 
-const major24Controller = async (req, res) => {
+const majorController = async (req, res) => {
   try {
-    const intervals = generate24HourIntervals();
+    const intervals = generateIntervals();
     const all = await allTweets(intervals);
     const minimizer =
       req.query.minimize === "true" ? minimizeGroup : identityFn;
@@ -311,7 +311,7 @@ router.get("/seattle911", seattleGovController);
 router.get("/update", updateController);
 router.get("/status", statusController);
 router.get("/tweets/active24", active24Controller);
-router.get("/tweets/major24", major24Controller);
+router.get("/tweets/major", majorController);
 router.get("/tweets/byArea", byAreaController);
 router.get("/tweets/byType/:area?", byTypeController);
 router.get("/tweets/byAreaByType", byAreabyTypeController);

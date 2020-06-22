@@ -17,10 +17,10 @@ import { Legend } from "./Legend";
 export const DispatchAll = () => {
   const intro = (
     <p>
-      A visualization of Seattle Fire Department 911 dispatches. Combines a
-      real-time view of incidents across the city, a breakdown by neighborhood,
-      and an overview of the year's cumulative data. See notes at the bottom for
-      data sources and details.
+      A visualization of Seattle Fire Department 911 dispatch data: a real-time
+      view of incidents across the city, a breakdown by neighborhood, and an
+      overview of the year's cumulative data.{" "}
+      <a href="#sources">Data sources</a> are listed at the end.
     </p>
   );
 
@@ -38,23 +38,33 @@ export const DispatchAll = () => {
 
   const pastWeek = `The past 7 days of dispatches.`;
 
+  const active = (
+    <p>
+      Select an incident to view dispatch details. If geolocation data is
+      available (typically within 5 minutes), the map will zoom in to the spot.
+    </p>
+  );
+
   const major = (
     <p>
-      Incidents in the past 24 hours with <strong>five or more</strong> units
-      dispatched.
+      Today's incidents with <strong>five or more</strong> units dispatched.
     </p>
   );
 
   const areas = "Select an area to zoom in on today's incidents there.";
 
-  const history =
-    "Lines trace daily dispatch totals for all of Seattle this year compared to last year. Circles represent major incidents (ten or more units dispatched).";
+  const history = (
+    <p>
+      Zooming out even further, this view presents a year's worth of data. Lines
+      trace daily dispatch totals for all of Seattle. Circles represent major
+      incidents (those with 10 or more units dispatched).
+    </p>
+  );
 
   const notes = (
     <>
       <p>
-        Visualization by{" "}
-        <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
+        Created by <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
       </p>
     </>
   );
@@ -80,25 +90,25 @@ export const DispatchAll = () => {
       </Section>
 
       <Section styleOption={2}>
-        <Paragraph title="Active Incidents" content={""} />
+        <Paragraph title="Active Incidents" content={active} />
         <TweetsActive />
         <Paragraph title="Major Incidents" content={major} />
         <TweetsMajor />
       </Section>
 
-      <Section styleOption={1}>
-        <Paragraph title="Past Week" content={pastWeek} />
-        <Header />
-      </Section>
-
-      <Section styleOption={2} edgeToEdge={true}>
+      <Section styleOption={1} edgeToEdge={true}>
         <Paragraph title="City Areas" content={areas} margin={true} />
         <GroupByArea />
       </Section>
 
+      <Section styleOption={2}>
+        <Paragraph title="Past Week" content={pastWeek} />
+        <Header />
+      </Section>
+
       <Section styleOption={1} edgeToEdge={true}>
         <Paragraph
-          title="Last Year vs This Year"
+          title="This Year compared to Last Year"
           content={history}
           margin={true}
         />
@@ -107,7 +117,7 @@ export const DispatchAll = () => {
 
       <Section styleOption={2}>
         <Sources />
-        <Paragraph title="Notes" content={notes} />
+        <Paragraph title="About" content={notes} />
       </Section>
     </DataProvider>
   );
