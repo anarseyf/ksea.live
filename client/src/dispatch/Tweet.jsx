@@ -4,7 +4,7 @@ import { UserContext, UserContextKeys } from "./UserProvider";
 import { AreaAccessors } from "../groupingOptions";
 import { TweetDetails } from "./TweetDetails";
 import {
-  toPacificStr,
+  timeFormatter,
   isActive,
   isAtLeastSev1,
   isAtLeastSev2,
@@ -36,7 +36,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
 
   const isGreyedOut = mode === TweetModes.GreyedOut;
   const isDetailed = mode === TweetModes.Detailed;
-  const time = toPacificStr(tweet.derived.timestamp);
+  const time = timeFormatter(tweet.derived.timestamp);
   const phone = isPhone();
 
   return (
@@ -44,15 +44,23 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
       className={classnames(styles.container, {
         [styles.detailed]: isDetailed,
         [styles.greyedOut]: isGreyedOut,
-        [styles.phone]: phone
+        [styles.phone]: phone,
       })}
       onClick={handleClick}
     >
       <div className={styles.tweet}>
         <div className={styles.details}>
-          <span className={styles.location}>{!phone && <span>{area} @ </span>}{time}</span>
+          <span className={styles.location}>
+            {!phone && (
+              <span>
+                {area}
+                {tweet.created_at} @{" "}
+              </span>
+            )}
+            {time}
+          </span>
         </div>
-        <div className={classnames({[styles.active]: active})}>
+        <div className={classnames({ [styles.active]: active })}>
           <SvgDot active={active} sev1={sev1} sev2={sev2} />
           <span> {tweet.derived.description}</span>
         </div>

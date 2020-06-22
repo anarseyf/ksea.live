@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { axisRadialInner } from "d3-radial-axis";
 import { DataContext, currentInterval } from "./DataProvider";
-import { intervalExtent } from "../clientUtils";
+import { intervalExtent, timeFormatterHourAM, every6Hours } from "../clientUtils";
 import { Topline } from "./Topline";
 import classnames from "classnames";
 import styles from "./rehoboam.module.scss";
@@ -32,7 +32,7 @@ export const Rehoboam = ({ area }) => {
     setTotal(currentInterval(filteredByAreaMin).total); // TODO - use status
 
     const current = currentInterval(filteredByAreaMin);
-    console.log("REHOBOAM/current",current);
+    console.log("REHOBOAM/current", current);
     const bins = current.binsHiRes;
     // const bins = current.bins;
     const extent = intervalExtent(current);
@@ -56,13 +56,11 @@ export const Rehoboam = ({ area }) => {
       .scaleLinear()
       .domain(extent)
       .range([0, 2 * Math.PI]);
-    const HOUR = 3600 * 1000;
-    const dateFormatter = d3.timeFormat("%-I%p"); // https://github.com/d3/d3-time-format#locale_format
-    const tickValues = [0, 6, 12, 18].map((h) => current.start + h * HOUR);
+    
     const axis = axisRadialInner(angleScale, mainRadius)
-      .tickFormat(dateFormatter)
+      .tickFormat(timeFormatterHourAM)
       .tickSize(0)
-      .tickValues(tickValues); // for some reason d3.timeHour.every() doesn't work here
+      .tickValues(every6Hours(current.start));
     d3.select(axisRef.current).call(axis);
 
     if (activeOrMajorForArea.length) {

@@ -29,7 +29,7 @@ export const HistoryEvents = ({ scales, dayHeight = 4 }) => {
     const sev2Previous = binsPrevious.filter(filter).map(mapper).flatMap(stack);
 
     const toCirclesGen = (side) => ({ timestamp, index }) => ({
-      key: `${timestamp}-${index}`,
+      key: `${timestamp}-${index}-${side}`,
       cx: side * (index + 0.75) * 2 * radius,
       cy: yScale(timestamp),
       r: radius,

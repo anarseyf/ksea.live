@@ -3,7 +3,7 @@ import classnames from "classnames";
 import * as d3 from "d3";
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
-import { intervalExtent, isPhone } from "../clientUtils";
+import { intervalExtent, timeFormatterHourAM, isPhone, every6Hours } from "../clientUtils";
 
 export const MultiLine = ({
   intervals = [],
@@ -32,23 +32,20 @@ export const MultiLine = ({
     const accessor = ({ length, cumulative }) =>
       useCumulative ? cumulative : length;
 
-    const xExtent = intervalExtent(intervals[0]);
-
+    const currentInterval = intervals[0];
+    const xExtent = intervalExtent(currentInterval);
     const yExtent = [
       0,
       d3.max([1.0, ...intervals.flatMap(({ bins }) => bins).map(accessor)]),
     ];
 
-    const dateFormatter = d3.timeFormat("%-I%p");
-    // https://github.com/d3/d3-time-format#locale_format
-
     const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
     const xAxis = d3
       .axisBottom()
-      .tickFormat(dateFormatter)
-      .tickSize(3)
       .scale(xScale)
-      .ticks(d3.timeHour.every(6));
+      .tickValues(every6Hours(currentInterval.start))
+      .tickFormat(timeFormatterHourAM)
+      .tickSize(3);
     d3.select(xAxisRef.current).call(xAxis);
 
     const yScale = d3.scaleLinear().domain(yExtent).range([height, 0]);

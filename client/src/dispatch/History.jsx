@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import classnames from "classnames";
 
 import { DataContext, currentInterval, previousInterval } from "./DataProvider";
-import { intervalExtent, isPhone } from "../clientUtils";
+import { intervalExtent, isPhone, timeFormatterMonth } from "../clientUtils";
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";
 import historyStyles from "./history.module.scss";
@@ -71,11 +71,9 @@ export const History = () => {
 
     setScales([xScale, yScale]);
 
-    const dateFormatter = d3.timeFormat("%b"); // https://github.com/d3/d3-time-format#locale_format
-
     const yAxis = d3
       .axisLeft()
-      .tickFormat(dateFormatter)
+      .tickFormat(timeFormatterMonth)
       .scale(yScale)
       .ticks(d3.timeMonth.every(1))
       .tickSize(0);
@@ -158,7 +156,6 @@ export const History = () => {
         height={svgHeight}
       >
         <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
-          
           {/* <g>
             {svgData.map((dataset, iDataset) =>
               dataset.map((d) => (

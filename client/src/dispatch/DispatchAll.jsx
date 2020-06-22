@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import * as d3 from "d3";
 import { Map } from "./Map";
 import { DataProvider } from "./DataProvider";
 import { GroupByArea } from "./GroupByArea";
@@ -14,14 +13,13 @@ import { SvgDot } from "./SvgDot";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { StatusContext } from "./StatusContext";
 import { Sources } from "./Sources";
-
-const formatter = d3.timeFormat("%-I:%M %p");
+import { timeFormatterUserTimezone } from "../clientUtils";
 
 export const DispatchAll = () => {
   const { status = {} } = useContext(StatusContext);
 
   const time = status.lastUpdated
-    ? formatter(new Date(status.lastUpdated))
+    ? timeFormatterUserTimezone(new Date(status.lastUpdated))
     : undefined;
 
   const dataText = time ? (
@@ -101,7 +99,11 @@ export const DispatchAll = () => {
       </Section>
 
       <Section styleOption={1} edgeToEdge={true}>
-        <Paragraph title="Last Year vs This Year" content={history} margin={true} />
+        <Paragraph
+          title="Last Year vs This Year"
+          content={history}
+          margin={true}
+        />
         <History />
       </Section>
 

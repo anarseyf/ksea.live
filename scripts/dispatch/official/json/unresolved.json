@@ -1,12 +1,818 @@
 [
   {
+    "id_str": "F200060954",
+    "created_at": "6/21/2020 8:49:21 PM",
+    "derived": {
+      "timestamp": 1592797761000,
+      "description": "AFA4 - Auto Alarm 2 + 1 + 1",
+      "address": "2006 S Weller St",
+      "active": true,
+      "unitCount": 4,
+      "severity": 0,
+      "units": "B5 E31 E6 L3"
+    }
+  },
+  {
+    "id_str": "F200060953",
+    "created_at": "6/21/2020 8:47:26 PM",
+    "derived": {
+      "timestamp": 1592797646000,
+      "description": "Aid Response",
+      "address": "13725 32nd Av Ne",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F200060951",
+    "created_at": "6/21/2020 8:47:17 PM",
+    "derived": {
+      "timestamp": 1592797637000,
+      "description": "Medic Response",
+      "address": "10332 12th Ave Nw",
+      "active": true,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E35 M31"
+    }
+  },
+  {
+    "id_str": "F200060952",
+    "created_at": "6/21/2020 8:45:36 PM",
+    "derived": {
+      "timestamp": 1592797536000,
+      "description": "Investigate Out Of Service",
+      "address": "3437 E Florence Ct",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E34"
+    }
+  },
+  {
+    "id_str": "F200060950",
+    "created_at": "6/21/2020 8:44:18 PM",
+    "derived": {
+      "timestamp": 1592797458000,
+      "description": "Aid Response",
+      "address": "7700 25th Av Ne",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E40"
+    }
+  },
+  {
+    "id_str": "F200060949",
+    "created_at": "6/21/2020 8:31:41 PM",
+    "derived": {
+      "timestamp": 1592796701000,
+      "description": "Aid Response",
+      "address": "200 6th Av N",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A2"
+    }
+  },
+  {
+    "id_str": "F200060948",
+    "created_at": "6/21/2020 8:26:27 PM",
+    "derived": {
+      "timestamp": 1592796387000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "509 3rd Av",
+      "active": true,
+      "unitCount": 4,
+      "severity": 0,
+      "units": "B5 E10 E5 L1"
+    }
+  },
+  {
+    "id_str": "F200060947",
+    "created_at": "6/21/2020 8:20:11 PM",
+    "derived": {
+      "timestamp": 1592796011000,
+      "description": "Aid Response",
+      "address": "2323 E Cherry St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E6"
+    }
+  },
+  {
+    "id_str": "F200060946",
+    "created_at": "6/21/2020 8:09:43 PM",
+    "derived": {
+      "timestamp": 1592795383000,
+      "description": "Aid Response",
+      "address": "920 N 34th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "L6"
+    }
+  },
+  {
+    "id_str": "F200060943",
+    "created_at": "6/21/2020 7:54:31 PM",
+    "derived": {
+      "timestamp": 1592794471000,
+      "description": "Auto Fire Alarm",
+      "address": "7101 38th Av S",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E28 L12"
+    }
+  },
+  {
+    "id_str": "F200060942",
+    "created_at": "6/21/2020 7:53:43 PM",
+    "derived": {
+      "timestamp": 1592794423000,
+      "description": "Aid Response",
+      "address": "204 Ne 94th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F200060941",
+    "created_at": "6/21/2020 7:45:13 PM",
+    "derived": {
+      "timestamp": 1592793913000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "1011 5th Av N",
+      "active": false,
+      "unitCount": 5,
+      "severity": 1,
+      "units": "B4 B7 E2 E8 L6"
+    }
+  },
+  {
+    "id_str": "F200060940",
+    "created_at": "6/21/2020 7:40:45 PM",
+    "derived": {
+      "timestamp": 1592793645000,
+      "description": "Aid Response",
+      "address": "606 12th Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F200060939",
+    "created_at": "6/21/2020 7:38:38 PM",
+    "derived": {
+      "timestamp": 1592793518000,
+      "description": "Aid Response",
+      "address": "301 Nw 43rd St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F200060937",
+    "created_at": "6/21/2020 7:30:26 PM",
+    "derived": {
+      "timestamp": 1592793026000,
+      "description": "Aid Response",
+      "address": "9th Ave / Jefferson St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200060936",
+    "created_at": "6/21/2020 7:29:50 PM",
+    "derived": {
+      "timestamp": 1592792990000,
+      "description": "Aid Response",
+      "address": "3820 Rainier Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E30"
+    }
+  },
+  {
+    "id_str": "F200060934",
+    "created_at": "6/21/2020 7:27:28 PM",
+    "derived": {
+      "timestamp": 1592792848000,
+      "description": "Medic Response",
+      "address": "4645 S Willow St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E28 M28"
+    }
+  },
+  {
+    "id_str": "F200060933",
+    "created_at": "6/21/2020 7:20:14 PM",
+    "derived": {
+      "timestamp": 1592792414000,
+      "description": "Auto Fire Alarm",
+      "address": "6420 California Av Sw",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E37 L11"
+    }
+  },
+  {
+    "id_str": "F200060932",
+    "created_at": "6/21/2020 7:17:28 PM",
+    "derived": {
+      "timestamp": 1592792248000,
+      "description": "Unk Odor",
+      "address": "1725 Sw Barton St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E11"
+    }
+  },
+  {
+    "id_str": "F200060929",
+    "created_at": "6/21/2020 7:08:47 PM",
+    "derived": {
+      "timestamp": 1592791727000,
+      "description": "Low Acuity Response",
+      "address": "1221 MADISON ST",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E25 L10"
+    }
+  },
+  {
+    "id_str": "F200060928",
+    "created_at": "6/21/2020 7:01:26 PM",
+    "derived": {
+      "timestamp": 1592791286000,
+      "description": "Medic Response, 7 per Rule",
+      "address": "1101 Federal Ave E",
+      "active": false,
+      "unitCount": 4,
+      "severity": 0,
+      "units": "A25 E22 M1 M10"
+    }
+  },
+  {
+    "id_str": "F200060926",
+    "created_at": "6/21/2020 6:56:39 PM",
+    "derived": {
+      "timestamp": 1592790999000,
+      "description": "Rubbish Fire",
+      "address": "14th Ave / E Columbia St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E10"
+    }
+  },
+  {
+    "id_str": "F200060927",
+    "created_at": "6/21/2020 6:55:45 PM",
+    "derived": {
+      "timestamp": 1592790945000,
+      "description": "Aid Response",
+      "address": "106 Bell St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200060920",
+    "created_at": "6/21/2020 6:47:13 PM",
+    "derived": {
+      "timestamp": 1592790433000,
+      "description": "1RED 1 Unit",
+      "address": "2515 RAINIER AV S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E30"
+    }
+  },
+  {
+    "id_str": "F200060918",
+    "created_at": "6/21/2020 6:41:12 PM",
+    "derived": {
+      "timestamp": 1592790072000,
+      "description": "Automatic Fire Alarm Resd",
+      "address": "4017 50th Ave S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E28"
+    }
+  },
+  {
+    "id_str": "F200060917",
+    "created_at": "6/21/2020 6:40:43 PM",
+    "derived": {
+      "timestamp": 1592790043000,
+      "description": "Aid Response",
+      "address": "9315 54th Ave S",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F200060916",
+    "created_at": "6/21/2020 6:37:17 PM",
+    "derived": {
+      "timestamp": 1592789837000,
+      "description": "Aid Response",
+      "address": "4700 Sw Admiral Way",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E32"
+    }
+  },
+  {
+    "id_str": "F200060915",
+    "created_at": "6/21/2020 6:36:00 PM",
+    "derived": {
+      "timestamp": 1592789760000,
+      "description": "Aid Response",
+      "address": "2700 California Av Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E29"
+    }
+  },
+  {
+    "id_str": "F200060913",
+    "created_at": "6/21/2020 6:29:57 PM",
+    "derived": {
+      "timestamp": 1592789397000,
+      "description": "Aid Response",
+      "address": "201 Occidental Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F200060911",
+    "created_at": "6/21/2020 6:24:56 PM",
+    "derived": {
+      "timestamp": 1592789096000,
+      "description": "Medic Response",
+      "address": "2633 Warren Ave N",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E9 M18"
+    }
+  },
+  {
+    "id_str": "F200060910",
+    "created_at": "6/21/2020 6:22:05 PM",
+    "derived": {
+      "timestamp": 1592788925000,
+      "description": "Aid Response",
+      "address": "3723 Sw Donovan St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E37"
+    }
+  },
+  {
+    "id_str": "F200060909",
+    "created_at": "6/21/2020 6:18:06 PM",
+    "derived": {
+      "timestamp": 1592788686000,
+      "description": "Aid Response",
+      "address": "12720 10th Ave Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F200060907",
+    "created_at": "6/21/2020 6:13:07 PM",
+    "derived": {
+      "timestamp": 1592788387000,
+      "description": "Dumpster Fire",
+      "address": "3rd Ave S / S Jackson St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E10"
+    }
+  },
+  {
+    "id_str": "F200060906",
+    "created_at": "6/21/2020 6:07:45 PM",
+    "derived": {
+      "timestamp": 1592788065000,
+      "description": "Aid Response",
+      "address": "3rd Ave / Virginia St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200060904",
+    "created_at": "6/21/2020 5:48:16 PM",
+    "derived": {
+      "timestamp": 1592786896000,
+      "description": "Aid Response",
+      "address": "3rd Ave / Pike St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "A4 E5"
+    }
+  },
+  {
+    "id_str": "F200060903",
+    "created_at": "6/21/2020 5:42:10 PM",
+    "derived": {
+      "timestamp": 1592786530000,
+      "description": "Low Acuity Response",
+      "address": "505 Ne 70th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F200060901",
+    "created_at": "6/21/2020 5:33:29 PM",
+    "derived": {
+      "timestamp": 1592786009000,
+      "description": "Aid Response",
+      "address": "3RD AVE / VIRGINIA ST",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "A2 A4"
+    }
+  },
+  {
+    "id_str": "F200060900",
+    "created_at": "6/21/2020 5:32:10 PM",
+    "derived": {
+      "timestamp": 1592785930000,
+      "description": "Aid Response",
+      "address": "901 Pine St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200060899",
+    "created_at": "6/21/2020 5:29:48 PM",
+    "derived": {
+      "timestamp": 1592785788000,
+      "description": "Aid Response",
+      "address": "801 9th Av",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200060898",
+    "created_at": "6/21/2020 5:29:42 PM",
+    "derived": {
+      "timestamp": 1592785782000,
+      "description": "Aid Response",
+      "address": "217 Pike St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200060895",
+    "created_at": "6/21/2020 5:10:21 PM",
+    "derived": {
+      "timestamp": 1592784621000,
+      "description": "Medic Response",
+      "address": "N 53rd St / Green Lake Way N",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E17 M17"
+    }
+  },
+  {
+    "id_str": "F200060893",
+    "created_at": "6/21/2020 5:09:07 PM",
+    "derived": {
+      "timestamp": 1592784547000,
+      "description": "Aid Response",
+      "address": "1711 23rd Av S",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E6 M10"
+    }
+  },
+  {
+    "id_str": "F200060888",
+    "created_at": "6/21/2020 4:53:06 PM",
+    "derived": {
+      "timestamp": 1592783586000,
+      "description": "Aid Response",
+      "address": "2147 N Northgate Way",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200060887",
+    "created_at": "6/21/2020 4:37:46 PM",
+    "derived": {
+      "timestamp": 1592782666000,
+      "description": "Aid Response",
+      "address": "4706 42nd Ave Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E32"
+    }
+  },
+  {
+    "id_str": "F200060886",
+    "created_at": "6/21/2020 4:36:44 PM",
+    "derived": {
+      "timestamp": 1592782604000,
+      "description": "Low Acuity Response",
+      "address": "710 Cherry St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F200060885",
+    "created_at": "6/21/2020 4:30:23 PM",
+    "derived": {
+      "timestamp": 1592782223000,
+      "description": "Aid Response",
+      "address": "Rainier Ave S / S Jackson St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200060884",
+    "created_at": "6/21/2020 4:23:36 PM",
+    "derived": {
+      "timestamp": 1592781816000,
+      "description": "Aid Response",
+      "address": "1330 Boren Ave",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F200060882",
+    "created_at": "6/21/2020 4:12:34 PM",
+    "derived": {
+      "timestamp": 1592781154000,
+      "description": "Rubbish Fire",
+      "address": "3rd Ave / Jefferson St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E5 MAR5"
+    }
+  },
+  {
+    "id_str": "F200060881",
+    "created_at": "6/21/2020 4:08:29 PM",
+    "derived": {
+      "timestamp": 1592780909000,
+      "description": "AFA4 - Auto Alarm 2 + 1 + 1",
+      "address": "2006 S Weller St",
+      "active": false,
+      "unitCount": 4,
+      "severity": 0,
+      "units": "B2 E10 E6 L3"
+    }
+  },
+  {
+    "id_str": "F200060880",
+    "created_at": "6/21/2020 4:03:48 PM",
+    "derived": {
+      "timestamp": 1592780628000,
+      "description": "Investigate Out Of Service",
+      "address": "18th Ave Sw / Sw Myrtle St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E11"
+    }
+  },
+  {
+    "id_str": "F200060878",
+    "created_at": "6/21/2020 3:52:08 PM",
+    "derived": {
+      "timestamp": 1592779928000,
+      "description": "Aid Response",
+      "address": "3rd Ave / Jefferson St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "A5 E5"
+    }
+  },
+  {
+    "id_str": "F200060876",
+    "created_at": "6/21/2020 3:29:56 PM",
+    "derived": {
+      "timestamp": 1592778596000,
+      "description": "Aid Response",
+      "address": "3rd Ave / Yesler Way",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F200060875",
+    "created_at": "6/21/2020 3:25:29 PM",
+    "derived": {
+      "timestamp": 1592778329000,
+      "description": "Aid Response",
+      "address": "8827 34th Ave Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E11"
+    }
+  },
+  {
+    "id_str": "F200060873",
+    "created_at": "6/21/2020 3:19:49 PM",
+    "derived": {
+      "timestamp": 1592777989000,
+      "description": "Aid Response",
+      "address": "835 Hillside Dr E",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E34"
+    }
+  },
+  {
+    "id_str": "F200060872",
+    "created_at": "6/21/2020 3:19:17 PM",
+    "derived": {
+      "timestamp": 1592777957000,
+      "description": "Aid Response",
+      "address": "2224 2nd Av",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "A4 M1"
+    }
+  },
+  {
+    "id_str": "F200060870",
+    "created_at": "6/21/2020 3:10:19 PM",
+    "derived": {
+      "timestamp": 1592777419000,
+      "description": "Rubbish Fire",
+      "address": "4th Ave S / S Jackson St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E10 MAR5"
+    }
+  },
+  {
+    "id_str": "F200060868",
+    "created_at": "6/21/2020 2:50:52 PM",
+    "derived": {
+      "timestamp": 1592776252000,
+      "description": "Advised Incident",
+      "address": "Nw 49th St / 9th Ave Nw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E18"
+    }
+  },
+  {
+    "id_str": "F200060865",
+    "created_at": "6/21/2020 2:38:33 PM",
+    "derived": {
+      "timestamp": 1592775513000,
+      "description": "Aid Response",
+      "address": "5100 25TH AV NE",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E38"
+    }
+  },
+  {
+    "id_str": "F200060864",
+    "created_at": "6/21/2020 2:33:39 PM",
+    "derived": {
+      "timestamp": 1592775219000,
+      "description": "Aid Response",
+      "address": "11250 57th Ave S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E33"
+    }
+  },
+  {
+    "id_str": "F200060862",
+    "created_at": "6/21/2020 2:26:01 PM",
+    "derived": {
+      "timestamp": 1592774761000,
+      "description": "Hang-Up, Aid",
+      "address": "Nw 49th St / 9th Ave Nw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "L8"
+    }
+  },
+  {
+    "id_str": "F200060861",
+    "created_at": "6/21/2020 2:23:04 PM",
+    "derived": {
+      "timestamp": 1592774584000,
+      "description": "Aid Response",
+      "address": "700 John St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200060859",
+    "created_at": "6/21/2020 2:21:10 PM",
+    "derived": {
+      "timestamp": 1592774470000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "157 Erie Ave",
+      "active": false,
+      "unitCount": 19,
+      "severity": 2,
+      "units": "A5 AIR10 B2 B5 DEP1 E13 E30 E34 E5 E6 L1 L10 L3 M1 M44 MAR5 REHAB1 SAFT2 STAF10"
+    }
+  },
+  {
     "id_str": "F200060858",
     "created_at": "6/21/2020 2:11:12 PM",
     "derived": {
       "timestamp": 1592773872000,
       "description": "Aid Response",
       "address": "Shilshole Ave Nw / Nw 45th St",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "units": "E18"
@@ -84,7 +890,7 @@
       "timestamp": 1592771119000,
       "description": "Aid Response",
       "address": "1824 N 48th St",
-      "active": true,
+      "active": false,
       "unitCount": 4,
       "severity": 0,
       "units": "CHAP5 E17 E31 M17"
