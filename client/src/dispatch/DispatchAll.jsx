@@ -9,7 +9,6 @@ import { Paragraph } from "./Paragraph";
 import { History } from "./History";
 import { TweetsActive } from "./TweetsActive";
 import { TweetsMajor } from "./TweetsMajor";
-import { SvgDot } from "./SvgDot";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { Sources } from "./Sources";
 import { Freshness } from "./Freshness";
