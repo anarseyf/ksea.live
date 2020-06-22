@@ -56,7 +56,7 @@ export const DispatchAll = () => {
   const areas = "Select an area to zoom in on today's incidents there.";
 
   const history =
-    "This view shows total dispatches for all of Seattle per day this year compared to last year, with a few callouts for context.";
+    "Total daily dispatches for all of Seattle this year compared to last year. Each circles represents a major incident (10 or more units dispatched).";
 
   const notes = (
     <>
@@ -100,8 +100,8 @@ export const DispatchAll = () => {
         <GroupByArea />
       </Section> */}
 
-      <Section styleOption={1}>
-        <Paragraph title="Last Year vs This Year" content={history} />
+      <Section styleOption={1} edgeToEdge={true}>
+        <Paragraph title="Last Year vs This Year" content={history} margin={true} />
         <History />
       </Section>
 

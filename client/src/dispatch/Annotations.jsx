@@ -76,7 +76,7 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
       };
 
       if (value) {
-        callout.nx = sideX * (rectWidth + 10);
+        callout.nx = sideX * (rectWidth + 5);
         callout.ny = y;
       } else {
         callout.dx = sideX * 10;

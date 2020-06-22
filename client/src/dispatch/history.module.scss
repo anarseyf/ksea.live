@@ -1,11 +1,11 @@
 @import "../colors.scss";
 
 .container {
-  // border: 1px solid $border;
+  text-align: center;
 }
 
 .svg {
-  // border: 2px dotted $border;
+  display: inline-block;
 }
 
 .svg rect.previous {

@@ -36,15 +36,15 @@ export const History = () => {
   const [paths, setPaths] = useState([]);
   const [clipPaths, setClipPaths] = useState({});
 
-  const binHeight = 2.5;
-  const svgWidth = isPhone() ? 350 : 500,
-    margin = { top: 10, right: 30, bottom: 30, left: 30 },
-    svgHeight = 366 * binHeight + margin.top + margin.bottom,
-    width = svgWidth - margin.left - margin.right,
-    height = svgHeight - margin.top - margin.bottom;
+  const dayHeight = 3.5;
+  const width = isPhone() ? 360 : 500, // TODO - use screen width
+    margin = { top: 20, right: 0, bottom: 20, left: 0 },
+    height = 365 * dayHeight,
+    svgHeight = height + margin.top + margin.bottom,
+    svgWidth = width + margin.left + margin.right;
   const yearWidth = width / 2;
-  const maxBarWidth = yearWidth * 0.45;
-  const annotationRectWidth = yearWidth * 0.55;
+  const maxBarWidth = yearWidth * 0.4;
+  const annotationRectWidth = yearWidth * 0.5;
 
   const svgRef = useRef(null);
   const xAxisRef = useRef(null);
@@ -158,15 +158,7 @@ export const History = () => {
         height={svgHeight}
       >
         <g transform={`translate(${margin.left + yearWidth},${margin.top})`}>
-          {/* <g
-            className={classnames(svgStyles.axis, historyStyles.axis)}
-            ref={xAxisRef}
-            transform={`translate(0,${height})`}
-          /> */}
-          <g
-            className={classnames(svgStyles.axis, historyStyles.axis)}
-            ref={yAxisRef}
-          />
+          
           {/* <g>
             {svgData.map((dataset, iDataset) =>
               dataset.map((d) => (
@@ -197,7 +189,7 @@ export const History = () => {
             ))}
           </g>
           <g>
-            <HistoryEvents scales={scales} />
+            <HistoryEvents scales={scales} dayHeight={dayHeight} />
           </g>
           <g>
             <Annotations
@@ -207,6 +199,15 @@ export const History = () => {
               clipPaths={clipPaths}
             />
           </g>
+          {/* <g
+            className={classnames(svgStyles.axis, historyStyles.axis)}
+            ref={xAxisRef}
+            transform={`translate(0,${height})`}
+          /> */}
+          <g
+            className={classnames(svgStyles.axis, historyStyles.axis)}
+            ref={yAxisRef}
+          />
         </g>
       </svg>
     </div>
