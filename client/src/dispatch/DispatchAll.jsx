@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Map } from "./Map";
 import { DataProvider } from "./DataProvider";
 import { GroupByArea } from "./GroupByArea";
@@ -11,25 +11,10 @@ import { TweetsActive } from "./TweetsActive";
 import { TweetsMajor } from "./TweetsMajor";
 import { SvgDot } from "./SvgDot";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { StatusContext } from "./StatusContext";
 import { Sources } from "./Sources";
-import { timeFormatterUserTimezone } from "../clientUtils";
+import { Freshness } from "./Freshness";
 
 export const DispatchAll = () => {
-  const { status = {} } = useContext(StatusContext);
-
-  const time = status.lastUpdated
-    ? timeFormatterUserTimezone(new Date(status.lastUpdated))
-    : undefined;
-
-  const dataText = time ? (
-    <span>
-      Data is current as of <strong> {time}</strong>.
-    </span>
-  ) : (
-    <span>&nbsp;</span>
-  );
-
   const intro = (
     <p>
       A near-real-time visualization of Seattle Fire Department 911 dispatches.
@@ -70,7 +55,7 @@ export const DispatchAll = () => {
       <Section styleOption={2}>
         <Paragraph h1="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
-        <Paragraph content={dataText} />
+        <Paragraph content={<Freshness />} />
       </Section>
 
       <Section edgeToEdge={true} styleOption={1}>
