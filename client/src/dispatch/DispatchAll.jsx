@@ -13,15 +13,25 @@ import { SvgDot } from "./SvgDot";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { Sources } from "./Sources";
 import { Freshness } from "./Freshness";
+import { Legend } from "./Legend";
 
 export const DispatchAll = () => {
   const intro = (
     <p>
-      A near-real-time visualization of Seattle Fire Department 911 dispatches.
-      Active incidents are marked <SvgDot active={true} radius={5} />. Incidents
-      with five or more units dispatched are marked <SvgDot sev1={true} />, with
-      ten or more <SvgDot sev2={true} />. All timestamps are in Seattle time
-      (Pacific timezone). See notes at the bottom for more details.
+      A visualization of Seattle Fire Department 911 dispatches. Combines a
+      real-time view of incidents across the city, a breakdown by neighborhood,
+      and an overview of the year's cumulative data. See notes at the bottom for
+      data sources and details.
+    </p>
+  );
+
+  const live = (
+    <p>
+      <span>
+        A near-real-time view of today's incidents. All timestamps are in
+        Seattle local time.
+      </span>{" "}
+      <Freshness />
     </p>
   );
 
@@ -39,7 +49,7 @@ export const DispatchAll = () => {
   const areas = "Select an area to zoom in on today's incidents there.";
 
   const history =
-    "Total daily dispatches for all of Seattle this year compared to last year. Each circle represents a major incident (10 or more units dispatched).";
+    "Lines trace daily dispatch totals for all of Seattle this year compared to last year. Circles represent major incidents (ten or more units dispatched).";
 
   const notes = (
     <>
@@ -52,10 +62,14 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
+      <Section styleOption={1}>
+        <Paragraph h1="Seattle Fire Department 911 Dispatch" content={intro} />
+      </Section>
+
       <Section styleOption={2}>
-        <Paragraph h1="Seattle Fire Real-Time Dispatch" content={intro} />
+        <Paragraph title="Live View" content={live} />
         <Rehoboam />
-        <Paragraph content={<Freshness />} />
+        <Paragraph content={<Legend />} />
       </Section>
 
       <Section edgeToEdge={true} styleOption={1}>

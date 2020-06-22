@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styles from "./legend.module.scss";
+import styles from "./typelegend.module.scss";
 import * as d3 from "d3";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import classnames from "classnames";
