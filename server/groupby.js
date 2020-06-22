@@ -1,6 +1,11 @@
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { scaleOrdinal } from "d3-scale";
-import { toPacificMidnight } from "../scripts/dispatch/fileUtils";
+import {
+  toPacificMidnight,
+  pacificYearStart,
+  subtractYear,
+  addYear,
+} from "../scripts/dispatch/fileUtils";
 import { histogram } from "./histogram";
 
 export const GroupByOptions = {
@@ -25,9 +30,9 @@ export const intervalsReducer = (timestamp) => (matchedOption, [from, to]) => {
 };
 
 export const generateHistoryIntervals = () => {
-  const currentStart = toPacificMidnight(new Date(2020, 0, 1));
-  const currentEnd = toPacificMidnight(new Date(2021, 0, 1));
-  const previousStart = toPacificMidnight(new Date(2019, 0, 1));
+  const currentStart = pacificYearStart();
+  const currentEnd = addYear(currentStart);
+  const previousStart = subtractYear(currentStart);
   const previousEnd = currentStart;
   const result = [
     [currentStart, currentEnd],

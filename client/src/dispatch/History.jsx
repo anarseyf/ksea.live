@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import classnames from "classnames";
 
-import { DataContext, currentInterval, previousInterval } from "./DataProvider";
-import { intervalExtent, isPhone, timeFormatterMonth } from "../clientUtils";
+import { DataContext, currentInterval as getCurrentInterval, previousInterval as getPreviousInterval } from "./DataProvider";
+import { intervalExtent as getIntervalExtent, isPhone, timeFormatterMonth, everyMonth } from "../clientUtils";
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";
 import historyStyles from "./history.module.scss";
@@ -55,12 +55,12 @@ export const History = () => {
       return;
     }
 
-    const intervalCurrent = currentInterval(history);
+    const intervalCurrent = getCurrentInterval(history);
     setCurrentStart(intervalCurrent.start);
-    const intervalPrevious = previousInterval(history);
+    const intervalPrevious = getPreviousInterval(history);
     const binsCurrent = intervalCurrent.binsLowRes;
     const binsPrevious = intervalPrevious.binsLowRes;
-    const timeExtent = intervalExtent(intervalCurrent);
+    const timeExtent = getIntervalExtent(intervalCurrent);
 
     const xScale = d3
       .scaleLinear()
@@ -73,9 +73,9 @@ export const History = () => {
 
     const yAxis = d3
       .axisLeft()
-      .tickFormat(timeFormatterMonth)
       .scale(yScale)
-      .ticks(d3.timeMonth.every(1))
+      .tickValues(everyMonth(intervalCurrent.start))
+      .tickFormat(timeFormatterMonth)
       .tickSize(0);
     d3.select(yAxisRef.current).call(yAxis);
 

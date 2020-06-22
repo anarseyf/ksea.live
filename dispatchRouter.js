@@ -25,7 +25,7 @@ import {
   getHistoryAsync,
   statusFile,
 } from "./dispatchHelpers";
-import { readJSONAsync, toPacificMidnight } from "./scripts/dispatch/fileUtils";
+import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
