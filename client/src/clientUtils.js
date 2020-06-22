@@ -26,6 +26,7 @@ export const timeFormatter = (timestamp, format = "h:mm a") =>
 
 export const timeFormatterHourAM = (timestamp) =>
   timeFormatter(timestamp, "h A");
+  
 export const timeFormatterMonth = (timestamp) => timeFormatter(+timestamp, "MMM");
 
 export const timeFormatterUserTimezone = (isoDateStr) => 

@@ -51,12 +51,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
       <div className={styles.tweet}>
         <div className={styles.details}>
           <span className={styles.location}>
-            {!phone && (
-              <span>
-                {area}
-                {tweet.created_at} @{" "}
-              </span>
-            )}
+            {!phone && area && <span>{area} @ </span>}
             {time}
           </span>
         </div>
