@@ -72,7 +72,7 @@ export const DispatchAll = () => {
   return (
     <DataProvider>
       <Section styleOption={1}>
-        <Paragraph h1="Seattle Fire Department 911 Dispatch" content={intro} />
+        <Paragraph h1="Seattle Fire 911 Dispatch" content={intro} />
       </Section>
 
       <Section styleOption={2}>
