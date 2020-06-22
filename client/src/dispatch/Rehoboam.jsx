@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { axisRadialInner } from "d3-radial-axis";
 import { DataContext, currentInterval } from "./DataProvider";
-import { intervalExtent, timeFormatterHourAM, every6Hours } from "../clientUtils";
+import { intervalExtent, timeFormatterHourAM, every6Hours, isPhone } from "../clientUtils";
 import { Topline } from "./Topline";
 import classnames from "classnames";
 import styles from "./rehoboam.module.scss";
@@ -15,7 +15,7 @@ export const Rehoboam = ({ area }) => {
   const [total, setTotal] = useState(undefined);
   const axisRef = useRef(null);
 
-  const mainRadius = 100;
+  const mainRadius = isPhone() ? 100 : 130;
   const margin = 30,
     width = 2 * mainRadius,
     height = 2 * mainRadius,
@@ -91,7 +91,7 @@ export const Rehoboam = ({ area }) => {
 
       setCircles(newCircles);
     }
-  }, [activeOrMajorForArea, filteredByAreaMin]);
+  }, [activeOrMajorForArea, filteredByAreaMin, mainRadius]);
 
   const text = area || "Seattle";
 

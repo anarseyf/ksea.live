@@ -33,6 +33,9 @@ export const timeFormatterHourAM = (timestamp) =>
 export const timeFormatterMonth = (timestamp) =>
   timeFormatter(+timestamp, "MMM");
 
+export const timeFormatterMonthDay = (timestamp) =>
+  timeFormatter(+timestamp, "MMM D");
+
 const HOUR = 3600 * 1000;
 export const every6Hours = (start) =>
   [0, 6, 12, 18, 24].map((h) => start + h * HOUR); // Or use moment.add()
