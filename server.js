@@ -15,11 +15,10 @@ app.use(compression());
 app.use(helmet());
 app.use(morgan("dev"));
 
-const isProd = process.env.NODE_ENV === "production";
-
 const port = process.env.PORT || process.env.port || 3001;
 app.set("port", port);
 
+const isProd = process.env.NODE_ENV === "production";
 const staticPath = isProd ? "client/build" : "client/src";
 
 function getSortedEnv() {
@@ -46,7 +45,7 @@ app.get("/api/env", (req, res) => {
 
 app.use("/api/dispatch", dispatchRouter);
 
-const indexFile = path.join(__dirname, "client/public", "index.html");
+const indexFile = path.join(__dirname, staticPath, "index.html");
 
 app.get("/*", function (req, res) {
   res.sendFile(indexFile);

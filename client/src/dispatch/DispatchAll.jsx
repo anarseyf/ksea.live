@@ -56,7 +56,7 @@ export const DispatchAll = () => {
   const areas = "Select an area to zoom in on today's incidents there.";
 
   const history =
-    "Total daily dispatches for all of Seattle this year compared to last year. Each circles represents a major incident (10 or more units dispatched).";
+    "Total daily dispatches for all of Seattle this year compared to last year. Each circle represents a major incident (10 or more units dispatched).";
 
   const notes = (
     <>
@@ -69,7 +69,7 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
-      {/* <Section styleOption={2}>
+      <Section styleOption={2}>
         <Paragraph h1="Seattle Fire Real-Time Dispatch" content={intro} />
         <Rehoboam />
         <Paragraph content={dataText} />
@@ -98,7 +98,7 @@ export const DispatchAll = () => {
       <Section styleOption={2} edgeToEdge={true}>
         <Paragraph title="City Areas" content={areas} margin={true} />
         <GroupByArea />
-      </Section> */}
+      </Section>
 
       <Section styleOption={1} edgeToEdge={true}>
         <Paragraph title="Last Year vs This Year" content={history} margin={true} />
