@@ -10,7 +10,7 @@
   margin: auto;
 }
 .leaflet-container {
-  background-color: $transparent;
+  background-color: var(--transparent);
   .leaflet-control-attribution {
     background: rgba(50, 50, 50, 0.6);
     color: darkgray;

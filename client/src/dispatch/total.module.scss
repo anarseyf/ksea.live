@@ -3,7 +3,7 @@
 .container {
   display: inline-block;
   font-size: 3em;
-  color: $highlight;
+  color: var(--highlight);
   border: 1px solid border;
   font-weight: 200;
 }

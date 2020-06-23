@@ -42,6 +42,6 @@
   fill: none;
 }
 .active circle {
-  fill: $highlight;
-  stroke: $highlight;
+  fill: var(--highlight);
+  stroke: var(--highlight);
 }

@@ -13,6 +13,7 @@ import { ErrorBoundary } from "./ErrorBoundary";
 import { Sources } from "./Sources";
 import { Freshness } from "./Freshness";
 import { Legend } from "./Legend";
+import { ThemeSwitch } from "./ThemeSwitch";
 
 export const DispatchAll = () => {
   const intro = (
@@ -76,12 +77,13 @@ export const DispatchAll = () => {
       </Section>
 
       <Section styleOption={2}>
+        <ThemeSwitch />
         <Paragraph title="Live View" content={live} />
         <Rehoboam />
         <Paragraph content={<Legend />} />
       </Section>
 
-      <Section edgeToEdge={true} styleOption={1}>
+      {/* <Section edgeToEdge={true} styleOption={1}>
         <Paragraph title="" content={todayText} margin={true} />
 
         <ErrorBoundary>
@@ -113,7 +115,7 @@ export const DispatchAll = () => {
           margin={true}
         />
         <History />
-      </Section>
+      </Section> */}
 
       <Section styleOption={2}>
         <Sources />

@@ -3,21 +3,28 @@
 .paragraph {
   text-align: left;
   margin: 1em auto;
-}
-.paragraph h3 {
-  color: var(--heading);
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    color: var(--heading);
+  }
+
+  & a,
+  & a:hover,
+  & .link,
+  & .link:hover {
+    color: var(--link);
+    border-bottom: 2px solid --link;
+    text-decoration: none;
+  }
 }
 .text {
   color: var(--text-secondary);
 }
-.text a,
-.text a:hover,
-.link,
-.link:hover {
-  color: var(--link);
-  border-bottom: 2px solid --link;
-  text-decoration: none;
-}
+
 .margin {
   margin-left: 1em;
   margin-right: 1em;

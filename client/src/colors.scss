@@ -1,14 +1,15 @@
-$transparent: rgba(0, 0, 0, 0);
-$twitter-main: #00acee;
-$twitter-darkgray: #657786;
-$tweet-bg: #01212e;
-$selected-bg: slategray;
-
-$highlight: red;
-$hover: silver;
-$annotation: rgb(223, 69, 69);
-
 :root {
+  --transparent: rgba(0, 0, 0, 0);
+  --twitter-main: #00acee;
+  --twitter-darkgray: #657786;
+  --tweet-bg: #01212e;
+  --selected-bg: slategray;
+  --highlight: red;
+  --hover: silver;
+  --annotation: rgb(223, 69, 69);
+}
+
+.app.dark {
   --bg: rgb(25, 26, 26); // jawg-dark
   --body-bg: var(--bg);
   --bg-map: var(--bg);
@@ -32,16 +33,35 @@ $annotation: rgb(223, 69, 69);
   --body-bg: var(--bg);
   --bg-map: var(--bg);
   --bg-hover: #b3b4b8;
+  --bg1: #e4f4f7;
+  --bg2: #dce6f5;
+  --body-color: black;
+  --text-primary: black;
+  --text-secondary: #333333;
+  --heading: #434343;
+  --axis-color: darkslategray;
+  --graph-primary: var(--text-primary);
+  --graph-secondary: rgb(148, 148, 148);
+  --border: rgb(172, 181, 191);
+  --link: rgb(34, 113, 150);
+  --live: red;
+}
+
+.app.dusk {
+  --bg: rgb(252, 203, 143);
+  --body-bg: var(--bg);
+  --bg-map: var(--bg);
+  --bg-hover: #b3b4b8;
   --bg1: #f3f1dd;
   --bg2: #f3e6cd;
   --body-color: black;
   --text-primary: black;
   --text-secondary: #333333;
-  --heading: 434343;
+  --heading: #434343;
   --axis-color: darkslategray;
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
-  --border: rgb(172, 181, 191);
-  --link: rgb(31, 93, 121);
-  --live: green;
+  --border: rgb(216, 156, 87);
+  --link: rgb(113, 39, 17);
+  --live: red;
 }

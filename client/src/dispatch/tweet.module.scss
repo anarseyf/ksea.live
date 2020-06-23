@@ -15,8 +15,8 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 .container:hover,
 .container.detailed {
   cursor: pointer;
-  background-color: $tweet-bg;
-  border-bottom: 1px solid $twitter-main;
+  background-color: var(--tweet-bg);
+  border-bottom: 1px solid var(--twitter-main);
 }
 .container.phone {
   font-size: 0.9em;
@@ -33,7 +33,7 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 }
 
 .active {
-  color: $highlight;
+  color: var(--highlight);
 }
 
 .details {
@@ -41,7 +41,7 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
   color: var(--text-secondary);
 }
 .units {
-  color: $twitter-darkgray;
+  color: var(--twitter-darkgray);
 }
 .location {
   padding: 0.5em;

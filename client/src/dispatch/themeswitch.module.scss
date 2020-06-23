@@ -1,0 +1,22 @@
+@import "../colors.scss";
+
+.button {
+  color: var(--link);
+  &:hover {
+    cursor: pointer;
+  }
+  margin: auto;
+  padding: auto;
+  background: none;
+
+  &,
+  &:focus,
+  &:active {
+    border: none;
+    outline: none;
+  }
+
+  &:not(.selected) {
+    border-bottom: 2px solid var(--link);
+  }
+}

@@ -17,7 +17,7 @@
   fill: none;
 }
 .path.highlight {
-  stroke: $highlight;
+  stroke: var(--highlight);
   stroke-width: 2;
 }
 .path.previous {

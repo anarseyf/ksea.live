@@ -8,8 +8,8 @@
 }
 .itemContainer {
   clear: both;
-  border-left: 5px solid $transparent;
-  border-right: 5px solid $transparent;
+  border-left: 5px solid var(--transparent);
+  border-right: 5px solid var(--transparent);
   padding: 1em auto;
 }
 .itemContainer:hover {
@@ -60,7 +60,7 @@
   margin-bottom: 0;
 }
 .active {
-  color: $highlight;
+  color: var(--highlight);
 }
 .container a {
   color: var(--text-primary);

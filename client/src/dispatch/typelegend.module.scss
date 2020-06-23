@@ -9,12 +9,12 @@
 .item {
   display: inline-block;
   padding-left: 1em;
-  border-bottom: 2px solid $transparent;
+  border-bottom: 2px solid var(--transparent);
 }
 .item:hover,
 .item.selected {
   cursor: pointer;
-  border-color: $hover;
+  border-color: var(--hover);
 }
 .label {
   display: inline-block;

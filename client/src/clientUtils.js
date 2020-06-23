@@ -36,6 +36,9 @@ export const timeFormatterMonth = (timestamp) =>
 export const timeFormatterMonthDay = (timestamp) =>
   timeFormatter(+timestamp, "MMM D");
 
+export const pacificMidnight = (addDays = 0) =>
+  +timezone(new Date(), SeattleTimezone).startOf("day").add(addDays, "days");
+
 const HOUR = 3600 * 1000;
 export const every6Hours = (start) =>
   [0, 6, 12, 18, 24].map((h) => start + h * HOUR); // Or use moment.add()
