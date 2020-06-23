@@ -1,17 +1,12 @@
 const path = require("path");
-import {
-  GroupByOptions,
-  groupBy,
-  intervalsReducer,
-  generateHistoryIntervals,
-} from "./server/groupby";
+
+import { GroupByOptions, groupBy, intervalsReducer } from "./server/groupby";
 import {
   toUTCMidnightString,
   readJSONAsync,
   listFilesAsync,
 } from "./scripts/dispatch/fileUtils";
 import { withScriptsJsonPath } from "./scripts/dispatch/serverUtils";
-import { hasCoordinates } from "./scripts/dispatch/official/scriptUtil";
 
 export const dataPath = path.join(__dirname, "datasets/official/");
 export const statusFile = withScriptsJsonPath("status.json");
@@ -151,18 +146,6 @@ export const minimizeGroup = ({ intervals, ...rest }) => ({
   ...rest,
   intervals: intervals.map(minimizeInterval),
 });
-
-export const getHistoryAsync = async () => {
-  const intervals = generateHistoryIntervals();
-  const all = await allTweets(intervals);
-  const groups = groupBy(GroupByOptions.Nothing, all, intervals);
-  const intervalGrouper = groupByIntervalGen(intervals);
-  const result = groups
-    .map(intervalGrouper)
-    .map(minimizeGroup)
-    .sort(sortByTotal);
-  return result;
-};
 
 export const filterActive = ({ derived: { active } }) => active;
 export const filterSev1 = ({ derived: { severity } }) => severity >= 1;

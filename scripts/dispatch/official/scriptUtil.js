@@ -7,6 +7,7 @@ import { runner as combineRunner } from "./combine";
 import { runner as resolveRunner } from "./resolve";
 import { runner as nhoodsRunner } from "./nhoods";
 import { runner as splitRunner } from "./split";
+// import { runner as cacheRunner } from "./cache";
 
 export const updateOnce = async (ignoreStatus) => {
   const start = new Date();
@@ -18,6 +19,7 @@ export const updateOnce = async (ignoreStatus) => {
   file = await resolveRunner(file);
   file = await nhoodsRunner(file);
   await splitRunner(file);
+  // await cacheRunner();
   const end = new Date();
   console.log(
     `>> updateOnce > ${ignoreStatus ? "(ignoring status) " : " "}finished in ${

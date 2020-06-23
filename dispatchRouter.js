@@ -22,16 +22,18 @@ import {
   filterActiveOrMajor,
   filterNoop,
   getMostRecentAsync,
-  getHistoryAsync,
   statusFile,
 } from "./dispatchHelpers";
+import {
+  identityFn,
+  getHistoryAsync,
+  getEntriesForArea,
+} from "./dispatchCompute";
 import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
 const axios = require("axios").default;
-
-const identityFn = (v) => v;
 
 const seattleGovController = async (req, res) => {
   // TODO - delete
@@ -79,28 +81,7 @@ const statusController = async (req, res) => {
 
 const forAreaController = async (req, res) => {
   try {
-    const area = req.params.area;
-    const compare = +req.query.compare || 0;
-    if (compare > 7 || compare < 0) {
-      throw "Invalid value for query param 'compare'";
-    }
-    console.log(`> > > > AREA: ${area} compare: ${compare}`);
-    const intervals = generateIntervals(compare);
-    const all =
-      area === "seattle"
-        ? await allTweets(intervals)
-        : await tweetsForArea(area, intervals);
-    const minimizer =
-      req.query.minimize === "true" ? minimizeGroup : identityFn;
-    const filter =
-      req.query.activeOrMajor === "true" ? filterActiveOrMajor : filterNoop;
-    const hiRes = req.query.hiRes === "true";
-
-    const intervalGrouper = groupByIntervalGen(intervals, hiRes);
-    const result = groupBy(GroupByOptions.Nothing, all.filter(filter))
-      .map(intervalGrouper)
-      .map(minimizer)
-      .sort(sortByTotal);
+    const result = await getEntriesForArea(req.params, req.query);
     res.json(result);
   } catch (error) {
     console.error(error);
