@@ -5,17 +5,17 @@
   margin: 1em auto;
 }
 .paragraph h3 {
-  color: $heading;
+  color: var(--heading);
 }
 .text {
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 .text a,
 .text a:hover,
 .link,
 .link:hover {
-  color: $link;
-  border-bottom: 2px solid $link;
+  color: var(--link);
+  border-bottom: 2px solid --link;
   text-decoration: none;
 }
 .margin {

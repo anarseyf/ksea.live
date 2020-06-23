@@ -9,11 +9,11 @@
 }
 
 .svg rect.previous {
-  fill: silver;
+  fill: var(--graph-secondary);
 }
 
 .svg rect.current {
-  fill: white;
+  fill: var(--graph-primary);
 }
 
 .years {
@@ -23,17 +23,17 @@
 .years .left {
   display: inline-block;
   text-align: right;
-  color: $graph-secondary;
+  color: var(--graph-secondary);
   padding-right: 0.2em;
 }
 .years .right {
   display: inline-block;
   text-align: left;
-  color: $graph-primary;
+  color: var(--graph-primary);
   padding-left: 0.2em;
 }
 
 .axis text {
   font-size: 1.5em;
-  fill: $text-primary;
+  fill: var(--text-primary);
 }

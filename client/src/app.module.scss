@@ -1,9 +1,12 @@
-@import "./colors.scss";
-
-body {
-  background-color: $body-bg;
-}
+// @import "./colors.scss";
 
 .app {
   text-align: center;
+  background-color: darkslategray;
+  background-color: var(--bg);
+
+  &.light {
+    // --bg: rgb(23, 130, 175);
+    background-color: var(--bg);
+  }
 }

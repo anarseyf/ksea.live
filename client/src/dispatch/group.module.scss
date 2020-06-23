@@ -3,7 +3,7 @@
 // TODO - switch to flexbox
 .container {
   display: block;
-  color: $text-primary;
+  color: var(--text-primary);
   text-align: left;
 }
 .itemContainer {
@@ -13,8 +13,8 @@
   padding: 1em auto;
 }
 .itemContainer:hover {
-  border-left-color: $border;
-  background-color: $bg-hover;
+  border-left-color: var(--border);
+  background-color: var(--bg-hover);
 }
 
 .vpadding {
@@ -49,7 +49,7 @@
 .list {
   padding-top: 0.25em;
   line-height: 1.3em;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 
 .phone {
@@ -63,6 +63,6 @@
   color: $highlight;
 }
 .container a {
-  color: $text-primary;
+  color: var(--text-primary);
   text-decoration: none;
 }

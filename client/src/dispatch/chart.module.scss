@@ -2,7 +2,7 @@
 
 .container {
   display: inline-block;
-  color: $text-primary;
+  color: var(--text-primary);
   text-align: left;
 }
 .header {
@@ -18,8 +18,8 @@
 }
 .title {
   float: right;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 .svg rect {
-  fill: $text-primary;
+  fill: var(--text-primary);
 }

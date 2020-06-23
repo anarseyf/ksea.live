@@ -10,26 +10,26 @@
 .explanation {
   float: right;
   font-weight: bold;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 
 .secondary {
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 
 .unit {
   display: inline-block;
-  border: 1px solid $border;
+  border: 1px solid --border;
   border-radius: 4px;
   margin: 0.25em;
   padding: 0 0.5em;
 }
 
 .link {
-  color: $link;
-  border-bottom: 1px solid $link;
+  color: var(--link);
+  border-bottom: 1px solid --link;
 }
 .link:hover {
-  color: $link;
+  color: var(--link);
   text-decoration: none;
 }

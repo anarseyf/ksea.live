@@ -3,7 +3,7 @@
 .section {
   width: 100%;
   text-align: center;
-  // border-bottom: 1px solid $border;
+  // border-bottom: 1px solid --border;
 }
 
 .content {
@@ -16,19 +16,19 @@
 }
 
 .styleDefault {
-  background-color: $body-bg; // rgb(25, 26, 26);
+  background-color: var(--body-bg); // rgb(25, 26, 26);
 }
 
 .style1 {
-  background-color: $bg1;
+  background-color: var(--bg1);
 }
 
 .style2 {
-  background-color: $bg2;
+  background-color: var(--bg2);
 }
 
 .styleMap {
-  background-color: $bg-map;
+  background-color: var(--bg-map);
 }
 
 .subcontent {

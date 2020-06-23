@@ -18,13 +18,13 @@
 .path {
   stroke-opacity: 0.6;
   stroke-linecap: round;
-  stroke: $graph-primary;
+  stroke: var(--graph-primary);
   stroke-width: 2;
   fill: none;
 }
 
 .maincircle {
-  stroke: $axis-color;
+  stroke: var(--axis-color);
   stroke-width: 1;
   fill: none;
 }
@@ -33,11 +33,11 @@
   opacity: 0.9;
 }
 .eventcircle {
-  fill: $graph-primary;
+  fill: var(--graph-primary);
   stroke: none;
 }
 .major {
-  stroke: $graph-primary;
+  stroke: var(--graph-primary);
   stroke-width: 1;
   fill: none;
 }

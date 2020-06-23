@@ -2,14 +2,15 @@ import React from "react";
 import { Router } from "@reach/router";
 import { DispatchAll } from "./dispatch/DispatchAll";
 import { DispatchArea } from "./dispatch/DispatchArea";
-
-import styles from "./app.module.scss";
 import { StatusProvider } from "./dispatch/StatusContext";
 import { UserProvider } from "./dispatch/UserProvider";
+import "./colors.scss"
+// import styles from "./app.module.scss";
+import classnames from 'classnames';
 
-function App() {
+function App() {  
   return (
-    <div className={styles.app}>
+    <div className={classnames("app", "light")}>
       <Router>
         <StatusProvider path="/">
           <UserProvider default>

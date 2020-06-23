@@ -1,18 +1,18 @@
 @import "../colors.scss";
 
 .axis {
-  color: $axis-color;
+  color: var(--axis-color);
 }
 .axis line {
-  stroke: $axis-color;
+  stroke: var(--axis-color);
 }
 .axis text {
-  fill: $axis-color;
+  fill: var(--axis-color);
 }
 
 .path {
   stroke-linecap: round;
-  stroke: $graph-secondary;
+  stroke: var(--graph-secondary);
   stroke-width: 1;
   fill: none;
 }
@@ -21,34 +21,34 @@
   stroke-width: 2;
 }
 .path.previous {
-  stroke: gray;
+  stroke: var(--graph-secondary);
   stroke-width: 2;
 }
 .path.current {
-  stroke: white;
+  stroke: var(--graph-primary);
   stroke-width: 2;
 }
 
 .current circle {
-  fill: white;
+  fill: var(--graph-primary);
   fill-opacity: 0.6;
 }
 
 .previous circle {
-  fill: gray;
+  fill: var(--graph-secondary);
   fill-opacity: 0.6;
 }
 
 .now circle {
   animation: pulse 2s infinite ease-in-out;
-  fill: white;
-  stroke: white;
+  fill: var(--graph-primary);
+  stroke: var(--graph-primary);
 }
 
 .live circle {
   animation: pulse 2s infinite ease-in-out;
-  fill: $live;
-  stroke: $live;
+  fill: var(--live);
+  stroke: var(--live);
 }
 
 @keyframes pulse {

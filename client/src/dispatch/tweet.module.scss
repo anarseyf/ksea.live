@@ -10,7 +10,7 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
   font-size: 0.9em;
   font-variant: small-caps;
   padding: 0.5em;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid --border;
 }
 .container:hover,
 .container.detailed {
@@ -23,13 +23,13 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 }
 
 .greyedOut {
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 
 .tweet {
   width: 100%;
   margin-bottom: -0.25em;
-  color: $text-primary;
+  color: var(--text-primary);
 }
 
 .active {
@@ -38,7 +38,7 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 
 .details {
   float: right;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 .units {
   color: $twitter-darkgray;

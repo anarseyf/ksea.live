@@ -4,21 +4,22 @@
   display: inline-block;
   margin: auto;
   font-size: 1.2em;
-}
-.topline.phone {
-  font-size: 0.8em;
+
+  &.phone {
+    font-size: 0.8em;
+  }
 }
 .text {
   font-size: 1.8em;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 .date {
   font-size: 1.7em;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 .total {
   display: inline-module;
   font-size: 4em;
-  color: $text-primary;
+  color: var(--text-primary);
   margin: -0.53em auto -0.53em auto;
 }

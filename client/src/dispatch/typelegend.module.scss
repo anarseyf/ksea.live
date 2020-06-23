@@ -3,7 +3,7 @@
 .container {
   width: 100%;
   padding: 0.5em auto;
-  color: $text-primary;
+  color: var(--text-primary);
   text-align: right;
 }
 .item {
@@ -20,15 +20,15 @@
   display: inline-block;
 }
 .header {
-  border-bottom: 1px solid $text-secondary;
+  border-bottom: 1px solid --text-secondary;
 }
 .title {
   display: inline-block;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 .total {
   display: inline-block;
-  color: $text-primary;
+  color: var(--text-primary);
   font-weight: bold;
   margin-right: 1em;
 }
