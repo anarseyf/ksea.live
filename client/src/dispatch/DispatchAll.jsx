@@ -64,6 +64,7 @@ export const DispatchAll = () => {
 
   const notes = (
     <>
+      <ThemeSwitch />
       <p>
         Created by <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
       </p>
@@ -77,7 +78,6 @@ export const DispatchAll = () => {
       </Section>
 
       <Section styleOption={2}>
-        <ThemeSwitch />
         <Paragraph title="Live View" content={live} />
         <Rehoboam />
         <Paragraph content={<Legend />} />
@@ -85,7 +85,6 @@ export const DispatchAll = () => {
 
       <Section edgeToEdge={true} styleOption={1}>
         <Paragraph title="" content={todayText} margin={true} />
-
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
@@ -120,7 +119,7 @@ export const DispatchAll = () => {
 
       <Section styleOption={2}>
         <Sources />
-        <Paragraph title="About" content={notes} />
+        <Paragraph title="Notes" content={notes} />
       </Section>
     </DataProvider>
   );

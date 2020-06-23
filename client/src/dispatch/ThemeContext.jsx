@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect } from "react";
 import { getSunrise, getSunset } from "sunrise-sunset-js";
 import { defaultCentroid } from "./geojson";
 import { pacificMidnight } from "../clientUtils";
-import classnames from "classnames";
 
 export const ThemeContext = createContext();
 
@@ -17,7 +16,7 @@ const useTheme = () => {
     console.log("THEME:", midnight, sunrise, sunset);
 
     const now = new Date();
-    const threshold = 30 * 3600 * 1000;
+    const threshold = 0.5 * 3600 * 1000;
     if (
       Math.abs(now - sunrise) < threshold ||
       Math.abs(now - sunset) < threshold
