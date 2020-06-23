@@ -83,14 +83,14 @@ export const DispatchAll = () => {
         <Paragraph content={<Legend />} />
       </Section>
 
-      {/* <Section edgeToEdge={true} styleOption={1}>
+      <Section edgeToEdge={true} styleOption={1}>
         <Paragraph title="" content={todayText} margin={true} />
 
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
       </Section>
-
+      
       <Section styleOption={2}>
         <Paragraph title="Active Incidents" content={active} />
         <TweetsActive />
@@ -115,7 +115,8 @@ export const DispatchAll = () => {
           margin={true}
         />
         <History />
-      </Section> */}
+      </Section>
+     
 
       <Section styleOption={2}>
         <Sources />

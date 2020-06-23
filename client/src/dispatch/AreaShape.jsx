@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { featuresForArea, centroid } from "./geojson";
-import { MapOptions } from "./mapOptions";
+import { MapOptions, mapOptions } from "./mapOptions";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { isPhone } from "../clientUtils";
 import classnames from "classnames";
 import styles from "./areashape.module.scss";
+import { ThemeContext } from "./ThemeContext";
 
 const geojsonStyle = {
   color: "dodgerblue",
@@ -15,6 +16,7 @@ const geojsonStyle = {
 };
 
 export const AreaShape = ({ area }) => {
+  const { theme } = useContext(ThemeContext);
   const features = featuresForArea(area);
   if (!features || !features.length) {
     console.warn("AreaShape/no features for area", area);
@@ -23,7 +25,7 @@ export const AreaShape = ({ area }) => {
 
   const center = centroid(features);
   const zoom = 10;
-  const tileOptions = MapOptions.NoLabels;
+  const tileOptions = mapOptions(theme);
 
   return (
     <ErrorBoundary>

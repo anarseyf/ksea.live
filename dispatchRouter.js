@@ -253,7 +253,7 @@ const mapsController = async (req, res) => {
     if (isNaN(+z) || +z < minZoom || +z > maxZoom) {
       throw `/maps: invalid zoom param: ${z}`;
     }
-    if (theme !== "light" && theme !== "dark") {
+    if (!["light", "dark", "dusk"].includes(theme)) {
       throw `/maps: invalid theme param: ${theme}`;
     }
 

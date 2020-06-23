@@ -38,7 +38,7 @@ export const ThemeProvider = ({ children }) => {
   const { theme } = value;
   return (
     <ThemeContext.Provider value={value}>
-      <div className={classnames("app", theme)}>{children}</div>
+      <div id="app" className={theme}>{children}</div>
     </ThemeContext.Provider>
   );
 };

@@ -10,18 +10,20 @@ import { ThemeProvider } from "./dispatch/ThemeContext";
 
 function App() {
   return (
-    <ThemeProvider>
-      <StatusProvider>
-        <Router>
-          <UserProvider path="/">
-            <DispatchAll default />
-          </UserProvider>
-          <UserProvider path=":area">
-            <DispatchArea path="/" />
-          </UserProvider>
-        </Router>
-      </StatusProvider>
-    </ThemeProvider>
+    <React.StrictMode>
+      <ThemeProvider>
+        <StatusProvider>
+          <Router>
+            <UserProvider path="/">
+              <DispatchAll default />
+            </UserProvider>
+            <UserProvider path=":area">
+              <DispatchArea path="/" />
+            </UserProvider>
+          </Router>
+        </StatusProvider>
+      </ThemeProvider>
+    </React.StrictMode>
   );
 }
 

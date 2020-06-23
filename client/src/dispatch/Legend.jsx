@@ -3,7 +3,7 @@ import styles from "./legend.module.scss";
 import { SvgDot } from "./SvgDot";
 
 export const Legend = () => (
-  <p className={styles.legend}>
+  <div className={styles.legend}>
     <div>
       <span>Active incident </span>
       <SvgDot active={true} radius={5} />
@@ -20,5 +20,5 @@ export const Legend = () => (
       <span>Fewer than 5 units dispatched </span>
       <SvgDot />
     </div>
-  </p>
+  </div>
 );

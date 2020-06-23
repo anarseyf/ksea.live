@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Circle } from "react-leaflet";
+import { ThemeContext } from "./ThemeContext";
 
 export const Appearance = {
   Normal: 0,
@@ -7,8 +8,22 @@ export const Appearance = {
   Highlighted: 1,
 };
 
-export const Dot = ({ coordinates, severity = 0, active = false, appearance = Appearance.Normal }) => {
-  const color = active ? "red" : "white";
+export const MapDot = ({
+  coordinates,
+  severity = 0,
+  active = false,
+  appearance = Appearance.Normal,
+}) => {
+  const { theme } = useContext(ThemeContext);
+  const [color, setColor] = useState("green");
+
+  useEffect(() => {
+    const appElement = document.getElementById("app");
+    const newColor = getComputedStyle(appElement).getPropertyValue(
+      "--graph-primary"
+    );
+    setColor(newColor);
+  }, [theme]);
 
   // TODO - set opacity in CSS
   let opacity = 0.4;
@@ -27,7 +42,7 @@ export const Dot = ({ coordinates, severity = 0, active = false, appearance = Ap
   const baseRadius = active ? 250 : 150;
 
   if (!coordinates[0]) {
-    console.warn(`Dot: coordinates = ${coordinates}`);
+    // console.warn(`Dot: coordinates = ${coordinates}`);
     return null;
   }
 

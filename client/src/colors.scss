@@ -9,7 +9,7 @@
   --annotation: rgb(223, 69, 69);
 }
 
-.app.dark {
+#app.dark {
   --bg: rgb(25, 26, 26); // jawg-dark
   --body-bg: var(--bg);
   --bg-map: var(--bg);
@@ -28,17 +28,17 @@
   --live: red;
 }
 
-.app.light {
+#app.light {
   --bg: rgb(202, 210, 211); // jawg-light
   --body-bg: var(--bg);
   --bg-map: var(--bg);
   --bg-hover: #b3b4b8;
-  --bg1: #e4f4f7;
-  --bg2: #dce6f5;
+  --bg1: #eaf3f9;
+  --bg2: #dde5ec;
   --body-color: black;
   --text-primary: black;
-  --text-secondary: #333333;
-  --heading: #434343;
+  --text-secondary: #676767;
+  --heading: #595959;
   --axis-color: darkslategray;
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
@@ -47,7 +47,7 @@
   --live: red;
 }
 
-.app.dusk {
+#app.dusk {
   --bg: rgb(252, 203, 143);
   --body-bg: var(--bg);
   --bg-map: var(--bg);

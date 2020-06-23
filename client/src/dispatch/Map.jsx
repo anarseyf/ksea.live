@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
-import { Dot, Appearance } from "./Dot";
+import { MapDot, Appearance } from "./MapDot";
 import { DataContext } from "./DataProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
-import { MapOptions } from "./mapOptions";
+import { mapOptions } from "./mapOptions";
 import { centroid, areas, cityGeojson, mapBounds } from "./geojson";
 import classnames from "classnames";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
 import { isPhone } from "../clientUtils";
+import { ThemeContext } from "./ThemeContext";
 
 const minZoom = 10,
   maxZoom = 13,
@@ -16,13 +17,18 @@ const minZoom = 10,
 
 const activeColor = "dodgerblue";
 
-export const Map = ({ area, tileOptions = MapOptions.Default }) => {
+export const Map = ({ area }) => {
   // TODO - no need for types, so don't use byTypeForArea
   const { user } = useContext(UserContext);
   const { byTypeForArea } = useContext(DataContext);
+  const { theme } = useContext(ThemeContext);
+  const tileOptions = mapOptions(theme);
+
   if (!byTypeForArea.length) {
     return null;
   }
+
+  console.log("MAP tile options:", tileOptions.theme);
 
   const geojsonStyleBounds = {
     color: "#1e90ff66", // dodgerblue with alpha
@@ -57,11 +63,12 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
     zoom = maxZoom;
   }
 
-  const center = selectedTweet && selectedTweet.derived.lat
-    ? [selectedTweet.derived.lat, selectedTweet.derived.long]
-    : area
-    ? centroid(rendered)
-    : centroid(cityGeojson.features);
+  const center =
+    selectedTweet && selectedTweet.derived.lat
+      ? [selectedTweet.derived.lat, selectedTweet.derived.long]
+      : area
+      ? centroid(rendered)
+      : centroid(cityGeojson.features);
 
   const mapper = ({ intervals }) =>
     intervals[0].values.map(
@@ -78,12 +85,10 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
 
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
 
-  const importantOnTop =
-    (a,
-    b) => {
-      // TODO
-      return 0;
-    };
+  const importantOnTop = (a, b) => {
+    // TODO
+    return 0;
+  };
 
   let data = byTypeForArea
     .flatMap(mapper)
@@ -145,14 +150,14 @@ export const Map = ({ area, tileOptions = MapOptions.Default }) => {
         />
       ))}
       {data.map((d) => (
-        <Dot // TODO - group under a single container?
+        <MapDot // TODO - group under a single container?
           key={d.id_str}
           coordinates={[d.lat, d.long]}
           severity={d.severity}
           appearance={appearanceFn(d)}
           active={d.active}
           // color={d.color}
-        ></Dot>
+        ></MapDot>
       ))}
     </LeafletMap>
   );

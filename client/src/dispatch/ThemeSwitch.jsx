@@ -15,9 +15,9 @@ export const ThemeSwitch = () => {
 
   const content = (
     <p>
-      Current: {theme}. Switch to
+      The theme changes based on time of day in Seattle. Change to
       {themes.map((t) => (
-        <>
+        <span key={t}>
           {" "}
           <button
             className={classnames(styles.button, {
@@ -27,7 +27,7 @@ export const ThemeSwitch = () => {
           >
             {t}
           </button>
-        </>
+        </span>
       ))}
     </p>
   );

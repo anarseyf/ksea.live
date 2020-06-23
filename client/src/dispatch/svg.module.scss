@@ -33,10 +33,18 @@
   fill: var(--graph-primary);
   fill-opacity: 0.6;
 }
-
 .previous circle {
   fill: var(--graph-secondary);
   fill-opacity: 0.6;
+}
+
+.event circle {
+  fill: var(--graph-primary);
+}
+
+.event circle.outer {
+  stroke: var(--graph-primary);
+  fill: none;
 }
 
 .now circle {
