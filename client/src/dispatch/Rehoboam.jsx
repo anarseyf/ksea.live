@@ -2,7 +2,12 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import * as d3 from "d3";
 import { axisRadialInner } from "d3-radial-axis";
 import { DataContext, currentInterval } from "./DataProvider";
-import { intervalExtent, timeFormatterHourAM, every6Hours, isPhone } from "../clientUtils";
+import {
+  intervalExtent,
+  timeFormatterHourAM,
+  every6Hours,
+  isPhone,
+} from "../clientUtils";
 import { Topline } from "./Topline";
 import classnames from "classnames";
 import styles from "./rehoboam.module.scss";
@@ -22,7 +27,7 @@ export const Rehoboam = ({ area }) => {
     svgWidth = width + 2 * margin,
     svgHeight = height + 2 * margin;
 
-  const dotRadius = 7;
+  const dotRadius = 6;
 
   useEffect(() => {
     if (!filteredByAreaMin.length) {
@@ -56,7 +61,7 @@ export const Rehoboam = ({ area }) => {
       .scaleLinear()
       .domain(extent)
       .range([0, 2 * Math.PI]);
-    
+
     const axis = axisRadialInner(angleScale, mainRadius)
       .tickFormat(timeFormatterHourAM)
       .tickSize(0)

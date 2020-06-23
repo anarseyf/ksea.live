@@ -41,7 +41,7 @@ export const DispatchAll = () => {
   const active = (
     <p>
       Select an incident to view dispatch details. If geolocation data is
-      available (typically within 5 minutes), the map will zoom in to the spot.
+      available (typically within 5 minutes) the map will zoom in to the spot.
     </p>
   );
 
