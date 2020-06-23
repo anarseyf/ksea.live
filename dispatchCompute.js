@@ -21,8 +21,28 @@ import {
   getMostRecentAsync,
   statusFile,
 } from "./dispatchHelpers";
+import { readJSONAsync, saveFileAsync } from "./scripts/dispatch/fileUtils";
+import { withCachePath } from "./scripts/dispatch/serverUtils";
+
+const cacheFile = withCachePath("cache.json");
 
 export const identityFn = (v) => v;
+
+export const cacheKey = (path, params, query) => {
+  const paramsStr = Object.entries(params)
+    .map(([k, v]) => `${k}:${v}`)
+    .join(",");
+  const queryStr = Object.entries(query)
+    .map(([k, v]) => `${k}=${v}`)
+    .join("&");
+  `${path}/${paramsStr}?${queryStr}`;
+};
+
+export const getCachedAsync = async (key) => {
+  console.log("getCachedAsync: ", key);
+  const cache = await readJSONAsync(cacheFile, {});
+  return cache[key];
+};
 
 export const getHistoryAsync = async () => {
   const intervals = generateHistoryIntervals();
@@ -36,7 +56,9 @@ export const getHistoryAsync = async () => {
   return result;
 };
 
-export const getEntriesForArea = async (params = {}, query = {}) => {
+export const getEntriesForArea = async (path, params = {}, query = {}) => {
+  console.log(`getEntriesForArea > ${path}`, params, query);
+
   const area = params.area;
   const compare = +query.compare || 0;
   if (compare > 7 || compare < 0) {

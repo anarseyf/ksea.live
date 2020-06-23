@@ -28,6 +28,8 @@ import {
   identityFn,
   getHistoryAsync,
   getEntriesForArea,
+  cacheKey,
+  getCachedAsync,
 } from "./dispatchCompute";
 import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
@@ -81,7 +83,7 @@ const statusController = async (req, res) => {
 
 const forAreaController = async (req, res) => {
   try {
-    const result = await getEntriesForArea(req.params, req.query);
+    const result = await getEntriesForArea(req.path, req.params, req.query);
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -182,9 +184,12 @@ const byAreabyTypeController = async (req, res) => {
   }
 };
 
+const cacheKeyForRequest = (req) => cacheKey(req.path, req.params, req.query);
+
 const historyController = async (req, res) => {
   try {
-    const result = await getHistoryAsync();
+    const key = cacheKeyForRequest(req);
+    const result = await getCachedAsync(key);
     res.json(result);
   } catch (error) {
     console.error(error);

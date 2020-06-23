@@ -1,6 +1,10 @@
 import { readJSONAsync, saveJSONAsync } from "../fileUtils";
 import { withCachePath } from "../serverUtils";
-import { getHistoryAsync } from "../../../dispatchCompute";
+import {
+  getHistoryAsync,
+  getEntriesForArea,
+  cacheKey,
+} from "../../../dispatchCompute";
 
 const cacheFile = withCachePath("cache.json");
 
@@ -8,17 +12,31 @@ export const runner = async () => {
   const start = new Date();
   const cache = await readJSONAsync(cacheFile, {});
   const history = await getHistoryAsync();
-  console.log("HISTORY", history);
+
+  let params = {
+    area: "seattle",
+  };
+
+  let query = {
+    minimize: "true",
+    activeOrMajor: "false",
+    compare: "6",
+  };
+  let path = "/history";
+  const result = await getEntriesForArea(path, query, params);
+  let key = cacheKey(path, query, params);
+  console.log("CACHE", key, history);
+
   const newCache = {
     ...cache,
-    history,
   };
+  newCache[key] = result;
 
   await saveJSONAsync(cacheFile, newCache);
   const end = new Date();
   console.log(`cache > computed in ${end - start}ms`);
 };
 
-// (async () => {
-//   await runner();
-// })();
+(async () => {
+  await runner();
+})();
