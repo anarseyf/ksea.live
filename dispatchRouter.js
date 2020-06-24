@@ -1,28 +1,15 @@
 const rp = require("request-promise");
 const router = require("express").Router();
 const fs = require("fs");
-const path = require("path");
 
+import { groupBy, generateIntervals } from "./server/groupby";
+import { GroupByOptions } from "./server/groupByOptions";
 import {
-  GroupByOptions,
-  groupBy,
-  generateIntervals,
-  generate24HourIntervals,
-} from "./server/groupby";
-import {
-  allTweets,
   groupByIntervalGen,
-  tweetsByType,
   tweetsByArea,
-  tweetsForArea,
   sortByTotal,
   minimizeGroup,
-  filterActive,
-  filterSev1,
-  filterActiveOrMajor,
-  filterNoop,
   getMostRecentAsync,
-  statusFile,
 } from "./dispatchHelpers";
 import {
   identityFn,
@@ -37,9 +24,7 @@ import {
   getHistoryAsync,
   getAnnotationsAsync,
 } from "./dispatchCompute";
-import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
-import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
 const axios = require("axios").default;
 

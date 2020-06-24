@@ -7,14 +7,7 @@ import {
   addYear,
 } from "../scripts/dispatch/fileUtils";
 import { histogram } from "./histogram";
-
-export const GroupByOptions = {
-  Nothing: undefined,
-  IncidentType: "type",
-  ZipCode: "zip",
-  Area: "area",
-  TimeInterval: "time",
-};
+import { GroupByOptions } from "./groupByOptions";
 
 const TwentyFourHours = 24 * 3600 * 1000;
 const HistoryBinSizeMinutes = (1 * TwentyFourHours) / (60 * 1000);

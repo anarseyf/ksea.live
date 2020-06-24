@@ -3,6 +3,29 @@
   "version": "0.2.0",
   "description": "Not sure yet",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anarseyf/coffee.git"
+  },
+  "author": "Anar Seyf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anarseyf/coffee/issues"
+  },
+  "homepage": "https://github.com/anarseyf/coffee#readme",
+  "scripts": {
+    "start": "npm install && concurrently \"npm run server:prod\" \"npm run backgroundTasks\"",
+    "server:prod": "NODE_ENV=production node -r esm server.js",
+    "client": "cd client && npm run start",
+    "app:dev": "concurrently \"npm run server:dev\" \"npm run client\" \"npm run background:dev\"",
+    "static:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
+    "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",
+    "backgroundTasks": "cd scripts/dispatch && npm run start",
+    "update:once": "cd scripts/dispatch && npm run update:once",
+    "build": "cd client && npm run build",
+    "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
+    "bundle:aws": "git add --all; git commit -m 'AWS Bundle'; git archive -v -o coffee-aws.zip --format=zip HEAD"
+  },
   "dependencies": {
     "@reach/router": "^1.3.3",
     "@types/react-leaflet": "^2.5.1",
@@ -48,28 +71,5 @@
     "prettier": "^2.0.5",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.5"
-  },
-  "scripts": {
-    "start": "npm install && concurrently \"npm run server:prod\" \"npm run backgroundTasks\"",
-    "server:prod": "NODE_ENV=production node -r esm server.js",
-    "client": "cd client && npm run start",
-    "app:dev": "concurrently \"npm run server:dev\" \"npm run client\" \"npm run background:dev\"",
-    "static:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
-    "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",
-    "backgroundTasks": "cd scripts/dispatch && npm run start",
-    "update:once": "cd scripts/dispatch && npm run update:once",
-    "build": "cd client && npm run build",
-    "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
-    "bundle:aws": "git add --all; git commit -m 'AWS Bundle'; git archive -v -o coffee-aws.zip --format=zip HEAD"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anarseyf/coffee.git"
-  },
-  "author": "Anar Seyf",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/anarseyf/coffee/issues"
-  },
-  "homepage": "https://github.com/anarseyf/coffee#readme"
+  }
 }

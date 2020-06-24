@@ -1,12 +1,13 @@
 const path = require("path");
 
-import { GroupByOptions, groupBy, intervalsReducer } from "./server/groupby";
 import {
   toUTCMidnightString,
   readJSONAsync,
   listFilesAsync,
 } from "./scripts/dispatch/fileUtils";
 import { withScriptsJsonPath } from "./scripts/dispatch/serverUtils";
+import { groupBy, intervalsReducer } from "./server/groupby";
+import { GroupByOptions } from "./server/groupByOptions";
 
 export const dataPath = path.join(__dirname, "datasets/official/");
 export const statusFile = withScriptsJsonPath("status.json");

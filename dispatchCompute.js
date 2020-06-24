@@ -1,12 +1,12 @@
 const path = require("path");
 
 import {
-  GroupByOptions,
   groupBy,
   generateIntervals,
   generate24HourIntervals,
   generateHistoryIntervals,
 } from "./server/groupby";
+import { GroupByOptions } from "./server/groupByOptions";
 
 import {
   allTweets,
@@ -23,7 +23,7 @@ import {
   getMostRecentAsync,
   statusFile,
 } from "./dispatchHelpers";
-import { readJSONAsync, saveFileAsync } from "./scripts/dispatch/fileUtils";
+import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { withCachePath } from "./scripts/dispatch/serverUtils";
 import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
