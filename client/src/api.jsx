@@ -36,10 +36,6 @@ export async function getTweetsByArea(queryParams) {
   return getByAPI(`dispatch/tweets/byArea`, queryParams);
 }
 
-export async function getTweetsByType(area = "seattle") {
-  return getByAPI(`dispatch/tweets/byType/${area}`);
-}
-
 export async function getTweetsMajor() {
   return getByAPI("dispatch/tweets/major");
 }

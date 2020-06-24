@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { MapDot, Appearance } from "./MapDot";
-import { DataContext } from "./DataProvider";
+import { DataContext, currentInterval } from "./DataProvider";
 import { UserContext, UserContextKeys } from "./UserProvider";
+import { ThemeContext } from "./ThemeContext";
 import { mapOptions } from "./mapOptions";
 import { centroid, areas, cityGeojson, mapBounds } from "./geojson";
 import classnames from "classnames";
+import { isPhone } from "../clientUtils";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
-import { isPhone } from "../clientUtils";
-import { ThemeContext } from "./ThemeContext";
 
 const minZoom = 10,
   maxZoom = 13,
@@ -18,13 +18,13 @@ const minZoom = 10,
 const activeColor = "dodgerblue";
 
 export const Map = ({ area }) => {
-  // TODO - no need for types, so don't use byTypeForArea
   const { user } = useContext(UserContext);
-  const { byTypeForArea } = useContext(DataContext);
+  const { filteredByArea } = useContext(DataContext);
   const { theme } = useContext(ThemeContext);
   const tileOptions = mapOptions(theme);
 
-  if (!byTypeForArea.length) {
+  if (!filteredByArea.length) {
+    console.log("MAP/no data");
     return null;
   }
 
@@ -68,18 +68,18 @@ export const Map = ({ area }) => {
       ? centroid(rendered)
       : centroid(cityGeojson.features);
 
-  const mapper = ({ intervals }) =>
-    intervals[0].values.map(
-      ({ id_str, derived: { lat, long, type, color, active, severity } }) => ({
-        id_str,
-        lat,
-        long,
-        type,
-        color, // TODO - do not use
-        active,
-        severity,
-      })
-    );
+  const mapper = ({
+    id_str,
+    derived: { lat, long, type, color, active, severity },
+  }) => ({
+    id_str,
+    lat,
+    long,
+    type,
+    color, // TODO - do not use
+    active,
+    severity,
+  });
 
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
 
@@ -88,8 +88,9 @@ export const Map = ({ area }) => {
     return 0;
   };
 
-  let data = byTypeForArea
-    .flatMap(mapper)
+  const interval = currentInterval(filteredByArea);
+  let data = interval.values
+    .map(mapper)
     .filter(({ type }) => !typeFilter || typeFilter === type);
   // .sort(importantOnTop);
 
@@ -115,7 +116,7 @@ export const Map = ({ area }) => {
       : Appearance.Normal;
   };
 
-  console.log("MAP/byTypeForArea", byTypeForArea);
+  console.log("MAP/current interval", interval);
   console.log("MAP/data", data);
 
   console.log(
@@ -141,15 +142,15 @@ export const Map = ({ area }) => {
       maxBoundsViscosity={0.6}
       zoomControl={false}
     >
-      {/* <TileLayer {...tileOptions} /> */}
+      <TileLayer {...tileOptions} />
       {!area && <GeoJSON data={city} style={geojsonStyleBounds} />}
-      {/* {rendered.map((feature) => (
+      {rendered.map((feature) => (
         <GeoJSON
           key={feature.properties.CRA_NAM}
           data={feature}
           style={geojsonStyleActive}
         />
-      ))} */}
+      ))}
       {data.map((d) => (
         <MapDot // TODO - group under a single container?
           key={d.id_str}
@@ -157,7 +158,6 @@ export const Map = ({ area }) => {
           severity={d.severity}
           appearance={appearanceFn(d)}
           active={d.active}
-          // color={d.color}
         />
       ))}
     </LeafletMap>

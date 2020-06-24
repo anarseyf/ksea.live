@@ -32,17 +32,21 @@ export const identityFn = (v) => v;
 export const cacheKey = (path, params, query) => {
   // remove trailing '/';
   // replace other '/' with '|' to avoid confusion in file names
-  const pathStr = path.replace(/\/$/, "").replace(/\//g, "|");
+  const lastSlash = /\/$/;
+  const allSlashes = /\//g;
+  const pathStr = path.replace(lastSlash, "").replace(allSlashes, "|");
 
   const paramsStr = Object.keys(params)
     .sort()
     .map((k) => `${k}:${params[k]}`)
-    .join(",");
+    .join(",")
+    .replace(allSlashes, "|");
 
   const queryStr = Object.keys(query)
     .sort()
     .map((k) => `${k}:${query[k]}`)
-    .join(",");
+    .join(",")
+    .replace(allSlashes, "|");
 
   return `path=${pathStr} params=${paramsStr} query=${queryStr}`;
 };
@@ -110,6 +114,8 @@ export const getEntriesByAreaAsync = async (query = {}) => {
 };
 
 export const getEntriesByTypeAsync = async (params = {}, query = {}) => {
+  throw "TODO — Do not use this API";
+  /*
   const intervals = generateIntervals();
   const byType = await tweetsByType(params.area, intervals);
   const minimizer = query.minimize === "true" ? minimizeGroup : identityFn;
@@ -117,6 +123,7 @@ export const getEntriesByTypeAsync = async (params = {}, query = {}) => {
 
   const result = byType.map(intervalGrouper).map(minimizer).sort(sortByTotal);
   return result;
+  */
 };
 
 export const getMajorAsync = async (query = {}) => {

@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import {
   getTweetsForArea,
   getTweetsByArea,
-  getTweetsByType,
   getHistory,
   getAnnotations,
   getTweetsActive24,
@@ -26,7 +25,6 @@ const useTweets = (filters = {}) => {
     filteredByAreaMinWeek: [],
     activeOrMajorForArea: [],
     activeOrMajorByArea: [],
-    byTypeForArea: [],
     groupedByArea: [],
     history: [],
     active24: [],
@@ -49,7 +47,6 @@ const useTweets = (filters = {}) => {
   const [filteredByAreaMinWeek, setFilteredByAreaMinWeek] = useState([]);
   const [activeOrMajorForArea, setActiveOrMajorForArea] = useState([]);
   const [activeOrMajorByArea, setActiveOrMajorByArea] = useState([]);
-  const [byTypeForArea, setByTypeForArea] = useState([]);
   const [groupedByArea, setGroupedByArea] = useState([]);
   const [history, setHistory] = useState([]);
   const [active24, setActive24] = useState([]);
@@ -80,11 +77,11 @@ const useTweets = (filters = {}) => {
         setFilteredByAreaMin(await getTweetsForAreaMin(area));
         setFilteredByAreaMinWeek(await getTweetsForAreaMinWeek(area));
       })();
-    } else {
-      (async () => {
-        setFilteredByArea(await getTweetsForArea(area));
-      })();
     }
+
+    (async () => {
+      setFilteredByArea(await getTweetsForArea(area));
+    })();
 
     (async () => {
       setActiveOrMajorForArea(
@@ -100,10 +97,6 @@ const useTweets = (filters = {}) => {
     (async () => {
       const response = await getTweetsMajor();
       setMajor24(response[0].intervals[0].values);
-    })();
-
-    (async () => {
-      setByTypeForArea(await getTweetsByType(area));
     })();
 
     (async () => {
@@ -130,7 +123,6 @@ const useTweets = (filters = {}) => {
       filteredByArea,
       filteredByAreaMin,
       filteredByAreaMinWeek,
-      byTypeForArea,
       groupedByArea,
       history,
       annotations,
@@ -145,7 +137,6 @@ const useTweets = (filters = {}) => {
     activeOrMajorByArea,
     activeOrMajorForArea,
     annotations,
-    byTypeForArea,
     filteredByArea,
     filteredByAreaMin,
     filteredByAreaMinWeek,

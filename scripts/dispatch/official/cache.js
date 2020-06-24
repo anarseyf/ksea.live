@@ -5,7 +5,6 @@ import {
   getStatusAsync,
   getEntriesForAreaAsync,
   getEntriesByAreaAsync,
-  getEntriesByTypeAsync,
   getMajorAsync,
   getActive24Async,
   getHistoryAsync,
@@ -32,30 +31,21 @@ export const runner = async () => {
   ];
 
   const areaVariations1 = areas.map((area) => {
-    const encoded = encodeURIComponent(area);
+    const encodedArea = encodeURIComponent(area);
     return {
-      path: `/tweets/${encoded}`,
+      path: `/tweets/${encodedArea}`,
       params: { area },
       query: {},
       asyncGetter: getEntriesForAreaAsync,
     };
   });
   const areaVariations2 = areas.map((area) => {
-    const encoded = encodeURIComponent(area);
+    const encodedArea = encodeURIComponent(area);
     return {
-      path: `/tweets/${encoded}`,
+      path: `/tweets/${encodedArea}`,
       params: { area },
       query: { activeOrMajor: "true" },
       asyncGetter: getEntriesForAreaAsync,
-    };
-  });
-  const areaVariations3 = areas.map((area) => {
-    const encoded = encodeURIComponent(area);
-    return {
-      path: `/tweets/byType/${encoded}`,
-      params: { area },
-      query: {},
-      asyncGetter: getEntriesByTypeAsync,
     };
   });
 
@@ -65,6 +55,12 @@ export const runner = async () => {
       params: {},
       query: {},
       asyncGetter: getStatusAsync,
+    },
+    {
+      path: "/tweets/seattle",
+      params: { area: "seattle" },
+      query: {},
+      asyncGetter: getEntriesForAreaAsync,
     },
     {
       path: "/tweets/seattle",
@@ -97,12 +93,6 @@ export const runner = async () => {
       asyncGetter: getEntriesByAreaAsync,
     },
     {
-      path: "/tweets/byType/seattle",
-      params: { area: "seattle" },
-      query: {},
-      asyncGetter: getEntriesByTypeAsync,
-    },
-    {
       path: "/tweets/major",
       params: {},
       query: {},
@@ -128,7 +118,6 @@ export const runner = async () => {
     },
     ...areaVariations1,
     ...areaVariations2,
-    ...areaVariations3,
   ];
 
   await Promise.all(
@@ -145,6 +134,6 @@ export const runner = async () => {
   console.log(`cache > computed in ${end - start}ms`);
 };
 
-// (async () => {
-//   await runner();
-// })();
+(async () => {
+  await runner();
+})();

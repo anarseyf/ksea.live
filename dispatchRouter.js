@@ -18,7 +18,6 @@ import {
   getStatusAsync,
   getEntriesForAreaAsync,
   getEntriesByAreaAsync,
-  getEntriesByTypeAsync,
   getMajorAsync,
   getActive24Async,
   getHistoryAsync,
@@ -116,11 +115,15 @@ const byAreaController = async (req, res) => {
 
 const byTypeController = async (req, res) => {
   try {
+    throw "TODO — Do not use this API";
+
+    /*
     const key = cacheKeyForRequest(req);
     const result =
       (await getCachedAsync(key, res)) ||
       (await getEntriesByTypeAsync(req.params, req.query));
     res.json(result);
+    */
   } catch (error) {
     console.error(error);
     res.status(500).send({ error });
