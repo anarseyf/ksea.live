@@ -21,6 +21,50 @@ export const runner = async () => {
     ...cache,
   };
 
+  const areas = [
+    "East",
+    "Northwest",
+    "Greater Duwamish",
+    "Downtown",
+    "Southeast",
+    "Magnolia/Queen Anne",
+    "Northeast",
+    "Lake Union",
+    "North",
+    "Central",
+    "Delridge Neighborhoods",
+    "Ballard",
+    "Southwest",
+  ];
+
+  const areaVariations1 = areas.map((area) => {
+    const encoded = encodeURIComponent(area);
+    return {
+      path: `/tweets/${encoded}`,
+      params: { area },
+      query: {},
+      asyncGetter: getEntriesForAreaAsync,
+    };
+  });
+  const areaVariations2 = areas.map((area) => {
+    const encoded = encodeURIComponent(area);
+    return {
+      path: `/tweets/${encoded}`,
+      params: { area },
+      query: { activeOrMajor: "true" },
+      asyncGetter: getEntriesForAreaAsync,
+    };
+  });
+  const areaVariations3 = areas.map((area) => {
+    const encoded = encodeURIComponent(area);
+    return {
+      path: `/tweets/byType/${encoded}`,
+      params: { area },
+      query: {},
+      asyncGetter: getEntriesByTypeAsync,
+    };
+  });
+
   const variations = [
     {
       path: "/status",
@@ -88,6 +132,9 @@ export const runner = async () => {
       query: {},
       asyncGetter: getAnnotationsAsync,
     },
+    ...areaVariations1,
+    ...areaVariations2,
+    ...areaVariations3,
   ];
 
   await Promise.all(
