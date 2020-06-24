@@ -83,7 +83,10 @@ const statusController = async (req, res) => {
 
 const forAreaController = async (req, res) => {
   try {
-    const result = await getEntriesForArea(req.path, req.params, req.query);
+    const args = [req.path, req.params, req.query];
+    const key = cacheKey(...args);
+    const result =
+      (await getCachedAsync(key)) || (await getEntriesForArea(...args));
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -189,7 +192,7 @@ const cacheKeyForRequest = (req) => cacheKey(req.path, req.params, req.query);
 const historyController = async (req, res) => {
   try {
     const key = cacheKeyForRequest(req);
-    const result = await getCachedAsync(key);
+    const result = (await getCachedAsync(key)) || (await getHistoryAsync());
     res.json(result);
   } catch (error) {
     console.error(error);

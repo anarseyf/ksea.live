@@ -11,26 +11,33 @@ const cacheFile = withCachePath("cache.json");
 export const runner = async () => {
   const start = new Date();
   const cache = await readJSONAsync(cacheFile, {});
-  const history = await getHistoryAsync();
-
-  let params = {
-    area: "seattle",
+  const newCache = {
+    ...cache,
   };
 
+  let path = "/history";
+  let params = {};
   let query = {
+    minimize: "true",
+  };
+  let key = cacheKey(path, params, query);
+  let result = await getHistoryAsync();
+  newCache[key] = result;
+  console.log("CACHE", key, result);
+
+  path = "/tweets/seattle";
+  params = {
+    area: "seattle",
+  };
+  query = {
     minimize: "true",
     activeOrMajor: "false",
     compare: "6",
   };
-  let path = "/history";
-  const result = await getEntriesForArea(path, query, params);
-  let key = cacheKey(path, query, params);
-  console.log("CACHE", key, history);
-
-  const newCache = {
-    ...cache,
-  };
+  key = cacheKey(path, params, query);
+  result = await getEntriesForArea(path, params, query);
   newCache[key] = result;
+  console.log(`cache > ${key} --> `, result);
 
   await saveJSONAsync(cacheFile, newCache);
   const end = new Date();

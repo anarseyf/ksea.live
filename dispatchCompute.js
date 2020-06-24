@@ -29,19 +29,25 @@ const cacheFile = withCachePath("cache.json");
 export const identityFn = (v) => v;
 
 export const cacheKey = (path, params, query) => {
-  const paramsStr = Object.entries(params)
-    .map(([k, v]) => `${k}:${v}`)
+  const paramsStr = Object.keys(params)
+    .sort()
+    .map((k) => `${k}:${params[k]}`)
     .join(",");
-  const queryStr = Object.entries(query)
-    .map(([k, v]) => `${k}=${v}`)
+
+  const queryStr = Object.keys(query)
+    .sort()
+    .map((k) => `${k}=${query[k]}`)
     .join("&");
-  `${path}/${paramsStr}?${queryStr}`;
+
+  return `${path}/${paramsStr}?${queryStr}`;
 };
 
 export const getCachedAsync = async (key) => {
   console.log("getCachedAsync: ", key);
   const cache = await readJSONAsync(cacheFile, {});
-  return cache[key];
+  const result = cache[key];
+  console.log(`>> Cache ${result ? "HIT" : "MISS"}: ${key}`);
+  return result;
 };
 
 export const getHistoryAsync = async () => {
