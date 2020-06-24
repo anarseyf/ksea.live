@@ -13,7 +13,6 @@ const useTheme = () => {
     const nextMidnight = new Date(pacificMidnight(1));
     const sunrise = getSunrise(...defaultCentroid, midnight);
     const sunset = getSunset(...defaultCentroid, nextMidnight);
-    console.log("THEME:", midnight, sunrise, sunset);
 
     const now = new Date();
     const threshold = 0.5 * 3600 * 1000;

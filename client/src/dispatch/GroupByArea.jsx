@@ -61,12 +61,6 @@ export const GroupByArea = () => {
     };
     const sortedData = groupedByArea.sort(sortByImportance);
     setData(sortedData);
-
-    console.log(
-      "GROUP/sorted",
-      sortedData.map(({ key }) => key)
-    );
-    console.log("GROUP/map", totalsMap);
   }, [groupedByArea, totalsMap]);
 
   if (!data.length) {

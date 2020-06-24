@@ -37,9 +37,7 @@ export const Rehoboam = ({ area }) => {
     setTotal(currentInterval(filteredByAreaMin).total); // TODO - use status
 
     const current = currentInterval(filteredByAreaMin);
-    console.log("REHOBOAM/current", current);
     const bins = current.binsHiRes;
-    // const bins = current.bins;
     const extent = intervalExtent(current);
     const maxDisturbance = 20;
     const maxLength = d3.max(bins, ({ length }) => length);

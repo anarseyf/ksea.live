@@ -28,8 +28,6 @@ export const Map = ({ area }) => {
     return null;
   }
 
-  console.log("MAP tile options:", tileOptions.theme);
-
   const geojsonStyleBounds = {
     color: "#1e90ff66", // dodgerblue with alpha
     fillOpacity: 0,
@@ -117,12 +115,15 @@ export const Map = ({ area }) => {
       : Appearance.Normal;
   };
 
+  console.log("MAP/byTypeForArea", byTypeForArea);
+  console.log("MAP/data", data);
+
   console.log(
-    `MAP/render area=${area}, zoom=${zoom}, selected:${
-      (selectedTweet || {}).id_str
+    `MAP/render area=${area || "-"}, zoom=${zoom}, selected:${
+      (selectedTweet || {}).id_str || "-"
     }, features:${rendered.length}/${features.length}, dots:${
       data.length
-    }, geo:${rendered.length}, center:${center}`
+    }, geo:${rendered.length}`
   );
   const city = cityGeojson.features[0];
 
@@ -140,15 +141,15 @@ export const Map = ({ area }) => {
       maxBoundsViscosity={0.6}
       zoomControl={false}
     >
-      <TileLayer {...tileOptions} />
+      {/* <TileLayer {...tileOptions} /> */}
       {!area && <GeoJSON data={city} style={geojsonStyleBounds} />}
-      {rendered.map((feature) => (
+      {/* {rendered.map((feature) => (
         <GeoJSON
           key={feature.properties.CRA_NAM}
           data={feature}
           style={geojsonStyleActive}
         />
-      ))}
+      ))} */}
       {data.map((d) => (
         <MapDot // TODO - group under a single container?
           key={d.id_str}
@@ -157,7 +158,7 @@ export const Map = ({ area }) => {
           appearance={appearanceFn(d)}
           active={d.active}
           // color={d.color}
-        ></MapDot>
+        />
       ))}
     </LeafletMap>
   );

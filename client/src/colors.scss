@@ -2,7 +2,6 @@
   --transparent: rgba(0, 0, 0, 0);
   --twitter-main: #00acee;
   --twitter-darkgray: #657786;
-  --tweet-bg: #01212e;
   --selected-bg: slategray;
   --highlight: red;
   --hover: silver;
@@ -10,58 +9,60 @@
 }
 
 #app.dark {
+  --axis-color: slategray;
   --bg: rgb(25, 26, 26); // jawg-dark
-  --body-bg: var(--bg);
-  --bg-map: var(--bg);
   --bg-hover: #191a1f;
+  --bg-map: var(--bg);
   --bg1: rgb(29, 29, 31);
   --bg2: rgb(22, 22, 24);
+  --body-bg: var(--bg);
   --body-color: white;
-  --text-primary: white;
-  --text-secondary: rgb(152, 165, 179);
-  --heading: #d6d5d5;
-  --axis-color: slategray;
+  --border: rgb(54, 65, 87);
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(164, 164, 164);
-  --border: rgb(54, 65, 87);
+  --heading: #d6d5d5;
   --link: rgb(156, 203, 242);
   --live: red;
+  --text-primary: white;
+  --text-secondary: rgb(152, 165, 179);
+  --tweet-bg: #01212e;
 }
 
 #app.light {
+  --axis-color: darkslategray;
   --bg: rgb(202, 210, 211); // jawg-light
-  --body-bg: var(--bg);
-  --bg-map: var(--bg);
   --bg-hover: #b3b4b8;
+  --bg-map: var(--bg);
   --bg1: #eaf3f9;
   --bg2: #dde5ec;
+  --body-bg: var(--bg);
   --body-color: black;
-  --text-primary: black;
-  --text-secondary: #676767;
-  --heading: #595959;
-  --axis-color: darkslategray;
+  --border: rgb(172, 181, 191);
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
-  --border: rgb(172, 181, 191);
+  --heading: #595959;
   --link: rgb(34, 113, 150);
   --live: red;
+  --text-primary: black;
+  --text-secondary: #676767;
+  --tweet-bg: rgb(151, 178, 182);
 }
 
 #app.dusk {
+  --axis-color: darkslategray;
   --bg: rgb(252, 203, 143);
-  --body-bg: var(--bg);
-  --bg-map: var(--bg);
   --bg-hover: #b3b4b8;
+  --bg-map: var(--bg);
   --bg1: #f3f1dd;
   --bg2: #f3e6cd;
+  --body-bg: var(--bg);
   --body-color: black;
-  --text-primary: black;
-  --text-secondary: #333333;
-  --heading: #434343;
-  --axis-color: darkslategray;
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
-  --border: rgb(216, 156, 87);
+  --heading: #434343;
   --link: rgb(113, 39, 17);
   --live: red;
+  --border: rgb(216, 156, 87);
+  --text-primary: black;
+  --text-secondary: rgb(206, 156, 94);
 }
