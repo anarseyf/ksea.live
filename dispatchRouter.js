@@ -26,8 +26,9 @@ import {
 } from "./dispatchHelpers";
 import {
   identityFn,
+  getStatusAsync,
   getHistoryAsync,
-  getEntriesForArea,
+  getEntriesForAreaAsync,
   cacheKey,
   getCachedAsync,
 } from "./dispatchCompute";
@@ -61,20 +62,10 @@ const seattleGovController = async (req, res) => {
 
 const statusController = async (req, res) => {
   try {
-    const mostRecentId = await getMostRecentAsync();
-    const intervals = generateIntervals().slice(0, 1);
-    const total = (await allTweets(intervals)).length;
-    const runnersStatus = await readJSONAsync(statusFile, {});
-    const lastUpdated =
-      (runnersStatus.split && runnersStatus.split.lastRun) || 0;
+    const key = cacheKeyForRequest(req);
+    const result = (await getCachedAsync(key)) || (await getStatusAsync());
 
-    const status = {
-      mostRecentId,
-      lastUpdated,
-      total,
-      env: process.env.NODE_ENV,
-    };
-    res.json(status);
+    res.json(result);
   } catch (e) {
     console.error("error getting mostRecentId", e);
     res.status(500).send(null);
@@ -86,7 +77,7 @@ const forAreaController = async (req, res) => {
     const args = [req.path, req.params, req.query];
     const key = cacheKey(...args);
     const result =
-      (await getCachedAsync(key)) || (await getEntriesForArea(...args));
+      (await getCachedAsync(key)) || (await getEntriesForAreaAsync(...args));
     res.json(result);
   } catch (error) {
     console.error(error);

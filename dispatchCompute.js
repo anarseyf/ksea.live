@@ -50,6 +50,22 @@ export const getCachedAsync = async (key) => {
   return result;
 };
 
+export const getStatusAsync = async () => {
+  const mostRecentId = await getMostRecentAsync();
+  const intervals = generateIntervals().slice(0, 1);
+  const total = (await allTweets(intervals)).length;
+  const runnersStatus = await readJSONAsync(statusFile, {});
+  const lastUpdated = (runnersStatus.split && runnersStatus.split.lastRun) || 0;
+
+  const result = {
+    mostRecentId,
+    lastUpdated,
+    total,
+    env: process.env.NODE_ENV,
+  };
+  return result;
+};
+
 export const getHistoryAsync = async () => {
   const intervals = generateHistoryIntervals();
   const all = await allTweets(intervals);
@@ -62,7 +78,7 @@ export const getHistoryAsync = async () => {
   return result;
 };
 
-export const getEntriesForArea = async (path, params = {}, query = {}) => {
+export const getEntriesForAreaAsync = async (path, params = {}, query = {}) => {
   console.log(`getEntriesForArea > ${path}`, params, query);
 
   const area = params.area;

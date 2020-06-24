@@ -1,8 +1,9 @@
 import { readJSONAsync, saveJSONAsync } from "../fileUtils";
 import { withCachePath } from "../serverUtils";
 import {
+  getStatusAsync,
   getHistoryAsync,
-  getEntriesForArea,
+  getEntriesForAreaAsync,
   cacheKey,
 } from "../../../dispatchCompute";
 
@@ -15,29 +16,41 @@ export const runner = async () => {
     ...cache,
   };
 
-  let path = "/history";
-  let params = {};
-  let query = {
-    minimize: "true",
-  };
-  let key = cacheKey(path, params, query);
-  let result = await getHistoryAsync();
-  newCache[key] = result;
-  console.log("CACHE", key, result);
+  const variations = [
+    // {
+    //   path: "",
+    //   params: {},
+    //   query: {},
+    //   asyncGetter: ,
+    // },
+    {
+      path: "/status",
+      params: {},
+      query: {},
+      asyncGetter: getStatusAsync,
+    },
+    {
+      path: "/history",
+      params: {},
+      query: {},
+      asyncGetter: getHistoryAsync,
+    },
+    {
+      path: "/tweets/seattle",
+      params: { area: "seattle" },
+      query: { minimize: "true", activeOrMajor: "false", compare: "6" },
+      asyncGetter: getEntriesForAreaAsync,
+    },
+  ];
 
-  path = "/tweets/seattle";
-  params = {
-    area: "seattle",
-  };
-  query = {
-    minimize: "true",
-    activeOrMajor: "false",
-    compare: "6",
-  };
-  key = cacheKey(path, params, query);
-  result = await getEntriesForArea(path, params, query);
-  newCache[key] = result;
-  console.log(`cache > ${key} --> `, result);
+  await Promise.all(
+    variations.map(async ({ path, params, query, asyncGetter }) => {
+      const key = cacheKey(path, params, query);
+      const result = await asyncGetter();
+      newCache[key] = result;
+      console.log(`cached: ${key} --> `, result);
+    })
+  );
 
   await saveJSONAsync(cacheFile, newCache);
   const end = new Date();
