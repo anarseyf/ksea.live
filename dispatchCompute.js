@@ -36,10 +36,10 @@ export const cacheKey = (path, params, query) => {
 
   const queryStr = Object.keys(query)
     .sort()
-    .map((k) => `${k}=${query[k]}`)
+    .map((k) => `${k}:${query[k]}`)
     .join("&");
 
-  return `${path}/${paramsStr}?${queryStr}`;
+  return `path=${path} params=${paramsStr} query=${queryStr}`;
 };
 
 export const getCachedAsync = async (key) => {
@@ -102,5 +102,26 @@ export const getEntriesForAreaAsync = async (path, params = {}, query = {}) => {
     .map(minimizer)
     .sort(sortByTotal);
 
+  return result;
+};
+
+export const getEntriesByAreaAsync = async (query = {}) => {
+  const intervals = generateIntervals();
+  const filter =
+    query.activeOrMajor === "true" ? filterActiveOrMajor : filterNoop;
+  const byArea = await tweetsByArea(intervals, filter);
+  const minimizer = query.minimize === "true" ? minimizeGroup : identityFn;
+
+  const intervalGrouper = groupByIntervalGen(intervals);
+  const result = byArea.map(intervalGrouper).map(minimizer).sort(sortByTotal);
+  return result;
+};
+
+export const getEntriesByTypeAsync = async (params = {}, query = {}) => {
+  const intervals = generateIntervals();
+  const byType = await tweetsByType(params.area, intervals);
+  const minimizer = query.minimize === "true" ? minimizeGroup : identityFn;
+  const intervalGrouper = groupByIntervalGen(intervals);
+  const result = byType.map(intervalGrouper).map(minimizer).sort(sortByTotal);
   return result;
 };

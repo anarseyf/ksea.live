@@ -29,6 +29,8 @@ import {
   getStatusAsync,
   getHistoryAsync,
   getEntriesForAreaAsync,
+  getEntriesByAreaAsync,
+  getEntriesByTypeAsync,
   cacheKey,
   getCachedAsync,
 } from "./dispatchCompute";
@@ -74,10 +76,10 @@ const statusController = async (req, res) => {
 
 const forAreaController = async (req, res) => {
   try {
-    const args = [req.path, req.params, req.query];
-    const key = cacheKey(...args);
+    const key = cacheKeyForRequest(req);
     const result =
-      (await getCachedAsync(key)) || (await getEntriesForAreaAsync(...args));
+      (await getCachedAsync(key)) ||
+      (await getEntriesForAreaAsync(req.path, req.params, req.query));
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -125,15 +127,9 @@ const majorController = async (req, res) => {
 
 const byAreaController = async (req, res) => {
   try {
-    const intervals = generateIntervals();
-    const filter =
-      req.query.activeOrMajor === "true" ? filterActiveOrMajor : filterNoop;
-    const byArea = await tweetsByArea(intervals, filter);
-    const minimizer =
-      req.query.minimize === "true" ? minimizeGroup : identityFn;
-
-    const intervalGrouper = groupByIntervalGen(intervals);
-    const result = byArea.map(intervalGrouper).map(minimizer).sort(sortByTotal);
+    const key = cacheKeyForRequest(req);
+    const result =
+      (await getCachedAsync(key)) || (await getEntriesByAreaAsync(req.query));
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -143,12 +139,10 @@ const byAreaController = async (req, res) => {
 
 const byTypeController = async (req, res) => {
   try {
-    const intervals = generateIntervals();
-    const byType = await tweetsByType(req.params.area, intervals);
-    const minimizer =
-      req.query.minimize === "true" ? minimizeGroup : identityFn;
-    const intervalGrouper = groupByIntervalGen(intervals);
-    const result = byType.map(intervalGrouper).map(minimizer).sort(sortByTotal);
+    const key = cacheKeyForRequest(req);
+    const result =
+      (await getCachedAsync(key)) ||
+      (await getEntriesByTypeAsync(req.params, req.query));
     res.json(result);
   } catch (error) {
     console.error(error);

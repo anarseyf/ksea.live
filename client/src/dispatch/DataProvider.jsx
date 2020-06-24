@@ -88,7 +88,7 @@ const useTweets = (filters = {}) => {
 
     (async () => {
       setActiveOrMajorForArea(
-        await getTweetsForArea(area, { activeOrMajor: true, minimize: false })
+        await getTweetsForArea(area, { activeOrMajor: true })
       );
     })();
 
@@ -111,9 +111,7 @@ const useTweets = (filters = {}) => {
     })();
 
     (async () => {
-      setActiveOrMajorByArea(
-        await getTweetsByArea({ activeOrMajor: true, minimize: false })
-      );
+      setActiveOrMajorByArea(await getTweetsByArea({ activeOrMajor: true }));
     })();
 
     (async () => {

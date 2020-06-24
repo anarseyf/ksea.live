@@ -4,6 +4,8 @@ import {
   getStatusAsync,
   getHistoryAsync,
   getEntriesForAreaAsync,
+  getEntriesByAreaAsync,
+  getEntriesByTypeAsync,
   cacheKey,
 } from "../../../dispatchCompute";
 
@@ -29,24 +31,48 @@ export const runner = async () => {
       query: {},
       asyncGetter: getStatusAsync,
     },
+    // {
+    //   path: "/history",
+    //   params: {},
+    //   query: {},
+    //   asyncGetter: getHistoryAsync,
+    // },
     {
-      path: "/history",
-      params: {},
-      query: {},
-      asyncGetter: getHistoryAsync,
+      path: "/tweets/seattle",
+      params: { area: "seattle" },
+      query: { minimize: "true", compare: "6" },
+      asyncGetter: getEntriesForAreaAsync,
     },
     {
       path: "/tweets/seattle",
       params: { area: "seattle" },
-      query: { minimize: "true", activeOrMajor: "false", compare: "6" },
+      query: { activeOrMajor: "true" },
       asyncGetter: getEntriesForAreaAsync,
+    },
+    {
+      path: "/tweets/byArea",
+      params: {},
+      query: {},
+      asyncGetter: getEntriesByAreaAsync,
+    },
+    {
+      path: "/tweets/byArea",
+      params: {},
+      query: { activeOrMajor: "true" },
+      asyncGetter: getEntriesByAreaAsync,
+    },
+    {
+      path: "/tweets/byType/seattle",
+      params: { area: "seattle" },
+      query: {},
+      asyncGetter: getEntriesByTypeAsync,
     },
   ];
 
   await Promise.all(
     variations.map(async ({ path, params, query, asyncGetter }) => {
       const key = cacheKey(path, params, query);
-      const result = await asyncGetter();
+      const result = await asyncGetter(path, params, query);
       newCache[key] = result;
       console.log(`cached: ${key} --> `, result);
     })
