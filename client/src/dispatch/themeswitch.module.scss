@@ -2,9 +2,6 @@
 
 .button {
   color: var(--link);
-  &:hover {
-    cursor: pointer;
-  }
   margin: 0 0.25em;
   padding: 0;
   background: none;
@@ -18,5 +15,8 @@
 
   &:not(.selected) {
     border-bottom: 2px solid var(--link);
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

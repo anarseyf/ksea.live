@@ -31,10 +31,10 @@
 #app.light {
   --axis-color: darkslategray;
   --bg: rgb(202, 210, 211); // jawg-light
-  --bg-hover: #b3b4b8;
+  --bg-hover: #eef2f4;
   --bg-map: var(--bg);
-  --bg1: #eaf3f9;
-  --bg2: #dde5ec;
+  --bg1: #e9f5fc;
+  --bg2: #f8fcff;
   --body-bg: var(--bg);
   --body-color: black;
   --border: rgb(172, 181, 191);
@@ -51,18 +51,18 @@
 #app.dusk {
   --axis-color: darkslategray;
   --bg: rgb(252, 203, 143);
-  --bg-hover: #b3b4b8;
+  --bg-hover: #e4cfb8;
   --bg-map: var(--bg);
-  --bg1: #f3f1dd;
+  --bg1: #f5e8ce;
   --bg2: #f3e6cd;
   --body-bg: var(--bg);
   --body-color: black;
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
   --heading: #434343;
-  --link: rgb(113, 39, 17);
+  --link: rgb(143, 50, 21);
   --live: red;
   --border: rgb(216, 156, 87);
-  --text-primary: black;
-  --text-secondary: rgb(206, 156, 94);
+  --text-primary: rgb(23, 18, 17);
+  --text-secondary: rgb(88, 43, 35);
 }

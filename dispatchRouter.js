@@ -234,7 +234,17 @@ const updateController = async (req, res) => {
   res.json({ mostRecentId, latency: end - start });
 };
 
-router.get("/seattle911", seattleGovController);
+const setHeaders = async (req, res, next) => {
+  const freshnessSeconds = 60;
+  console.log(`>> Cache-Control for ${req.path}, ${req.url}, ${req.uri}`);
+  res.set("Cache-Control", `max-age=${freshnessSeconds}`);
+  next();
+};
+
+router.use("/status", setHeaders);
+router.use("/tweets/*", setHeaders);
+router.use("/history/*", setHeaders);
+
 router.get("/update", updateController);
 router.get("/status", statusController);
 router.get("/tweets/active24", active24Controller);

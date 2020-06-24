@@ -50,11 +50,11 @@ export const cacheKey = (path, params, query) => {
 };
 
 export const getCachedAsync = async (key, response) => {
-  console.log("getCachedAsync: ", key);
+  // console.log("getCachedAsync: ", key);
   const file = withCachePath(`${key}.json`);
   const result = await readJSONAsync(file);
   console.log(`>> Cache ${result ? "HIT" : "MISS"}: ${key}`);
-  response && response.set("X-KSEA-cache-hit", result ? 1 : 0);
+  response && response.set("x-ksea-cache-hit", result ? 1 : 0);
 
   return result;
 };

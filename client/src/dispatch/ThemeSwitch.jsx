@@ -7,7 +7,7 @@ import styles from "./themeswitch.module.scss";
 export const ThemeSwitch = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
-  const themes = ["dark", "light", "dusk"];
+  const themes = ["light", "dusk", "dark"];
 
   const handleClick = (newTheme) => {
     setTheme(newTheme);
@@ -15,7 +15,7 @@ export const ThemeSwitch = () => {
 
   const content = (
     <p>
-      The theme changes based on time of day in Seattle. Change to
+      The color theme changes based on time of day in Seattle. (See this page in
       {themes.map((t) => (
         <span key={t}>
           {" "}
@@ -28,7 +28,7 @@ export const ThemeSwitch = () => {
             {t}
           </button>
         </span>
-      ))}
+      ))})
     </p>
   );
 
