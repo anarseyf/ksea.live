@@ -1,0 +1,1585 @@
+[
+  {
+    "intervals": [
+      {
+        "start": 1592895600000,
+        "end": 1592982000000,
+        "offset": 0,
+        "values": [
+          {
+            "id_str": "F200061618",
+            "created_at": "6/23/2020 4:30:50 PM",
+            "derived": {
+              "timestamp": 1592955050000,
+              "offset": 0,
+              "lat": 47.548596,
+              "long": -122.298698,
+              "description": "Aid Response",
+              "address": "2544 S Raymond St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Beacon Hill",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E28",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061616",
+            "created_at": "6/23/2020 4:27:43 PM",
+            "derived": {
+              "timestamp": 1592954863000,
+              "offset": 0,
+              "lat": 47.593834,
+              "long": -122.317281,
+              "description": "Aid Response",
+              "address": "12th Av S / S Charles St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Duwamish/SODO",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "A5",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061614",
+            "created_at": "6/23/2020 4:24:36 PM",
+            "derived": {
+              "timestamp": 1592954676000,
+              "offset": 0,
+              "lat": 47.522358,
+              "long": -122.284819,
+              "description": "Low Acuity Response",
+              "address": "9023 38th Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "South Beacon Hill/NewHolly",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "HEALTH1",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061610",
+            "created_at": "6/23/2020 4:05:30 PM",
+            "derived": {
+              "timestamp": 1592953530000,
+              "offset": 0,
+              "lat": 47.540318,
+              "long": -122.282693,
+              "description": "Auto Fire Alarm",
+              "address": "6940 M L King Jr Way S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "South Beacon Hill/NewHolly",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E28 L12",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061592",
+            "created_at": "6/23/2020 3:13:23 PM",
+            "derived": {
+              "timestamp": 1592950403000,
+              "offset": 0,
+              "lat": 47.580963,
+              "long": -122.309781,
+              "description": "Aid Response",
+              "address": "2505 18th Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "North Beacon Hill/Jefferson Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E6",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061586",
+            "created_at": "6/23/2020 2:56:35 PM",
+            "derived": {
+              "timestamp": 1592949395000,
+              "offset": 0,
+              "lat": 47.56273,
+              "long": -122.294698,
+              "description": "Medic Response",
+              "address": "4515 M L King Jr Way S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "North Beacon Hill/Jefferson Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E30 M10",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061584",
+            "created_at": "6/23/2020 2:51:25 PM",
+            "derived": {
+              "timestamp": 1592949085000,
+              "offset": 0,
+              "lat": 47.51902,
+              "long": -122.271587,
+              "description": "Medic Response",
+              "address": "9303 Renton Ave S",
+              "active": false,
+              "unitCount": 3,
+              "severity": 0,
+              "neighborhood": "South Beacon Hill/NewHolly",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E33 M26 M28",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061546",
+            "created_at": "6/23/2020 1:12:58 PM",
+            "derived": {
+              "timestamp": 1592943178000,
+              "offset": 0,
+              "lat": 47.588571,
+              "long": -122.30595,
+              "description": "MVI - Motor Vehicle Incident",
+              "address": "RAINIER AVE S / EB I90 FR RAINIER NB",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "North Beacon Hill/Jefferson Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "L3",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061520",
+            "created_at": "6/23/2020 11:56:06 AM",
+            "derived": {
+              "timestamp": 1592938566000,
+              "offset": 0,
+              "lat": 47.599199,
+              "long": -122.335909,
+              "description": "Aid Response",
+              "address": "401 Alaskan Way S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Duwamish/SODO",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "A5",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061518",
+            "created_at": "6/23/2020 11:52:26 AM",
+            "derived": {
+              "timestamp": 1592938346000,
+              "offset": 0,
+              "lat": 47.554924,
+              "long": -122.334215,
+              "description": "Car Fire",
+              "address": "5300 1st Av S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Georgetown",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E27",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061475",
+            "created_at": "6/23/2020 8:32:49 AM",
+            "derived": {
+              "timestamp": 1592926369000,
+              "offset": 0,
+              "lat": 47.5714,
+              "long": -122.325986,
+              "description": "Auto Fire Alarm",
+              "address": "3601 6th Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Duwamish/SODO",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E13 R1",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061472",
+            "created_at": "6/23/2020 8:28:18 AM",
+            "derived": {
+              "timestamp": 1592926098000,
+              "offset": 0,
+              "lat": 47.54309,
+              "long": -122.284807,
+              "description": "Investigate Out Of Service",
+              "address": "6615 38th Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "South Beacon Hill/NewHolly",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E28",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061464",
+            "created_at": "6/23/2020 7:40:48 AM",
+            "derived": {
+              "timestamp": 1592923248000,
+              "offset": 0,
+              "lat": 47.553362,
+              "long": -122.313474,
+              "description": "Brush Fire",
+              "address": "5511 15th Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Beacon Hill",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E13 MAR5",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061423",
+            "created_at": "6/23/2020 4:22:30 AM",
+            "derived": {
+              "timestamp": 1592911350000,
+              "offset": 0,
+              "lat": 47.585284,
+              "long": -122.314678,
+              "description": "Auto Fire Alarm",
+              "address": "2025 14th Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "North Beacon Hill/Jefferson Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E13 R1",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061414",
+            "created_at": "6/23/2020 3:12:57 AM",
+            "derived": {
+              "timestamp": 1592907177000,
+              "offset": 0,
+              "lat": 47.524622,
+              "long": -122.328229,
+              "description": "Medic Response",
+              "address": "8805 5th Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "South Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E26 M26",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061705",
+            "created_at": "6/23/2020 7:59:15 PM",
+            "derived": {
+              "timestamp": 1592967555000,
+              "offset": 0,
+              "lat": 47.54068,
+              "long": -122.282871,
+              "description": "Aid Response",
+              "address": "S Willow St / M L King Jr Way S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "South Beacon Hill/NewHolly",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E28",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061691",
+            "created_at": "6/23/2020 7:34:06 PM",
+            "derived": {
+              "timestamp": 1592966046000,
+              "offset": 0,
+              "lat": 47.592505,
+              "long": -122.311963,
+              "description": "Brush Fire Freeway",
+              "address": "Eb I90 To Rainier",
+              "active": false,
+              "unitCount": 5,
+              "severity": 1,
+              "neighborhood": "North Beacon Hill/Jefferson Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "B5 E10 E2 E5 E6",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061690",
+            "created_at": "6/23/2020 7:33:45 PM",
+            "derived": {
+              "timestamp": 1592966025000,
+              "offset": 0,
+              "lat": 47.576993,
+              "long": -122.310084,
+              "description": "Aid Response",
+              "address": "Beacon Ave S / S Stevens St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "North Beacon Hill/Jefferson Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E13",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061664",
+            "created_at": "6/23/2020 6:47:05 PM",
+            "derived": {
+              "timestamp": 1592963225000,
+              "offset": 0,
+              "lat": 47.545077,
+              "long": -122.304109,
+              "description": "Aid Response",
+              "address": "6423 23rd Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "South Beacon Hill/NewHolly",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E27",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061659",
+            "created_at": "6/23/2020 6:21:12 PM",
+            "derived": {
+              "timestamp": 1592961672000,
+              "offset": 0,
+              "lat": 47.544599,
+              "long": -122.318719,
+              "description": "Auto Fire Alarm",
+              "address": "6526 Ellis Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Georgetown",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E27 R1",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061650",
+            "created_at": "6/23/2020 5:43:48 PM",
+            "derived": {
+              "timestamp": 1592959428000,
+              "offset": 0,
+              "lat": 47.545656,
+              "long": -122.32839,
+              "description": "MVI - Motor Vehicle Incident",
+              "address": "5th Ave S / S Michigan St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Georgetown",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E27",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061640",
+            "created_at": "6/23/2020 5:09:45 PM",
+            "derived": {
+              "timestamp": 1592957385000,
+              "offset": 0,
+              "lat": 47.599206,
+              "long": -122.334781,
+              "description": "Low Acuity Response",
+              "address": "80 S Jackson St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Duwamish/SODO",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "HEALTH1",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061637",
+            "created_at": "6/23/2020 5:04:56 PM",
+            "derived": {
+              "timestamp": 1592957096000,
+              "offset": 0,
+              "lat": 47.526465,
+              "long": -122.322916,
+              "description": "Aid Response",
+              "address": "S Cloverdale St / 8th Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "South Park",
+              "neighborhoodGroup": "Greater Duwamish",
+              "units": "E26",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          }
+        ],
+        "total": 23,
+        "groupby": "time",
+        "key": "1592895600000",
+        "bins": [
+          {
+            "x0": 1592895600000,
+            "x1": 1592899200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592899200000,
+            "x1": 1592902800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592902800000,
+            "x1": 1592906400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "0": {
+              "id_str": "F200061414",
+              "created_at": "6/23/2020 3:12:57 AM",
+              "derived": {
+                "timestamp": 1592907177000,
+                "offset": 0,
+                "lat": 47.524622,
+                "long": -122.328229,
+                "description": "Medic Response",
+                "address": "8805 5th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "South Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E26 M26",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "x0": 1592906400000,
+            "x1": 1592910000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 1
+          },
+          {
+            "0": {
+              "id_str": "F200061423",
+              "created_at": "6/23/2020 4:22:30 AM",
+              "derived": {
+                "timestamp": 1592911350000,
+                "offset": 0,
+                "lat": 47.585284,
+                "long": -122.314678,
+                "description": "Auto Fire Alarm",
+                "address": "2025 14th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13 R1",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592910000000,
+            "x1": 1592913600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 2
+          },
+          {
+            "x0": 1592913600000,
+            "x1": 1592917200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 2
+          },
+          {
+            "x0": 1592917200000,
+            "x1": 1592920800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 2
+          },
+          {
+            "0": {
+              "id_str": "F200061464",
+              "created_at": "6/23/2020 7:40:48 AM",
+              "derived": {
+                "timestamp": 1592923248000,
+                "offset": 0,
+                "lat": 47.553362,
+                "long": -122.313474,
+                "description": "Brush Fire",
+                "address": "5511 15th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Beacon Hill",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13 MAR5",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592920800000,
+            "x1": 1592924400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 3
+          },
+          {
+            "0": {
+              "id_str": "F200061475",
+              "created_at": "6/23/2020 8:32:49 AM",
+              "derived": {
+                "timestamp": 1592926369000,
+                "offset": 0,
+                "lat": 47.5714,
+                "long": -122.325986,
+                "description": "Auto Fire Alarm",
+                "address": "3601 6th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13 R1",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "1": {
+              "id_str": "F200061472",
+              "created_at": "6/23/2020 8:28:18 AM",
+              "derived": {
+                "timestamp": 1592926098000,
+                "offset": 0,
+                "lat": 47.54309,
+                "long": -122.284807,
+                "description": "Investigate Out Of Service",
+                "address": "6615 38th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592924400000,
+            "x1": 1592928000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 5
+          },
+          {
+            "x0": 1592928000000,
+            "x1": 1592931600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 5
+          },
+          {
+            "x0": 1592931600000,
+            "x1": 1592935200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 5
+          },
+          {
+            "0": {
+              "id_str": "F200061520",
+              "created_at": "6/23/2020 11:56:06 AM",
+              "derived": {
+                "timestamp": 1592938566000,
+                "offset": 0,
+                "lat": 47.599199,
+                "long": -122.335909,
+                "description": "Aid Response",
+                "address": "401 Alaskan Way S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "A5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061518",
+              "created_at": "6/23/2020 11:52:26 AM",
+              "derived": {
+                "timestamp": 1592938346000,
+                "offset": 0,
+                "lat": 47.554924,
+                "long": -122.334215,
+                "description": "Car Fire",
+                "address": "5300 1st Av S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Georgetown",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592935200000,
+            "x1": 1592938800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 7
+          },
+          {
+            "x0": 1592938800000,
+            "x1": 1592942400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 7
+          },
+          {
+            "0": {
+              "id_str": "F200061546",
+              "created_at": "6/23/2020 1:12:58 PM",
+              "derived": {
+                "timestamp": 1592943178000,
+                "offset": 0,
+                "lat": 47.588571,
+                "long": -122.30595,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "RAINIER AVE S / EB I90 FR RAINIER NB",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "L3",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592942400000,
+            "x1": 1592946000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 8
+          },
+          {
+            "0": {
+              "id_str": "F200061586",
+              "created_at": "6/23/2020 2:56:35 PM",
+              "derived": {
+                "timestamp": 1592949395000,
+                "offset": 0,
+                "lat": 47.56273,
+                "long": -122.294698,
+                "description": "Medic Response",
+                "address": "4515 M L King Jr Way S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E30 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "1": {
+              "id_str": "F200061584",
+              "created_at": "6/23/2020 2:51:25 PM",
+              "derived": {
+                "timestamp": 1592949085000,
+                "offset": 0,
+                "lat": 47.51902,
+                "long": -122.271587,
+                "description": "Medic Response",
+                "address": "9303 Renton Ave S",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E33 M26 M28",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "x0": 1592946000000,
+            "x1": 1592949600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 10
+          },
+          {
+            "0": {
+              "id_str": "F200061592",
+              "created_at": "6/23/2020 3:13:23 PM",
+              "derived": {
+                "timestamp": 1592950403000,
+                "offset": 0,
+                "lat": 47.580963,
+                "long": -122.309781,
+                "description": "Aid Response",
+                "address": "2505 18th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E6",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592949600000,
+            "x1": 1592953200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 11
+          },
+          {
+            "0": {
+              "id_str": "F200061618",
+              "created_at": "6/23/2020 4:30:50 PM",
+              "derived": {
+                "timestamp": 1592955050000,
+                "offset": 0,
+                "lat": 47.548596,
+                "long": -122.298698,
+                "description": "Aid Response",
+                "address": "2544 S Raymond St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Beacon Hill",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061616",
+              "created_at": "6/23/2020 4:27:43 PM",
+              "derived": {
+                "timestamp": 1592954863000,
+                "offset": 0,
+                "lat": 47.593834,
+                "long": -122.317281,
+                "description": "Aid Response",
+                "address": "12th Av S / S Charles St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "A5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "2": {
+              "id_str": "F200061614",
+              "created_at": "6/23/2020 4:24:36 PM",
+              "derived": {
+                "timestamp": 1592954676000,
+                "offset": 0,
+                "lat": 47.522358,
+                "long": -122.284819,
+                "description": "Low Acuity Response",
+                "address": "9023 38th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "HEALTH1",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "3": {
+              "id_str": "F200061610",
+              "created_at": "6/23/2020 4:05:30 PM",
+              "derived": {
+                "timestamp": 1592953530000,
+                "offset": 0,
+                "lat": 47.540318,
+                "long": -122.282693,
+                "description": "Auto Fire Alarm",
+                "address": "6940 M L King Jr Way S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28 L12",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592953200000,
+            "x1": 1592956800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 4,
+            "cumulative": 15
+          },
+          {
+            "0": {
+              "id_str": "F200061650",
+              "created_at": "6/23/2020 5:43:48 PM",
+              "derived": {
+                "timestamp": 1592959428000,
+                "offset": 0,
+                "lat": 47.545656,
+                "long": -122.32839,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "5th Ave S / S Michigan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Georgetown",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "1": {
+              "id_str": "F200061640",
+              "created_at": "6/23/2020 5:09:45 PM",
+              "derived": {
+                "timestamp": 1592957385000,
+                "offset": 0,
+                "lat": 47.599206,
+                "long": -122.334781,
+                "description": "Low Acuity Response",
+                "address": "80 S Jackson St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "HEALTH1",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "2": {
+              "id_str": "F200061637",
+              "created_at": "6/23/2020 5:04:56 PM",
+              "derived": {
+                "timestamp": 1592957096000,
+                "offset": 0,
+                "lat": 47.526465,
+                "long": -122.322916,
+                "description": "Aid Response",
+                "address": "S Cloverdale St / 8th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E26",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592956800000,
+            "x1": 1592960400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 3,
+            "cumulative": 18
+          },
+          {
+            "0": {
+              "id_str": "F200061664",
+              "created_at": "6/23/2020 6:47:05 PM",
+              "derived": {
+                "timestamp": 1592963225000,
+                "offset": 0,
+                "lat": 47.545077,
+                "long": -122.304109,
+                "description": "Aid Response",
+                "address": "6423 23rd Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061659",
+              "created_at": "6/23/2020 6:21:12 PM",
+              "derived": {
+                "timestamp": 1592961672000,
+                "offset": 0,
+                "lat": 47.544599,
+                "long": -122.318719,
+                "description": "Auto Fire Alarm",
+                "address": "6526 Ellis Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Georgetown",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27 R1",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592960400000,
+            "x1": 1592964000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 20
+          },
+          {
+            "0": {
+              "id_str": "F200061705",
+              "created_at": "6/23/2020 7:59:15 PM",
+              "derived": {
+                "timestamp": 1592967555000,
+                "offset": 0,
+                "lat": 47.54068,
+                "long": -122.282871,
+                "description": "Aid Response",
+                "address": "S Willow St / M L King Jr Way S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061691",
+              "created_at": "6/23/2020 7:34:06 PM",
+              "derived": {
+                "timestamp": 1592966046000,
+                "offset": 0,
+                "lat": 47.592505,
+                "long": -122.311963,
+                "description": "Brush Fire Freeway",
+                "address": "Eb I90 To Rainier",
+                "active": false,
+                "unitCount": 5,
+                "severity": 1,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "B5 E10 E2 E5 E6",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "2": {
+              "id_str": "F200061690",
+              "created_at": "6/23/2020 7:33:45 PM",
+              "derived": {
+                "timestamp": 1592966025000,
+                "offset": 0,
+                "lat": 47.576993,
+                "long": -122.310084,
+                "description": "Aid Response",
+                "address": "Beacon Ave S / S Stevens St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592964000000,
+            "x1": 1592967600000,
+            "sev1": 1,
+            "sev2": 0,
+            "length": 3,
+            "cumulative": 23
+          },
+          {
+            "x0": 1592967600000,
+            "x1": 1592971200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 23
+          },
+          {
+            "x0": 1592971200000,
+            "x1": 1592974800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 23
+          }
+        ],
+        "binsHiRes": [],
+        "binsLowRes": [
+          {
+            "0": {
+              "id_str": "F200061618",
+              "created_at": "6/23/2020 4:30:50 PM",
+              "derived": {
+                "timestamp": 1592955050000,
+                "offset": 0,
+                "lat": 47.548596,
+                "long": -122.298698,
+                "description": "Aid Response",
+                "address": "2544 S Raymond St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Beacon Hill",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061616",
+              "created_at": "6/23/2020 4:27:43 PM",
+              "derived": {
+                "timestamp": 1592954863000,
+                "offset": 0,
+                "lat": 47.593834,
+                "long": -122.317281,
+                "description": "Aid Response",
+                "address": "12th Av S / S Charles St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "A5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "2": {
+              "id_str": "F200061614",
+              "created_at": "6/23/2020 4:24:36 PM",
+              "derived": {
+                "timestamp": 1592954676000,
+                "offset": 0,
+                "lat": 47.522358,
+                "long": -122.284819,
+                "description": "Low Acuity Response",
+                "address": "9023 38th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "HEALTH1",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "3": {
+              "id_str": "F200061610",
+              "created_at": "6/23/2020 4:05:30 PM",
+              "derived": {
+                "timestamp": 1592953530000,
+                "offset": 0,
+                "lat": 47.540318,
+                "long": -122.282693,
+                "description": "Auto Fire Alarm",
+                "address": "6940 M L King Jr Way S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28 L12",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "4": {
+              "id_str": "F200061592",
+              "created_at": "6/23/2020 3:13:23 PM",
+              "derived": {
+                "timestamp": 1592950403000,
+                "offset": 0,
+                "lat": 47.580963,
+                "long": -122.309781,
+                "description": "Aid Response",
+                "address": "2505 18th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E6",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "5": {
+              "id_str": "F200061586",
+              "created_at": "6/23/2020 2:56:35 PM",
+              "derived": {
+                "timestamp": 1592949395000,
+                "offset": 0,
+                "lat": 47.56273,
+                "long": -122.294698,
+                "description": "Medic Response",
+                "address": "4515 M L King Jr Way S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E30 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "6": {
+              "id_str": "F200061584",
+              "created_at": "6/23/2020 2:51:25 PM",
+              "derived": {
+                "timestamp": 1592949085000,
+                "offset": 0,
+                "lat": 47.51902,
+                "long": -122.271587,
+                "description": "Medic Response",
+                "address": "9303 Renton Ave S",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E33 M26 M28",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "7": {
+              "id_str": "F200061546",
+              "created_at": "6/23/2020 1:12:58 PM",
+              "derived": {
+                "timestamp": 1592943178000,
+                "offset": 0,
+                "lat": 47.588571,
+                "long": -122.30595,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "RAINIER AVE S / EB I90 FR RAINIER NB",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "L3",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "8": {
+              "id_str": "F200061520",
+              "created_at": "6/23/2020 11:56:06 AM",
+              "derived": {
+                "timestamp": 1592938566000,
+                "offset": 0,
+                "lat": 47.599199,
+                "long": -122.335909,
+                "description": "Aid Response",
+                "address": "401 Alaskan Way S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "A5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "9": {
+              "id_str": "F200061518",
+              "created_at": "6/23/2020 11:52:26 AM",
+              "derived": {
+                "timestamp": 1592938346000,
+                "offset": 0,
+                "lat": 47.554924,
+                "long": -122.334215,
+                "description": "Car Fire",
+                "address": "5300 1st Av S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Georgetown",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "10": {
+              "id_str": "F200061475",
+              "created_at": "6/23/2020 8:32:49 AM",
+              "derived": {
+                "timestamp": 1592926369000,
+                "offset": 0,
+                "lat": 47.5714,
+                "long": -122.325986,
+                "description": "Auto Fire Alarm",
+                "address": "3601 6th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13 R1",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "11": {
+              "id_str": "F200061472",
+              "created_at": "6/23/2020 8:28:18 AM",
+              "derived": {
+                "timestamp": 1592926098000,
+                "offset": 0,
+                "lat": 47.54309,
+                "long": -122.284807,
+                "description": "Investigate Out Of Service",
+                "address": "6615 38th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "12": {
+              "id_str": "F200061464",
+              "created_at": "6/23/2020 7:40:48 AM",
+              "derived": {
+                "timestamp": 1592923248000,
+                "offset": 0,
+                "lat": 47.553362,
+                "long": -122.313474,
+                "description": "Brush Fire",
+                "address": "5511 15th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Beacon Hill",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13 MAR5",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "13": {
+              "id_str": "F200061423",
+              "created_at": "6/23/2020 4:22:30 AM",
+              "derived": {
+                "timestamp": 1592911350000,
+                "offset": 0,
+                "lat": 47.585284,
+                "long": -122.314678,
+                "description": "Auto Fire Alarm",
+                "address": "2025 14th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13 R1",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "14": {
+              "id_str": "F200061414",
+              "created_at": "6/23/2020 3:12:57 AM",
+              "derived": {
+                "timestamp": 1592907177000,
+                "offset": 0,
+                "lat": 47.524622,
+                "long": -122.328229,
+                "description": "Medic Response",
+                "address": "8805 5th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "South Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E26 M26",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "15": {
+              "id_str": "F200061705",
+              "created_at": "6/23/2020 7:59:15 PM",
+              "derived": {
+                "timestamp": 1592967555000,
+                "offset": 0,
+                "lat": 47.54068,
+                "long": -122.282871,
+                "description": "Aid Response",
+                "address": "S Willow St / M L King Jr Way S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E28",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "16": {
+              "id_str": "F200061691",
+              "created_at": "6/23/2020 7:34:06 PM",
+              "derived": {
+                "timestamp": 1592966046000,
+                "offset": 0,
+                "lat": 47.592505,
+                "long": -122.311963,
+                "description": "Brush Fire Freeway",
+                "address": "Eb I90 To Rainier",
+                "active": false,
+                "unitCount": 5,
+                "severity": 1,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "B5 E10 E2 E5 E6",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "17": {
+              "id_str": "F200061690",
+              "created_at": "6/23/2020 7:33:45 PM",
+              "derived": {
+                "timestamp": 1592966025000,
+                "offset": 0,
+                "lat": 47.576993,
+                "long": -122.310084,
+                "description": "Aid Response",
+                "address": "Beacon Ave S / S Stevens St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beacon Hill/Jefferson Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E13",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "18": {
+              "id_str": "F200061664",
+              "created_at": "6/23/2020 6:47:05 PM",
+              "derived": {
+                "timestamp": 1592963225000,
+                "offset": 0,
+                "lat": 47.545077,
+                "long": -122.304109,
+                "description": "Aid Response",
+                "address": "6423 23rd Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Beacon Hill/NewHolly",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "19": {
+              "id_str": "F200061659",
+              "created_at": "6/23/2020 6:21:12 PM",
+              "derived": {
+                "timestamp": 1592961672000,
+                "offset": 0,
+                "lat": 47.544599,
+                "long": -122.318719,
+                "description": "Auto Fire Alarm",
+                "address": "6526 Ellis Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Georgetown",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27 R1",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "20": {
+              "id_str": "F200061650",
+              "created_at": "6/23/2020 5:43:48 PM",
+              "derived": {
+                "timestamp": 1592959428000,
+                "offset": 0,
+                "lat": 47.545656,
+                "long": -122.32839,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "5th Ave S / S Michigan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Georgetown",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E27",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "21": {
+              "id_str": "F200061640",
+              "created_at": "6/23/2020 5:09:45 PM",
+              "derived": {
+                "timestamp": 1592957385000,
+                "offset": 0,
+                "lat": 47.599206,
+                "long": -122.334781,
+                "description": "Low Acuity Response",
+                "address": "80 S Jackson St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Duwamish/SODO",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "HEALTH1",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "22": {
+              "id_str": "F200061637",
+              "created_at": "6/23/2020 5:04:56 PM",
+              "derived": {
+                "timestamp": 1592957096000,
+                "offset": 0,
+                "lat": 47.526465,
+                "long": -122.322916,
+                "description": "Aid Response",
+                "address": "S Cloverdale St / 8th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "South Park",
+                "neighborhoodGroup": "Greater Duwamish",
+                "units": "E26",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592895600000,
+            "x1": 1592982000000,
+            "sev1": 1,
+            "sev2": 0,
+            "length": 23,
+            "cumulative": 23
+          }
+        ]
+      }
+    ]
+  }
+]

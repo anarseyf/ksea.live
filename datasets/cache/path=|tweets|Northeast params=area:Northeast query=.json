@@ -1,0 +1,1165 @@
+[
+  {
+    "intervals": [
+      {
+        "start": 1592895600000,
+        "end": 1592982000000,
+        "offset": 0,
+        "values": [
+          {
+            "id_str": "F200061628",
+            "created_at": "6/23/2020 4:49:49 PM",
+            "derived": {
+              "timestamp": 1592956189000,
+              "offset": 0,
+              "lat": 47.663381,
+              "long": -122.311961,
+              "description": "Aid Response Yellow",
+              "address": "4750 15th Av Ne",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "University District",
+              "neighborhoodGroup": "Northeast",
+              "units": "E31",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061565",
+            "created_at": "6/23/2020 1:59:02 PM",
+            "derived": {
+              "timestamp": 1592945942000,
+              "offset": 0,
+              "lat": 47.646404,
+              "long": -122.307945,
+              "description": "Aid Response",
+              "address": "1874 E Shelby St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Montlake/Portage Bay",
+              "neighborhoodGroup": "Northeast",
+              "units": "E17",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061534",
+            "created_at": "6/23/2020 12:29:37 PM",
+            "derived": {
+              "timestamp": 1592940577000,
+              "offset": 0,
+              "lat": 47.667234,
+              "long": -122.301935,
+              "description": "Medic Response",
+              "address": "5319 24th Av Ne",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Ravenna/Bryant",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38 M17",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061515",
+            "created_at": "6/23/2020 11:45:45 AM",
+            "derived": {
+              "timestamp": 1592937945000,
+              "offset": 0,
+              "lat": 47.673344,
+              "long": -122.275898,
+              "description": "Medic Response",
+              "address": "6030 Ann Arbor Ave Ne",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Ravenna/Bryant",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38 M1",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061512",
+            "created_at": "6/23/2020 11:30:56 AM",
+            "derived": {
+              "timestamp": 1592937056000,
+              "offset": 0,
+              "lat": 47.687554,
+              "long": -122.301788,
+              "description": "Medic Response",
+              "address": "8053 Ravenna Ave Ne",
+              "active": false,
+              "unitCount": 3,
+              "severity": 0,
+              "neighborhood": "Ravenna/Bryant",
+              "neighborhoodGroup": "Northeast",
+              "units": "E40 M17 M31",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061511",
+            "created_at": "6/23/2020 11:28:36 AM",
+            "derived": {
+              "timestamp": 1592936916000,
+              "offset": 0,
+              "lat": 47.67889,
+              "long": -122.317405,
+              "description": "Low Acuity Response",
+              "address": "6921 Roosevelt Way Ne",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ravenna/Bryant",
+              "neighborhoodGroup": "Northeast",
+              "units": "HEALTH1",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061493",
+            "created_at": "6/23/2020 10:10:35 AM",
+            "derived": {
+              "timestamp": 1592932235000,
+              "offset": 0,
+              "lat": 47.68349,
+              "long": -122.28416,
+              "description": "Medic Response, 7 per Rule",
+              "address": "7550 41st Ave Ne",
+              "active": false,
+              "unitCount": 3,
+              "severity": 0,
+              "neighborhood": "Wedgwood/View Ridge",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38 E40 M17",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061489",
+            "created_at": "6/23/2020 9:35:57 AM",
+            "derived": {
+              "timestamp": 1592930157000,
+              "offset": 0,
+              "lat": 47.682124,
+              "long": -122.263668,
+              "description": "Aid Response",
+              "address": "Sand Point Way Ne / Ne 74th St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Laurelhurst/Sand Point",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061440",
+            "created_at": "6/23/2020 5:40:27 AM",
+            "derived": {
+              "timestamp": 1592916027000,
+              "offset": 0,
+              "lat": 47.672584,
+              "long": -122.290239,
+              "description": "Low Acuity Response",
+              "address": "6048 35th Ave Ne",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ravenna/Bryant",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061438",
+            "created_at": "6/23/2020 5:25:46 AM",
+            "derived": {
+              "timestamp": 1592915146000,
+              "offset": 0,
+              "lat": 47.69163,
+              "long": -122.284431,
+              "description": "Aid Response",
+              "address": "4076 Ne 87th St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Wedgwood/View Ridge",
+              "neighborhoodGroup": "Northeast",
+              "units": "E40",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061392",
+            "created_at": "6/23/2020 12:29:18 AM",
+            "derived": {
+              "timestamp": 1592897358000,
+              "offset": 0,
+              "lat": 47.648997,
+              "long": -122.304591,
+              "description": "Aid Response",
+              "address": "Montlake Blvd Ne / Ne Pacific St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "University District",
+              "neighborhoodGroup": "Northeast",
+              "units": "E17",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061671",
+            "created_at": "6/23/2020 6:56:19 PM",
+            "derived": {
+              "timestamp": 1592963779000,
+              "offset": 0,
+              "lat": 47.663072,
+              "long": -122.310631,
+              "description": "Auto Fire Alarm",
+              "address": "1617 Ne 47th St",
+              "active": false,
+              "unitCount": 3,
+              "severity": 0,
+              "neighborhood": "University District",
+              "neighborhoodGroup": "Northeast",
+              "units": "E17 L10 L9",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061668",
+            "created_at": "6/23/2020 6:52:25 PM",
+            "derived": {
+              "timestamp": 1592963545000,
+              "offset": 0,
+              "lat": 47.661266,
+              "long": -122.284754,
+              "description": "Auto Fire Alarm",
+              "address": "4500 40th Av Ne",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Laurelhurst/Sand Point",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38 L9",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061652",
+            "created_at": "6/23/2020 5:48:36 PM",
+            "derived": {
+              "timestamp": 1592959716000,
+              "offset": 0,
+              "lat": 47.665845,
+              "long": -122.301932,
+              "description": "Aid Response",
+              "address": "2401 Ne Blakeley St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ravenna/Bryant",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061639",
+            "created_at": "6/23/2020 5:07:55 PM",
+            "derived": {
+              "timestamp": 1592957275000,
+              "offset": 0,
+              "lat": 47.661448,
+              "long": -122.30838,
+              "description": "Medic Response, 6 per Rule",
+              "address": "4522 18th Av Ne",
+              "active": false,
+              "unitCount": 3,
+              "severity": 0,
+              "neighborhood": "University District",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38 L9 M17",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061638",
+            "created_at": "6/23/2020 5:07:39 PM",
+            "derived": {
+              "timestamp": 1592957259000,
+              "offset": 0,
+              "lat": 47.661448,
+              "long": -122.30838,
+              "description": "Medic Response, 6 per Rule",
+              "address": "4522 18th Av Ne",
+              "active": false,
+              "unitCount": 4,
+              "severity": 0,
+              "neighborhood": "University District",
+              "neighborhoodGroup": "Northeast",
+              "units": "E31 L9 M17 M18",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          }
+        ],
+        "total": 16,
+        "groupby": "time",
+        "key": "1592895600000",
+        "bins": [
+          {
+            "0": {
+              "id_str": "F200061392",
+              "created_at": "6/23/2020 12:29:18 AM",
+              "derived": {
+                "timestamp": 1592897358000,
+                "offset": 0,
+                "lat": 47.648997,
+                "long": -122.304591,
+                "description": "Aid Response",
+                "address": "Montlake Blvd Ne / Ne Pacific St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E17",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592895600000,
+            "x1": 1592899200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592899200000,
+            "x1": 1592902800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592902800000,
+            "x1": 1592906400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592906400000,
+            "x1": 1592910000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592910000000,
+            "x1": 1592913600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "0": {
+              "id_str": "F200061440",
+              "created_at": "6/23/2020 5:40:27 AM",
+              "derived": {
+                "timestamp": 1592916027000,
+                "offset": 0,
+                "lat": 47.672584,
+                "long": -122.290239,
+                "description": "Low Acuity Response",
+                "address": "6048 35th Ave Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "1": {
+              "id_str": "F200061438",
+              "created_at": "6/23/2020 5:25:46 AM",
+              "derived": {
+                "timestamp": 1592915146000,
+                "offset": 0,
+                "lat": 47.69163,
+                "long": -122.284431,
+                "description": "Aid Response",
+                "address": "4076 Ne 87th St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Wedgwood/View Ridge",
+                "neighborhoodGroup": "Northeast",
+                "units": "E40",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592913600000,
+            "x1": 1592917200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 3
+          },
+          {
+            "x0": 1592917200000,
+            "x1": 1592920800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 3
+          },
+          {
+            "x0": 1592920800000,
+            "x1": 1592924400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 3
+          },
+          {
+            "x0": 1592924400000,
+            "x1": 1592928000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 3
+          },
+          {
+            "0": {
+              "id_str": "F200061489",
+              "created_at": "6/23/2020 9:35:57 AM",
+              "derived": {
+                "timestamp": 1592930157000,
+                "offset": 0,
+                "lat": 47.682124,
+                "long": -122.263668,
+                "description": "Aid Response",
+                "address": "Sand Point Way Ne / Ne 74th St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Laurelhurst/Sand Point",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592928000000,
+            "x1": 1592931600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 4
+          },
+          {
+            "0": {
+              "id_str": "F200061493",
+              "created_at": "6/23/2020 10:10:35 AM",
+              "derived": {
+                "timestamp": 1592932235000,
+                "offset": 0,
+                "lat": 47.68349,
+                "long": -122.28416,
+                "description": "Medic Response, 7 per Rule",
+                "address": "7550 41st Ave Ne",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Wedgwood/View Ridge",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 E40 M17",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "x0": 1592931600000,
+            "x1": 1592935200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 5
+          },
+          {
+            "0": {
+              "id_str": "F200061515",
+              "created_at": "6/23/2020 11:45:45 AM",
+              "derived": {
+                "timestamp": 1592937945000,
+                "offset": 0,
+                "lat": 47.673344,
+                "long": -122.275898,
+                "description": "Medic Response",
+                "address": "6030 Ann Arbor Ave Ne",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 M1",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "1": {
+              "id_str": "F200061512",
+              "created_at": "6/23/2020 11:30:56 AM",
+              "derived": {
+                "timestamp": 1592937056000,
+                "offset": 0,
+                "lat": 47.687554,
+                "long": -122.301788,
+                "description": "Medic Response",
+                "address": "8053 Ravenna Ave Ne",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E40 M17 M31",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "2": {
+              "id_str": "F200061511",
+              "created_at": "6/23/2020 11:28:36 AM",
+              "derived": {
+                "timestamp": 1592936916000,
+                "offset": 0,
+                "lat": 47.67889,
+                "long": -122.317405,
+                "description": "Low Acuity Response",
+                "address": "6921 Roosevelt Way Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "HEALTH1",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592935200000,
+            "x1": 1592938800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 3,
+            "cumulative": 8
+          },
+          {
+            "0": {
+              "id_str": "F200061534",
+              "created_at": "6/23/2020 12:29:37 PM",
+              "derived": {
+                "timestamp": 1592940577000,
+                "offset": 0,
+                "lat": 47.667234,
+                "long": -122.301935,
+                "description": "Medic Response",
+                "address": "5319 24th Av Ne",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 M17",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "x0": 1592938800000,
+            "x1": 1592942400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 9
+          },
+          {
+            "0": {
+              "id_str": "F200061565",
+              "created_at": "6/23/2020 1:59:02 PM",
+              "derived": {
+                "timestamp": 1592945942000,
+                "offset": 0,
+                "lat": 47.646404,
+                "long": -122.307945,
+                "description": "Aid Response",
+                "address": "1874 E Shelby St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Montlake/Portage Bay",
+                "neighborhoodGroup": "Northeast",
+                "units": "E17",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592942400000,
+            "x1": 1592946000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 10
+          },
+          {
+            "x0": 1592946000000,
+            "x1": 1592949600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 10
+          },
+          {
+            "x0": 1592949600000,
+            "x1": 1592953200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 10
+          },
+          {
+            "0": {
+              "id_str": "F200061628",
+              "created_at": "6/23/2020 4:49:49 PM",
+              "derived": {
+                "timestamp": 1592956189000,
+                "offset": 0,
+                "lat": 47.663381,
+                "long": -122.311961,
+                "description": "Aid Response Yellow",
+                "address": "4750 15th Av Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E31",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592953200000,
+            "x1": 1592956800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 11
+          },
+          {
+            "0": {
+              "id_str": "F200061652",
+              "created_at": "6/23/2020 5:48:36 PM",
+              "derived": {
+                "timestamp": 1592959716000,
+                "offset": 0,
+                "lat": 47.665845,
+                "long": -122.301932,
+                "description": "Aid Response",
+                "address": "2401 Ne Blakeley St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061639",
+              "created_at": "6/23/2020 5:07:55 PM",
+              "derived": {
+                "timestamp": 1592957275000,
+                "offset": 0,
+                "lat": 47.661448,
+                "long": -122.30838,
+                "description": "Medic Response, 6 per Rule",
+                "address": "4522 18th Av Ne",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 L9 M17",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "2": {
+              "id_str": "F200061638",
+              "created_at": "6/23/2020 5:07:39 PM",
+              "derived": {
+                "timestamp": 1592957259000,
+                "offset": 0,
+                "lat": 47.661448,
+                "long": -122.30838,
+                "description": "Medic Response, 6 per Rule",
+                "address": "4522 18th Av Ne",
+                "active": false,
+                "unitCount": 4,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E31 L9 M17 M18",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "x0": 1592956800000,
+            "x1": 1592960400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 3,
+            "cumulative": 14
+          },
+          {
+            "0": {
+              "id_str": "F200061671",
+              "created_at": "6/23/2020 6:56:19 PM",
+              "derived": {
+                "timestamp": 1592963779000,
+                "offset": 0,
+                "lat": 47.663072,
+                "long": -122.310631,
+                "description": "Auto Fire Alarm",
+                "address": "1617 Ne 47th St",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E17 L10 L9",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "1": {
+              "id_str": "F200061668",
+              "created_at": "6/23/2020 6:52:25 PM",
+              "derived": {
+                "timestamp": 1592963545000,
+                "offset": 0,
+                "lat": 47.661266,
+                "long": -122.284754,
+                "description": "Auto Fire Alarm",
+                "address": "4500 40th Av Ne",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Laurelhurst/Sand Point",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 L9",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592960400000,
+            "x1": 1592964000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 16
+          },
+          {
+            "x0": 1592964000000,
+            "x1": 1592967600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 16
+          },
+          {
+            "x0": 1592967600000,
+            "x1": 1592971200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 16
+          },
+          {
+            "x0": 1592971200000,
+            "x1": 1592974800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 16
+          }
+        ],
+        "binsHiRes": [],
+        "binsLowRes": [
+          {
+            "0": {
+              "id_str": "F200061628",
+              "created_at": "6/23/2020 4:49:49 PM",
+              "derived": {
+                "timestamp": 1592956189000,
+                "offset": 0,
+                "lat": 47.663381,
+                "long": -122.311961,
+                "description": "Aid Response Yellow",
+                "address": "4750 15th Av Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E31",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061565",
+              "created_at": "6/23/2020 1:59:02 PM",
+              "derived": {
+                "timestamp": 1592945942000,
+                "offset": 0,
+                "lat": 47.646404,
+                "long": -122.307945,
+                "description": "Aid Response",
+                "address": "1874 E Shelby St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Montlake/Portage Bay",
+                "neighborhoodGroup": "Northeast",
+                "units": "E17",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "2": {
+              "id_str": "F200061534",
+              "created_at": "6/23/2020 12:29:37 PM",
+              "derived": {
+                "timestamp": 1592940577000,
+                "offset": 0,
+                "lat": 47.667234,
+                "long": -122.301935,
+                "description": "Medic Response",
+                "address": "5319 24th Av Ne",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 M17",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "3": {
+              "id_str": "F200061515",
+              "created_at": "6/23/2020 11:45:45 AM",
+              "derived": {
+                "timestamp": 1592937945000,
+                "offset": 0,
+                "lat": 47.673344,
+                "long": -122.275898,
+                "description": "Medic Response",
+                "address": "6030 Ann Arbor Ave Ne",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 M1",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "4": {
+              "id_str": "F200061512",
+              "created_at": "6/23/2020 11:30:56 AM",
+              "derived": {
+                "timestamp": 1592937056000,
+                "offset": 0,
+                "lat": 47.687554,
+                "long": -122.301788,
+                "description": "Medic Response",
+                "address": "8053 Ravenna Ave Ne",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E40 M17 M31",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "5": {
+              "id_str": "F200061511",
+              "created_at": "6/23/2020 11:28:36 AM",
+              "derived": {
+                "timestamp": 1592936916000,
+                "offset": 0,
+                "lat": 47.67889,
+                "long": -122.317405,
+                "description": "Low Acuity Response",
+                "address": "6921 Roosevelt Way Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "HEALTH1",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "6": {
+              "id_str": "F200061493",
+              "created_at": "6/23/2020 10:10:35 AM",
+              "derived": {
+                "timestamp": 1592932235000,
+                "offset": 0,
+                "lat": 47.68349,
+                "long": -122.28416,
+                "description": "Medic Response, 7 per Rule",
+                "address": "7550 41st Ave Ne",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Wedgwood/View Ridge",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 E40 M17",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "7": {
+              "id_str": "F200061489",
+              "created_at": "6/23/2020 9:35:57 AM",
+              "derived": {
+                "timestamp": 1592930157000,
+                "offset": 0,
+                "lat": 47.682124,
+                "long": -122.263668,
+                "description": "Aid Response",
+                "address": "Sand Point Way Ne / Ne 74th St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Laurelhurst/Sand Point",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "8": {
+              "id_str": "F200061440",
+              "created_at": "6/23/2020 5:40:27 AM",
+              "derived": {
+                "timestamp": 1592916027000,
+                "offset": 0,
+                "lat": 47.672584,
+                "long": -122.290239,
+                "description": "Low Acuity Response",
+                "address": "6048 35th Ave Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "9": {
+              "id_str": "F200061438",
+              "created_at": "6/23/2020 5:25:46 AM",
+              "derived": {
+                "timestamp": 1592915146000,
+                "offset": 0,
+                "lat": 47.69163,
+                "long": -122.284431,
+                "description": "Aid Response",
+                "address": "4076 Ne 87th St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Wedgwood/View Ridge",
+                "neighborhoodGroup": "Northeast",
+                "units": "E40",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "10": {
+              "id_str": "F200061392",
+              "created_at": "6/23/2020 12:29:18 AM",
+              "derived": {
+                "timestamp": 1592897358000,
+                "offset": 0,
+                "lat": 47.648997,
+                "long": -122.304591,
+                "description": "Aid Response",
+                "address": "Montlake Blvd Ne / Ne Pacific St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E17",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "11": {
+              "id_str": "F200061671",
+              "created_at": "6/23/2020 6:56:19 PM",
+              "derived": {
+                "timestamp": 1592963779000,
+                "offset": 0,
+                "lat": 47.663072,
+                "long": -122.310631,
+                "description": "Auto Fire Alarm",
+                "address": "1617 Ne 47th St",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E17 L10 L9",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "12": {
+              "id_str": "F200061668",
+              "created_at": "6/23/2020 6:52:25 PM",
+              "derived": {
+                "timestamp": 1592963545000,
+                "offset": 0,
+                "lat": 47.661266,
+                "long": -122.284754,
+                "description": "Auto Fire Alarm",
+                "address": "4500 40th Av Ne",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Laurelhurst/Sand Point",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 L9",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "13": {
+              "id_str": "F200061652",
+              "created_at": "6/23/2020 5:48:36 PM",
+              "derived": {
+                "timestamp": 1592959716000,
+                "offset": 0,
+                "lat": 47.665845,
+                "long": -122.301932,
+                "description": "Aid Response",
+                "address": "2401 Ne Blakeley St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ravenna/Bryant",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "14": {
+              "id_str": "F200061639",
+              "created_at": "6/23/2020 5:07:55 PM",
+              "derived": {
+                "timestamp": 1592957275000,
+                "offset": 0,
+                "lat": 47.661448,
+                "long": -122.30838,
+                "description": "Medic Response, 6 per Rule",
+                "address": "4522 18th Av Ne",
+                "active": false,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38 L9 M17",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "15": {
+              "id_str": "F200061638",
+              "created_at": "6/23/2020 5:07:39 PM",
+              "derived": {
+                "timestamp": 1592957259000,
+                "offset": 0,
+                "lat": 47.661448,
+                "long": -122.30838,
+                "description": "Medic Response, 6 per Rule",
+                "address": "4522 18th Av Ne",
+                "active": false,
+                "unitCount": 4,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E31 L9 M17 M18",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "x0": 1592895600000,
+            "x1": 1592982000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 16,
+            "cumulative": 16
+          }
+        ]
+      }
+    ]
+  }
+]

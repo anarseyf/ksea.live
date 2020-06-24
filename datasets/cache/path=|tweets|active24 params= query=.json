@@ -1,0 +1,585 @@
+[
+  {
+    "intervals": [
+      {
+        "start": 1592887442025,
+        "end": 1592973842025,
+        "offset": 0,
+        "values": [
+          {
+            "id_str": "F200061723",
+            "created_at": "6/23/2020 8:53:48 PM",
+            "derived": {
+              "timestamp": 1592970828000,
+              "offset": 0,
+              "lat": 47.575875,
+              "long": -122.294935,
+              "description": "Aid Response Yellow",
+              "address": "2931 S Mount Baker Blvd",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061722",
+            "created_at": "6/23/2020 8:51:04 PM",
+            "derived": {
+              "timestamp": 1592970664000,
+              "offset": 0,
+              "description": "Illegal Burn",
+              "address": "2024 Nw 57th St",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "units": "E18",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061721",
+            "created_at": "6/23/2020 8:40:06 PM",
+            "derived": {
+              "timestamp": 1592970006000,
+              "offset": 0,
+              "lat": 47.619948,
+              "long": -122.31534,
+              "description": "Aid Response",
+              "address": "1321 E John St",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Capitol Hill",
+              "neighborhoodGroup": "East",
+              "units": "A25",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061720",
+            "created_at": "6/23/2020 8:37:16 PM",
+            "derived": {
+              "timestamp": 1592969836000,
+              "offset": 0,
+              "lat": 47.521023,
+              "long": -122.366095,
+              "description": "Low Acuity Response",
+              "address": "2615 Sw Barton St",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Roxhill/Westwood",
+              "neighborhoodGroup": "Delridge Neighborhoods",
+              "units": "E37",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061710",
+            "created_at": "6/23/2020 8:11:24 PM",
+            "derived": {
+              "timestamp": 1592968284000,
+              "offset": 0,
+              "lat": 47.53368,
+              "long": -122.355032,
+              "description": "Aid Response",
+              "address": "SW HOLDEN ST / 16TH AVE SW",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Riverview",
+              "neighborhoodGroup": "Delridge Neighborhoods",
+              "units": "L13",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061702",
+            "created_at": "6/23/2020 7:56:07 PM",
+            "derived": {
+              "timestamp": 1592967367000,
+              "offset": 0,
+              "lat": 47.598331,
+              "long": -122.313407,
+              "description": "2RED - 1 + 1",
+              "address": "Rainier Ave S / S King St",
+              "active": true,
+              "unitCount": 5,
+              "severity": 1,
+              "neighborhood": "Judkins Park",
+              "neighborhoodGroup": "Central",
+              "units": "B5 E10 E5 L3 MAR5",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          }
+        ],
+        "total": 6,
+        "groupby": "time",
+        "key": "1592887442025",
+        "bins": [
+          {
+            "x0": 1592887442025,
+            "x1": 1592887500000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592887500000,
+            "x1": 1592891100000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592891100000,
+            "x1": 1592894700000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592894700000,
+            "x1": 1592898300000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592898300000,
+            "x1": 1592901900000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592901900000,
+            "x1": 1592905500000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592905500000,
+            "x1": 1592909100000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592909100000,
+            "x1": 1592912700000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592912700000,
+            "x1": 1592916300000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592916300000,
+            "x1": 1592919900000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592919900000,
+            "x1": 1592923500000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592923500000,
+            "x1": 1592927100000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592927100000,
+            "x1": 1592930700000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592930700000,
+            "x1": 1592934300000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592934300000,
+            "x1": 1592937900000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592937900000,
+            "x1": 1592941500000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592941500000,
+            "x1": 1592945100000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592945100000,
+            "x1": 1592948700000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592948700000,
+            "x1": 1592952300000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592952300000,
+            "x1": 1592955900000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592955900000,
+            "x1": 1592959500000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592959500000,
+            "x1": 1592963100000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592963100000,
+            "x1": 1592966700000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "0": {
+              "id_str": "F200061721",
+              "created_at": "6/23/2020 8:40:06 PM",
+              "derived": {
+                "timestamp": 1592970006000,
+                "offset": 0,
+                "lat": 47.619948,
+                "long": -122.31534,
+                "description": "Aid Response",
+                "address": "1321 E John St",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Capitol Hill",
+                "neighborhoodGroup": "East",
+                "units": "A25",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061720",
+              "created_at": "6/23/2020 8:37:16 PM",
+              "derived": {
+                "timestamp": 1592969836000,
+                "offset": 0,
+                "lat": 47.521023,
+                "long": -122.366095,
+                "description": "Low Acuity Response",
+                "address": "2615 Sw Barton St",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Roxhill/Westwood",
+                "neighborhoodGroup": "Delridge Neighborhoods",
+                "units": "E37",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "2": {
+              "id_str": "F200061710",
+              "created_at": "6/23/2020 8:11:24 PM",
+              "derived": {
+                "timestamp": 1592968284000,
+                "offset": 0,
+                "lat": 47.53368,
+                "long": -122.355032,
+                "description": "Aid Response",
+                "address": "SW HOLDEN ST / 16TH AVE SW",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Riverview",
+                "neighborhoodGroup": "Delridge Neighborhoods",
+                "units": "L13",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "3": {
+              "id_str": "F200061702",
+              "created_at": "6/23/2020 7:56:07 PM",
+              "derived": {
+                "timestamp": 1592967367000,
+                "offset": 0,
+                "lat": 47.598331,
+                "long": -122.313407,
+                "description": "2RED - 1 + 1",
+                "address": "Rainier Ave S / S King St",
+                "active": true,
+                "unitCount": 5,
+                "severity": 1,
+                "neighborhood": "Judkins Park",
+                "neighborhoodGroup": "Central",
+                "units": "B5 E10 E5 L3 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592966700000,
+            "x1": 1592970300000,
+            "sev1": 1,
+            "sev2": 0,
+            "length": 4,
+            "cumulative": 4
+          },
+          {
+            "0": {
+              "id_str": "F200061723",
+              "created_at": "6/23/2020 8:53:48 PM",
+              "derived": {
+                "timestamp": 1592970828000,
+                "offset": 0,
+                "lat": 47.575875,
+                "long": -122.294935,
+                "description": "Aid Response Yellow",
+                "address": "2931 S Mount Baker Blvd",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061722",
+              "created_at": "6/23/2020 8:51:04 PM",
+              "derived": {
+                "timestamp": 1592970664000,
+                "offset": 0,
+                "description": "Illegal Burn",
+                "address": "2024 Nw 57th St",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "units": "E18",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592970300000,
+            "x1": 1592973842025,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 6
+          }
+        ],
+        "binsHiRes": [],
+        "binsLowRes": [
+          {
+            "x0": 1592887442025,
+            "x1": 1592887500000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "0": {
+              "id_str": "F200061723",
+              "created_at": "6/23/2020 8:53:48 PM",
+              "derived": {
+                "timestamp": 1592970828000,
+                "offset": 0,
+                "lat": 47.575875,
+                "long": -122.294935,
+                "description": "Aid Response Yellow",
+                "address": "2931 S Mount Baker Blvd",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061722",
+              "created_at": "6/23/2020 8:51:04 PM",
+              "derived": {
+                "timestamp": 1592970664000,
+                "offset": 0,
+                "description": "Illegal Burn",
+                "address": "2024 Nw 57th St",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "units": "E18",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "2": {
+              "id_str": "F200061721",
+              "created_at": "6/23/2020 8:40:06 PM",
+              "derived": {
+                "timestamp": 1592970006000,
+                "offset": 0,
+                "lat": 47.619948,
+                "long": -122.31534,
+                "description": "Aid Response",
+                "address": "1321 E John St",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Capitol Hill",
+                "neighborhoodGroup": "East",
+                "units": "A25",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "3": {
+              "id_str": "F200061720",
+              "created_at": "6/23/2020 8:37:16 PM",
+              "derived": {
+                "timestamp": 1592969836000,
+                "offset": 0,
+                "lat": 47.521023,
+                "long": -122.366095,
+                "description": "Low Acuity Response",
+                "address": "2615 Sw Barton St",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Roxhill/Westwood",
+                "neighborhoodGroup": "Delridge Neighborhoods",
+                "units": "E37",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "4": {
+              "id_str": "F200061710",
+              "created_at": "6/23/2020 8:11:24 PM",
+              "derived": {
+                "timestamp": 1592968284000,
+                "offset": 0,
+                "lat": 47.53368,
+                "long": -122.355032,
+                "description": "Aid Response",
+                "address": "SW HOLDEN ST / 16TH AVE SW",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Riverview",
+                "neighborhoodGroup": "Delridge Neighborhoods",
+                "units": "L13",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "5": {
+              "id_str": "F200061702",
+              "created_at": "6/23/2020 7:56:07 PM",
+              "derived": {
+                "timestamp": 1592967367000,
+                "offset": 0,
+                "lat": 47.598331,
+                "long": -122.313407,
+                "description": "2RED - 1 + 1",
+                "address": "Rainier Ave S / S King St",
+                "active": true,
+                "unitCount": 5,
+                "severity": 1,
+                "neighborhood": "Judkins Park",
+                "neighborhoodGroup": "Central",
+                "units": "B5 E10 E5 L3 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592887500000,
+            "x1": 1592973842025,
+            "sev1": 1,
+            "sev2": 0,
+            "length": 6,
+            "cumulative": 6
+          }
+        ]
+      }
+    ]
+  }
+]

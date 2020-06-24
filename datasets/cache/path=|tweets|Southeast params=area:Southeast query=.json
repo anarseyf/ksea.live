@@ -1,0 +1,1405 @@
+[
+  {
+    "intervals": [
+      {
+        "start": 1592895600000,
+        "end": 1592982000000,
+        "offset": 0,
+        "values": [
+          {
+            "id_str": "F200061626",
+            "created_at": "6/23/2020 4:47:32 PM",
+            "derived": {
+              "timestamp": 1592956052000,
+              "offset": 0,
+              "lat": 47.566106,
+              "long": -122.286094,
+              "description": "1RED 1 Unit",
+              "address": "4108 37th Ave S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Columbia City",
+              "neighborhoodGroup": "Southeast",
+              "units": "E28 MAR5",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061624",
+            "created_at": "6/23/2020 4:42:23 PM",
+            "derived": {
+              "timestamp": 1592955743000,
+              "offset": 0,
+              "lat": 47.569608,
+              "long": -122.290486,
+              "description": "Dumpster Fire",
+              "address": "3820 Rainier Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Columbia City",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30 MAR5",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061602",
+            "created_at": "6/23/2020 3:44:58 PM",
+            "derived": {
+              "timestamp": 1592952298000,
+              "offset": 0,
+              "lat": 47.531582,
+              "long": -122.26999,
+              "description": "MVI - Motor Vehicle Incident",
+              "address": "S Kenyon St / Rainier Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Rainier Beach",
+              "neighborhoodGroup": "Southeast",
+              "units": "E33",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061581",
+            "created_at": "6/23/2020 2:43:55 PM",
+            "derived": {
+              "timestamp": 1592948635000,
+              "offset": 0,
+              "lat": 47.535387,
+              "long": -122.267284,
+              "description": "Medic Response",
+              "address": "7500 Seward Park Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Seward Park",
+              "neighborhoodGroup": "Southeast",
+              "units": "E28 M28",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061578",
+            "created_at": "6/23/2020 2:41:34 PM",
+            "derived": {
+              "timestamp": 1592948494000,
+              "offset": 0,
+              "lat": 47.584234,
+              "long": -122.299024,
+              "description": "Auto Fire Alarm",
+              "address": "2121 26th Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E6 L3",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061561",
+            "created_at": "6/23/2020 1:54:15 PM",
+            "derived": {
+              "timestamp": 1592945655000,
+              "offset": 0,
+              "lat": 47.584234,
+              "long": -122.299024,
+              "description": "Aid Response",
+              "address": "2121 26th Av S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "L3",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061558",
+            "created_at": "6/23/2020 1:40:55 PM",
+            "derived": {
+              "timestamp": 1592944855000,
+              "offset": 0,
+              "lat": 47.506341,
+              "long": -122.254524,
+              "description": "MVI - Motor Vehicle Incident",
+              "address": "10601 Renton Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Rainier Beach",
+              "neighborhoodGroup": "Southeast",
+              "units": "E33",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061550",
+            "created_at": "6/23/2020 1:24:03 PM",
+            "derived": {
+              "timestamp": 1592943843000,
+              "offset": 0,
+              "lat": 47.578119,
+              "long": -122.287632,
+              "description": "Auto Fire Alarm",
+              "address": "2811 Mount Rainier Dr S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30 L3",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061532",
+            "created_at": "6/23/2020 12:27:35 PM",
+            "derived": {
+              "timestamp": 1592940455000,
+              "offset": 0,
+              "lat": 47.528889,
+              "long": -122.269131,
+              "description": "Aid Response",
+              "address": "8327 Wabash Av S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Rainier Beach",
+              "neighborhoodGroup": "Southeast",
+              "units": "E28 E33",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061517",
+            "created_at": "6/23/2020 11:51:37 AM",
+            "derived": {
+              "timestamp": 1592938297000,
+              "offset": 0,
+              "lat": 47.548628,
+              "long": -122.276937,
+              "description": "Aid Response",
+              "address": "5983 Rainier Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Columbia City",
+              "neighborhoodGroup": "Southeast",
+              "units": "L12",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061506",
+            "created_at": "6/23/2020 10:58:18 AM",
+            "derived": {
+              "timestamp": 1592935098000,
+              "offset": 0,
+              "lat": 47.49872,
+              "long": -122.261025,
+              "description": "Aid Response",
+              "address": "11250 57th Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Rainier Beach",
+              "neighborhoodGroup": "Southeast",
+              "units": "E33",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061488",
+            "created_at": "6/23/2020 9:33:00 AM",
+            "derived": {
+              "timestamp": 1592929980000,
+              "offset": 0,
+              "lat": 47.49872,
+              "long": -122.261025,
+              "description": "Aid Response",
+              "address": "11250 57th Ave S",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Rainier Beach",
+              "neighborhoodGroup": "Southeast",
+              "units": "E33",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061411",
+            "created_at": "6/23/2020 2:34:43 AM",
+            "derived": {
+              "timestamp": 1592904883000,
+              "offset": 0,
+              "lat": 47.522342,
+              "long": -122.272746,
+              "description": "Aid Response",
+              "address": "4814 S Director St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Rainier Beach",
+              "neighborhoodGroup": "Southeast",
+              "units": "E33",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061723",
+            "created_at": "6/23/2020 8:53:48 PM",
+            "derived": {
+              "timestamp": 1592970828000,
+              "offset": 0,
+              "lat": 47.575875,
+              "long": -122.294935,
+              "description": "Aid Response Yellow",
+              "address": "2931 S Mount Baker Blvd",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061712",
+            "created_at": "6/23/2020 8:13:21 PM",
+            "derived": {
+              "timestamp": 1592968401000,
+              "offset": 0,
+              "lat": 47.509684,
+              "long": -122.263054,
+              "description": "Aid Response",
+              "address": "5601 S Ryan St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Rainier Beach",
+              "neighborhoodGroup": "Southeast",
+              "units": "E33",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061679",
+            "created_at": "6/23/2020 7:11:59 PM",
+            "derived": {
+              "timestamp": 1592964719000,
+              "offset": 0,
+              "lat": 47.582509,
+              "long": -122.29791,
+              "description": "1RED 1 Unit",
+              "address": "M L King Jr Way S / S Bayview St",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30 E6",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061674",
+            "created_at": "6/23/2020 7:00:53 PM",
+            "derived": {
+              "timestamp": 1592964053000,
+              "offset": 0,
+              "lat": 47.583642,
+              "long": -122.298145,
+              "description": "1RED 1 Unit",
+              "address": "M L KING JR WAY S / S WALKER ST",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061665",
+            "created_at": "6/23/2020 6:47:37 PM",
+            "derived": {
+              "timestamp": 1592963257000,
+              "offset": 0,
+              "lat": 47.578347,
+              "long": -122.296188,
+              "description": "Bark Fire",
+              "address": "M L King Jr Way S / S Mcclellan St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061655",
+            "created_at": "6/23/2020 5:53:13 PM",
+            "derived": {
+              "timestamp": 1592959993000,
+              "offset": 0,
+              "lat": 47.563954,
+              "long": -122.294845,
+              "description": "Aid Response",
+              "address": "3020 S Genesee St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Columbia City",
+              "neighborhoodGroup": "Southeast",
+              "units": "E28",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061653",
+            "created_at": "6/23/2020 5:48:37 PM",
+            "derived": {
+              "timestamp": 1592959717000,
+              "offset": 0,
+              "lat": 47.58548,
+              "long": -122.298131,
+              "description": "1RED 1 Unit",
+              "address": "2000 M L King Jr Way S",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "Mt. Baker/North Rainier",
+              "neighborhoodGroup": "Southeast",
+              "units": "E30 MAR5",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          }
+        ],
+        "total": 20,
+        "groupby": "time",
+        "key": "1592895600000",
+        "bins": [
+          {
+            "x0": 1592895600000,
+            "x1": 1592899200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592899200000,
+            "x1": 1592902800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "0": {
+              "id_str": "F200061411",
+              "created_at": "6/23/2020 2:34:43 AM",
+              "derived": {
+                "timestamp": 1592904883000,
+                "offset": 0,
+                "lat": 47.522342,
+                "long": -122.272746,
+                "description": "Aid Response",
+                "address": "4814 S Director St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592902800000,
+            "x1": 1592906400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592906400000,
+            "x1": 1592910000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592910000000,
+            "x1": 1592913600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592913600000,
+            "x1": 1592917200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592917200000,
+            "x1": 1592920800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592920800000,
+            "x1": 1592924400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592924400000,
+            "x1": 1592928000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "0": {
+              "id_str": "F200061488",
+              "created_at": "6/23/2020 9:33:00 AM",
+              "derived": {
+                "timestamp": 1592929980000,
+                "offset": 0,
+                "lat": 47.49872,
+                "long": -122.261025,
+                "description": "Aid Response",
+                "address": "11250 57th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592928000000,
+            "x1": 1592931600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 2
+          },
+          {
+            "0": {
+              "id_str": "F200061506",
+              "created_at": "6/23/2020 10:58:18 AM",
+              "derived": {
+                "timestamp": 1592935098000,
+                "offset": 0,
+                "lat": 47.49872,
+                "long": -122.261025,
+                "description": "Aid Response",
+                "address": "11250 57th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592931600000,
+            "x1": 1592935200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 3
+          },
+          {
+            "0": {
+              "id_str": "F200061517",
+              "created_at": "6/23/2020 11:51:37 AM",
+              "derived": {
+                "timestamp": 1592938297000,
+                "offset": 0,
+                "lat": 47.548628,
+                "long": -122.276937,
+                "description": "Aid Response",
+                "address": "5983 Rainier Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "L12",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592935200000,
+            "x1": 1592938800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 4
+          },
+          {
+            "0": {
+              "id_str": "F200061532",
+              "created_at": "6/23/2020 12:27:35 PM",
+              "derived": {
+                "timestamp": 1592940455000,
+                "offset": 0,
+                "lat": 47.528889,
+                "long": -122.269131,
+                "description": "Aid Response",
+                "address": "8327 Wabash Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28 E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592938800000,
+            "x1": 1592942400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 5
+          },
+          {
+            "0": {
+              "id_str": "F200061561",
+              "created_at": "6/23/2020 1:54:15 PM",
+              "derived": {
+                "timestamp": 1592945655000,
+                "offset": 0,
+                "lat": 47.584234,
+                "long": -122.299024,
+                "description": "Aid Response",
+                "address": "2121 26th Av S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "L3",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061558",
+              "created_at": "6/23/2020 1:40:55 PM",
+              "derived": {
+                "timestamp": 1592944855000,
+                "offset": 0,
+                "lat": 47.506341,
+                "long": -122.254524,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "10601 Renton Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "2": {
+              "id_str": "F200061550",
+              "created_at": "6/23/2020 1:24:03 PM",
+              "derived": {
+                "timestamp": 1592943843000,
+                "offset": 0,
+                "lat": 47.578119,
+                "long": -122.287632,
+                "description": "Auto Fire Alarm",
+                "address": "2811 Mount Rainier Dr S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 L3",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592942400000,
+            "x1": 1592946000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 3,
+            "cumulative": 8
+          },
+          {
+            "0": {
+              "id_str": "F200061581",
+              "created_at": "6/23/2020 2:43:55 PM",
+              "derived": {
+                "timestamp": 1592948635000,
+                "offset": 0,
+                "lat": 47.535387,
+                "long": -122.267284,
+                "description": "Medic Response",
+                "address": "7500 Seward Park Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Seward Park",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28 M28",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "1": {
+              "id_str": "F200061578",
+              "created_at": "6/23/2020 2:41:34 PM",
+              "derived": {
+                "timestamp": 1592948494000,
+                "offset": 0,
+                "lat": 47.584234,
+                "long": -122.299024,
+                "description": "Auto Fire Alarm",
+                "address": "2121 26th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E6 L3",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592946000000,
+            "x1": 1592949600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 10
+          },
+          {
+            "0": {
+              "id_str": "F200061602",
+              "created_at": "6/23/2020 3:44:58 PM",
+              "derived": {
+                "timestamp": 1592952298000,
+                "offset": 0,
+                "lat": 47.531582,
+                "long": -122.26999,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "S Kenyon St / Rainier Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592949600000,
+            "x1": 1592953200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 11
+          },
+          {
+            "0": {
+              "id_str": "F200061626",
+              "created_at": "6/23/2020 4:47:32 PM",
+              "derived": {
+                "timestamp": 1592956052000,
+                "offset": 0,
+                "lat": 47.566106,
+                "long": -122.286094,
+                "description": "1RED 1 Unit",
+                "address": "4108 37th Ave S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "1": {
+              "id_str": "F200061624",
+              "created_at": "6/23/2020 4:42:23 PM",
+              "derived": {
+                "timestamp": 1592955743000,
+                "offset": 0,
+                "lat": 47.569608,
+                "long": -122.290486,
+                "description": "Dumpster Fire",
+                "address": "3820 Rainier Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 MAR5",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592953200000,
+            "x1": 1592956800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 13
+          },
+          {
+            "0": {
+              "id_str": "F200061655",
+              "created_at": "6/23/2020 5:53:13 PM",
+              "derived": {
+                "timestamp": 1592959993000,
+                "offset": 0,
+                "lat": 47.563954,
+                "long": -122.294845,
+                "description": "Aid Response",
+                "address": "3020 S Genesee St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061653",
+              "created_at": "6/23/2020 5:48:37 PM",
+              "derived": {
+                "timestamp": 1592959717000,
+                "offset": 0,
+                "lat": 47.58548,
+                "long": -122.298131,
+                "description": "1RED 1 Unit",
+                "address": "2000 M L King Jr Way S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592956800000,
+            "x1": 1592960400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 15
+          },
+          {
+            "0": {
+              "id_str": "F200061665",
+              "created_at": "6/23/2020 6:47:37 PM",
+              "derived": {
+                "timestamp": 1592963257000,
+                "offset": 0,
+                "lat": 47.578347,
+                "long": -122.296188,
+                "description": "Bark Fire",
+                "address": "M L King Jr Way S / S Mcclellan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592960400000,
+            "x1": 1592964000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 16
+          },
+          {
+            "0": {
+              "id_str": "F200061679",
+              "created_at": "6/23/2020 7:11:59 PM",
+              "derived": {
+                "timestamp": 1592964719000,
+                "offset": 0,
+                "lat": 47.582509,
+                "long": -122.29791,
+                "description": "1RED 1 Unit",
+                "address": "M L King Jr Way S / S Bayview St",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 E6",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "1": {
+              "id_str": "F200061674",
+              "created_at": "6/23/2020 7:00:53 PM",
+              "derived": {
+                "timestamp": 1592964053000,
+                "offset": 0,
+                "lat": 47.583642,
+                "long": -122.298145,
+                "description": "1RED 1 Unit",
+                "address": "M L KING JR WAY S / S WALKER ST",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592964000000,
+            "x1": 1592967600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 18
+          },
+          {
+            "0": {
+              "id_str": "F200061723",
+              "created_at": "6/23/2020 8:53:48 PM",
+              "derived": {
+                "timestamp": 1592970828000,
+                "offset": 0,
+                "lat": 47.575875,
+                "long": -122.294935,
+                "description": "Aid Response Yellow",
+                "address": "2931 S Mount Baker Blvd",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061712",
+              "created_at": "6/23/2020 8:13:21 PM",
+              "derived": {
+                "timestamp": 1592968401000,
+                "offset": 0,
+                "lat": 47.509684,
+                "long": -122.263054,
+                "description": "Aid Response",
+                "address": "5601 S Ryan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592967600000,
+            "x1": 1592971200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 20
+          },
+          {
+            "x0": 1592971200000,
+            "x1": 1592974800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 20
+          }
+        ],
+        "binsHiRes": [],
+        "binsLowRes": [
+          {
+            "0": {
+              "id_str": "F200061626",
+              "created_at": "6/23/2020 4:47:32 PM",
+              "derived": {
+                "timestamp": 1592956052000,
+                "offset": 0,
+                "lat": 47.566106,
+                "long": -122.286094,
+                "description": "1RED 1 Unit",
+                "address": "4108 37th Ave S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "1": {
+              "id_str": "F200061624",
+              "created_at": "6/23/2020 4:42:23 PM",
+              "derived": {
+                "timestamp": 1592955743000,
+                "offset": 0,
+                "lat": 47.569608,
+                "long": -122.290486,
+                "description": "Dumpster Fire",
+                "address": "3820 Rainier Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 MAR5",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "2": {
+              "id_str": "F200061602",
+              "created_at": "6/23/2020 3:44:58 PM",
+              "derived": {
+                "timestamp": 1592952298000,
+                "offset": 0,
+                "lat": 47.531582,
+                "long": -122.26999,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "S Kenyon St / Rainier Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "3": {
+              "id_str": "F200061581",
+              "created_at": "6/23/2020 2:43:55 PM",
+              "derived": {
+                "timestamp": 1592948635000,
+                "offset": 0,
+                "lat": 47.535387,
+                "long": -122.267284,
+                "description": "Medic Response",
+                "address": "7500 Seward Park Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Seward Park",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28 M28",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "4": {
+              "id_str": "F200061578",
+              "created_at": "6/23/2020 2:41:34 PM",
+              "derived": {
+                "timestamp": 1592948494000,
+                "offset": 0,
+                "lat": 47.584234,
+                "long": -122.299024,
+                "description": "Auto Fire Alarm",
+                "address": "2121 26th Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E6 L3",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "5": {
+              "id_str": "F200061561",
+              "created_at": "6/23/2020 1:54:15 PM",
+              "derived": {
+                "timestamp": 1592945655000,
+                "offset": 0,
+                "lat": 47.584234,
+                "long": -122.299024,
+                "description": "Aid Response",
+                "address": "2121 26th Av S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "L3",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "6": {
+              "id_str": "F200061558",
+              "created_at": "6/23/2020 1:40:55 PM",
+              "derived": {
+                "timestamp": 1592944855000,
+                "offset": 0,
+                "lat": 47.506341,
+                "long": -122.254524,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "10601 Renton Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "7": {
+              "id_str": "F200061550",
+              "created_at": "6/23/2020 1:24:03 PM",
+              "derived": {
+                "timestamp": 1592943843000,
+                "offset": 0,
+                "lat": 47.578119,
+                "long": -122.287632,
+                "description": "Auto Fire Alarm",
+                "address": "2811 Mount Rainier Dr S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 L3",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "8": {
+              "id_str": "F200061532",
+              "created_at": "6/23/2020 12:27:35 PM",
+              "derived": {
+                "timestamp": 1592940455000,
+                "offset": 0,
+                "lat": 47.528889,
+                "long": -122.269131,
+                "description": "Aid Response",
+                "address": "8327 Wabash Av S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28 E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "9": {
+              "id_str": "F200061517",
+              "created_at": "6/23/2020 11:51:37 AM",
+              "derived": {
+                "timestamp": 1592938297000,
+                "offset": 0,
+                "lat": 47.548628,
+                "long": -122.276937,
+                "description": "Aid Response",
+                "address": "5983 Rainier Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "L12",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "10": {
+              "id_str": "F200061506",
+              "created_at": "6/23/2020 10:58:18 AM",
+              "derived": {
+                "timestamp": 1592935098000,
+                "offset": 0,
+                "lat": 47.49872,
+                "long": -122.261025,
+                "description": "Aid Response",
+                "address": "11250 57th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "11": {
+              "id_str": "F200061488",
+              "created_at": "6/23/2020 9:33:00 AM",
+              "derived": {
+                "timestamp": 1592929980000,
+                "offset": 0,
+                "lat": 47.49872,
+                "long": -122.261025,
+                "description": "Aid Response",
+                "address": "11250 57th Ave S",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "12": {
+              "id_str": "F200061411",
+              "created_at": "6/23/2020 2:34:43 AM",
+              "derived": {
+                "timestamp": 1592904883000,
+                "offset": 0,
+                "lat": 47.522342,
+                "long": -122.272746,
+                "description": "Aid Response",
+                "address": "4814 S Director St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "13": {
+              "id_str": "F200061723",
+              "created_at": "6/23/2020 8:53:48 PM",
+              "derived": {
+                "timestamp": 1592970828000,
+                "offset": 0,
+                "lat": 47.575875,
+                "long": -122.294935,
+                "description": "Aid Response Yellow",
+                "address": "2931 S Mount Baker Blvd",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "14": {
+              "id_str": "F200061712",
+              "created_at": "6/23/2020 8:13:21 PM",
+              "derived": {
+                "timestamp": 1592968401000,
+                "offset": 0,
+                "lat": 47.509684,
+                "long": -122.263054,
+                "description": "Aid Response",
+                "address": "5601 S Ryan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Rainier Beach",
+                "neighborhoodGroup": "Southeast",
+                "units": "E33",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "15": {
+              "id_str": "F200061679",
+              "created_at": "6/23/2020 7:11:59 PM",
+              "derived": {
+                "timestamp": 1592964719000,
+                "offset": 0,
+                "lat": 47.582509,
+                "long": -122.29791,
+                "description": "1RED 1 Unit",
+                "address": "M L King Jr Way S / S Bayview St",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 E6",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "16": {
+              "id_str": "F200061674",
+              "created_at": "6/23/2020 7:00:53 PM",
+              "derived": {
+                "timestamp": 1592964053000,
+                "offset": 0,
+                "lat": 47.583642,
+                "long": -122.298145,
+                "description": "1RED 1 Unit",
+                "address": "M L KING JR WAY S / S WALKER ST",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "17": {
+              "id_str": "F200061665",
+              "created_at": "6/23/2020 6:47:37 PM",
+              "derived": {
+                "timestamp": 1592963257000,
+                "offset": 0,
+                "lat": 47.578347,
+                "long": -122.296188,
+                "description": "Bark Fire",
+                "address": "M L King Jr Way S / S Mcclellan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "18": {
+              "id_str": "F200061655",
+              "created_at": "6/23/2020 5:53:13 PM",
+              "derived": {
+                "timestamp": 1592959993000,
+                "offset": 0,
+                "lat": 47.563954,
+                "long": -122.294845,
+                "description": "Aid Response",
+                "address": "3020 S Genesee St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Columbia City",
+                "neighborhoodGroup": "Southeast",
+                "units": "E28",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "19": {
+              "id_str": "F200061653",
+              "created_at": "6/23/2020 5:48:37 PM",
+              "derived": {
+                "timestamp": 1592959717000,
+                "offset": 0,
+                "lat": 47.58548,
+                "long": -122.298131,
+                "description": "1RED 1 Unit",
+                "address": "2000 M L King Jr Way S",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "Mt. Baker/North Rainier",
+                "neighborhoodGroup": "Southeast",
+                "units": "E30 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592895600000,
+            "x1": 1592982000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 20,
+            "cumulative": 20
+          }
+        ]
+      }
+    ]
+  }
+]

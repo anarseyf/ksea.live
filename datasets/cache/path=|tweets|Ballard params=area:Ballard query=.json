@@ -1,0 +1,805 @@
+[
+  {
+    "intervals": [
+      {
+        "start": 1592895600000,
+        "end": 1592982000000,
+        "offset": 0,
+        "values": [
+          {
+            "id_str": "F200061609",
+            "created_at": "6/23/2020 4:03:43 PM",
+            "derived": {
+              "timestamp": 1592953423000,
+              "offset": 0,
+              "lat": 47.700629,
+              "long": -122.387843,
+              "description": "Aid Response",
+              "address": "2428 Nw Neptune Pl",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "North Beach/Blue Ridge",
+              "neighborhoodGroup": "Ballard",
+              "units": "E35",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061557",
+            "created_at": "6/23/2020 1:40:11 PM",
+            "derived": {
+              "timestamp": 1592944811000,
+              "offset": 0,
+              "lat": 47.683599,
+              "long": -122.387565,
+              "description": "Aid Response",
+              "address": "7547 24th Av Nw",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Sunset Hill/Loyal Heights",
+              "neighborhoodGroup": "Ballard",
+              "units": "E35",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061487",
+            "created_at": "6/23/2020 9:32:45 AM",
+            "derived": {
+              "timestamp": 1592929965000,
+              "offset": 0,
+              "lat": 47.667669,
+              "long": -122.37917,
+              "description": "MVI - Motor Vehicle Incident",
+              "address": "5420 Barnes Av Nw",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ballard",
+              "neighborhoodGroup": "Ballard",
+              "units": "L8",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061486",
+            "created_at": "6/23/2020 9:27:27 AM",
+            "derived": {
+              "timestamp": 1592929647000,
+              "offset": 0,
+              "lat": 47.677967,
+              "long": -122.379981,
+              "description": "Aid Response",
+              "address": "6743 18th Ave Nw",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Whittier Heights",
+              "neighborhoodGroup": "Ballard",
+              "units": "E18",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061476",
+            "created_at": "6/23/2020 8:33:22 AM",
+            "derived": {
+              "timestamp": 1592926402000,
+              "offset": 0,
+              "lat": 47.66749,
+              "long": -122.383093,
+              "description": "Aid Response",
+              "address": "5433 Leary Av Nw",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ballard",
+              "neighborhoodGroup": "Ballard",
+              "units": "E18",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061454",
+            "created_at": "6/23/2020 7:17:51 AM",
+            "derived": {
+              "timestamp": 1592921871000,
+              "offset": 0,
+              "lat": 47.675618,
+              "long": -122.387584,
+              "description": "Bark Fire",
+              "address": "6450 24th Av Nw",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Sunset Hill/Loyal Heights",
+              "neighborhoodGroup": "Ballard",
+              "units": "E18",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061435",
+            "created_at": "6/23/2020 5:15:46 AM",
+            "derived": {
+              "timestamp": 1592914546000,
+              "offset": 0,
+              "lat": 47.69805,
+              "long": -122.375451,
+              "description": "Medic Response",
+              "address": "9524 Mary Ave Nw",
+              "active": false,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "North Beach/Blue Ridge",
+              "neighborhoodGroup": "Ballard",
+              "units": "E35 M31",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
+            "id_str": "F200061403",
+            "created_at": "6/23/2020 2:00:04 AM",
+            "derived": {
+              "timestamp": 1592902804000,
+              "offset": 0,
+              "lat": 47.663662,
+              "long": -122.373594,
+              "description": "Rubbish Fire",
+              "address": "14th Ave Nw / Nw Leary Way",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ballard",
+              "neighborhoodGroup": "Ballard",
+              "units": "E18",
+              "type": "fire",
+              "color": "#d62728"
+            }
+          },
+          {
+            "id_str": "F200061696",
+            "created_at": "6/23/2020 7:43:06 PM",
+            "derived": {
+              "timestamp": 1592966586000,
+              "offset": 0,
+              "lat": 47.666582,
+              "long": -122.376218,
+              "description": "1RED 1 Unit",
+              "address": "5221 15th Av Nw",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ballard",
+              "neighborhoodGroup": "Ballard",
+              "units": "E18",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
+            "id_str": "F200061648",
+            "created_at": "6/23/2020 5:32:16 PM",
+            "derived": {
+              "timestamp": 1592958736000,
+              "offset": 0,
+              "lat": 47.668662,
+              "long": -122.370893,
+              "description": "Low Acuity Response",
+              "address": "1115 Nw Market St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Ballard",
+              "neighborhoodGroup": "Ballard",
+              "units": "E18",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          }
+        ],
+        "total": 10,
+        "groupby": "time",
+        "key": "1592895600000",
+        "bins": [
+          {
+            "x0": 1592895600000,
+            "x1": 1592899200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "x0": 1592899200000,
+            "x1": 1592902800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 0
+          },
+          {
+            "0": {
+              "id_str": "F200061403",
+              "created_at": "6/23/2020 2:00:04 AM",
+              "derived": {
+                "timestamp": 1592902804000,
+                "offset": 0,
+                "lat": 47.663662,
+                "long": -122.373594,
+                "description": "Rubbish Fire",
+                "address": "14th Ave Nw / Nw Leary Way",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592902800000,
+            "x1": 1592906400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592906400000,
+            "x1": 1592910000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "x0": 1592910000000,
+            "x1": 1592913600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 1
+          },
+          {
+            "0": {
+              "id_str": "F200061435",
+              "created_at": "6/23/2020 5:15:46 AM",
+              "derived": {
+                "timestamp": 1592914546000,
+                "offset": 0,
+                "lat": 47.69805,
+                "long": -122.375451,
+                "description": "Medic Response",
+                "address": "9524 Mary Ave Nw",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "North Beach/Blue Ridge",
+                "neighborhoodGroup": "Ballard",
+                "units": "E35 M31",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "x0": 1592913600000,
+            "x1": 1592917200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 2
+          },
+          {
+            "x0": 1592917200000,
+            "x1": 1592920800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 2
+          },
+          {
+            "0": {
+              "id_str": "F200061454",
+              "created_at": "6/23/2020 7:17:51 AM",
+              "derived": {
+                "timestamp": 1592921871000,
+                "offset": 0,
+                "lat": 47.675618,
+                "long": -122.387584,
+                "description": "Bark Fire",
+                "address": "6450 24th Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Sunset Hill/Loyal Heights",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "x0": 1592920800000,
+            "x1": 1592924400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 3
+          },
+          {
+            "0": {
+              "id_str": "F200061476",
+              "created_at": "6/23/2020 8:33:22 AM",
+              "derived": {
+                "timestamp": 1592926402000,
+                "offset": 0,
+                "lat": 47.66749,
+                "long": -122.383093,
+                "description": "Aid Response",
+                "address": "5433 Leary Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592924400000,
+            "x1": 1592928000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 4
+          },
+          {
+            "0": {
+              "id_str": "F200061487",
+              "created_at": "6/23/2020 9:32:45 AM",
+              "derived": {
+                "timestamp": 1592929965000,
+                "offset": 0,
+                "lat": 47.667669,
+                "long": -122.37917,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "5420 Barnes Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "L8",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "1": {
+              "id_str": "F200061486",
+              "created_at": "6/23/2020 9:27:27 AM",
+              "derived": {
+                "timestamp": 1592929647000,
+                "offset": 0,
+                "lat": 47.677967,
+                "long": -122.379981,
+                "description": "Aid Response",
+                "address": "6743 18th Ave Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Whittier Heights",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592928000000,
+            "x1": 1592931600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 2,
+            "cumulative": 6
+          },
+          {
+            "x0": 1592931600000,
+            "x1": 1592935200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 6
+          },
+          {
+            "x0": 1592935200000,
+            "x1": 1592938800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 6
+          },
+          {
+            "x0": 1592938800000,
+            "x1": 1592942400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 6
+          },
+          {
+            "0": {
+              "id_str": "F200061557",
+              "created_at": "6/23/2020 1:40:11 PM",
+              "derived": {
+                "timestamp": 1592944811000,
+                "offset": 0,
+                "lat": 47.683599,
+                "long": -122.387565,
+                "description": "Aid Response",
+                "address": "7547 24th Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Sunset Hill/Loyal Heights",
+                "neighborhoodGroup": "Ballard",
+                "units": "E35",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592942400000,
+            "x1": 1592946000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 7
+          },
+          {
+            "x0": 1592946000000,
+            "x1": 1592949600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 7
+          },
+          {
+            "x0": 1592949600000,
+            "x1": 1592953200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 7
+          },
+          {
+            "0": {
+              "id_str": "F200061609",
+              "created_at": "6/23/2020 4:03:43 PM",
+              "derived": {
+                "timestamp": 1592953423000,
+                "offset": 0,
+                "lat": 47.700629,
+                "long": -122.387843,
+                "description": "Aid Response",
+                "address": "2428 Nw Neptune Pl",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beach/Blue Ridge",
+                "neighborhoodGroup": "Ballard",
+                "units": "E35",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "x0": 1592953200000,
+            "x1": 1592956800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 8
+          },
+          {
+            "0": {
+              "id_str": "F200061648",
+              "created_at": "6/23/2020 5:32:16 PM",
+              "derived": {
+                "timestamp": 1592958736000,
+                "offset": 0,
+                "lat": 47.668662,
+                "long": -122.370893,
+                "description": "Low Acuity Response",
+                "address": "1115 Nw Market St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592956800000,
+            "x1": 1592960400000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 9
+          },
+          {
+            "x0": 1592960400000,
+            "x1": 1592964000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 9
+          },
+          {
+            "0": {
+              "id_str": "F200061696",
+              "created_at": "6/23/2020 7:43:06 PM",
+              "derived": {
+                "timestamp": 1592966586000,
+                "offset": 0,
+                "lat": 47.666582,
+                "long": -122.376218,
+                "description": "1RED 1 Unit",
+                "address": "5221 15th Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592964000000,
+            "x1": 1592967600000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 1,
+            "cumulative": 10
+          },
+          {
+            "x0": 1592967600000,
+            "x1": 1592971200000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 10
+          },
+          {
+            "x0": 1592971200000,
+            "x1": 1592974800000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 0,
+            "cumulative": 10
+          }
+        ],
+        "binsHiRes": [],
+        "binsLowRes": [
+          {
+            "0": {
+              "id_str": "F200061609",
+              "created_at": "6/23/2020 4:03:43 PM",
+              "derived": {
+                "timestamp": 1592953423000,
+                "offset": 0,
+                "lat": 47.700629,
+                "long": -122.387843,
+                "description": "Aid Response",
+                "address": "2428 Nw Neptune Pl",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "North Beach/Blue Ridge",
+                "neighborhoodGroup": "Ballard",
+                "units": "E35",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061557",
+              "created_at": "6/23/2020 1:40:11 PM",
+              "derived": {
+                "timestamp": 1592944811000,
+                "offset": 0,
+                "lat": 47.683599,
+                "long": -122.387565,
+                "description": "Aid Response",
+                "address": "7547 24th Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Sunset Hill/Loyal Heights",
+                "neighborhoodGroup": "Ballard",
+                "units": "E35",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "2": {
+              "id_str": "F200061487",
+              "created_at": "6/23/2020 9:32:45 AM",
+              "derived": {
+                "timestamp": 1592929965000,
+                "offset": 0,
+                "lat": 47.667669,
+                "long": -122.37917,
+                "description": "MVI - Motor Vehicle Incident",
+                "address": "5420 Barnes Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "L8",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "3": {
+              "id_str": "F200061486",
+              "created_at": "6/23/2020 9:27:27 AM",
+              "derived": {
+                "timestamp": 1592929647000,
+                "offset": 0,
+                "lat": 47.677967,
+                "long": -122.379981,
+                "description": "Aid Response",
+                "address": "6743 18th Ave Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Whittier Heights",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "4": {
+              "id_str": "F200061476",
+              "created_at": "6/23/2020 8:33:22 AM",
+              "derived": {
+                "timestamp": 1592926402000,
+                "offset": 0,
+                "lat": 47.66749,
+                "long": -122.383093,
+                "description": "Aid Response",
+                "address": "5433 Leary Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "5": {
+              "id_str": "F200061454",
+              "created_at": "6/23/2020 7:17:51 AM",
+              "derived": {
+                "timestamp": 1592921871000,
+                "offset": 0,
+                "lat": 47.675618,
+                "long": -122.387584,
+                "description": "Bark Fire",
+                "address": "6450 24th Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Sunset Hill/Loyal Heights",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "6": {
+              "id_str": "F200061435",
+              "created_at": "6/23/2020 5:15:46 AM",
+              "derived": {
+                "timestamp": 1592914546000,
+                "offset": 0,
+                "lat": 47.69805,
+                "long": -122.375451,
+                "description": "Medic Response",
+                "address": "9524 Mary Ave Nw",
+                "active": false,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "North Beach/Blue Ridge",
+                "neighborhoodGroup": "Ballard",
+                "units": "E35 M31",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "7": {
+              "id_str": "F200061403",
+              "created_at": "6/23/2020 2:00:04 AM",
+              "derived": {
+                "timestamp": 1592902804000,
+                "offset": 0,
+                "lat": 47.663662,
+                "long": -122.373594,
+                "description": "Rubbish Fire",
+                "address": "14th Ave Nw / Nw Leary Way",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "fire",
+                "color": "#d62728"
+              }
+            },
+            "8": {
+              "id_str": "F200061696",
+              "created_at": "6/23/2020 7:43:06 PM",
+              "derived": {
+                "timestamp": 1592966586000,
+                "offset": 0,
+                "lat": 47.666582,
+                "long": -122.376218,
+                "description": "1RED 1 Unit",
+                "address": "5221 15th Av Nw",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "9": {
+              "id_str": "F200061648",
+              "created_at": "6/23/2020 5:32:16 PM",
+              "derived": {
+                "timestamp": 1592958736000,
+                "offset": 0,
+                "lat": 47.668662,
+                "long": -122.370893,
+                "description": "Low Acuity Response",
+                "address": "1115 Nw Market St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Ballard",
+                "neighborhoodGroup": "Ballard",
+                "units": "E18",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "x0": 1592895600000,
+            "x1": 1592982000000,
+            "sev1": 0,
+            "sev2": 0,
+            "length": 10,
+            "cumulative": 10
+          }
+        ]
+      }
+    ]
+  }
+]

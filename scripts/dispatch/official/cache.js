@@ -16,10 +16,6 @@ const cacheFile = withCachePath("cache.json");
 
 export const runner = async () => {
   const start = new Date();
-  const cache = await readJSONAsync(cacheFile, {});
-  const newCache = {
-    ...cache,
-  };
 
   const areas = [
     "East",
@@ -141,12 +137,12 @@ export const runner = async () => {
     variations.map(async ({ path, params, query, asyncGetter }) => {
       const key = cacheKey(path, params, query);
       const result = await asyncGetter(path, params, query);
-      newCache[key] = result;
+      const file = withCachePath(`${key}.json`);
+      await saveJSONAsync(file, result);
       console.log(`cached: ${key} --> `, result);
     })
   );
 
-  await saveJSONAsync(cacheFile, newCache);
   const end = new Date();
   console.log(`cache > computed in ${end - start}ms`);
 };

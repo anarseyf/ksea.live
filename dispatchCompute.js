@@ -27,12 +27,12 @@ import { readJSONAsync, saveFileAsync } from "./scripts/dispatch/fileUtils";
 import { withCachePath } from "./scripts/dispatch/serverUtils";
 import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
-const cacheFile = withCachePath("cache.json");
-
 export const identityFn = (v) => v;
 
 export const cacheKey = (path, params, query) => {
-  const pathStr = path.replace(/\/$/, ""); // remove trailing '/'
+  // remove trailing '/';
+  // replace other '/' with '|' to avoid confusion in file names
+  const pathStr = path.replace(/\/$/, "").replace(/\//g, "|");
 
   const paramsStr = Object.keys(params)
     .sort()
@@ -42,15 +42,15 @@ export const cacheKey = (path, params, query) => {
   const queryStr = Object.keys(query)
     .sort()
     .map((k) => `${k}:${query[k]}`)
-    .join("&");
+    .join(",");
 
   return `path=${pathStr} params=${paramsStr} query=${queryStr}`;
 };
 
 export const getCachedAsync = async (key, response) => {
   console.log("getCachedAsync: ", key);
-  const cache = await readJSONAsync(cacheFile, {});
-  const result = cache[key];
+  const file = withCachePath(`${key}.json`);
+  const result = await readJSONAsync(file);
   console.log(`>> Cache ${result ? "HIT" : "MISS"}: ${key}`);
   response && response.set("X-KSEA-cache-hit", result ? 1 : 0);
 
