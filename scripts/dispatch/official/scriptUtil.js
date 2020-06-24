@@ -1,6 +1,10 @@
 const path = require("path");
-import { readJSONAsync, saveJSONAsync, listFilesAsync } from "../fileUtils";
-import { datasetsPath } from "../serverUtils";
+import {
+  readJSONAsync,
+  saveJSONAsync,
+  listFilesAsync,
+} from "../../../fileUtils";
+import { datasetsPath } from "../../../server/serverUtils";
 
 import { runner as updateRunner } from "./update";
 import { runner as combineRunner } from "./combine";

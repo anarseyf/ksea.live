@@ -6,8 +6,8 @@ import {
   toPacificDateString,
   toPacificStringMMMD,
   saveJSONAsync,
-} from "../fileUtils";
-import { datasetsPath } from "../serverUtils";
+} from "../../../fileUtils";
+import { datasetsPath } from "../../../server/serverUtils";
 
 const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   let data = binsLowRes;

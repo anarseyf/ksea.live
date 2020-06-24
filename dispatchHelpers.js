@@ -4,8 +4,8 @@ import {
   toUTCMidnightString,
   readJSONAsync,
   listFilesAsync,
-} from "./scripts/dispatch/fileUtils";
-import { withScriptsJsonPath } from "./scripts/dispatch/serverUtils";
+} from "./fileUtils";
+import { withScriptsJsonPath } from "./server/serverUtils";
 import { groupBy, intervalsReducer } from "./server/groupby";
 import { GroupByOptions } from "./server/groupByOptions";
 

@@ -22,9 +22,8 @@ import {
   getMostRecentAsync,
   statusFile,
 } from "./dispatchHelpers";
-import { readJSONAsync } from "./scripts/dispatch/fileUtils";
-import { withCachePath } from "./scripts/dispatch/serverUtils";
-import { datasetsPath } from "./scripts/dispatch/serverUtils";
+import { readJSONAsync } from "./fileUtils";
+import { withCachePath, datasetsPath } from "./server/serverUtils";
 
 export const identityFn = (v) => v;
 

@@ -1,7 +1,7 @@
 import { getIncidentsMap } from "./mappers";
 import { runForAll } from "./scriptUtil";
-import { saveJSONAsync } from "../fileUtils";
-import { withScriptsJsonPath } from "../serverUtils";
+import { saveJSONAsync } from "../../../fileUtils";
+import { withScriptsJsonPath } from "../../../server/serverUtils";
 
 const main = async () => {
   try {

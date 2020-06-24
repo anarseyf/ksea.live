@@ -1,5 +1,9 @@
-import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { withScriptsJsonPath } from "../serverUtils";
+import {
+  readJSONAsync,
+  saveJSONAsync,
+  appendJSONAsync,
+} from "../../../fileUtils";
+import { withScriptsJsonPath } from "../../../server/serverUtils";
 import { addNhood } from "./mappers";
 const path = require("path");
 

@@ -11,13 +11,15 @@ export const getUserTimeline = async (config) => {
   return res.data;
 };
 
-export const datasetsPath = path.join(__dirname, "../../datasets/official/");
-export const cachePath = path.join(__dirname, "../../datasets/cache/");
-export const scriptsJsonPath = path.join(__dirname, "./official/json/");
+export const datasetsPath = path.join(__dirname, "../datasets/official/");
+export const cachePath = path.join(__dirname, "../datasets/cache/");
+export const scriptsJsonPath = path.join(
+  __dirname,
+  "../scripts/dispatch/official/json/"
+);
 
 export const withDatasetsPath = (fileName) => path.join(datasetsPath, fileName);
 export const withCachePath = (fileName) => path.join(cachePath, fileName);
-
 export const withScriptsJsonPath = (fileName) =>
   path.join(scriptsJsonPath, fileName);
 

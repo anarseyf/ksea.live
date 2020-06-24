@@ -5,14 +5,14 @@ import {
   saveJSONAsync,
   appendJSONAsync,
   toPacificMidnight,
-} from "../fileUtils";
+} from "../../../fileUtils";
 import { scrapeDateAsync } from "./scrape";
 import moment from "moment";
 import {
   withScriptsJsonPath,
   datasetsPath,
   withDatasetsPath,
-} from "../serverUtils";
+} from "../../../server/serverUtils";
 
 const targetFile = withScriptsJsonPath("updated.json");
 

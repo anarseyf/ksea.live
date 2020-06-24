@@ -2,8 +2,7 @@ const fs = require("fs");
 const util = require("util");
 
 import { tz as timezone } from "moment-timezone";
-import { severityMapper, markAsOld, unmarkAsOld } from "./official/mappers";
-import { sortByTimestampDescending, sortNewFirst } from "./serverUtils";
+import { sortByTimestampDescending, sortNewFirst } from "./server/serverUtils";
 
 const getUnits = (entries) =>
   [
@@ -156,4 +155,31 @@ export const listFilesAsync = async (
     console.warn(">>> Warning:", e);
     return defaultValue;
   }
+};
+
+export const severityMapper = ({
+  derived: { units, ...restDerived },
+  ...rest
+}) => {
+  const unitCount = units.split(" ").length;
+  const severity = unitCount >= 10 ? 2 : unitCount >= 5 ? 1 : 0;
+  return {
+    ...rest,
+    derived: {
+      ...restDerived,
+      units,
+      unitCount,
+      severity,
+    },
+  };
+};
+
+const markAsOld = (entry) => {
+  entry.derived._old = true;
+  return entry;
+};
+
+const unmarkAsOld = (entry) => {
+  delete entry.derived._old;
+  return entry;
 };

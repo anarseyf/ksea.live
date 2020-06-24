@@ -3,8 +3,11 @@ import {
   saveJSONAsync,
   appendJSONAsync,
   toUTCMidnightString,
-} from "../fileUtils";
-import { withDatasetsPath, withScriptsJsonPath } from "../serverUtils";
+} from "../../../fileUtils";
+import {
+  withDatasetsPath,
+  withScriptsJsonPath,
+} from "../../../server/serverUtils";
 
 export const runner = async (sourceFile) => {
   try {

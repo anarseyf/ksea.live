@@ -5,7 +5,7 @@ import {
   pacificYearStart,
   subtractYear,
   addYear,
-} from "../scripts/dispatch/fileUtils";
+} from "../fileUtils";
 import { histogram } from "./histogram";
 import { GroupByOptions } from "./groupByOptions";
 

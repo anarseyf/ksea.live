@@ -1,5 +1,9 @@
-import { readJSONAsync, saveJSONAsync, appendJSONAsync } from "../fileUtils";
-import { withScriptsJsonPath } from "../serverUtils";
+import {
+  readJSONAsync,
+  saveJSONAsync,
+  appendJSONAsync,
+} from "../../../fileUtils";
+import { withScriptsJsonPath } from "../../../server/serverUtils";
 import { hasCoordinates, hasNoCoordinates } from "./scriptUtil";
 import { getIncidentsMap } from "./mappers";
 const axios = require("axios").default;
