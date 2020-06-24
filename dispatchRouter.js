@@ -26,19 +26,24 @@ import {
 } from "./dispatchHelpers";
 import {
   identityFn,
+  cacheKey,
+  getCachedAsync,
   getStatusAsync,
-  getHistoryAsync,
   getEntriesForAreaAsync,
   getEntriesByAreaAsync,
   getEntriesByTypeAsync,
-  cacheKey,
-  getCachedAsync,
+  getMajorAsync,
+  getActive24Async,
+  getHistoryAsync,
+  getAnnotationsAsync,
 } from "./dispatchCompute";
 import { readJSONAsync } from "./scripts/dispatch/fileUtils";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 import { datasetsPath } from "./scripts/dispatch/serverUtils";
 
 const axios = require("axios").default;
+
+const cacheKeyForRequest = (req) => cacheKey(req.path, req.params, req.query);
 
 const seattleGovController = async (req, res) => {
   // TODO - delete
@@ -65,7 +70,7 @@ const seattleGovController = async (req, res) => {
 const statusController = async (req, res) => {
   try {
     const key = cacheKeyForRequest(req);
-    const result = (await getCachedAsync(key)) || (await getStatusAsync());
+    const result = (await getCachedAsync(key, res)) || (await getStatusAsync());
 
     res.json(result);
   } catch (e) {
@@ -78,7 +83,7 @@ const forAreaController = async (req, res) => {
   try {
     const key = cacheKeyForRequest(req);
     const result =
-      (await getCachedAsync(key)) ||
+      (await getCachedAsync(key, res)) ||
       (await getEntriesForAreaAsync(req.path, req.params, req.query));
     res.json(result);
   } catch (error) {
@@ -89,16 +94,9 @@ const forAreaController = async (req, res) => {
 
 const active24Controller = async (req, res) => {
   try {
-    const intervals = generate24HourIntervals();
-    const all = await allTweets(intervals);
-    const minimizer =
-      req.query.minimize === "true" ? minimizeGroup : identityFn;
-
-    const intervalGrouper = groupByIntervalGen(intervals);
-    const result = groupBy(GroupByOptions.Nothing, all.filter(filterActive))
-      .map(intervalGrouper)
-      .map(minimizer)
-      .sort(sortByTotal);
+    const key = cacheKeyForRequest(req);
+    const result =
+      (await getCachedAsync(key, res)) || (await getActive24Async(req.query));
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -108,16 +106,9 @@ const active24Controller = async (req, res) => {
 
 const majorController = async (req, res) => {
   try {
-    const intervals = generateIntervals();
-    const all = await allTweets(intervals);
-    const minimizer =
-      req.query.minimize === "true" ? minimizeGroup : identityFn;
-
-    const intervalGrouper = groupByIntervalGen(intervals);
-    const result = groupBy(GroupByOptions.Nothing, all.filter(filterSev1))
-      .map(intervalGrouper)
-      .map(minimizer)
-      .sort(sortByTotal);
+    const key = cacheKeyForRequest(req);
+    const result =
+      (await getCachedAsync(key, res)) || (await getMajorAsync(req.query));
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -129,7 +120,8 @@ const byAreaController = async (req, res) => {
   try {
     const key = cacheKeyForRequest(req);
     const result =
-      (await getCachedAsync(key)) || (await getEntriesByAreaAsync(req.query));
+      (await getCachedAsync(key, res)) ||
+      (await getEntriesByAreaAsync(req.query));
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -141,7 +133,7 @@ const byTypeController = async (req, res) => {
   try {
     const key = cacheKeyForRequest(req);
     const result =
-      (await getCachedAsync(key)) ||
+      (await getCachedAsync(key, res)) ||
       (await getEntriesByTypeAsync(req.params, req.query));
     res.json(result);
   } catch (error) {
@@ -150,7 +142,7 @@ const byTypeController = async (req, res) => {
   }
 };
 
-const byAreabyTypeController = async (req, res) => {
+const byAreaByTypeController = async (req, res) => {
   console.error("TODO - remove this API");
   try {
     const intervals = generateIntervals();
@@ -172,12 +164,11 @@ const byAreabyTypeController = async (req, res) => {
   }
 };
 
-const cacheKeyForRequest = (req) => cacheKey(req.path, req.params, req.query);
-
 const historyController = async (req, res) => {
   try {
     const key = cacheKeyForRequest(req);
-    const result = (await getCachedAsync(key)) || (await getHistoryAsync());
+    const result =
+      (await getCachedAsync(key, res)) || (await getHistoryAsync());
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -186,35 +177,9 @@ const historyController = async (req, res) => {
 };
 
 const annotationsController = async (req, res) => {
-  const annotationsPath = path.join(datasetsPath, "../misc");
-  const manualFile = path.join(annotationsPath, "manualAnnotations.json");
-  const generatedFile = path.join(annotationsPath, "generatedAnnotations.json");
-  const manualData = await readJSONAsync(manualFile, []);
-  const generatedData = await readJSONAsync(generatedFile, []);
-
-  const data = manualData.concat(generatedData);
-
-  const start2020 = new Date(2020, 0);
-  const result = data.map(({ start, end, ...rest }) => ({
-    start: start
-      ? {
-          ...start,
-          timestamp: +new Date(start.date),
-        }
-      : undefined,
-    end: end
-      ? {
-          ...end,
-          timestamp: +new Date(end.date),
-        }
-      : undefined,
-    offset:
-      start || end
-        ? start2020 - new Date(new Date((start || end).date).getFullYear(), 0)
-        : undefined,
-    ...rest,
-  }));
-
+  const key = cacheKeyForRequest(req);
+  const result =
+    (await getCachedAsync(key, res)) || (await getAnnotationsAsync());
   res.json(result);
 };
 
@@ -288,7 +253,7 @@ router.get("/tweets/active24", active24Controller);
 router.get("/tweets/major", majorController);
 router.get("/tweets/byArea", byAreaController);
 router.get("/tweets/byType/:area?", byTypeController);
-router.get("/tweets/byAreaByType", byAreabyTypeController);
+router.get("/tweets/byAreaByType", byAreaByTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/annotations", annotationsController);
 router.get("/history/", historyController);

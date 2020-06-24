@@ -1,12 +1,15 @@
 import { readJSONAsync, saveJSONAsync } from "../fileUtils";
 import { withCachePath } from "../serverUtils";
 import {
+  cacheKey,
   getStatusAsync,
-  getHistoryAsync,
   getEntriesForAreaAsync,
   getEntriesByAreaAsync,
   getEntriesByTypeAsync,
-  cacheKey,
+  getMajorAsync,
+  getActive24Async,
+  getHistoryAsync,
+  getAnnotationsAsync,
 } from "../../../dispatchCompute";
 
 const cacheFile = withCachePath("cache.json");
@@ -19,28 +22,22 @@ export const runner = async () => {
   };
 
   const variations = [
-    // {
-    //   path: "",
-    //   params: {},
-    //   query: {},
-    //   asyncGetter: ,
-    // },
     {
       path: "/status",
       params: {},
       query: {},
       asyncGetter: getStatusAsync,
     },
-    // {
-    //   path: "/history",
-    //   params: {},
-    //   query: {},
-    //   asyncGetter: getHistoryAsync,
-    // },
     {
       path: "/tweets/seattle",
       params: { area: "seattle" },
       query: { minimize: "true", compare: "6" },
+      asyncGetter: getEntriesForAreaAsync,
+    },
+    {
+      path: "/tweets/seattle",
+      params: { area: "seattle" },
+      query: { minimize: "true", hiRes: "true" },
       asyncGetter: getEntriesForAreaAsync,
     },
     {
@@ -66,6 +63,30 @@ export const runner = async () => {
       params: { area: "seattle" },
       query: {},
       asyncGetter: getEntriesByTypeAsync,
+    },
+    {
+      path: "/tweets/major",
+      params: {},
+      query: {},
+      asyncGetter: getMajorAsync,
+    },
+    {
+      path: "/tweets/active24",
+      params: {},
+      query: {},
+      asyncGetter: getActive24Async,
+    },
+    {
+      path: "/history",
+      params: {},
+      query: {},
+      asyncGetter: getHistoryAsync,
+    },
+    {
+      path: "/history/annotations",
+      params: {},
+      query: {},
+      asyncGetter: getAnnotationsAsync,
     },
   ];
 
