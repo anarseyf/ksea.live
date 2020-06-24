@@ -5,8 +5,49 @@
         "start": 1592895600000,
         "end": 1592982000000,
         "offset": 0,
-        "values": [],
-        "total": 0,
+        "values": [
+          {
+            "id_str": "F200061734",
+            "created_at": "6/23/2020 9:39:15 PM",
+            "derived": {
+              "timestamp": 1592973555000,
+              "offset": 0,
+              "lat": 47.602348,
+              "long": -122.337148,
+              "description": "Aid Response",
+              "address": "801 Alaskan Way",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Downtown Commercial Core",
+              "neighborhoodGroup": "Downtown",
+              "units": "E5",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061724",
+            "created_at": "6/23/2020 9:04:19 PM",
+            "derived": {
+              "timestamp": 1592971459000,
+              "offset": 0,
+              "lat": 47.599197,
+              "long": -122.328968,
+              "description": "Medic Response",
+              "address": "400 S Jackson St",
+              "active": true,
+              "unitCount": 3,
+              "severity": 0,
+              "neighborhood": "Pioneer Square/International District",
+              "neighborhoodGroup": "Downtown",
+              "units": "A10 M1 M10",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          }
+        ],
+        "total": 2,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -179,23 +220,103 @@
             "cumulative": 0
           },
           {
+            "0": {
+              "id_str": "F200061734",
+              "created_at": "6/23/2020 9:39:15 PM",
+              "derived": {
+                "timestamp": 1592973555000,
+                "offset": 0,
+                "lat": 47.602348,
+                "long": -122.337148,
+                "description": "Aid Response",
+                "address": "801 Alaskan Way",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Downtown Commercial Core",
+                "neighborhoodGroup": "Downtown",
+                "units": "E5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061724",
+              "created_at": "6/23/2020 9:04:19 PM",
+              "derived": {
+                "timestamp": 1592971459000,
+                "offset": 0,
+                "lat": 47.599197,
+                "long": -122.328968,
+                "description": "Medic Response",
+                "address": "400 S Jackson St",
+                "active": true,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Pioneer Square/International District",
+                "neighborhoodGroup": "Downtown",
+                "units": "A10 M1 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
             "x0": 1592971200000,
             "x1": 1592974800000,
             "sev1": 0,
             "sev2": 0,
-            "length": 0,
-            "cumulative": 0
+            "length": 2,
+            "cumulative": 2
           }
         ],
         "binsHiRes": [],
         "binsLowRes": [
           {
+            "0": {
+              "id_str": "F200061734",
+              "created_at": "6/23/2020 9:39:15 PM",
+              "derived": {
+                "timestamp": 1592973555000,
+                "offset": 0,
+                "lat": 47.602348,
+                "long": -122.337148,
+                "description": "Aid Response",
+                "address": "801 Alaskan Way",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Downtown Commercial Core",
+                "neighborhoodGroup": "Downtown",
+                "units": "E5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061724",
+              "created_at": "6/23/2020 9:04:19 PM",
+              "derived": {
+                "timestamp": 1592971459000,
+                "offset": 0,
+                "lat": 47.599197,
+                "long": -122.328968,
+                "description": "Medic Response",
+                "address": "400 S Jackson St",
+                "active": true,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Pioneer Square/International District",
+                "neighborhoodGroup": "Downtown",
+                "units": "A10 M1 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
             "x0": 1592895600000,
             "x1": 1592982000000,
             "sev1": 0,
             "sev2": 0,
-            "length": 0,
-            "cumulative": 0
+            "length": 2,
+            "cumulative": 2
           }
         ]
       }

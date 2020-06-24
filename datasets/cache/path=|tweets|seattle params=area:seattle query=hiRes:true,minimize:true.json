@@ -5,7 +5,7 @@
         "start": 1592895600000,
         "end": 1592982000000,
         "offset": 0,
-        "total": 219,
+        "total": 227,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -180,9 +180,9 @@
           {
             "x0": 1592971200000,
             "x1": 1592974800000,
-            "length": 0,
-            "cumulative": 219,
-            "sev1": 0,
+            "length": 8,
+            "cumulative": 227,
+            "sev1": 1,
             "sev2": 0
           }
         ],
@@ -2206,16 +2206,16 @@
           {
             "x0": 1592971200000,
             "x1": 1592971500000,
-            "length": 0,
-            "cumulative": 219,
+            "length": 1,
+            "cumulative": 220,
             "sev1": 0,
             "sev2": 0
           },
           {
             "x0": 1592971500000,
             "x1": 1592971800000,
-            "length": 0,
-            "cumulative": 219,
+            "length": 1,
+            "cumulative": 221,
             "sev1": 0,
             "sev2": 0
           },
@@ -2223,15 +2223,15 @@
             "x0": 1592971800000,
             "x1": 1592972100000,
             "length": 0,
-            "cumulative": 219,
+            "cumulative": 221,
             "sev1": 0,
             "sev2": 0
           },
           {
             "x0": 1592972100000,
             "x1": 1592972400000,
-            "length": 0,
-            "cumulative": 219,
+            "length": 2,
+            "cumulative": 223,
             "sev1": 0,
             "sev2": 0
           },
@@ -2239,39 +2239,55 @@
             "x0": 1592972400000,
             "x1": 1592972700000,
             "length": 0,
-            "cumulative": 219,
+            "cumulative": 223,
             "sev1": 0,
             "sev2": 0
           },
           {
             "x0": 1592972700000,
             "x1": 1592973000000,
-            "length": 0,
-            "cumulative": 219,
-            "sev1": 0,
+            "length": 2,
+            "cumulative": 225,
+            "sev1": 1,
             "sev2": 0
           },
           {
             "x0": 1592973000000,
             "x1": 1592973300000,
             "length": 0,
-            "cumulative": 219,
+            "cumulative": 225,
             "sev1": 0,
             "sev2": 0
           },
           {
             "x0": 1592973300000,
             "x1": 1592973600000,
-            "length": 0,
-            "cumulative": 219,
+            "length": 1,
+            "cumulative": 226,
             "sev1": 0,
             "sev2": 0
           },
           {
             "x0": 1592973600000,
             "x1": 1592973900000,
+            "length": 1,
+            "cumulative": 227,
+            "sev1": 0,
+            "sev2": 0
+          },
+          {
+            "x0": 1592973900000,
+            "x1": 1592974200000,
             "length": 0,
-            "cumulative": 219,
+            "cumulative": 227,
+            "sev1": 0,
+            "sev2": 0
+          },
+          {
+            "x0": 1592974200000,
+            "x1": 1592974500000,
+            "length": 0,
+            "cumulative": 227,
             "sev1": 0,
             "sev2": 0
           }
@@ -2280,9 +2296,9 @@
           {
             "x0": 1592895600000,
             "x1": 1592982000000,
-            "length": 219,
-            "cumulative": 219,
-            "sev1": 4,
+            "length": 227,
+            "cumulative": 227,
+            "sev1": 5,
             "sev2": 0
           }
         ]

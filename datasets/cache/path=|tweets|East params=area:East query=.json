@@ -227,6 +227,26 @@
             }
           },
           {
+            "id_str": "F200061735",
+            "created_at": "6/23/2020 9:44:21 PM",
+            "derived": {
+              "timestamp": 1592973861000,
+              "offset": 0,
+              "lat": 47.609634,
+              "long": -122.326789,
+              "description": "Medic Response",
+              "address": "1010 Spring St",
+              "active": true,
+              "unitCount": 2,
+              "severity": 0,
+              "neighborhood": "First Hill",
+              "neighborhoodGroup": "East",
+              "units": "A25 M10",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
             "id_str": "F200061721",
             "created_at": "6/23/2020 8:40:06 PM",
             "derived": {
@@ -236,7 +256,7 @@
               "long": -122.31534,
               "description": "Aid Response",
               "address": "1321 E John St",
-              "active": true,
+              "active": false,
               "unitCount": 1,
               "severity": 0,
               "neighborhood": "Capitol Hill",
@@ -487,7 +507,7 @@
             }
           }
         ],
-        "total": 24,
+        "total": 25,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -1102,7 +1122,7 @@
                 "long": -122.31534,
                 "description": "Aid Response",
                 "address": "1321 E John St",
-                "active": true,
+                "active": false,
                 "unitCount": 1,
                 "severity": 0,
                 "neighborhood": "Capitol Hill",
@@ -1140,12 +1160,32 @@
             "cumulative": 24
           },
           {
+            "0": {
+              "id_str": "F200061735",
+              "created_at": "6/23/2020 9:44:21 PM",
+              "derived": {
+                "timestamp": 1592973861000,
+                "offset": 0,
+                "lat": 47.609634,
+                "long": -122.326789,
+                "description": "Medic Response",
+                "address": "1010 Spring St",
+                "active": true,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "First Hill",
+                "neighborhoodGroup": "East",
+                "units": "A25 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
             "x0": 1592971200000,
             "x1": 1592974800000,
             "sev1": 0,
             "sev2": 0,
-            "length": 0,
-            "cumulative": 24
+            "length": 1,
+            "cumulative": 25
           }
         ],
         "binsHiRes": [],
@@ -1372,6 +1412,26 @@
               }
             },
             "11": {
+              "id_str": "F200061735",
+              "created_at": "6/23/2020 9:44:21 PM",
+              "derived": {
+                "timestamp": 1592973861000,
+                "offset": 0,
+                "lat": 47.609634,
+                "long": -122.326789,
+                "description": "Medic Response",
+                "address": "1010 Spring St",
+                "active": true,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "First Hill",
+                "neighborhoodGroup": "East",
+                "units": "A25 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "12": {
               "id_str": "F200061721",
               "created_at": "6/23/2020 8:40:06 PM",
               "derived": {
@@ -1381,7 +1441,7 @@
                 "long": -122.31534,
                 "description": "Aid Response",
                 "address": "1321 E John St",
-                "active": true,
+                "active": false,
                 "unitCount": 1,
                 "severity": 0,
                 "neighborhood": "Capitol Hill",
@@ -1391,7 +1451,7 @@
                 "color": "#2ca02c"
               }
             },
-            "12": {
+            "13": {
               "id_str": "F200061707",
               "created_at": "6/23/2020 8:04:57 PM",
               "derived": {
@@ -1411,7 +1471,7 @@
                 "color": "#ff7f0e"
               }
             },
-            "13": {
+            "14": {
               "id_str": "F200061700",
               "created_at": "6/23/2020 7:53:53 PM",
               "derived": {
@@ -1431,7 +1491,7 @@
                 "color": "#2ca02c"
               }
             },
-            "14": {
+            "15": {
               "id_str": "F200061698",
               "created_at": "6/23/2020 7:49:45 PM",
               "derived": {
@@ -1451,7 +1511,7 @@
                 "color": "#ff7f0e"
               }
             },
-            "15": {
+            "16": {
               "id_str": "F200061695",
               "created_at": "6/23/2020 7:44:30 PM",
               "derived": {
@@ -1471,7 +1531,7 @@
                 "color": "#d62728"
               }
             },
-            "16": {
+            "17": {
               "id_str": "F200061680",
               "created_at": "6/23/2020 7:14:33 PM",
               "derived": {
@@ -1491,7 +1551,7 @@
                 "color": "#d62728"
               }
             },
-            "17": {
+            "18": {
               "id_str": "F200061676",
               "created_at": "6/23/2020 7:09:33 PM",
               "derived": {
@@ -1511,7 +1571,7 @@
                 "color": "#2ca02c"
               }
             },
-            "18": {
+            "19": {
               "id_str": "F200061667",
               "created_at": "6/23/2020 6:50:30 PM",
               "derived": {
@@ -1531,7 +1591,7 @@
                 "color": "#2ca02c"
               }
             },
-            "19": {
+            "20": {
               "id_str": "F200061661",
               "created_at": "6/23/2020 6:33:28 PM",
               "derived": {
@@ -1551,7 +1611,7 @@
                 "color": "#d62728"
               }
             },
-            "20": {
+            "21": {
               "id_str": "F200061654",
               "created_at": "6/23/2020 5:49:40 PM",
               "derived": {
@@ -1571,7 +1631,7 @@
                 "color": "#1f77b4"
               }
             },
-            "21": {
+            "22": {
               "id_str": "F200061647",
               "created_at": "6/23/2020 5:29:49 PM",
               "derived": {
@@ -1591,7 +1651,7 @@
                 "color": "#ff7f0e"
               }
             },
-            "22": {
+            "23": {
               "id_str": "F200061644",
               "created_at": "6/23/2020 5:19:57 PM",
               "derived": {
@@ -1611,7 +1671,7 @@
                 "color": "#2ca02c"
               }
             },
-            "23": {
+            "24": {
               "id_str": "F200061643",
               "created_at": "6/23/2020 5:18:38 PM",
               "derived": {
@@ -1635,8 +1695,8 @@
             "x1": 1592982000000,
             "sev1": 1,
             "sev2": 0,
-            "length": 24,
-            "cumulative": 24
+            "length": 25,
+            "cumulative": 25
           }
         ]
       }

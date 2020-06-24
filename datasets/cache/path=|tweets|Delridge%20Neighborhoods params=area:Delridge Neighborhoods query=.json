@@ -187,6 +187,26 @@
             }
           },
           {
+            "id_str": "F200061728",
+            "created_at": "6/23/2020 9:18:45 PM",
+            "derived": {
+              "timestamp": 1592972325000,
+              "offset": 0,
+              "lat": 47.544669,
+              "long": -122.373777,
+              "description": "Low Acuity Response",
+              "address": "3204 Sw Morgan St",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "High Point",
+              "neighborhoodGroup": "Delridge Neighborhoods",
+              "units": "E37",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
             "id_str": "F200061720",
             "created_at": "6/23/2020 8:37:16 PM",
             "derived": {
@@ -196,7 +216,7 @@
               "long": -122.366095,
               "description": "Low Acuity Response",
               "address": "2615 Sw Barton St",
-              "active": true,
+              "active": false,
               "unitCount": 1,
               "severity": 0,
               "neighborhood": "Roxhill/Westwood",
@@ -236,7 +256,7 @@
               "long": -122.355032,
               "description": "Aid Response",
               "address": "SW HOLDEN ST / 16TH AVE SW",
-              "active": true,
+              "active": false,
               "unitCount": 1,
               "severity": 0,
               "neighborhood": "Riverview",
@@ -247,7 +267,7 @@
             }
           }
         ],
-        "total": 12,
+        "total": 13,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -602,7 +622,7 @@
                 "long": -122.366095,
                 "description": "Low Acuity Response",
                 "address": "2615 Sw Barton St",
-                "active": true,
+                "active": false,
                 "unitCount": 1,
                 "severity": 0,
                 "neighborhood": "Roxhill/Westwood",
@@ -642,7 +662,7 @@
                 "long": -122.355032,
                 "description": "Aid Response",
                 "address": "SW HOLDEN ST / 16TH AVE SW",
-                "active": true,
+                "active": false,
                 "unitCount": 1,
                 "severity": 0,
                 "neighborhood": "Riverview",
@@ -660,12 +680,32 @@
             "cumulative": 12
           },
           {
+            "0": {
+              "id_str": "F200061728",
+              "created_at": "6/23/2020 9:18:45 PM",
+              "derived": {
+                "timestamp": 1592972325000,
+                "offset": 0,
+                "lat": 47.544669,
+                "long": -122.373777,
+                "description": "Low Acuity Response",
+                "address": "3204 Sw Morgan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "High Point",
+                "neighborhoodGroup": "Delridge Neighborhoods",
+                "units": "E37",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
             "x0": 1592971200000,
             "x1": 1592974800000,
             "sev1": 0,
             "sev2": 0,
-            "length": 0,
-            "cumulative": 12
+            "length": 1,
+            "cumulative": 13
           }
         ],
         "binsHiRes": [],
@@ -852,6 +892,26 @@
               }
             },
             "9": {
+              "id_str": "F200061728",
+              "created_at": "6/23/2020 9:18:45 PM",
+              "derived": {
+                "timestamp": 1592972325000,
+                "offset": 0,
+                "lat": 47.544669,
+                "long": -122.373777,
+                "description": "Low Acuity Response",
+                "address": "3204 Sw Morgan St",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "High Point",
+                "neighborhoodGroup": "Delridge Neighborhoods",
+                "units": "E37",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "10": {
               "id_str": "F200061720",
               "created_at": "6/23/2020 8:37:16 PM",
               "derived": {
@@ -861,7 +921,7 @@
                 "long": -122.366095,
                 "description": "Low Acuity Response",
                 "address": "2615 Sw Barton St",
-                "active": true,
+                "active": false,
                 "unitCount": 1,
                 "severity": 0,
                 "neighborhood": "Roxhill/Westwood",
@@ -871,7 +931,7 @@
                 "color": "#ff7f0e"
               }
             },
-            "10": {
+            "11": {
               "id_str": "F200061714",
               "created_at": "6/23/2020 8:19:34 PM",
               "derived": {
@@ -891,7 +951,7 @@
                 "color": "#2ca02c"
               }
             },
-            "11": {
+            "12": {
               "id_str": "F200061710",
               "created_at": "6/23/2020 8:11:24 PM",
               "derived": {
@@ -901,7 +961,7 @@
                 "long": -122.355032,
                 "description": "Aid Response",
                 "address": "SW HOLDEN ST / 16TH AVE SW",
-                "active": true,
+                "active": false,
                 "unitCount": 1,
                 "severity": 0,
                 "neighborhood": "Riverview",
@@ -915,8 +975,8 @@
             "x1": 1592982000000,
             "sev1": 0,
             "sev2": 0,
-            "length": 12,
-            "cumulative": 12
+            "length": 13,
+            "cumulative": 13
           }
         ]
       }

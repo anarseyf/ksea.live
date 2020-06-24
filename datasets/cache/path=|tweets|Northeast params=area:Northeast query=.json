@@ -227,6 +227,26 @@
             }
           },
           {
+            "id_str": "F200061729",
+            "created_at": "6/23/2020 9:17:42 PM",
+            "derived": {
+              "timestamp": 1592972262000,
+              "offset": 0,
+              "lat": 47.657516,
+              "long": -122.302489,
+              "description": "Aid Response",
+              "address": "4110 Mason Rd Ne",
+              "active": false,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "University District",
+              "neighborhoodGroup": "Northeast",
+              "units": "E38",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
             "id_str": "F200061671",
             "created_at": "6/23/2020 6:56:19 PM",
             "derived": {
@@ -327,7 +347,7 @@
             }
           }
         ],
-        "total": 16,
+        "total": 17,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -820,12 +840,32 @@
             "cumulative": 16
           },
           {
+            "0": {
+              "id_str": "F200061729",
+              "created_at": "6/23/2020 9:17:42 PM",
+              "derived": {
+                "timestamp": 1592972262000,
+                "offset": 0,
+                "lat": 47.657516,
+                "long": -122.302489,
+                "description": "Aid Response",
+                "address": "4110 Mason Rd Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
             "x0": 1592971200000,
             "x1": 1592974800000,
             "sev1": 0,
             "sev2": 0,
-            "length": 0,
-            "cumulative": 16
+            "length": 1,
+            "cumulative": 17
           }
         ],
         "binsHiRes": [],
@@ -1052,6 +1092,26 @@
               }
             },
             "11": {
+              "id_str": "F200061729",
+              "created_at": "6/23/2020 9:17:42 PM",
+              "derived": {
+                "timestamp": 1592972262000,
+                "offset": 0,
+                "lat": 47.657516,
+                "long": -122.302489,
+                "description": "Aid Response",
+                "address": "4110 Mason Rd Ne",
+                "active": false,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "University District",
+                "neighborhoodGroup": "Northeast",
+                "units": "E38",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "12": {
               "id_str": "F200061671",
               "created_at": "6/23/2020 6:56:19 PM",
               "derived": {
@@ -1071,7 +1131,7 @@
                 "color": "#d62728"
               }
             },
-            "12": {
+            "13": {
               "id_str": "F200061668",
               "created_at": "6/23/2020 6:52:25 PM",
               "derived": {
@@ -1091,7 +1151,7 @@
                 "color": "#d62728"
               }
             },
-            "13": {
+            "14": {
               "id_str": "F200061652",
               "created_at": "6/23/2020 5:48:36 PM",
               "derived": {
@@ -1111,7 +1171,7 @@
                 "color": "#2ca02c"
               }
             },
-            "14": {
+            "15": {
               "id_str": "F200061639",
               "created_at": "6/23/2020 5:07:55 PM",
               "derived": {
@@ -1131,7 +1191,7 @@
                 "color": "#1f77b4"
               }
             },
-            "15": {
+            "16": {
               "id_str": "F200061638",
               "created_at": "6/23/2020 5:07:39 PM",
               "derived": {
@@ -1155,8 +1215,8 @@
             "x1": 1592982000000,
             "sev1": 0,
             "sev2": 0,
-            "length": 16,
-            "cumulative": 16
+            "length": 17,
+            "cumulative": 17
           }
         ]
       }

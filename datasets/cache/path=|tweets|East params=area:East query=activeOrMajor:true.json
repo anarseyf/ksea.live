@@ -27,23 +27,23 @@
             }
           },
           {
-            "id_str": "F200061721",
-            "created_at": "6/23/2020 8:40:06 PM",
+            "id_str": "F200061735",
+            "created_at": "6/23/2020 9:44:21 PM",
             "derived": {
-              "timestamp": 1592970006000,
+              "timestamp": 1592973861000,
               "offset": 0,
-              "lat": 47.619948,
-              "long": -122.31534,
-              "description": "Aid Response",
-              "address": "1321 E John St",
+              "lat": 47.609634,
+              "long": -122.326789,
+              "description": "Medic Response",
+              "address": "1010 Spring St",
               "active": true,
-              "unitCount": 1,
+              "unitCount": 2,
               "severity": 0,
-              "neighborhood": "Capitol Hill",
+              "neighborhood": "First Hill",
               "neighborhoodGroup": "East",
-              "units": "A25",
-              "type": "aid",
-              "color": "#2ca02c"
+              "units": "A25 M10",
+              "type": "medic",
+              "color": "#1f77b4"
             }
           }
         ],
@@ -232,39 +232,39 @@
             "cumulative": 1
           },
           {
-            "0": {
-              "id_str": "F200061721",
-              "created_at": "6/23/2020 8:40:06 PM",
-              "derived": {
-                "timestamp": 1592970006000,
-                "offset": 0,
-                "lat": 47.619948,
-                "long": -122.31534,
-                "description": "Aid Response",
-                "address": "1321 E John St",
-                "active": true,
-                "unitCount": 1,
-                "severity": 0,
-                "neighborhood": "Capitol Hill",
-                "neighborhoodGroup": "East",
-                "units": "A25",
-                "type": "aid",
-                "color": "#2ca02c"
-              }
-            },
             "x0": 1592967600000,
             "x1": 1592971200000,
             "sev1": 0,
             "sev2": 0,
-            "length": 1,
-            "cumulative": 2
+            "length": 0,
+            "cumulative": 1
           },
           {
+            "0": {
+              "id_str": "F200061735",
+              "created_at": "6/23/2020 9:44:21 PM",
+              "derived": {
+                "timestamp": 1592973861000,
+                "offset": 0,
+                "lat": 47.609634,
+                "long": -122.326789,
+                "description": "Medic Response",
+                "address": "1010 Spring St",
+                "active": true,
+                "unitCount": 2,
+                "severity": 0,
+                "neighborhood": "First Hill",
+                "neighborhoodGroup": "East",
+                "units": "A25 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
             "x0": 1592971200000,
             "x1": 1592974800000,
             "sev1": 0,
             "sev2": 0,
-            "length": 0,
+            "length": 1,
             "cumulative": 2
           }
         ],
@@ -292,23 +292,23 @@
               }
             },
             "1": {
-              "id_str": "F200061721",
-              "created_at": "6/23/2020 8:40:06 PM",
+              "id_str": "F200061735",
+              "created_at": "6/23/2020 9:44:21 PM",
               "derived": {
-                "timestamp": 1592970006000,
+                "timestamp": 1592973861000,
                 "offset": 0,
-                "lat": 47.619948,
-                "long": -122.31534,
-                "description": "Aid Response",
-                "address": "1321 E John St",
+                "lat": 47.609634,
+                "long": -122.326789,
+                "description": "Medic Response",
+                "address": "1010 Spring St",
                 "active": true,
-                "unitCount": 1,
+                "unitCount": 2,
                 "severity": 0,
-                "neighborhood": "Capitol Hill",
+                "neighborhood": "First Hill",
                 "neighborhoodGroup": "East",
-                "units": "A25",
-                "type": "aid",
-                "color": "#2ca02c"
+                "units": "A25 M10",
+                "type": "medic",
+                "color": "#1f77b4"
               }
             },
             "x0": 1592895600000,

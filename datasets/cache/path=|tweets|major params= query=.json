@@ -47,6 +47,26 @@
             }
           },
           {
+            "id_str": "F200061731",
+            "created_at": "6/23/2020 9:27:17 PM",
+            "derived": {
+              "timestamp": 1592972837000,
+              "offset": 0,
+              "lat": 47.603525,
+              "long": -122.310179,
+              "description": "4RED - 2 + 1 + 1",
+              "address": "202 17th Ave",
+              "active": true,
+              "unitCount": 6,
+              "severity": 1,
+              "neighborhood": "Central Area/Squire Park",
+              "neighborhoodGroup": "Central",
+              "units": "B5 E10 E11 E6 L3 MAR5",
+              "type": "other",
+              "color": "#ff7f0e"
+            }
+          },
+          {
             "id_str": "F200061702",
             "created_at": "6/23/2020 7:56:07 PM",
             "derived": {
@@ -56,7 +76,7 @@
               "long": -122.313407,
               "description": "2RED - 1 + 1",
               "address": "Rainier Ave S / S King St",
-              "active": true,
+              "active": false,
               "unitCount": 5,
               "severity": 1,
               "neighborhood": "Judkins Park",
@@ -87,7 +107,7 @@
             }
           }
         ],
-        "total": 4,
+        "total": 5,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -294,7 +314,7 @@
                 "long": -122.313407,
                 "description": "2RED - 1 + 1",
                 "address": "Rainier Ave S / S King St",
-                "active": true,
+                "active": false,
                 "unitCount": 5,
                 "severity": 1,
                 "neighborhood": "Judkins Park",
@@ -340,12 +360,32 @@
             "cumulative": 4
           },
           {
+            "0": {
+              "id_str": "F200061731",
+              "created_at": "6/23/2020 9:27:17 PM",
+              "derived": {
+                "timestamp": 1592972837000,
+                "offset": 0,
+                "lat": 47.603525,
+                "long": -122.310179,
+                "description": "4RED - 2 + 1 + 1",
+                "address": "202 17th Ave",
+                "active": true,
+                "unitCount": 6,
+                "severity": 1,
+                "neighborhood": "Central Area/Squire Park",
+                "neighborhoodGroup": "Central",
+                "units": "B5 E10 E11 E6 L3 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
             "x0": 1592971200000,
             "x1": 1592974800000,
-            "sev1": 0,
+            "sev1": 1,
             "sev2": 0,
-            "length": 0,
-            "cumulative": 4
+            "length": 1,
+            "cumulative": 5
           }
         ],
         "binsHiRes": [],
@@ -392,6 +432,26 @@
               }
             },
             "2": {
+              "id_str": "F200061731",
+              "created_at": "6/23/2020 9:27:17 PM",
+              "derived": {
+                "timestamp": 1592972837000,
+                "offset": 0,
+                "lat": 47.603525,
+                "long": -122.310179,
+                "description": "4RED - 2 + 1 + 1",
+                "address": "202 17th Ave",
+                "active": true,
+                "unitCount": 6,
+                "severity": 1,
+                "neighborhood": "Central Area/Squire Park",
+                "neighborhoodGroup": "Central",
+                "units": "B5 E10 E11 E6 L3 MAR5",
+                "type": "other",
+                "color": "#ff7f0e"
+              }
+            },
+            "3": {
               "id_str": "F200061702",
               "created_at": "6/23/2020 7:56:07 PM",
               "derived": {
@@ -401,7 +461,7 @@
                 "long": -122.313407,
                 "description": "2RED - 1 + 1",
                 "address": "Rainier Ave S / S King St",
-                "active": true,
+                "active": false,
                 "unitCount": 5,
                 "severity": 1,
                 "neighborhood": "Judkins Park",
@@ -411,7 +471,7 @@
                 "color": "#ff7f0e"
               }
             },
-            "3": {
+            "4": {
               "id_str": "F200061691",
               "created_at": "6/23/2020 7:34:06 PM",
               "derived": {
@@ -433,10 +493,10 @@
             },
             "x0": 1592895600000,
             "x1": 1592982000000,
-            "sev1": 4,
+            "sev1": 5,
             "sev2": 0,
-            "length": 4,
-            "cumulative": 4
+            "length": 5,
+            "cumulative": 5
           }
         ]
       }

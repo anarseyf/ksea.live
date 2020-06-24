@@ -1,4 +1,4 @@
-import { readJSONAsync, saveJSONAsync } from "../fileUtils";
+import { saveJSONAsync } from "../fileUtils";
 import { withCachePath } from "../serverUtils";
 import {
   cacheKey,
@@ -11,8 +11,6 @@ import {
   getHistoryAsync,
   getAnnotationsAsync,
 } from "../../../dispatchCompute";
-
-const cacheFile = withCachePath("cache.json");
 
 export const runner = async () => {
   const start = new Date();
@@ -139,7 +137,7 @@ export const runner = async () => {
       const result = await asyncGetter(path, params, query);
       const file = withCachePath(`${key}.json`);
       await saveJSONAsync(file, result);
-      console.log(`cached: ${key} --> `, result);
+      console.log(`cache > saved file: ${key}.json`);
     })
   );
 
@@ -147,6 +145,6 @@ export const runner = async () => {
   console.log(`cache > computed in ${end - start}ms`);
 };
 
-(async () => {
-  await runner();
-})();
+// (async () => {
+//   await runner();
+// })();

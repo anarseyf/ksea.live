@@ -347,6 +347,46 @@
             }
           },
           {
+            "id_str": "F200061734",
+            "created_at": "6/23/2020 9:39:15 PM",
+            "derived": {
+              "timestamp": 1592973555000,
+              "offset": 0,
+              "lat": 47.602348,
+              "long": -122.337148,
+              "description": "Aid Response",
+              "address": "801 Alaskan Way",
+              "active": true,
+              "unitCount": 1,
+              "severity": 0,
+              "neighborhood": "Downtown Commercial Core",
+              "neighborhoodGroup": "Downtown",
+              "units": "E5",
+              "type": "aid",
+              "color": "#2ca02c"
+            }
+          },
+          {
+            "id_str": "F200061724",
+            "created_at": "6/23/2020 9:04:19 PM",
+            "derived": {
+              "timestamp": 1592971459000,
+              "offset": 0,
+              "lat": 47.599197,
+              "long": -122.328968,
+              "description": "Medic Response",
+              "address": "400 S Jackson St",
+              "active": true,
+              "unitCount": 3,
+              "severity": 0,
+              "neighborhood": "Pioneer Square/International District",
+              "neighborhoodGroup": "Downtown",
+              "units": "A10 M1 M10",
+              "type": "medic",
+              "color": "#1f77b4"
+            }
+          },
+          {
             "id_str": "F200061716",
             "created_at": "6/23/2020 8:28:41 PM",
             "derived": {
@@ -447,7 +487,7 @@
             }
           }
         ],
-        "total": 22,
+        "total": 24,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -1060,12 +1100,52 @@
             "cumulative": 22
           },
           {
+            "0": {
+              "id_str": "F200061734",
+              "created_at": "6/23/2020 9:39:15 PM",
+              "derived": {
+                "timestamp": 1592973555000,
+                "offset": 0,
+                "lat": 47.602348,
+                "long": -122.337148,
+                "description": "Aid Response",
+                "address": "801 Alaskan Way",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Downtown Commercial Core",
+                "neighborhoodGroup": "Downtown",
+                "units": "E5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "1": {
+              "id_str": "F200061724",
+              "created_at": "6/23/2020 9:04:19 PM",
+              "derived": {
+                "timestamp": 1592971459000,
+                "offset": 0,
+                "lat": 47.599197,
+                "long": -122.328968,
+                "description": "Medic Response",
+                "address": "400 S Jackson St",
+                "active": true,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Pioneer Square/International District",
+                "neighborhoodGroup": "Downtown",
+                "units": "A10 M1 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
             "x0": 1592971200000,
             "x1": 1592974800000,
             "sev1": 0,
             "sev2": 0,
-            "length": 0,
-            "cumulative": 22
+            "length": 2,
+            "cumulative": 24
           }
         ],
         "binsHiRes": [],
@@ -1412,6 +1492,46 @@
               }
             },
             "17": {
+              "id_str": "F200061734",
+              "created_at": "6/23/2020 9:39:15 PM",
+              "derived": {
+                "timestamp": 1592973555000,
+                "offset": 0,
+                "lat": 47.602348,
+                "long": -122.337148,
+                "description": "Aid Response",
+                "address": "801 Alaskan Way",
+                "active": true,
+                "unitCount": 1,
+                "severity": 0,
+                "neighborhood": "Downtown Commercial Core",
+                "neighborhoodGroup": "Downtown",
+                "units": "E5",
+                "type": "aid",
+                "color": "#2ca02c"
+              }
+            },
+            "18": {
+              "id_str": "F200061724",
+              "created_at": "6/23/2020 9:04:19 PM",
+              "derived": {
+                "timestamp": 1592971459000,
+                "offset": 0,
+                "lat": 47.599197,
+                "long": -122.328968,
+                "description": "Medic Response",
+                "address": "400 S Jackson St",
+                "active": true,
+                "unitCount": 3,
+                "severity": 0,
+                "neighborhood": "Pioneer Square/International District",
+                "neighborhoodGroup": "Downtown",
+                "units": "A10 M1 M10",
+                "type": "medic",
+                "color": "#1f77b4"
+              }
+            },
+            "19": {
               "id_str": "F200061716",
               "created_at": "6/23/2020 8:28:41 PM",
               "derived": {
@@ -1431,7 +1551,7 @@
                 "color": "#d62728"
               }
             },
-            "18": {
+            "20": {
               "id_str": "F200061686",
               "created_at": "6/23/2020 7:25:59 PM",
               "derived": {
@@ -1451,7 +1571,7 @@
                 "color": "#d62728"
               }
             },
-            "19": {
+            "21": {
               "id_str": "F200061681",
               "created_at": "6/23/2020 7:16:38 PM",
               "derived": {
@@ -1471,7 +1591,7 @@
                 "color": "#d62728"
               }
             },
-            "20": {
+            "22": {
               "id_str": "F200061675",
               "created_at": "6/23/2020 7:07:39 PM",
               "derived": {
@@ -1491,7 +1611,7 @@
                 "color": "#2ca02c"
               }
             },
-            "21": {
+            "23": {
               "id_str": "F200061669",
               "created_at": "6/23/2020 6:53:46 PM",
               "derived": {
@@ -1515,8 +1635,8 @@
             "x1": 1592982000000,
             "sev1": 0,
             "sev2": 0,
-            "length": 22,
-            "cumulative": 22
+            "length": 24,
+            "cumulative": 24
           }
         ]
       }

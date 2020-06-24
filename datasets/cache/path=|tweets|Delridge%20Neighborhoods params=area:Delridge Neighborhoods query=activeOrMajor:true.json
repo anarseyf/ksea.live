@@ -5,49 +5,8 @@
         "start": 1592895600000,
         "end": 1592982000000,
         "offset": 0,
-        "values": [
-          {
-            "id_str": "F200061720",
-            "created_at": "6/23/2020 8:37:16 PM",
-            "derived": {
-              "timestamp": 1592969836000,
-              "offset": 0,
-              "lat": 47.521023,
-              "long": -122.366095,
-              "description": "Low Acuity Response",
-              "address": "2615 Sw Barton St",
-              "active": true,
-              "unitCount": 1,
-              "severity": 0,
-              "neighborhood": "Roxhill/Westwood",
-              "neighborhoodGroup": "Delridge Neighborhoods",
-              "units": "E37",
-              "type": "other",
-              "color": "#ff7f0e"
-            }
-          },
-          {
-            "id_str": "F200061710",
-            "created_at": "6/23/2020 8:11:24 PM",
-            "derived": {
-              "timestamp": 1592968284000,
-              "offset": 0,
-              "lat": 47.53368,
-              "long": -122.355032,
-              "description": "Aid Response",
-              "address": "SW HOLDEN ST / 16TH AVE SW",
-              "active": true,
-              "unitCount": 1,
-              "severity": 0,
-              "neighborhood": "Riverview",
-              "neighborhoodGroup": "Delridge Neighborhoods",
-              "units": "L13",
-              "type": "aid",
-              "color": "#2ca02c"
-            }
-          }
-        ],
-        "total": 2,
+        "values": [],
+        "total": 0,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -212,52 +171,12 @@
             "cumulative": 0
           },
           {
-            "0": {
-              "id_str": "F200061720",
-              "created_at": "6/23/2020 8:37:16 PM",
-              "derived": {
-                "timestamp": 1592969836000,
-                "offset": 0,
-                "lat": 47.521023,
-                "long": -122.366095,
-                "description": "Low Acuity Response",
-                "address": "2615 Sw Barton St",
-                "active": true,
-                "unitCount": 1,
-                "severity": 0,
-                "neighborhood": "Roxhill/Westwood",
-                "neighborhoodGroup": "Delridge Neighborhoods",
-                "units": "E37",
-                "type": "other",
-                "color": "#ff7f0e"
-              }
-            },
-            "1": {
-              "id_str": "F200061710",
-              "created_at": "6/23/2020 8:11:24 PM",
-              "derived": {
-                "timestamp": 1592968284000,
-                "offset": 0,
-                "lat": 47.53368,
-                "long": -122.355032,
-                "description": "Aid Response",
-                "address": "SW HOLDEN ST / 16TH AVE SW",
-                "active": true,
-                "unitCount": 1,
-                "severity": 0,
-                "neighborhood": "Riverview",
-                "neighborhoodGroup": "Delridge Neighborhoods",
-                "units": "L13",
-                "type": "aid",
-                "color": "#2ca02c"
-              }
-            },
             "x0": 1592967600000,
             "x1": 1592971200000,
             "sev1": 0,
             "sev2": 0,
-            "length": 2,
-            "cumulative": 2
+            "length": 0,
+            "cumulative": 0
           },
           {
             "x0": 1592971200000,
@@ -265,58 +184,18 @@
             "sev1": 0,
             "sev2": 0,
             "length": 0,
-            "cumulative": 2
+            "cumulative": 0
           }
         ],
         "binsHiRes": [],
         "binsLowRes": [
           {
-            "0": {
-              "id_str": "F200061720",
-              "created_at": "6/23/2020 8:37:16 PM",
-              "derived": {
-                "timestamp": 1592969836000,
-                "offset": 0,
-                "lat": 47.521023,
-                "long": -122.366095,
-                "description": "Low Acuity Response",
-                "address": "2615 Sw Barton St",
-                "active": true,
-                "unitCount": 1,
-                "severity": 0,
-                "neighborhood": "Roxhill/Westwood",
-                "neighborhoodGroup": "Delridge Neighborhoods",
-                "units": "E37",
-                "type": "other",
-                "color": "#ff7f0e"
-              }
-            },
-            "1": {
-              "id_str": "F200061710",
-              "created_at": "6/23/2020 8:11:24 PM",
-              "derived": {
-                "timestamp": 1592968284000,
-                "offset": 0,
-                "lat": 47.53368,
-                "long": -122.355032,
-                "description": "Aid Response",
-                "address": "SW HOLDEN ST / 16TH AVE SW",
-                "active": true,
-                "unitCount": 1,
-                "severity": 0,
-                "neighborhood": "Riverview",
-                "neighborhoodGroup": "Delridge Neighborhoods",
-                "units": "L13",
-                "type": "aid",
-                "color": "#2ca02c"
-              }
-            },
             "x0": 1592895600000,
             "x1": 1592982000000,
             "sev1": 0,
             "sev2": 0,
-            "length": 2,
-            "cumulative": 2
+            "length": 0,
+            "cumulative": 0
           }
         ]
       }

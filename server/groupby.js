@@ -50,7 +50,6 @@ export const generateIntervals = (compare = 0) => {
   ];
 
   const offsets = [...new Array(compare + 1)].map((_, i) => -i);
-  console.log(`compare: ${compare} --> offsets: ${offsets}`);
 
   return offsets.map(intervalFn); // TODO — offset by 1ms to make it [start, end) ?
 };

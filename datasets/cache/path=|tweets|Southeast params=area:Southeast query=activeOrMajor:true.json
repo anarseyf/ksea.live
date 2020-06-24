@@ -5,29 +5,8 @@
         "start": 1592895600000,
         "end": 1592982000000,
         "offset": 0,
-        "values": [
-          {
-            "id_str": "F200061723",
-            "created_at": "6/23/2020 8:53:48 PM",
-            "derived": {
-              "timestamp": 1592970828000,
-              "offset": 0,
-              "lat": 47.575875,
-              "long": -122.294935,
-              "description": "Aid Response Yellow",
-              "address": "2931 S Mount Baker Blvd",
-              "active": true,
-              "unitCount": 1,
-              "severity": 0,
-              "neighborhood": "Mt. Baker/North Rainier",
-              "neighborhoodGroup": "Southeast",
-              "units": "E30",
-              "type": "aid",
-              "color": "#2ca02c"
-            }
-          }
-        ],
-        "total": 1,
+        "values": [],
+        "total": 0,
         "groupby": "time",
         "key": "1592895600000",
         "bins": [
@@ -192,32 +171,12 @@
             "cumulative": 0
           },
           {
-            "0": {
-              "id_str": "F200061723",
-              "created_at": "6/23/2020 8:53:48 PM",
-              "derived": {
-                "timestamp": 1592970828000,
-                "offset": 0,
-                "lat": 47.575875,
-                "long": -122.294935,
-                "description": "Aid Response Yellow",
-                "address": "2931 S Mount Baker Blvd",
-                "active": true,
-                "unitCount": 1,
-                "severity": 0,
-                "neighborhood": "Mt. Baker/North Rainier",
-                "neighborhoodGroup": "Southeast",
-                "units": "E30",
-                "type": "aid",
-                "color": "#2ca02c"
-              }
-            },
             "x0": 1592967600000,
             "x1": 1592971200000,
             "sev1": 0,
             "sev2": 0,
-            "length": 1,
-            "cumulative": 1
+            "length": 0,
+            "cumulative": 0
           },
           {
             "x0": 1592971200000,
@@ -225,38 +184,18 @@
             "sev1": 0,
             "sev2": 0,
             "length": 0,
-            "cumulative": 1
+            "cumulative": 0
           }
         ],
         "binsHiRes": [],
         "binsLowRes": [
           {
-            "0": {
-              "id_str": "F200061723",
-              "created_at": "6/23/2020 8:53:48 PM",
-              "derived": {
-                "timestamp": 1592970828000,
-                "offset": 0,
-                "lat": 47.575875,
-                "long": -122.294935,
-                "description": "Aid Response Yellow",
-                "address": "2931 S Mount Baker Blvd",
-                "active": true,
-                "unitCount": 1,
-                "severity": 0,
-                "neighborhood": "Mt. Baker/North Rainier",
-                "neighborhoodGroup": "Southeast",
-                "units": "E30",
-                "type": "aid",
-                "color": "#2ca02c"
-              }
-            },
             "x0": 1592895600000,
             "x1": 1592982000000,
             "sev1": 0,
             "sev2": 0,
-            "length": 1,
-            "cumulative": 1
+            "length": 0,
+            "cumulative": 0
           }
         ]
       }

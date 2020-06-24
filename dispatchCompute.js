@@ -74,7 +74,6 @@ export const getStatusAsync = async () => {
 };
 
 export const getEntriesForAreaAsync = async (path, params = {}, query = {}) => {
-  console.log(`getEntriesForArea > ${path}`, params, query);
   const area = params.area;
   const compare = +query.compare || 0;
   if (compare > 7 || compare < 0) {
