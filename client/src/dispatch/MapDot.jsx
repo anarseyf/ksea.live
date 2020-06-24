@@ -15,7 +15,7 @@ export const MapDot = ({
   appearance = Appearance.Normal,
 }) => {
   const { theme } = useContext(ThemeContext);
-  const [color, setColor] = useState("green");
+  const [color, setColor] = useState(null);
 
   useEffect(() => {
     const appElement = document.getElementById("app");

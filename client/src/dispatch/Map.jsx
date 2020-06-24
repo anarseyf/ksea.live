@@ -116,9 +116,6 @@ export const Map = ({ area }) => {
       : Appearance.Normal;
   };
 
-  console.log("MAP/current interval", interval);
-  console.log("MAP/data", data);
-
   console.log(
     `MAP/render area=${area || "-"}, zoom=${zoom}, selected:${
       (selectedTweet || {}).id_str || "-"

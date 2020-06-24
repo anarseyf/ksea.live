@@ -11,7 +11,6 @@ import { GroupByOptions } from "./server/groupByOptions";
 import {
   allTweets,
   groupByIntervalGen,
-  tweetsByType,
   tweetsByArea,
   tweetsForArea,
   sortByTotal,

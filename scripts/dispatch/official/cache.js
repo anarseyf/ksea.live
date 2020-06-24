@@ -134,6 +134,6 @@ export const runner = async () => {
   console.log(`cache > computed in ${end - start}ms`);
 };
 
-(async () => {
-  await runner();
-})();
+// (async () => {
+//   await runner();
+// })();
