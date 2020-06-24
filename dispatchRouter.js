@@ -236,7 +236,6 @@ const updateController = async (req, res) => {
 
 const setHeaders = async (req, res, next) => {
   const freshnessSeconds = 60;
-  console.log(`>> Cache-Control for ${req.path}, ${req.url}, ${req.uri}`);
   res.set("Cache-Control", `max-age=${freshnessSeconds}`);
   next();
 };
