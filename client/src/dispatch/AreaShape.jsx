@@ -16,13 +16,12 @@ export const AreaShape = ({ area }) => {
     return null;
   }
 
-  const boundaryColor = getStyleProp("--geo");
+  const geoColor = getStyleProp("--geo");
 
   const geojsonStyle = {
-    color: boundaryColor,
-    fillColor: boundaryColor,
+    color: geoColor,
+    fillColor: geoColor,
     fillOpacity: 0.1,
-    strokeOpacity: 0.5,
     weight: 2,
   };
 

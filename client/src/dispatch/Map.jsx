@@ -7,15 +7,13 @@ import { ThemeContext } from "./ThemeContext";
 import { mapOptions } from "./mapOptions";
 import { centroid, areas, cityGeojson, mapBounds } from "./geojson";
 import classnames from "classnames";
-import { isPhone } from "../clientUtils";
+import { isPhone, getStyleProp } from "../clientUtils";
 import "./leaflet.scss";
 import styles from "./map.module.scss";
 
 const minZoom = 10,
   maxZoom = 13,
   defaultZoom = 11;
-
-const activeColor = "dodgerblue";
 
 export const Map = ({ area }) => {
   const { user } = useContext(UserContext);
@@ -28,15 +26,18 @@ export const Map = ({ area }) => {
     return null;
   }
 
+  const geoColor = getStyleProp("--geo");
+  const geoBoundsColor = getStyleProp("--geo-bounds");
+
   const geojsonStyleBounds = {
-    color: "#1e90ff66", // dodgerblue with alpha
+    color: geoBoundsColor,
     fillOpacity: 0,
     strokeOpacity: 0.5,
     weight: 4,
   };
   const geojsonStyleActive = {
-    color: activeColor,
-    fillColor: activeColor,
+    color: geoColor,
+    fillColor: geoColor,
     fillOpacity: 0.1,
     strokeOpacity: 0.5,
     weight: 2,

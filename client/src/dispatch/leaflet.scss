@@ -11,11 +11,15 @@
 }
 .leaflet-container {
   background-color: var(--transparent);
-  .leaflet-control-attribution {
-    background: rgba(50, 50, 50, 0.6);
+
+  & .leaflet-control-attribution {
+    color: var(--text-primary);
+    background: var(--attribution);
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
     color: darkgray;
-    a {
-      color: rgb(98, 120, 153);
+    & a {
+      color: var(--link);
     }
   }
 }
