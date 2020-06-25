@@ -44,7 +44,7 @@ export const History = () => {
     svgWidth = width + margin.left + margin.right;
   const yearWidth = width / 2;
   const maxBarWidth = yearWidth * 0.4;
-  const annotationRectWidth = yearWidth * 0.5;
+  const annotationRectWidth = yearWidth * 0.45;
 
   const svgRef = useRef(null);
   const xAxisRef = useRef(null);

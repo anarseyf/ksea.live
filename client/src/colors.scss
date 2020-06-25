@@ -3,7 +3,6 @@
   --twitter-main: #00acee;
   --twitter-darkgray: #657786;
   --selected-bg: slategray;
-  --highlight: red;
   --hover: silver;
 }
 
@@ -29,6 +28,7 @@
   --graph-primary: #1f343f;
   --graph-secondary: rgb(148, 148, 148);
   --heading: #595959;
+  --highlight: var(--live);
   --link: rgb(34, 113, 150);
   --live: red;
   --text-primary: #042638;
@@ -45,8 +45,8 @@
   --bg-hover: #f1ddb1;
   --bg-map: var(--bg);
   --bg1: #b7c5ee;
-  --bg2: #dcc4e6;
-  --bg3: #e8cbe3;
+  --bg2: #ccc4e6;
+  --bg3: #dfcbe8;
   --bg4: #eecdd2;
   --bg5: #f5cac3;
   --bg6: #f9d1af;
@@ -59,6 +59,7 @@
   --graph-primary: #2d0c02;
   --graph-secondary: rgb(148, 148, 148);
   --heading: #434343;
+  --highlight: var(--live);
   --link: rgb(143, 50, 21);
   --live: red;
   --text-primary: rgb(24, 20, 18);
@@ -68,7 +69,7 @@
 }
 
 #app.dark {
-  --annotation: #e63838;
+  --annotation: #f84d2f;
   --attribution: #554e6488;
   --axis-color: slategray;
   --bg: rgb(25, 26, 26); // jawg-dark
@@ -89,10 +90,11 @@
   --graph-primary: #f2e5df;
   --graph-secondary: rgb(164, 164, 164);
   --heading: #d6d5d5;
+  --highlight: var(--live);
   --link: rgb(156, 203, 242);
-  --live: red;
+  --live: rgb(255, 20, 20);
   --text-primary: white;
-  --text-secondary: rgb(152, 165, 179);
-  --texture: var(--geo);
+  --text-secondary: rgb(178, 188, 199);
+  --texture: rgb(149, 171, 192);
   --tweet-bg: #01212e;
 }

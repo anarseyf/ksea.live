@@ -27,7 +27,7 @@ export const AreaShape = ({ area }) => {
 
   const center = centroid(features);
   const zoom = 10;
-  const tileOptions = mapOptions(theme);
+  const tileOptions = mapOptions(theme, "@1x");
 
   return (
     <ErrorBoundary>

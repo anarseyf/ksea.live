@@ -19,7 +19,6 @@ export const Map = ({ area }) => {
   const { user } = useContext(UserContext);
   const { filteredByArea } = useContext(DataContext);
   const { theme } = useContext(ThemeContext);
-  const tileOptions = mapOptions(theme);
 
   if (!filteredByArea.length) {
     // console.log("MAP/no data");
@@ -121,13 +120,16 @@ export const Map = ({ area }) => {
   //     data.length
   //   }, geo:${rendered.length}`
   // );
+  const phone = isPhone();
+  const resolution = phone && zoom < 12 ? "@1x" : "@2x";
+  const tileOptions = mapOptions(theme, resolution);
   const city = cityGeojson.features[0];
 
   return (
     <LeafletMap
       className={classnames(styles.container, {
         [styles.area]: area,
-        [styles.phone]: isPhone(),
+        [styles.phone]: phone,
       })}
       center={center}
       zoom={zoom}

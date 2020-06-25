@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import { DataContext } from "./DataProvider";
 import { AreaShape } from "./AreaShape";
 
-import { isActive, isAtLeastSev2, isAtLeastSev1, isPhone } from "../clientUtils";
+import { isActive, isExactlySev2, isExactlySev1, isPhone } from "../clientUtils";
 import { SvgDot } from "./SvgDot";
 import { Spark } from "./Spark";
 import classnames from "classnames";
@@ -29,8 +29,8 @@ export const GroupByArea = () => {
       if (values.length) {
         map[area] = {
           active: values.filter(isActive).length,
-          sev1: values.filter(isAtLeastSev1).length,
-          sev2: values.filter(isAtLeastSev2).length,
+          sev1: values.filter(isExactlySev1).length,
+          sev2: values.filter(isExactlySev2).length,
         };
       }
     });
@@ -83,6 +83,12 @@ export const GroupByArea = () => {
                           <SvgDot active={true} />
                           <span>{totalsMap[area].active} </span>
                         </span>
+                      )}
+                      {totalsMap[area].sev1 > 0 && (
+                        <>
+                          <SvgDot sev1={true} />
+                          <span> {totalsMap[area].sev1} </span>
+                        </>
                       )}
                       {totalsMap[area].sev2 > 0 && (
                         <>

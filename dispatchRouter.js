@@ -174,11 +174,11 @@ const annotationsController = async (req, res) => {
 const mapsController = async (req, res) => {
   try {
     let readStream, writeStream;
-    const { s, x, y, z, theme } = req.params;
+    const { s, x, y, z, r, theme } = req.params;
     const minZoom = 10,
       maxZoom = 13;
 
-    const r = "@1x";
+    // const r = "@1x";
 
     if (isNaN(+z) || +z < minZoom || +z > maxZoom) {
       throw `/maps: invalid zoom param: ${z}`;

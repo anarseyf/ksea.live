@@ -26,10 +26,14 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
 
     const annotationColor = getStyleProp("--annotation");
     const textureColor = getStyleProp("--texture");
-    texturePrevious = textures.lines().lighter().size(8).stroke(textureColor);
+    texturePrevious = textures
+      .lines()
+      // .lighter()
+      .size(8)
+      .stroke(textureColor);
     textureCurrent = textures
       .lines()
-      .lighter()
+      // .lighter()
       .size(8)
       .orientation("6/8")
       .stroke(textureColor);
@@ -82,7 +86,7 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
       };
 
       if (value) {
-        callout.nx = sideX * (rectWidth + 5);
+        callout.nx = sideX * (rectWidth + 10);
         callout.ny = y;
       } else {
         callout.dx = sideX * 10;
