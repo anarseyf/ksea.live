@@ -16,7 +16,6 @@
   --bg1: rgb(29, 29, 31);
   --bg2: rgb(22, 22, 24);
   --body-bg: var(--bg);
-  --body-color: white;
   --border: rgb(54, 65, 87);
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(164, 164, 164);
@@ -33,10 +32,9 @@
   --bg: rgb(202, 210, 211); // jawg-light
   --bg-hover: #eef2f4;
   --bg-map: var(--bg);
-  --bg1: #e9f5fc;
-  --bg2: #f8fcff;
+  --bg1: #f8fcff;
+  --bg2: #eff5fa;
   --body-bg: var(--bg);
-  --body-color: black;
   --border: rgb(172, 181, 191);
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
@@ -45,24 +43,24 @@
   --live: red;
   --text-primary: black;
   --text-secondary: #676767;
-  --tweet-bg: rgb(151, 178, 182);
+  --tweet-bg: rgb(222, 232, 233);
 }
 
 #app.dusk {
   --axis-color: darkslategray;
   --bg: rgb(252, 203, 143);
-  --bg-hover: #e4cfb8;
+  --bg-hover: #f1ddb1;
   --bg-map: var(--bg);
   --bg1: #f5e5c4;
-  --bg2: #ceb7a4;
+  --bg2: #f0ead9;
   --body-bg: var(--bg);
-  --body-color: black;
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
   --heading: #434343;
   --link: rgb(143, 50, 21);
   --live: red;
   --border: rgb(216, 156, 87);
-  --text-primary: rgb(23, 18, 17);
-  --text-secondary: rgb(88, 43, 35);
+  --text-primary: rgb(38, 29, 26);
+  --text-secondary: rgb(126, 102, 90);
+  --tweet-bg: #bd9d83;
 }

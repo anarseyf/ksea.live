@@ -18,10 +18,9 @@ import { ThemeSwitch } from "./ThemeSwitch";
 export const DispatchAll = () => {
   const intro = (
     <p>
-      A visualization of Seattle Fire Department 911 dispatch data: a real-time
-      view of incidents across the city, a breakdown by neighborhood, and an
-      overview of the year's cumulative data.{" "}
-      <a href="#sources">Data sources</a> are listed at the end.
+      A visualization of Seattle Fire Department 911 dispatch data: real-time
+      view of incidents across the city; per-neighborhood breakdown; overview of
+      the year's cumulative data.{" "}
     </p>
   );
 
@@ -83,13 +82,13 @@ export const DispatchAll = () => {
         <Paragraph content={<Legend />} />
       </Section>
 
-      <Section edgeToEdge={true} styleOption={1}>
+      <Section styleOption={1} edgeToEdge={true}>
         <Paragraph title="" content={todayText} margin={true} />
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
       </Section>
-      
+
       <Section styleOption={2}>
         <Paragraph title="Active Incidents" content={active} />
         <TweetsActive />
@@ -115,7 +114,6 @@ export const DispatchAll = () => {
         />
         <History />
       </Section>
-     
 
       <Section styleOption={2}>
         <Sources />

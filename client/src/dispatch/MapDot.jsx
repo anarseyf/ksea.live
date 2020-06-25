@@ -21,7 +21,6 @@ export const MapDot = ({
     const appElement = document.getElementById("app");
     const style = getComputedStyle(appElement);
     const regularColor = style.getPropertyValue("--graph-primary");
-
     const activeColor = style.getPropertyValue("--live");
     setColor(active ? activeColor : regularColor);
   }, [active, theme]);

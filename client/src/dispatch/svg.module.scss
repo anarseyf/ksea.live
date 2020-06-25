@@ -38,13 +38,16 @@
   fill-opacity: 0.6;
 }
 
-.event circle {
+.container circle {
   fill: var(--graph-primary);
 }
 
-.event circle.outer {
-  stroke: var(--graph-primary);
+.container circle.outer {
   fill: none;
+}
+
+.container:not(.live) circle.outer {
+  stroke: var(--graph-primary);
 }
 
 .now circle {
@@ -61,12 +64,12 @@
 
 @keyframes pulse {
   0% {
-    opacity: 0.5;
+    opacity: 0.4;
   }
   35% {
     opacity: 1;
   }
   100% {
-    opacity: 0.5;
+    opacity: 0.4;
   }
 }

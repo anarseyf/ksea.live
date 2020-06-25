@@ -10,7 +10,7 @@ export const SvgDot = ({ radius = 0, active = false, sev1 = false, sev2 = false 
 
   return (
     <svg
-      className={classnames(svgStyles.event, { [svgStyles.live]: active })}
+      className={classnames(svgStyles.container, { [svgStyles.live]: active })}
       width={size}
       height={size}
     >
