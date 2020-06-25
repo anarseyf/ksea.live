@@ -26,6 +26,8 @@ const useTheme = () => {
     } else {
       setTheme("light");
     }
+
+    setTheme("dusk"); // TODO - remove
   }, []);
 
   return { theme, setTheme };
