@@ -82,31 +82,31 @@ export const DispatchAll = () => {
         <Paragraph content={<Legend />} />
       </Section>
 
-      <Section styleOption={1} edgeToEdge={true}>
+      <Section styleOption={3} edgeToEdge={true}>
         <Paragraph title="" content={todayText} margin={true} />
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
       </Section>
 
-      <Section styleOption={2}>
+      <Section styleOption={4}>
         <Paragraph title="Active Incidents" content={active} />
         <TweetsActive />
         <Paragraph title="Major Incidents" content={major} />
         <TweetsMajor />
       </Section>
 
-      <Section styleOption={1} edgeToEdge={true}>
+      <Section styleOption={5} edgeToEdge={true}>
         <Paragraph title="City Areas" content={areas} margin={true} />
         <GroupByArea />
       </Section>
 
-      <Section styleOption={2}>
+      <Section styleOption={6}>
         <Paragraph title="Past Week" content={pastWeek} />
         <Header />
       </Section>
 
-      <Section styleOption={1} edgeToEdge={true}>
+      <Section styleOption={7} edgeToEdge={true}>
         <Paragraph
           title="This Year compared to Last Year"
           content={history}
@@ -115,7 +115,7 @@ export const DispatchAll = () => {
         <History />
       </Section>
 
-      <Section styleOption={2}>
+      <Section styleOption={8}>
         <Sources />
         <Paragraph title="Notes" content={notes} />
       </Section>

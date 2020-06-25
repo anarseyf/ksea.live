@@ -13,8 +13,14 @@
   --bg: rgb(25, 26, 26); // jawg-dark
   --bg-hover: #191a1f;
   --bg-map: var(--bg);
-  --bg1: rgb(29, 29, 31);
-  --bg2: rgb(22, 22, 24);
+  --bg1: #1d1d21;
+  --bg2: #26262e;
+  --bg3: #2a2a35;
+  --bg4: #2d2d3c;
+  --bg5: #323248;
+  --bg6: #393959;
+  --bg7: #3e3e65;
+  --bg8: #3f3f6a;
   --body-bg: var(--bg);
   --border: rgb(54, 65, 87);
   --graph-primary: var(--text-primary);
@@ -29,11 +35,17 @@
 
 #app.light {
   --axis-color: darkslategray;
-  --bg: rgb(202, 210, 211); // jawg-light
+  --bg: #cad2d3; // jawg-light
   --bg-hover: #eef2f4;
   --bg-map: var(--bg);
-  --bg1: #f8fcff;
-  --bg2: #eff5fa;
+  --bg1: #e6eff0;
+  --bg2: #f2f8f9;
+  --bg3: #d4dbdc;
+  --bg4: #e6e8e9;
+  --bg5: #eff4f5;
+  --bg6: #e4eaeb;
+  --bg7: #eff4f5;
+  --bg8: #e4eaeb;
   --body-bg: var(--bg);
   --border: rgb(172, 181, 191);
   --graph-primary: var(--text-primary);
@@ -51,8 +63,14 @@
   --bg: rgb(252, 203, 143);
   --bg-hover: #f1ddb1;
   --bg-map: var(--bg);
-  --bg1: #f5e5c4;
-  --bg2: #f0ead9;
+  --bg1: #a5b7e9;
+  --bg2: #b2b5e3;
+  --bg3: #d4bade;
+  --bg4: #e4c7df;
+  --bg5: #e6c1d0;
+  --bg6: #f5cac3;
+  --bg7: #f4d7a5;
+  --bg8: #fcedbb;
   --body-bg: var(--bg);
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
@@ -60,7 +78,7 @@
   --link: rgb(143, 50, 21);
   --live: red;
   --border: rgb(216, 156, 87);
-  --text-primary: rgb(38, 29, 26);
-  --text-secondary: rgb(126, 102, 90);
+  --text-primary: rgb(24, 20, 18);
+  --text-secondary: rgb(87, 72, 65);
   --tweet-bg: #e7d1c0;
 }

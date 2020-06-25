@@ -5,9 +5,10 @@ import { useNeighborhoods } from "./neighborhoods";
 
 export const AreaPageHeader = ({ area }) => {
   const neighborhoodsMap = useNeighborhoods();
+  const decodedArea = decodeURIComponent(area);
   const subareas = (
     <div>
-      {(neighborhoodsMap[area] || []).map((subarea) => (
+      {(neighborhoodsMap[decodedArea] || []).map((subarea) => (
         <div key={subarea}>{subarea}</div>
       ))}
     </div>
@@ -22,7 +23,7 @@ export const AreaPageHeader = ({ area }) => {
 
   return (
     <>
-      <Paragraph title={area} content={subareas} />
+      <Paragraph title={decodedArea} content={subareas} />
       <Header area={area} />
     </>
   );
