@@ -3,17 +3,10 @@ import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { featuresForArea, centroid } from "./geojson";
 import { mapOptions } from "./mapOptions";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { isPhone } from "../clientUtils";
+import { isPhone, getStyleProp } from "../clientUtils";
 import classnames from "classnames";
 import styles from "./areashape.module.scss";
 import { ThemeContext } from "./ThemeContext";
-
-const geojsonStyle = {
-  color: "dodgerblue",
-  fillColor: "dodgerblue",
-  fillOpacity: 0.15,
-  weight: 1,
-};
 
 export const AreaShape = ({ area }) => {
   const { theme } = useContext(ThemeContext);
@@ -22,6 +15,16 @@ export const AreaShape = ({ area }) => {
     console.warn("AreaShape/no features for area", area);
     return null;
   }
+
+  const boundaryColor = getStyleProp("--geo");
+
+  const geojsonStyle = {
+    color: boundaryColor,
+    fillColor: boundaryColor,
+    fillOpacity: 0.1,
+    strokeOpacity: 0.5,
+    weight: 2,
+  };
 
   const center = centroid(features);
   const zoom = 10;

@@ -3,9 +3,9 @@ import classnames from "classnames";
 import svgStyles from "./svg.module.scss";
 
 export const SvgDot = ({ radius = 0, active = false, sev1 = false, sev2 = false }) => {
-  const size = 18,
-    sev1Radius = 6,
-    sev2Radius = 8;
+  const size = 20,
+    sev1Radius = 6.5,
+    sev2Radius = 9;
   const baseRadius = radius || (4);
 
   return (
@@ -14,7 +14,7 @@ export const SvgDot = ({ radius = 0, active = false, sev1 = false, sev2 = false 
       width={size}
       height={size}
     >
-      <circle cx={size / 2} cy={size / 2} r={baseRadius} />
+      <circle className={svgStyles.event} cx={size / 2} cy={size / 2} r={baseRadius} />
       {(sev1 || sev2) && (
         <circle className={svgStyles.outer}
           cx={size / 2}

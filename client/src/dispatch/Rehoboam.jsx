@@ -27,7 +27,7 @@ export const Rehoboam = ({ area }) => {
     svgWidth = width + 2 * margin,
     svgHeight = height + 2 * margin;
 
-  const dotRadius = 6;
+  const dotRadius = 5;
 
   useEffect(() => {
     if (!filteredByAreaMin.length) {
@@ -114,16 +114,16 @@ export const Rehoboam = ({ area }) => {
             {circles.map(({ key, cx, cy, r, sev1, sev2, active }) => (
               <g key={key} className={classnames({ [svgStyles.live]: active })}>
                 <circle
-                  className={classnames(styles.eventcircle)}
+                  className={classnames(svgStyles.event)}
                   cx={cx}
                   cy={cy}
                   r={r}
                 />
                 {sev1 && (
-                  <circle className={styles.major} cx={cx} cy={cy} r={r + 2} />
+                  <circle className={classnames(styles.outer, svgStyles.outer)} cx={cx} cy={cy} r={r + 3} />
                 )}
                 {sev2 && (
-                  <circle className={styles.major} cx={cx} cy={cy} r={r + 4} />
+                  <circle className={classnames(styles.outer, svgStyles.outer)} cx={cx} cy={cy} r={r + 6} />
                 )}
               </g>
             ))}

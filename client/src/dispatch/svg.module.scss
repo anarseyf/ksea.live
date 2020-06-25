@@ -38,11 +38,12 @@
   fill-opacity: 0.6;
 }
 
-.container circle {
+circle.event {
   fill: var(--graph-primary);
 }
 
-.container circle.outer {
+circle.outer {
+  stroke: var(--graph-primary);
   fill: none;
 }
 
@@ -59,6 +60,10 @@
 .live circle {
   animation: pulse 2s infinite ease-in-out;
   fill: var(--live);
+}
+
+.live circle.outer {
+  animation: pulse 2s infinite ease-in-out;
   stroke: var(--live);
 }
 

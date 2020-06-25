@@ -30,18 +30,8 @@
 }
 
 .events {
-  opacity: 0.9;
+  opacity: 0.85;
 }
-.eventcircle {
-  fill: var(--graph-primary);
-  stroke: none;
-}
-.major {
-  stroke: var(--graph-primary);
-  stroke-width: 1;
-  fill: none;
-}
-.active circle {
-  fill: var(--highlight);
-  stroke: var(--highlight);
+circle.outer {
+  stroke-width: 1.5;
 }

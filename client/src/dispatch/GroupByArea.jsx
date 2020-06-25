@@ -81,13 +81,13 @@ export const GroupByArea = () => {
                       {totalsMap[area].active > 0 && (
                         <span className={styles.active}>
                           <SvgDot active={true} />
-                          <span>{totalsMap[area].active} active </span>
+                          <span>{totalsMap[area].active} </span>
                         </span>
                       )}
                       {totalsMap[area].sev2 > 0 && (
                         <>
                           <SvgDot sev2={true} />
-                          <span> {totalsMap[area].sev2} major </span>
+                          <span> {totalsMap[area].sev2} </span>
                         </>
                       )}
                     </div>
