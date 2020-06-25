@@ -3,15 +3,14 @@ import {
   saveJSONAsync,
   appendJSONAsync,
 } from "../../../fileUtils";
-import { withScriptsJsonPath } from "../../../server/serverUtils";
+import {
+  withScriptsJsonPath,
+  withGeojsonPath,
+} from "../../../server/serverUtils";
 import { addNhood } from "./mappers";
-const path = require("path");
 
 const targetFile = withScriptsJsonPath("nhoods.json");
-const neighborhoodsFile = path.join(
-  __dirname,
-  "../../../client/src/dispatch/2016_seattle_cra.json"
-);
+const neighborhoodsFile = withGeojsonPath("2016_seattle_cra.json");
 
 export const runner = async (sourceFile) => {
   if (!sourceFile) {
