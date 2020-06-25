@@ -27,12 +27,13 @@ export const AreaShape = ({ area }) => {
 
   const center = centroid(features);
   const zoom = 10;
-  const tileOptions = mapOptions(theme, "@1x");
+  const phone = isPhone();
+  const tileOptions = mapOptions(theme, phone);
 
   return (
     <ErrorBoundary>
       <LeafletMap
-        className={classnames(styles.container, { [styles.phone]: isPhone() })}
+        className={classnames(styles.container, { [styles.phone]: phone })}
         center={center}
         zoom={zoom}
         minZoom={zoom}

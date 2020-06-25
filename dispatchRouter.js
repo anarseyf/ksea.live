@@ -174,11 +174,12 @@ const annotationsController = async (req, res) => {
 const mapsController = async (req, res) => {
   try {
     let readStream, writeStream;
-    const { s, x, y, z, r, theme } = req.params;
+    const { s, x, y, z, theme } = req.params;
     const minZoom = 10,
       maxZoom = 13;
 
-    // const r = "@1x";
+    const isPhone = req.query.phone === "true";
+    const r = isPhone && z < 12 ? "@1x" : "@2x";
 
     if (isNaN(+z) || +z < minZoom || +z > maxZoom) {
       throw `/maps: invalid zoom param: ${z}`;
@@ -195,6 +196,7 @@ const mapsController = async (req, res) => {
     const imageNameGen = (x, y, z, r = "@1x") =>
       `${imageDir}/${z}-${x}-${y}-${r}.png`;
     const fileName = imageNameGen(x, y, z, r, theme);
+    console.log(`Tile: ${fileName}`);
 
     if (fs.existsSync(fileName)) {
       readStream = fs.createReadStream(fileName);
@@ -257,6 +259,6 @@ router.get("/tweets/byAreaByType", byAreaByTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/annotations", annotationsController);
 router.get("/history/", historyController);
-router.get("/maps/:s/:x/:y/:z/:r/:theme?", mapsController);
+router.get("/maps/:s/:x/:y/:z/:theme", mapsController);
 
 export default router;

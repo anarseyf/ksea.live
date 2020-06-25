@@ -121,8 +121,7 @@ export const Map = ({ area }) => {
   //   }, geo:${rendered.length}`
   // );
   const phone = isPhone();
-  const resolution = phone && zoom < 12 ? "@1x" : "@2x";
-  const tileOptions = mapOptions(theme, resolution);
+  const tileOptions = mapOptions(theme, phone);
   const city = cityGeojson.features[0];
 
   return (
