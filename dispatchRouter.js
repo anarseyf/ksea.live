@@ -1,6 +1,7 @@
 const rp = require("request-promise");
 const router = require("express").Router();
 const fs = require("fs");
+const path = require("path");
 
 import { groupBy, generateIntervals } from "./server/groupby";
 import { GroupByOptions } from "./server/groupByOptions";
@@ -24,6 +25,7 @@ import {
   getAnnotationsAsync,
 } from "./dispatchCompute";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
+import { withTilesPath } from "./server/serverUtils";
 
 const axios = require("axios").default;
 
@@ -188,7 +190,7 @@ const mapsController = async (req, res) => {
       throw `/maps: invalid theme param: ${theme}`;
     }
 
-    const imageDir = `client/src/images/maps/${theme}/${z}`;
+    const imageDir = withTilesPath(`${theme}/${z}`);
     if (!fs.existsSync(imageDir)) {
       fs.mkdirSync(imageDir);
     }
