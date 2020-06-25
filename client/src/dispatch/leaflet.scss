@@ -11,15 +11,13 @@
 }
 .leaflet-container {
   background-color: var(--transparent);
-
-  & .leaflet-control-attribution {
-    color: var(--text-primary);
-    background: var(--attribution);
-    border-top: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-    color: darkgray;
-    & a {
-      color: var(--link);
-    }
+}
+.leaflet-control-attribution {
+  color: var(--text-primary);
+  background: var(--attribution);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  & a {
+    color: var(--link);
   }
 }

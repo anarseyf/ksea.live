@@ -69,7 +69,7 @@
 
 #app.dusk {
   --annotation: #e94646;
-  --attribution: #88888888;
+  --attribution: #88888866;
   --axis-color: darkslategray;
   --bg: rgb(252, 203, 143);
   --bg-hover: #f1ddb1;
@@ -83,6 +83,7 @@
   --bg7: #f9dbb7;
   --bg8: #fae5c1;
   --body-bg: var(--bg);
+  --border: rgb(228, 156, 117);
   --geo: rgb(8, 89, 136);
   --geo-bounds: rgba(8, 89, 136, 0.5);
   --graph-primary: #2d0c02;
@@ -90,7 +91,6 @@
   --heading: #434343;
   --link: rgb(143, 50, 21);
   --live: red;
-  --border: rgb(216, 156, 87);
   --text-primary: rgb(24, 20, 18);
   --text-secondary: rgb(87, 72, 65);
   --texture: var(--geo);
