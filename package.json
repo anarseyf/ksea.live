@@ -22,7 +22,7 @@
     "server:dev": "NODE_ENV=development nodemon -r esm --config nodemon.json server.js",
     "backgroundTasks": "cd scripts/dispatch && npm run start",
     "update:once": "cd scripts/dispatch && npm run update:once",
-    "build": "cd client && INLINE_RUNTIME_CHUNK=false npm run build",
+    "build": "cd client && npm run build",
     "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
     "bundle:aws": "git add --all; git commit -m 'AWS Bundle'; git archive -v -o coffee-aws.zip --format=zip HEAD"
   },
