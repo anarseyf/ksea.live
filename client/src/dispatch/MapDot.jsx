@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "./ThemeContext";
 import { Circle } from "react-leaflet";
+import { getStyleProp } from "../clientUtils";
 
 export const Appearance = {
   Normal: 0,
@@ -18,10 +19,8 @@ export const MapDot = ({
   const [color, setColor] = useState(null);
 
   useEffect(() => {
-    const appElement = document.getElementById("app");
-    const style = getComputedStyle(appElement);
-    const regularColor = style.getPropertyValue("--graph-primary");
-    const activeColor = style.getPropertyValue("--live");
+    const regularColor = getStyleProp("--graph-primary");
+    const activeColor = getStyleProp("--live");
     setColor(active ? activeColor : regularColor);
   }, [active, theme]);
 

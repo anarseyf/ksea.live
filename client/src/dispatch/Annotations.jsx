@@ -8,14 +8,10 @@ import {
 import { DataContext } from "./DataProvider";
 
 import styles from "./annotations.module.scss";
+import { getStyleProp } from "../clientUtils";
 
-const textureCurrent = textures
-  .lines()
-  .lighter()
-  .size(8)
-  .orientation("6/8")
-  .stroke("#51aae8");
-const texturePrevious = textures.lines().lighter().size(8).stroke("#51aae8");
+let textureCurrent;
+let texturePrevious;
 
 export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
   const calloutsRef = useRef(null);
@@ -23,13 +19,23 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
   const { annotations } = useContext(DataContext);
   const [regions, setRegions] = useState([]);
 
-  d3.select(regionsRef.current).call(textureCurrent);
-  d3.select(regionsRef.current).call(texturePrevious);
-
   useEffect(() => {
     if (!scales.length) {
       return;
     }
+
+    const annotationColor = getStyleProp("--annotation");
+    const textureColor = getStyleProp("--texture");
+    texturePrevious = textures.lines().lighter().size(8).stroke(textureColor);
+    textureCurrent = textures
+      .lines()
+      .lighter()
+      .size(8)
+      .orientation("6/8")
+      .stroke(textureColor);
+
+    d3.select(regionsRef.current).call(textureCurrent);
+    d3.select(regionsRef.current).call(texturePrevious);
 
     const regionFn = ({ start, end, offset }, i) => {
       if (!start || !end) {
@@ -72,7 +78,7 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
         subject: {
           radius: 6,
         },
-        color: "rgb(223, 69, 69)", // sync with colors.scss $annotation
+        color: annotationColor,
       };
 
       if (value) {

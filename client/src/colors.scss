@@ -5,10 +5,10 @@
   --selected-bg: slategray;
   --highlight: red;
   --hover: silver;
-  --annotation: rgb(223, 69, 69);
 }
 
 #app.dark {
+  --annotation: #e63838;
   --axis-color: slategray;
   --bg: rgb(25, 26, 26); // jawg-dark
   --bg-hover: #191a1f;
@@ -18,8 +18,8 @@
   --bg3: #2a2a35;
   --bg4: #2d2d3c;
   --bg5: #323248;
-  --bg6: #393959;
-  --bg7: #3e3e65;
+  --bg6: #373755;
+  --bg7: #3c3c60;
   --bg8: #3f3f6a;
   --body-bg: var(--bg);
   --border: rgb(54, 65, 87);
@@ -30,10 +30,12 @@
   --live: red;
   --text-primary: white;
   --text-secondary: rgb(152, 165, 179);
+  --texture: #51aae8;
   --tweet-bg: #01212e;
 }
 
 #app.light {
+  --annotation: #e02a2a;
   --axis-color: darkslategray;
   --bg: #cad2d3; // jawg-light
   --bg-hover: #eef2f4;
@@ -55,22 +57,24 @@
   --live: red;
   --text-primary: rgb(23, 23, 23);
   --text-secondary: #676767;
+  --texture: #2445da;
   --tweet-bg: rgb(222, 232, 233);
 }
 
 #app.dusk {
+  --annotation: #e94646;
   --axis-color: darkslategray;
   --bg: rgb(252, 203, 143);
   --bg-hover: #f1ddb1;
   --bg-map: var(--bg);
-  --bg1: #a5b7e9;
-  --bg2: #b2b5e3;
-  --bg3: #d4bade;
-  --bg4: #e4c7df;
-  --bg5: #e6c1d0;
-  --bg6: #f5cac3;
-  --bg7: #f4d7a5;
-  --bg8: #fcedbb;
+  --bg1: #b7c5ee;
+  --bg2: #dcc4e6;
+  --bg3: #e8cbe3;
+  --bg4: #eecdd2;
+  --bg5: #f5cac3;
+  --bg6: #f9d1af;
+  --bg7: #f9dbb7;
+  --bg8: #fae5c1;
   --body-bg: var(--bg);
   --graph-primary: var(--text-primary);
   --graph-secondary: rgb(148, 148, 148);
@@ -80,5 +84,6 @@
   --border: rgb(216, 156, 87);
   --text-primary: rgb(24, 20, 18);
   --text-secondary: rgb(87, 72, 65);
+  --texture: #2445da;
   --tweet-bg: #e7d1c0;
 }

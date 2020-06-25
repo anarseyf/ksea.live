@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 import { tz as timezone } from "moment-timezone";
-import moment from "moment";
 
 export const intervalExtent = ({ start, end }, expandMinutes = 0) =>
   expand([start, end], expandMinutes);
@@ -53,3 +52,9 @@ export const isAtLeastSev1 = ({ derived: { severity } }) => severity >= 1;
 export const isAtLeastSev2 = ({ derived: { severity } }) => severity >= 2;
 export const isExactlySev1 = ({ derived: { severity } }) => severity === 1;
 export const isExactlySev2 = ({ derived: { severity } }) => severity === 2;
+
+export const getStyleProp = (prop) => {
+  const appElement = document.getElementById("app");
+    const style = getComputedStyle(appElement);
+    return style.getPropertyValue(prop);
+}

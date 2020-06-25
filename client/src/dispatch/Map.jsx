@@ -83,10 +83,7 @@ export const Map = ({ area }) => {
 
   const isSelectedDot = ({ id_str }) => selectedTweet.id_str === id_str;
 
-  const importantOnTop = (a, b) => {
-    // TODO
-    return 0;
-  };
+  // const importantOnTop = (a, b) => { return 0; }; // TODO
 
   const interval = currentInterval(filteredByArea);
   let data = interval.values

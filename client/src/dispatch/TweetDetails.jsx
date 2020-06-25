@@ -6,7 +6,7 @@ import { AreaAccessors } from "../groupingOptions";
 export const TweetDetails = ({tweet}) => {
   const { address, units, lat, long } = tweet.derived;
   const { id_str } = tweet;
-  const url = `https://data.seattle.gov/resource/fire-911.json?incident_number=${id_str}`;
+  // const url = `https://data.seattle.gov/resource/fire-911.json?incident_number=${id_str}`;
   const unitsList = units.split(" ");
   const unitsStr = `${unitsList.length} ${
     unitsList.length === 1 ? "unit" : "units"
@@ -16,6 +16,7 @@ export const TweetDetails = ({tweet}) => {
 
   const format = (n) => Number.parseFloat(n).toFixed(3);
   const coordinates = lat ? `${format(lat)}°N ${format(-long)}°W` : "";
+  // const incidentLink = <a className={styles.link} href={url}>{id_str}</a>;
   return (
     <div className={styles.container}>
       <div>{address}</div>
@@ -27,7 +28,7 @@ export const TweetDetails = ({tweet}) => {
           <span key={unit} className={styles.unit}>{unit}</span>
           ))}
       </div>
-      <div className={styles.secondary}>Incident ID <a className={styles.link} href={url}>{id_str}</a></div>
+      <div className={styles.secondary}>Incident ID {id_str}</div>
     </div>
   );
 };

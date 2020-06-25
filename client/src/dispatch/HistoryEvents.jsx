@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import * as d3 from "d3";
 import classnames from "classnames";
-import styles from "./historyevents.module.scss";
 import svgStyles from "./svg.module.scss";
 
 import { DataContext, currentInterval, previousInterval } from "./DataProvider";

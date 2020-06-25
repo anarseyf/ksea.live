@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { DataContext, currentInterval } from "./DataProvider";
 
-import { Tweet, TweetModes } from "./Tweet";
 import { UserContextKeys, UserContext } from "./UserProvider";
 import { TweetList } from "./TweetList";
 

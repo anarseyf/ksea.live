@@ -1,11 +1,11 @@
 import * as d3 from "d3";
-import zipCodes from "./zip-codes.json";
+// import zipCodes from "./zip-codes.json";
 // import nhoods from "./nhoods.json";
 import nhoods from "./2016_seattle_cra.json";
 import city from "./2016_seattle_city.json";
 
 const nhoodProp = "NEIGHBO"; // TODO - import from server/groupby.js
-const zipcodeProp = "GEOID10";
+// const zipcodeProp = "GEOID10";
 
 const byArea = (features, prop) => {
   const map = {};
@@ -18,11 +18,11 @@ const byArea = (features, prop) => {
   return map;
 };
 
-const zipcodeFeaturesByArea = byArea(zipCodes.features, zipcodeProp);
 const nhoodFeaturesByArea = byArea(nhoods.features, nhoodProp);
-
-const featuresForZip = (zip) => zipcodeFeaturesByArea[zip];
 const featuresForNhood = (nhood) => nhoodFeaturesByArea[nhood];
+
+// const zipcodeFeaturesByArea = byArea(zipCodes.features, zipcodeProp);
+// const featuresForZip = (zip) => zipcodeFeaturesByArea[zip];
 
 export const featuresForArea = featuresForNhood;
 

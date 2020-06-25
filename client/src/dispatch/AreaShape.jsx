@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { featuresForArea, centroid } from "./geojson";
-import { MapOptions, mapOptions } from "./mapOptions";
+import { mapOptions } from "./mapOptions";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { isPhone } from "../clientUtils";
 import classnames from "classnames";

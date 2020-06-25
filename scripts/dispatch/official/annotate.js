@@ -1,5 +1,5 @@
 const path = require("path");
-const { getHistoryAsync } = require("../../../dispatchHelpers");
+const { getHistoryAsync } = require("../../../dispatchCompute");
 
 import * as d3 from "d3";
 import {
