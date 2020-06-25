@@ -42,7 +42,7 @@ export const MapDot = ({
   const baseRadius = active ? 250 : 150;
 
   if (!coordinates[0]) {
-    console.warn(`Dot: coordinates = ${coordinates}`);
+    // console.warn(`Dot: coordinates = ${coordinates}`);
     return null;
   }
 

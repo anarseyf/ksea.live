@@ -24,7 +24,7 @@ export const Map = ({ area }) => {
   const tileOptions = mapOptions(theme);
 
   if (!filteredByArea.length) {
-    console.log("MAP/no data");
+    // console.log("MAP/no data");
     return null;
   }
 
@@ -116,13 +116,13 @@ export const Map = ({ area }) => {
       : Appearance.Normal;
   };
 
-  console.log(
-    `MAP/render area=${area || "-"}, zoom=${zoom}, selected:${
-      (selectedTweet || {}).id_str || "-"
-    }, features:${rendered.length}/${features.length}, dots:${
-      data.length
-    }, geo:${rendered.length}`
-  );
+  // console.log(
+  //   `MAP/render area=${area || "-"}, zoom=${zoom}, selected:${
+  //     (selectedTweet || {}).id_str || "-"
+  //   }, features:${rendered.length}/${features.length}, dots:${
+  //     data.length
+  //   }, geo:${rendered.length}`
+  // );
   const city = cityGeojson.features[0];
 
   return (
