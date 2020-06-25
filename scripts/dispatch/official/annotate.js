@@ -1,7 +1,7 @@
 const path = require("path");
 const { getHistoryAsync } = require("../../../dispatchCompute");
 
-import * as d3 from "d3";
+import { extent as d3extent } from "d3-array";
 import {
   toPacificDateString,
   toPacificStringMMMD,
@@ -31,7 +31,7 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   }
   const year = new Date(yearStart).getFullYear();
   const lengths = data.map(({ length }) => length);
-  const [min, max] = d3.extent(lengths);
+  const [min, max] = d3extent(lengths);
   const minBin = data.find(({ length }) => length === min);
   const maxBin = data.find(({ length }) => length === max);
 

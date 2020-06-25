@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import * as d3 from "d3";
+import { select as d3select } from "d3-selection";
 import textures from "textures";
 import {
   annotation as d3annotation,
@@ -38,8 +38,8 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
       .orientation("6/8")
       .stroke(textureColor);
 
-    d3.select(regionsRef.current).call(textureCurrent);
-    d3.select(regionsRef.current).call(texturePrevious);
+    d3select(regionsRef.current).call(textureCurrent);
+    d3select(regionsRef.current).call(texturePrevious);
 
     const regionFn = ({ start, end, offset }, i) => {
       if (!start || !end) {
@@ -106,7 +106,7 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
       .annotations(calloutsSvgData)
       .type(d3annotationCalloutCircle);
 
-    d3.select(calloutsRef.current).call(callout);
+    d3select(calloutsRef.current).call(callout);
 
     const newRegions = annotations.map(regionFn).filter(Boolean);
     setRegions(newRegions);

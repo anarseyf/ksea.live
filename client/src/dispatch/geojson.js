@@ -1,4 +1,4 @@
-import * as d3 from "d3";
+import { mean as d3mean, extent as d3extent } from "d3-array";
 // import zipCodes from "./zip-codes.json";
 // import nhoods from "./nhoods.json";
 import nhoods from "./2016_seattle_cra.json";
@@ -50,7 +50,7 @@ export const centroid = (features) => {
   let coords = features
     .map(({ geometry: { coordinates } }) => coordinates)
     .flat(2);
-  const latExtent = d3.extent(coords, ([_, lat]) => lat);
-  const longExtent = d3.extent(coords, ([long, _]) => long);
-  return [d3.mean(latExtent), d3.mean(longExtent)];
+  const latExtent = d3extent(coords, ([_, lat]) => lat);
+  const longExtent = d3extent(coords, ([long, _]) => long);
+  return [d3mean(latExtent), d3mean(longExtent)];
 };

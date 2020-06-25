@@ -1,6 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import classnames from "classnames";
-import * as d3 from "d3";
+
+import {
+  scaleLinear as d3scaleLinear,
+  scaleTime as d3scaleTime,
+} from "d3-scale";
+import { max as d3max } from "d3-array";
+import { select as d3select } from "d3-selection";
+import { line as d3line, curveCardinal as d3curveCardinal } from "d3-shape";
+import { axisLeft as d3axisLeft, axisBottom as d3axisBottom } from "d3-axis";
+
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
 import { intervalExtent, timeFormatterHourAM, isPhone, every6Hours } from "../clientUtils";
@@ -36,25 +45,23 @@ export const MultiLine = ({
     const xExtent = intervalExtent(currentInterval);
     const yExtent = [
       0,
-      d3.max([1.0, ...intervals.flatMap(({ bins }) => bins).map(accessor)]),
+      d3max([1.0, ...intervals.flatMap(({ bins }) => bins).map(accessor)]),
     ];
 
-    const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
-    const xAxis = d3
-      .axisBottom()
+    const xScale = d3scaleTime().domain(xExtent).range([0, width]);
+    const xAxis = d3axisBottom()
       .scale(xScale)
       .tickValues(every6Hours(currentInterval.start))
       .tickFormat(timeFormatterHourAM)
       .tickSize(3);
-    d3.select(xAxisRef.current).call(xAxis);
+    d3select(xAxisRef.current).call(xAxis);
 
-    const yScale = d3.scaleLinear().domain(yExtent).range([height, 0]);
-    const yAxis = d3.axisLeft().scale(yScale).ticks(2);
-    d3.select(yAxisRef.current).call(yAxis);
+    const yScale = d3scaleLinear().domain(yExtent).range([height, 0]);
+    const yAxis = d3axisLeft().scale(yScale).ticks(2);
+    d3select(yAxisRef.current).call(yAxis);
 
-    const line = d3
-      .line()
-      .curve(d3.curveCardinal.tension(0.3))
+    const line = d3line()
+      .curve(d3curveCardinal.tension(0.3))
       .x((d) => xScale(d.x0))
       .y((d) => yScale(accessor(d)));
 

@@ -36,3 +36,7 @@ export const sortNewFirst = (a, b) => {
   }
   return oldA ? 1 : -1;
 };
+
+// see also clientUtils.js
+export const isExactlySev1 = ({ derived: { severity } }) => severity === 1;
+export const isExactlySev2 = ({ derived: { severity } }) => severity === 2;

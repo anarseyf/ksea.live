@@ -1,5 +1,578 @@
 [
   {
+    "id_str": "F200062342",
+    "created_at": "6/25/2020 3:48:57 PM",
+    "derived": {
+      "lat": 47.626286,
+      "long": -122.348863,
+      "timestamp": 1593125337000,
+      "description": "Aid Response",
+      "address": "800 4th Ave N",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200062341",
+    "created_at": "6/25/2020 3:45:28 PM",
+    "derived": {
+      "lat": 47.723215,
+      "long": -122.282914,
+      "timestamp": 1593125128000,
+      "description": "Medic Response",
+      "address": "13035 42nd Ave Ne",
+      "active": true,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North",
+      "units": "E39 M31"
+    }
+  },
+  {
+    "id_str": "F200062339",
+    "created_at": "6/25/2020 3:34:55 PM",
+    "derived": {
+      "lat": 47.597409,
+      "long": -122.317227,
+      "timestamp": 1593124495000,
+      "description": "Aid Response",
+      "address": "611 12th Av S",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Pioneer Square/International District",
+      "neighborhoodGroup": "Downtown",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200062338",
+    "created_at": "6/25/2020 3:32:06 PM",
+    "derived": {
+      "lat": 47.638557,
+      "long": -122.345241,
+      "timestamp": 1593124326000,
+      "description": "Aid Response",
+      "address": "2109 Aurora Ave N",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "E8"
+    }
+  },
+  {
+    "id_str": "F200062337",
+    "created_at": "6/25/2020 3:30:22 PM",
+    "derived": {
+      "lat": 47.705096,
+      "long": -122.344695,
+      "timestamp": 1593124222000,
+      "description": "Aid Response",
+      "address": "10507 Aurora Av N",
+      "active": true,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Licton Springs",
+      "neighborhoodGroup": "Northwest",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200062336",
+    "created_at": "6/25/2020 3:27:18 PM",
+    "derived": {
+      "lat": 47.645803,
+      "long": -122.360896,
+      "timestamp": 1593124038000,
+      "description": "Aid Response",
+      "address": "2900 3rd Av W",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F200062334",
+    "created_at": "6/25/2020 3:10:40 PM",
+    "derived": {
+      "timestamp": 1593123040000,
+      "description": "Aid Response",
+      "address": "University Way Ne / Ne 43rd St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "F200062331",
+    "created_at": "6/25/2020 2:58:25 PM",
+    "derived": {
+      "timestamp": 1593122305000,
+      "description": "Aid Response",
+      "address": "10507 Aurora Av N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200062330",
+    "created_at": "6/25/2020 2:57:06 PM",
+    "derived": {
+      "timestamp": 1593122226000,
+      "description": "Aid Response",
+      "address": "610 Nw 92nd St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E35"
+    }
+  },
+  {
+    "id_str": "F200062329",
+    "created_at": "6/25/2020 2:54:51 PM",
+    "derived": {
+      "lat": 47.663381,
+      "long": -122.311961,
+      "timestamp": 1593122091000,
+      "description": "Investigate Out Of Service",
+      "address": "4750 15th Av Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast",
+      "units": "E31"
+    }
+  },
+  {
+    "id_str": "F200062328",
+    "created_at": "6/25/2020 2:52:48 PM",
+    "derived": {
+      "timestamp": 1593121968000,
+      "description": "Aid Response",
+      "address": "1722 19th Ave",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F200062324",
+    "created_at": "6/25/2020 2:47:05 PM",
+    "derived": {
+      "timestamp": 1593121625000,
+      "description": "Auto Fire Alarm",
+      "address": "5949 California Ave Sw",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "E32 L11"
+    }
+  },
+  {
+    "id_str": "F200062325",
+    "created_at": "6/25/2020 2:46:56 PM",
+    "derived": {
+      "timestamp": 1593121616000,
+      "description": "Brush Fire",
+      "address": "Sb I5 At Holgate",
+      "active": false,
+      "unitCount": 5,
+      "severity": 1,
+      "units": "B4 B5 E10 E2 E5"
+    }
+  },
+  {
+    "id_str": "F200062323",
+    "created_at": "6/25/2020 2:39:10 PM",
+    "derived": {
+      "timestamp": 1593121150000,
+      "description": "Aid Response",
+      "address": "N 46th St / Midvale Ave N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F200062322",
+    "created_at": "6/25/2020 2:31:36 PM",
+    "derived": {
+      "timestamp": 1593120696000,
+      "description": "Aid Response",
+      "address": "634 PIKE ST",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200062321",
+    "created_at": "6/25/2020 2:25:18 PM",
+    "derived": {
+      "timestamp": 1593120318000,
+      "description": "Medic Response",
+      "address": "515 Minor Av",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "units": "A25 M10"
+    }
+  },
+  {
+    "id_str": "F200062319",
+    "created_at": "6/25/2020 2:16:18 PM",
+    "derived": {
+      "timestamp": 1593119778000,
+      "description": "Aid Response",
+      "address": "1008 N 109th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200062318",
+    "created_at": "6/25/2020 2:16:01 PM",
+    "derived": {
+      "timestamp": 1593119761000,
+      "description": "Low Acuity Response",
+      "address": "3442 44th Ave Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E29"
+    }
+  },
+  {
+    "id_str": "F200062317",
+    "created_at": "6/25/2020 2:13:34 PM",
+    "derived": {
+      "timestamp": 1593119614000,
+      "description": "Aid Response",
+      "address": "1255 Harrison St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200062316",
+    "created_at": "6/25/2020 2:12:35 PM",
+    "derived": {
+      "timestamp": 1593119555000,
+      "description": "Aid Response",
+      "address": "1423 1st Av",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200062314",
+    "created_at": "6/25/2020 2:06:10 PM",
+    "derived": {
+      "timestamp": 1593119170000,
+      "description": "Aid Response",
+      "address": "8116 37th Ave Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "units": "E37"
+    }
+  },
+  {
+    "id_str": "F200062311",
+    "created_at": "6/25/2020 1:56:24 PM",
+    "derived": {
+      "lat": 47.562472,
+      "long": -122.385455,
+      "timestamp": 1593118584000,
+      "description": "Aid Response",
+      "address": "4545 42nd Av Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest",
+      "units": "E32"
+    }
+  },
+  {
+    "id_str": "F200062309",
+    "created_at": "6/25/2020 1:50:46 PM",
+    "derived": {
+      "lat": 47.678556,
+      "long": -122.326837,
+      "timestamp": 1593118246000,
+      "description": "Fuel Spill",
+      "address": "6900 East Green Lake Way N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Green Lake",
+      "neighborhoodGroup": "Northwest",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F200062301",
+    "created_at": "6/25/2020 1:31:47 PM",
+    "derived": {
+      "lat": 47.609902,
+      "long": -122.328726,
+      "timestamp": 1593117107000,
+      "description": "Aid Response",
+      "address": "1210 9th Ave",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F200062300",
+    "created_at": "6/25/2020 1:28:26 PM",
+    "derived": {
+      "lat": 47.611606,
+      "long": -122.333354,
+      "timestamp": 1593116906000,
+      "description": "Aid Response",
+      "address": "7th Ave / Pike St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200062299",
+    "created_at": "6/25/2020 1:18:52 PM",
+    "derived": {
+      "lat": 47.666431,
+      "long": -122.373591,
+      "timestamp": 1593116332000,
+      "description": "Aid Response",
+      "address": "Nw 52nd St / 14th Ave Nw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard",
+      "units": "L8"
+    }
+  },
+  {
+    "id_str": "F200062298",
+    "created_at": "6/25/2020 1:17:19 PM",
+    "derived": {
+      "lat": 47.688714,
+      "long": -122.287451,
+      "timestamp": 1593116239000,
+      "description": "Medic Response",
+      "address": "8249 38th Ave Ne",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Wedgwood/View Ridge",
+      "neighborhoodGroup": "Northeast",
+      "units": "E38 M31"
+    }
+  },
+  {
+    "id_str": "F200062296",
+    "created_at": "6/25/2020 1:13:19 PM",
+    "derived": {
+      "lat": 47.636528,
+      "long": -122.397901,
+      "timestamp": 1593115999000,
+      "description": "Aid Response",
+      "address": "1951 Clise Pl W",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Magnolia",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "E41"
+    }
+  },
+  {
+    "id_str": "F200062295",
+    "created_at": "6/25/2020 1:10:57 PM",
+    "derived": {
+      "lat": 47.578782,
+      "long": -122.372558,
+      "timestamp": 1593115857000,
+      "description": "Aid Response",
+      "address": "2787 Harbor Ave Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "North Delridge",
+      "neighborhoodGroup": "Delridge Neighborhoods",
+      "units": "E32"
+    }
+  },
+  {
+    "id_str": "F200062293",
+    "created_at": "6/25/2020 1:09:11 PM",
+    "derived": {
+      "lat": 47.612624,
+      "long": -122.334205,
+      "timestamp": 1593115751000,
+      "description": "Aid Response",
+      "address": "705 PINE ST",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "L1"
+    }
+  },
+  {
+    "id_str": "F200062292",
+    "created_at": "6/25/2020 1:08:58 PM",
+    "derived": {
+      "lat": 47.668666,
+      "long": -122.374848,
+      "timestamp": 1593115738000,
+      "description": "Aid Response",
+      "address": "1448 Nw Market St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ballard",
+      "neighborhoodGroup": "Ballard",
+      "units": "E18"
+    }
+  },
+  {
+    "id_str": "F200062290",
+    "created_at": "6/25/2020 1:05:26 PM",
+    "derived": {
+      "lat": 47.686719,
+      "long": -122.316284,
+      "timestamp": 1593115526000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "11th Ave Ne / Ne 80th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast",
+      "units": "E40"
+    }
+  },
+  {
+    "id_str": "F200062287",
+    "created_at": "6/25/2020 12:54:33 PM",
+    "derived": {
+      "lat": 47.663074,
+      "long": -122.305233,
+      "timestamp": 1593114873000,
+      "description": "Aid Response",
+      "address": "2106 Ne 47th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast",
+      "units": "E17"
+    }
+  },
+  {
+    "id_str": "F200062288",
+    "created_at": "6/25/2020 12:53:39 PM",
+    "derived": {
+      "lat": 47.730595,
+      "long": -122.312704,
+      "timestamp": 1593114819000,
+      "description": "Aid Response",
+      "address": "14041 15th Av Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North",
+      "units": "L5"
+    }
+  },
+  {
+    "id_str": "F200062286",
+    "created_at": "6/25/2020 12:51:06 PM",
+    "derived": {
+      "lat": 47.721329,
+      "long": -122.296339,
+      "timestamp": 1593114666000,
+      "description": "Aid Response",
+      "address": "12740 30th Av Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cedar Park/Meadowbrook",
+      "neighborhoodGroup": "North",
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F200062284",
+    "created_at": "6/25/2020 12:47:27 PM",
+    "derived": {
+      "lat": 47.621968,
+      "long": -122.331577,
+      "timestamp": 1593114447000,
+      "description": "Aid Response",
+      "address": "1255 Harrison St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200062282",
+    "created_at": "6/25/2020 12:45:17 PM",
+    "derived": {
+      "lat": 47.540295,
+      "long": -122.286233,
+      "timestamp": 1593114317000,
+      "description": "Low Acuity Response",
+      "address": "6940 37th Av S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "South Beacon Hill/NewHolly",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "HEALTH1"
+    }
+  },
+  {
     "id_str": "F200062277",
     "created_at": "6/25/2020 12:37:10 PM",
     "derived": {
@@ -8,7 +581,7 @@
       "timestamp": 1593113830000,
       "description": "Aid Response",
       "address": "1215 N 45th St",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Wallingford",
@@ -25,7 +598,7 @@
       "timestamp": 1593113797000,
       "description": "Water Job Minor",
       "address": "1814 Minor Av",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Cascade/Eastlake",
@@ -40,7 +613,7 @@
       "timestamp": 1593113453000,
       "description": "Low Acuity Response",
       "address": "521 S Weller St",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "units": "A5"
@@ -66,7 +639,7 @@
       "timestamp": 1593113390000,
       "description": "Medic Response",
       "address": "6410 Phinney Av N",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "units": "L9 M18"
@@ -79,7 +652,7 @@
       "timestamp": 1593113325000,
       "description": "Aid Response",
       "address": "4500 12th Ave Ne",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "units": "E16 E17"
@@ -92,7 +665,7 @@
       "timestamp": 1593113302000,
       "description": "Medic Response",
       "address": "2720 E Madison St",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "units": "E34 M1"
@@ -105,7 +678,7 @@
       "timestamp": 1593113262000,
       "description": "Auto Fire Alarm",
       "address": "6533 Seaview Av Nw",
-      "active": true,
+      "active": false,
       "unitCount": 4,
       "severity": 0,
       "units": "E18 FB4 FIREBOAT L8"
@@ -120,7 +693,7 @@
       "timestamp": 1593113086000,
       "description": "Scenes Of Violence 7",
       "address": "2300 S Massachusetts St",
-      "active": true,
+      "active": false,
       "unitCount": 5,
       "severity": 1,
       "neighborhood": "Mt. Baker/North Rainier",
@@ -171,7 +744,7 @@
       "timestamp": 1593110727000,
       "description": "Aid Response",
       "address": "4th Ave S / S Lander St",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Duwamish/SODO",

@@ -1,7 +1,17 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import * as d3 from "d3";
 import { DataContext, currentInterval } from "./DataProvider";
 import { intervalExtent, isPhone } from "../clientUtils";
+
+import {
+  scaleLinear as d3scaleLinear,
+  scaleTime as d3scaleTime,
+} from "d3-scale";
+import { max as d3max } from "d3-array";
+import { select as d3select } from "d3-selection";
+import { axisLeft as d3axisLeft, axisBottom as d3axisBottom } from "d3-axis";
+import { timeMonth as d3timeMonth } from "d3-time";
+import { timeFormat as d3timeFormat } from "d3-time-format";
+
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
 
@@ -26,24 +36,22 @@ export const Histogram = () => {
     const interval = currentInterval(history);
     const bins = interval.binsLowRes;
     const extent = intervalExtent(interval, 60);
-    const xScale = d3.scaleTime().domain(extent).range([0, width]);
+    const xScale = d3scaleTime().domain(extent).range([0, width]);
 
-    const yScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(bins, (b) => b.length)])
+    const yScale = d3scaleLinear()
+      .domain([0, d3max(bins, (b) => b.length)])
       .range([height, 0]);
 
-    const dateFormatter = d3.timeFormat("%-m/%-d"); // https://github.com/d3/d3-time-format#locale_format
+    const dateFormatter = d3timeFormat("%-m/%-d"); // https://github.com/d3/d3-time-format#locale_format
 
-    const xAxis = d3
-      .axisBottom()
+    const xAxis = d3axisBottom()
       .tickFormat(dateFormatter)
       .scale(xScale)
-      .ticks(d3.timeMonth.every(1));
-    d3.select(xAxisRef.current).call(xAxis);
+      .ticks(d3timeMonth.every(1));
+    d3select(xAxisRef.current).call(xAxis);
 
-    const yAxis = d3.axisLeft().scale(yScale).ticks(2);
-    d3.select(yAxisRef.current).call(yAxis);
+    const yAxis = d3axisLeft().scale(yScale).ticks(2);
+    d3select(yAxisRef.current).call(yAxis);
 
     let temp = 0;
     if (bins.length) {

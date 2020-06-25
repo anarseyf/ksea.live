@@ -1,4 +1,4 @@
-import * as d3 from "d3";
+import { timeMinute as d3timeMinute } from 'd3-time';
 import { tz as timezone } from "moment-timezone";
 
 export const intervalExtent = ({ start, end }, expandMinutes = 0) =>
@@ -6,8 +6,8 @@ export const intervalExtent = ({ start, end }, expandMinutes = 0) =>
 
 // move to server/histogram.js
 export const expand = (extent, expandMinutes = 0) => [
-  d3.timeMinute.offset(extent[0], -expandMinutes),
-  d3.timeMinute.offset(extent[1], expandMinutes),
+  d3timeMinute.offset(extent[0], -expandMinutes),
+  d3timeMinute.offset(extent[1], expandMinutes),
 ];
 
 // TODO - coordinate with section.module.scss, or find a way to use vars

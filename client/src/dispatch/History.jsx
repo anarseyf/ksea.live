@@ -1,11 +1,28 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import * as d3 from "d3";
-import classnames from "classnames";
-
-import { DataContext, currentInterval as getCurrentInterval, previousInterval as getPreviousInterval } from "./DataProvider";
-import { intervalExtent as getIntervalExtent, isPhone, timeFormatterMonth, everyMonth } from "../clientUtils";
+import {
+  DataContext,
+  currentInterval as getCurrentInterval,
+  previousInterval as getPreviousInterval,
+} from "./DataProvider";
+import {
+  intervalExtent as getIntervalExtent,
+  isPhone,
+  timeFormatterMonth,
+  everyMonth,
+} from "../clientUtils";
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";
+import classnames from "classnames";
+
+import {
+  scaleLinear as d3scaleLinear,
+  scaleTime as d3scaleTime,
+} from "d3-scale";
+import { max as d3max } from "d3-array";
+import { select as d3select } from "d3-selection";
+import { line as d3line, curveCardinal as d3curveCardinal } from "d3-shape";
+import { axisLeft as d3axisLeft, axisBottom as d3axisBottom } from "d3-axis";
+
 import historyStyles from "./history.module.scss";
 import svgStyles from "./svg.module.scss";
 
@@ -62,25 +79,23 @@ export const History = () => {
     const binsPrevious = intervalPrevious.binsLowRes;
     const timeExtent = getIntervalExtent(intervalCurrent);
 
-    const xScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(binsCurrent, (b) => b.length)])
+    const xScale = d3scaleLinear()
+      .domain([0, d3max(binsCurrent, (b) => b.length)])
       .range([0, maxBarWidth]);
 
-    const yScale = d3.scaleTime().domain(timeExtent).range([0, height]);
+    const yScale = d3scaleTime().domain(timeExtent).range([0, height]);
 
     setScales([xScale, yScale]);
 
-    const yAxis = d3
-      .axisLeft()
+    const yAxis = d3axisLeft()
       .scale(yScale)
       .tickValues(everyMonth(intervalCurrent.start))
       .tickFormat(timeFormatterMonth)
       .tickSize(0);
-    d3.select(yAxisRef.current).call(yAxis);
+    d3select(yAxisRef.current).call(yAxis);
 
-    const xAxis = d3.axisBottom().scale(xScale).ticks(2);
-    d3.select(xAxisRef.current).call(xAxis);
+    const xAxis = d3axisBottom().scale(xScale).ticks(2);
+    d3select(xAxisRef.current).call(xAxis);
 
     // const currentYear = binsCurrent.map(({ x0, length }) => ({
     //   x: xScale(0),
@@ -98,14 +113,12 @@ export const History = () => {
     // }));
     // setSvgData([currentYear, previousYear]);
 
-    const lineCurrent = d3
-      .line()
-      .curve(d3.curveCardinal.tension(0.3))
+    const lineCurrent = d3line()
+      .curve(d3curveCardinal.tension(0.3))
       .x((d) => xScale(d.length))
       .y((d) => yScale(d.x0));
-    const linePrevious = d3
-      .line()
-      .curve(d3.curveCardinal.tension(0.3))
+    const linePrevious = d3line()
+      .curve(d3curveCardinal.tension(0.3))
       .x((d) => xScale(-d.length))
       .y((d) => yScale(d.x0));
 
@@ -116,13 +129,11 @@ export const History = () => {
       { path: pathPrevious, key: "previous" },
     ]);
 
-    const clipLineCurrent = d3
-      .line()
+    const clipLineCurrent = d3line()
       .x((d) => xScale(d.value))
       .y((d) => yScale(d.timestamp));
 
-    const clipLinePrevious = d3
-      .line()
+    const clipLinePrevious = d3line()
       .x((d) => xScale(-d.value))
       .y((d) => yScale(d.timestamp));
 

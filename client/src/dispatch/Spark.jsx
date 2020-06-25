@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { intervalExtent, isPhone } from "../clientUtils";
 import classnames from "classnames";
-import * as d3 from "d3";
+
+import {
+  scaleLinear as d3scaleLinear,
+  scaleTime as d3scaleTime,
+} from "d3-scale";
+import { max as d3max } from "d3-array";
+import { line as d3line, curveCardinal as d3curveCardinal } from "d3-shape";
+
 import sparkStyles from "./spark.module.scss";
 import svgStyles from "./svg.module.scss";
-import { intervalExtent, isPhone } from "../clientUtils";
 
 export const Spark = ({
   intervals = [],
@@ -42,15 +49,14 @@ export const Spark = ({
 
     const yExtent = [
       0,
-      d3.max([1.0, ...data.flatMap(({ bins }) => bins).map(accessor)]),
+      d3max([1.0, ...data.flatMap(({ bins }) => bins).map(accessor)]),
     ];
 
-    const xScale = d3.scaleTime().domain(xExtent).range([0, width]);
-    const yScale = d3.scaleLinear().domain(yExtent).range([height, 0]);
+    const xScale = d3scaleTime().domain(xExtent).range([0, width]);
+    const yScale = d3scaleLinear().domain(yExtent).range([height, 0]);
 
-    const line = d3
-      .line()
-      .curve(d3.curveCardinal.tension(0.3))
+    const line = d3line()
+      .curve(d3curveCardinal.tension(0.3))
       .x((d) => xScale(d.x0))
       .y((d) => yScale(accessor(d)));
 

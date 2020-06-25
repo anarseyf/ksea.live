@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import * as d3 from "d3";
-import { axisRadialInner } from "d3-radial-axis";
 import { DataContext, currentInterval } from "./DataProvider";
 import {
   intervalExtent,
@@ -10,6 +8,15 @@ import {
 } from "../clientUtils";
 import { Topline } from "./Topline";
 import classnames from "classnames";
+
+import {
+  scaleLinear as d3scaleLinear,
+} from "d3-scale";
+import { max as d3max } from "d3-array";
+import { select as d3select } from "d3-selection";
+import { lineRadial as d3lineRadial, curveCardinal as d3curveCardinal } from "d3-shape";
+import { axisRadialInner } from "d3-radial-axis";
+
 import styles from "./rehoboam.module.scss";
 import svgStyles from "./svg.module.scss";
 
@@ -40,7 +47,7 @@ export const Rehoboam = ({ area }) => {
     const bins = current.binsHiRes;
     const extent = intervalExtent(current);
     const maxDisturbance = 20;
-    const maxLength = d3.max(bins, ({ length }) => length);
+    const maxLength = d3max(bins, ({ length }) => length);
     const [start, end] = extent;
 
     const toRadial = (timestamp, length) => {
@@ -51,12 +58,11 @@ export const Rehoboam = ({ area }) => {
     };
 
     const radialData = bins.map(({ x0, length }) => toRadial(x0, length));
-    const radialGen = d3.lineRadial().curve(d3.curveCardinal.tension(0.4));
+    const radialGen = d3lineRadial().curve(d3curveCardinal.tension(0.4));
     const path = radialGen(radialData);
     setSvgPath(path);
 
-    const angleScale = d3
-      .scaleLinear()
+    const angleScale = d3scaleLinear()
       .domain(extent)
       .range([0, 2 * Math.PI]);
 
@@ -64,7 +70,7 @@ export const Rehoboam = ({ area }) => {
       .tickFormat(timeFormatterHourAM)
       .tickSize(0)
       .tickValues(every6Hours(current.start));
-    d3.select(axisRef.current).call(axis);
+    d3select(axisRef.current).call(axis);
 
     if (activeOrMajorForArea.length) {
       const toRadialDot = ({ derived: { timestamp } }) => {

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./typelegend.module.scss";
-import * as d3 from "d3";
+import { max as d3max, sum as d3sum } from "d3-array";
 import { UserContext, UserContextKeys } from "./UserProvider";
 import classnames from "classnames";
 
@@ -13,12 +13,12 @@ export const TypeLegend = ({ legend = [], title, showTotal, showLabels }) => {
   }
 
   const counts = legend.map(({ total }) => total);
-  const max = d3.max(counts);
-  const total = d3.sum(counts);
+  const max = d3max(counts);
+  const total = d3sum(counts);
   const maxWidth = 50;
   const size = 10;
 
-  const widthFn = ({ total }) => d3.max([2, maxWidth * (total / max)]);
+  const widthFn = ({ total }) => d3max([2, maxWidth * (total / max)]);
 
   const handleClick = ({ key: type }) => {
     const filter = user[contextKey];
