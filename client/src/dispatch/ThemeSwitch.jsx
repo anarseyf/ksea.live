@@ -7,22 +7,21 @@ import styles from "./themeswitch.module.scss";
 export const ThemeSwitch = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
-  const themes = ["light", "dusk", "dark"];
+  const themes = ["Light", "Dusk", "Dark"];
 
   const handleClick = (newTheme) => {
-    setTheme(newTheme);
+    setTheme(newTheme.toLowerCase());
   };
 
   const content = (
     <p>
       {/* The color theme changes based on time of day in Seattle. */}
-      Theme:
       {themes.map((t, i) => (
         <span key={t}>
           {" "}
           <button
             className={classnames(styles.button, {
-              [styles.selected]: t === theme,
+              [styles.selected]: t.toLowerCase() === theme,
             })}
             onClick={() => handleClick(t)}
           >

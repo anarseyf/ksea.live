@@ -25,15 +25,15 @@ export const MapDot = ({
   }, [active, theme]);
 
   // TODO - set opacity in CSS
-  let opacity = 0.4;
+  let opacity = 0.5;
   if (severity >= 1) {
-    opacity = 0.7;
+    opacity = 0.75;
   }
   if (active) {
     opacity = 0.9;
   }
   if (appearance === Appearance.Dimmed) {
-    opacity = 0.35;
+    opacity = 0.3;
   }
   if (appearance === Appearance.Highlighted) {
     opacity = 0.9;

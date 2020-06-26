@@ -30,7 +30,7 @@
   --geo-bounds: rgba(104, 150, 197, 0.5);
   --graph-primary: #1f343f;
   --graph-secondary: rgb(148, 148, 148);
-  --heading: #595959;
+  --heading: var(--text-primary);
   --highlight: var(--live);
   --link: rgb(34, 113, 150);
   --live: red;
@@ -63,7 +63,7 @@
   --geo-bounds: rgba(150, 62, 8, 0.5);
   --graph-primary: #2d0c02;
   --graph-secondary: rgb(148, 148, 148);
-  --heading: #434343;
+  --heading: var(--text-primary);
   --highlight: var(--live);
   --link: rgb(143, 50, 21);
   --live: red;
@@ -74,7 +74,7 @@
 }
 
 #app.dark {
-  --annotation: #f84d2f;
+  --annotation: #f45134;
   --attribution: #554e6488;
   --attribution-link: rgb(119, 153, 180);
   --axis-color: slategray;
@@ -82,26 +82,26 @@
   --bg-hover: #191a1f;
   --bg-map: var(--bg);
   --bg-rehoboam: #2a2a34;
-  --bg1: #212126;
-  --bg2: #26262e;
-  --bg3: #2a2a35;
-  --bg4: #2d2d3c;
-  --bg5: #323248;
-  --bg6: #343450;
-  --bg7: #373759;
-  --bg8: #3c3c60;
+  --bg1: #1f2226;
+  --bg2: #24252d;
+  --bg3: #292c35;
+  --bg4: #30323f;
+  --bg5: #2f3545;
+  --bg6: #343b50;
+  --bg7: #374359;
+  --bg8: #3d4a61;
   --body-bg: var(--bg);
   --border: rgb(54, 65, 87);
   --geo: rgb(36, 137, 238);
   --geo-bounds: rgba(36, 137, 238, 0.5);
-  --graph-primary: #f2e5df;
-  --graph-secondary: rgb(164, 164, 164);
-  --heading: #d6d5d5;
+  --graph-primary: #eef6fc;
+  --graph-secondary: rgb(163, 167, 172);
+  --heading: var(--text-primary);
   --highlight: var(--live);
   --link: rgb(156, 203, 242);
   --live: rgb(255, 20, 20);
-  --text-primary: white;
-  --text-secondary: rgb(178, 188, 199);
+  --text-primary: rgb(245, 248, 250);
+  --text-secondary: rgb(199, 207, 216);
   --texture: rgb(149, 171, 192);
   --tweet-bg: #01212e;
 }

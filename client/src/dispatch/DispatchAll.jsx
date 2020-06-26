@@ -106,7 +106,7 @@ export const DispatchAll = () => {
 
       <Section styleOption={7} edgeToEdge={true}>
         <Paragraph
-          title="This Year compared to Last Year"
+          title="This Year vs Last Year"
           content={history}
           margin={true}
         />
