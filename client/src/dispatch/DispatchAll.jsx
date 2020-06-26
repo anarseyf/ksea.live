@@ -61,13 +61,11 @@ export const DispatchAll = () => {
     </p>
   );
 
+
   const notes = (
-    <>
-      <ThemeSwitch />
       <p>
         Created by <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
       </p>
-    </>
   );
 
   return (
@@ -117,7 +115,8 @@ export const DispatchAll = () => {
 
       <Section styleOption={8}>
         <Sources />
-        <Paragraph title="Notes" content={notes} />
+        <Paragraph title="Themes" content={<ThemeSwitch />} />
+        <Paragraph title="About" content={notes} />
       </Section>
     </DataProvider>
   );

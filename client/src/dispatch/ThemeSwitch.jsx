@@ -16,8 +16,8 @@ export const ThemeSwitch = () => {
   const content = (
     <p>
       {/* The color theme changes based on time of day in Seattle. */}
-      See this page in
-      {themes.map((t) => (
+      Theme:
+      {themes.map((t, i) => (
         <span key={t}>
           {" "}
           <button
@@ -28,8 +28,9 @@ export const ThemeSwitch = () => {
           >
             {t}
           </button>
+          { (i < (themes.length - 1)) && <span> / </span>}
         </span>
-      ))} theme.
+      ))}.
     </p>
   );
 

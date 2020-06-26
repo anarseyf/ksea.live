@@ -13,14 +13,12 @@
   background-color: var(--transparent);
 
   & .leaflet-control-attribution {
-    font-variant: small-caps;
-    font-size: 1.1em;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     background: var(--attribution);
     border-top: 1px solid var(--border);
     border-left: 1px solid var(--border);
     & a {
-      color: var(--link);
+      color: var(--attribution-link);
     }
   }
 }

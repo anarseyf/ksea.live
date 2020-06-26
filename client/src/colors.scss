@@ -9,6 +9,7 @@
 #app.light {
   --annotation: #e02a2a;
   --attribution: #c1c1c188;
+  --attribution-link: rgb(34, 113, 150);
   --axis-color: #afadad;
   // --bg: #cad2d3; // jawg-light — water
   --bg: #f6f6f4; // jawg-light — background (land)
@@ -42,6 +43,7 @@
 #app.dusk {
   --annotation: #e94646;
   --attribution: #b3777744;
+  --attribution-link: rgb(143, 50, 21);
   --axis-color: darkslategray;
   --bg: rgb(252, 203, 143);
   --bg-hover: #f1ddb1;
@@ -57,8 +59,8 @@
   --bg8: #f8ead1;
   --body-bg: var(--bg);
   --border: rgb(228, 156, 117);
-  --geo: rgb(8, 89, 136);
-  --geo-bounds: rgba(8, 89, 136, 0.5);
+  --geo: rgb(150, 62, 8);
+  --geo-bounds: rgba(150, 62, 8, 0.5);
   --graph-primary: #2d0c02;
   --graph-secondary: rgb(148, 148, 148);
   --heading: #434343;
@@ -74,6 +76,7 @@
 #app.dark {
   --annotation: #f84d2f;
   --attribution: #554e6488;
+  --attribution-link: rgb(119, 153, 180);
   --axis-color: slategray;
   --bg: rgb(25, 26, 26); // jawg-dark
   --bg-hover: #191a1f;
