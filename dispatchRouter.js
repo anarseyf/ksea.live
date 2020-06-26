@@ -1,7 +1,6 @@
 const rp = require("request-promise");
 const router = require("express").Router();
 const fs = require("fs");
-const path = require("path");
 
 import { groupBy, generateIntervals } from "./server/groupby";
 import { GroupByOptions } from "./server/groupByOptions";
@@ -26,6 +25,7 @@ import {
 } from "./dispatchCompute";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 import { withTilesPath } from "./server/serverUtils";
+import { createReturn } from "typescript";
 
 const axios = require("axios").default;
 
@@ -176,7 +176,7 @@ const annotationsController = async (req, res) => {
 const mapsController = async (req, res) => {
   try {
     let readStream, writeStream;
-    const { s, x, y, z, theme } = req.params;
+    const { x, y, z, theme } = req.params;
     const minZoom = 10,
       maxZoom = 13;
 
@@ -205,9 +205,18 @@ const mapsController = async (req, res) => {
     } else {
       const token =
         "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H"; // https://www.jawg.io/lab/access-tokens
-      const urlGen = (s = "a", x, y, z, r = "") =>
-        `https://${s}.tile.jawg.io/jawg-${theme}/${z}/${x}/${y}${r}.png?access-token=${token}`;
-      const url = urlGen(s, x, y, z, r);
+
+      const themeIds = {
+        dark: "4cae5be4-3e61-4a5d-9543-fc158da1f1df",
+        dusk: "315c4209-0550-4ecb-847e-d5d68f430628",
+        light: "jawg-light",
+      };
+
+      const urlGen = (theme, x, y, z, r = "") => {
+        const query = `?access-token=${token}`;
+        return `https://b.tile.jawg.io/${themeIds[theme]}/${z}/${x}/${y}${r}.png${query}`;
+      };
+      const url = urlGen(theme, x, y, z, r);
       console.log(`/maps > requesting:`, url);
 
       const config = {
@@ -241,15 +250,22 @@ const updateController = async (req, res) => {
   res.json({ mostRecentId, latency: end - start });
 };
 
-const setHeaders = async (req, res, next) => {
+const cacheControlDynamic = async (req, res, next) => {
   const freshnessSeconds = 60;
   res.set("Cache-Control", `max-age=${freshnessSeconds}`);
   next();
 };
 
-router.use("/status", setHeaders);
-router.use("/tweets/*", setHeaders);
-router.use("/history/*", setHeaders);
+const cacheControlTiles = async (req, res, next) => {
+  const freshnessSeconds = 86400;
+  res.set("Cache-Control", `max-age=${freshnessSeconds}`);
+  next();
+};
+
+router.use("/status", cacheControlDynamic);
+router.use("/tweets/*", cacheControlDynamic);
+router.use("/history/*", cacheControlDynamic);
+router.use("/maps/*", cacheControlTiles);
 
 router.get("/update", updateController);
 router.get("/status", statusController);
@@ -261,6 +277,6 @@ router.get("/tweets/byAreaByType", byAreaByTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/annotations", annotationsController);
 router.get("/history/", historyController);
-router.get("/maps/:s/:x/:y/:z/:theme", mapsController);
+router.get("/maps/:x/:y/:z/:theme", mapsController);
 
 export default router;
