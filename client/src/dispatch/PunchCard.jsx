@@ -48,10 +48,17 @@ export const PunchCard = () => {
   const [hourAggregateSpecs, setHourAggregateSpecs] = useState([]);
   const [scales, setScales] = useState([]);
 
-  const svgWidth = isPhone() ? 320 : 380;
-  const margin = { top: 30, right: 90, bottom: 80, left: 40 };
-  const width = svgWidth - margin.left - margin.right;
-  const cellSize = width / 7;
+  const svgWidth = isPhone() ? 360 : 450;
+  const cellSize = svgWidth / 11;
+  const width = cellSize * 7;
+  const horizontal = svgWidth - width;
+  const horizontalRight = cellSize * 2;
+  const margin = {
+    top: 40,
+    bottom: 120,
+    right: horizontalRight,
+    left: horizontal - horizontalRight,
+  };
   const gap = 2;
   const elementSize = cellSize - 2 * gap;
   const height = cellSize * 12;
@@ -209,7 +216,7 @@ export const PunchCard = () => {
           <g transform={`translate(0,${13 * cellSize})`}>
             <PunchCardElements elements={dayAggregateSpecs} />
           </g>
-          <g>
+          <g transform={`translate(${cellSize / 2},${cellSize / 2})`}>
             <PunchCardAnnotations
               annotations={annotations}
               cellSize={cellSize}

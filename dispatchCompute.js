@@ -258,9 +258,14 @@ export const getPunchCardAsync = async () => {
 
   const annotations = [
     {
+      day: 2,
+      hour: 2,
+      text: "Min",
+    },
+    {
       day: 4,
-      hour: 7,
-      text: "Peak",
+      hour: 8,
+      text: "Max",
     },
   ];
 
