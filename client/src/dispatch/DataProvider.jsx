@@ -31,7 +31,7 @@ const useTweets = (filters = {}) => {
     active24: [],
     major24: [],
     annotations: [],
-    punchCard: [],
+    punchCard: {},
     status: {},
   };
   const [value, setValue] = useState(initialValue);
@@ -54,7 +54,7 @@ const useTweets = (filters = {}) => {
   const [active24, setActive24] = useState([]);
   const [major24, setMajor24] = useState([]);
   const [annotations, setAnnotations] = useState([]);
-  const [punchCard, setPunchCard] = useState([]);
+  const [punchCard, setPunchCard] = useState({});
 
   const [shouldFetch, setShouldFetch] = useState(true);
 

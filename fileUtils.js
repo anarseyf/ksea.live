@@ -104,7 +104,7 @@ export const toPacificStringMMMD = (date) => {
 
 export const pacificWeekTuple = (timestamp) => {
   const m = timezone(timestamp, SeattleTimezone);
-  return { week: m.week(), day: m.day(), hour: m.hour() };
+  return { week: m.week(), day: m.day(), hour: Math.floor(m.hour() / 2) };
 };
 
 export const readJSONAsync = async (fileName, defaultValue) => {

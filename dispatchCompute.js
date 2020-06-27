@@ -199,20 +199,20 @@ export const getPunchCardAsync = async () => {
   const intervals = generateHistoryIntervals().slice(0, 1);
   const all = await allTweets(intervals);
 
-  const mapper = ({ derived: { timestamp } }) => pacificWeekTuple(timestamp);
-  const buckets = all.map(mapper); // { week, dayOfWeek, hour }
+  const toTuples = ({ derived: { timestamp } }) => pacificWeekTuple(timestamp);
+  const buckets = all.map(toTuples); // { week, day, hour }
   const [minWeek, maxWeek] = d3extent(buckets, ({ week }) => week);
   const numWeeks = maxWeek - minWeek + 1;
   const zerosArray = (n) => [...new Array(n)].map(() => 0);
   const weeks = zerosArray(numWeeks).map(() =>
-    zerosArray(7).map(() => zerosArray(24))
+    zerosArray(7).map(() => zerosArray(12))
   );
   buckets.forEach(({ week, day, hour }) => {
     weeks[week - minWeek][day][hour] += 1;
   });
 
   const accumulator = zerosArray(7).map(() =>
-    zerosArray(24).map(() => ({
+    zerosArray(12).map(() => ({
       avg: 0,
       sum: 0,
       count: 0,
@@ -220,25 +220,42 @@ export const getPunchCardAsync = async () => {
       max: 0,
     }))
   );
-  const reduced = weeks.reduce((acc, week) => {
-    for (let w = 0; w < 7; w++) {
-      for (let h = 0; h < 24; h++) {
-        acc[w][h].sum += week[w][h];
-        acc[w][h].count += 1;
-        acc[w][h].min = Math.min(acc[w][h].min, week[w][h]);
-        acc[w][h].max = Math.max(acc[w][h].max, week[w][h]);
+  const week = weeks.reduce((acc, week) => {
+    for (let day = 0; day < 7; day++) {
+      for (let hour = 0; hour < 12; hour++) {
+        acc[day][hour].sum += week[day][hour];
+        acc[day][hour].count += 1;
+        acc[day][hour].min = Math.min(acc[day][hour].min, week[day][hour]);
+        acc[day][hour].max = Math.max(acc[day][hour].max, week[day][hour]);
       }
     }
     return acc;
   }, accumulator);
 
-  for (let w = 0; w < 7; w++) {
-    for (let h = 0; h < 24; h++) {
-      const bucket = accumulator[w][h];
+  for (let day = 0; day < 7; day++) {
+    for (let hour = 0; hour < 12; hour++) {
+      const bucket = accumulator[day][hour];
       bucket.avg = bucket.count ? bucket.sum / bucket.count : 0;
     }
   }
 
+  let dayAggregates = zerosArray(7).map((_) => ({ sum: 0, count: 0 }));
+  let hourAggregates = zerosArray(12).map((_) => ({ sum: 0, count: 0 }));
+
+  for (let day = 0; day < 7; day++) {
+    for (let hour = 0; hour < 12; hour++) {
+      const bucket = accumulator[day][hour];
+      dayAggregates[day].sum += bucket.sum;
+      dayAggregates[day].count += bucket.count;
+      hourAggregates[hour].sum += bucket.sum;
+      hourAggregates[hour].count += bucket.count;
+    }
+  }
+
+  const toWeightedAvg = ({ sum, count }) => (count === 0 ? 0 : sum / count);
+  dayAggregates = dayAggregates.map(toWeightedAvg);
+  hourAggregates = hourAggregates.map(toWeightedAvg);
+
   // TODO - only return avg
-  return reduced;
+  return { week, dayAggregates, hourAggregates };
 };

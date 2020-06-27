@@ -16,16 +16,17 @@ import svgStyles from "./svg.module.scss";
 
 export const PunchCard = () => {
   const { punchCard } = useContext(DataContext);
+  const { week, dayAggregates, hourAggregates } = punchCard;
   const texturesRef = useRef();
   const [rects, setRects] = useState([]);
 
-  const svgWidth = isPhone() ? 300 : 400;
+  const svgWidth = isPhone() ? 320 : 380;
   const margin = { top: 30, right: 70, bottom: 30, left: 30 };
   const width = svgWidth - margin.left - margin.right;
   const daySize = width / 7;
   const gap = 2;
   const rectSize = daySize - 2 * gap;
-  const height = daySize * 24;
+  const height = daySize * 12;
   const svgHeight = height + margin.top + margin.bottom;
 
   const yAxisRef = useRef(null);
@@ -33,27 +34,24 @@ export const PunchCard = () => {
 
   useEffect(() => {
     // TODO - no need for useEffect?
-    if (!punchCard.length) {
+    if (!week) {
       return;
     }
 
-    const max = d3max(punchCard.flat(2).map(({ avg }) => avg));
+    const max = d3max(week.flat(2).map(({ avg }) => avg));
 
     const xDomain = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     const xRange = xDomain.map((_, i) => i * daySize);
     const xScale = d3scaleOrdinal(xDomain, xRange);
-    const xAxis = d3axisTop().scale(xScale).ticks(24);
+    const xAxis = d3axisTop().scale(xScale).ticks(12);
     d3select(xAxisRef.current).call(xAxis);
 
-    const yExtent = [0, 24];
+    const yExtent = [0, 12];
     const yScale = d3scaleLinear().domain(yExtent).range([0, height]);
-    const yAxis = d3axisLeft()
-      .scale(yScale)
-      .tickValues([0, 6, 12, 18])
-      .tickSize(0);
+    const yAxis = d3axisLeft().scale(yScale).tickValues([0, 6, 12]).tickSize(0);
     d3select(yAxisRef.current).call(yAxis);
 
-    const data = punchCard
+    const data = week
       .map((day, iDay) =>
         day.map(({ avg }, iHour) => ({
           hour: iHour,
@@ -111,9 +109,9 @@ export const PunchCard = () => {
     });
 
     setRects(newRects);
-  }, [punchCard, height, width, rectSize, daySize]);
+  }, [week, height, width, rectSize, daySize]);
 
-  if (!punchCard.length) {
+  if (!rects.length) {
     return null;
   }
 
@@ -128,7 +126,7 @@ export const PunchCard = () => {
         <g
           ref={yAxisRef}
           className={styles.axis}
-          transform={`translate(0,${rectSize / 2})`}
+          transform={`translate(0,${0})`}
         />
         <g ref={texturesRef} transform={`translate(${gap},0)`}>
           {rects.map(({ key, x, y, w, h, fill, stroke }) => (
