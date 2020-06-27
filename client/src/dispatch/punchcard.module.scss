@@ -1,7 +1,20 @@
 @import "../colors.scss";
 
+.svg {
+  border: 1px solid var(--border);
+}
+
 .rect {
   // fill: var(--graph-secondary);
-  // stroke: var(--graph-primary);
-  // stroke-width: 1;
+  // stroke: var(--graph-secondary);
+  stroke-width: 1;
+}
+
+.axis {
+  color: var(--transparent);
+  & text {
+    font-size: 1.3em;
+    font-weight: 200;
+    fill: var(--text-secondary);
+  }
 }

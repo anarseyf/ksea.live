@@ -239,5 +239,6 @@ export const getPunchCardAsync = async () => {
     }
   }
 
+  // TODO - only return avg
   return reduced;
 };

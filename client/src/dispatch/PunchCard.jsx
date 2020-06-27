@@ -8,7 +8,7 @@ import {
 } from "d3-scale";
 import { max as d3max } from "d3-array";
 import { select as d3select } from "d3-selection";
-import { axisLeft as d3axisLeft, axisBottom as d3axisBottom } from "d3-axis";
+import { axisLeft as d3axisLeft, axisTop as d3axisTop } from "d3-axis";
 
 import textures from "textures";
 import styles from "./punchcard.module.scss";
@@ -19,17 +19,17 @@ export const PunchCard = () => {
   const texturesRef = useRef();
   const [rects, setRects] = useState([]);
 
-  const svgWidth = isPhone() ? 350 : 500;
-  const margin = { top: 20, right: 30, bottom: 20, left: 30 };
+  const svgWidth = isPhone() ? 300 : 400;
+  const margin = { top: 30, right: 70, bottom: 30, left: 30 };
   const width = svgWidth - margin.left - margin.right;
-  const daySize = width / 24;
-  const gap = 1;
+  const daySize = width / 7;
+  const gap = 2;
   const rectSize = daySize - 2 * gap;
-  const height = daySize * 7;
+  const height = daySize * 24;
   const svgHeight = height + margin.top + margin.bottom;
 
-  const xAxisRef = useRef(null);
   const yAxisRef = useRef(null);
+  const xAxisRef = useRef(null);
 
   useEffect(() => {
     // TODO - no need for useEffect?
@@ -37,18 +37,20 @@ export const PunchCard = () => {
       return;
     }
 
-    const xExtent = [0, 24];
-
     const max = d3max(punchCard.flat(2).map(({ avg }) => avg));
 
-    const xScale = d3scaleLinear().domain(xExtent).range([0, width]);
-    const xAxis = d3axisBottom().scale(xScale).tickSize(3);
+    const xDomain = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const xRange = xDomain.map((_, i) => i * daySize);
+    const xScale = d3scaleOrdinal(xDomain, xRange);
+    const xAxis = d3axisTop().scale(xScale).ticks(24);
     d3select(xAxisRef.current).call(xAxis);
 
-    const yDomain = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const yRange = yDomain.map((_, i) => i * daySize);
-    const yScale = d3scaleOrdinal(yDomain, yRange);
-    const yAxis = d3axisLeft().scale(yScale).ticks(7);
+    const yExtent = [0, 24];
+    const yScale = d3scaleLinear().domain(yExtent).range([0, height]);
+    const yAxis = d3axisLeft()
+      .scale(yScale)
+      .tickValues([0, 6, 12, 18])
+      .tickSize(0);
     d3select(yAxisRef.current).call(yAxis);
 
     const data = punchCard
@@ -69,7 +71,7 @@ export const PunchCard = () => {
     const texture1 = textures.lines().size(7).strokeWidth(3).stroke(color1);
     const texture2 = textures.lines().size(6).strokeWidth(2).stroke(color2);
     const texture3 = textures.lines().size(5).strokeWidth(1).stroke(color3);
-    const texture4 = textures.lines().size(4).strokeWidth(1).stroke(color4);
+    const texture4 = textures.lines().size(5).strokeWidth(1).stroke(color4);
 
     d3select(texturesRef.current)
       .call(texture1)
@@ -77,22 +79,34 @@ export const PunchCard = () => {
       .call(texture3)
       .call(texture4);
 
-    const newRects = data.map(({ hour, day, value }) => {
-      const texture =
+    const appearance = [
+      { color: color1, texture: texture1 },
+      { color: color2, texture: texture2 },
+      { color: color3, texture: texture3 },
+      { color: color4, texture: texture4 },
+    ];
+    const appearanceFn = (value) => {
+      const index =
         value >= 0.8 * max
-          ? texture1
+          ? 0
           : value >= 0.6 * max
-          ? texture2
+          ? 1
           : value >= 0.4 * max
-          ? texture3
-          : texture4;
+          ? 2
+          : 3;
+      return appearance[index];
+    };
+
+    const newRects = data.map(({ hour, day, value }) => {
+      const appearance = appearanceFn(value);
       return {
         key: `${day}-${hour}`,
-        x: xScale(hour) + gap,
-        y: day * daySize,
-        width: rectSize - gap,
-        height: rectSize - gap,
-        fill: texture.url(),
+        x: day * daySize,
+        y: yScale(hour) + gap,
+        w: rectSize - gap,
+        h: rectSize - gap,
+        fill: appearance.texture.url(),
+        stroke: appearance.color,
       };
     });
 
@@ -107,22 +121,27 @@ export const PunchCard = () => {
     <svg className={styles.svg} width={svgWidth} height={svgHeight}>
       <g transform={`translate(${margin.left},${margin.top})`}>
         <g
-          className={svgStyles.axis}
           ref={xAxisRef}
-          transform={`translate(0,${height})`}
+          className={styles.axis}
+          transform={`translate(${rectSize / 2},0)`}
         />
-        <g className={svgStyles.axis} ref={yAxisRef} />
-        <g ref={texturesRef} transform={`translate(0,${-rectSize / 2})`}>
-          {rects.map(({ key, x, y, width, height, fill }) => (
+        <g
+          ref={yAxisRef}
+          className={styles.axis}
+          transform={`translate(0,${rectSize / 2})`}
+        />
+        <g ref={texturesRef} transform={`translate(${gap},0)`}>
+          {rects.map(({ key, x, y, w, h, fill, stroke }) => (
             <rect
               key={key}
               className={styles.rect}
               x={x}
               y={y}
-              width={width}
-              height={height}
+              width={w}
+              height={h}
+              rx={rectSize / 2}
               fill={fill}
-              rx={6}
+              stroke={stroke}
             />
           ))}
         </g>
