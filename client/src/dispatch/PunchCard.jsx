@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
+import { DataContext } from "./DataProvider";
+import { isPhone, getStyleProp } from "../clientUtils";
 
 import {
   scaleLinear as d3scaleLinear,
@@ -8,13 +10,13 @@ import { max as d3max } from "d3-array";
 import { select as d3select } from "d3-selection";
 import { axisLeft as d3axisLeft, axisBottom as d3axisBottom } from "d3-axis";
 
+import textures from "textures";
 import styles from "./punchcard.module.scss";
 import svgStyles from "./svg.module.scss";
-import { isPhone } from "../clientUtils";
-import { DataContext } from "./DataProvider";
 
 export const PunchCard = () => {
   const { punchCard } = useContext(DataContext);
+  const texturesRef = useRef();
   const [rects, setRects] = useState([]);
 
   const svgWidth = isPhone() ? 350 : 500;
@@ -59,14 +61,40 @@ export const PunchCard = () => {
       )
       .flat(2);
 
-    const newRects = data.map(({ hour, day, value }) => ({
-      key: `${day}-${hour}`,
-      x: xScale(hour) + gap,
-      y: day * daySize,
-      width: rectSize - gap,
-      height: rectSize - gap,
-      density: value >= (2 / 3) * max ? 3 : value >= (1 / 3) * max ? 2 : 1,
-    }));
+    const color1 = getStyleProp("--graph-primary1");
+    const color2 = getStyleProp("--graph-primary2");
+    const color3 = getStyleProp("--graph-primary3");
+    const color4 = getStyleProp("--graph-primary4");
+
+    const texture1 = textures.lines().size(7).strokeWidth(3).stroke(color1);
+    const texture2 = textures.lines().size(6).strokeWidth(2).stroke(color2);
+    const texture3 = textures.lines().size(5).strokeWidth(1).stroke(color3);
+    const texture4 = textures.lines().size(4).strokeWidth(1).stroke(color4);
+
+    d3select(texturesRef.current)
+      .call(texture1)
+      .call(texture2)
+      .call(texture3)
+      .call(texture4);
+
+    const newRects = data.map(({ hour, day, value }) => {
+      const texture =
+        value >= 0.8 * max
+          ? texture1
+          : value >= 0.6 * max
+          ? texture2
+          : value >= 0.4 * max
+          ? texture3
+          : texture4;
+      return {
+        key: `${day}-${hour}`,
+        x: xScale(hour) + gap,
+        y: day * daySize,
+        width: rectSize - gap,
+        height: rectSize - gap,
+        fill: texture.url(),
+      };
+    });
 
     setRects(newRects);
   }, [punchCard, height, width, rectSize, daySize]);
@@ -84,9 +112,18 @@ export const PunchCard = () => {
           transform={`translate(0,${height})`}
         />
         <g className={svgStyles.axis} ref={yAxisRef} />
-        <g transform={`translate(0,${-rectSize / 2})`}>
-          {rects.map(({ key, x, y, width, height }) => (
-            <rect key={key} x={x} y={y} width={width} height={height} />
+        <g ref={texturesRef} transform={`translate(0,${-rectSize / 2})`}>
+          {rects.map(({ key, x, y, width, height, fill }) => (
+            <rect
+              key={key}
+              className={styles.rect}
+              x={x}
+              y={y}
+              width={width}
+              height={height}
+              fill={fill}
+              rx={6}
+            />
           ))}
         </g>
       </g>
