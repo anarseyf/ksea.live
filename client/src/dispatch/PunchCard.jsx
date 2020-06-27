@@ -17,7 +17,7 @@ export const PunchCard = () => {
   const [circles, setCircles] = useState([]);
 
   const svgWidth = isPhone() ? 350 : 500;
-  const svgHeight = 0.5 * svgWidth,
+  const svgHeight = 0.4 * svgWidth,
     margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;

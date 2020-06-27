@@ -1,7 +1,8 @@
 @import "../colors.scss";
 
 .svg circle {
-  fill: none;
+  fill: var(--graph-secondary);
+
   stroke: var(--graph-primary);
   stroke-width: 1;
 }

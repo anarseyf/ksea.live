@@ -76,12 +76,11 @@ export const DispatchAll = () => {
       </Section>
 
       <Section styleOption={2}>
-        <PunchCard />
         <Paragraph title="Live View" content={live} />
         <Rehoboam />
         <Paragraph content={<Legend />} />
       </Section>
-{/* 
+
       <Section styleOption={3} edgeToEdge={true}>
         <Paragraph title="" content={todayText} margin={true} />
         <ErrorBoundary>
@@ -103,6 +102,7 @@ export const DispatchAll = () => {
 
       <Section styleOption={6}>
         <Paragraph title="Past Week" content={pastWeek} />
+        <PunchCard />
         <Header />
       </Section>
 
@@ -119,7 +119,7 @@ export const DispatchAll = () => {
         <Sources />
         <Paragraph title="Themes" content={<ThemeSwitch />} />
         <Paragraph title="About" content={notes} />
-      </Section> */}
+      </Section>
     </DataProvider>
   );
 };
