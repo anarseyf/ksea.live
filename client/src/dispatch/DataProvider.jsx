@@ -8,6 +8,7 @@ import {
   getTweetsMajor,
   getTweetsForAreaMin,
   getTweetsForAreaMinWeek,
+  getPunchCard,
 } from "../api";
 
 import { StatusContext } from "./StatusContext";
@@ -30,6 +31,7 @@ const useTweets = (filters = {}) => {
     active24: [],
     major24: [],
     annotations: [],
+    punchCard: [],
     status: {},
   };
   const [value, setValue] = useState(initialValue);
@@ -52,6 +54,7 @@ const useTweets = (filters = {}) => {
   const [active24, setActive24] = useState([]);
   const [major24, setMajor24] = useState([]);
   const [annotations, setAnnotations] = useState([]);
+  const [punchCard, setPunchCard] = useState([]);
 
   const [shouldFetch, setShouldFetch] = useState(true);
 
@@ -111,6 +114,11 @@ const useTweets = (filters = {}) => {
       setAnnotations(await getAnnotations());
     })();
 
+
+    (async () => {
+      setPunchCard(await getPunchCard());
+    })();
+
     if (!history.length) {
       (async () => {
         setHistory(await getHistory(area));
@@ -126,25 +134,14 @@ const useTweets = (filters = {}) => {
       groupedByArea,
       history,
       annotations,
+      punchCard,
       active24,
       major24,
       activeOrMajorForArea,
       activeOrMajorByArea,
       status,
     });
-  }, [
-    active24,
-    activeOrMajorByArea,
-    activeOrMajorForArea,
-    annotations,
-    filteredByArea,
-    filteredByAreaMin,
-    filteredByAreaMinWeek,
-    groupedByArea,
-    history,
-    major24,
-    status,
-  ]);
+  }, [active24, activeOrMajorByArea, activeOrMajorForArea, annotations, filteredByArea, filteredByAreaMin, filteredByAreaMinWeek, groupedByArea, history, major24, punchCard, status]);
 
   return value;
 };

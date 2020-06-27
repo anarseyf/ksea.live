@@ -102,6 +102,11 @@ export const toPacificStringMMMD = (date) => {
   return moment.format("MMM D"); // For example "Jun 1". See https://momentjs.com/docs/#/parsing/string-format/
 };
 
+export const pacificWeekTuple = (timestamp) => {
+  const m = timezone(timestamp, SeattleTimezone);
+  return { week: m.week(), day: m.day(), hour: m.hour() };
+};
+
 export const readJSONAsync = async (fileName, defaultValue) => {
   try {
     const readFile = util.promisify(fs.readFile);

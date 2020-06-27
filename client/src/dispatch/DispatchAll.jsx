@@ -14,6 +14,7 @@ import { Sources } from "./Sources";
 import { Freshness } from "./Freshness";
 import { Legend } from "./Legend";
 import { ThemeSwitch } from "./ThemeSwitch";
+import { PunchCard } from "./PunchCard";
 
 export const DispatchAll = () => {
   const intro = (
@@ -75,11 +76,12 @@ export const DispatchAll = () => {
       </Section>
 
       <Section styleOption={2}>
+        <PunchCard />
         <Paragraph title="Live View" content={live} />
         <Rehoboam />
         <Paragraph content={<Legend />} />
       </Section>
-
+{/* 
       <Section styleOption={3} edgeToEdge={true}>
         <Paragraph title="" content={todayText} margin={true} />
         <ErrorBoundary>
@@ -117,7 +119,7 @@ export const DispatchAll = () => {
         <Sources />
         <Paragraph title="Themes" content={<ThemeSwitch />} />
         <Paragraph title="About" content={notes} />
-      </Section>
+      </Section> */}
     </DataProvider>
   );
 };

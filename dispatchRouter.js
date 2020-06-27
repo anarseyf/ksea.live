@@ -22,6 +22,7 @@ import {
   getActive24Async,
   getHistoryAsync,
   getAnnotationsAsync,
+  getPunchCardAsync,
 } from "./dispatchCompute";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 import { withTilesPath } from "./server/serverUtils";
@@ -173,6 +174,17 @@ const annotationsController = async (req, res) => {
   res.json(result);
 };
 
+const punchCardController = async (req, res) => {
+  try {
+    // TODO - cache
+    const weeks = await getPunchCardAsync();
+    res.json(weeks);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error });
+  }
+};
+
 const mapsController = async (req, res) => {
   try {
     let readStream, writeStream;
@@ -267,7 +279,7 @@ router.use("/tweets/*", cacheControlDynamic);
 router.use("/history/*", cacheControlDynamic);
 router.use("/maps/*", cacheControlTiles);
 
-router.get("/update", updateController);
+// router.get("/update", updateController);
 router.get("/status", statusController);
 router.get("/tweets/active24", active24Controller);
 router.get("/tweets/major", majorController);
@@ -277,6 +289,7 @@ router.get("/tweets/byAreaByType", byAreaByTypeController);
 router.get("/tweets/:area", forAreaController);
 router.get("/history/annotations", annotationsController);
 router.get("/history/", historyController);
+router.get("/punchcard/", punchCardController);
 router.get("/maps/:x/:y/:z/:theme", mapsController);
 
 export default router;

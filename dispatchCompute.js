@@ -22,8 +22,9 @@ import {
   getMostRecentAsync,
   statusFile,
 } from "./dispatchHelpers";
-import { readJSONAsync } from "./fileUtils";
+import { readJSONAsync, pacificWeekTuple } from "./fileUtils";
 import { withCachePath, datasetsPath } from "./server/serverUtils";
+import { max as d3max, extent as d3extent } from "d3-array";
 
 export const identityFn = (v) => v;
 
@@ -192,4 +193,51 @@ export const getAnnotationsAsync = async () => {
     ...rest,
   }));
   return result;
+};
+
+export const getPunchCardAsync = async () => {
+  const intervals = generateHistoryIntervals().slice(0, 1);
+  const all = await allTweets(intervals);
+
+  const mapper = ({ derived: { timestamp } }) => pacificWeekTuple(timestamp);
+  const buckets = all.map(mapper); // { week, dayOfWeek, hour }
+  const [minWeek, maxWeek] = d3extent(buckets, ({ week }) => week);
+  const numWeeks = maxWeek - minWeek + 1;
+  const zerosArray = (n) => [...new Array(n)].map(() => 0);
+  const weeks = zerosArray(numWeeks).map(() =>
+    zerosArray(7).map(() => zerosArray(24))
+  );
+  buckets.forEach(({ week, day, hour }) => {
+    weeks[week - minWeek][day][hour] += 1;
+  });
+
+  const accumulator = zerosArray(7).map(() =>
+    zerosArray(24).map(() => ({
+      avg: 0,
+      sum: 0,
+      count: 0,
+      min: Infinity,
+      max: 0,
+    }))
+  );
+  const reduced = weeks.reduce((acc, week) => {
+    for (let w = 0; w < 7; w++) {
+      for (let h = 0; h < 24; h++) {
+        acc[w][h].sum += week[w][h];
+        acc[w][h].count += 1;
+        acc[w][h].min = Math.min(acc[w][h].min, week[w][h]);
+        acc[w][h].max = Math.max(acc[w][h].max, week[w][h]);
+      }
+    }
+    return acc;
+  }, accumulator);
+
+  for (let w = 0; w < 7; w++) {
+    for (let h = 0; h < 24; h++) {
+      const bucket = accumulator[w][h];
+      bucket.avg = bucket.count ? bucket.sum / bucket.count : 0;
+    }
+  }
+
+  return reduced;
 };

@@ -14,6 +14,10 @@ export async function getHistory() {
   return getByAPI(`dispatch/history`);
 }
 
+export async function getPunchCard() {
+  return getByAPI(`dispatch/punchcard`);
+}
+
 export async function getTweetsForArea(area, queryParams) {
   return getByAPI(`dispatch/tweets/${area}`, queryParams);
 }
