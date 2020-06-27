@@ -14,19 +14,45 @@ import textures from "textures";
 import styles from "./punchcard.module.scss";
 import svgStyles from "./svg.module.scss";
 
+const PunchCardElements = ({ elements }) => {
+  if (!elements) {
+    return null;
+  }
+  return (
+    <>
+      {elements.map(({ key, x, y, w, h, rx, fill, stroke }) => (
+        <rect
+          key={key}
+          className={styles.rect}
+          x={x}
+          y={y}
+          width={w}
+          height={h}
+          rx={rx}
+          fill={fill}
+          stroke={stroke}
+        />
+      ))}
+    </>
+  );
+};
+
 export const PunchCard = () => {
   const { punchCard } = useContext(DataContext);
   const { week, dayAggregates, hourAggregates } = punchCard;
   const texturesRef = useRef();
-  const [rects, setRects] = useState([]);
+
+  const [weekSpecs, setWeekSpecs] = useState([]);
+  const [dayAggregateSpecs, setDayAggregateSpecs] = useState([]);
+  const [hourAggregateSpecs, setHourAggregateSpecs] = useState([]);
 
   const svgWidth = isPhone() ? 320 : 380;
-  const margin = { top: 30, right: 70, bottom: 30, left: 30 };
+  const margin = { top: 30, right: 90, bottom: 80, left: 40 };
   const width = svgWidth - margin.left - margin.right;
-  const daySize = width / 7;
+  const cellSize = width / 7;
   const gap = 2;
-  const rectSize = daySize - 2 * gap;
-  const height = daySize * 12;
+  const rectSize = cellSize - 2 * gap;
+  const height = cellSize * 12;
   const svgHeight = height + margin.top + margin.bottom;
 
   const yAxisRef = useRef(null);
@@ -41,7 +67,7 @@ export const PunchCard = () => {
     const max = d3max(week.flat(2).map(({ avg }) => avg));
 
     const xDomain = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-    const xRange = xDomain.map((_, i) => i * daySize);
+    const xRange = xDomain.map((_, i) => i * cellSize);
     const xScale = d3scaleOrdinal(xDomain, xRange);
     const xAxis = d3axisTop().scale(xScale).ticks(12);
     d3select(xAxisRef.current).call(xAxis);
@@ -99,19 +125,52 @@ export const PunchCard = () => {
       const appearance = appearanceFn(value);
       return {
         key: `${day}-${hour}`,
-        x: day * daySize,
+        x: day * cellSize,
         y: yScale(hour) + gap,
-        w: rectSize - gap,
-        h: rectSize - gap,
+        w: rectSize,
+        h: rectSize,
+        rx: rectSize / 2,
         fill: appearance.texture.url(),
         stroke: appearance.color,
       };
     });
 
-    setRects(newRects);
-  }, [week, height, width, rectSize, daySize]);
+    setWeekSpecs(newRects);
 
-  if (!rects.length) {
+    const toAggregateElementSpec = (value, i) => {
+      const appearance = appearanceFn(value);
+      return {
+        x: 0,
+        y: 0,
+        w: rectSize,
+        h: rectSize,
+        rx: rectSize / 2,
+        fill: appearance.texture.url(),
+        stroke: appearance.color,
+      };
+    };
+
+    const newDayAggregateRects = dayAggregates
+      .map(toAggregateElementSpec)
+      .map((spec, i) => ({
+        ...spec,
+        x: i * cellSize,
+        key: `day-${i}`,
+      }));
+
+    const newHourAggregateRects = hourAggregates
+      .map(toAggregateElementSpec)
+      .map((spec, i) => ({
+        ...spec,
+        y: i * cellSize,
+        key: `hour-${i}`,
+      }));
+
+    setDayAggregateSpecs(newDayAggregateRects);
+    setHourAggregateSpecs(newHourAggregateRects);
+  }, [week, height, width, rectSize, cellSize, dayAggregates, hourAggregates]);
+
+  if (!weekSpecs.length) {
     return null;
   }
 
@@ -128,20 +187,16 @@ export const PunchCard = () => {
           className={styles.axis}
           transform={`translate(0,${0})`}
         />
-        <g ref={texturesRef} transform={`translate(${gap},0)`}>
-          {rects.map(({ key, x, y, w, h, fill, stroke }) => (
-            <rect
-              key={key}
-              className={styles.rect}
-              x={x}
-              y={y}
-              width={w}
-              height={h}
-              rx={rectSize / 2}
-              fill={fill}
-              stroke={stroke}
-            />
-          ))}
+        <g ref={texturesRef}>
+          <g transform={`translate(${gap},0)`}>
+            <PunchCardElements elements={weekSpecs} />
+          </g>
+          <g transform={`translate(${8 * cellSize},0)`}>
+            <PunchCardElements elements={hourAggregateSpecs} />
+          </g>
+          <g transform={`translate(0,${13 * cellSize})`}>
+            <PunchCardElements elements={dayAggregateSpecs} />
+          </g>
         </g>
       </g>
     </svg>
