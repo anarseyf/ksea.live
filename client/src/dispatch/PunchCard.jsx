@@ -13,6 +13,7 @@ import { axisLeft as d3axisLeft, axisTop as d3axisTop } from "d3-axis";
 import textures from "textures";
 import styles from "./punchcard.module.scss";
 import svgStyles from "./svg.module.scss";
+import { PunchCardAnnotations } from "./PunchCardAnnotations";
 
 const PunchCardElements = ({ elements }) => {
   if (!elements) {
@@ -23,7 +24,7 @@ const PunchCardElements = ({ elements }) => {
       {elements.map(({ key, x, y, w, h, rx, fill, stroke }) => (
         <rect
           key={key}
-          className={styles.rect}
+          className={styles.element}
           x={x}
           y={y}
           width={w}
@@ -39,19 +40,20 @@ const PunchCardElements = ({ elements }) => {
 
 export const PunchCard = () => {
   const { punchCard } = useContext(DataContext);
-  const { week, dayAggregates, hourAggregates } = punchCard;
+  const { week, dayAggregates, hourAggregates, annotations } = punchCard;
   const texturesRef = useRef();
 
   const [weekSpecs, setWeekSpecs] = useState([]);
   const [dayAggregateSpecs, setDayAggregateSpecs] = useState([]);
   const [hourAggregateSpecs, setHourAggregateSpecs] = useState([]);
+  const [scales, setScales] = useState([]);
 
   const svgWidth = isPhone() ? 320 : 380;
   const margin = { top: 30, right: 90, bottom: 80, left: 40 };
   const width = svgWidth - margin.left - margin.right;
   const cellSize = width / 7;
   const gap = 2;
-  const rectSize = cellSize - 2 * gap;
+  const elementSize = cellSize - 2 * gap;
   const height = cellSize * 12;
   const svgHeight = height + margin.top + margin.bottom;
 
@@ -66,7 +68,7 @@ export const PunchCard = () => {
 
     const max = d3max(week.flat(2).map(({ avg }) => avg));
 
-    const xDomain = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const xDomain = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const xRange = xDomain.map((_, i) => i * cellSize);
     const xScale = d3scaleOrdinal(xDomain, xRange);
     const xAxis = d3axisTop().scale(xScale).ticks(12);
@@ -76,6 +78,8 @@ export const PunchCard = () => {
     const yScale = d3scaleLinear().domain(yExtent).range([0, height]);
     const yAxis = d3axisLeft().scale(yScale).tickValues([0, 6, 12]).tickSize(0);
     d3select(yAxisRef.current).call(yAxis);
+
+    setScales([xScale, yScale]);
 
     const data = week
       .map((day, iDay) =>
@@ -121,36 +125,36 @@ export const PunchCard = () => {
       return appearance[index];
     };
 
-    const newRects = data.map(({ hour, day, value }) => {
+    const newWeekSpecs = data.map(({ hour, day, value }) => {
       const appearance = appearanceFn(value);
       return {
         key: `${day}-${hour}`,
         x: day * cellSize,
-        y: yScale(hour) + gap,
-        w: rectSize,
-        h: rectSize,
-        rx: rectSize / 2,
+        y: yScale(hour),
+        w: elementSize,
+        h: elementSize,
+        rx: elementSize / 2,
         fill: appearance.texture.url(),
         stroke: appearance.color,
       };
     });
 
-    setWeekSpecs(newRects);
+    setWeekSpecs(newWeekSpecs);
 
     const toAggregateElementSpec = (value, i) => {
       const appearance = appearanceFn(value);
       return {
         x: 0,
         y: 0,
-        w: rectSize,
-        h: rectSize,
-        rx: rectSize / 2,
+        w: elementSize,
+        h: elementSize,
+        rx: elementSize / 2,
         fill: appearance.texture.url(),
         stroke: appearance.color,
       };
     };
 
-    const newDayAggregateRects = dayAggregates
+    const newDayAggregateSpecs = dayAggregates
       .map(toAggregateElementSpec)
       .map((spec, i) => ({
         ...spec,
@@ -158,7 +162,7 @@ export const PunchCard = () => {
         key: `day-${i}`,
       }));
 
-    const newHourAggregateRects = hourAggregates
+    const newHourAggregateSpecs = hourAggregates
       .map(toAggregateElementSpec)
       .map((spec, i) => ({
         ...spec,
@@ -166,9 +170,17 @@ export const PunchCard = () => {
         key: `hour-${i}`,
       }));
 
-    setDayAggregateSpecs(newDayAggregateRects);
-    setHourAggregateSpecs(newHourAggregateRects);
-  }, [week, height, width, rectSize, cellSize, dayAggregates, hourAggregates]);
+    setDayAggregateSpecs(newDayAggregateSpecs);
+    setHourAggregateSpecs(newHourAggregateSpecs);
+  }, [
+    week,
+    height,
+    width,
+    elementSize,
+    cellSize,
+    dayAggregates,
+    hourAggregates,
+  ]);
 
   if (!weekSpecs.length) {
     return null;
@@ -180,15 +192,15 @@ export const PunchCard = () => {
         <g
           ref={xAxisRef}
           className={styles.axis}
-          transform={`translate(${rectSize / 2},0)`}
+          transform={`translate(${elementSize / 2},0)`}
         />
         <g
           ref={yAxisRef}
           className={styles.axis}
           transform={`translate(0,${0})`}
         />
-        <g ref={texturesRef}>
-          <g transform={`translate(${gap},0)`}>
+        <g ref={texturesRef} transform={`translate(${gap},${gap})`}>
+          <g transform={`translate(0,0)`}>
             <PunchCardElements elements={weekSpecs} />
           </g>
           <g transform={`translate(${8 * cellSize},0)`}>
@@ -196,6 +208,13 @@ export const PunchCard = () => {
           </g>
           <g transform={`translate(0,${13 * cellSize})`}>
             <PunchCardElements elements={dayAggregateSpecs} />
+          </g>
+          <g>
+            <PunchCardAnnotations
+              annotations={annotations}
+              cellSize={cellSize}
+              scales={scales}
+            />
           </g>
         </g>
       </g>

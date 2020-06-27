@@ -24,7 +24,7 @@ import {
 } from "./dispatchHelpers";
 import { readJSONAsync, pacificWeekTuple } from "./fileUtils";
 import { withCachePath, datasetsPath } from "./server/serverUtils";
-import { max as d3max, extent as d3extent } from "d3-array";
+import { extent as d3extent } from "d3-array";
 
 export const identityFn = (v) => v;
 
@@ -256,6 +256,14 @@ export const getPunchCardAsync = async () => {
   dayAggregates = dayAggregates.map(toWeightedAvg);
   hourAggregates = hourAggregates.map(toWeightedAvg);
 
-  // TODO - only return avg
-  return { week, dayAggregates, hourAggregates };
+  const annotations = [
+    {
+      day: 4,
+      hour: 7,
+      text: "Peak",
+    },
+  ];
+
+  // TODO - only return avg in week
+  return { week, dayAggregates, hourAggregates, annotations };
 };

@@ -23,7 +23,8 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
     if (!scales.length) {
       return;
     }
-
+    
+    const [xScale, yScale] = scales;
     const annotationColor = getStyleProp("--annotation");
     const textureColor = getStyleProp("--texture");
     texturePrevious = textures
@@ -45,7 +46,6 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
       if (!start || !end) {
         return undefined;
       }
-      const [xScale, yScale] = scales;
       const isCurrent = offset === 0;
       const texture = isCurrent ? textureCurrent : texturePrevious;
 
