@@ -1,0 +1,7 @@
+@import "../colors.scss";
+
+.svg circle {
+  fill: none;
+  stroke: var(--graph-primary);
+  stroke-width: 1;
+}
