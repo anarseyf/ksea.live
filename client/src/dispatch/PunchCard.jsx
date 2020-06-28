@@ -76,7 +76,7 @@ export const PunchCard = () => {
 
     // TODO: d3-scale can accomplish most of this stuff
     // if you refactor the data a bit.
-    const xDomain = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const xDomain = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const xRange = xDomain.map((_, i) => i * cellSize);
     const xScale = d3scaleOrdinal(xDomain, xRange);
     const xAxis = d3axisTop().scale(xScale).ticks(12).tickSize(0);
@@ -227,7 +227,7 @@ export const PunchCard = () => {
           ref={texturesRef}
           transform={`translate(${cellSize / 2},${cellSize / 2})`}
         >
-          <g transform={`translate(0,0)`}>
+          <g transform={`translate(${0},0)`}>
             <PunchCardElements elements={weekSpecs} />
           </g>
           <g transform={`translate(${(phone ? 8.5 : 8) * cellSize},0)`}>
@@ -241,7 +241,7 @@ export const PunchCard = () => {
               annotations={annotations}
               cellSize={cellSize}
               scales={scales}
-              availableWidth={2 * cellSize}
+              availableWidth={margin.left}
             />
           </g>
         </g>

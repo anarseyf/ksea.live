@@ -264,18 +264,14 @@ export const getPunchCardAsync = async () => {
 
   const minBucket = buckets[minIndex];
   const maxBucket = buckets[maxIndex];
-  const minValue = Math.round(minBucket.avg / 2);
-  const maxValue = Math.round(maxBucket.avg / 2);
   const annotations = [
     {
       ...minBucket,
       title: "Low",
-      label: `${minValue}/hour`,
     },
     {
       ...maxBucket,
       title: "High",
-      label: `${maxValue}/hour`,
     },
   ];
 
