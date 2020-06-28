@@ -10,18 +10,6 @@ export const expand = (extent, expandMinutes = 0) => [
   d3timeMinute.offset(extent[1], expandMinutes),
 ];
 
-// TODO - coordinate with section.module.scss, or find a way to use vars
-
-const maxWidthPhone = 500;
-const queryText = `only screen and (max-device-width: ${maxWidthPhone}px)`;
-
-export const isPhone = () =>
-  window ? !!window.matchMedia(queryText).matches : true;
-
-export const windowWidth = () => 
-  window ? window.innerWidth : 400;
-
-
 // see also fileUtils.js on server
 const SeattleTimezone = "America/Vancouver";
 export const timeFormatter = (timestamp, format = "h:mm A") =>
@@ -62,3 +50,21 @@ export const getStyleProp = (prop) => {
     const style = getComputedStyle(appElement);
     return style.getPropertyValue(prop);
 }
+
+const maxContentWidth = () => {
+  // const element = document.documentElement;
+  // const style = getComputedStyle(element);
+  // return style.getPropertyValue("--max-width");
+  return 600;
+}
+const queryText = `only screen and (max-device-width: ${maxContentWidth()}px)`;
+
+export const isPhone = () => // TODO - move to Context?
+  window ? !!window.matchMedia(queryText).matches : true;
+
+
+export const windowWidth = () => 
+  window ? window.innerWidth : 0;
+
+export const getContentWidth = () => 
+  isPhone() ? windowWidth() : maxContentWidth();

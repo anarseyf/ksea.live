@@ -3,7 +3,7 @@
 .container {
   text-align: center;
   margin: 1em auto;
-  width: 460px;
+  width: var(--max-width);
   height: 600px;
   border: 1px solid var(--border);
 }

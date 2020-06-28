@@ -1,5 +1,10 @@
 @import "../colors.scss";
 
+:root {
+  // For now this needs to be synced with clientUtils.js
+  --max-width: 600px;
+}
+
 .section {
   width: 100%;
   text-align: center;
@@ -9,7 +14,7 @@
 .content {
   margin: 1em auto;
   display: inline-block;
-  width: 500px;
+  width: var(--max-width);
 }
 .content.phone {
   width: 100%;

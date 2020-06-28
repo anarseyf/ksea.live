@@ -23,7 +23,7 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
     const annotationToday = {
       end: {
         date: toPacificDateString(date),
-        title: toPacificStringMMMD(date),
+        label: toPacificStringMMMD(date),
         value: lastBin.length,
       },
     };

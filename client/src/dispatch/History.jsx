@@ -6,10 +6,9 @@ import {
 } from "./DataProvider";
 import {
   intervalExtent as getIntervalExtent,
-  isPhone,
   timeFormatterMonth,
   everyMonth,
-  windowWidth,
+  getContentWidth
 } from "../clientUtils";
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";
@@ -55,12 +54,18 @@ export const History = () => {
   const [clipPaths, setClipPaths] = useState({});
 
   const dayHeight = 3;
-  const svgWidth = isPhone() ? windowWidth() : 500, // TODO - get the 500 from utils
-    margin = { top: 20, right: 0, bottom: 20, left: 0 },
+
+  const [contentWidth, setContentWidth] = useState(0);
+  useEffect(() => {
+    setContentWidth(getContentWidth());
+  }, []);
+
+  const svgWidth = contentWidth;
+    const margin = { top: 20, right: 0, bottom: 20, left: 0 },
     height = 365 * dayHeight,
     svgHeight = height + margin.top + margin.bottom,
-    contentWidth = svgWidth - margin.left - margin.right;
-  const yearWidth = contentWidth / 2;
+    width = svgWidth - margin.left - margin.right;
+  const yearWidth = width / 2;
   const maxBarWidth = yearWidth * 0.45;
   const annotationRectWidth = yearWidth * 0.5;
   const calloutWidth = Math.max(40, yearWidth - annotationRectWidth);

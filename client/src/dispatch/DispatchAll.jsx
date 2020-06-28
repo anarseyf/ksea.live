@@ -2,7 +2,6 @@ import React from "react";
 import { Map } from "./Map";
 import { DataProvider } from "./DataProvider";
 import { GroupByArea } from "./GroupByArea";
-import { Header } from "./Header";
 import { Rehoboam } from "./Rehoboam";
 import { Section } from "./Section";
 import { Paragraph } from "./Paragraph";
@@ -33,7 +32,7 @@ export const DispatchAll = () => {
     </p>
   );
 
-  const outline = "The outline represents the Seattle city boundary.";
+  const outline = "Seattle city boundary is outlined on the map.";
 
   const week = `An aggregate view of year-to-date dispatches by day of week and by time of day.`;
 
@@ -68,15 +67,14 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
-      {/* <Section styleOption={1}>
+      <Section styleOption={1}>
         <Paragraph h1="Seattle Fire 911 Dispatch" content={intro} />
         <Paragraph content={<Legend />} />
       </Section>
 
       <Section styleOption={2}>
-        <Paragraph title="Today" />
+        <Paragraph title="Today" content={live} />
         <Rehoboam />
-        <Paragraph content={live} />
       </Section>
 
       <Section styleOption={2} edgeToEdge={true}>
@@ -96,16 +94,16 @@ export const DispatchAll = () => {
       <Section styleOption={3}>
         <Paragraph title="City Areas" content={areas} />
         <GroupByArea />
-      </Section> */}
+      </Section>
 
       <Section styleOption={4} edgeToEdge={true} >
-        {/* <Paragraph title="Weekly Highs and Lows" content={week} margin={true} /> */}
-        {/* <PunchCard />
+        <Paragraph title="Weekly Highs and Lows" content={week} margin={true} />
+        <PunchCard />
         <Paragraph
           title="This Year"
           content={history}
           margin={true}
-        /> */}
+        />
         <History />
       </Section>
 

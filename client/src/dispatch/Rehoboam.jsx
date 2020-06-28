@@ -28,7 +28,7 @@ export const Rehoboam = ({ area }) => {
   const [total, setTotal] = useState(undefined);
   const axisRef = useRef(null);
 
-  const mainRadius = isPhone() ? 100 : 130;
+  const mainRadius = isPhone() ? 120 : 150;
   const margin = 30,
     width = 2 * mainRadius,
     height = 2 * mainRadius,
@@ -36,7 +36,6 @@ export const Rehoboam = ({ area }) => {
     svgHeight = height + 2 * margin;
 
   const dotRadius = 5;
-  console.log("REHOBOAM/window width", windowWidth());
 
   useEffect(() => {
     if (!filteredByAreaMin.length) {

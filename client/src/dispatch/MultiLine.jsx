@@ -12,7 +12,7 @@ import { axisLeft as d3axisLeft, axisBottom as d3axisBottom } from "d3-axis";
 
 import chartStyles from "./chart.module.scss";
 import svgStyles from "./svg.module.scss";
-import { intervalExtent, timeFormatterHourAM, isPhone, every6Hours } from "../clientUtils";
+import { intervalExtent, timeFormatterHourAM, every6Hours, getContentWidth } from "../clientUtils";
 
 export const MultiLine = ({
   intervals = [],
@@ -22,8 +22,13 @@ export const MultiLine = ({
 }) => {
   const [svgData, setSvgData] = useState([]);
   const [nowDot, setNowDot] = useState(null);
+  const [contentWidth, setContentWidth] = useState(0);
 
-  const svgWidth = isPhone() ? 350 : 500;
+  useEffect(() => {
+    setContentWidth(getContentWidth());
+  }, []);
+
+  const svgWidth = contentWidth;
   const svgHeight = 0.3 * svgWidth,
     margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = svgWidth - margin.left - margin.right,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { DataContext } from "./DataProvider";
-import { isPhone, getStyleProp } from "../clientUtils";
+import { isPhone, getStyleProp, getContentWidth } from "../clientUtils";
 
 import {
   scaleLinear as d3scaleLinear,
@@ -46,9 +46,14 @@ export const PunchCard = () => {
   const [dayAggregateSpecs, setDayAggregateSpecs] = useState([]);
   const [hourAggregateSpecs, setHourAggregateSpecs] = useState([]);
   const [scales, setScales] = useState([]);
+  const [contentWidth, setContentWidth] = useState(0);
 
-  const phone = isPhone() ? 375 : 450;
-  const svgWidth = phone;
+  useEffect(() => {
+    setContentWidth(getContentWidth());
+  }, []);
+
+  const phone = isPhone();
+  const svgWidth = contentWidth;
   const cellSize = svgWidth / 12;
   const width = cellSize * 7;
   const horizontal = svgWidth - width;

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { DataContext, currentInterval } from "./DataProvider";
-import { intervalExtent, isPhone } from "../clientUtils";
+import { intervalExtent, getContentWidth } from "../clientUtils";
 
 import {
   scaleLinear as d3scaleLinear,
@@ -19,9 +19,16 @@ export const Histogram = () => {
   const { history } = useContext(DataContext);
   const [svgData, setSvgData] = useState([]);
 
-  const svgWidth = isPhone() ? 350 : 550,
+  const [contentWidth, setContentWidth] = useState(0);
+
+  useEffect(() => {
+    setContentWidth(getContentWidth());
+  }, []);
+
+
+  const svgWidth = contentWidth,
     svgHeight = 80,
-    margin = { top: 10, right: 10, bottom: 20, left: 30 },
+    margin = { top: 20, right: 20, bottom: 20, left: 30 },
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.bottom - margin.top;
 
