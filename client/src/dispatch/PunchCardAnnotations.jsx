@@ -4,9 +4,8 @@ import {
   annotation as d3annotation,
   annotationCalloutCircle as d3annotationCalloutCircle,
 } from "d3-svg-annotation";
-
-import styles from "./annotations.module.scss";
 import { getStyleProp } from "../clientUtils";
+import "./annotations.scss";
 
 export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
   const calloutsRef = useRef(null);
@@ -52,6 +51,6 @@ export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
   }, [annotations, cellSize, scales]);
 
   return (
-    <g className={styles.annotations} ref={calloutsRef} />
+    <g ref={calloutsRef} />
   );
 };

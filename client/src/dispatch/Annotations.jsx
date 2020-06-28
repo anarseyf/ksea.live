@@ -7,7 +7,7 @@ import {
 } from "d3-svg-annotation";
 import { DataContext } from "./DataProvider";
 
-import styles from "./annotations.module.scss";
+import "./annotations.scss";
 import { getStyleProp } from "../clientUtils";
 
 let textureCurrent;
@@ -125,7 +125,7 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
           <rect {...annotation} clipPath="url(#clippath)" />
         ))}
       </g>
-      <g className={styles.annotations} ref={calloutsRef} />
+      <g ref={calloutsRef} />
     </>
   );
 };

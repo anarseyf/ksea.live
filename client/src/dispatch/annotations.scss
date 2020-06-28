@@ -1,0 +1,11 @@
+@import "../colors.scss";
+
+.annotation {
+  &-subject,
+  &-connector,
+  &-note {
+    & path {
+      stroke-width: 2;
+    }
+  }
+}

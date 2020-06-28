@@ -46,18 +46,19 @@ export const PunchCard = () => {
   const [hourAggregateSpecs, setHourAggregateSpecs] = useState([]);
   const [scales, setScales] = useState([]);
 
-  const svgWidth = isPhone() ? 360 : 450;
-  const cellSize = svgWidth / 11;
+  const phone = isPhone() ? 360 : 450;
+  const svgWidth = phone;
+  const cellSize = svgWidth / 12;
   const width = cellSize * 7;
   const horizontal = svgWidth - width;
-  const horizontalRight = cellSize * 2;
+  const horizontalRight = cellSize * 2.5;
   const margin = {
     top: 40,
     bottom: 120,
     right: horizontalRight,
     left: horizontal - horizontalRight,
   };
-  const gap = 3;
+  const gap = 4;
   const elementSize = cellSize - 2 * gap;
   const height = cellSize * 12;
   const svgHeight = height + margin.top + margin.bottom;
@@ -81,7 +82,21 @@ export const PunchCard = () => {
 
     const yExtent = [0, 12];
     const yScale = d3scaleLinear().domain(yExtent).range([0, height]);
-    const yAxis = d3axisLeft().scale(yScale).tickValues([0, 6, 12]).tickSize(0);
+    const formatter = (d, i) => {
+      const hour = 2 * d;
+      if (hour === 0 || hour === 24) {
+        return "12am";
+      }
+      if (hour === 12) {
+        return "noon";
+      }
+      return `${hour % 12}${hour < 12 ? "am" : "pm"}`;
+    };
+    const yAxis = d3axisLeft()
+      .scale(yScale)
+      .tickValues([0, 3, 6, 9, 12])
+      .tickFormat(formatter)
+      .tickSize(phone ? 0 : 3);
     d3select(yAxisRef.current).call(yAxis);
 
     setScales([xScale, yScale]);
@@ -181,6 +196,7 @@ export const PunchCard = () => {
     cellSize,
     dayAggregates,
     hourAggregates,
+    phone,
   ]);
 
   if (!weekSpecs.length) {
@@ -198,7 +214,7 @@ export const PunchCard = () => {
         <g
           ref={yAxisRef}
           className={styles.axis}
-          transform={`translate(${7.5 * cellSize},0)`}
+          transform={`translate(${8 * cellSize},0)`}
         />
         <g
           ref={texturesRef}
