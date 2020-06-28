@@ -5,6 +5,7 @@ import {
   timeFormatterHourAM,
   every6Hours,
   isPhone,
+  windowWidth,
 } from "../clientUtils";
 import { Topline } from "./Topline";
 import classnames from "classnames";
@@ -35,6 +36,7 @@ export const Rehoboam = ({ area }) => {
     svgHeight = height + 2 * margin;
 
   const dotRadius = 5;
+  console.log("REHOBOAM/window width", windowWidth());
 
   useEffect(() => {
     if (!filteredByAreaMin.length) {

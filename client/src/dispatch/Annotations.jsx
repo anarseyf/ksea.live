@@ -13,7 +13,13 @@ import { getStyleProp } from "../clientUtils";
 let textureCurrent;
 let texturePrevious;
 
-export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
+export const Annotations = ({
+  currentStart,
+  rectWidth,
+  calloutWidth,
+  scales,
+  clipPaths,
+}) => {
   const calloutsRef = useRef(null);
   const regionsRef = useRef(null);
   const { annotations } = useContext(DataContext);
@@ -23,19 +29,15 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
     if (!scales.length) {
       return;
     }
-    
+
     const [xScale, yScale] = scales;
     const annotationColor = getStyleProp("--annotation");
     const textureColor = getStyleProp("--texture");
-    texturePrevious = textures
-      .lines()
-      // .lighter()
-      .size(8)
-      .stroke(textureColor);
+    texturePrevious = textures.lines().lighter().size(6).stroke(textureColor);
     textureCurrent = textures
       .lines()
-      // .lighter()
-      .size(8)
+      .lighter()
+      .size(6)
       .orientation("6/8")
       .stroke(textureColor);
 
@@ -66,6 +68,10 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
       scales: [xScale, yScale],
       isEnd = false,
     }) => {
+      if (!title && !label) {
+        return undefined;
+      }
+      const margin = 10;
       const isPrevious = timestamp < currentStart;
       const sideX = isPrevious ? -1 : 1;
 
@@ -76,6 +82,7 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
         note: {
           title,
           label,
+          wrap: calloutWidth - margin - 10,
         },
         x: sideX * x,
         y,
@@ -86,11 +93,11 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
       };
 
       if (value) {
-        callout.nx = sideX * (rectWidth + 10);
+        callout.nx = sideX * (rectWidth + margin);
         callout.ny = y;
       } else {
-        callout.dx = sideX * 10;
-        callout.dy = sideY * 10;
+        callout.dx = sideX * margin;
+        callout.dy = sideY * margin;
       }
       return callout;
     };
@@ -110,7 +117,7 @@ export const Annotations = ({ currentStart, rectWidth, scales, clipPaths }) => {
 
     const newRegions = annotations.map(regionFn).filter(Boolean);
     setRegions(newRegions);
-  }, [annotations, currentStart, rectWidth, scales]);
+  }, [annotations, calloutWidth, currentStart, rectWidth, scales]);
 
   return (
     <>

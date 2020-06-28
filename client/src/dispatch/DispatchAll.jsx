@@ -68,7 +68,7 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
-      <Section styleOption={1}>
+      {/* <Section styleOption={1}>
         <Paragraph h1="Seattle Fire 911 Dispatch" content={intro} />
         <Paragraph content={<Legend />} />
       </Section>
@@ -96,16 +96,16 @@ export const DispatchAll = () => {
       <Section styleOption={3}>
         <Paragraph title="City Areas" content={areas} />
         <GroupByArea />
-      </Section>
+      </Section> */}
 
       <Section styleOption={4} edgeToEdge={true} >
-        <Paragraph title="Weekly Highs and Lows" content={week} margin={true} />
-        <PunchCard />
+        {/* <Paragraph title="Weekly Highs and Lows" content={week} margin={true} /> */}
+        {/* <PunchCard />
         <Paragraph
           title="This Year"
           content={history}
           margin={true}
-        />
+        /> */}
         <History />
       </Section>
 

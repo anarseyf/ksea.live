@@ -9,6 +9,7 @@ import {
   isPhone,
   timeFormatterMonth,
   everyMonth,
+  windowWidth,
 } from "../clientUtils";
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";
@@ -54,14 +55,15 @@ export const History = () => {
   const [clipPaths, setClipPaths] = useState({});
 
   const dayHeight = 3;
-  const width = isPhone() ? 360 : 500, // TODO - use screen width
+  const svgWidth = isPhone() ? windowWidth() : 500, // TODO - get the 500 from utils
     margin = { top: 20, right: 0, bottom: 20, left: 0 },
     height = 365 * dayHeight,
     svgHeight = height + margin.top + margin.bottom,
-    svgWidth = width + margin.left + margin.right;
-  const yearWidth = width / 2;
-  const maxBarWidth = yearWidth * 0.4;
-  const annotationRectWidth = yearWidth * 0.45;
+    contentWidth = svgWidth - margin.left - margin.right;
+  const yearWidth = contentWidth / 2;
+  const maxBarWidth = yearWidth * 0.45;
+  const annotationRectWidth = yearWidth * 0.5;
+  const calloutWidth = Math.max(40, yearWidth - annotationRectWidth);
 
   const svgRef = useRef(null);
   const xAxisRef = useRef(null);
@@ -80,7 +82,7 @@ export const History = () => {
     const timeExtent = getIntervalExtent(intervalCurrent);
 
     const xScale = d3scaleLinear()
-      .domain([0, d3max(binsCurrent, (b) => b.length)])
+      .domain([0, d3max([...binsCurrent, ...binsPrevious], (b) => b.length)])
       .range([0, maxBarWidth]);
 
     const yScale = d3scaleTime().domain(timeExtent).range([0, height]);
@@ -203,6 +205,7 @@ export const History = () => {
             <Annotations
               currentStart={currentStart}
               rectWidth={annotationRectWidth}
+              calloutWidth={calloutWidth}
               scales={scales}
               clipPaths={clipPaths}
             />

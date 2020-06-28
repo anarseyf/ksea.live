@@ -18,6 +18,10 @@ const queryText = `only screen and (max-device-width: ${maxWidthPhone}px)`;
 export const isPhone = () =>
   window ? !!window.matchMedia(queryText).matches : true;
 
+export const windowWidth = () => 
+  window ? window.innerWidth : 400;
+
+
 // see also fileUtils.js on server
 const SeattleTimezone = "America/Vancouver";
 export const timeFormatter = (timestamp, format = "h:mm A") =>
