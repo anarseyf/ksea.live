@@ -216,37 +216,36 @@ const mapsController = async (req, res) => {
     if (fs.existsSync(fileName)) {
       readStream = fs.createReadStream(fileName);
     } else {
-      throw "TODO";
-      // const token =
-      //   "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H"; // https://www.jawg.io/lab/access-tokens
+      const token =
+        "nMsnktvLJ03hHw3Bk4ehaEaNPGKjBE2pLhYTEcMdFEu65cNh4nMfXhGCdEwmhD7H"; // https://www.jawg.io/lab/access-tokens
 
-      // const themeIds = {
-      //   dark: "4cae5be4-3e61-4a5d-9543-fc158da1f1df",
-      //   dusk: "315c4209-0550-4ecb-847e-d5d68f430628",
-      //   light: "jawg-light",
-      // };
+      const themeIds = {
+        dark: "4cae5be4-3e61-4a5d-9543-fc158da1f1df",
+        dusk: "315c4209-0550-4ecb-847e-d5d68f430628",
+        light: "jawg-light",
+      };
 
-      // const urlGen = (theme, x, y, z, r = "") => {
-      //   const query = `?access-token=${token}`;
-      //   return `https://a.tile.jawg.io/${themeIds[theme]}/${z}/${x}/${y}${r}.png${query}`;
-      // };
-      // const url = urlGen(theme, x, y, z, r);
-      // console.log(`/maps > requesting:`, url);
+      const urlGen = (theme, x, y, z, r = "") => {
+        const query = `?access-token=${token}`;
+        return `https://a.tile.jawg.io/${themeIds[theme]}/${z}/${x}/${y}${r}.png${query}`;
+      };
+      const url = urlGen(theme, x, y, z, r);
+      console.log(`/maps > requesting:`, url);
 
-      // const config = {
-      //   responseType: "stream",
-      //   timeout: 8000,
-      //   headers: {
-      //     "Accept-Encoding": "gzip, deflate, br",
-      //   },
-      // };
-      // const response = await axios.get(url, config).catch((e) => {
-      //   console.error(">>> axios error", e.message);
-      //   res.status(501);
-      // });
-      // readStream = response.data;
-      // writeStream = fs.createWriteStream(fileName);
-      // console.log("/maps > saving to file", fileName);
+      const config = {
+        responseType: "stream",
+        timeout: 8000,
+        headers: {
+          "Accept-Encoding": "gzip, deflate, br",
+        },
+      };
+      const response = await axios.get(url, config).catch((e) => {
+        console.error(">>> axios error", e.message);
+        res.status(501);
+      });
+      readStream = response.data;
+      writeStream = fs.createWriteStream(fileName);
+      console.log("/maps > saving to file", fileName);
     }
     readStream.pipe(res);
     writeStream && readStream.pipe(writeStream);
