@@ -11,9 +11,10 @@
 }
 
 .axis {
-  color: var(--transparent);
+  // color: var(--transparent);
+  color: var(--graph-secondary);
   & text {
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: 200;
     fill: var(--text-secondary);
   }

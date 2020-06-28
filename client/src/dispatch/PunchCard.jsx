@@ -21,15 +21,13 @@ const PunchCardElements = ({ elements }) => {
   }
   return (
     <>
-      {elements.map(({ key, x, y, w, h, rx, fill, stroke }) => (
-        <rect
+      {elements.map(({ key, cx, cy, r, fill, stroke }) => (
+        <circle
           key={key}
           className={styles.element}
-          x={x}
-          y={y}
-          width={w}
-          height={h}
-          rx={rx}
+          cx={cx}
+          cy={cy}
+          r={r}
           fill={fill}
           stroke={stroke}
         />
@@ -59,7 +57,7 @@ export const PunchCard = () => {
     right: horizontalRight,
     left: horizontal - horizontalRight,
   };
-  const gap = 2;
+  const gap = 3;
   const elementSize = cellSize - 2 * gap;
   const height = cellSize * 12;
   const svgHeight = height + margin.top + margin.bottom;
@@ -78,7 +76,7 @@ export const PunchCard = () => {
     const xDomain = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const xRange = xDomain.map((_, i) => i * cellSize);
     const xScale = d3scaleOrdinal(xDomain, xRange);
-    const xAxis = d3axisTop().scale(xScale).ticks(12);
+    const xAxis = d3axisTop().scale(xScale).ticks(12).tickSize(0);
     d3select(xAxisRef.current).call(xAxis);
 
     const yExtent = [0, 12];
@@ -136,11 +134,9 @@ export const PunchCard = () => {
       const appearance = appearanceFn(value);
       return {
         key: `${day}-${hour}`,
-        x: day * cellSize,
-        y: yScale(hour),
-        w: elementSize,
-        h: elementSize,
-        rx: elementSize / 2,
+        cx: day * cellSize,
+        cy: yScale(hour),
+        r: elementSize / 2,
         fill: appearance.texture.url(),
         stroke: appearance.color,
       };
@@ -151,11 +147,9 @@ export const PunchCard = () => {
     const toAggregateElementSpec = (value, i) => {
       const appearance = appearanceFn(value);
       return {
-        x: 0,
-        y: 0,
-        w: elementSize,
-        h: elementSize,
-        rx: elementSize / 2,
+        cx: 0,
+        cy: 0,
+        r: elementSize / 2,
         fill: appearance.texture.url(),
         stroke: appearance.color,
       };
@@ -165,7 +159,7 @@ export const PunchCard = () => {
       .map(toAggregateElementSpec)
       .map((spec, i) => ({
         ...spec,
-        x: i * cellSize,
+        cx: i * cellSize,
         key: `day-${i}`,
       }));
 
@@ -173,7 +167,7 @@ export const PunchCard = () => {
       .map(toAggregateElementSpec)
       .map((spec, i) => ({
         ...spec,
-        y: i * cellSize,
+        cy: i * cellSize,
         key: `hour-${i}`,
       }));
 
@@ -199,14 +193,17 @@ export const PunchCard = () => {
         <g
           ref={xAxisRef}
           className={styles.axis}
-          transform={`translate(${elementSize / 2},0)`}
+          transform={`translate(${0.5 * cellSize},${12.75 * cellSize})`}
         />
         <g
           ref={yAxisRef}
           className={styles.axis}
-          transform={`translate(0,${0})`}
+          transform={`translate(${7.5 * cellSize},0)`}
         />
-        <g ref={texturesRef} transform={`translate(${gap},${gap})`}>
+        <g
+          ref={texturesRef}
+          transform={`translate(${cellSize / 2},${cellSize / 2})`}
+        >
           <g transform={`translate(0,0)`}>
             <PunchCardElements elements={weekSpecs} />
           </g>
@@ -216,7 +213,7 @@ export const PunchCard = () => {
           <g transform={`translate(0,${13 * cellSize})`}>
             <PunchCardElements elements={dayAggregateSpecs} />
           </g>
-          <g transform={`translate(${cellSize / 2},${cellSize / 2})`}>
+          <g transform={`translate(${0},${0})`}>
             <PunchCardAnnotations
               annotations={annotations}
               cellSize={cellSize}
