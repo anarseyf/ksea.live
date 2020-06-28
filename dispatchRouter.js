@@ -176,9 +176,10 @@ const annotationsController = async (req, res) => {
 
 const punchCardController = async (req, res) => {
   try {
-    // TODO - cache
-    const weeks = await getPunchCardAsync();
-    res.json(weeks);
+    const key = cacheKeyForRequest(req);
+    const result =
+      (await getCachedAsync(key, res)) || (await getPunchCardAsync());
+    res.json(result);
   } catch (error) {
     console.error(error);
     res.status(500).send({ error });

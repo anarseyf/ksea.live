@@ -218,8 +218,8 @@ export const getPunchCardAsync = async () => {
       avg: 0,
       sum: 0,
       count: 0,
-      min: Infinity,
-      max: 0,
+      // min: Infinity,
+      // max: 0,
     }))
   );
   const week = weeks.reduce((acc, week) => {
@@ -227,8 +227,8 @@ export const getPunchCardAsync = async () => {
       for (let hour = 0; hour < 12; hour++) {
         acc[day][hour].sum += week[day][hour];
         acc[day][hour].count += 1;
-        acc[day][hour].min = Math.min(acc[day][hour].min, week[day][hour]);
-        acc[day][hour].max = Math.max(acc[day][hour].max, week[day][hour]);
+        // acc[day][hour].min = Math.min(acc[day][hour].min, week[day][hour]);
+        // acc[day][hour].max = Math.max(acc[day][hour].max, week[day][hour]);
       }
     }
     return acc;

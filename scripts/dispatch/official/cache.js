@@ -9,6 +9,7 @@ import {
   getActive24Async,
   getHistoryAsync,
   getAnnotationsAsync,
+  getPunchCardAsync,
 } from "../../../dispatchCompute";
 
 export const runner = async () => {
@@ -115,6 +116,12 @@ export const runner = async () => {
       params: {},
       query: {},
       asyncGetter: getAnnotationsAsync,
+    },
+    {
+      path: "/punchcard",
+      params: {},
+      query: {},
+      asyncGetter: getPunchCardAsync,
     },
     ...areaVariations1,
     ...areaVariations2,
