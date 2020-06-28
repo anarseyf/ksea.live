@@ -51,7 +51,7 @@ export const PunchCard = () => {
   const cellSize = svgWidth / 12;
   const width = cellSize * 7;
   const horizontal = svgWidth - width;
-  const horizontalRight = cellSize * 2.5;
+  const horizontalRight = cellSize * 3;
   const margin = {
     top: 40,
     bottom: 120,
@@ -74,6 +74,8 @@ export const PunchCard = () => {
 
     const max = d3max(week.flat(2).map(({ avg }) => avg));
 
+    // TODO: d3-scale can accomplish most of this stuff
+    // if you refactor the data a bit.
     const xDomain = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const xRange = xDomain.map((_, i) => i * cellSize);
     const xScale = d3scaleOrdinal(xDomain, xRange);
@@ -209,12 +211,12 @@ export const PunchCard = () => {
         <g
           ref={xAxisRef}
           className={styles.axis}
-          transform={`translate(${0.5 * cellSize},${12.75 * cellSize})`}
+          transform={`translate(${0.5 * cellSize},${13 * cellSize})`}
         />
         <g
           ref={yAxisRef}
           className={styles.axis}
-          transform={`translate(${8 * cellSize},0)`}
+          transform={`translate(${(phone ? 8.5 : 8) * cellSize},0)`}
         />
         <g
           ref={texturesRef}
@@ -223,10 +225,10 @@ export const PunchCard = () => {
           <g transform={`translate(0,0)`}>
             <PunchCardElements elements={weekSpecs} />
           </g>
-          <g transform={`translate(${8 * cellSize},0)`}>
+          <g transform={`translate(${(phone ? 8.5 : 8) * cellSize},0)`}>
             <PunchCardElements elements={hourAggregateSpecs} />
           </g>
-          <g transform={`translate(0,${13 * cellSize})`}>
+          <g transform={`translate(0,${13.5 * cellSize})`}>
             <PunchCardElements elements={dayAggregateSpecs} />
           </g>
           <g transform={`translate(${0},${0})`}>

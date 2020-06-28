@@ -18,10 +18,10 @@ export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
 
     const annotationColor = getStyleProp("--annotation");
 
-    const calloutFn = ({day, hour, text: label}) => {
+    const calloutFn = ({day, hour2, text: label}) => {
 
       const x = day * cellSize;
-      const y = yScale(hour);
+      const y = yScale(hour2);
       const callout = {
         note: {
           label,
@@ -35,7 +35,7 @@ export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
       };
 
         callout.nx = -cellSize/2 - 20;
-        callout.ny = yScale(hour) + cellSize/2;
+        callout.ny = yScale(hour2) + cellSize/2;
       return callout;
     };
 

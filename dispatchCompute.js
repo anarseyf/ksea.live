@@ -24,7 +24,7 @@ import {
 } from "./dispatchHelpers";
 import { readJSONAsync, pacificWeekTuple } from "./fileUtils";
 import { withCachePath, datasetsPath } from "./server/serverUtils";
-import { extent as d3extent } from "d3-array";
+import * as d3a from "d3-array";
 
 export const identityFn = (v) => v;
 
@@ -201,7 +201,7 @@ export const getPunchCardAsync = async () => {
 
   const toTuples = ({ derived: { timestamp } }) => pacificWeekTuple(timestamp);
   const buckets = all.map(toTuples); // { week, day, hour }
-  const [minWeek, maxWeek] = d3extent(buckets, ({ week }) => week);
+  const [minWeek, maxWeek] = d3a.extent(buckets, ({ week }) => week);
   const numWeeks = maxWeek - minWeek + 1;
   const zerosArray = (n) => [...new Array(n)].map(() => 0);
   const weeks = zerosArray(numWeeks).map(() =>
@@ -211,8 +211,10 @@ export const getPunchCardAsync = async () => {
     weeks[week - minWeek][day][hour] += 1;
   });
 
-  const accumulator = zerosArray(7).map(() =>
-    zerosArray(12).map(() => ({
+  const accumulator = zerosArray(7).map((_d, day) =>
+    zerosArray(12).map((_h, hour2) => ({
+      day,
+      hour2,
       avg: 0,
       sum: 0,
       count: 0,
@@ -256,16 +258,18 @@ export const getPunchCardAsync = async () => {
   dayAggregates = dayAggregates.map(toWeightedAvg);
   hourAggregates = hourAggregates.map(toWeightedAvg);
 
+  const values = week.flat(2);
+  const minIndex = d3a.minIndex(values, ({ avg }) => avg);
+  const maxIndex = d3a.maxIndex(values, ({ avg }) => avg);
+
   const annotations = [
     {
-      day: 2,
-      hour: 2,
-      text: "Min",
+      ...values[minIndex],
+      text: "Low",
     },
     {
-      day: 4,
-      hour: 8,
-      text: "Max",
+      ...values[maxIndex],
+      text: "High",
     },
   ];
 

@@ -162,6 +162,7 @@ const byTimeInterval = (tweets, intervals, hiRes) => {
 };
 
 const by = (option, tweets, requiredKeys = [], mapper) => {
+  // TODO - use d3.group, d3.rollup, etc. https://github.com/d3/d3-array#group
   const map = {};
 
   requiredKeys.forEach((key) => {
