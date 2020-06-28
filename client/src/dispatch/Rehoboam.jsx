@@ -113,8 +113,8 @@ export const Rehoboam = ({ area }) => {
         <g
           transform={`translate(${margin + mainRadius},${margin + mainRadius})`}
         >
-          <g className={svgStyles.axis} ref={axisRef} />
           <circle className={styles.maincircle} cx={0} cy={0} r={mainRadius} />
+          <g className={styles.axis} ref={axisRef} />
           {svgPath && <path className={classnames(styles.path)} d={svgPath} />}
           <g className={styles.events}>
             {circles.map(({ key, cx, cy, r, sev1, sev2, active }) => (

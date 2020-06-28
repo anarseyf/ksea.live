@@ -13,6 +13,7 @@ import { axisRight as d3axisRight, axisTop as d3axisTop } from "d3-axis";
 import textures from "textures";
 import styles from "./punchcard.module.scss";
 import { PunchCardAnnotations } from "./PunchCardAnnotations";
+import { ThemeContext } from './ThemeContext';
 
 const PunchCardElements = ({ elements }) => {
   if (!elements) {
@@ -37,6 +38,7 @@ const PunchCardElements = ({ elements }) => {
 
 export const PunchCard = () => {
   const { punchCard } = useContext(DataContext);
+  const { theme } = useContext(ThemeContext);
   const { week, dayAggregates, hourAggregates, annotations } = punchCard;
   const texturesRef = useRef();
 
@@ -45,7 +47,7 @@ export const PunchCard = () => {
   const [hourAggregateSpecs, setHourAggregateSpecs] = useState([]);
   const [scales, setScales] = useState([]);
 
-  const phone = isPhone() ? 360 : 450;
+  const phone = isPhone() ? 375 : 450;
   const svgWidth = phone;
   const cellSize = svgWidth / 12;
   const width = cellSize * 7;
@@ -195,6 +197,7 @@ export const PunchCard = () => {
     setDayAggregateSpecs(newDayAggregateSpecs);
     setHourAggregateSpecs(newHourAggregateSpecs);
   }, [
+    theme,
     week,
     height,
     width,

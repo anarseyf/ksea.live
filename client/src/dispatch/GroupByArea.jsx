@@ -14,7 +14,6 @@ import { Spark } from "./Spark";
 import classnames from "classnames";
 import styles from "./group.module.scss";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { useNeighborhoods } from "./neighborhoods";
 
 const Totals = ({ totals }) => {
   if (!totals) {
@@ -23,19 +22,19 @@ const Totals = ({ totals }) => {
   return (
     <>
       {totals.active > 0 && (
-        <span className={classnames(styles.mini, styles.active)}>
+        <span className={styles.active}>
           <SvgDot active={true} />
           <span>{totals.active} </span>
         </span>
       )}
       {totals.sev2 > 0 && (
-        <span className={styles.mini}>
+        <span>
           <SvgDot sev2={true} />
           <span> {totals.sev2} </span>
         </span>
       )}
       {totals.sev1 > 0 && (
-        <span className={styles.mini}>
+        <span>
           <SvgDot sev1={true} />
           <span> {totals.sev1} </span>
         </span>

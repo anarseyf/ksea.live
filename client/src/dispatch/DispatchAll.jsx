@@ -19,36 +19,34 @@ import { PunchCard } from "./PunchCard";
 export const DispatchAll = () => {
   const intro = (
     <p>
-      A visualization of Seattle Fire Department 911 dispatch data: real-time
-      view of incidents across the city; per-neighborhood breakdown; overview of
-      the year's cumulative data.{" "}
+      A visualization of Seattle Fire Department 911 dispatch data. All timestamps are in
+        Seattle local time. The page updates automatically every minute. <a href="#sources">Data sources</a> are listed below. Legend as follows:
     </p>
   );
 
   const live = (
     <p>
       <span>
-        A near-real-time view of today's incidents. All timestamps are in
-        Seattle local time.
+        A near-real-time view of today's incidents. 
       </span>{" "}
       <Freshness />
     </p>
   );
 
-  const todayText = "";
+  const outline = "The outline represents the Seattle city boundary.";
 
-  const pastWeek = `Year-to-date distribution of dispatches by day of week and time of day.`;
+  const week = `An aggregate view of year-to-date dispatches by day of week and by time of day.`;
 
   const active = (
     <p>
       Select an incident to view dispatch details. If geolocation data is
-      available (typically within 5 minutes) the map will zoom in to the spot.
+      available (typically within 5 minutes) the map above will zoom in to the spot.
     </p>
   );
 
   const major = (
     <p>
-      Today's incidents with <strong>five or more</strong> units dispatched.
+      Today's incidents with 5 or more units dispatched.
     </p>
   );
 
@@ -56,9 +54,9 @@ export const DispatchAll = () => {
 
   const history = (
     <p>
-      Zooming out even further, this view presents a year's worth of data. Lines
-      trace daily dispatch totals for all of Seattle. Circles represent major
-      incidents (those with 10 or more units dispatched).
+      A side-by-side comparison of this year's dispatch volume against last year's. Lines
+      trace daily totals for all of Seattle. Circles represent major
+      incidents (10 or more units dispatched).
     </p>
   );
 
@@ -70,50 +68,48 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
-      {/* <Section styleOption={1}>
+      <Section styleOption={1}>
         <Paragraph h1="Seattle Fire 911 Dispatch" content={intro} />
-      </Section>
-
-      <Section styleOption={2}>
-        <Paragraph title="Live View" content={live} />
-        <Rehoboam />
         <Paragraph content={<Legend />} />
       </Section>
 
-      <Section styleOption={3} edgeToEdge={true}>
-        <Paragraph title="" content={todayText} margin={true} />
+      <Section styleOption={2}>
+        <Paragraph title="Today" />
+        <Rehoboam />
+        <Paragraph content={live} />
+      </Section>
+
+      <Section styleOption={2} edgeToEdge={true}>
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
+        <Paragraph content={outline} margin={true} />
       </Section>
 
-      <Section styleOption={4}>
+      <Section styleOption={2}> 
         <Paragraph title="Active Incidents" content={active} />
         <TweetsActive />
         <Paragraph title="Major Incidents" content={major} />
         <TweetsMajor />
-      </Section> */}
+      </Section>
 
-      <Section styleOption={5}>
+      <Section styleOption={3}>
         <Paragraph title="City Areas" content={areas} />
         <GroupByArea />
       </Section>
 
-      {/* <Section styleOption={6}>
-        <Paragraph title="Week" content={pastWeek} />
+      <Section styleOption={4} edgeToEdge={true} >
+        <Paragraph title="Weekly Highs and Lows" content={week} margin={true} />
         <PunchCard />
-      </Section>
-
-      <Section styleOption={7} edgeToEdge={true}>
         <Paragraph
-          title="This Year vs Last Year"
+          title="This Year"
           content={history}
           margin={true}
         />
         <History />
-      </Section> */}
+      </Section>
 
-      <Section styleOption={8}>
+      <Section styleOption={5}>
         <Sources />
         <Paragraph title="Themes" content={<ThemeSwitch />} />
         <Paragraph title="About" content={notes} />

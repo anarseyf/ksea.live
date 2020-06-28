@@ -53,7 +53,7 @@ export const History = () => {
   const [paths, setPaths] = useState([]);
   const [clipPaths, setClipPaths] = useState({});
 
-  const dayHeight = 3.5;
+  const dayHeight = 3;
   const width = isPhone() ? 360 : 500, // TODO - use screen width
     margin = { top: 20, right: 0, bottom: 20, left: 0 },
     height = 365 * dayHeight,

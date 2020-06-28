@@ -6,5 +6,5 @@ import { TweetList } from "./TweetList";
 export const TweetsActive = () => {
   const { active24 } = useContext(DataContext);
 
-  return <TweetList tweets={active24} />;
+  return <TweetList tweets={active24} placeholder={"No active incidents"} />;
 }

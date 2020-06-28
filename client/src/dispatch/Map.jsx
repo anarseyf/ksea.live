@@ -106,12 +106,14 @@ export const Map = ({ area }) => {
   }
 
   const appearanceFn = (d) => {
-    return selectedTweet
+    return selectedTweet && selectedTweet.derived.lat
       ? isSelectedDot(d)
         ? Appearance.Highlighted
         : Appearance.Dimmed
       : Appearance.Normal;
   };
+
+   console.log("MAP/selected:",selectedTweet && selectedTweet.derived);
 
   // console.log(
   //   `MAP/render area=${area || "-"}, zoom=${zoom}, selected:${

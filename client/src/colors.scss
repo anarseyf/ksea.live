@@ -13,7 +13,7 @@
   --axis-color: #afadad;
   // --bg: #cad2d3; // jawg-light — water
   --bg: #f6f6f4; // jawg-light — background (land)
-  --bg-hover: #eef2f4;
+  --bg-hover: #e9e9e1;
   --bg-map: var(--bg);
   --bg-rehoboam: #f4f9f9;
   --bg1: #f6f8f9;
@@ -30,9 +30,9 @@
   --geo-bounds: rgba(104, 150, 197, 0.5);
   --graph-primary: #1f343f;
   --graph-primary1: #1f343f;
-  --graph-primary2: #1f343f;
-  --graph-primary3: #1f343f;
-  --graph-primary4: #1f343f;
+  --graph-primary2: #385261;
+  --graph-primary3: #658393;
+  --graph-primary4: #83a1b1;
   --graph-secondary: rgb(148, 148, 148);
   --heading: var(--text-primary);
   --highlight: var(--live);
@@ -50,16 +50,16 @@
   --attribution-link: rgb(143, 50, 21);
   --axis-color: darkslategray;
   --bg: rgb(252, 203, 143);
-  --bg-hover: #f1ddb1;
+  --bg-hover: #e6cfcc;
   --bg-map: var(--bg);
   --bg-rehoboam: #f1eaf9;
-  --bg1: #dde9fa;
-  --bg2: #ebe2f4;
-  --bg3: #f7e4f2;
-  --bg4: #f1dbde;
-  --bg5: #f5d5d0;
-  --bg6: #f8dcc3;
-  --bg7: #f8e4cb;
+  --bg1: #f7e4f2;
+  --bg2: #f1dbde;
+  --bg3: #f7e1de;
+  --bg4: #faeadc;
+  --bg5: #faf5e4;
+  --bg6: #f8ead1;
+  --bg7: #f8ead1;
   --bg8: #f8ead1;
   --body-bg: var(--bg);
   --border: rgb(228, 156, 117);
@@ -67,9 +67,9 @@
   --geo-bounds: rgba(150, 62, 8, 0.5);
   --graph-primary: #2d0c02;
   --graph-primary1: #2d0c02;
-  --graph-primary2: #2d0c02;
-  --graph-primary3: #2d0c02;
-  --graph-primary4: #2d0c02;
+  --graph-primary2: #4d1d0f;
+  --graph-primary3: #643526;
+  --graph-primary4: #ac7565;
   --graph-secondary: rgb(148, 148, 148);
   --heading: var(--text-primary);
   --highlight: var(--live);
@@ -78,6 +78,7 @@
   --text-primary: rgb(24, 20, 18);
   --text-secondary: rgb(87, 72, 65);
   --texture: var(--geo);
+  --twitter-main: #971d02;
   --tweet-bg: #e7d1c0;
 }
 
@@ -115,5 +116,5 @@
   --text-primary: rgb(245, 248, 250);
   --text-secondary: rgb(199, 207, 216);
   --texture: rgb(149, 171, 192);
-  --tweet-bg: #01212e;
+  --tweet-bg: #30364b;
 }
