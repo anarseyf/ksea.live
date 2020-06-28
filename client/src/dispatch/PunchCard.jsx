@@ -228,7 +228,7 @@ export const PunchCard = () => {
         <g
           ref={yAxisRef}
           className={styles.axis}
-          transform={`translate(${(phone ? 7 : 6.5) * cellSize},0)`}
+          transform={`translate(${7 * cellSize},0)`}
         />
         <g
           ref={texturesRef}

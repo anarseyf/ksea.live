@@ -17,7 +17,7 @@ import styles from "./group.module.scss";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 const Totals = ({ totals }) => {
-  const data = totals;
+  const data = totals || { active: 0, sev1: 0, sev2: 0 };
   const sum = data.active + data.sev1 + data.sev2;
   return (
     <div className={styles.totals}>

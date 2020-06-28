@@ -32,7 +32,7 @@ export const DispatchAll = () => {
     </p>
   );
 
-  const outline = "Seattle city boundary is outlined on the map.";
+  const outline = "The outline represents the Seattle city boundary.";
 
   const week = `An aggregate view of year-to-date dispatches by day of week and by time of day.`;
 
