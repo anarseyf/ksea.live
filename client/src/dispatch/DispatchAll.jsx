@@ -49,7 +49,7 @@ export const DispatchAll = () => {
     </p>
   );
 
-  const areas = "Select an area to zoom in on today's incidents there.";
+  const areas = "Select an area to see all of today's incidents in it. Areas are ordered by total number of dispatches.";
 
   const history = (
     <p>

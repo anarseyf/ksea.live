@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import styles from "./dot.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const SvgDot = ({ radius = 0, active = false, sev1 = false, sev2 = false }) => {
@@ -10,7 +11,7 @@ export const SvgDot = ({ radius = 0, active = false, sev1 = false, sev2 = false 
 
   return (
     <svg
-      className={classnames(svgStyles.container, { [svgStyles.live]: active })}
+      className={classnames(styles.container, svgStyles.container, { [svgStyles.live]: active })}
       width={size}
       height={size}
     >

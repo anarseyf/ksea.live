@@ -3,26 +3,28 @@
 .topline {
   display: inline-block;
   margin: auto;
-  font-size: 1.2em;
+  font-weight: 300;
 
   &.phone {
     font-size: 0.8em;
   }
 }
 .text {
-  font-size: 1.8em;
-  color: var(--text-secondary);
-}
-.date {
-  font-size: 1.7em;
+  font-size: 2em;
   color: var(--text-secondary);
 }
 .total {
   display: inline-module;
-  font-size: 4em;
+  font-size: 5em;
   color: var(--text-primary);
+  text-shadow: var(--text-primary) 0 0 4px;
   margin: -0.53em auto -0.5em auto;
 }
+.date {
+  font-size: 2em;
+  color: var(--text-secondary);
+}
+
 .stale {
   color: var(--stale);
 }

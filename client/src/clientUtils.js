@@ -1,8 +1,13 @@
-import { timeMinute as d3timeMinute } from 'd3-time';
+import { timeMinute as d3timeMinute } from "d3-time";
 import { tz as timezone } from "moment-timezone";
 
 export const intervalExtent = ({ start, end }, expandMinutes = 0) =>
   expand([start, end], expandMinutes);
+
+export const trimmedExtent = ({ start, end, bins }) => [
+  start,
+  bins.length ? bins[bins.length - 1].x1 : end,
+];
 
 // move to server/histogram.js
 export const expand = (extent, expandMinutes = 0) => [
@@ -47,24 +52,23 @@ export const isExactlySev2 = ({ derived: { severity } }) => severity === 2;
 
 export const getStyleProp = (prop) => {
   const appElement = document.getElementById("app");
-    const style = getComputedStyle(appElement);
-    return style.getPropertyValue(prop);
-}
+  const style = getComputedStyle(appElement);
+  return style.getPropertyValue(prop);
+};
 
 const maxContentWidth = () => {
   // const element = document.documentElement;
   // const style = getComputedStyle(element);
   // return style.getPropertyValue("--max-width");
   return 600;
-}
-const queryText = `only screen and (max-device-width: ${maxContentWidth()}px)`;
+};
+const queryText = `(max-device-width: ${maxContentWidth()}px)`; // only screen and
 
-export const isPhone = () => // TODO - move to Context?
+export const isPhone = () =>
+  // TODO - move to Context?
   window ? !!window.matchMedia(queryText).matches : true;
 
+export const windowWidth = () => (window ? window.innerWidth : 0);
 
-export const windowWidth = () => 
-  window ? window.innerWidth : 0;
-
-export const getContentWidth = () => 
+export const getContentWidth = () =>
   isPhone() ? windowWidth() : maxContentWidth();

@@ -7,4 +7,15 @@
 
 .total {
   color: var(--text-primary);
+  font-size: 1.5em;
+  font-weight: 300;
+  // text-shadow: var(--text-primary) 0 0 2px;
+}
+
+.axis path {
+  color: var(--transparent);
+}
+
+.axis text {
+  fill: var(--axis-color);
 }

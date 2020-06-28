@@ -49,7 +49,7 @@ export const PunchCard = () => {
   const [contentWidth, setContentWidth] = useState(0);
 
   useEffect(() => {
-    setContentWidth(getContentWidth());
+    setContentWidth(Math.min(450, getContentWidth()));
   }, []);
 
   const phone = isPhone();

@@ -14,7 +14,7 @@ export const DispatchArea = ({ area }) => {
 
   return (
     <DataProvider filters={{ area }}>
-      <Section styleOption={2}>
+      <Section styleOption={1}>
         <Paragraph
           content={
             <Link className={paragraphStyles.link} to="/">
@@ -24,7 +24,7 @@ export const DispatchArea = ({ area }) => {
         />
       </Section>
 
-      <Section styleOption={1}>
+      <Section styleOption={2}>
         <AreaPageHeader area={area} />
       </Section>
 
@@ -34,12 +34,12 @@ export const DispatchArea = ({ area }) => {
         </ErrorBoundary>
       </Section>
 
-      <Section styleOption={1}>
+      <Section styleOption={2}>
         <Paragraph title="Today's Incidents" />
         <TweetsForArea />
       </Section>
 
-      <Section styleOption={2}>
+      <Section styleOption={3}>
         <Sources />
       </Section>
     </DataProvider>

@@ -1,28 +1,50 @@
 @import "../colors.scss";
 
+:root {
+  --areamap-size: 140px;
+  --areamap-size-phone: 120px;
+}
+
 // TODO - switch to flexbox
 .container {
   display: block;
   color: var(--text-primary);
   text-align: left;
+  margin-top: 3em;
 }
 .item {
   // border: 1px solid var(--border);
   display: inline-block;
+  vertical-align: text-bottom;
+  text-align: center;
   margin-bottom: 2em;
-  width: 50%;
-  // border-left: 5px solid var(--transparent);
-  // border-right: 1px solid var(--transparent);
-  // border-top: 1px solid var(--transparent);
-  // border-bottom: 1px solid var(--transparent);
   padding: 1em auto;
-}
+  width: 50%;
 
+  &.compact {
+    width: 33.3%;
+  }
+}
+.totals {
+  color: var(--text-secondary);
+  font-weight: 300;
+  & .empty {
+    color: var(--transparent);
+  }
+}
+.left {
+  display: inline-block;
+  text-align: left;
+  width: var(--areamap-size);
+  &.phone {
+    width: var(--areamap-size-phone);
+  }
+}
 .area {
   font-size: 1.2em;
+  font-weight: 300;
 }
 .text {
-  font-size: 0.9em;
   margin-top: 0;
   padding-right: 1em;
 }
@@ -33,14 +55,10 @@
 }
 
 .mini {
-  background: var(--bg-hover);
+  // background: var(--bg-hover);
   margin-right: 0.5em;
   padding: 0.25em;
   border-radius: 5px;
-}
-
-.phone {
-  font-size: 0.9em;
 }
 
 .major {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { intervalExtent, isPhone } from "../clientUtils";
+import React, { useEffect, useState, useRef } from "react";
+import { isPhone, trimmedExtent, timeFormatterHourAM } from "../clientUtils";
 import classnames from "classnames";
 
 import {
@@ -8,8 +8,10 @@ import {
 } from "d3-scale";
 import { max as d3max } from "d3-array";
 import { line as d3line, curveCardinal as d3curveCardinal } from "d3-shape";
+import { select as d3select } from "d3-selection";
+import { axisBottom as d3axisBottom } from "d3-axis";
 
-import sparkStyles from "./spark.module.scss";
+import styles from "./spark.module.scss";
 import svgStyles from "./svg.module.scss";
 
 export const Spark = ({
@@ -20,18 +22,19 @@ export const Spark = ({
 }) => {
   const [svgData, setSvgData] = useState([]);
   const [nowDot, setNowDot] = useState(null);
+  const xAxisRef = useRef(null);
 
   const radius = 3;
-  const svgWidth = isPhone() ? 80 : 100;
-  const svgHeight = 0.2 * svgWidth,
-    margin = {
-      top: radius + 1,
-      right: radius + 1,
-      bottom: radius + 1,
-      left: radius + 1,
-    },
-    width = svgWidth - margin.left - margin.right,
-    height = svgHeight - margin.bottom - margin.top;
+  const width = isPhone() ? 40 : 60;
+  const height = 0.4 * width;
+  const margin = {
+    top: radius + 1,
+    bottom: 20,
+    left: 20,
+    right: 20,
+  };
+  const svgWidth = width + margin.left + margin.right,
+    svgHeight = height + margin.bottom + margin.top;
 
   useEffect(() => {
     // TODO - no need for useEffect?
@@ -44,7 +47,7 @@ export const Spark = ({
     const accessor = ({ length, cumulative }) =>
       useCumulative ? cumulative : length;
 
-    const xExtent = intervalExtent(data[0]);
+    const xExtent = trimmedExtent(data[0]);
 
     const yExtent = [
       0,
@@ -52,6 +55,13 @@ export const Spark = ({
     ];
 
     const xScale = d3scaleTime().domain(xExtent).range([0, width]);
+    const xAxis = d3axisBottom()
+      .scale(xScale)
+      .tickValues(xExtent)
+      .tickFormat(timeFormatterHourAM)
+      .tickSize(0);
+    d3select(xAxisRef.current).call(xAxis);
+
     const yScale = d3scaleLinear().domain(yExtent).range([height, 0]);
 
     const line = d3line()
@@ -84,13 +94,18 @@ export const Spark = ({
   const lastIndex = svgData.length - 1;
 
   return (
-    <div className={sparkStyles.container}>
+    <div className={styles.container}>
       <svg width={svgWidth} height={svgHeight}>
         <g transform={`translate(${margin.left},${margin.top})`}>
+          <g
+            className={styles.axis}
+            ref={xAxisRef}
+            transform={`translate(0,${height})`}
+          />
           <g>
-            {svgData.map(({path,key}, i) => (
+            {svgData.map(({ path, key }, i) => (
               <path
-              key={key}
+                key={key}
                 className={classnames(svgStyles.path, {
                   [svgStyles.current]: i === lastIndex,
                 })}
@@ -105,7 +120,7 @@ export const Spark = ({
           )}
         </g>
       </svg>
-      {showTotal && <span className={sparkStyles.total}>{total}</span>}
+      {showTotal && <span className={styles.total}>{total}</span>}
     </div>
   );
 };

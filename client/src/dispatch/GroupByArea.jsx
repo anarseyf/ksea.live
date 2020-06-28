@@ -8,6 +8,7 @@ import {
   isExactlySev2,
   isExactlySev1,
   isPhone,
+  getContentWidth,
 } from "../clientUtils";
 import { SvgDot } from "./SvgDot";
 import { Spark } from "./Spark";
@@ -16,38 +17,44 @@ import styles from "./group.module.scss";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 const Totals = ({ totals }) => {
-  if (!totals) {
-    return null;
-  }
+  const data = totals;
+  const sum = data.active + data.sev1 + data.sev2;
   return (
-    <>
-      {totals.active > 0 && (
+    <div className={styles.totals}>
+      {data.active > 0 && (
         <span className={styles.active}>
           <SvgDot active={true} />
-          <span>{totals.active} </span>
+          <span>{data.active} </span>
         </span>
       )}
-      {totals.sev2 > 0 && (
+      {data.sev2 > 0 && (
         <span>
           <SvgDot sev2={true} />
-          <span> {totals.sev2} </span>
+          <span> {data.sev2} </span>
         </span>
       )}
-      {totals.sev1 > 0 && (
+      {data.sev1 > 0 && (
         <span>
           <SvgDot sev1={true} />
-          <span> {totals.sev1} </span>
+          <span> {data.sev1} </span>
         </span>
       )}
-    </>
+      {!sum && <span className={styles.empty}>0 active or major</span>}
+    </div>
   );
 };
 
 export const GroupByArea = () => {
   const { groupedByArea, activeOrMajorByArea } = useContext(DataContext);
   const [totalsMap, setTotalsMap] = useState({});
+  const [displayedAreas, setDisplayedAreas] = useState({});
   const [data, setData] = useState([]);
   const phone = isPhone();
+
+  const [compact, setCompact] = useState(false);
+  useEffect(() => {
+    setCompact(getContentWidth() > 450);
+  }, []);
 
   useEffect(() => {
     if (!activeOrMajorByArea.length) {
@@ -66,6 +73,12 @@ export const GroupByArea = () => {
       }
     });
     setTotalsMap(map);
+
+    const display = {};
+    activeOrMajorByArea.forEach(({key: area}) => {
+      display[area] = area.replace("/", "/ ");
+    });
+    setDisplayedAreas(display);
   }, [activeOrMajorByArea]);
 
   useEffect(() => {
@@ -87,7 +100,7 @@ export const GroupByArea = () => {
       const totalB = intervalsB[0].total;
 
       return (
-        activeB - activeA || sev2B - sev2A || sev1B - sev1A || totalB - totalA
+        totalB - totalA || activeB - activeA || sev2B - sev2A || sev1B - sev1A
       );
     };
     const sortedData = groupedByArea.sort(sortByImportance);
@@ -101,37 +114,27 @@ export const GroupByArea = () => {
   return (
     <div className={styles.container}>
       {data.map(({ key: area, intervals }) => (
-        <div key={area} className={styles.item}>
-          <div
-            className={classnames(styles.text, {
-              [styles.phone]: phone,
-            })}
-          >
-            <div className={styles.area}>{area}</div>
-            {/* {neighborhoodsMap[area] && (
-                  <div className={classnames(styles.list)}>
-                    {neighborhoodsMap[area].map((v) => (
-                      <div key={v}>• {v}</div>
-                    ))}
-                  </div>
-                )} */}
+        <div key={area} className={classnames(styles.item, {[styles.compact]: compact})}>
+          <div className={classnames(styles.left, {
+                [styles.phone]: phone,
+              })}>
+            <div className={styles.area}>{displayedAreas[area]}</div>
+            <Link to={`${encodeURIComponent(area)}`}>
+              <AreaShape area={area} />
+            </Link>
           </div>
-
-          <Link to={`${encodeURIComponent(area)}`}>
-            <AreaShape area={area} />
-          </Link>
           <div>
-            <span className={styles.mini}>
               <ErrorBoundary>
+                <span className={styles.mini}>
                 <Spark
                   intervals={intervals}
                   useCumulative={true}
                   showTotal={true}
                 />
+                </span>
               </ErrorBoundary>
-              <Totals totals={totalsMap[area]} />
-            </span>
           </div>
+          <Totals totals={totalsMap[area]} />
         </div>
       ))}
     </div>

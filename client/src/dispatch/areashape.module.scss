@@ -5,10 +5,10 @@
   margin-top: 0.2em;
   margin-bottom: 0.2em;
   border: 1px solid var(--border);
-  width: 140px;
-  height: 140px;
+  width: var(--areamap-size);
+  height: var(--areamap-size);
 }
 .container.phone {
-  width: 110px;
-  height: 110px;
+  width: var(--areamap-size-phone);
+  height: var(--areamap-size-phone);
 }
