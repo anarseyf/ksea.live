@@ -200,14 +200,14 @@ export const getPunchCardAsync = async () => {
   const all = await allTweets(intervals);
 
   const toTuples = ({ derived: { timestamp } }) => pacificWeekTuple(timestamp);
-  const buckets = all.map(toTuples); // { week, day, hour }
-  const [minWeek, maxWeek] = d3a.extent(buckets, ({ week }) => week);
+  const tuples = all.map(toTuples); // { week, day, hour }
+  const [minWeek, maxWeek] = d3a.extent(tuples, ({ week }) => week);
   const numWeeks = maxWeek - minWeek + 1;
   const zerosArray = (n) => [...new Array(n)].map(() => 0);
   const weeks = zerosArray(numWeeks).map(() =>
     zerosArray(7).map(() => zerosArray(12))
   );
-  buckets.forEach(({ week, day, hour }) => {
+  tuples.forEach(({ week, day, hour }) => {
     weeks[week - minWeek][day][hour] += 1;
   });
 
@@ -258,18 +258,24 @@ export const getPunchCardAsync = async () => {
   dayAggregates = dayAggregates.map(toWeightedAvg);
   hourAggregates = hourAggregates.map(toWeightedAvg);
 
-  const values = week.flat(2);
-  const minIndex = d3a.minIndex(values, ({ avg }) => avg);
-  const maxIndex = d3a.maxIndex(values, ({ avg }) => avg);
+  const buckets = week.flat(2);
+  const minIndex = d3a.minIndex(buckets, ({ avg }) => avg);
+  const maxIndex = d3a.maxIndex(buckets, ({ avg }) => avg);
 
+  const minBucket = buckets[minIndex];
+  const maxBucket = buckets[maxIndex];
+  const minValue = Math.round(minBucket.avg / 2);
+  const maxValue = Math.round(maxBucket.avg / 2);
   const annotations = [
     {
-      ...values[minIndex],
-      text: "Low",
+      ...minBucket,
+      title: "Low",
+      label: `${minValue}/hour`,
     },
     {
-      ...values[maxIndex],
-      text: "High",
+      ...maxBucket,
+      title: "High",
+      label: `${maxValue}/hour`,
     },
   ];
 

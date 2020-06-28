@@ -6,7 +6,7 @@ import {
   scaleLinear as d3scaleLinear,
   scaleOrdinal as d3scaleOrdinal,
 } from "d3-scale";
-import { max as d3max } from "d3-array";
+import * as d3a from "d3-array";
 import { select as d3select } from "d3-selection";
 import { axisLeft as d3axisLeft, axisTop as d3axisTop } from "d3-axis";
 
@@ -72,7 +72,7 @@ export const PunchCard = () => {
       return;
     }
 
-    const max = d3max(week.flat(2).map(({ avg }) => avg));
+    const [min, max] = d3a.extent(week.flat(2).map(({ avg }) => avg));
 
     // TODO: d3-scale can accomplish most of this stuff
     // if you refactor the data a bit.
@@ -136,16 +136,21 @@ export const PunchCard = () => {
       { color: color4, texture: texture4 },
     ];
     const appearanceFn = (value) => {
+      const offsetValue = value - min;
+      const offsetMax = max - min;
+
       const index =
-        value >= 0.8 * max
+        offsetValue >= 0.75 * offsetMax
           ? 0
-          : value >= 0.6 * max
+          : offsetValue >= 0.5 * offsetMax
           ? 1
-          : value >= 0.4 * max
+          : offsetValue >= 0.25 * offsetMax
           ? 2
           : 3;
       return appearance[index];
     };
+
+    const maxRadius = elementSize / 2;
 
     const newWeekSpecs = data.map(({ hour, day, value }) => {
       const appearance = appearanceFn(value);
@@ -153,7 +158,7 @@ export const PunchCard = () => {
         key: `${day}-${hour}`,
         cx: day * cellSize,
         cy: yScale(hour),
-        r: elementSize / 2,
+        r: maxRadius * Math.sqrt(value / max),
         fill: appearance.texture.url(),
         stroke: appearance.color,
       };
@@ -166,7 +171,7 @@ export const PunchCard = () => {
       return {
         cx: 0,
         cy: 0,
-        r: elementSize / 2,
+        r: maxRadius * Math.sqrt(value / max),
         fill: appearance.texture.url(),
         stroke: appearance.color,
       };
@@ -211,7 +216,7 @@ export const PunchCard = () => {
         <g
           ref={xAxisRef}
           className={styles.axis}
-          transform={`translate(${0.5 * cellSize},${13 * cellSize})`}
+          transform={`translate(${0.5 * cellSize},${12.9 * cellSize})`}
         />
         <g
           ref={yAxisRef}
@@ -228,7 +233,7 @@ export const PunchCard = () => {
           <g transform={`translate(${(phone ? 8.5 : 8) * cellSize},0)`}>
             <PunchCardElements elements={hourAggregateSpecs} />
           </g>
-          <g transform={`translate(0,${13.5 * cellSize})`}>
+          <g transform={`translate(0,${13.25 * cellSize})`}>
             <PunchCardElements elements={dayAggregateSpecs} />
           </g>
           <g transform={`translate(${0},${0})`}>
@@ -236,6 +241,7 @@ export const PunchCard = () => {
               annotations={annotations}
               cellSize={cellSize}
               scales={scales}
+              availableWidth={2 * cellSize}
             />
           </g>
         </g>

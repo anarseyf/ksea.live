@@ -7,7 +7,7 @@ import {
 import { getStyleProp } from "../clientUtils";
 import "./annotations.scss";
 
-export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
+export const PunchCardAnnotations = ({ annotations, scales, cellSize, availableWidth }) => {
   const calloutsRef = useRef(null);
 
   useEffect(() => {
@@ -18,13 +18,16 @@ export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
 
     const annotationColor = getStyleProp("--annotation");
 
-    const calloutFn = ({day, hour2, text: label}) => {
+    const calloutFn = ({day, hour2, title, label}) => {
 
       const x = day * cellSize;
       const y = yScale(hour2);
       const callout = {
         note: {
+          title,
           label,
+          wrap: availableWidth,
+          align: "right"
         },
         x,
         y,
@@ -33,9 +36,9 @@ export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
         },
         color: annotationColor,
       };
+      callout.nx = -20;
+      callout.ny = yScale(hour2) + cellSize/2;
 
-        callout.nx = -cellSize/2 - 20;
-        callout.ny = yScale(hour2) + cellSize/2;
       return callout;
     };
 
@@ -48,7 +51,7 @@ export const PunchCardAnnotations = ({ annotations, cellSize, scales }) => {
 
     d3select(calloutsRef.current).call(callout);
 
-  }, [annotations, cellSize, scales]);
+  }, [annotations, availableWidth, cellSize, scales]);
 
   return (
     <g ref={calloutsRef} />
