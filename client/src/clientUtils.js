@@ -27,7 +27,7 @@ export const timeFormatterHourAM = (timestamp) =>
   timeFormatter(timestamp, "h A");
 
 export const timeFormatterMonth = (timestamp) =>
-  timeFormatter(+timestamp, "MMM");
+  timeFormatter(+timestamp, "MMM");;
 
 export const timeFormatterMonthDay = (timestamp) =>
   timeFormatter(+timestamp, "MMM D");

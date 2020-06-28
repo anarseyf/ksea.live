@@ -69,18 +69,22 @@ const resolveGeo = async (entries = []) => {
 const resolveLocally = async (sourceFile, incidentsMap) => {
   const entries = await readJSONAsync(sourceFile, []);
   const empty = [];
-  const result = entries.map(({ id_str, derived, ...rest }) => {
-    const [lat, long] = incidentsMap[id_str] || empty;
-    return {
-      id_str,
-      ...rest,
-      derived: {
-        ...derived,
-        lat,
-        long,
-      },
-    };
-  });
+  const result = entries.map(
+    ({ id_str, derived: { lat, long, ...restDerived }, ...rest }) => {
+      const [newLat, newLong] = lat
+        ? [lat, long]
+        : incidentsMap[id_str] || empty;
+      return {
+        id_str,
+        ...rest,
+        derived: {
+          ...restDerived,
+          lat: newLat,
+          long: newLong,
+        },
+      };
+    }
+  );
   const unresolved = result.filter(hasNoCoordinates);
   await saveJSONAsync(sourceFile, unresolved);
   const resolved = result.filter(hasCoordinates);

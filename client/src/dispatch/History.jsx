@@ -8,7 +8,8 @@ import {
   intervalExtent as getIntervalExtent,
   timeFormatterMonth,
   everyMonth,
-  getContentWidth
+  getContentWidth,
+  timeFormatterMonthUppercase
 } from "../clientUtils";
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";
@@ -67,7 +68,7 @@ export const History = () => {
     width = svgWidth - margin.left - margin.right;
   const yearWidth = width / 2;
   const maxBarWidth = yearWidth * 0.45;
-  const annotationRectWidth = yearWidth * 0.5;
+  const annotationRectWidth = yearWidth * 0.48;
   const calloutWidth = Math.max(40, yearWidth - annotationRectWidth);
 
   const svgRef = useRef(null);
@@ -97,8 +98,8 @@ export const History = () => {
     const yAxis = d3axisLeft()
       .scale(yScale)
       .tickValues(everyMonth(intervalCurrent.start))
-      .tickFormat(timeFormatterMonth)
-      .tickSize(0);
+      .tickFormat((d) => timeFormatterMonth(d).toUpperCase())
+      .tickSize(-10);
     d3select(yAxisRef.current).call(yAxis);
 
     const xAxis = d3axisBottom().scale(xScale).ticks(2);

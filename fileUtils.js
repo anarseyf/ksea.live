@@ -23,6 +23,10 @@ const mergeSameId = (sortedEntries) => {
   const units = getUnits(sortedEntries);
   const unitCount = units.split(" ").length;
 
+  const [lat, long] = sortedEntries
+    .map(({ derived: { lat, long } }) => [lat, long])
+    .reduce((acc, pair) => (acc.lat ? acc : pair), [undefined, undefined]);
+
   const entry = {
     id_str: oldest.id_str,
     created_at: oldest.created_at,
@@ -31,6 +35,8 @@ const mergeSameId = (sortedEntries) => {
       units,
       unitCount,
       active: newest.derived.active,
+      lat,
+      long,
     },
   };
 

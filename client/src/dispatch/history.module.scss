@@ -34,6 +34,12 @@
 }
 
 .axis text {
+  margin-left: -20px;
   font-size: 1.5em;
+  font-weight: 500;
   fill: var(--text-primary);
+  // stroke: black; //var(--annotation);
+  stroke-width: 1;
+  text-shadow: black 0 0 4px;
+  text-anchor: middle;
 }

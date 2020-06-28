@@ -82,7 +82,7 @@ export const Annotations = ({
         note: {
           title,
           label,
-          wrap: calloutWidth - margin - 10,
+          wrap: calloutWidth - margin - 5,
         },
         x: sideX * x,
         y,
