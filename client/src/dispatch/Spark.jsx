@@ -14,7 +14,6 @@ import svgStyles from "./svg.module.scss";
 
 export const Spark = ({
   intervals = [],
-  title,
   showTotal,
   useCumulative,
   showPrevious,
@@ -23,7 +22,7 @@ export const Spark = ({
   const [nowDot, setNowDot] = useState(null);
 
   const radius = 3;
-  const svgWidth = isPhone() ? 90 : 120;
+  const svgWidth = isPhone() ? 80 : 100;
   const svgHeight = 0.2 * svgWidth,
     margin = {
       top: radius + 1,

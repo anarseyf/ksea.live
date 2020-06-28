@@ -8,11 +8,10 @@ import {
 } from "d3-scale";
 import * as d3a from "d3-array";
 import { select as d3select } from "d3-selection";
-import { axisLeft as d3axisLeft, axisTop as d3axisTop } from "d3-axis";
+import { axisRight as d3axisRight, axisTop as d3axisTop } from "d3-axis";
 
 import textures from "textures";
 import styles from "./punchcard.module.scss";
-import svgStyles from "./svg.module.scss";
 import { PunchCardAnnotations } from "./PunchCardAnnotations";
 
 const PunchCardElements = ({ elements }) => {
@@ -94,7 +93,7 @@ export const PunchCard = () => {
       }
       return `${hour % 12}${hour < 12 ? "am" : "pm"}`;
     };
-    const yAxis = d3axisLeft()
+    const yAxis = d3axisRight()
       .scale(yScale)
       .tickValues([0, 3, 6, 9, 12])
       .tickFormat(formatter)
@@ -221,7 +220,7 @@ export const PunchCard = () => {
         <g
           ref={yAxisRef}
           className={styles.axis}
-          transform={`translate(${(phone ? 8.5 : 8) * cellSize},0)`}
+          transform={`translate(${(phone ? 7 : 6.5) * cellSize},0)`}
         />
         <g
           ref={texturesRef}

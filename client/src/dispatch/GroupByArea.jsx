@@ -3,7 +3,12 @@ import { Link } from "@reach/router";
 import { DataContext } from "./DataProvider";
 import { AreaShape } from "./AreaShape";
 
-import { isActive, isExactlySev2, isExactlySev1, isPhone } from "../clientUtils";
+import {
+  isActive,
+  isExactlySev2,
+  isExactlySev1,
+  isPhone,
+} from "../clientUtils";
 import { SvgDot } from "./SvgDot";
 import { Spark } from "./Spark";
 import classnames from "classnames";
@@ -11,11 +16,38 @@ import styles from "./group.module.scss";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { useNeighborhoods } from "./neighborhoods";
 
+const Totals = ({ totals }) => {
+  if (!totals) {
+    return null;
+  }
+  return (
+    <>
+      {totals.active > 0 && (
+        <span className={classnames(styles.mini, styles.active)}>
+          <SvgDot active={true} />
+          <span>{totals.active} </span>
+        </span>
+      )}
+      {totals.sev2 > 0 && (
+        <span className={styles.mini}>
+          <SvgDot sev2={true} />
+          <span> {totals.sev2} </span>
+        </span>
+      )}
+      {totals.sev1 > 0 && (
+        <span className={styles.mini}>
+          <SvgDot sev1={true} />
+          <span> {totals.sev1} </span>
+        </span>
+      )}
+    </>
+  );
+};
+
 export const GroupByArea = () => {
   const { groupedByArea, activeOrMajorByArea } = useContext(DataContext);
   const [totalsMap, setTotalsMap] = useState({});
   const [data, setData] = useState([]);
-  const neighborhoodsMap = useNeighborhoods();
   const phone = isPhone();
 
   useEffect(() => {
@@ -70,61 +102,37 @@ export const GroupByArea = () => {
   return (
     <div className={styles.container}>
       {data.map(({ key: area, intervals }) => (
-        <div key={area} className={styles.itemContainer}>
-          <Link to={`${encodeURIComponent(area)}`}>
-            <div className={styles.vpadding}>
-              <div className={styles.fullWidth}>
-                <div className={styles.item}>&nbsp;</div>
-                <div className={classnames(styles.item, styles.right)}>
-                  {totalsMap[area] && (
-                    <div className={styles.major}>
-                      {totalsMap[area].active > 0 && (
-                        <span className={styles.active}>
-                          <SvgDot active={true} />
-                          <span>{totalsMap[area].active} </span>
-                        </span>
-                      )}
-                      {totalsMap[area].sev1 > 0 && (
-                        <>
-                          <SvgDot sev1={true} />
-                          <span> {totalsMap[area].sev1} </span>
-                        </>
-                      )}
-                      {totalsMap[area].sev2 > 0 && (
-                        <>
-                          <SvgDot sev2={true} />
-                          <span> {totalsMap[area].sev2} </span>
-                        </>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className={classnames(styles.item, styles.text, {[styles.phone]:phone})}>
-                <div className={styles.area}>{area}</div>
-                {neighborhoodsMap[area] && (
+        <div key={area} className={styles.item}>
+          <div
+            className={classnames(styles.text, {
+              [styles.phone]: phone,
+            })}
+          >
+            <div className={styles.area}>{area}</div>
+            {/* {neighborhoodsMap[area] && (
                   <div className={classnames(styles.list)}>
                     {neighborhoodsMap[area].map((v) => (
                       <div key={v}>• {v}</div>
                     ))}
                   </div>
-                )}
-              </div>
+                )} */}
+          </div>
 
-              <div className={classnames(styles.item, styles.right)}>
-                <AreaShape area={area} />
-                <ErrorBoundary>
-                  <Spark
-                    className={styles.spark}
-                    intervals={intervals}
-                    useCumulative={true}
-                    showTotal={true}
-                  />
-                </ErrorBoundary>
-              </div>
-            </div>
+          <Link to={`${encodeURIComponent(area)}`}>
+            <AreaShape area={area} />
           </Link>
+          <div>
+            <span className={styles.mini}>
+              <ErrorBoundary>
+                <Spark
+                  intervals={intervals}
+                  useCumulative={true}
+                  showTotal={true}
+                />
+              </ErrorBoundary>
+              <Totals totals={totalsMap[area]} />
+            </span>
+          </div>
         </div>
       ))}
     </div>

@@ -37,7 +37,7 @@ export const DispatchAll = () => {
 
   const todayText = "";
 
-  const pastWeek = `The past 7 days of dispatches.`;
+  const pastWeek = `Year-to-date distribution of dispatches by day of week and time of day.`;
 
   const active = (
     <p>
@@ -62,27 +62,25 @@ export const DispatchAll = () => {
     </p>
   );
 
-
   const notes = (
-      <p>
-        Created by <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
-      </p>
+    <p>
+      Created by <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
+    </p>
   );
 
   return (
     <DataProvider>
-      <Section styleOption={1}>
+      {/* <Section styleOption={1}>
         <Paragraph h1="Seattle Fire 911 Dispatch" content={intro} />
       </Section>
 
       <Section styleOption={2}>
         <Paragraph title="Live View" content={live} />
-        <PunchCard />
         <Rehoboam />
         <Paragraph content={<Legend />} />
       </Section>
 
-      {/* <Section styleOption={3} edgeToEdge={true}>
+      <Section styleOption={3} edgeToEdge={true}>
         <Paragraph title="" content={todayText} margin={true} />
         <ErrorBoundary>
           <Map />
@@ -94,15 +92,16 @@ export const DispatchAll = () => {
         <TweetsActive />
         <Paragraph title="Major Incidents" content={major} />
         <TweetsMajor />
-      </Section>
+      </Section> */}
 
-      <Section styleOption={5} edgeToEdge={true}>
-        <Paragraph title="City Areas" content={areas} margin={true} />
+      <Section styleOption={5}>
+        <Paragraph title="City Areas" content={areas} />
         <GroupByArea />
       </Section>
 
-      <Section styleOption={6}>
-        <Paragraph title="Past Week" content={pastWeek} />
+      {/* <Section styleOption={6}>
+        <Paragraph title="Week" content={pastWeek} />
+        <PunchCard />
       </Section>
 
       <Section styleOption={7} edgeToEdge={true}>
@@ -112,13 +111,13 @@ export const DispatchAll = () => {
           margin={true}
         />
         <History />
-      </Section>
+      </Section> */}
 
       <Section styleOption={8}>
         <Sources />
         <Paragraph title="Themes" content={<ThemeSwitch />} />
         <Paragraph title="About" content={notes} />
-      </Section> */}
+      </Section>
     </DataProvider>
   );
 };
