@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { StatusContext } from "./StatusContext";
-import { timeFormatter, timeFormatterUserTimezone } from "../clientUtils";
+import { timeFormatter, timeFormatterUserTimezone, pacificMidnight } from "../clientUtils";
+import classnames from "classnames";
 import styles from "./freshness.module.scss";
 
 export const Freshness = () => {
@@ -11,8 +12,10 @@ export const Freshness = () => {
   }
 
   const date = new Date(status.lastUpdated);
-  const formatTimezone = "h:mma z";
-  const formatNoTimezone = "h:mma";
+  const midnight = pacificMidnight();
+  const stale = date < midnight;
+  const formatTimezone = `${stale ? "MMM D @ " : ""}h:mma z`;
+  const formatNoTimezone = `${stale ? "MMM D @ " : ""}h:mma`;
   const seattle = timeFormatter(date, formatNoTimezone);
   const seattleTZ = timeFormatter(date, formatTimezone);
   const user = timeFormatterUserTimezone(date, formatNoTimezone);
@@ -25,8 +28,10 @@ export const Freshness = () => {
   return (
     <span>
       Data is current as of{" "}
-      <span className={styles.time}>{displaySeattle}</span>
-      {displayUser}.
+      <span className={classnames({[styles.stale]: stale})}>
+        <span className={styles.time}>{displaySeattle}</span>
+        {displayUser}.
+      </span>
     </span>
   );
 };
