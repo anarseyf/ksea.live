@@ -20,8 +20,7 @@ export const DispatchAll = () => {
   const intro = (
     <p>
       A visualization of Seattle Fire Department's 911 dispatch data. All
-      timestamps are in Seattle local time. The page updates automatically every
-      minute. <a href="#sources">Data sources</a> are listed below. Legend as
+      timestamps are in Seattle local time. <a href="#sources">Data sources</a> are listed below. Legend as
       follows:
     </p>
   );
