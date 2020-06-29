@@ -10,7 +10,7 @@ import * as d3a from "d3-array";
 import { select as d3select } from "d3-selection";
 import { axisRight as d3axisRight, axisTop as d3axisTop } from "d3-axis";
 
-import textures from "textures";
+import texturesJS from "textures";
 import styles from "./punchcard.module.scss";
 import { PunchCardAnnotations } from "./PunchCardAnnotations";
 import { ThemeContext } from './ThemeContext';
@@ -40,18 +40,18 @@ export const PunchCard = () => {
   const { punchCard } = useContext(DataContext);
   const { theme } = useContext(ThemeContext);
   const { week, dayAggregates, hourAggregates, annotations } = punchCard;
-  const texturesRef = useRef();
-
+  
   const [weekSpecs, setWeekSpecs] = useState([]);
   const [dayAggregateSpecs, setDayAggregateSpecs] = useState([]);
   const [hourAggregateSpecs, setHourAggregateSpecs] = useState([]);
   const [scales, setScales] = useState([]);
   const [contentWidth, setContentWidth] = useState(0);
-
+  const [textures, setTextures] = useState([]);
+  
   useEffect(() => {
     setContentWidth(Math.min(450, getContentWidth()));
   }, []);
-
+  
   const phone = isPhone();
   const svgWidth = contentWidth;
   const cellSize = svgWidth / 12;
@@ -68,7 +68,8 @@ export const PunchCard = () => {
   const elementSize = cellSize - 2 * gap;
   const height = cellSize * 12;
   const svgHeight = height + margin.top + margin.bottom;
-
+  
+  const texturesRef = useRef(null);
   const yAxisRef = useRef(null);
   const xAxisRef = useRef(null);
 
@@ -86,8 +87,7 @@ export const PunchCard = () => {
     const xRange = xDomain.map((_, i) => i * cellSize);
     const xScale = d3scaleOrdinal(xDomain, xRange);
     const xAxis = d3axisTop().scale(xScale).ticks(12).tickSize(0);
-    d3select(xAxisRef.current).call(xAxis);
-
+    
     const yExtent = [0, 12];
     const yScale = d3scaleLinear().domain(yExtent).range([0, height]);
     const formatter = (d, i) => {
@@ -105,9 +105,6 @@ export const PunchCard = () => {
       .tickValues([0, 3, 6, 9, 12])
       .tickFormat(formatter)
       .tickSize(phone ? 0 : 3);
-    d3select(yAxisRef.current).call(yAxis);
-
-    setScales([xScale, yScale]);
 
     const data = week
       .map((day, iDay) =>
@@ -124,16 +121,10 @@ export const PunchCard = () => {
     const color3 = getStyleProp("--graph-primary3");
     const color4 = getStyleProp("--graph-primary4");
 
-    const texture1 = textures.lines().size(7).strokeWidth(3).stroke(color1);
-    const texture2 = textures.lines().size(6).strokeWidth(2).stroke(color2);
-    const texture3 = textures.lines().size(5).strokeWidth(1).stroke(color3);
-    const texture4 = textures.lines().size(5).strokeWidth(1).stroke(color4);
-
-    d3select(texturesRef.current)
-      .call(texture1)
-      .call(texture2)
-      .call(texture3)
-      .call(texture4);
+    const texture1 = texturesJS.lines().size(7).strokeWidth(3).stroke(color1);
+    const texture2 = texturesJS.lines().size(6).strokeWidth(2).stroke(color2);
+    const texture3 = texturesJS.lines().size(5).strokeWidth(1).stroke(color3);
+    const texture4 = texturesJS.lines().size(5).strokeWidth(1).stroke(color4);
 
     const appearance = [
       { color: color1, texture: texture1 },
@@ -170,8 +161,6 @@ export const PunchCard = () => {
       };
     });
 
-    setWeekSpecs(newWeekSpecs);
-
     const toAggregateElementSpec = (value, i) => {
       const appearance = appearanceFn(value);
       return {
@@ -199,22 +188,23 @@ export const PunchCard = () => {
         key: `hour-${i}`,
       }));
 
+    setWeekSpecs(newWeekSpecs);
     setDayAggregateSpecs(newDayAggregateSpecs);
     setHourAggregateSpecs(newHourAggregateSpecs);
-  }, [
-    theme,
-    week,
-    height,
-    width,
-    elementSize,
-    cellSize,
-    dayAggregates,
-    hourAggregates,
-    phone,
-  ]);
+    setScales([xScale, yScale]);
+    d3select(xAxisRef.current).call(xAxis);
+    d3select(yAxisRef.current).call(yAxis);
+    
+    setTextures([texture1, texture2, texture3, texture4]);
+  }, [theme, week, height, width, elementSize, cellSize, dayAggregates, hourAggregates, phone]);
 
-  if (!weekSpecs.length) {
-    return null;
+  if (textures.length) {
+    const [t1,t2,t3,t4] = textures;
+    d3select(texturesRef.current)
+      .call(t1)
+      .call(t2)
+      .call(t3)
+      .call(t4);
   }
 
   return (
@@ -234,6 +224,7 @@ export const PunchCard = () => {
           ref={texturesRef}
           transform={`translate(${cellSize / 2},${cellSize / 2})`}
         >
+          {weekSpecs.length && (<>
           <g transform={`translate(${0},0)`}>
             <PunchCardElements elements={weekSpecs} />
           </g>
@@ -251,6 +242,7 @@ export const PunchCard = () => {
               availableWidth={margin.left}
             />
           </g>
+          </>)}
         </g>
       </g>
     </svg>

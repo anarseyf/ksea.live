@@ -24,7 +24,7 @@ export const Map = ({ area }) => {
   useEffect(() => {
     const geoColor = getStyleProp("--geo");
     const geoBoundsColor = getStyleProp("--geo-bounds");
-  
+
     const bounds = {
       color: geoBoundsColor,
       fillOpacity: 0,
@@ -38,7 +38,7 @@ export const Map = ({ area }) => {
       strokeOpacity: 0.5,
       weight: 2,
     };
-    setGeojsonStyles({active, bounds});
+    setGeojsonStyles({ active, bounds });
   }, [theme]);
 
   if (!filteredByArea.length) {
@@ -117,7 +117,7 @@ export const Map = ({ area }) => {
       : Appearance.Normal;
   };
 
-   console.log("MAP/selected:",selectedTweet && selectedTweet.derived);
+  //  console.log("MAP/selected:",selectedTweet && selectedTweet.derived);
 
   // console.log(
   //   `MAP/render area=${area || "-"}, zoom=${zoom}, selected:${
@@ -145,7 +145,9 @@ export const Map = ({ area }) => {
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />
-      {!area && <GeoJSON key={theme} data={city} style={geojsonStyles.bounds} />}
+      {!area && (
+        <GeoJSON key={theme} data={city} style={geojsonStyles.bounds} />
+      )}
       {rendered.map((feature) => (
         <GeoJSON
           key={feature.properties.CRA_NAM}
