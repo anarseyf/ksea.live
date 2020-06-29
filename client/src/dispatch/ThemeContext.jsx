@@ -6,7 +6,7 @@ import React, { createContext, useState, useEffect } from "react";
 export const ThemeContext = createContext();
 
 const useTheme = () => {
-  const [theme, setTheme] = useState("dark"); // TODO
+  const [theme, setTheme] = useState("dusk"); // TODO
 
   useEffect(() => {
     // const midnight = new Date(pacificMidnight());
