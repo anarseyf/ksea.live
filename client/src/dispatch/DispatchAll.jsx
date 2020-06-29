@@ -19,9 +19,7 @@ import { Units } from "./Units";
 export const DispatchAll = () => {
   const intro = (
     <p>
-      A visualization of Seattle Fire Department's 911 dispatch data. All
-      timestamps are in Seattle local time. <a href="#sources">Data sources</a> are listed below. Legend as
-      follows:
+      A visualization of Seattle Fire Department's 911 dispatch data.
     </p>
   );
 
@@ -31,28 +29,20 @@ export const DispatchAll = () => {
     </p>
   );
 
-  const outline = "The outline represents the Seattle city boundary.";
-
   const week = `An aggregate view of year-to-date dispatches by day of week and by time of day.`;
 
-  const active = (
+  const lists = (
     <p>
-      Select an incident to view dispatch details. If geolocation data is
-      available (typically within 5 minutes) the map above will zoom in to the
-      spot.
+      Select an incident to view dispatch details.
     </p>
   );
 
-  const major = <p>Today's incidents with 5 or more units dispatched.</p>;
-
   const areas =
-    "Select an area to see all of today's incidents in it. Areas are ordered by total number of dispatches.";
+    "Select an area to see all of today's incidents in it.";
 
   const history = (
     <p>
-      A side-by-side comparison of this year's dispatch volume against last
-      year's. Lines trace daily totals for all of Seattle. Circles represent
-      major incidents (10 or more units dispatched).
+      A side-by-side comparison of this year's daily dispatch volume against last year's, along with major incident counts.
     </p>
   );
 
@@ -78,10 +68,10 @@ export const DispatchAll = () => {
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
-        <Paragraph content={outline} margin={true} />
-        <Paragraph title="Active Incidents" content={active} margin={true} />
+        <Paragraph content={lists} margin={true} />
+        <Paragraph title="Active Incidents" margin={true} />
         <TweetsActive />
-        <Paragraph title="Major Incidents" content={major} margin={true} />
+        <Paragraph title="Major Incidents" margin={true} />
         <TweetsMajor />
       </Section>
 
