@@ -40,6 +40,6 @@
   fill: var(--text-primary);
   // stroke: black; //var(--annotation);
   stroke-width: 1;
-  text-shadow: black 0 0 4px;
+  text-shadow: var(--text-opposite) 0 0 4px;
   text-anchor: middle;
 }

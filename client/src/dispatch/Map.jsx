@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Map as LeafletMap, TileLayer, GeoJSON } from "react-leaflet";
 import { MapDot, Appearance } from "./MapDot";
 import { DataContext, currentInterval } from "./DataProvider";
@@ -19,28 +19,32 @@ export const Map = ({ area }) => {
   const { user } = useContext(UserContext);
   const { filteredByArea } = useContext(DataContext);
   const { theme } = useContext(ThemeContext);
+  const [geojsonStyles, setGeojsonStyles] = useState({});
+
+  useEffect(() => {
+    const geoColor = getStyleProp("--geo");
+    const geoBoundsColor = getStyleProp("--geo-bounds");
+  
+    const bounds = {
+      color: geoBoundsColor,
+      fillOpacity: 0,
+      strokeOpacity: 0.5,
+      weight: 4,
+    };
+    const active = {
+      color: geoColor,
+      fillColor: geoColor,
+      fillOpacity: 0.1,
+      strokeOpacity: 0.5,
+      weight: 2,
+    };
+    setGeojsonStyles({active, bounds});
+  }, [theme]);
 
   if (!filteredByArea.length) {
     // console.log("MAP/no data");
     return null;
   }
-
-  const geoColor = getStyleProp("--geo");
-  const geoBoundsColor = getStyleProp("--geo-bounds");
-
-  const geojsonStyleBounds = {
-    color: geoBoundsColor,
-    fillOpacity: 0,
-    strokeOpacity: 0.5,
-    weight: 4,
-  };
-  const geojsonStyleActive = {
-    color: geoColor,
-    fillColor: geoColor,
-    fillOpacity: 0.1,
-    strokeOpacity: 0.5,
-    weight: 2,
-  };
 
   const { geojson, areaProp } = areas;
 
@@ -141,12 +145,12 @@ export const Map = ({ area }) => {
       zoomControl={false}
     >
       <TileLayer {...tileOptions} />
-      {!area && <GeoJSON data={city} style={geojsonStyleBounds} />}
+      {!area && <GeoJSON key={theme} data={city} style={geojsonStyles.bounds} />}
       {rendered.map((feature) => (
         <GeoJSON
           key={feature.properties.CRA_NAM}
           data={feature}
-          style={geojsonStyleActive}
+          style={geojsonStyles.active}
         />
       ))}
       {data.map((d) => (

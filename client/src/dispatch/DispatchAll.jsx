@@ -67,7 +67,7 @@ export const DispatchAll = () => {
 
   return (
     <DataProvider>
-      {/* <Section styleOption={1}>
+      <Section styleOption={1}>
         <Paragraph h1="Seattle Fire 911 Dispatch" content={intro} />
         <Paragraph content={<Legend />} />
       </Section>
@@ -75,19 +75,16 @@ export const DispatchAll = () => {
       <Section styleOption={2}>
         <Paragraph title="Today" content={live} />
         <Rehoboam />
-      </Section> */}
+      </Section>
 
       <Section styleOption={2} edgeToEdge={true}>
         <ErrorBoundary>
           <Map />
         </ErrorBoundary>
         <Paragraph content={outline} margin={true} />
-      </Section>
-
-      <Section styleOption={2}> 
-        <Paragraph title="Active Incidents" content={active} />
+        <Paragraph title="Active Incidents" content={active} margin={true} />
         <TweetsActive />
-        <Paragraph title="Major Incidents" content={major} />
+        <Paragraph title="Major Incidents" content={major} margin={true} />
         <TweetsMajor />
       </Section>
 

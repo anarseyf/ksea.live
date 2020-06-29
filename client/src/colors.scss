@@ -1,10 +1,13 @@
 :root {
-  --transparent: rgba(0, 0, 0, 0);
-  --twitter-main: #00acee;
-  --twitter-darkgray: #657786;
-  --selected-bg: slategray;
+  --geo: rgb(96, 162, 228);
+  --geo-bounds: rgba(81, 155, 230, 0.5);
   --hover: silver;
+  --selected-bg: slategray;
   --stale: rgb(169, 8, 8);
+  --texture: rgb(144, 151, 158);
+  --transparent: rgba(0, 0, 0, 0);
+  --twitter-darkgray: #657786;
+  --twitter-main: #00acee;
 }
 
 #app.light {
@@ -26,9 +29,7 @@
   --bg7: #e4eaeb;
   --bg8: #eff4f5;
   --body-bg: var(--bg);
-  --border: rgb(172, 181, 191);
-  --geo: rgb(91, 152, 214);
-  --geo-bounds: rgba(104, 150, 197, 0.5);
+  --border: #acb5bf;
   --graph-primary: #1f343f;
   --graph-primary1: #1f343f;
   --graph-primary2: #385261;
@@ -39,9 +40,9 @@
   --highlight: var(--live);
   --link: rgb(34, 113, 150);
   --live: red;
+  --text-opposite: #5ab8eb;
   --text-primary: #042638;
   --text-secondary: #676767;
-  --texture: var(--geo);
   --tweet-bg: rgb(222, 232, 233);
 }
 
@@ -54,19 +55,17 @@
   --bg-hover: #e6cfcc;
   --bg-map: var(--bg);
   --bg-rehoboam: #f1eaf9;
-  --bg1: #f7e4f2;
-  --bg2: #f1dbde;
-  --bg3: #f7e1de;
-  --bg4: #faeadc;
-  --bg5: #faf5e4;
+  --bg1: #f7e4e4;
+  --bg2: #f1dedb;
+  --bg3: #eeddd2;
+  --bg4: #f9e4d2;
+  --bg5: #f5f0e3;
   --bg6: #f8ead1;
   --bg7: #f8ead1;
   --bg8: #f8ead1;
   --body-bg: var(--bg);
   --border: rgb(228, 156, 117);
-  --geo: rgb(150, 62, 8);
-  --geo-bounds: rgba(150, 62, 8, 0.5);
-  --graph-primary: #2d0c02;
+  --graph-primary: #1d0706;
   --graph-primary1: #2d0c02;
   --graph-primary2: #4d1d0f;
   --graph-primary3: #643526;
@@ -76,9 +75,9 @@
   --highlight: var(--live);
   --link: rgb(143, 50, 21);
   --live: red;
+  --text-opposite: rgb(187, 164, 153);
   --text-primary: rgb(24, 20, 18);
   --text-secondary: rgb(87, 72, 65);
-  --texture: var(--geo);
   --twitter-main: #971d02;
   --tweet-bg: #e7d1c0;
 }
@@ -102,8 +101,6 @@
   --bg8: #3d4a61;
   --body-bg: var(--bg);
   --border: rgb(54, 65, 87);
-  --geo: rgb(96, 162, 228);
-  --geo-bounds: rgba(81, 155, 230, 0.5);
   --graph-primary: #eef6fc;
   --graph-primary1: #eef;
   --graph-primary2: #ccd;
@@ -114,8 +111,8 @@
   --highlight: var(--live);
   --link: rgb(156, 203, 242);
   --live: rgb(255, 20, 20);
+  --text-opposite: rgb(64, 67, 70);
   --text-primary: rgb(245, 248, 250);
   --text-secondary: rgb(199, 207, 216);
-  --texture: rgb(149, 171, 192);
   --tweet-bg: #30364b;
 }
