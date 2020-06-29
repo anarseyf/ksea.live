@@ -60,7 +60,8 @@ const maxContentWidth = () => {
   // const element = document.documentElement;
   // const style = getComputedStyle(element);
   // return style.getPropertyValue("--max-width");
-  return 600;
+
+  return 550; // For now must be synced manually with --max-width in section.module.scss
 };
 const queryText = `(max-device-width: ${maxContentWidth()}px)`; // only screen and
 
