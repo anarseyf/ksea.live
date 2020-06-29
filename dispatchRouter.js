@@ -227,7 +227,7 @@ const mapsController = async (req, res) => {
 
       const urlGen = (theme, x, y, z, r = "") => {
         const query = `?access-token=${token}`;
-        return `https://a.tile.jawg.io/${themeIds[theme]}/${z}/${x}/${y}${r}.png${query}`;
+        return `https://b.tile.jawg.io/${themeIds[theme]}/${z}/${x}/${y}${r}.png${query}`;
       };
       const url = urlGen(theme, x, y, z, r);
       console.log(`/maps > requesting:`, url);
