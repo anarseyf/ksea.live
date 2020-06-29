@@ -46,3 +46,8 @@ https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_u
 .location {
   padding: 0.5em;
 }
+.compass::before {
+  font-size: 1.2em;
+  content: "➶ ";
+  vertical-align: middle;
+}

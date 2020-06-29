@@ -52,6 +52,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
         <div className={styles.details}>
           <span className={styles.location}>
             {!phone && area && <span>{area} @ </span>}
+            {phone && area && <span className={styles.compass}></span>}
             {time}
           </span>
         </div>
