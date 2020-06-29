@@ -1,0 +1,12 @@
+@import "../colors.scss";
+
+.unitKey {
+  display: inline-block;
+  border: 1px solid var(--graph-secondary);
+  border-radius: 4px;
+  padding: 0 0.5em;
+  margin-right: 0.2em;
+}
+.unitValue {
+  margin-right: 0.5em;
+}

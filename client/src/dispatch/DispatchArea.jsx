@@ -9,9 +9,9 @@ import { ErrorBoundary } from "./ErrorBoundary";
 import { Sources } from "./Sources";
 import { AreaPageHeader } from "./AreaPageHeader";
 import paragraphStyles from "./paragraph.module.scss";
+import { Units } from "./Units";
 
 export const DispatchArea = ({ area }) => {
-
   return (
     <DataProvider filters={{ area }}>
       <Section styleOption={1}>
@@ -40,6 +40,7 @@ export const DispatchArea = ({ area }) => {
       </Section>
 
       <Section styleOption={3}>
+        <Units />
         <Sources />
       </Section>
     </DataProvider>
