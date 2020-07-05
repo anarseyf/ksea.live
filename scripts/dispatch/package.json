@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm i && concurrently \"npm run update:loop\" \"npm run slowrunners:loop\"",
+    "start": "npm i && concurrently \"npm run update:loop\"",
     "slowrunners:loop": "cd official && node -r esm slowrunners.js",
     "update:loop": "cd official && node -r esm main.js",
     "update:once": "cd official && node -r esm runOnce.js update",
