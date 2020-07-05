@@ -6,8 +6,9 @@ import {
   toPacificDateString,
   toPacificStringMMMD,
   saveJSONAsync,
+  readJSONAsync,
 } from "../../../fileUtils";
-import { datasetsPath } from "../../../server/serverUtils";
+import { datasetsPath, withScriptsJsonPath } from "../../../server/serverUtils";
 
 const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   let data = binsLowRes;
@@ -62,8 +63,20 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   return result;
 };
 
+const waitMinutes = 60;
+const MINUTE = 60 * 1000;
+const wait = waitMinutes * MINUTE;
+
 export const runner = async () => {
-  const start = new Date();
+  const now = new Date();
+
+  const statusFile = withScriptsJsonPath("status.json");
+  const status = await readJSONAsync(statusFile, {});
+  console.log("annotate > status", status);
+  if (now - ((status.update && +new Date(status.update.lastRun)) || 0) < wait) {
+    console.log(`annotate > need to wait ${waitMinutes} min since last run`);
+    return;
+  }
 
   const history = await getHistoryAsync();
 
@@ -77,5 +90,5 @@ export const runner = async () => {
   await saveJSONAsync(file, [...annotations2019, ...annotations2020]);
 
   const end = new Date();
-  console.log(`annotate > (${end - start}ms)`);
+  console.log(`annotate > (${end - now}ms)`);
 };

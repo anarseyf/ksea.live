@@ -2,7 +2,7 @@ import { checkVersion } from "../version";
 import { updateOnce } from "./scriptUtil";
 
 const main = () => {
-  const delay = 90 * 1000;
+  const delay = 60 * 1000;
   const tick = async () => {
     try {
       const start = new Date();

@@ -11,6 +11,7 @@ import { runner as combineRunner } from "./combine";
 import { runner as resolveRunner } from "./resolve";
 import { runner as nhoodsRunner } from "./nhoods";
 import { runner as splitRunner } from "./split";
+import { runner as annotateRunner } from "./annotate";
 import { runner as cacheRunner } from "./cache";
 
 export const updateOnce = async (ignoreStatus) => {
@@ -24,6 +25,7 @@ export const updateOnce = async (ignoreStatus) => {
   file = await resolveRunner(file);
   file = await nhoodsRunner(file);
   await splitRunner(file);
+  await annotateRunner();
   await cacheRunner();
   const end = new Date();
   console.log(
