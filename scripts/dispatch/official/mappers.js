@@ -16,7 +16,6 @@ const featureForPoint = ([lat, long], features) =>
   features.find((feature) => geoContains(feature, [long, lat]));
 
 export const addNhood = (entries, features) =>
-  // TODO - move to mappers.js
   entries.map(({ derived: { lat, long, ...restDerived }, ...rest }) => {
     const feature = featureForPoint([lat, long], features);
     const { CRA_NAM, NEIGHBO } = (feature || {}).properties || {};

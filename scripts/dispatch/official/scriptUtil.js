@@ -4,7 +4,7 @@ import {
   saveJSONAsync,
   listFilesAsync,
 } from "../../../fileUtils";
-import { datasetsPath } from "../../../server/serverUtils";
+import { datasetsPath, withScriptsJsonPath } from "../../../server/serverUtils";
 
 import { runner as updateRunner } from "./update";
 import { runner as combineRunner } from "./combine";
@@ -18,7 +18,8 @@ export const updateOnce = async (ignoreStatus) => {
   console.log(
     `>> updateOnce > ${ignoreStatus ? "(ignoring status) " : " "}started`
   );
-  let file = await updateRunner(ignoreStatus);
+  let file;
+  file = await updateRunner(ignoreStatus);
   file = await combineRunner(file);
   file = await resolveRunner(file);
   file = await nhoodsRunner(file);

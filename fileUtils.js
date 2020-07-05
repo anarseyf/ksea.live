@@ -2,9 +2,9 @@ const fs = require("fs");
 const util = require("util");
 
 import { tz as timezone } from "moment-timezone";
-import { sortByTimestampDescending, sortNewFirst } from "./server/serverUtils";
+import { sortByTimestampDescending } from "./server/serverUtils";
 
-const getUnits = (entries) =>
+const getUnitsArray = (entries) =>
   [
     ...new Set(
       entries
@@ -12,26 +12,25 @@ const getUnits = (entries) =>
         .join(" ")
         .split(" ")
     ),
-  ]
-    .sort()
-    .join(" ");
+  ].sort();
 
 const mergeSameId = (sortedEntries) => {
   const count = sortedEntries.length;
   const newest = sortedEntries[0],
     oldest = sortedEntries[count - 1];
-  const units = getUnits(sortedEntries);
-  const unitCount = units.split(" ").length;
+  const unitsArray = getUnitsArray(sortedEntries);
+  const units = unitsArray.join(" ");
+  const unitCount = unitsArray.length;
 
   const [lat, long] = sortedEntries
     .map(({ derived: { lat, long } }) => [lat, long])
-    .reduce((acc, pair) => (acc.lat ? acc : pair), [undefined, undefined]);
+    .reduce((acc, pair) => (acc[0] ? acc : pair), [undefined, undefined]);
 
   const entry = {
     id_str: oldest.id_str,
     created_at: oldest.created_at,
     derived: {
-      ...oldest.derived,
+      ...newest.derived,
       units,
       unitCount,
       active: newest.derived.active,
@@ -41,13 +40,18 @@ const mergeSameId = (sortedEntries) => {
   };
 
   const result = severityMapper(entry);
-
-  // if (sortedEntries.length > 1) {
-  //   console.log(
-  //     `>> merge > ${sortedEntries.length} : ${result.id_str} : active=${result.derived.active}`
-  //   );
-  // }
   return result;
+};
+
+const sortNewFirst = (a, b) => {
+  const oldA = a.derived._old,
+    oldB = b.derived._old;
+  const timeA = a.derived.timestamp,
+    timeB = b.derived.timestamp;
+  if (oldA === oldB) {
+    return timeB - timeA;
+  }
+  return oldA ? 1 : -1;
 };
 
 const mergeAll = (entries) => {

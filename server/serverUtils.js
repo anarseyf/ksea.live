@@ -30,17 +30,6 @@ export const withScriptsJsonPath = (fileName) =>
 export const sortByTimestampDescending = (a, b) =>
   b.derived.timestamp - a.derived.timestamp;
 
-export const sortNewFirst = (a, b) => {
-  const oldA = a.derived._old,
-    oldB = b.derived._old;
-  const timeA = a.derived.timestamp,
-    timeB = b.derived.timestamp;
-  if (oldA === oldB) {
-    return timeB - timeA;
-  }
-  return oldA ? 1 : -1;
-};
-
 // see also clientUtils.js
 export const isExactlySev1 = ({ derived: { severity } }) => severity === 1;
 export const isExactlySev2 = ({ derived: { severity } }) => severity === 2;
