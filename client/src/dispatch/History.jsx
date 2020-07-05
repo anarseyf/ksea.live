@@ -98,8 +98,8 @@ export const History = () => {
     const yAxis = d3axisLeft()
       .scale(yScale)
       .tickValues(everyMonth(intervalCurrent.start))
-      .tickFormat((d) => timeFormatterMonth(d).toUpperCase())
-      .tickSize(-10);
+      .tickFormat(timeFormatterMonth)
+      .tickSize(0);
     d3select(yAxisRef.current).call(yAxis);
 
     const xAxis = d3axisBottom().scale(xScale).ticks(2);

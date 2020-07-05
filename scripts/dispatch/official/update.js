@@ -31,8 +31,8 @@ export const runner = async (ignoreStatus) => {
       now - ((status.update && +new Date(status.update.lastRun)) || 0) <
       wait
     ) {
-      console.log(`update > need to wait ${waitMinutes}min since last update`);
-      return;
+      console.log(`update > need to wait ${waitMinutes} min since last update`);
+      return targetFile;
     }
   }
 

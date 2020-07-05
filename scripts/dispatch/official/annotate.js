@@ -18,19 +18,21 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
     // Current year — ignore today's bin as it's incomplete
     data = binsLowRes.slice(0, -1);
 
-    const lastBin = data[data.length - 1];
-    const date = new Date(lastBin.x0);
-    const annotationToday = {
-      end: {
-        date: toPacificDateString(date),
-        label: toPacificStringMMMD(date),
-        value: lastBin.length,
-      },
-    };
-    result.push(annotationToday);
+    // const lastBin = data[data.length - 1];
+    // const date = new Date(lastBin.x0);
+    // const annotationToday = {
+    //   end: {
+    //     date: toPacificDateString(date),
+    //     label: toPacificStringMMMD(date),
+    //     value: lastBin.length,
+    //   },
+    // };
+    // result.push(annotationToday);
   }
   const year = new Date(yearStart).getFullYear();
-  const lengths = data.map(({ length }) => length);
+  const lengths = data
+    .filter(({ length }) => length > 0)
+    .map(({ length }) => length);
   const [min, max] = d3extent(lengths);
   const minBin = data.find(({ length }) => length === min);
   const maxBin = data.find(({ length }) => length === max);
@@ -60,8 +62,9 @@ const annotationsForYear = ({ binsLowRes, offset, start: yearStart }) => {
   return result;
 };
 
-const main = async () => {
-  // TODO - run as a low-frequency loop
+export const runner = async () => {
+  const start = new Date();
+
   const history = await getHistoryAsync();
 
   const history2020 = history[0].intervals[0];
@@ -72,7 +75,7 @@ const main = async () => {
 
   const file = path.join(datasetsPath, "../misc/generatedAnnotations.json");
   await saveJSONAsync(file, [...annotations2019, ...annotations2020]);
-  // await saveJSONAsync(file, annotations2019);
-};
 
-main();
+  const end = new Date();
+  console.log(`annotate > (${end - start}ms)`);
+};

@@ -24,7 +24,7 @@ export const Sources = () => {
         <a href="https://react-leaflet.js.org">react-leaflet</a>. Map tiles
         provided by{" "}
         <a href="https://www.jawg.io/docs/apidocs/static-maps/">Jawg Maps</a>.
-        Visualizations powered by <a href="https://d3js.org">D3</a>.
+        Visualizations powered by <a href="https://d3js.org">D3</a>. Annotations by <a href="https://d3-annotation.susielu.com/">D3-Annotation</a>.
       </p>
     </>
   );

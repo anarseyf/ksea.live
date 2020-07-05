@@ -2,15 +2,11 @@ import { checkVersion } from "../version";
 import { updateOnce } from "./scriptUtil";
 
 const main = () => {
-  const delay = 60 * 1000;
+  const delay = 90 * 1000;
   const tick = async () => {
     try {
       const start = new Date();
 
-      /*
-        TODO:
-        - when splitting, merge similarly to combine (otherwise 'active' isn't cleared)
-      */
       await updateOnce();
 
       const end = new Date();

@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run annotate && npm run update:loop",
+    "start": "concurrently \"npm run slowrunners:loop\" \"npm run update:loop\"",
+    "slowrunners:loop": "cd official && node -r esm slowrunners.js",
     "update:loop": "cd official && node -r esm main.js",
     "update:once": "cd official && node -r esm runOnce.js update",
-    "annotate": "cd official && node -r esm annotate.js"
+    "annotate:once": "cd official && node -r esm runOnce.js annotate",
+    "cache:once": "cd official && node -r esm runOnce.js cache"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +17,8 @@
   "engines": {
     "node": ">=12.9.1",
     "npm": "6.x"
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
   }
 }

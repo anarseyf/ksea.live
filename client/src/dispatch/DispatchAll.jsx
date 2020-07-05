@@ -15,12 +15,11 @@ import { Legend } from "./Legend";
 import { ThemeSwitch } from "./ThemeSwitch";
 import { PunchCard } from "./PunchCard";
 import { Units } from "./Units";
+import { SvgDot } from "./SvgDot";
 
 export const DispatchAll = () => {
   const intro = (
-    <p>
-      A visualization of Seattle Fire Department's 911 dispatch data.
-    </p>
+    <p>A visualization of Seattle Fire Department's 911 dispatch data.</p>
   );
 
   const live = (
@@ -31,18 +30,15 @@ export const DispatchAll = () => {
 
   const week = `An aggregate view of year-to-date dispatches by day of week and by time of day.`;
 
-  const lists = (
-    <p>
-      Select an incident to view dispatch details.
-    </p>
-  );
+  const lists = <p>Select an incident to view dispatch details.</p>;
 
-  const areas =
-    "Select an area to see all of today's incidents in it.";
+  const areas = "Select an area to see all of today's incidents in it.";
 
   const history = (
     <p>
-      A side-by-side comparison of this year's daily dispatch volume against last year's, along with major incident counts.
+      A side-by-side comparison of this year's daily dispatch volume against
+      last year's. <SvgDot sev2={true} /> 10+ unit incidents are shown along the
+      axis.
     </p>
   );
 
@@ -56,12 +52,12 @@ export const DispatchAll = () => {
     <DataProvider>
       <Section styleOption={1}>
         <Paragraph h1="Seattle Fire 911 Dispatch" content={intro} />
-        <Paragraph content={<Legend />} />
       </Section>
 
       <Section styleOption={2}>
         <Paragraph title="Today" content={live} />
         <Rehoboam />
+        <Paragraph content={<Legend />} />
       </Section>
 
       <Section styleOption={2} edgeToEdge={true}>

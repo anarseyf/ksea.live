@@ -74,8 +74,9 @@ export const Annotations = ({
       const margin = 10;
       const isPrevious = timestamp < currentStart;
       const sideX = isPrevious ? -1 : 1;
+      const hasNumericValue = typeof value === "number";
 
-      const x = value ? xScale(value) : rectWidth;
+      const x = hasNumericValue ? xScale(value) : rectWidth;
       const sideY = isEnd ? 1 : -1;
       const y = yScale(timestamp + offset);
       const callout = {
@@ -92,7 +93,7 @@ export const Annotations = ({
         color: annotationColor,
       };
 
-      if (value) {
+      if (hasNumericValue) {
         callout.nx = sideX * (rectWidth + margin);
         callout.ny = y;
       } else {

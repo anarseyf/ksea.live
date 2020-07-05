@@ -114,16 +114,13 @@ const useTweets = (filters = {}) => {
       setAnnotations(await getAnnotations());
     })();
 
-
     (async () => {
       setPunchCard(await getPunchCard());
     })();
 
-    if (!history.length) {
-      (async () => {
-        setHistory(await getHistory(area));
-      })();
-    }
+    (async () => {
+      setHistory(await getHistory(area));
+    })();
   }, [filters.area, history.length, mostRecentId, shouldFetch]);
 
   useEffect(() => {
@@ -141,7 +138,20 @@ const useTweets = (filters = {}) => {
       activeOrMajorByArea,
       status,
     });
-  }, [active24, activeOrMajorByArea, activeOrMajorForArea, annotations, filteredByArea, filteredByAreaMin, filteredByAreaMinWeek, groupedByArea, history, major24, punchCard, status]);
+  }, [
+    active24,
+    activeOrMajorByArea,
+    activeOrMajorForArea,
+    annotations,
+    filteredByArea,
+    filteredByAreaMin,
+    filteredByAreaMinWeek,
+    groupedByArea,
+    history,
+    major24,
+    punchCard,
+    status,
+  ]);
 
   return value;
 };
