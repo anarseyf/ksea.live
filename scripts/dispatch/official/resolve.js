@@ -37,7 +37,11 @@ const resolveGeo = async (entries = []) => {
   console.log(`resolve > ${ids.length} ids (URI length: ${encodedUri.length})`);
 
   const res = await axios.get(encodedUri, {}).catch((e) => {
-    console.error("data.seattle.gov call failed:", e.response.status, e.stack);
+    console.error(
+      "data.seattle.gov call failed:",
+      e.response ? e.response.status : e,
+      e.stack
+    );
     throw e.message;
   });
   const geoData = res.data;

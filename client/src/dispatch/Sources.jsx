@@ -14,8 +14,7 @@ export const Sources = () => {
         . Geolocation data for each incident is retrieved from{" "}
         <a href="https://data.seattle.gov/Public-Safety/Seattle-Real-Time-Fire-911-Calls/kzjm-xkqj">
           data.seattle.gov
-        </a>{" "}
-        (refreshed every 5 minutes, with occasional delays). City and
+        </a>. City and
         neighborhood boundary data is from{" "}
         <a href="https://github.com/seattleflu/seattle-geojson/tree/master/seattle_geojsons">
           seattleflu/seattle-geojson

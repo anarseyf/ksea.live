@@ -270,7 +270,7 @@ const cacheControlDynamic = async (req, res, next) => {
 };
 
 const cacheControlTiles = async (req, res, next) => {
-  const freshnessSeconds = 5 * 60;
+  const freshnessSeconds = 86400;
   res.set("Cache-Control", `max-age=${freshnessSeconds}`);
   next();
 };
