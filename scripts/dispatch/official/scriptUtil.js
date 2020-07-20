@@ -4,7 +4,7 @@ import {
   saveJSONAsync,
   listFilesAsync,
 } from "../../../fileUtils";
-import { datasetsPath, withScriptsJsonPath } from "../../../server/serverUtils";
+import { datasetsPath } from "../../../server/serverUtils";
 
 import { runner as updateRunner } from "./update";
 import { runner as combineRunner } from "./combine";

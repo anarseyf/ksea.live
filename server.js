@@ -6,6 +6,7 @@ const morgan = require("morgan");
 
 import dispatchRouter from "./dispatchRouter";
 import { checkVersion } from "./scripts/dispatch/version";
+import { memoryUsageStr } from "./scripts/dispatch/memory";
 
 checkVersion();
 
@@ -52,4 +53,6 @@ app.get("/*", function (req, res) {
 
 app.listen(port, () => {
   console.log(`${path.basename(__filename)} listening at :${port}`);
+
+  console.log("server > memory usage:", memoryUsageStr());
 });

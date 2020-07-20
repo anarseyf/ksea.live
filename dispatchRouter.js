@@ -2,6 +2,7 @@ const rp = require("request-promise");
 const router = require("express").Router();
 const fs = require("fs");
 
+import { memoryUsageStr } from "./scripts/dispatch/memory";
 import { groupBy, generateIntervals } from "./server/groupby";
 import { GroupByOptions } from "./server/groupByOptions";
 import {
@@ -26,7 +27,6 @@ import {
 } from "./dispatchCompute";
 import { updateOnce } from "./scripts/dispatch/official/scriptUtil";
 import { withTilesPath } from "./server/serverUtils";
-import { createReturn } from "typescript";
 
 const axios = require("axios").default;
 
@@ -161,6 +161,7 @@ const historyController = async (req, res) => {
     const result =
       (await getCachedAsync(key, res)) || (await getHistoryAsync());
     res.json(result);
+    console.log("dispatchRouter > memory usage:", memoryUsageStr());
   } catch (error) {
     console.error(error);
     res.status(500).send({ error });
