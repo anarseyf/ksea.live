@@ -78,10 +78,11 @@ export const downloadIncidents = async (ids = []) => {
 
   return connect()
     .then(async (connection) => {
-      const result = await Incident.find(
-        { id: { $in: ids } }, // https://docs.mongodb.com/manual/tutorial/query-documents/
-        { id: 1, lat: 1, long: 1 } // https://mongoosejs.com/docs/api.html#query_Query-select
-      );
+      const query = { id: { $in: ids } }; // https://docs.mongodb.com/manual/tutorial/query-documents/
+      const partition = { id: 1, lat: 1, long: 1 }; // https://mongoosejs.com/docs/api.html#query_Query-select
+
+      const result = await Incident.find(query, partition);
+
       const end = new Date();
       console.log(
         `database > downloaded ${result.length} entries in ${
