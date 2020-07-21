@@ -8,6 +8,8 @@ const db = "ksea";
 const uri = `mongodb+srv://${user}:${pw}@ksea.zja0h.mongodb.net/${db}?retryWrites=true&w=majority`;
 
 mongoose.set("useFindAndModify", false); // https://mongoosejs.com/docs/deprecations.html
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useUnifiedTopology", true);
 
 const connect = () => mongoose.connect(uri);
 let incidentSchema;
@@ -68,6 +70,7 @@ export const uploadIncidents = async (table = []) => {
           (end - start) / 1000
         } sec`
       );
+      mongoose.connection.close();
     })
     .catch((e) => console.error("database > upload error:", e));
 };
@@ -89,7 +92,7 @@ export const downloadIncidents = async (ids = []) => {
           (end - start) / 1000
         } sec`
       );
-      console.log();
+      mongoose.connection.close();
       return result;
     })
     .catch((e) => console.error("database > download error: ", e));
