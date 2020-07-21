@@ -31,25 +31,27 @@ const Incident = mongoose.model("incident", incidentSchema);
 
 connect()
   .then(async (connection) => {
-    // const arr = [
-    //   { id: "TEST3", lat: 40, long: -120 },
-    //   { id: "TEST3", lat: 41, long: -121 },
-    // ];
-    const i1 = { id: "TEST3", lat: 40, long: -120 };
-    const i2 = { id: "TEST3", lat: 41, long: -120 };
     const options = { upsert: true, new: true };
-    let result = await Incident.findOneAndUpdate({ id: "TEST3" }, i1, options);
-    console.log("Result 1:", result);
-    result = await Incident.findOneAndUpdate({ id: "TEST3" }, i2, options);
-    console.log("Result 2:", result);
 
-    // const file = withScriptsJsonPath("incidentsMap.json");
-    // const incidentsMap = await readJSONAsync(file);
-    // const table = Object.entries(incidentsMap).map(([k, [lat, long]]) => ({
-    //   id: k,
-    //   lat,
-    //   long,
-    // }));
-    // console.log(table[0]);
+    const file = withScriptsJsonPath("incidentsMap.json");
+    const incidentsMap = await readJSONAsync(file);
+    const table = Object.entries(incidentsMap).map(([k, [lat, long]]) => ({
+      id: k,
+      lat,
+      long,
+    }));
+
+    const start = new Date();
+    // for (let i = 0; i < table.length; i++) {
+    //   const entry = table[i];
+    //   await Incident.findOneAndUpdate({ id: entry.id }, entry, options);
+    // }
+    const result = await Incident.find({});
+    console.log("Result: ", result.length, result[0]);
+
+    const end = new Date();
+    console.log(
+      `database > ${table.length} entries in ${(end - start) / 1000} seconds`
+    );
   })
   .catch((e) => console.error("Error:", e));
