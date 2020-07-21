@@ -7,51 +7,89 @@ const pw = "mongoliamagnolia";
 const db = "ksea";
 const uri = `mongodb+srv://${user}:${pw}@ksea.zja0h.mongodb.net/${db}?retryWrites=true&w=majority`;
 
+mongoose.set("useFindAndModify", false); // https://mongoosejs.com/docs/deprecations.html
+
 const connect = () => mongoose.connect(uri);
+let incidentSchema;
+let Incident;
 
-const incidentSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-    index: true,
-  },
-  lat: {
-    type: Number,
-    required: true,
-  },
-  long: {
-    type: Number,
-    required: true,
-  },
-});
+const init = () => {
+  if (Incident) {
+    return;
+  }
 
-incidentSchema.index({ id: 1 }, { unique: true });
+  incidentSchema = new mongoose.Schema({
+    id: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    lat: {
+      type: Number,
+      required: true,
+    },
+    long: {
+      type: Number,
+      required: true,
+    },
+  });
 
-const Incident = mongoose.model("incident", incidentSchema);
+  incidentSchema.index({ id: 1 }, { unique: true });
 
-connect()
-  .then(async (connection) => {
-    const options = { upsert: true, new: true };
+  Incident = mongoose.model("incident", incidentSchema);
 
-    const file = withScriptsJsonPath("incidentsMap.json");
-    const incidentsMap = await readJSONAsync(file);
-    const table = Object.entries(incidentsMap).map(([k, [lat, long]]) => ({
-      id: k,
-      lat,
-      long,
-    }));
+  mongoose.model("testmodel", new mongoose.Schema({ test: String }));
+};
 
-    const start = new Date();
-    // for (let i = 0; i < table.length; i++) {
-    //   const entry = table[i];
-    //   await Incident.findOneAndUpdate({ id: entry.id }, entry, options);
-    // }
-    const result = await Incident.find({});
-    console.log("Result: ", result.length, result[0]);
+export const uploadIncidents = async (table = []) => {
+  init();
 
-    const end = new Date();
-    console.log(
-      `database > ${table.length} entries in ${(end - start) / 1000} seconds`
-    );
-  })
-  .catch((e) => console.error("Error:", e));
+  return connect()
+    .then(async (connection) => {
+      const options = { upsert: true, new: true };
+
+      // const file = withScriptsJsonPath("incidentsMap.json");
+      // const incidentsMap = await readJSONAsync(file);
+      // const table = Object.entries(incidentsMap).map(([k, [lat, long]]) => ({
+      //   id: k,
+      //   lat,
+      //   long,
+      // }));
+
+      const start = new Date();
+      for (let i = 0; i < table.length; i++) {
+        const entry = table[i];
+        await Incident.findOneAndUpdate({ id: entry.id }, entry, options);
+      }
+
+      const end = new Date();
+      console.log(
+        `database > saved ${table.length} entries in ${
+          (end - start) / 1000
+        } sec`
+      );
+    })
+    .catch((e) => console.error("database > upload error:", e));
+};
+
+export const downloadIncidents = async (ids = []) => {
+  const start = new Date();
+  init();
+
+  return connect()
+    .then(async (connection) => {
+      const result = await Incident.find(
+        { id: { $in: ids } }, // https://docs.mongodb.com/manual/tutorial/query-documents/
+        { id: 1, lat: 1, long: 1 } // https://mongoosejs.com/docs/api.html#query_Query-select
+      );
+      const end = new Date();
+      console.log(
+        `database > downloaded ${result.length} entries in ${
+          (end - start) / 1000
+        } sec`
+      );
+      console.log();
+      return result;
+    })
+    .catch((e) => console.error("database > download error: ", e));
+};
