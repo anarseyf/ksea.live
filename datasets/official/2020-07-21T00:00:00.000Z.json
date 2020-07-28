@@ -1,5 +1,515 @@
 [
   {
+    "id_str": "F200071597",
+    "created_at": "7/21/2020 4:59:59 PM",
+    "derived": {
+      "lat": 47.618733,
+      "long": -122.322146,
+      "timestamp": 1595375999000,
+      "description": "Aid Response",
+      "address": "803 E Denny Way",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Capitol Hill",
+      "neighborhoodGroup": "East",
+      "units": "A25"
+    }
+  },
+  {
+    "id_str": "F200071596",
+    "created_at": "7/21/2020 4:58:56 PM",
+    "derived": {
+      "lat": 47.681828,
+      "long": -122.355304,
+      "timestamp": 1595375936000,
+      "description": "Low Acuity Response",
+      "address": "7304 Greenwood Av N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Greenwood/Phinney Ridge",
+      "neighborhoodGroup": "Northwest",
+      "units": "HEALTH1"
+    }
+  },
+  {
+    "id_str": "F200071593",
+    "created_at": "7/21/2020 4:51:13 PM",
+    "derived": {
+      "lat": 47.534449,
+      "long": -122.292812,
+      "timestamp": 1595375473000,
+      "description": "Medic Response",
+      "address": "3045 S Austin St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "South Beacon Hill/NewHolly",
+      "neighborhoodGroup": "Greater Duwamish",
+      "units": "E33 M28"
+    }
+  },
+  {
+    "id_str": "F200071591",
+    "created_at": "7/21/2020 4:50:13 PM",
+    "derived": {
+      "lat": 47.59748,
+      "long": -122.306174,
+      "timestamp": 1595375413000,
+      "description": "Aid Response",
+      "address": "2006 S Weller St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Judkins Park",
+      "neighborhoodGroup": "Central",
+      "units": "E6"
+    }
+  },
+  {
+    "id_str": "F200071592",
+    "created_at": "7/21/2020 4:49:30 PM",
+    "derived": {
+      "lat": 47.561674,
+      "long": -122.293783,
+      "timestamp": 1595375370000,
+      "description": "Rescue Elevator",
+      "address": "4616 M L King Jr Way S",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Columbia City",
+      "neighborhoodGroup": "Southeast",
+      "units": "L12"
+    }
+  },
+  {
+    "id_str": "F200071590",
+    "created_at": "7/21/2020 4:49:18 PM",
+    "derived": {
+      "lat": 47.701329,
+      "long": -122.323684,
+      "timestamp": 1595375358000,
+      "description": "Aid Response",
+      "address": "450 Ne 100th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North",
+      "units": "E40"
+    }
+  },
+  {
+    "id_str": "F200071589",
+    "created_at": "7/21/2020 4:48:52 PM",
+    "derived": {
+      "lat": 47.605387,
+      "long": -122.327511,
+      "timestamp": 1595375332000,
+      "description": "Aid Response",
+      "address": "710 Cherry St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200071587",
+    "created_at": "7/21/2020 4:40:03 PM",
+    "derived": {
+      "lat": 47.617752,
+      "long": -122.338344,
+      "timestamp": 1595374803000,
+      "description": "Aid Response",
+      "address": "Westlake Ave / 9th Ave",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Cascade/Eastlake",
+      "neighborhoodGroup": "Lake Union",
+      "units": "A4"
+    }
+  },
+  {
+    "id_str": "F200071586",
+    "created_at": "7/21/2020 4:38:43 PM",
+    "derived": {
+      "lat": 47.683047,
+      "long": -122.300758,
+      "timestamp": 1595374723000,
+      "description": "Aid Response",
+      "address": "25th Ave Ne / Ne 75th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Ravenna/Bryant",
+      "neighborhoodGroup": "Northeast",
+      "units": "E16"
+    }
+  },
+  {
+    "id_str": "F200071585",
+    "created_at": "7/21/2020 4:36:43 PM",
+    "derived": {
+      "lat": 47.612219,
+      "long": -122.348524,
+      "timestamp": 1595374603000,
+      "description": "Bark Fire",
+      "address": "2323 Elliott Av",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown",
+      "units": "E2"
+    }
+  },
+  {
+    "id_str": "F200071584",
+    "created_at": "7/21/2020 4:34:47 PM",
+    "derived": {
+      "lat": 47.613497,
+      "long": -122.346355,
+      "timestamp": 1595374487000,
+      "description": "Aid Response",
+      "address": "118 Bell St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Belltown",
+      "neighborhoodGroup": "Downtown",
+      "units": "A2 A4"
+    }
+  },
+  {
+    "id_str": "F200071583",
+    "created_at": "7/21/2020 4:29:04 PM",
+    "derived": {
+      "lat": 47.635954,
+      "long": -122.36634,
+      "timestamp": 1595374144000,
+      "description": "Low Acuity Response",
+      "address": "7th Ave W / W Howe St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "HEALTH1"
+    }
+  },
+  {
+    "id_str": "F200071581",
+    "created_at": "7/21/2020 4:27:38 PM",
+    "derived": {
+      "lat": 47.704379,
+      "long": -122.358359,
+      "timestamp": 1595374058000,
+      "description": "Aid Response",
+      "address": "101 N 104th St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "North Beach/Blue Ridge",
+      "neighborhoodGroup": "Ballard",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200071579",
+    "created_at": "7/21/2020 4:22:39 PM",
+    "derived": {
+      "lat": 47.706045,
+      "long": -122.367993,
+      "timestamp": 1595373759000,
+      "description": "Aid Response",
+      "address": "10618 9th Ave Nw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "North Beach/Blue Ridge",
+      "neighborhoodGroup": "Ballard",
+      "units": "E35"
+    }
+  },
+  {
+    "id_str": "F200071578",
+    "created_at": "7/21/2020 4:20:32 PM",
+    "derived": {
+      "lat": 47.601718,
+      "long": -122.336582,
+      "timestamp": 1595373632000,
+      "description": "Automatic Fire Alarm False",
+      "address": "601 Alaskan Way",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200071577",
+    "created_at": "7/21/2020 4:20:24 PM",
+    "derived": {
+      "lat": 47.602348,
+      "long": -122.337148,
+      "timestamp": 1595373624000,
+      "description": "Auto Fire Alarm",
+      "address": "801 Alaskan Way",
+      "active": false,
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E10 FB4 FIREBOAT L1"
+    }
+  },
+  {
+    "id_str": "F200071575",
+    "created_at": "7/21/2020 4:17:44 PM",
+    "derived": {
+      "lat": 47.608873,
+      "long": -122.32625,
+      "timestamp": 1595373464000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "Terry Ave / Madison St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "First Hill",
+      "neighborhoodGroup": "East",
+      "units": "L10"
+    }
+  },
+  {
+    "id_str": "F200071573",
+    "created_at": "7/21/2020 4:11:26 PM",
+    "derived": {
+      "lat": 47.706972,
+      "long": -122.333963,
+      "timestamp": 1595373086000,
+      "description": "Aid Response",
+      "address": "10721 Meridian Av N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Northgate/Maple Leaf",
+      "neighborhoodGroup": "North",
+      "units": "A31"
+    }
+  },
+  {
+    "id_str": "F200071571",
+    "created_at": "7/21/2020 4:06:00 PM",
+    "derived": {
+      "lat": 47.564424,
+      "long": -122.382812,
+      "timestamp": 1595372760000,
+      "description": "Aid Response",
+      "address": "4414 40th Ave Sw",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "West Seattle Junction/Genesee Hill",
+      "neighborhoodGroup": "Southwest",
+      "units": "E32"
+    }
+  },
+  {
+    "id_str": "F200071570",
+    "created_at": "7/21/2020 4:04:57 PM",
+    "derived": {
+      "lat": 47.690512,
+      "long": -122.337953,
+      "timestamp": 1595372697000,
+      "description": "MVI - Motor Vehicle Incident",
+      "address": "N 85th St / Densmore Ave N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Green Lake",
+      "neighborhoodGroup": "Northwest",
+      "units": "E21"
+    }
+  },
+  {
+    "id_str": "F200071569",
+    "created_at": "7/21/2020 4:01:16 PM",
+    "derived": {
+      "lat": 47.662244,
+      "long": -122.391032,
+      "timestamp": 1595372476000,
+      "description": "4RED - 2 + 1 + 1",
+      "address": "27th Ave W / W Commodore Way",
+      "active": false,
+      "unitCount": 4,
+      "severity": 0,
+      "neighborhood": "Interbay",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "B4 E20 E35 L8"
+    }
+  },
+  {
+    "id_str": "F200071568",
+    "created_at": "7/21/2020 3:57:51 PM",
+    "derived": {
+      "lat": 47.644826,
+      "long": -122.346803,
+      "timestamp": 1595372271000,
+      "description": "Aid Response",
+      "address": "2706 Westlake Av N",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Queen Anne",
+      "neighborhoodGroup": "Magnolia/Queen Anne",
+      "units": "E9"
+    }
+  },
+  {
+    "id_str": "F200071566",
+    "created_at": "7/21/2020 3:53:49 PM",
+    "derived": {
+      "lat": 47.608845,
+      "long": -122.339956,
+      "timestamp": 1595372029000,
+      "description": "Aid Response",
+      "address": "105 Pike St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "E5"
+    }
+  },
+  {
+    "id_str": "F200071565",
+    "created_at": "7/21/2020 3:49:42 PM",
+    "derived": {
+      "lat": 47.723175,
+      "long": -122.308217,
+      "timestamp": 1595371782000,
+      "description": "Aid Response",
+      "address": "1915 Ne 130th Pl",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North",
+      "units": "E39"
+    }
+  },
+  {
+    "id_str": "F200071563",
+    "created_at": "7/21/2020 3:47:30 PM",
+    "derived": {
+      "lat": 47.674979,
+      "long": -122.317139,
+      "timestamp": 1595371650000,
+      "description": "Auto Fire Alarm",
+      "address": "1026 Ne 64th St",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "University District",
+      "neighborhoodGroup": "Northeast",
+      "units": "E16 L9"
+    }
+  },
+  {
+    "id_str": "F200071562",
+    "created_at": "7/21/2020 3:44:59 PM",
+    "derived": {
+      "lat": 47.602769,
+      "long": -122.331409,
+      "timestamp": 1595371499000,
+      "description": "Aid Response",
+      "address": "3rd Ave / James St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "A10"
+    }
+  },
+  {
+    "id_str": "F200071561",
+    "created_at": "7/21/2020 3:44:17 PM",
+    "derived": {
+      "lat": 47.719374,
+      "long": -122.29909,
+      "timestamp": 1595371457000,
+      "description": "Investigate Out Of Service",
+      "address": "12509 27th Av Ne",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Olympic Hills/Victory Heights",
+      "neighborhoodGroup": "North",
+      "units": "L5"
+    }
+  },
+  {
+    "id_str": "F200071558",
+    "created_at": "7/21/2020 3:43:38 PM",
+    "derived": {
+      "lat": 47.602769,
+      "long": -122.331409,
+      "timestamp": 1595371418000,
+      "description": "Aid Response",
+      "address": "3rd Ave / James St",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Downtown Commercial Core",
+      "neighborhoodGroup": "Downtown",
+      "units": "A5"
+    }
+  },
+  {
+    "id_str": "F200071557",
+    "created_at": "7/21/2020 3:38:19 PM",
+    "derived": {
+      "lat": 47.533618,
+      "long": -122.388635,
+      "timestamp": 1595371099000,
+      "description": "Medic Response",
+      "address": "7705 44th Ave Sw",
+      "active": false,
+      "unitCount": 2,
+      "severity": 0,
+      "neighborhood": "Fauntleroy/Seaview",
+      "neighborhoodGroup": "Southwest",
+      "units": "L13 M26"
+    }
+  },
+  {
+    "id_str": "F200071556",
+    "created_at": "7/21/2020 3:37:19 PM",
+    "derived": {
+      "lat": 47.59026,
+      "long": -122.297477,
+      "timestamp": 1595371039000,
+      "description": "Aid Response",
+      "address": "M L King Jr Way S / Mountains To Sound Trl",
+      "active": false,
+      "unitCount": 1,
+      "severity": 0,
+      "neighborhood": "Mt. Baker/North Rainier",
+      "neighborhoodGroup": "Southeast",
+      "units": "E6"
+    }
+  },
+  {
     "id_str": "F200071555",
     "created_at": "7/21/2020 3:20:11 PM",
     "derived": {
@@ -8,7 +518,7 @@
       "timestamp": 1595370011000,
       "description": "Alarm Bell",
       "address": "2324 Bonair Pl Sw",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "West Seattle Junction/Genesee Hill",
@@ -25,7 +535,7 @@
       "timestamp": 1595369931000,
       "description": "Aid Response",
       "address": "13280 Linden Av N",
-      "active": true,
+      "active": false,
       "unitCount": 1,
       "severity": 0,
       "neighborhood": "Broadview/Bitter Lake",
@@ -42,7 +552,7 @@
       "timestamp": 1595369870000,
       "description": "Medic Response",
       "address": "1st Ave N / Thomas St",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "Queen Anne",
@@ -110,7 +620,7 @@
       "timestamp": 1595368139000,
       "description": "Medic Response",
       "address": "401 Ne Northgate Way",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "Northgate/Maple Leaf",
@@ -229,7 +739,7 @@
       "timestamp": 1595366777000,
       "description": "Medic Response",
       "address": "5130 Leary Av Nw",
-      "active": true,
+      "active": false,
       "unitCount": 2,
       "severity": 0,
       "neighborhood": "Ballard",
@@ -297,7 +807,7 @@
       "timestamp": 1595366038000,
       "description": "Medic Response",
       "address": "4201 Sw Graham St",
-      "active": true,
+      "active": false,
       "unitCount": 3,
       "severity": 0,
       "neighborhood": "Fauntleroy/Seaview",

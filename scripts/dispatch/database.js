@@ -15,6 +15,9 @@ const connect = () => mongoose.connect(uri);
 let incidentSchema;
 let Incident;
 
+let dayFileSchema;
+let DayFile;
+
 const init = () => {
   if (Incident) {
     return;
@@ -40,7 +43,7 @@ const init = () => {
 
   Incident = mongoose.model("incident", incidentSchema);
 
-  mongoose.model("testmodel", new mongoose.Schema({ test: String }));
+  dayFileSchema = new mongoose.Schema({});
 };
 
 export const uploadIncidents = async (table = []) => {
@@ -70,9 +73,11 @@ export const uploadIncidents = async (table = []) => {
           (end - start) / 1000
         } sec`
       );
-      mongoose.connection.close();
     })
-    .catch((e) => console.error("database > upload error:", e));
+    .catch((e) => console.error("database > upload error:", e))
+    .finally(() => {
+      mongoose.connection.close();
+    });
 };
 
 export const downloadIncidents = async (ids = []) => {
@@ -95,5 +100,8 @@ export const downloadIncidents = async (ids = []) => {
       mongoose.connection.close();
       return result;
     })
-    .catch((e) => console.error("database > download error: ", e));
+    .catch((e) => console.error("database > download error: ", e))
+    .finally(() => {
+      mongoose.connection.close();
+    });
 };
