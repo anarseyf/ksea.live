@@ -210,6 +210,12 @@ const addOffsets = (intervals) => {
   return result;
 };
 
+const addTotals = ({ values, ...rest }) => ({
+  values,
+  total: values.length,
+  ...rest,
+});
+
 const addTypeInfo = (tweet) => {
   const type = typeMapper(tweet);
   const color = colorMapper(type);
