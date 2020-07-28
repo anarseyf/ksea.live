@@ -8,7 +8,7 @@ const getUnitsArray = (entries) =>
   [
     ...new Set(
       entries
-        .map(({ derived: { units } }) => units)
+        .map(({ units }) => units)
         .join(" ")
         .split(" ")
     ),
@@ -16,27 +16,21 @@ const getUnitsArray = (entries) =>
 
 const mergeSameId = (sortedEntries) => {
   const count = sortedEntries.length;
-  const newest = sortedEntries[0],
-    oldest = sortedEntries[count - 1];
+  const newest = sortedEntries[0];
   const unitsArray = getUnitsArray(sortedEntries);
   const units = unitsArray.join(" ");
   const unitCount = unitsArray.length;
 
   const [lat, long] = sortedEntries
-    .map(({ derived: { lat, long } }) => [lat, long])
+    .map(({ lat, long }) => [lat, long])
     .reduce((acc, pair) => (acc[0] ? acc : pair), [undefined, undefined]);
 
   const entry = {
-    id_str: oldest.id_str,
-    created_at: oldest.created_at,
-    derived: {
-      ...newest.derived,
-      units,
-      unitCount,
-      active: newest.derived.active,
-      lat,
-      long,
-    },
+    ...newest,
+    units,
+    unitCount,
+    lat,
+    long,
   };
 
   const result = severityMapper(entry);
@@ -44,10 +38,10 @@ const mergeSameId = (sortedEntries) => {
 };
 
 const sortNewFirst = (a, b) => {
-  const oldA = a.derived._old,
-    oldB = b.derived._old;
-  const timeA = a.derived.timestamp,
-    timeB = b.derived.timestamp;
+  const oldA = a._old,
+    oldB = b._old;
+  const timeA = a.timestamp,
+    timeB = b.timestamp;
   if (oldA === oldB) {
     return timeB - timeA;
   }
@@ -177,29 +171,23 @@ export const listFilesAsync = async (
   }
 };
 
-export const severityMapper = ({
-  derived: { units, ...restDerived },
-  ...rest
-}) => {
+export const severityMapper = ({ units, ...rest }) => {
   const unitCount = units.split(" ").length;
   const severity = unitCount >= 10 ? 2 : unitCount >= 5 ? 1 : 0;
   return {
     ...rest,
-    derived: {
-      ...restDerived,
-      units,
-      unitCount,
-      severity,
-    },
+    units,
+    unitCount,
+    severity,
   };
 };
 
 const markAsOld = (entry) => {
-  entry.derived._old = true;
+  entry._old = true;
   return entry;
 };
 
 const unmarkAsOld = (entry) => {
-  delete entry.derived._old;
+  delete entry._old;
   return entry;
 };

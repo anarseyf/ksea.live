@@ -41,7 +41,7 @@ export const runner = async (ignoreStatus) => {
   console.log("update > most recent:", mostRecentFileName);
   console.log("update > reading:", withDatasetsPath(mostRecentFileName));
   const entries = await readJSONAsync(withDatasetsPath(mostRecentFileName), []);
-  let tMostRecent = entries[0].derived.timestamp;
+  let tMostRecent = entries[0].timestamp;
 
   // TODO:
   // 1. Check if -1 days is necessary.

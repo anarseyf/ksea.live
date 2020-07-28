@@ -27,9 +27,8 @@ export const withGeojsonPath = (fileName) => path.join(geojsonPath, fileName);
 export const withScriptsJsonPath = (fileName) =>
   path.join(scriptsJsonPath, fileName);
 
-export const sortByTimestampDescending = (a, b) =>
-  b.derived.timestamp - a.derived.timestamp;
+export const sortByTimestampDescending = (a, b) => b.timestamp - a.timestamp;
 
 // see also clientUtils.js
-export const isExactlySev1 = ({ derived: { severity } }) => severity === 1;
-export const isExactlySev2 = ({ derived: { severity } }) => severity === 2;
+export const isExactlySev1 = ({ severity }) => severity === 1;
+export const isExactlySev2 = ({ severity }) => severity === 2;

@@ -61,21 +61,18 @@ export const Map = ({ area }) => {
   if (area) {
     zoom = defaultZoom + 1;
   }
-  if (selectedTweet && selectedTweet.derived.lat) {
+  if (selectedTweet && selectedTweet.lat) {
     zoom = maxZoom;
   }
 
   const center =
-    selectedTweet && selectedTweet.derived.lat
-      ? [selectedTweet.derived.lat, selectedTweet.derived.long]
+    selectedTweet && selectedTweet.lat
+      ? [selectedTweet.lat, selectedTweet.long]
       : area
       ? centroid(rendered)
       : centroid(cityGeojson.features);
 
-  const mapper = ({
-    id_str,
-    derived: { lat, long, type, color, active, severity },
-  }) => ({
+  const mapper = ({ id_str, lat, long, type, color, active, severity }) => ({
     id_str,
     lat,
     long,
@@ -110,14 +107,12 @@ export const Map = ({ area }) => {
   }
 
   const appearanceFn = (d) => {
-    return selectedTweet && selectedTweet.derived.lat
+    return selectedTweet && selectedTweet.lat
       ? isSelectedDot(d)
         ? Appearance.Highlighted
         : Appearance.Dimmed
       : Appearance.Normal;
   };
-
-  //  console.log("MAP/selected:",selectedTweet && selectedTweet.derived);
 
   // console.log(
   //   `MAP/render area=${area || "-"}, zoom=${zoom}, selected:${

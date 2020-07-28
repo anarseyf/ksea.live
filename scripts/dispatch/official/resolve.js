@@ -45,7 +45,7 @@ const resolveGeo = async (entries = []) => {
   });
   const geoData = res.data;
 
-  const result = entries.map(({ id_str, derived, ...rest }) => {
+  const result = entries.map(({ id_str, ...rest }) => {
     const { latitude, longitude, incident_number } =
       geoData.find(({ incident_number }) => id_str === incident_number) || {};
 
@@ -57,12 +57,9 @@ const resolveGeo = async (entries = []) => {
 
     return {
       id_str,
+      lat,
+      long,
       ...rest,
-      derived: {
-        ...derived,
-        lat,
-        long,
-      },
     };
   });
 
@@ -81,22 +78,15 @@ const resolveLocally = async (sourceFile) => {
   }, {});
 
   const empty = [];
-  const result = entries.map(
-    ({ id_str, derived: { lat, long, ...restDerived }, ...rest }) => {
-      const [newLat, newLong] = lat
-        ? [lat, long]
-        : incidentsMap[id_str] || empty;
-      return {
-        id_str,
-        ...rest,
-        derived: {
-          ...restDerived,
-          lat: newLat,
-          long: newLong,
-        },
-      };
-    }
-  );
+  const result = entries.map(({ id_str, lat, long, ...rest }) => {
+    const [newLat, newLong] = lat ? [lat, long] : incidentsMap[id_str] || empty;
+    return {
+      id_str,
+      ...rest,
+      lat: newLat,
+      long: newLong,
+    };
+  });
   const unresolved = result.filter(hasNoCoordinates);
   await saveJSONAsync(sourceFile, unresolved);
   const resolved = result.filter(hasCoordinates);
@@ -120,7 +110,7 @@ const cleanupUnresolved = async (incidentsMap) => {
 };
 
 const saveResolved = async (entries = []) => {
-  const table = entries.map(({ id_str, derived: { lat, long } }) => ({
+  const table = entries.map(({ id_str, lat, long }) => ({
     id: id_str,
     lat,
     long,

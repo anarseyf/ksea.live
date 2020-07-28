@@ -36,7 +36,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
 
   const isGreyedOut = mode === TweetModes.GreyedOut;
   const isDetailed = mode === TweetModes.Detailed;
-  const time = timeFormatter(tweet.derived.timestamp);
+  const time = timeFormatter(tweet.timestamp);
   const phone = isPhone();
 
   return (
@@ -58,7 +58,7 @@ export const Tweet = ({ tweet, mode = TweetModes.Default }) => {
         </div>
         <div className={classnames({ [styles.active]: active })}>
           <SvgDot active={active} sev1={sev1} sev2={sev2} />
-          <span> {tweet.derived.description}</span>
+          <span> {tweet.description}</span>
         </div>
       </div>
       {isDetailed && <TweetDetails tweet={tweet} />}

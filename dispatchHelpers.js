@@ -35,7 +35,7 @@ const toFileNames = ([start, end]) => {
     .map((f) => path.join(dataPath, `${f}.json`));
 };
 
-const byIntervalsGen = (intervals) => ({ derived: { timestamp } }) =>
+const byIntervalsGen = (intervals) => ({ timestamp }) =>
   !!intervals.reduce(intervalsReducer(timestamp), null);
 
 export const allTweets = async (intervals) => {
@@ -148,9 +148,9 @@ export const minimizeGroup = ({ intervals, ...rest }) => ({
   intervals: intervals.map(minimizeInterval),
 });
 
-export const filterActive = ({ derived: { active } }) => active;
-export const filterSev1 = ({ derived: { severity } }) => severity >= 1;
-export const filterSev2 = ({ derived: { severity } }) => severity >= 2;
-export const filterActiveOrMajor = ({ derived: { active, severity } }) =>
+export const filterActive = ({ active }) => active;
+export const filterSev1 = ({ severity }) => severity >= 1;
+export const filterSev2 = ({ severity }) => severity >= 2;
+export const filterActiveOrMajor = ({ active, severity }) =>
   active || severity >= 1;
 export const filterNoop = (_) => true;

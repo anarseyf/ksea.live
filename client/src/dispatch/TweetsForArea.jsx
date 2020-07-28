@@ -13,9 +13,7 @@ export const TweetsForArea = () => {
     return null;
   }
   const all = currentInterval(filteredByArea).values;
-  const filtered = all.filter(
-    ({ derived: { type } }) => !filter || filter === type
-  );
+  const filtered = all.filter(({ type }) => !filter || filter === type);
 
   return <TweetList tweets={filtered} />;
-}
+};

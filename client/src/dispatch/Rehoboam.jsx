@@ -10,12 +10,13 @@ import {
 import { Topline } from "./Topline";
 import classnames from "classnames";
 
-import {
-  scaleLinear as d3scaleLinear,
-} from "d3-scale";
+import { scaleLinear as d3scaleLinear } from "d3-scale";
 import { max as d3max } from "d3-array";
 import { select as d3select } from "d3-selection";
-import { lineRadial as d3lineRadial, curveCardinal as d3curveCardinal } from "d3-shape";
+import {
+  lineRadial as d3lineRadial,
+  curveCardinal as d3curveCardinal,
+} from "d3-shape";
 import { axisRadialInner } from "d3-radial-axis";
 
 import styles from "./rehoboam.module.scss";
@@ -74,7 +75,7 @@ export const Rehoboam = ({ area }) => {
     d3select(axisRef.current).call(axis);
 
     if (activeOrMajorForArea.length) {
-      const toRadialDot = ({ derived: { timestamp } }) => {
+      const toRadialDot = ({ timestamp }) => {
         const fraction = (timestamp - start) / (end - start);
         const radians = 2 * Math.PI * fraction;
         return [radians, mainRadius];
@@ -85,9 +86,7 @@ export const Rehoboam = ({ area }) => {
       const radialDots = activeOrMajorValues.map(toRadialDot);
 
       const newCircles = radialDots.map(([theta, r], i) => {
-        const {
-          derived: { severity, active },
-        } = activeOrMajorValues[i];
+        const { severity, active } = activeOrMajorValues[i];
         return {
           key: i,
           cx: r * Math.sin(theta),
@@ -127,10 +126,20 @@ export const Rehoboam = ({ area }) => {
                   r={r}
                 />
                 {sev1 && (
-                  <circle className={classnames(styles.outer, svgStyles.outer)} cx={cx} cy={cy} r={r + 3} />
+                  <circle
+                    className={classnames(styles.outer, svgStyles.outer)}
+                    cx={cx}
+                    cy={cy}
+                    r={r + 3}
+                  />
                 )}
                 {sev2 && (
-                  <circle className={classnames(styles.outer, svgStyles.outer)} cx={cx} cy={cy} r={r + 6} />
+                  <circle
+                    className={classnames(styles.outer, svgStyles.outer)}
+                    cx={cx}
+                    cy={cy}
+                    r={r + 6}
+                  />
                 )}
               </g>
             ))}

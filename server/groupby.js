@@ -58,7 +58,7 @@ const IncidentTypes = {
 };
 
 const Mappers = {
-  [GroupByOptions.IncidentType]: () => ({ derived: { description } }) => {
+  [GroupByOptions.IncidentType]: () => ({ description }) => {
     const options = Object.values(IncidentTypes.Known);
     const desc = description.toLowerCase();
     const match = options.reduce((matchedOption, option) => {
@@ -69,9 +69,9 @@ const Mappers = {
     }, undefined);
     return match || IncidentTypes.Default;
   },
-  [GroupByOptions.ZipCode]: () => (t) => t.derived.zip,
-  [GroupByOptions.Area]: () => (t) => t.derived.neighborhoodGroup,
-  [GroupByOptions.TimeInterval]: (intervals) => ({ derived: { timestamp } }) =>
+  [GroupByOptions.ZipCode]: () => (t) => t.zip,
+  [GroupByOptions.Area]: () => (t) => t.neighborhoodGroup,
+  [GroupByOptions.TimeInterval]: (intervals) => ({ timestamp }) =>
     intervals.reduce(intervalsReducer(timestamp), undefined),
 };
 
@@ -187,16 +187,10 @@ const by = (option, tweets, requiredKeys = [], mapper) => {
 };
 
 const addOffsets = (intervals) => {
-  const valueMapper = (
-    { derived: { timestamp, ...restDerived }, ...restValue },
-    offset
-  ) => ({
-    ...restValue,
-    derived: {
-      timestamp,
-      offset,
-      ...restDerived,
-    },
+  const valueMapper = ({ timestamp, ...rest }, offset) => ({
+    ...rest,
+    timestamp,
+    offset,
   });
 
   const start0 = intervals[0].start;
@@ -216,22 +210,13 @@ const addOffsets = (intervals) => {
   return result;
 };
 
-const addTotals = ({ values, ...rest }) => ({
-  values,
-  total: values.length,
-  ...rest,
-});
-
 const addTypeInfo = (tweet) => {
   const type = typeMapper(tweet);
   const color = colorMapper(type);
   return {
     ...tweet,
-    derived: {
-      ...tweet.derived,
-      type,
-      color,
-    },
+    type,
+    color,
   };
 };
 

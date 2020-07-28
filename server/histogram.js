@@ -6,8 +6,7 @@ import {
 import { timeHour as d3timeHour, timeMinutes as d3timeMinutes } from "d3-time";
 import { isExactlySev1, isExactlySev2 } from "./serverUtils";
 
-const defaultAccessor = ({ derived: { timestamp, offset = 0 } }) =>
-  timestamp + offset;
+const defaultAccessor = ({ timestamp, offset = 0 }) => timestamp + offset;
 
 export function histogram(
   values,

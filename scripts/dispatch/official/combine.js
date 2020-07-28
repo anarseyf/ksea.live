@@ -52,13 +52,11 @@ export const runner = async (sourceFile) => {
         // TODO - mostly redundant with merge @ split stage
         created_at: oldest.date,
         id_str: oldest.incidentId,
-        derived: {
-          timestamp: localStrToTimestamp(oldest.date),
-          description: oldest.type,
-          address: oldest.location,
-          units,
-          active: newest.active,
-        },
+        timestamp: localStrToTimestamp(oldest.date),
+        description: oldest.type,
+        address: oldest.location,
+        units,
+        active: newest.active,
       };
     };
 

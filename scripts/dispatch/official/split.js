@@ -24,7 +24,7 @@ export const runner = async (sourceFile) => {
 
     const splits = {};
     entries.forEach((t) => {
-      const fileName = toUTCMidnightString(t.derived.timestamp);
+      const fileName = toUTCMidnightString(t.timestamp);
       const list = splits[fileName] || [];
       list.push(t);
       splits[fileName] = list;

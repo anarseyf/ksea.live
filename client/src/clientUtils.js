@@ -27,7 +27,7 @@ export const timeFormatterHourAM = (timestamp) =>
   timeFormatter(timestamp, "h A");
 
 export const timeFormatterMonth = (timestamp) =>
-  timeFormatter(+timestamp, "MMM");;
+  timeFormatter(+timestamp, "MMM");
 
 export const timeFormatterMonthDay = (timestamp) =>
   timeFormatter(+timestamp, "MMM D");
@@ -44,11 +44,11 @@ export const everyMonth = (start) => {
   return months.map((v) => m.clone().add(v, "months").toDate());
 };
 
-export const isActive = ({ derived: { active } }) => active;
-export const isAtLeastSev1 = ({ derived: { severity } }) => severity >= 1;
-export const isAtLeastSev2 = ({ derived: { severity } }) => severity >= 2;
-export const isExactlySev1 = ({ derived: { severity } }) => severity === 1;
-export const isExactlySev2 = ({ derived: { severity } }) => severity === 2;
+export const isActive = ({ active }) => active;
+export const isAtLeastSev1 = ({ severity }) => severity >= 1;
+export const isAtLeastSev2 = ({ severity }) => severity >= 2;
+export const isExactlySev1 = ({ severity }) => severity === 1;
+export const isExactlySev2 = ({ severity }) => severity === 2;
 
 export const getStyleProp = (prop) => {
   const appElement = document.getElementById("app");

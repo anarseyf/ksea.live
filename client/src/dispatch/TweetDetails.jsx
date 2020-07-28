@@ -3,8 +3,8 @@ import styles from "./tweetdetails.module.scss";
 import { isPhone } from "../clientUtils";
 import { AreaAccessors } from "../groupingOptions";
 
-export const TweetDetails = ({tweet}) => {
-  const { address, units, lat, long } = tweet.derived;
+export const TweetDetails = ({ tweet }) => {
+  const { address, units, lat, long } = tweet;
   const { id_str } = tweet;
   // const url = `https://data.seattle.gov/resource/fire-911.json?incident_number=${id_str}`;
   const unitsList = units.split(" ");
@@ -25,8 +25,10 @@ export const TweetDetails = ({tweet}) => {
       <div>
         <span>{unitsStr}</span>
         {unitsList.map((unit) => (
-          <span key={unit} className={styles.unit}>{unit}</span>
-          ))}
+          <span key={unit} className={styles.unit}>
+            {unit}
+          </span>
+        ))}
       </div>
       <div className={styles.secondary}>Incident ID {id_str}</div>
     </div>

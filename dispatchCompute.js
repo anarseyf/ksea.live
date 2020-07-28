@@ -199,7 +199,7 @@ export const getPunchCardAsync = async () => {
   const intervals = generateHistoryIntervals().slice(0, 1);
   const all = await allTweets(intervals);
 
-  const toTuples = ({ derived: { timestamp } }) => pacificWeekTuple(timestamp);
+  const toTuples = ({ timestamp }) => pacificWeekTuple(timestamp);
   const tuples = all.map(toTuples); // { week, day, hour }
   const [minWeek, maxWeek] = d3a.extent(tuples, ({ week }) => week);
   const numWeeks = maxWeek - minWeek + 1;
