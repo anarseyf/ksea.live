@@ -1,17 +1,35 @@
-import { modifyAll } from "./scriptUtil";
-import { withScriptsJsonPath } from "../../../server/serverUtils";
-import { readJSONAsync, saveJSONAsync } from "../../../fileUtils";
+const path = require("path");
+import { runForAll } from "./scriptUtil";
+import { withScriptsJsonPath, datasetsPath } from "../../../server/serverUtils";
+import {
+  readJSONAsync,
+  saveJSONAsync,
+  listFilesAsync,
+} from "../../../fileUtils";
+import { uploadEntries } from "../database";
 
 const main = async () => {
-  const file = withScriptsJsonPath("unresolved.json");
+  let files = await listFilesAsync(datasetsPath, { defaultValue: [] });
 
-  const f = ({ derived, ...rest }) => ({
-    ...rest,
-    ...derived,
-  });
+  // files = files.slice(0, 2); // TODO
 
-  const entries = await readJSONAsync(file, []);
-  await saveJSONAsync(file, entries.map(f));
+  const entriesPerFile = await Promise.all(
+    files.map(async (fileName) => {
+      const withPath = path.join(datasetsPath, fileName);
+      return await readJSONAsync(withPath, []);
+    })
+  );
+
+  const entries = entriesPerFile.flat();
+
+  console.log("TOTAL:", entries.length);
+
+  const start = new Date();
+  await uploadEntries(entries);
+  const end = new Date();
+  console.log(
+    `>> runForAll > ${entries.length} entries in ${(end - start) / 1000} sec`
+  );
 };
 
 main();

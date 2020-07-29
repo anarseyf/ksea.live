@@ -58,7 +58,7 @@ export const runForAll = async (callback) => {
   try {
     const start = new Date();
     const results = [];
-    const files = await listFilesAsync(datasetsPath, { defaultValue: [] });
+    let files = await listFilesAsync(datasetsPath, { defaultValue: [] });
 
     await Promise.all(
       files.map(async (fileName) => {
@@ -69,10 +69,12 @@ export const runForAll = async (callback) => {
       })
     );
     const end = new Date();
-    console.log(`>> modifyAll > ${results.length} submaps (${end - start}ms)`);
+    console.log(
+      `>> runForAll > ${results.length} results in (${end - start}ms)`
+    );
     return results;
   } catch (e) {
-    console.error(">> modifyAll >>>", e);
+    console.error(">> runForAll >>>", e);
     return [];
   }
 };
