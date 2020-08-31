@@ -30,7 +30,7 @@ const resolveGeo = async (entries = []) => {
 
   const appToken = "DvY4gobAudCWKcwYz3yqTd25h";
 
-  const uri = `https://data.seattle.gov/resource/fire-911.json?$$app_token=${appToken}&$select=incident_number,latitude,longitude&$where=${where}`;
+  const uri = `https://data.TODO-seattle.gov/resource/fire-911.json?$$app_token=${appToken}&$select=incident_number,latitude,longitude&$where=${where}`;
   const encodedUri = encodeURI(uri);
 
   console.log(`resolve > ${ids.length} ids (URI length: ${encodedUri.length})`);
