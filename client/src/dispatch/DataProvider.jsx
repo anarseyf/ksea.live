@@ -74,7 +74,7 @@ const useTweets = (filters = {}) => {
 
     const area = filters.area || "seattle";
 
-    console.log("PROVIDER/filters.area=", area);
+    // console.log("PROVIDER/filters.area=", area);
     if (area === "seattle") {
       (async () => {
         setFilteredByAreaMin(await getTweetsForAreaMin(area));

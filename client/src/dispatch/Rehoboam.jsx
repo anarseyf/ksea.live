@@ -5,7 +5,6 @@ import {
   timeFormatterHourAM,
   every6Hours,
   isPhone,
-  windowWidth,
 } from "../clientUtils";
 import { Topline } from "./Topline";
 import classnames from "classnames";

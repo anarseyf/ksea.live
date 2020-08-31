@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext } from "react";
 
 export const UserContext = createContext();
 
@@ -11,11 +11,11 @@ const useUser = () => {
   const [user, setUser] = useState({});
 
   const setSelection = (key, value) => {
-    console.log(`USER: ${key} -->`, value);
+    // console.log(`USER: ${key} -->`, value);
     setUser({ ...user, [key]: value });
   };
 
-  useEffect(()=>{console.log('USER/useEffect')},[]);
+  // useEffect(()=>{console.log('USER/useEffect')},[]);
 
   return { user, setSelection };
 };

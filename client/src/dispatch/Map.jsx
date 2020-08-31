@@ -15,7 +15,10 @@ const minZoom = 10,
   maxZoom = 13,
   defaultZoom = 11;
 
-export const Map = ({ area }) => {
+export const Map = ({ area: encodedArea }) => {
+
+  const area = encodedArea ? decodeURIComponent(encodedArea) : "";
+
   const { user } = useContext(UserContext);
   const { filteredByArea } = useContext(DataContext);
   const { theme } = useContext(ThemeContext);

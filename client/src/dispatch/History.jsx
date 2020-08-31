@@ -9,7 +9,6 @@ import {
   timeFormatterMonth,
   everyMonth,
   getContentWidth,
-  timeFormatterMonthUppercase
 } from "../clientUtils";
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";

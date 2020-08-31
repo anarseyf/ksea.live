@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { select as d3select } from "d3-selection";
 import {
   annotation as d3annotation,
@@ -14,7 +14,7 @@ export const PunchCardAnnotations = ({ annotations, scales, cellSize, availableW
     if (!annotations) {
       return;
     }
-    const [_, yScale] = scales;
+    const [, yScale] = scales;
 
     const annotationColor = getStyleProp("--annotation");
 
