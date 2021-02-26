@@ -69,7 +69,7 @@ export const Rehoboam = ({ area }) => {
 
     const axis = axisRadialInner(angleScale, mainRadius)
       .tickFormat(timeFormatterHourAM)
-      .tickSize(0)
+      .tickSize(8)
       .tickValues(every6Hours(current.start));
     d3select(axisRef.current).call(axis);
 

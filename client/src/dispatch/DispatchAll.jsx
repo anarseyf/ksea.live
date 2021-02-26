@@ -44,7 +44,7 @@ export const DispatchAll = () => {
 
   const notes = (
     <p>
-      Created by <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a>.
+      Created by <a href="https://linkedin.com/in/anarseyf/">Anar Seyf</a> in 2020.
     </p>
   );
 

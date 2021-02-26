@@ -18,9 +18,15 @@
 
 .axis text {
   fill: var(--axis-color);
+  font-size: 1.4em;
 }
 
 .axis path {
+  fill: var(--transparent);
+  stroke: none;
+}
+
+.axis line {
   fill: var(--transparent);
   stroke: none;
 }
