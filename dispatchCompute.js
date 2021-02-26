@@ -25,6 +25,7 @@ import {
 import { readJSONAsync, pacificWeekTuple } from "./fileUtils";
 import { withCachePath, datasetsPath } from "./server/serverUtils";
 import * as d3a from "d3-array";
+import moment from "moment";
 
 export const identityFn = (v) => v;
 
@@ -161,6 +162,7 @@ export const getHistoryAsync = async () => {
     .map(intervalGrouper)
     .map(minimizeGroup)
     .sort(sortByTotal);
+  console.log(`TODO getHistoryAsync\n${JSON.stringify(result, null, 4)}`);
   return result;
 };
 
@@ -171,7 +173,7 @@ export const getAnnotationsAsync = async () => {
   const manualData = await readJSONAsync(manualFile, []);
   const generatedData = await readJSONAsync(generatedFile, []);
   const data = manualData.concat(generatedData);
-  const start2020 = new Date(2020, 0);
+  const yearStart = new Date(moment().year(), 0);
 
   const result = data.map(({ start, end, ...rest }) => ({
     start: start
@@ -188,7 +190,7 @@ export const getAnnotationsAsync = async () => {
       : undefined,
     offset:
       start || end
-        ? start2020 - new Date(new Date((start || end).date).getFullYear(), 0)
+        ? yearStart - new Date(new Date((start || end).date).getFullYear(), 0)
         : undefined,
     ...rest,
   }));

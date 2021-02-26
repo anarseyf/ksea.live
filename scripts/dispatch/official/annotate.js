@@ -80,14 +80,14 @@ export const runner = async () => {
 
   const history = await getHistoryAsync();
 
-  const history2020 = history[0].intervals[0];
-  const history2019 = history[0].intervals[1];
+  const historyThisYear = history[0].intervals[0];
+  const historyLastYear = history[0].intervals[1];
 
-  const annotations2019 = annotationsForYear(history2019);
-  const annotations2020 = annotationsForYear(history2020);
+  const annotationsThisYear = annotationsForYear(historyThisYear);
+  const annotationsLastYear = annotationsForYear(historyLastYear);
 
   const file = path.join(datasetsPath, "../misc/generatedAnnotations.json");
-  await saveJSONAsync(file, [...annotations2019, ...annotations2020]);
+  await saveJSONAsync(file, [...annotationsLastYear, ...annotationsThisYear]);
 
   const end = new Date();
   console.log(`annotate > (${end - now}ms)`);

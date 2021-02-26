@@ -13,6 +13,7 @@ import {
 import { Annotations } from "./Annotations";
 import { HistoryEvents } from "./HistoryEvents";
 import classnames from "classnames";
+import moment from "moment";
 
 import {
   scaleLinear as d3scaleLinear,
@@ -161,11 +162,14 @@ export const History = () => {
 
   // console.log("HISTORY/render");
 
+  const thisYear = moment().year(),
+  lastYear = thisYear-1;
+
   return (
     <div className={historyStyles.container}>
       <div className={historyStyles.years}>
-        <div className={historyStyles.left}>2019</div>
-        <div className={historyStyles.right}>2020</div>
+        <div className={historyStyles.left}>{lastYear}</div>
+        <div className={historyStyles.right}>{thisYear}</div>
       </div>
       <svg
         className={historyStyles.svg}
