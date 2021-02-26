@@ -162,7 +162,6 @@ export const getHistoryAsync = async () => {
     .map(intervalGrouper)
     .map(minimizeGroup)
     .sort(sortByTotal);
-  console.log(`TODO getHistoryAsync\n${JSON.stringify(result, null, 4)}`);
   return result;
 };
 
