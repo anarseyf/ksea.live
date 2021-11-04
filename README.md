@@ -47,32 +47,36 @@ Run prod build (deploys at http://localhost:3001/):
 - Open the app's environment
 - Click "Upload and Deploy"
 - Upload the .zip file created above.
+- (optional) If any static resources appear stale: in AWS Console, open CloudFront, Invalidations tab, and create an invalidation: `/*`.
 
-## How it works (TODO)
+## How it works
 
-### 1. Server
+1. Server
+   - Location: project root (`/`)
+1. Client
+   - Location: `/client`
+1. Background tasks
+   - Location: `/scripts/dispatch`
 
-Location: project root (`/`)
+The `prod` environment is launched via `npm start` at the root (both in AWS and locally), which kicks off all 3 components (using the `concurrently` command). See `package.json` for details.
 
-### 2. Client
-
-Location: `/client`
-
-### 3. Background tasks
-
-Location: `/scripts/dispatch`
+The update loop runs every few minutes.
 
 ## Tech stack
 
-- React + [create-react-app](https://create-react-app.dev/) (not ejected)
 - Node.js
-- [D3.js](https://d3js.org/) — for building visualizations and data manipulation
+- React
+  - [create-react-app](https://create-react-app.dev/) (not ejected)
+  - Hooks
+  - [CSS modules](https://github.com/css-modules/css-modules)
+- [D3.js](https://d3js.org/) — for building visualizations and data manipulation (mostly the latter; many visuals are built by adding `<svg>` elements to JSX directly, without involving D3).
 - AWS
-  - Elastic Beanstalk
-  - CloudFront
-  - Lambda@Edge
-  - Route 53
-- MongoDB (currently used only for storing scraped incidents, not retrieval)
+  - Elastic Beanstalk (deployment)
+  - CloudFront (static resource caching)
+  - Lambda@Edge (`Content-Security-Policy` header)
+  - Route 53 (DNS records)
+  - IAM (Lambda and CloudFront policies)
+- MongoDB (currently used for resolving incidents — geo)
 
 ## Notes
 
@@ -80,10 +84,14 @@ Location: `/scripts/dispatch`
 
 - Scraped incidents are stored in JSON files under `/datasets/official`, as well as in MongoDB via mongoose (see the `database.js` script). But currently MongoDB is not used for reading at all.
 
-## Screenshots
-
-- TODO
-
 ## Credits
 
 Designed and developed by Anar Seyf in 2020.
+
+## Screenshots
+
+Default theme (dark) on Mobile:
+
+(See also the [Dusk theme](./screenshots/fullpage-dark-mobile.png).)
+
+![](./screenshots/fullpage-dark-mobile.png)
