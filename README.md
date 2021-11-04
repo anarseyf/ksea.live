@@ -94,8 +94,7 @@ Designed and developed by [https://www.linkedin.com/in/anarseyf/](Anar Seyf) in 
 
 ## Screenshots
 
-Default theme (dark) on Mobile:
+Full-page screenshots on Mobile:
 
-(See also the [Dusk theme](./screenshots/fullpage-dark-mobile.png).)
-
-![](./screenshots/fullpage-dark-mobile.png)
+- [Dark theme](./screenshots/fullpage-dark-mobile.png) (default)
+- [Dusk theme](./screenshots/fullpage-dusk-mobile.png)
