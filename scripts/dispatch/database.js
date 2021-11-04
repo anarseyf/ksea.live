@@ -3,7 +3,7 @@ import { readJSONAsync } from "../../fileUtils";
 import { withScriptsJsonPath } from "../../server/serverUtils";
 
 const user = "ksea";
-const pw = "mongoliamagnolia";
+const pw = "mongoliamagnolia"; // TODO - secrets
 const db = "ksea";
 const uri = `mongodb+srv://${user}:${pw}@ksea.zja0h.mongodb.net/${db}?retryWrites=true&w=majority`;
 

@@ -58,6 +58,7 @@ export const runner = async (ignoreStatus) => {
   const dateStrings = dates.map(toPacificDateString);
   console.log("update > dates:", dates);
   console.log("update > date strings:", dateStrings);
+
   for (const dateStr of dateStrings) {
     await appendJSONAsync(targetFile, await scrapeDateAsync(dateStr));
   }
