@@ -40,8 +40,8 @@ export const DispatchArea = ({ area }) => {
       </Section>
 
       <Section styleOption={3}>
-        <Units />
         <Sources />
+        <Units />
       </Section>
     </DataProvider>
   );
