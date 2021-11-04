@@ -92,6 +92,7 @@ Fully-resolved incidents are saved into local .json files (one file per day) und
 
 - Backend
   - Store mongodb credentials in AWS Secrets Manager
+  - Store AWS console login credentials there too
   - Use mongodb to store files
 - Frontend
   - Make history browseable (go back to any day of the year)
