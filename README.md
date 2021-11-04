@@ -62,18 +62,18 @@ The `prod` environment is launched via `npm start` at the root (both in AWS and 
 
 The update loop runs every few minutes.
 
-The [updateOnce](./scripts/dispatch/official/runOnce.js#L17) function shows what the background loop does.
+The [updateOnce()](./scripts/dispatch/official/scriptUtil.js) function shows what the background pipeline does.
 
 Fully-resolved incidents are saved into local .json files (one file per day) under `/datasets/official`.
 
 ## Tech stack
 
-- Node.js
+- Node.js (backend scripts)
 - React
   - [create-react-app](https://create-react-app.dev/) (not ejected)
-  - Hooks
-  - [CSS modules](https://github.com/css-modules/css-modules)
+  - [React Hooks](https://reactjs.org/docs/hooks-intro.html) – state management
   - [D3.js](https://d3js.org/) — for building visualizations and data manipulation (mostly the latter; many visuals are built by adding `<svg>` elements to JSX directly, without involving D3).
+  - [CSS modules](https://github.com/css-modules/css-modules)
 - AWS
   - Elastic Beanstalk (deployment)
   - CloudFront (static resource caching)
@@ -84,13 +84,9 @@ Fully-resolved incidents are saved into local .json files (one file per day) und
 
 ## Notes
 
-- Originally this was implemented by integrating with the [Twitter API](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/overview) and fetching the posts by the Seattle Fire Dept account. But it carries a limitation of only providing the 3,200 most recent tweets—not enough to build the annual aggregates. I then switched to scraping the main 911 page.
+- Originally the backend was implemented by fetching the [@SeaFDIncidents](https://twitter.com/SeaFDIncidents) timeline via the [Twitter API](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/overview). But it only provides the 3,200 most recent tweets—not enough to build annual aggregates. I then switched to scraping the [main 911 page](http://www2.seattle.gov/fire/realtime911/).
 
 - Scraped incidents are stored in JSON files under `/datasets/official`, as well as in MongoDB via mongoose (see the `database.js` script). But currently MongoDB is not used for reading at all.
-
-## Credits
-
-Designed and developed by [https://www.linkedin.com/in/anarseyf/](Anar Seyf) in 2020.
 
 ## Screenshots
 
@@ -103,3 +99,7 @@ Designed and developed by [https://www.linkedin.com/in/anarseyf/](Anar Seyf) in 
 
 - [Dark theme](./screenshots/fullpage-phone-dark.png)
 - [Dusk theme](./screenshots/fullpage-phone-dusk.png)
+
+## Credits
+
+Designed and developed by [Anar Seyf](https://www.linkedin.com/in/anarseyf/) in 2020.
