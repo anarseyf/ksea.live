@@ -62,7 +62,7 @@ The `prod` environment is launched via `npm start` at the root (both in AWS and 
 
 The update loop runs every few minutes.
 
-The [updateOnce()](./scripts/dispatch/official/scriptUtil.js) function shows what the background pipeline does.
+The [updateOnce()](./scripts/dispatch/official/scriptUtil.js#L17) function shows what the background pipeline does.
 
 Fully-resolved incidents are saved into local .json files (one file per day) under `/datasets/official`.
 
