@@ -62,6 +62,10 @@ The `prod` environment is launched via `npm start` at the root (both in AWS and 
 
 The update loop runs every few minutes.
 
+The [updateOnce](./scripts/dispatch/official/runOnce.js#L17) function shows what the background loop does.
+
+Fully-resolved incidents are saved into local .json files (one file per day) under `/datasets/official`.
+
 ## Tech stack
 
 - Node.js
@@ -69,14 +73,14 @@ The update loop runs every few minutes.
   - [create-react-app](https://create-react-app.dev/) (not ejected)
   - Hooks
   - [CSS modules](https://github.com/css-modules/css-modules)
-- [D3.js](https://d3js.org/) — for building visualizations and data manipulation (mostly the latter; many visuals are built by adding `<svg>` elements to JSX directly, without involving D3).
+  - [D3.js](https://d3js.org/) — for building visualizations and data manipulation (mostly the latter; many visuals are built by adding `<svg>` elements to JSX directly, without involving D3).
 - AWS
   - Elastic Beanstalk (deployment)
   - CloudFront (static resource caching)
   - Lambda@Edge (`Content-Security-Policy` header)
   - Route 53 (DNS records)
   - IAM (Lambda and CloudFront policies)
-- MongoDB (currently used for resolving incidents — geo)
+- MongoDB (currently used for saving and loading incident geolocation data; TODO — should also be used to as incident storage, instead of local files.)
 
 ## Notes
 
@@ -86,7 +90,7 @@ The update loop runs every few minutes.
 
 ## Credits
 
-Designed and developed by Anar Seyf in 2020.
+Designed and developed by [https://www.linkedin.com/in/anarseyf/](Anar Seyf) in 2020.
 
 ## Screenshots
 
