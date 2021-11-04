@@ -88,6 +88,15 @@ Fully-resolved incidents are saved into local .json files (one file per day) und
 
 - Scraped incidents are stored in JSON files under `/datasets/official`, as well as in MongoDB via mongoose (see the `database.js` script). But currently MongoDB is not used for reading at all.
 
+## TODO
+
+- Backend
+  - Store mongodb credentials in AWS Secrets Manager
+  - Use mongodb to store files
+- Frontend
+  - Make history browseable (go back to any day of the year)
+  - Make map dots clickable
+
 ## Screenshots
 
 ### Desktop/Tablet:
