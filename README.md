@@ -94,7 +94,7 @@ TODO: Make the Mongo connection optional (fail-open).
 
 ## Notes
 
-- Originally the backend was implemented by fetching the [@SeaFDIncidents](https://twitter.com/SeaFDIncidents) timeline via the [Twitter API](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/overview). But it only provides the 3,200 most recent tweets—not enough to build annual aggregates. I then switched to scraping the [main 911 page](http://www2.seattle.gov/fire/realtime911/).
+- Originally the backend was implemented by fetching the [@SeaFDIncidents](https://twitter.com/SeaFDIncidents) timeline via the [Twitter API](./scripts/dispatch/README.md). But it only provides the 3,200 most recent tweets—not enough to build annual aggregates. I then switched to scraping the [main 911 page](http://www2.seattle.gov/fire/realtime911/).
 
 - Scraped incidents are stored in JSON files under `/datasets/official`, as well as in MongoDB via mongoose (see the `database.js` script). But currently MongoDB is not used for reading at all.
 
