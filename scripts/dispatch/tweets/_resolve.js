@@ -10,7 +10,7 @@ const NodeGeocoder = require("node-geocoder");
 
 const options = {
   provider: "google",
-  apiKey: "AIzaSyAIaEIC_U0FePOM8GriPCEc3W9SbPjEzJM",
+  apiKey: "xxx", // https://console.cloud.google.com/google/maps-apis/credentials
 };
 
 const geoRateLimit = 100; // millis betweet requests
