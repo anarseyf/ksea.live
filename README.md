@@ -66,6 +66,16 @@ The [updateOnce()](./scripts/dispatch/official/scriptUtil.js#L17) function shows
 
 Fully-resolved incidents are saved into local .json files (one file per day) under `/datasets/official`.
 
+TODO: How lat/long is resolved.
+TODO: Make the Mongo connection optional (fail-open).
+
+### Caching (TODO)
+
+- Static files
+- **Map tiles**
+- Pre-computed API responses
+- CloudFront
+
 ## Tech stack
 
 - Node.js (backend scripts)
@@ -91,7 +101,7 @@ Fully-resolved incidents are saved into local .json files (one file per day) und
 ## TODO
 
 - Backend
-  - Store mongodb credentials in AWS Secrets Manager
+  - Store mongodb credentials in AWS Secrets Manager / GitHub Secrets
   - Store AWS console login credentials there too
   - Use mongodb to store files
 - Frontend

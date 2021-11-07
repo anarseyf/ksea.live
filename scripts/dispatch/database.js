@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
-import { readJSONAsync } from "../../fileUtils";
-import { withScriptsJsonPath } from "../../server/serverUtils";
 
-const user = "ksea";
-const pw = "mongoliamagnolia"; // TODO - secrets
-const db = "ksea";
+const user = process.env.MONGO_USER || "ksea";
+const pw = process.env.MONGO_PW || "ksea";
+const db = process.env.MONGO_DB;
 const uri = `mongodb+srv://${user}:${pw}@ksea.zja0h.mongodb.net/${db}?retryWrites=true&w=majority`;
 
 mongoose.set("useFindAndModify", false); // https://mongoosejs.com/docs/deprecations.html
@@ -12,6 +10,7 @@ mongoose.set("useNewUrlParser", true);
 mongoose.set("useUnifiedTopology", true);
 
 const connect = () => mongoose.connect(uri);
+
 let incidentSchema;
 let Incident;
 
