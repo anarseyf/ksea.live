@@ -41,6 +41,7 @@ Run prod build (deploys at http://localhost:3001/):
 ## Deploying to AWS
 
 - (optional) Increment version in `package.json`
+- `npm run build`
 - `npm run bundle:aws`. This creates a .zip file in the project root directory.
 - Login to [AWS Console](https://console.aws.amazon.com/)
 - Open [Elastic Beanstalk](https://us-west-2.console.aws.amazon.com/elasticbeanstalk/)
