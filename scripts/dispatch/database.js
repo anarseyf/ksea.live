@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const user = process.env.MONGO_USER || "ksea";
-const pw = process.env.MONGO_PW || "ksea";
-const db = process.env.MONGO_DB;
+const db = process.env.MONGO_DB || "ksea";
+const pw = process.env.MONGO_PW;
 const uri = `mongodb+srv://${user}:${pw}@ksea.zja0h.mongodb.net/${db}?retryWrites=true&w=majority`;
 
 mongoose.set("useFindAndModify", false); // https://mongoosejs.com/docs/deprecations.html
@@ -143,6 +143,8 @@ export const downloadIncidents = async (ids = []) => {
 
   return connect()
     .then(async (connection) => {
+      console.log(`database > download > mongo connection successful`);
+
       const query = { id: { $in: ids } }; // https://docs.mongodb.com/manual/tutorial/query-documents/
       const partition = { id: 1, lat: 1, long: 1 }; // https://mongoosejs.com/docs/api.html#query_Query-select
 
@@ -157,7 +159,7 @@ export const downloadIncidents = async (ids = []) => {
       mongoose.connection.close();
       return result;
     })
-    .catch((e) => console.error("database > download error: ", e))
+    .catch((e) => console.error("database > download > error: ", e))
     .finally(() => {
       mongoose.connection.close();
     });
@@ -168,6 +170,7 @@ export const uploadIncidents = async (table = []) => {
 
   return connect()
     .then(async (connection) => {
+      console.log(`database > upload > mongo connection successful`);
       const options = { upsert: true, new: true };
 
       // const file = withScriptsJsonPath("incidentsMap.json");
@@ -191,7 +194,7 @@ export const uploadIncidents = async (table = []) => {
         } sec`
       );
     })
-    .catch((e) => console.error("database > upload error:", e))
+    .catch((e) => console.error("database > upload(i) > error:", e))
     .finally(() => {
       mongoose.connection.close();
     });
@@ -202,6 +205,7 @@ export const uploadEntries = async (table = []) => {
 
   return connect()
     .then(async (connection) => {
+      console.log(`database > upload > mongo connection successful`);
       const options = { upsert: true, new: true };
 
       const start = new Date();
@@ -224,7 +228,7 @@ export const uploadEntries = async (table = []) => {
         } sec`
       );
     })
-    .catch((e) => console.error("database > upload error:", e))
+    .catch((e) => console.error("database > upload(e) > error:", e))
     .finally(() => {
       mongoose.connection.close();
     });

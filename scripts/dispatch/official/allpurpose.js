@@ -1,11 +1,6 @@
 const path = require("path");
-import { runForAll } from "./scriptUtil";
-import { withScriptsJsonPath, datasetsPath } from "../../../server/serverUtils";
-import {
-  readJSONAsync,
-  saveJSONAsync,
-  listFilesAsync,
-} from "../../../fileUtils";
+import { datasetsPath } from "../../../server/serverUtils";
+import { readJSONAsync, listFilesAsync } from "../../../fileUtils";
 import { uploadEntries } from "../database";
 
 const main = async () => {
