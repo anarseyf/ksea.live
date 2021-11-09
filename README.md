@@ -67,6 +67,8 @@ The [updateOnce()](./scripts/dispatch/official/scriptUtil.js#L17) function shows
 
 Fully-resolved incidents are saved into local .json files (one file per day) under `/datasets/official`.
 
+Mongo credentials are set in AWS Elastic Beanstalk via env variables (in config — AWS Secrets Manager is not available in Beanstalk as of November 2021).
+
 TODO: How lat/long is resolved.
 TODO: Make the Mongo connection optional (fail-open).
 
@@ -74,7 +76,7 @@ TODO: Make the Mongo connection optional (fail-open).
 
 - Static files
 - **Map tiles**
-- Pre-computed API responses
+- API responses
 - CloudFront
 
 ## Tech stack
@@ -89,7 +91,7 @@ TODO: Make the Mongo connection optional (fail-open).
   - Elastic Beanstalk (deployment)
   - CloudFront (static resource caching)
   - Lambda@Edge (`Content-Security-Policy` header)
-  - Route 53 (DNS records)
+  - Route 53 (domain, DNS records, SSL cert)
   - IAM (Lambda and CloudFront policies)
 - MongoDB (currently used for saving and loading incident geolocation data; TODO — should also be used to as incident storage, instead of local files.)
 
@@ -102,9 +104,8 @@ TODO: Make the Mongo connection optional (fail-open).
 ## TODO
 
 - Backend
-  - Store mongodb credentials in AWS Secrets Manager / GitHub Secrets
   - Store AWS console login credentials there too
-  - Use mongodb to store files
+  - Use mongodb to store resolved incidents
 - Frontend
   - Make history browseable (go back to any day of the year)
   - Make map dots clickable
