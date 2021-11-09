@@ -109,17 +109,30 @@ TODO: Make the Mongo connection optional (fail-open).
   - Make history browseable (go back to any day of the year)
   - Make map dots clickable
 
-## Screenshots
+---
 
-### Desktop/Tablet:
+# Screenshots
 
-- [Dark theme](./screenshots/fullpage-tablet-dark.png)
-- [Dusk theme](./screenshots/fullpage-tablet-dusk.png)
+## Full-page:
 
-### Phone:
+- [Dark theme](./screenshots/tablet-dark.png) (Phone)
+- [Dusk theme](./screenshots/tablet-dusk.png) (Phone)
+- [Dark theme](./screenshots/phone-dark.png) (Tablet)
+- [Dusk theme](./screenshots/phone-dusk.png) (Tablet)
 
-- [Dark theme](./screenshots/fullpage-phone-dark.png)
-- [Dusk theme](./screenshots/fullpage-phone-dusk.png)
+## Real-time:
+
+<img src='./screenshots/phone-dark-partial-1.png' style='max-width:375px'>
+
+## Weekly aggregates:
+
+<img src='./screenshots/phone-dark-partial-2.png' style='max-width:375px'>
+
+## Yearly trends:
+
+<img src='./screenshots/phone-dark-partial-3.png' style='max-width:375px'>
+
+---
 
 ## Credits
 
