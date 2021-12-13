@@ -8,6 +8,8 @@ import { hasCoordinates, hasNoCoordinates } from "./scriptUtil";
 import { downloadIncidents, uploadIncidents } from "../database";
 const axios = require("axios").default;
 
+const SOCRATA_TOKEN = process.env.SOCRATA_TOKEN;
+
 const queueSize = 100;
 
 const targetFile = withScriptsJsonPath("resolved.json");
@@ -28,9 +30,7 @@ const resolveGeo = async (entries = []) => {
   const list = ids.map((id) => `"${id}"`).join(",");
   const where = `incident_number in(${list})`;
 
-  const appToken = "DvY4gobAudCWKcwYz3yqTd25h";
-
-  const uri = `https://data.seattle.gov/resource/fire-911.json?$$app_token=${appToken}&$select=incident_number,latitude,longitude&$where=${where}`;
+  const uri = `https://data.seattle.gov/resource/kzjm-xkqj.json?$$app_token=${SOCRATA_TOKEN}&$select=incident_number,latitude,longitude&$where=${where}`;
   const encodedUri = encodeURI(uri);
 
   console.log(`resolve > ${ids.length} ids (URI length: ${encodedUri.length})`);

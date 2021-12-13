@@ -29,7 +29,7 @@ npm install
 
 Run dev build (deploys at http://http://localhost:3000/):
 
-- `npm run app:dev` Runs all three components (client, server, background tasks)
+- `MONGO_PW=*** SOCRATA_TOKEN=*** npm run app:dev` Runs all three components (client, server, background tasks)
 - `npm run static:dev` Runs client and server
 - `npm run update:once` Runs background tasks once (scraper, aggregates, cache)
   - a good option is to run this before running `static:dev`
@@ -69,8 +69,13 @@ Fully-resolved incidents are saved into local .json files (one file per day) und
 
 Mongo credentials are set in AWS Elastic Beanstalk via env variables (in config — AWS Secrets Manager is not available in Beanstalk as of November 2021).
 
-TODO: How lat/long is resolved.
-TODO: Make the Mongo connection optional (fail-open).
+Lat/Long resolution of incidents is done with help of [this dataset](https://dev.socrata.com/foundry/data.seattle.gov/kzjm-xkqj) from **data.seattle.gov**; Socrata app tokens are configured [here](https://evergreen.data.socrata.com/profile/edit/developer_settings). See [resolve.js](./scripts/dispatch/official/resolve.js). We are at the mercy of the dataset maintainers, and occasionally their update cycle results in either the dataset not updating or the app token disappearing.
+
+TODO:
+
+- Make the Mongo connection optional (fail-open).
+- GeoJSON, Leaflet.
+- Feature-by-feature.
 
 ### Caching (TODO)
 
@@ -93,7 +98,7 @@ TODO: Make the Mongo connection optional (fail-open).
   - Lambda@Edge (`Content-Security-Policy` header)
   - Route 53 (domain, DNS records, SSL cert)
   - IAM (Lambda and CloudFront policies)
-- MongoDB (currently used for saving and loading incident geolocation data; TODO — should also be used to as incident storage, instead of local files.)
+- MongoDB (currently used for saving and loading incident geolocation data; ideally should also be used to as incident storage, instead of local files.)
 
 ## Notes
 
@@ -101,7 +106,7 @@ TODO: Make the Mongo connection optional (fail-open).
 
 - Scraped incidents are stored in JSON files under `/datasets/official`, as well as in MongoDB via mongoose (see the `database.js` script). But currently MongoDB is not used for reading at all.
 
-## TODO
+## Future development
 
 - Backend
   - Store AWS console login credentials there too
