@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "yarn install && yarn run update:loop",
+    "start": "npm install && npm run update:loop",
     "update:loop": "cd official && node -r esm main.js",
     "update:once": "cd official && node -r esm runOnce.js update",
     "annotate:once": "cd official && node -r esm runOnce.js annotate",
