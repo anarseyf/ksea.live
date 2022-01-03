@@ -197,8 +197,6 @@ export const getAnnotationsAsync = async () => {
   const thisYear = +new Date().getFullYear(),
     lastYear = thisYear - 1;
 
-  console.log(JSON.stringify(result, null, 4));
-
   result = result.filter(({ start, end }) => {
     const tStart = start ? start.timestamp || 0 : 0;
     const tEnd = end ? end.timestamp || 0 : 0;
@@ -211,8 +209,6 @@ export const getAnnotationsAsync = async () => {
       yEnd === lastYear
     );
   });
-
-  console.log(JSON.stringify(result, null, 4));
 
   return result;
 };
