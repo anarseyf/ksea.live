@@ -194,7 +194,7 @@ const mapsController = async (req, res) => {
     const minZoom = 10,
       maxZoom = 13;
 
-    const isPhone = req.query.phone === "true";
+    // const isPhone = req.query.phone === "true";
     const r = "@2x"; // isPhone && z < 12 ? "@1x" : "@2x";
 
     if (isNaN(+z) || +z < minZoom || +z > maxZoom) {

@@ -174,7 +174,7 @@ export const getAnnotationsAsync = async () => {
   const data = manualData.concat(generatedData);
   const yearStart = new Date(moment().year(), 0);
 
-  const result = data.map(({ start, end, ...rest }) => ({
+  let result = data.map(({ start, end, ...rest }) => ({
     start: start
       ? {
           ...start,
@@ -193,6 +193,27 @@ export const getAnnotationsAsync = async () => {
         : undefined,
     ...rest,
   }));
+
+  const thisYear = +new Date().getFullYear(),
+    lastYear = thisYear - 1;
+
+  console.log(JSON.stringify(result, null, 4));
+
+  result = result.filter(({ start, end }) => {
+    const tStart = start ? start.timestamp || 0 : 0;
+    const tEnd = end ? end.timestamp || 0 : 0;
+    const yStart = +new Date(tStart).getFullYear();
+    const yEnd = +new Date(tEnd).getFullYear();
+    return (
+      yStart === thisYear ||
+      yStart === lastYear ||
+      yEnd === thisYear ||
+      yEnd === lastYear
+    );
+  });
+
+  console.log(JSON.stringify(result, null, 4));
+
   return result;
 };
 
