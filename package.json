@@ -1,18 +1,14 @@
 {
-  "name": "coffee",
+  "name": "ksea.live",
   "version": "0.3.0",
   "description": "Not sure yet",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anarseyf/coffee.git"
+    "url": "git+https://github.com/anarseyf/ksea.live.git"
   },
   "author": "Anar Seyf",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/anarseyf/coffee/issues"
-  },
-  "homepage": "https://github.com/anarseyf/coffee#readme",
   "scripts": {
     "start": "yarn install && concurrently \"yarn run server:prod\" \"yarn run bg\"",
     "server:prod": "NODE_ENV=production node -r esm server.js",
