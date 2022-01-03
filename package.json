@@ -24,7 +24,7 @@
     "update:once": "cd scripts/dispatch && npm run update:once",
     "build": "cd client && npm run build",
     "format": "prettier \"./client/src/**/*.{js,jsx,ts,tsx}\" --write",
-    "bundle:aws": "git add --all; git commit -m 'AWS Bundle'; git archive -v -o coffee-aws.zip --format=zip HEAD"
+    "bundle": "git add --all; git commit -m 'AWS Bundle'; git archive -v -o aws.zip --format=zip HEAD"
   },
   "dependencies": {
     "@reach/router": "^1.3.3",

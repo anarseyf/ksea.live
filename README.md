@@ -14,35 +14,35 @@ Environment:
 Dependencies:
 
 ```sh
-# TODO — turn into an npm script
+# TODO — turn into a script
 
-npm install
+yarn install
+
+export NODE_OPTIONS=--openssl-legacy-provider
 
 cd client
-export NODE_OPTIONS=--openssl-legacy-provider # https://github.com/webpack/webpack/issues/14532#issuecomment-947012063
-
-npm install
+yarn install
 
 cd ../scripts/dispatch
-npm install
+yarn install
 ```
 
 Run dev build (deploys at http://http://localhost:3000/):
 
-- `MONGO_PW=*** SOCRATA_TOKEN=*** npm run app:dev` Runs all three components (client, server, background tasks)
-- `npm run static:dev` Runs client and server
-- `npm run update:once` Runs background tasks once (scraper, aggregates, cache)
+- `MONGO_PW=*** SOCRATA_TOKEN=*** yarn run app:dev` Runs all three components (client, server, background tasks)
+- `yarn run static:dev` Runs client and server
+- `yarn run update:once` Runs background tasks once (scraper, aggregates, cache)
   - a good option is to run this before running `static:dev`
 
 Run prod build (deploys at http://localhost:3001/):
 
-- `npm start`
+- `yarn start`
 
 ## Deploying to AWS
 
 - (optional) Increment version in `package.json`
-- `npm run build`
-- `npm run bundle:aws`. This creates a .zip file in the project root directory.
+- `yarn run build`
+- `yarn run bundle`. This creates a .zip file in the project root directory.
 - Login to [AWS Console](https://console.aws.amazon.com/)
 - Open [Elastic Beanstalk](https://us-west-2.console.aws.amazon.com/elasticbeanstalk/)
 - Open the app's environment
@@ -59,7 +59,7 @@ Run prod build (deploys at http://localhost:3001/):
 1. Background tasks
    - Location: `/scripts/dispatch`
 
-The `prod` environment is launched via `npm start` at the root (both in AWS and locally), which kicks off all 3 components (using the `concurrently` command). See `package.json` for details.
+The `prod` environment is launched via `yarn start` at the root (both in AWS and locally), which kicks off all 3 components (using the `concurrently` command). See `package.json` for details.
 
 The update loop runs every few minutes.
 
