@@ -132,6 +132,7 @@ export const runner = async () => {
       const key = cacheKey(path, params, query);
       const result = await asyncGetter(path, params, query);
       const file = withCachePath(`${key}.json`);
+      console.log(`>> Cache: saving file: ${file}`);
       await saveJSONAsync(file, result);
       console.log(`cache > saved file: ${key}.json`);
     })
