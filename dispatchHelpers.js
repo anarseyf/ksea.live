@@ -35,8 +35,10 @@ const toFileNames = ([start, end]) => {
     .map((f) => path.join(dataPath, `${f}.json`));
 };
 
-const byIntervalsGen = (intervals) => ({ timestamp }) =>
-  !!intervals.reduce(intervalsReducer(timestamp), null);
+const byIntervalsGen =
+  (intervals) =>
+  ({ timestamp }) =>
+    !!intervals.reduce(intervalsReducer(timestamp), null);
 
 export const allTweets = async (intervals) => {
   const fileNames = [...new Set(intervals.map(toFileNames).flat())].sort();
@@ -97,26 +99,25 @@ export const getMostRecentAsync = async () => {
   return result;
 };
 
-export const groupByIntervalGen = (intervals, hiRes) => ({
-  values,
-  ...rest
-}) => {
-  let byInterval = groupBy(
-    GroupByOptions.TimeInterval,
-    values,
-    intervals,
-    hiRes
-  );
+export const groupByIntervalGen =
+  (intervals, hiRes) =>
+  ({ values, ...rest }) => {
+    let byInterval = groupBy(
+      GroupByOptions.TimeInterval,
+      values,
+      intervals,
+      hiRes
+    );
 
-  byInterval[0].bins = trimToNow(byInterval[0].bins);
-  byInterval[0].binsHiRes = trimToNow(byInterval[0].binsHiRes);
-  byInterval[0].binsLowRes = trimToNow(byInterval[0].binsLowRes);
+    byInterval[0].bins = trimToNow(byInterval[0].bins);
+    byInterval[0].binsHiRes = trimToNow(byInterval[0].binsHiRes);
+    byInterval[0].binsLowRes = trimToNow(byInterval[0].binsLowRes);
 
-  return {
-    ...rest,
-    intervals: byInterval,
+    return {
+      ...rest,
+      intervals: byInterval,
+    };
   };
-};
 
 export const sortByTotal = (a, b) =>
   b.intervals[0].total - a.intervals[0].total;

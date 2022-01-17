@@ -1,5 +1,6 @@
 const fs = require("fs");
 const util = require("util");
+const path = require("path");
 
 import { tz as timezone } from "moment-timezone";
 import { sortByTimestampDescending } from "./server/serverUtils";
@@ -125,14 +126,18 @@ export const readJSONAsync = async (fileName, defaultValue) => {
     }
     return JSON.parse(file);
   } catch (e) {
-    // console.warn(">>> Warning:", e.message);
+    // console.warn(">>> readJSONAsync warning:", e.message);
     return defaultValue;
   }
 };
 
 export const saveFileAsync = util.promisify(fs.writeFile);
 
+const mkdirAsync = util.promisify(fs.mkdir);
+
 export const saveJSONAsync = async (fileName, data) => {
+  const dir = path.dirname(fileName);
+  await mkdirAsync(dir, { recursive: true });
   await saveFileAsync(fileName, JSON.stringify(data, null, 2));
 };
 
