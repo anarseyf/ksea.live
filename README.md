@@ -1,8 +1,6 @@
 # KSEA.live
 
-Real-time visualization of Seattle Fire Department dispatch data.
-
-https://ksea.live
+Real-time visualization of Seattle Fire Department dispatch data. (Deprecated.)
 
 ## Local dev
 
